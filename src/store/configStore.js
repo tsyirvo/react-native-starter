@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { AsyncStorage } from 'react-native';
 import thunk from 'redux-thunk';
-import reduxFreeze from 'redux-freeze';
 import createLogger from 'redux-logger';
 import { persistStore, autoRehydrate, purgeStoredState } from 'redux-persist';
 
@@ -23,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
     // )
   });
 
-  middlewares.push(logger, reduxFreeze);
+  middlewares.push(logger);
 }
 
 const enhancer = compose(
