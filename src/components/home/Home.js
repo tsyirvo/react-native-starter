@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Actions as routing } from 'react-native-router-flux';
-import shallowequal from 'shallowequal';
 
 import Header from './items/Header';
 import Button from '../shared/Button';
@@ -20,19 +18,18 @@ const styles = EStyleSheet.create({
   }
 });
 
-class Home extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowequal(nextProps, this.props) && shallowequal(nextState, this.state);
-  }
+class Home extends PureComponent {
 
   render() {
+    const { navigate } = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <Header />
-        <Text style={styles.text}>Home</Text>
+        <Text style={styles.text}>Home </Text>
         <Button
           label={'Go to About page'}
-          action={() => { routing.about(); }}
+          action={() => { navigate('About'); }}
         />
       </View>
     );
