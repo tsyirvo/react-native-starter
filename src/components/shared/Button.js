@@ -7,11 +7,11 @@ const styles = EStyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderWidth: 1,
-    borderColor: '$itemColors.regular'
-  }
+    borderColor: '$itemColors.regular',
+  },
 });
 
-const Button = ({ label, action }) => {
+function Button({ label, action }) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -21,16 +21,16 @@ const Button = ({ label, action }) => {
       <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
   );
-};
+}
 
 Button.defaultProps = {
   label: '',
-  action: () => {}
+  action: () => {},
 };
 
 Button.propTypes = {
-  label: PropTypes.string.isRequired,
-  action: PropTypes.func.isRequired
+  label: PropTypes.string,
+  action: PropTypes.func,
 };
 
 export default Button;

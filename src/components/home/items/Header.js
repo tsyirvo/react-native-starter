@@ -5,12 +5,12 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const styles = EStyleSheet.create({
 });
 
-const Header = () => {
+function Header() {
   return (
     <View style={styles.container}>
       <Text>This is the header</Text>
     </View>
   );
-};
+}
 
 export default Header;

@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import AppNavigator from './routes';
 
-class Router extends Component {
-  render() {
-    return (
-      <AppNavigator navigation={addNavigationHelpers({
-        dispatch: this.props.dispatch,
-        state: this.props.nav
-      })} />
-    );
-  }
+function Router({ dispatch, nav }) {
+  return (
+    <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+  );
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
   return {
-    nav: state.nav
+    nav: state.nav,
   };
-};
+}
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
+}
+
+Router.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  nav: PropTypes.shape().isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Router);

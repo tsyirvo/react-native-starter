@@ -1,11 +1,11 @@
 export default {
   textColors: {
     regular: 'white',
-    red: 'red'
+    red: 'red',
   },
   itemColors: {
     regular: 'white',
     green: '#16a085',
-    blue: '#3498db'
-  }
+    blue: '#3498db',
+  },
 };

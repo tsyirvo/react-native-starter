@@ -1,10 +1,17 @@
-import { DUMMY_ACTION } from './constants';
+import { DUMMY_ACTION, DUMMY_ACTION2 } from './constants';
 
 /* ***** *****  Set intents  ***** ******/
 
-export const dummyAction = (payload) => {
+export function dummyAction(payload) {
   return {
     type: DUMMY_ACTION,
-    payload
+    payload,
   };
-};
+}
+
+export function dummyAction2(payload) {
+  return {
+    type: DUMMY_ACTION2,
+    payload,
+  };
+}

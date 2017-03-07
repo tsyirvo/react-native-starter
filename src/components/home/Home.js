@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PropTypes } from 'react';
 import { View, Text } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
@@ -10,30 +10,29 @@ const styles = EStyleSheet.create({
     flex: 1,
     backgroundColor: '$itemColors.green',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   text: {
     color: '$textColors.red',
-    fontSize: '1.5rem'
-  }
+    fontSize: '1.5rem',
+  },
 });
 
-class Home extends PureComponent {
-
-  render() {
-    const { navigate } = this.props.navigation;
-
-    return (
-      <View style={styles.container}>
-        <Header />
-        <Text style={styles.text}>Home </Text>
-        <Button
-          label={'Go to About page'}
-          action={() => { navigate('About'); }}
-        />
-      </View>
-    );
-  }
+function Home({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Header />
+      <Text style={styles.text}>Home </Text>
+      <Button
+        label={'Go to About page'}
+        action={() => { navigation.navigate('About'); }}
+      />
+    </View>
+  );
 }
+
+Home.propTypes = {
+  navigation: PropTypes.shape().isRequired,
+};
 
 export default Home;

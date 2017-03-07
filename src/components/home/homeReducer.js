@@ -1,7 +1,7 @@
-import { DUMMY_ACTION } from './constants';
+import { DUMMY_ACTION, DUMMY_ACTION2 } from './constants';
 
 const initialState = {
-  toto: false
+  toto: false,
 };
 
 const home = (state = initialState, action) => {
@@ -9,7 +9,12 @@ const home = (state = initialState, action) => {
     case DUMMY_ACTION:
       return {
         ...state,
-        toto: !state.toto
+        toto: !state.toto,
+      };
+    case DUMMY_ACTION2:
+      return {
+        ...state,
+        toto: !state.toto,
       };
     default:
       return state;

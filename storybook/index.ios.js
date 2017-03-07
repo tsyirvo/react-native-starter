@@ -1,12 +1,11 @@
 import { AppRegistry } from 'react-native';
-import { getStorybookUI, configure } from '@kadira/react-native-storybook';
+import { getStorybookUI, configure } from '@kadira/react-native-storybook'; // eslint-disable-line
+
 const stories = require('./stories');
 
 // import stories
-configure(() => {
-  return stories;
-}, module);
+configure(() => stories, module);
 
 const StorybookUI = getStorybookUI({ port: 7007, host: 'localhost' });
 
-AppRegistry.registerComponent('reactNativeStarter', () => { return StorybookUI; });
+AppRegistry.registerComponent('reactNativeStarter', () => StorybookUI);
