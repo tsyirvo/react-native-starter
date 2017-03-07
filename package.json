@@ -7,19 +7,21 @@
 		"lint": "eslint ./ --cache --ignore-pattern .gitignore",
 		"precommit-msg": "echo 'Pre-commit checks...' && exit 0"
 	},
-	"pre-commit": [ "precommit-msg", "lint" ],
+	"pre-commit": [
+		"precommit-msg",
+		"lint"
+	],
 	"dependencies": {
 		"react": "~15.4.0",
 		"react-native": "0.41.2",
 		"react-native-code-push": "^1.17.0-beta",
 		"react-native-extended-stylesheet": "^0.3.1",
-		"react-native-router-flux": "^3.37.0",
+		"react-navigation": "^1.0.0-beta.6",
 		"react-redux": "^5.0.2",
 		"redux": "^3.6.0",
 		"redux-form": "^6.5.0",
 		"redux-persist": "^4.4.0",
 		"redux-thunk": "^2.2.0",
-		"shallowequal": "^0.2.2",
 		"validate.js": "^0.11.1"
 	},
 	"devDependencies": {

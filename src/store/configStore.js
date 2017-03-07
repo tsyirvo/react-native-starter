@@ -3,12 +3,23 @@ import { AsyncStorage } from 'react-native';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { persistStore, autoRehydrate, purgeStoredState } from 'redux-persist';
+import { PERSIST_ENABLED, PERSIST_PURGE } from '../utils/persist';
 
+import AppNavigator from '../routes';
 import indexReducer from './indexReducer';
 import home from '../components/home/homeReducer';
-import routes from '../navigation/routesReducer';
 
-import { PERSIST_ENABLED, PERSIST_PURGE } from '../utils/persist';
+const navReducer = (state, action) => {
+  const newState = AppNavigator.router.getStateForAction(action, state);
+
+  if (action.type === 'persist/REHYDRATE') {
+    return {
+      rehydrated: true
+    };
+  }
+  return newState || state;
+};
+
 
 const middlewares = [thunk];
 
@@ -33,7 +44,7 @@ const enhancer = compose(
 );
 
 const appReducer = combineReducers({
-  routes,
+  nav: navReducer,
   home
 });
 

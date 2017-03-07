@@ -16,7 +16,7 @@ if (NETWORK_DEBUG) {
 }
 
 // Component
-import Root from './src/components/root/Root';
+import Root from './src/index.js';
 
 // eslint-disable-next-line no-console
 // console.ignoredYellowBox = [];
