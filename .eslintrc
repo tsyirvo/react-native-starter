@@ -3,6 +3,9 @@
 
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "no-restricted-syntax": 0,
+    "no-prototype-builtins": 0,
+    "arrow-body-style": 0
   },
 
 

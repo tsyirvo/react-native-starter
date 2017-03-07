@@ -7,6 +7,7 @@ import { PERSIST_ENABLED, PERSIST_PURGE } from '../utils/persist';
 
 import AppNavigator from '../routes';
 import home from '../components/home/homeReducer';
+import fetchMiddleware from '../middlewares/fetch';
 
 const navReducer = (state, action) => {
   const newState = AppNavigator.router.getStateForAction(action, state);
@@ -19,8 +20,18 @@ const navReducer = (state, action) => {
   return newState || state;
 };
 
+const fetchMiddlewareInstance = fetchMiddleware({
+  base: 'http://google.com',
+  defaultHeaders: {
+    Accept: 'application/json',
+    'Content-type': 'application/json',
+  },
+  /*defaultParams : {
+      api_key : '1234567890'
+  },*/
+});
 
-const middlewares = [thunk];
+const middlewares = [thunk, fetchMiddlewareInstance];
 
 if (process.env.NODE_ENV === 'development') {
   const logger = createLogger({

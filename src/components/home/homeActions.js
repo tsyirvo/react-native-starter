@@ -1,4 +1,4 @@
-import { DUMMY_ACTION, DUMMY_ACTION2 } from './constants';
+import { DUMMY_ACTION } from './constants';
 
 /* ***** *****  Set intents  ***** ******/
 
@@ -9,9 +9,8 @@ export function dummyAction(payload) {
   };
 }
 
-export function dummyAction2(payload) {
+export function dummyFetch() {
   return {
-    type: DUMMY_ACTION2,
-    payload,
+    url: '/',
   };
 }
