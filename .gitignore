@@ -41,7 +41,7 @@ buck-out/
 \.buckd/
 android/app/libs
 *.keystore
-
+.eslintcache
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the

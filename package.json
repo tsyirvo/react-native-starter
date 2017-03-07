@@ -1,37 +1,39 @@
 {
-	"name": "reactNativeStarter",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"lint": "eslint ./ --cache --ignore-pattern .gitignore",
-		"precommit-msg": "echo 'Pre-commit checks...' && exit 0"
-	},
-	"pre-commit": [
-		"precommit-msg",
-		"lint"
-	],
-	"dependencies": {
-		"react": "~15.4.0",
-		"react-native": "0.41.2",
-		"react-native-code-push": "^1.17.0-beta",
-		"react-native-extended-stylesheet": "^0.3.1",
-		"react-navigation": "^1.0.0-beta.6",
-		"react-redux": "^5.0.2",
-		"redux": "^3.6.0",
-		"redux-form": "^6.5.0",
-		"redux-persist": "^4.4.0",
-		"redux-thunk": "^2.2.0",
-		"validate.js": "^0.11.1"
-	},
-	"devDependencies": {
-		"babel-eslint": "^7.1.1",
-		"babel-preset-react-native": "1.9.1",
-		"eslint": "^3.15.0",
-		"eslint-plugin-react": "^6.10.0",
-		"getstorybook": "^1.7.0",
-		"pre-commit": "^1.2.2",
-		"redux-logger": "^2.8.1",
-		"why-did-you-update": "^0.0.8"
-	}
+  "name": "reactNativeStarter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "lint": "eslint ./ --cache --ignore-pattern .gitignore",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "storybook": "storybook start -p 7007"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "lint"
+  ],
+  "dependencies": {
+    "react": "~15.4.0",
+    "react-native": "0.41.2",
+    "react-native-code-push": "^1.17.0-beta",
+    "react-native-extended-stylesheet": "^0.3.1",
+    "react-navigation": "^1.0.0-beta.6",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-form": "^6.5.0",
+    "redux-persist": "^4.4.0",
+    "redux-thunk": "^2.2.0",
+    "validate.js": "^0.11.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-preset-react-native": "1.9.1",
+    "eslint": "^3.15.0",
+    "eslint-plugin-react": "^6.10.0",
+    "getstorybook": "^1.7.0",
+    "pre-commit": "^1.2.2",
+    "redux-logger": "^2.8.1",
+    "why-did-you-update": "^0.0.8",
+    "@kadira/react-native-storybook": "^2.0.0"
+  }
 }
