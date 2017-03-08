@@ -12,5 +12,9 @@ export function dummyAction(payload) {
 export function dummyFetch() {
   return {
     url: '/',
+    params: {
+      test: 'test',
+      toto: 'toto',
+    },
   };
 }

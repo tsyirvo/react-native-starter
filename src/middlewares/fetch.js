@@ -1,10 +1,11 @@
 function serialize(obj) {
   const str = [];
-  for (const p in obj) {
-    if (obj.hasOwnProperty(p)) {
-      str.push(`${encodeURIComponent(p)}=${encodeURIComponent(obj[p])}`);
+  Object.values(obj).filter((x) => {
+    if (Object.prototype.hasOwnProperty.call(obj, x)) {
+      str.push(`${encodeURIComponent(x)}=${encodeURIComponent(obj[x])}`);
     }
-  }
+    return x;
+  });
   return str.join('&');
 }
 
