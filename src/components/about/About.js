@@ -26,7 +26,9 @@ function About({ navigation }) {
 }
 
 About.propTypes = {
-  navigation: PropTypes.shape().isRequired,
+  navigation: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default About;

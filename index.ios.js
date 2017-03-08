@@ -7,7 +7,7 @@ https://github.com/jhen0409/react-native-debugger#debugging-tips
 */
 
 // !!!! DO NOT COMMIT with true value !!!
-const NETWORK_DEBUG = false;
+const NETWORK_DEBUG = true;
 
 if (NETWORK_DEBUG) {
   const xhr = global.originalXMLHttpRequest ?

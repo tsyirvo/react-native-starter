@@ -1,11 +1,14 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes } from 'react';
 import { View, Text } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { connect } from 'react-redux';
-import { dummyFetch } from './homeActions';
 
-import Header from './items/Header';
+import { bindActionCreators } from 'redux';
+
+import Header from '../header/Header';
 import Button from '../shared/Button';
+
+import * as dummyActions from '../../actions/dummyActions';
 
 const styles = EStyleSheet.create({
   container: {
@@ -20,44 +23,40 @@ const styles = EStyleSheet.create({
   },
 });
 
-class Home extends Component {
-
-  componentDidMount() {
-    this.props.fetchData(dummyFetch);
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Header />
-        <Text style={styles.text}>Home </Text>
-        <Button
-          label={'Go to About page'}
-          action={() => { this.props.navigation.navigate('About'); }}
-        />
-      </View>
-    );
-  }
+function mockFunction(actions, navigation) {
+  return () => {
+    actions.firstActionCreator('HEllooooooooo');
+    navigation.navigate('About');
+  };
 }
 
-Home.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-  }).isRequired,
-  fetchData: PropTypes.func.isRequired,
-};
-
-function mapStateToProps() {
-  return {
-  };
+function Home({ actions, navigation }) {
+  return (
+    <View style={styles.container}>
+      <Header />
+      <Text style={styles.text}>Home </Text>
+      <Button
+        label={'Go to About page'}
+        action={mockFunction(actions, navigation)}
+      />
+    </View>
+  );
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchData: () => {
-      dispatch(dummyFetch());
-    },
+    actions: bindActionCreators(dummyActions, dispatch),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+Home.propTypes = {
+  actions: PropTypes.shape({
+    firstActionCreator: PropTypes.func.isRequired,
+  }).isRequired,
+
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(Home);
