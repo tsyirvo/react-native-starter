@@ -1,15 +1,15 @@
 function serialize(obj) {
   const str = [];
-  Object.values(obj).filter((x) => {
-    if (Object.prototype.hasOwnProperty.call(obj, x)) {
-      str.push(`${encodeURIComponent(x)}=${encodeURIComponent(obj[x])}`);
+  Object.keys(obj).filter((key) => {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      str.push(`${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`);
     }
-    return x;
+    return key;
   });
   return str.join('&');
 }
 
-const goTo = (action, store, next, payload, meta) => {
+function goTo(action, store, next, payload, meta) {
   if (typeof action !== 'function') {
     /* eslint-disable no-console */
     console.error('fetchMiddleware require a function for onStart, onSuccess, onFailure');
@@ -21,7 +21,7 @@ const goTo = (action, store, next, payload, meta) => {
   if (res) {
     next(res);
   }
-};
+}
 
 let config = {
   base: '',
@@ -53,17 +53,18 @@ const fetchMiddleware = store => next => (action) => {
     goTo(action.onStart, store, next);
   }
 
-  const baseUrl = action.base ? action.base : config.base;
+  const baseUrl = action.base || config.base;
   const params = request.params ? `?${serialize(request.params)}` : '';
+  const { headers, body, method, mode } = request;
   fetch(`${baseUrl}${request.url}${params}`, {
-    method: request.method,
-    headers: request.headers,
-    body: JSON.stringify(request.body),
-    mode: request.mode,
+    method,
+    headers,
+    body: JSON.stringify(body),
+    mode,
   })
   .then((response) => {
-    return response.json().then((body) => {
-      return { status: response.status, ok: response.ok, body };
+    return response.json().then((result) => {
+      return { status: response.status, ok: response.ok, body: result };
     }).catch(() => {
       return { status: response.status, ok: response.ok, body: {} };
     });
@@ -74,13 +75,13 @@ const fetchMiddleware = store => next => (action) => {
         goTo(action.onSuccess, store, next, response.body);
       }
     } else {
-      const body = response.body;
+      const result = response.body;
       if (!response.body.error) {
-        body.error = 'UnknownError';
+        result.error = 'UnknownError';
       }
 
       if (action.onError) {
-        goTo(action.onError, store, next, body, { httpCode: response.status });
+        goTo(action.onError, store, next, result, { httpCode: response.status });
       }
     }
   }, (response) => {
@@ -91,7 +92,7 @@ const fetchMiddleware = store => next => (action) => {
   return null;
 };
 
-export default function (custumConfig) {
-  config = { ...config, ...custumConfig };
+export default function (customConfig) {
+  config = { ...config, ...customConfig };
   return fetchMiddleware;
 }

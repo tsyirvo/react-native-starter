@@ -12,8 +12,8 @@ export function dummyFetch() {
   return {
     url: '/',
     params: {
-      test: 'test',
-      toto: 'toto',
+      test2: 'test',
+      toto2: 'toto',
     },
     onStart: (payload, meta, dispatch) => {
       dispatch(firstActionCreator(false));
