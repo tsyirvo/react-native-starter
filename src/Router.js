@@ -24,7 +24,14 @@ function mapDispatchToProps(dispatch) {
 
 Router.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.shape().isRequired,
+
+  nav: PropTypes.shape({
+    index: PropTypes.number.isRequired,
+    routes: PropTypes.arrayOf(PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      routeName: PropTypes.string.isRequired,
+    })).isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Router);
