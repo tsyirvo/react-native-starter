@@ -3,11 +3,21 @@ import { AsyncStorage } from 'react-native';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { persistStore, autoRehydrate, purgeStoredState } from 'redux-persist';
-
 import { PERSIST_ENABLED, PERSIST_PURGE } from '../utils/persist';
 import rootReducer from '../reducers/index';
+import fetchMiddleware from '../middlewares/fetch';
 
-const middlewares = [thunk];
+const fetchMiddlewareInstance = fetchMiddleware({
+  base: 'http://google.com',
+  defaultHeaders: {
+    Accept: 'application/json',
+    'Content-type': 'application/json',
+  },
+  /*defaultParams : {
+      api_key : '1234567890'
+  },*/
+});
+const middlewares = [thunk, fetchMiddlewareInstance];
 
 if (process.env.NODE_ENV === 'development') {
   const logger = createLogger({

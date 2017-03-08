@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { View, Text } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { connect } from 'react-redux';
+
 import { bindActionCreators } from 'redux';
 
 import Header from '../header/Header';

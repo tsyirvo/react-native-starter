@@ -1925,7 +1925,11 @@ debug@2, debug@2.6.1, debug@^2.1.1, debug@^2.2.0:
   dependencies:
     ms "0.7.2"
 
+<<<<<<< HEAD
+debug@~2.2.0, debug@2.2.0:
+=======
 debug@2.2.0, debug@~2.2.0:
+>>>>>>> develop
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
@@ -2010,7 +2014,11 @@ detect-indent@^4.0.0:
   dependencies:
     repeating "^2.0.0"
 
+<<<<<<< HEAD
+doctrine@^1.2.2, doctrine@1.5.0:
+=======
 doctrine@1.5.0, doctrine@^1.2.2:
+>>>>>>> develop
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
   dependencies:
@@ -3795,7 +3803,11 @@ min-document@^2.19.0:
   dependencies:
     dom-walk "^0.1.0"
 
+<<<<<<< HEAD
+minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, "minimatch@2 || 3":
+=======
 "minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3:
+>>>>>>> develop
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.3.tgz#2a4e4090b96b2db06a9d7df01055a62a77c9b774"
   dependencies:
@@ -4240,7 +4252,11 @@ pkg-up@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
+<<<<<<< HEAD
+plist@^1.2.0, plist@1.2.0:
+=======
 plist@1.2.0, plist@^1.2.0:
+>>>>>>> develop
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/plist/-/plist-1.2.0.tgz#084b5093ddc92506e259f874b8d9b1afb8c79593"
   dependencies:
