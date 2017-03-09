@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { View } from 'react-native';
 import style from './style';
 
-export default function CenterView(props) {
+export default function CenterView({ children }) {
   return (
     <View style={style.main}>
-      {props.children}
+      {children}
     </View>
   );
 }
+
+CenterView.propTypes = {
+  children: PropTypes.shape().isRequired,
+};

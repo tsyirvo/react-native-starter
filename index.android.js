@@ -1,5 +1,7 @@
 import { AppRegistry } from 'react-native';
 
+import Root from './src';
+
 /* React Native debugging network
 https://github.com/jhen0409/react-native-debugger#debugging-tips
 */
@@ -15,11 +17,4 @@ if (NETWORK_DEBUG) {
   global.XMLHttpRequest = xhr;
 }
 
-// Component
-import Root from './src';
-
-// eslint-disable-next-line no-console
-// console.ignoredYellowBox = [];
-
-// eslint-disable-next-line arrow-body-style
 AppRegistry.registerComponent('reactNativeStarter', () => Root);
