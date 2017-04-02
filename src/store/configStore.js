@@ -2,10 +2,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { AsyncStorage } from 'react-native';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
+import fetchMiddleware from 'fetch-redux-middleware';
 import { persistStore, autoRehydrate, purgeStoredState } from 'redux-persist';
 import { PERSIST_ENABLED, PERSIST_PURGE } from '../utils/persist';
 import rootReducer from '../reducers/index';
-import fetchMiddleware from '../middlewares/fetch';
 
 const fetchMiddlewareInstance = fetchMiddleware({
   base: 'http://google.com',

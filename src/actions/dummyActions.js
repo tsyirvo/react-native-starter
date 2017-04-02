@@ -15,6 +15,7 @@ export function dummyFetch() {
       test2: 'test',
       toto2: 'toto',
     },
+    autoDispatchPrefix: 'DUMMY',
     onStart: (payload, meta, dispatch) => {
       dispatch(firstActionCreator(false));
     },
