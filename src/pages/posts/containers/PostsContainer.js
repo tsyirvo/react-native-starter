@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Posts from '../components/Posts';
 
 import * as ActionTypes from '../redux/postsActionTypes';
+import { postsSelector, postsSelectorByUserId } from '../redux/postsSelectors';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -14,7 +15,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts.posts,
+    posts: postsSelector(state),
+    postsByUserId: postsSelectorByUserId(state),
     postsError: state.posts.error,
   };
 };

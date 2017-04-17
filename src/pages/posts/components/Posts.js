@@ -16,11 +16,12 @@ const styles = EStyleSheet.create({
   },
 });
 
-const Posts = ({ posts, getPosts }) => {
+const Posts = ({ posts, postsByUserId, getPosts }) => {
   return (
     <View style={styles.container}>
       <PostsList
         posts={posts}
+        postsByUserId={postsByUserId}
         getPosts={() => { getPosts(); }}
       />
     </View>
@@ -30,6 +31,12 @@ const Posts = ({ posts, getPosts }) => {
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(PropTypes.shape({
+    userId: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  })).isRequired,
+  postsByUserId: PropTypes.arrayOf(PropTypes.shape({
     userId: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import Post from './Post';
+import Controls from './Controls';
 
 const styles = EStyleSheet.create({
   container: {
@@ -48,6 +49,8 @@ class PostsList extends PureComponent {
     this.state = {
       dataSource: this.ds.cloneWithRows([]),
     };
+
+    this.filterBy = this.filterBy.bind(this);
   }
 
   componentDidMount() {
@@ -65,9 +68,30 @@ class PostsList extends PureComponent {
     }
   }
 
+  filterBy(filter) {
+    if (filter === 'all') {
+      this.setState((state) => {
+        return {
+          ...state,
+          dataSource: this.ds.cloneWithRows(this.props.posts),
+        };
+      });
+    } else {
+      this.setState((state) => {
+        return {
+          ...state,
+          dataSource: this.ds.cloneWithRows(this.props.postsByUserId),
+        };
+      });
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
+        <Controls
+          filterBy={this.filterBy}
+        />
         <ListView
           dataSource={this.state.dataSource}
           renderRow={PostsList.renderRow}
@@ -84,6 +108,12 @@ class PostsList extends PureComponent {
 PostsList.propTypes = {
   getPosts: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(PropTypes.shape({
+    userId: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  })).isRequired,
+  postsByUserId: PropTypes.arrayOf(PropTypes.shape({
     userId: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
