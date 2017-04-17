@@ -8,7 +8,7 @@ import {
 
 const navigationOptions = {
   headerMode: 'float',
-  initialRouteName: 'Posts',
+  initialRouteName: 'Home',
 };
 
 const AppNavigator = stack({
