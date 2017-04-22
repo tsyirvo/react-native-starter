@@ -15,18 +15,18 @@
 	"dependencies": {
 		"prop-types": "^15.5.8",
 		"react": "16.0.0-alpha.6",
-		"react-native": "0.43.3",
+		"react-native": "0.43.4",
 		"react-native-extended-stylesheet": "^0.4.0",
 		"react-navigation": "git+https://github.com/react-community/react-navigation.git#4c55887",
 		"react-redux": "^5.0.4",
 		"redux": "^3.6.0",
 		"redux-logger": "^3.0.1",
 		"redux-persist": "^4.6.0",
-		"redux-saga": "^0.14.6",
+		"redux-saga": "^0.14.7",
 		"reselect": "^3.0.0"
 	},
 	"devDependencies": {
-		"babel-eslint": "^7.2.2",
+		"babel-eslint": "^7.2.3",
 		"babel-preset-react-native": "1.9.1",
 		"eslint": "^3.19.0",
 		"eslint-config-airbnb": "^14.1.0",
