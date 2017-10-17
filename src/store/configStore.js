@@ -1,23 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { AsyncStorage } from 'react-native';
-import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
-import fetchMiddleware from 'fetch-redux-middleware';
+import { createLogger } from 'redux-logger';
 import { persistStore, autoRehydrate, purgeStoredState } from 'redux-persist';
-import { PERSIST_ENABLED, PERSIST_PURGE } from '../utils/persist';
-import rootReducer from '../reducers/index';
+import createSagaMiddleware from 'redux-saga';
 
-const fetchMiddlewareInstance = fetchMiddleware({
-  base: 'http://google.com',
-  defaultHeaders: {
-    Accept: 'application/json',
-    'Content-type': 'application/json',
-  },
-  /*defaultParams : {
-      api_key : '1234567890'
-  },*/
-});
-const middlewares = [thunk, fetchMiddlewareInstance];
+import rootReducer from './indexReducers';
+import rootSaga from './rootSaga';
+
+const PERSIST_ENABLED = false;
+const PERSIST_PURGE = false;
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
   const logger = createLogger({
@@ -42,6 +35,8 @@ export default function configureStore() {
     undefined,
     enhancer,
   );
+
+  sagaMiddleware.run(rootSaga);
 
   if (PERSIST_ENABLED) {
     persistStore(store, {

@@ -1,0 +1,6 @@
+// Actions
+export const FETCH_POSTS_SUCCEEDED = 'FETCH_POSTS_SUCCEEDED';
+export const FETCH_POSTS_FAILED = 'FETCH_POSTS_FAILED';
+
+// Sagas
+export const FETCH_POSTS = 'FETCH_POSTS';
