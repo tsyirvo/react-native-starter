@@ -6,7 +6,10 @@
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"ios": "react-native run-ios --simulator=\"iPhone 7\"",
 		"lint": "eslint ./ --cache --ignore-pattern .gitignore",
-		"precommit-msg": "echo 'Pre-commit checks...' && exit 0"
+		"precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+		"precommit": "yarn lint",
+    "prepush": "yarn test",
+		"test": "yarn lint"
 	},
 	"pre-commit": [
 		"precommit-msg",

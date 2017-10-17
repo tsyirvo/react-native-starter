@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const App = () => (
+export default () => (
   <View style={styles.container}>
     <Text style={styles.welcome}>
       Welcome to React Native!
@@ -45,5 +45,3 @@ export const App = () => (
     </Text>
   </View>
 );
-
-export default App;
