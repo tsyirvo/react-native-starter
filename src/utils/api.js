@@ -4,7 +4,7 @@ const defaultHeaders = {
   'Content-Type': 'application/json',
 };
 
-const checkStatus = (res) => {
+const checkStatus = res => {
   if (res.status >= 200 && res.status < 300) {
     return res;
   }
@@ -14,7 +14,7 @@ const checkStatus = (res) => {
   throw error;
 };
 
-const parseJSON = (res) => {
+const parseJSON = res => {
   return res.json();
 };
 

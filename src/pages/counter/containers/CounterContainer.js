@@ -5,7 +5,7 @@ import Counter from '../components/Counter';
 import * as ActionTypes from '../redux/counterActionTypes';
 import { resetCounter } from '../redux/counterActions';
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     onIncrement: () => {
       dispatch({ type: ActionTypes.INCREMENT_ASYNC });
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     count: state.counter.count,
   };

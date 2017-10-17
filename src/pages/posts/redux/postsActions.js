@@ -2,7 +2,7 @@ import * as ActionTypes from './postsActionTypes';
 
 /* ***** *****  Fetch posts  ***** ******/
 
-export const fetchPostsSucceeded = (data) => {
+export const fetchPostsSucceeded = data => {
   return {
     type: ActionTypes.FETCH_POSTS_SUCCEEDED,
     payload: {
@@ -11,7 +11,7 @@ export const fetchPostsSucceeded = (data) => {
   };
 };
 
-export const fetchPostsFailed = (error) => {
+export const fetchPostsFailed = error => {
   return {
     type: ActionTypes.FETCH_POSTS_FAILED,
     payload: {

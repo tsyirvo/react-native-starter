@@ -7,7 +7,7 @@ export const postsSelector = createSelector(
   postsSelected => postsSelected,
 );
 
-const postsSelectorByUserIdFactory = (id) => {
+const postsSelectorByUserIdFactory = id => {
   return createSelector(
     posts,
     postsSelected => postsSelected.filter(post => post.userId === id),

@@ -59,7 +59,7 @@ class PostsList extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.posts !== nextProps.posts) {
-      this.setState((state) => {
+      this.setState(state => {
         return {
           ...state,
           dataSource: this.ds.cloneWithRows(nextProps.posts),
@@ -70,14 +70,14 @@ class PostsList extends PureComponent {
 
   filterBy(filter) {
     if (filter === 'all') {
-      this.setState((state) => {
+      this.setState(state => {
         return {
           ...state,
           dataSource: this.ds.cloneWithRows(this.props.posts),
         };
       });
     } else {
-      this.setState((state) => {
+      this.setState(state => {
         return {
           ...state,
           dataSource: this.ds.cloneWithRows(this.props.postsByUserId),
