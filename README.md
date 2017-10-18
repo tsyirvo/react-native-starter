@@ -1,8 +1,8 @@
-# Monimalz
+# React Native Starter
 
 ## The Basics
 
-### Dependencies and install
+### Dependencies and installation
 
 You need to have Watchman installed:
 
@@ -70,6 +70,8 @@ yarn android
 [Redux Saga](https://redux-saga.js.org/)
 
 [React Navigation](https://reactnavigation.org/)
+
+[Styled Components](https://www.styled-components.com/)
 
 [React Native Config](https://github.com/luggit/react-native-config)
 
