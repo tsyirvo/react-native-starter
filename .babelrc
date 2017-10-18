@@ -1,3 +1,32 @@
 {
-  "presets": ["react-native"]
+  "presets": ["react-native"],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  },
+  "plugins": [
+    "transform-inline-environment-variables",
+    "transform-decorators-legacy",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "store": "./src/redux/store",
+          "actions": "./src/redux/actions",
+          "actionTypes": "./src/redux/actionTypes",
+          "reducers": "./src/redux/reducers",
+          "sagas": "./src/redux/sagas",
+          "selectors": "./src/redux/selectors",
+          "routes": "./src/routes",
+          "utils": "./src/utils",
+          "shared": "./src/components/shared",
+          "styles": "./src/styles",
+          "styledComponents": "./src/styles/styledComponents",
+          "pages": "./src/pages"
+        }
+      }
+    ]
+  ]
 }

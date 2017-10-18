@@ -1,36 +1,29 @@
-import React, { PropTypes } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import EStyleSheet from 'react-native-extended-stylesheet';
+import React from 'react';
+import { string, func } from 'prop-types';
+import styled from 'styled-components/native';
 
-const styles = EStyleSheet.create({
-  container: {
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderWidth: 1,
-    borderColor: '$itemColors.regular',
-  },
-});
+import { StyledText } from 'styledComponents/texts';
 
-function Button({ label, action }) {
+const StyledButton = styled.TouchableOpacity`
+  padding-horizontal: 15px;
+  padding-vertical: 10px;
+  border-radius: 10px;
+  background-color: ${props => props.theme.colors.grey};
+  margin-horizontal: 15px;
+  margin-top: 10px;
+`;
+
+const Button = ({ label, action }) => {
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={action}
-      style={styles.container}
-    >
-      <Text style={styles.text}>{label}</Text>
-    </TouchableOpacity>
+    <StyledButton onPress={action}>
+      <StyledText>{label}</StyledText>
+    </StyledButton>
   );
-}
-
-Button.defaultProps = {
-  label: '',
-  action: () => {},
 };
 
 Button.propTypes = {
-  label: PropTypes.string,
-  action: PropTypes.func,
+  label: string.isRequired,
+  action: func.isRequired,
 };
 
 export default Button;

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { func, shape, number, arrayOf, string, object } from 'prop-types';
 import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
 
@@ -23,13 +24,16 @@ const mapDispatchToProps = dispatch => {
 };
 
 Router.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.shape({
-    index: PropTypes.number.isRequired,
-    routes: PropTypes.arrayOf(PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      routeName: PropTypes.string.isRequired,
-    })).isRequired,
+  dispatch: func.isRequired,
+  nav: shape({
+    index: number.isRequired,
+    routes: arrayOf(
+      shape({
+        key: string.isRequired,
+        routeName: string.isRequired,
+        params: object,
+      })
+    ).isRequired,
   }).isRequired,
 };
 

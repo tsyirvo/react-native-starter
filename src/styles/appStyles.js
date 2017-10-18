@@ -1,6 +1,10 @@
 export default {
   colors: {
-    white: '#FFF',
-    black: '#000',
+    primary: '#000',
+    grey: '#979797',
+  },
+  textSizes: {
+    regular: '14px',
+    big: '18px',
   },
 };

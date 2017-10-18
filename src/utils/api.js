@@ -1,4 +1,6 @@
-const API = 'http://jsonplaceholder.typicode.com';
+import Config from 'react-native-config';
+
+const { API } = Config;
 const defaultHeaders = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
@@ -24,16 +26,16 @@ export async function get(url) {
     const checkedRes = await checkStatus(res);
     const data = await parseJSON(checkedRes);
 
-    console.log('Get res', data); // eslint-disable-line
+    console.log('Get res', data);
     return data;
   } catch (error) {
-    console.log('Get error', error); // eslint-disable-line
+    console.log('Get error', error);
     return error;
   }
 }
 
 export async function post(url, body) {
-  console.log('Post body', body); // eslint-disable-line
+  console.log('Post body', body);
 
   try {
     const res = await fetch(`${API}${url}`, {
@@ -44,16 +46,16 @@ export async function post(url, body) {
     const checkedRes = await checkStatus(res);
     const data = await parseJSON(checkedRes);
 
-    console.log('Post res', data); // eslint-disable-line
+    console.log('Post res', data);
     return data;
   } catch (error) {
-    console.log('Post error', error); // eslint-disable-line
+    console.log('Post error', error);
     return error;
   }
 }
 
 export async function put(url, body) {
-  console.log('Put body', body); // eslint-disable-line
+  console.log('Put body', body);
 
   try {
     const res = await fetch(`${API}${url}`, {
@@ -64,10 +66,10 @@ export async function put(url, body) {
     const checkedRes = await checkStatus(res);
     const data = await parseJSON(checkedRes);
 
-    console.log('Put res', data); // eslint-disable-line
+    console.log('Put res', data);
     return data;
   } catch (error) {
-    console.log('Put error', error); // eslint-disable-line
+    console.log('Put error', error);
     return error;
   }
 }
@@ -78,10 +80,10 @@ export async function del(url) {
     const checkedRes = await checkStatus(res);
     const data = await parseJSON(checkedRes);
 
-    console.log('Del res', data); // eslint-disable-line
+    console.log('Del res', data);
     return data;
   } catch (error) {
-    console.log('Del error', error); // eslint-disable-line
+    console.log('Del error', error);
     return error;
   }
 }
