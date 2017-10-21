@@ -54,4 +54,4 @@ buck-out/
 
 # other
 jsconfig.json
-.eslintrc
+.eslintcache
