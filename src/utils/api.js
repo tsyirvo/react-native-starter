@@ -28,12 +28,10 @@ export const getEpic = url => {
     .then(data => parseJSON(data));
 
   return Observable.fromPromise(request)
-    .do(data => console.log('Get Res', data))
+    .do(data => console.log('Get res', data))
 };
 
 export const postEpic = (url, body) => {
-  console.log('Post content', body);
-
   const request = fetch(`${API}${url}`, {
       ...defaultHeaders,
     method: 'POST',

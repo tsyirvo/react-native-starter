@@ -44,7 +44,6 @@ if (NODE_ENV === 'development') {
 
 export default function configureStore() {
   const store = createStore(rootReducer, undefined, enhancer);
-  console.log('Persist is ', NODE_ENV)
   if (PERSIST_ENABLED === 'true') {
     persistStore(store, {
       storage: AsyncStorage,

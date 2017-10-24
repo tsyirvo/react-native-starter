@@ -8,7 +8,7 @@ const watchFetchData = action$ =>
 action$
   .ofType(ActionTypes.FETCH_POSTS)
   .mergeMap(() => {
-    return getEpic(`/posts`)
+     getEpic(`/posts`)
       .map(data => {
         return fetchPostsSucceeded(data);
       })
