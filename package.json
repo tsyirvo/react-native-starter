@@ -20,9 +20,11 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
+    "redux-observable": "^0.16.0",
     "redux-persist": "^4.10.1",
     "redux-saga": "^0.16.0",
     "reselect": "^3.0.1",
+    "rxjs": "^5.5.0",
     "styled-components": "^2.2.1"
   },
   "devDependencies": {

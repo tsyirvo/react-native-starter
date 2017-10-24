@@ -2,21 +2,23 @@ import { AsyncStorage } from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import { persistStore, autoRehydrate, purgeStoredState } from 'redux-persist';
-import createSagaMiddleware from 'redux-saga';
+import { createEpicMiddleware } from 'redux-observable';
+
 import Config from 'react-native-config';
 
 import rootReducer from './indexReducers';
-import rootSaga from './rootSaga';
+import rootEpic from './rootEpic'
 
 // Env
-const { PERSIST_ENABLED, PERSIST_PURGE, ENV } = Config;
+const { PERSIST_ENABLED, PERSIST_PURGE, NODE_ENV } = Config;
 
 // Common Middlewares
-const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
+const epicMiddleware = createEpicMiddleware(rootEpic);
+const middlewares = [epicMiddleware];
+
 let enhancer = [];
 
-if (ENV === 'development') {
+if (NODE_ENV === 'development') {
   const logger = createLogger({
     duration: true,
     timestamp: true,
@@ -42,9 +44,7 @@ if (ENV === 'development') {
 
 export default function configureStore() {
   const store = createStore(rootReducer, undefined, enhancer);
-
-  sagaMiddleware.run(rootSaga);
-
+  console.log('Persist is ', NODE_ENV)
   if (PERSIST_ENABLED === 'true') {
     persistStore(store, {
       storage: AsyncStorage,

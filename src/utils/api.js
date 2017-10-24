@@ -1,4 +1,5 @@
 import Config from 'react-native-config';
+import { Observable } from 'rxjs';
 
 const { API } = Config;
 const defaultHeaders = {
@@ -20,70 +21,52 @@ const parseJSON = res => {
   return res.json();
 };
 
-export async function get(url) {
-  try {
-    const res = await fetch(`${API}${url}`, defaultHeaders);
-    const checkedRes = await checkStatus(res);
-    const data = await parseJSON(checkedRes);
+export const getEpic = url => {
+  const request = fetch(`${API}${url}`, defaultHeaders,
+    )
+    .then(res => checkStatus(res))
+    .then(data => parseJSON(data));
 
-    console.log('Get res', data);
-    return data;
-  } catch (error) {
-    console.log('Get error', error);
-    return error;
-  }
-}
+  return Observable.fromPromise(request)
+    .do(data => console.log('Get Res', data))
+};
 
-export async function post(url, body) {
-  console.log('Post body', body);
+export const postEpic = (url, body) => {
+  console.log('Post content', body);
 
-  try {
-    const res = await fetch(`${API}${url}`, {
+  const request = fetch(`${API}${url}`, {
       ...defaultHeaders,
-      method: 'POST',
-      body,
-    });
-    const checkedRes = await checkStatus(res);
-    const data = await parseJSON(checkedRes);
+    method: 'POST',
+    body: JSON.stringify(body),
+  })
+    .then(res => checkStatus(res))
+    .then(data => parseJSON(data));
 
-    console.log('Post res', data);
-    return data;
-  } catch (error) {
-    console.log('Post error', error);
-    return error;
-  }
-}
+  return Observable.fromPromise(request)
+    .do(data => console.log('Post res', data))
+};
 
-export async function put(url, body) {
-  console.log('Put body', body);
-
-  try {
-    const res = await fetch(`${API}${url}`, {
+export const putEpic = (url, body) => {
+  const request = fetch(`${API}${url}`, {
       ...defaultHeaders,
-      method: 'PUT',
-      body,
-    });
-    const checkedRes = await checkStatus(res);
-    const data = await parseJSON(checkedRes);
+    method: 'PUT',
+    body: JSON.stringify(body),
+  })
+    .then(res => checkStatus(res))
+    .then(data => parseJSON(data));
 
-    console.log('Put res', data);
-    return data;
-  } catch (error) {
-    console.log('Put error', error);
-    return error;
-  }
-}
+  return Observable.fromPromise(request)
+    .do(data => console.log('Put res', data))
+};
 
-export async function del(url) {
-  try {
-    const res = await fetch(`${API}${url}`, defaultHeaders);
-    const checkedRes = await checkStatus(res);
-    const data = await parseJSON(checkedRes);
+export const delEpic = url => {
+  const request = fetch(`${API}${url}`, {
+      ...defaultHeaders,
+    method: 'DELETE',
+  })
+    .then(res => checkStatus(res))
+    .then(checkedRes => parseJSON(checkedRes));
 
-    console.log('Del res', data);
-    return data;
-  } catch (error) {
-    console.log('Del error', error);
-    return error;
-  }
-}
+  return Observable.fromPromise(request)
+    .do(data => console.log('Del res', data))
+};
