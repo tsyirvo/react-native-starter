@@ -32,6 +32,8 @@ export const getEpic = url => {
 };
 
 export const postEpic = (url, body) => {
+  console.log('Post content', body);		
+  
   const request = fetch(`${API}${url}`, {
       ...defaultHeaders,
     method: 'POST',
