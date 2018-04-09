@@ -3,15 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
-    "ios": "react-native run-ios --scheme 'reactNativeStarter' --simulator='iPhone 8'",
+    "start":
+      "node node_modules/react-native/local-cli/cli.js start --reset-cache",
+    "ios":
+      "react-native run-ios --scheme 'reactNativeStarter' --simulator='iPhone 8'",
     "android": "react-native run-android --variant=release",
-    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
+    "clean-cache":
+      "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "prepush": "yarn lint"
   },
   "dependencies": {
     "decko": "^1.2.0",
+    "lottie-react-native": "^2.5.0",
     "prop-types": "^15.6.1",
     "react": "16.3.1",
     "react-native": "0.55.2",
