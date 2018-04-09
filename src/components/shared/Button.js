@@ -1,6 +1,6 @@
 import React from 'react';
 import { string, func } from 'prop-types';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 import { StyledText } from 'styledComponents/texts';
 
@@ -23,7 +23,7 @@ const Button = ({ label, action }) => {
 
 Button.propTypes = {
   label: string.isRequired,
-  action: func.isRequired,
+  action: func.isRequired
 };
 
 export default Button;

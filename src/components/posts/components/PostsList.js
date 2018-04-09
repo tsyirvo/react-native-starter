@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { FlatList } from 'react-native';
 import { func, arrayOf, shape, string, number } from 'prop-types';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { bind } from 'decko';
 
 import { StyledContainerBasic } from 'styledComponents/containers';

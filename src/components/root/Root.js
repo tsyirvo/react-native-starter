@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from 'styled-components/native';
+import { ThemeProvider } from 'styled-components';
 
 import Router from 'routes/Router';
 import configureStore from 'store/configStore';
