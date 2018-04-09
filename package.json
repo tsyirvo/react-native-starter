@@ -22,7 +22,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.18.0",
-    "redux-persist": "^4.10.1",
+    "redux-persist": "^5.9.1",
     "reselect": "^3.0.1",
     "rxjs": "^5.5.8",
     "styled-components": "^3.2.5"
