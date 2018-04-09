@@ -1,14 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
 import { string, func } from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 
 import {
   StyledContainerColumn,
-  StyledContainerRow,
+  StyledContainerRow
 } from 'styledComponents/containers';
 import { StyledTextBold, StyledText } from 'styledComponents/texts';
 
 import Button from 'shared/Button';
+
+const enhancer = onlyUpdateForKeys(['title', 'body']);
 
 const Post = ({ title, body, onEdit, onDelete }) => {
   return (
@@ -30,7 +33,7 @@ Post.propTypes = {
   title: string.isRequired,
   body: string.isRequired,
   onEdit: func.isRequired,
-  onDelete: func.isRequired,
+  onDelete: func.isRequired
 };
 
-export default Post;
+export default enhancer(Post);

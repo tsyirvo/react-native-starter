@@ -1,9 +1,12 @@
 import React from 'react';
 import { func } from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 
 import { StyledContainerRow } from 'styledComponents/containers';
 
 import Button from 'shared/Button';
+
+const enhancer = onlyUpdateForKeys([]);
 
 const Controls = ({ filterBy }) => {
   return (
@@ -15,7 +18,7 @@ const Controls = ({ filterBy }) => {
 };
 
 Controls.propTypes = {
-  filterBy: func.isRequired,
+  filterBy: func.isRequired
 };
 
-export default Controls;
+export default enhancer(Controls);

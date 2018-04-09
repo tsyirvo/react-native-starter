@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import { func, arrayOf, shape, string, number } from 'prop-types';
 import styled from 'styled-components';
 import { bind } from 'decko';
+import { onlyUpdateForKeys } from 'recompose';
 
 import { StyledContainerBasic } from 'styledComponents/containers';
 
@@ -14,6 +15,8 @@ const StyledSeparator = styled.View`
   background-color: ${props => props.theme.colors.primary};
   margin-vertical: 15px;
 `;
+
+const enhancer = onlyUpdateForKeys(['posts', 'postsByUserId']);
 
 class PostsList extends PureComponent {
   state = {
@@ -33,6 +36,16 @@ class PostsList extends PureComponent {
         };
       });
     }
+  }
+
+  @bind
+  onEdit() {
+    console.log('On edit');
+  }
+
+  @bind
+  onDelete() {
+    console.log('On delete');
   }
 
   keyExtractor(item, index) {
@@ -62,13 +75,14 @@ class PostsList extends PureComponent {
     return <StyledSeparator />;
   }
 
+  @bind
   renderItem({ item }) {
     return (
       <Post
         title={item.title}
         body={item.body}
-        onEdit={() => {}}
-        onDelete={() => {}}
+        onEdit={this.onEdit}
+        onDelete={this.onDelete}
       />
     );
   }
@@ -110,4 +124,4 @@ PostsList.propTypes = {
   ).isRequired
 };
 
-export default PostsList;
+export default enhancer(PostsList);

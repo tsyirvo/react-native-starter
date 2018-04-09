@@ -1,6 +1,7 @@
 import React from 'react';
 import { string, func } from 'prop-types';
 import styled from 'styled-components';
+import { onlyUpdateForKeys } from 'recompose';
 
 import { StyledText } from 'styledComponents/texts';
 
@@ -12,6 +13,8 @@ const StyledButton = styled.TouchableOpacity`
   margin-horizontal: 15px;
   margin-top: 10px;
 `;
+
+const enhancer = onlyUpdateForKeys(['label']);
 
 const Button = ({ label, action }) => {
   return (
@@ -26,4 +29,4 @@ Button.propTypes = {
   action: func.isRequired
 };
 
-export default Button;
+export default enhancer(Button);

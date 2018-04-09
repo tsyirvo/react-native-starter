@@ -11,9 +11,7 @@ const Posts = ({ posts, postsByUserId, getPosts }) => {
       <PostsList
         posts={posts}
         postsByUserId={postsByUserId}
-        getPosts={() => {
-          getPosts();
-        }}
+        getPosts={getPosts}
       />
     </StyledContainerRow>
   );
@@ -26,17 +24,17 @@ Posts.propTypes = {
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired,
-    }),
+      body: string.isRequired
+    })
   ).isRequired,
   postsByUserId: arrayOf(
     shape({
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired,
-    }),
-  ).isRequired,
+      body: string.isRequired
+    })
+  ).isRequired
 };
 
 export default Posts;
