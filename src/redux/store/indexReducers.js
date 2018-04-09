@@ -5,7 +5,7 @@ import posts from 'reducers/postsReducer';
 
 const rootReducer = combineReducers({
   nav,
-  posts,
+  posts
 });
 
 export default rootReducer;

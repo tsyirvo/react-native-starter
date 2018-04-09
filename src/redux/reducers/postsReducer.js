@@ -2,7 +2,7 @@ import * as ActionTypes from 'actionTypes/postsActionTypes';
 
 const initialState = {
   error: '',
-  posts: [],
+  posts: []
 };
 
 const posts = (state = initialState, action) => {
@@ -11,12 +11,12 @@ const posts = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload.data,
-        error: '',
+        error: ''
       };
     case ActionTypes.FETCH_POSTS_FAILED:
       return {
         ...state,
-        error: action.payload.error,
+        error: action.payload.error
       };
     default:
       return state;

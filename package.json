@@ -11,7 +11,7 @@
     "clean-cache":
       "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "prepush": "yarn lint"
+    "precommit": "./pre-commit.sh"
   },
   "dependencies": {
     "decko": "^1.2.0",

@@ -4,7 +4,7 @@ import { Home, Posts } from './pages';
 
 const navigationOptions = {
   headerMode: 'float',
-  initialRouteName: 'Home',
+  initialRouteName: 'Home'
 };
 
 const AppNavigator = stack(
@@ -12,15 +12,15 @@ const AppNavigator = stack(
     Home: {
       screen: Home,
       navigationOptions: {
-        title: 'Home',
-      },
+        title: 'Home'
+      }
     },
     Posts: {
       screen: Posts,
       navigationOptions: {
-        title: 'Posts',
-      },
-    },
+        title: 'Posts'
+      }
+    }
   },
   navigationOptions
 );
