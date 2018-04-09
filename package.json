@@ -3,13 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start":
-      "node node_modules/react-native/local-cli/cli.js start --reset-cache",
-    "ios":
-      "react-native run-ios --scheme 'reactNativeStarter' --simulator='iPhone 8'",
+    "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
+    "ios": "react-native run-ios --scheme 'reactNativeStarter' --simulator='iPhone 8'",
     "android": "react-native run-android --variant=release",
-    "clean-cache":
-      "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
+    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "prepush": "yarn lint"
   },
@@ -20,6 +17,7 @@
     "react-native": "0.55.2",
     "react-native-config": "^0.11.5",
     "react-navigation": "^1.5.11",
+    "react-navigation-redux-helpers": "^1.0.4",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",

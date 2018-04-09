@@ -7,14 +7,16 @@ import { createEpicMiddleware } from 'redux-observable';
 import Config from 'react-native-config';
 
 import rootReducer from './indexReducers';
-import rootEpic from './rootEpic'
+import rootEpic from './rootEpic';
+
+import { navMiddleware } from '../../routes/navReducer';
 
 // Env
 const { PERSIST_ENABLED, PERSIST_PURGE, NODE_ENV } = Config;
 
 // Common Middlewares
 const epicMiddleware = createEpicMiddleware(rootEpic);
-const middlewares = [epicMiddleware];
+const middlewares = [epicMiddleware, navMiddleware];
 
 let enhancer = [];
 
@@ -26,7 +28,7 @@ if (NODE_ENV === 'development') {
       const types = ['persist/REHYDRATE'];
 
       return types.includes(action.type);
-    },
+    }
   });
 
   middlewares.push(logger);
@@ -36,7 +38,7 @@ if (NODE_ENV === 'development') {
     applyMiddleware(...middlewares),
     window.__REDUX_DEVTOOLS_EXTENSION__ // eslint-disable-line
       ? window.__REDUX_DEVTOOLS_EXTENSION__({}) // eslint-disable-line
-      : f => f,
+      : f => f
   );
 } else {
   enhancer = compose(autoRehydrate(), applyMiddleware(...middlewares));
@@ -48,7 +50,7 @@ export default function configureStore() {
     persistStore(store, {
       storage: AsyncStorage,
       debounce: 500,
-      blacklist: ['nav'],
+      blacklist: ['nav']
     });
   }
 

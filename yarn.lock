@@ -4658,6 +4658,12 @@ react-native@0.55.2:
     xmldoc "^0.4.0"
     yargs "^9.0.0"
 
+react-navigation-redux-helpers@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-navigation-redux-helpers/-/react-navigation-redux-helpers-1.0.4.tgz#ae2f5e23011d23d637dd661d55cb869e1562a6fd"
+  dependencies:
+    invariant "^2.2.2"
+
 react-navigation@^1.5.11:
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.5.11.tgz#fba6ab45d7b9987c1763a5aaac53b4f6d62b7f5c"
