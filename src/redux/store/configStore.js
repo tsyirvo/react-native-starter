@@ -62,7 +62,6 @@ export default function configureStore() {
 
   if (module.hot) {
     module.hot.accept(() => {
-      // This fetch the new state of the above reducers.
       const nextRootReducer = rootReducer;
       store.replaceReducer(persistReducer(persistConfig, nextRootReducer));
     });
