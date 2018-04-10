@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node cli.js",
     "createComponent": "hygen componentGenerator new",
+    "createReducer": "hygen reducerGenerator new",
     "clean-cache":
       "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
