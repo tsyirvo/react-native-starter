@@ -1,6 +1,6 @@
 # React Native Starter
 
-## The Basics
+## The basics
 
 ### Dependencies and installation
 
@@ -35,31 +35,13 @@ Eventually link the native libraries:
 react-native link
 ```
 
----
-
 ### Running the project
 
-To run the React Native packager:
+To run the app on a specific simulator, and also launch the React Native packager:
 
 ```
 yarn start
 ```
-
-You can launch the devices form the CLI or using Xcode or Android Studio. Using the CLI, you can use:
-
-For an iPhone 8 in release mode
-
-```
-yarn ios
-```
-
-For an Android device in release mode
-
-```
-yarn android
-```
-
----
 
 ## Stack
 
@@ -67,7 +49,7 @@ yarn android
 
 [Redux](http://redux.js.org/)
 
-[Redux Saga](https://redux-saga.js.org/)
+[Redux Observable](https://redux-observable.js.org/)
 
 [React Navigation](https://reactnavigation.org/)
 
@@ -75,7 +57,8 @@ yarn android
 
 [React Native Config](https://github.com/luggit/react-native-config)
 
----
+[Lottie](https://github.com/airbnb/lottie-react-native/)
+
 
 ## Tips
 
@@ -87,6 +70,8 @@ yarn clean-cache
 
 And if you are using Xcode clean the project or even the build folder via `Product > Clean`
 
+You can auto generate some files for common tasks such as creating a new component with `yarn createComponent` or add a new reducer and actions with `yarn createReducer`.
+
 
 ## Other
 
@@ -96,4 +81,4 @@ The project is using [ESlint](https://eslint.org/) and [Prettier](https://pretti
 yarn lint
 ```
 
-There is a prepush git hook that run the linting command to abort the push in case of a linting error.
+There is a precommit git hook that run the linting command to abort the commit in case of a linting error.
