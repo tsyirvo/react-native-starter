@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node cli.js",
-    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
+    "createComponent": "hygen componentGenerator new",
+    "clean-cache":
+      "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf node_modules && yarn",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "precommit": "./pre-commit.sh"
   },
@@ -48,6 +50,7 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "figlet": "^1.2.0",
+    "hygen": "^1.5.8",
     "inquirer": "^5.2.0",
     "jest": "^22.4.3",
     "jest-react-native": "^18.0.0",
