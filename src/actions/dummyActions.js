@@ -13,7 +13,7 @@ export function dummyFetch() {
     url: '/',
     params: {
       test2: 'test',
-      toto2: 'toto'
+      toto2: 'toto',
     },
     autoDispatchPrefix: 'DUMMY',
     onStart: (payload, meta, dispatch) => {
@@ -24,6 +24,6 @@ export function dummyFetch() {
     },
     onError: (payload, meta, dispatch) => {
       dispatch(firstActionCreator(payload));
-    }
+    },
   };
 }

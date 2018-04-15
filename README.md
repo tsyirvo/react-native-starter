@@ -8,7 +8,6 @@ You need to have Watchman installed:
 
 ```
 brew install watchman
-
 ```
 
 Install the React Native CLI:
@@ -17,7 +16,7 @@ Install the React Native CLI:
 npm i - g react-native-cli
 ```
 
-Install Yarn or have least have version 1.1.0 already installed: 
+Install Yarn or have least have version 1.1.0 already installed:
 
 ```
 curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -59,7 +58,6 @@ yarn start
 
 [Lottie](https://github.com/airbnb/lottie-react-native/)
 
-
 ## Tips
 
 Sometimes, React Native can produce cryptic errors... To handle thoses scenarios, you can use the following command:
@@ -72,7 +70,6 @@ And if you are using Xcode clean the project or even the build folder via `Produ
 
 You can auto generate some files for common tasks such as creating a new component with `yarn createComponent` or add a new reducer and actions with `yarn createReducer`.
 
-
 ## Other
 
 The project is using [ESlint](https://eslint.org/) and [Prettier](https://prettier.io/) for code formating, you can run ESlint via the command:
@@ -81,4 +78,4 @@ The project is using [ESlint](https://eslint.org/) and [Prettier](https://pretti
 yarn lint
 ```
 
-There is a precommit git hook that run the linting command to abort the commit in case of a linting error.
+There is a precommit git hook that run the linting command on the files to be commited.
