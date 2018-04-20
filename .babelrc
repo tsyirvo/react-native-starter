@@ -1,5 +1,5 @@
 {
-  "presets": ["react-native"],
+  "presets": ["env", "react-native"],
   "env": {
     "production": {
       "plugins": ["transform-remove-console"]

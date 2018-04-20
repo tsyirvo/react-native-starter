@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import { FlatList } from 'react-native';
 import { func, arrayOf, shape, string, number } from 'prop-types';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { bind } from 'decko';
+import { onlyUpdateForKeys } from 'recompose';
 
 import { StyledContainerBasic } from 'styledComponents/containers';
 
@@ -12,12 +13,14 @@ import Controls from './Controls';
 const StyledSeparator = styled.View`
   height: 1;
   background-color: ${props => props.theme.colors.primary};
-  margin-vertical: 15;
+  margin-vertical: 15px;
 `;
+
+const enhancer = onlyUpdateForKeys(['posts', 'postsByUserId']);
 
 class PostsList extends PureComponent {
   state = {
-    datas: [],
+    datas: []
   };
 
   componentDidMount() {
@@ -29,10 +32,20 @@ class PostsList extends PureComponent {
       this.setState(state => {
         return {
           ...state,
-          datas: nextProps.posts,
+          datas: nextProps.posts
         };
       });
     }
+  }
+
+  @bind
+  onEdit() {
+    console.log('On edit');
+  }
+
+  @bind
+  onDelete() {
+    console.log('On delete');
   }
 
   keyExtractor(item, index) {
@@ -45,14 +58,14 @@ class PostsList extends PureComponent {
       this.setState(state => {
         return {
           ...state,
-          datas: this.props.posts,
+          datas: this.props.posts
         };
       });
     } else {
       this.setState(state => {
         return {
           ...state,
-          datas: this.props.postsByUserId,
+          datas: this.props.postsByUserId
         };
       });
     }
@@ -62,13 +75,14 @@ class PostsList extends PureComponent {
     return <StyledSeparator />;
   }
 
+  @bind
   renderItem({ item }) {
     return (
       <Post
         title={item.title}
         body={item.body}
-        onEdit={() => {}}
-        onDelete={() => {}}
+        onEdit={this.onEdit}
+        onDelete={this.onDelete}
       />
     );
   }
@@ -97,17 +111,17 @@ PostsList.propTypes = {
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired,
-    }),
+      body: string.isRequired
+    })
   ).isRequired,
   postsByUserId: arrayOf(
     shape({
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired,
-    }),
-  ).isRequired,
+      body: string.isRequired
+    })
+  ).isRequired
 };
 
-export default PostsList;
+export default enhancer(PostsList);

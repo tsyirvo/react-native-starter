@@ -3,7 +3,7 @@ import { shape, func } from 'prop-types';
 
 import {
   StyledContainerBasic,
-  StyledContainerColumn,
+  StyledContainerColumn
 } from 'styledComponents/containers';
 
 import Button from 'shared/Button';
@@ -27,8 +27,8 @@ const Home = ({ navigation }) => {
 
 Home.propTypes = {
   navigation: shape({
-    navigate: func.isRequired,
-  }).isRequired,
+    navigate: func.isRequired
+  }).isRequired
 };
 
 export default Home;

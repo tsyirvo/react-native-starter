@@ -52,6 +52,9 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
-# other
+# Bundle artifact
+*.jsbundle
+
+# Other
 jsconfig.json
 .eslintcache

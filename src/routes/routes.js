@@ -1,6 +1,10 @@
 import { StackNavigator as stack } from 'react-navigation';
 
-import { Home, Posts } from './pages';
+import {
+  /* inject Hygen imports here */
+  Home,
+  Posts,
+} from './pages';
 
 const navigationOptions = {
   headerMode: 'float',
@@ -21,6 +25,7 @@ const AppNavigator = stack(
         title: 'Posts',
       },
     },
+    /* inject Hygen routes here */
   },
   navigationOptions
 );

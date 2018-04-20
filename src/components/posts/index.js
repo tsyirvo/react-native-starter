@@ -9,7 +9,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getPosts: () => {
       dispatch({ type: ActionTypes.FETCH_POSTS });
-    },
+    }
   };
 };
 
@@ -17,7 +17,7 @@ const mapStateToProps = state => {
   return {
     posts: state.posts.posts,
     postsByUserId: postsSelectorByUserId(state),
-    postsError: state.posts.error,
+    postsError: state.posts.error
   };
 };
 

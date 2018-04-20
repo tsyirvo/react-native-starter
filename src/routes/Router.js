@@ -5,21 +5,25 @@ import { connect } from 'react-redux';
 
 import AppNavigator from './routes';
 
+import { addListener } from './navReducer';
+
 const Router = ({ dispatch, nav }) => {
   return (
-    <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+    <AppNavigator
+      navigation={addNavigationHelpers({ dispatch, state: nav, addListener })}
+    />
   );
 };
 
 const mapStateToProps = state => {
   return {
-    nav: state.nav,
+    nav: state.nav
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatch,
+    dispatch
   };
 };
 
@@ -31,10 +35,10 @@ Router.propTypes = {
       shape({
         key: string.isRequired,
         routeName: string.isRequired,
-        params: object,
+        params: object
       })
-    ).isRequired,
-  }).isRequired,
+    ).isRequired
+  }).isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Router);
