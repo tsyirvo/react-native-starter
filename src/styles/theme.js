@@ -1,10 +1,10 @@
 export default {
   colors: {
-    primary: '#000',
-    grey: '#979797'
+    primary: '#2c3e50',
+    grey: '#bdc3c7',
   },
   textSizes: {
     regular: '14px',
-    big: '18px'
-  }
+    big: '18px',
+  },
 };

@@ -1,26 +1,21 @@
 import React, { PureComponent } from 'react';
 import { FlatList } from 'react-native';
 import { func, arrayOf, shape, string, number } from 'prop-types';
-import styled from 'styled-components';
 import { bind } from 'decko';
 import { onlyUpdateForKeys } from 'recompose';
 
-import { StyledContainerBasic } from 'styledComponents/containers';
+import { SWrapper } from 'sc/containers';
 
 import Post from './Post';
 import Controls from './Controls';
 
-const StyledSeparator = styled.View`
-  height: 1;
-  background-color: ${props => props.theme.colors.primary};
-  margin-vertical: 15px;
-`;
+import { StyledSeparator } from '../styles';
 
 const enhancer = onlyUpdateForKeys(['posts', 'postsByUserId']);
 
 class PostsList extends PureComponent {
   state = {
-    datas: []
+    datas: [],
   };
 
   componentDidMount() {
@@ -32,7 +27,7 @@ class PostsList extends PureComponent {
       this.setState(state => {
         return {
           ...state,
-          datas: nextProps.posts
+          datas: nextProps.posts,
         };
       });
     }
@@ -58,14 +53,14 @@ class PostsList extends PureComponent {
       this.setState(state => {
         return {
           ...state,
-          datas: this.props.posts
+          datas: this.props.posts,
         };
       });
     } else {
       this.setState(state => {
         return {
           ...state,
-          datas: this.props.postsByUserId
+          datas: this.props.postsByUserId,
         };
       });
     }
@@ -91,7 +86,7 @@ class PostsList extends PureComponent {
     const { datas } = this.state;
 
     return (
-      <StyledContainerBasic>
+      <SWrapper>
         <Controls filterBy={this.filterBy} />
         <FlatList
           keyExtractor={this.keyExtractor}
@@ -99,7 +94,7 @@ class PostsList extends PureComponent {
           renderItem={this.renderItem}
           ItemSeparatorComponent={this.renderSeparator}
         />
-      </StyledContainerBasic>
+      </SWrapper>
     );
   }
 }
@@ -111,7 +106,7 @@ PostsList.propTypes = {
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired
+      body: string.isRequired,
     })
   ).isRequired,
   postsByUserId: arrayOf(
@@ -119,9 +114,9 @@ PostsList.propTypes = {
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired
+      body: string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default enhancer(PostsList);

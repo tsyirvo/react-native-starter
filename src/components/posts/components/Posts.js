@@ -1,19 +1,19 @@
 import React from 'react';
 import { func, arrayOf, shape, number, string } from 'prop-types';
 
-import { StyledContainerRow } from 'styledComponents/containers';
+import { SContainerRow } from 'sc/containers';
 
 import PostsList from './PostsList';
 
 const Posts = ({ posts, postsByUserId, getPosts }) => {
   return (
-    <StyledContainerRow>
+    <SContainerRow>
       <PostsList
         posts={posts}
         postsByUserId={postsByUserId}
         getPosts={getPosts}
       />
-    </StyledContainerRow>
+    </SContainerRow>
   );
 };
 
@@ -24,7 +24,7 @@ Posts.propTypes = {
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired
+      body: string.isRequired,
     })
   ).isRequired,
   postsByUserId: arrayOf(
@@ -32,9 +32,9 @@ Posts.propTypes = {
       userId: number.isRequired,
       id: number.isRequired,
       title: string.isRequired,
-      body: string.isRequired
+      body: string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default Posts;

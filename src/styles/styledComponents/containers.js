@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
-export const StyledContainerBasic = styled.View`
+export const SWrapper = styled.View`
   flex: 1;
 `;
 
-export const StyledContainerRow = styled.View`
+export const SContainerRow = styled.View`
   width: 100%;
   flex-direction: row;
   align-items: center;
 `;
 
-export const StyledContainerColumn = styled.View`
+export const SContainerColumn = styled.View`
   width: 100%;
   flex-direction: column;
   align-items: center;

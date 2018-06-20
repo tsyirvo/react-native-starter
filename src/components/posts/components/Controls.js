@@ -2,18 +2,18 @@ import React from 'react';
 import { func } from 'prop-types';
 import { onlyUpdateForKeys } from 'recompose';
 
-import { StyledContainerRow } from 'styledComponents/containers';
-
 import Button from 'shared/Button';
+
+import { SWrapperControls } from '../styles';
 
 const enhancer = onlyUpdateForKeys([]);
 
 const Controls = ({ filterBy }) => {
   return (
-    <StyledContainerRow>
+    <SWrapperControls>
       <Button action={() => filterBy('all')} label="Show all" />
       <Button action={() => filterBy('user')} label="Filter posts for user 1" />
-    </StyledContainerRow>
+    </SWrapperControls>
   );
 };
 
