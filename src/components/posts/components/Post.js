@@ -1,31 +1,28 @@
 import React from 'react';
-import { View } from 'react-native';
 import { string, func } from 'prop-types';
 import { onlyUpdateForKeys } from 'recompose';
 
-import {
-  StyledContainerColumn,
-  StyledContainerRow
-} from 'styledComponents/containers';
-import { StyledTextBold, StyledText } from 'styledComponents/texts';
+import { STextBold, SText } from 'sc/texts';
 
 import Button from 'shared/Button';
+
+import { SWrapperPost, SWrapperText, SWrapperButtons } from '../styles';
 
 const enhancer = onlyUpdateForKeys(['title', 'body']);
 
 const Post = ({ title, body, onEdit, onDelete }) => {
   return (
-    <StyledContainerColumn>
-      <View>
-        <StyledTextBold>{title}</StyledTextBold>
-        <StyledText>{body}</StyledText>
-      </View>
+    <SWrapperPost>
+      <SWrapperText>
+        <STextBold>{title}</STextBold>
+        <SText>{body}</SText>
+      </SWrapperText>
 
-      <StyledContainerRow>
-        <Button action={() => onEdit()} label="Edit" />
-        <Button action={() => onDelete()} label="Delete" />
-      </StyledContainerRow>
-    </StyledContainerColumn>
+      <SWrapperButtons>
+        <Button action={onEdit} label="Edit" />
+        <Button action={onDelete} label="Delete" />
+      </SWrapperButtons>
+    </SWrapperPost>
   );
 };
 
@@ -33,7 +30,7 @@ Post.propTypes = {
   title: string.isRequired,
   body: string.isRequired,
   onEdit: func.isRequired,
-  onDelete: func.isRequired
+  onDelete: func.isRequired,
 };
 
 export default enhancer(Post);

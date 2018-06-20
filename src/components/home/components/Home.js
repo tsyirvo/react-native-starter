@@ -1,34 +1,31 @@
 import React from 'react';
 import { shape, func } from 'prop-types';
 
-import {
-  StyledContainerBasic,
-  StyledContainerColumn
-} from 'styledComponents/containers';
+import { SWrapper, SContainerColumn } from 'sc/containers';
 
 import Button from 'shared/Button';
 
-const StyledWrapper = StyledContainerBasic.extend`
+const StyledWrapper = SWrapper.extend`
   justify-content: center;
 `;
 
 const Home = ({ navigation }) => {
   return (
     <StyledWrapper>
-      <StyledContainerColumn>
+      <SContainerColumn>
         <Button
           action={() => navigation.navigate('Posts')}
-          label="Go to posts API example"
+          label="Navigate to Redux example"
         />
-      </StyledContainerColumn>
+      </SContainerColumn>
     </StyledWrapper>
   );
 };
 
 Home.propTypes = {
   navigation: shape({
-    navigate: func.isRequired
-  }).isRequired
+    navigate: func.isRequired,
+  }).isRequired,
 };
 
 export default Home;

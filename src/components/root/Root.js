@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 
 import Router from 'routes/Router';
 import configureStore from 'store/configStore';
-import theme from 'styles/appStyles';
+import theme from 'styles/theme';
 
 const { persistor, store } = configureStore();
 
