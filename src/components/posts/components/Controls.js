@@ -18,7 +18,7 @@ const Controls = ({ filterBy }) => {
 };
 
 Controls.propTypes = {
-  filterBy: func.isRequired
+  filterBy: func.isRequired,
 };
 
 export default enhancer(Controls);
