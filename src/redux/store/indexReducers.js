@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 
-import nav from 'reducers/navReducer';
 import posts from 'reducers/postsReducer';
 // Hygen goes here
 
+import { navReducer } from 'routes/navReducer';
+
 const rootReducer = combineReducers({
-  nav,
+  nav: navReducer,
   posts,
   /* inject Hygen here */
 });

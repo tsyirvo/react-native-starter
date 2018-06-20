@@ -1,6 +1,11 @@
-import { AppRegistry } from 'react-native';
+import { AppRegistry, YellowBox } from 'react-native';
 
 import Root from './src/components/root/Root';
+
+YellowBox.ignoreWarnings([
+  'Warning: isMounted(...) is deprecated',
+  'Module RCTImageLoader',
+]);
 
 // !!!! DO NOT COMMIT with true value !!!
 const NETWORK_DEBUG = false;

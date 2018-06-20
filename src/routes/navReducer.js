@@ -1,19 +1,23 @@
 import {
-  createReduxBoundAddListener,
-  createReactNavigationReduxMiddleware
+  reduxifyNavigator,
+  createReactNavigationReduxMiddleware,
+  createNavigationReducer,
 } from 'react-navigation-redux-helpers';
+import { connect } from 'react-redux';
 
 import AppNavigator from './routes';
+
+export const navReducer = createNavigationReducer(AppNavigator);
 
 export const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.nav
 );
 
-export const addListener = createReduxBoundAddListener('root');
+const App = reduxifyNavigator(AppNavigator, 'root');
 
-export default function navReducer(state, action) {
-  const newState = AppNavigator.router.getStateForAction(action, state);
+const mapStateToProps = state => ({
+  state: state.nav,
+});
 
-  return newState || state;
-}
+export const AppWithNavigationState = connect(mapStateToProps)(App);
