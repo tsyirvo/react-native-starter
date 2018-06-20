@@ -1,4 +1,4 @@
-import { StackNavigator as stack } from 'react-navigation';
+import { createStackNavigator as stack } from 'react-navigation';
 
 import {
   /* inject Hygen imports here */
