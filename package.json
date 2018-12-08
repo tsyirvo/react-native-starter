@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "lottie-react-native": "2.5.10",
     "react": "16.6.1",
     "react-native": "0.57.5",
     "react-native-gesture-handler": "1.0.10",
