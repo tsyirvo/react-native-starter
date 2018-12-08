@@ -3,11 +3,13 @@ import { View, Text } from 'react-native';
 
 import Button from 'shared/Button';
 
-const Home = () => (
-  <View>
+const Home = ({ navigation }) => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <Text>Home Component</Text>
 
-    <Button />
+    <Button onPress={() => navigation.navigate('Details')}>
+      <Text>Go to details</Text>
+    </Button>
   </View>
 );
 

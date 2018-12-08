@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
-const Button = () => (
-  <View>
-    <Text>Button Component</Text>
-  </View>
+const Button = ({ onPress, children }) => (
+  <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity>
 );
 
 export default Button;
