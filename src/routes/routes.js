@@ -1,33 +1,15 @@
-import { createStackNavigator as stack } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import {
-  /* inject Hygen imports here */
-  Home,
-  Posts,
-} from './pages';
+import * as Pages from './pages';
 
-const navigationOptions = {
-  headerMode: 'float',
-  initialRouteName: 'Home',
-};
-
-const AppNavigator = stack(
+const AppNavigator = createStackNavigator(
   {
-    Home: {
-      screen: Home,
-      navigationOptions: {
-        title: 'Home',
-      },
-    },
-    Posts: {
-      screen: Posts,
-      navigationOptions: {
-        title: 'Posts',
-      },
-    },
-    /* inject Hygen routes here */
+    Home: Pages.Home,
+    Details: Pages.Details,
   },
-  navigationOptions
+  {
+    initialRouteName: 'Home',
+  }
 );
 
-export default AppNavigator;
+export default createAppContainer(AppNavigator);

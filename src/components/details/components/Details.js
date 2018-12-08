@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Button = () => (
+const Details = () => (
   <View>
-    <Text>Button Component</Text>
+    <Text>Details Component</Text>
   </View>
 );
 
-export default Button;
+export default Details;

@@ -1,2 +1,2 @@
-export { default as Home } from 'pages/Home';
-export { default as Posts } from 'pages/Posts';
+export { default as Home } from 'components/home';
+export { default as Details } from 'components/details';

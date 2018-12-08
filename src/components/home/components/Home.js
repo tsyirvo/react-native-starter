@@ -1,31 +1,14 @@
 import React from 'react';
-import { shape, func } from 'prop-types';
-
-import { SWrapper, SContainerColumn } from 'sc/containers';
+import { View, Text } from 'react-native';
 
 import Button from 'shared/Button';
 
-const StyledWrapper = SWrapper.extend`
-  justify-content: center;
-`;
+const Home = () => (
+  <View>
+    <Text>Home Component</Text>
 
-const Home = ({ navigation }) => {
-  return (
-    <StyledWrapper>
-      <SContainerColumn>
-        <Button
-          action={() => navigation.navigate('Posts')}
-          label="Navigate to Redux example"
-        />
-      </SContainerColumn>
-    </StyledWrapper>
-  );
-};
-
-Home.propTypes = {
-  navigation: shape({
-    navigate: func.isRequired,
-  }).isRequired,
-};
+    <Button />
+  </View>
+);
 
 export default Home;
