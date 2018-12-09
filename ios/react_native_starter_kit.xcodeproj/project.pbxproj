@@ -30,6 +30,7 @@
 		A7303BF7CE2D4C1C88FDC37B /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD5DCF4BEB4CAF993BD475 /* Lottie.framework */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		C4B3DF9C9954488BBEB0AF3B /* libLottie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 651604A212FC4D87B42CA6A2 /* libLottie.a */; };
+		D53D28C84C6E49F28C671ADD /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F484FFF241E54477A34DD139 /* libReactNativeConfig.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,6 +286,20 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		8DB1972B21BD725200904534 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF839719118749A490B5AFA1 /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
+			remoteInfo = ReactNativeConfig;
+		};
+		8DB1972D21BD725200904534 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF839719118749A490B5AFA1 /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
+			remoteInfo = "ReactNativeConfig-tvOS";
+		};
 		8DD0A23E21BC3C3C00845DC6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DC6900385DF6476594A1ED8A /* RNGestureHandler.xcodeproj */;
@@ -394,6 +409,8 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		C87512FDA3DD47E6802CBC24 /* libLottieReactNative.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLottieReactNative.a; sourceTree = "<group>"; };
 		DC6900385DF6476594A1ED8A /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
+		DF839719118749A490B5AFA1 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
+		F484FFF241E54477A34DD139 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		F9FD5DCF4BEB4CAF993BD475 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = System/Library/Frameworks/Lottie.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -420,6 +437,7 @@
 				A7303BF7CE2D4C1C88FDC37B /* Lottie.framework in Frameworks */,
 				C4B3DF9C9954488BBEB0AF3B /* libLottie.a in Frameworks */,
 				8B40877CF1524AA0A0FEA16D /* libLottieReactNative.a in Frameworks */,
+				D53D28C84C6E49F28C671ADD /* libReactNativeConfig.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +605,7 @@
 				8B1CB053171748BAB81D27EB /* RNScreens.xcodeproj */,
 				83C7FF5C67B84E45816D5119 /* Lottie.xcodeproj */,
 				7AAB308EE78A4D2A949752D4 /* LottieReactNative.xcodeproj */,
+				DF839719118749A490B5AFA1 /* ReactNativeConfig.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -623,6 +642,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8DB1972721BD725100904534 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DB1972C21BD725200904534 /* libReactNativeConfig.a */,
+				8DB1972E21BD725200904534 /* libReactNativeConfig-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8DD0A23B21BC3C3C00845DC6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -645,6 +673,7 @@
 				F9FD5DCF4BEB4CAF993BD475 /* Lottie.framework */,
 				651604A212FC4D87B42CA6A2 /* libLottie.a */,
 				C87512FDA3DD47E6802CBC24 /* libLottieReactNative.a */,
+				F484FFF241E54477A34DD139 /* libReactNativeConfig.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -776,6 +805,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 8DB1972721BD725100904534 /* Products */;
+					ProjectRef = DF839719118749A490B5AFA1 /* ReactNativeConfig.xcodeproj */;
 				},
 				{
 					ProductGroup = 8DD0A23B21BC3C3C00845DC6 /* Products */;
@@ -1046,6 +1079,20 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8DB1972C21BD725200904534 /* libReactNativeConfig.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeConfig.a;
+			remoteRef = 8DB1972B21BD725200904534 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8DB1972E21BD725200904534 /* libReactNativeConfig-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReactNativeConfig-tvOS.a";
+			remoteRef = 8DB1972D21BD725200904534 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8DD0A23F21BC3C3C00845DC6 /* libRNGestureHandler.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1178,12 +1225,14 @@
 					"$(SRCROOT)/../node_modules/react-native-screens/ios",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = react_native_starter_kit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/react_native_starter_kit/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/react_native_starter_kit\"",
 					"\"$(SRCROOT)/react_native_starter_kit\"",
 					"\"$(SRCROOT)/react_native_starter_kit\"",
 				);
@@ -1209,12 +1258,14 @@
 					"$(SRCROOT)/../node_modules/react-native-screens/ios",
 					"$(SRCROOT)/../node_modules/lottie-ios/lottie-ios/Classes/**",
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
+					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
 				INFOPLIST_FILE = react_native_starter_kit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/react_native_starter_kit/System/Library/Frameworks\"",
+					"\"$(SRCROOT)/react_native_starter_kit\"",
 					"\"$(SRCROOT)/react_native_starter_kit\"",
 					"\"$(SRCROOT)/react_native_starter_kit\"",
 				);

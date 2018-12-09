@@ -23,6 +23,7 @@
     "lottie-react-native": "2.5.10",
     "react": "16.6.1",
     "react-native": "0.57.5",
+    "react-native-config": "0.11.7",
     "react-native-gesture-handler": "1.0.10",
     "react-native-screens": "1.0.0-alpha.17",
     "react-navigation": "3.0.6"

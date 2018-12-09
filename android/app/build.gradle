@@ -1,5 +1,14 @@
 apply plugin: "com.android.application"
 
+// Specific config for RN Config
+project.ext.envConfigFiles = [
+        dev: ".env.development",
+        staging: ".env.staging",
+        production: ".env.production",
+]
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 import com.android.build.OutputFile
 
 /**
@@ -99,6 +108,7 @@ android {
 
     defaultConfig {
         applicationId "com.react_native_starter_kit"
+        applicationIdSuffix ""
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -106,6 +116,8 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        // RN Config: Package name inside the Android Manifest
+        resValue "string", "build_config_package", "com.react_native_starter_kit"
     }
     splits {
         abi {
@@ -119,6 +131,25 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+    flavorDimensions "version"
+    productFlavors {
+        dev {
+            applicationId "com.react_native_starter_kit.dev"
+            versionCode 1
+            versionName "1.0"
+        }
+        staging {
+            applicationId "com.react_native_starter_kit.staging"
+            versionCode 1
+            versionName "1.0"
+        }
+        production {
+            applicationId "com.react_native_starter_kit"
+            versionCode 1
+            versionName "1.0"
+//            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -137,6 +168,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-config')
     implementation project(':lottie-react-native')
     implementation project(':react-native-screens')
     implementation project(':react-native-gesture-handler')
