@@ -28,31 +28,27 @@ Install the packages:
 yarn
 ```
 
-Eventually link the native libraries:
-
-```
-react-native link
-```
-
 ### Running the project
 
-To run the app on a specific simulator, and also launch the React Native packager:
+To launch the React Native packager:
 
 ```
 yarn start
+```
+
+Then for a simulator:
+
+```
+react-native run-<PLATFORM>
 ```
 
 ## Stack
 
 [React Native](https://facebook.github.io/react-native/)
 
-[Redux](http://redux.js.org/)
-
-[Redux Observable](https://redux-observable.js.org/)
-
 [React Navigation](https://reactnavigation.org/)
 
-[Styled Components](https://www.styled-components.com/)
+[Styled System](https://jxnblk.com/styled-system/)
 
 [React Native Config](https://github.com/luggit/react-native-config)
 
@@ -66,10 +62,6 @@ Sometimes, React Native can produce cryptic errors... To handle thoses scenarios
 yarn clean-cache
 ```
 
-And if you are using Xcode clean the project or even the build folder via `Product > Clean`
-
-You can auto generate some files for common tasks such as creating a new component with `yarn createComponent` or add a new reducer and actions with `yarn createReducer`.
-
 ## Other
 
 The project is using [ESlint](https://eslint.org/) and [Prettier](https://prettier.io/) for code formating, you can run ESlint via the command:
@@ -78,4 +70,4 @@ The project is using [ESlint](https://eslint.org/) and [Prettier](https://pretti
 yarn lint
 ```
 
-There is a precommit git hook that run the linting command on the files to be commited.
+There is a precommit git hook that run the linting command on the staged files.
