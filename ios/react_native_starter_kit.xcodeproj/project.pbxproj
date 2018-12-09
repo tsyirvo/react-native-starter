@@ -1241,7 +1241,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tsyirvo.react-native-starter";
 				PRODUCT_NAME = react_native_starter_kit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1274,7 +1274,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tsyirvo.react-native-starter";
 				PRODUCT_NAME = react_native_starter_kit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

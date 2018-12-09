@@ -136,19 +136,12 @@ android {
     flavorDimensions "version"
     productFlavors {
         dev {
-            applicationId "com.react_native_starter_kit.dev"
-            versionCode 1
-            versionName "1.0"
+            applicationIdSuffix ".dev"
         }
         staging {
-            applicationId "com.react_native_starter_kit.staging"
-            versionCode 1
-            versionName "1.0"
+            applicationIdSuffix ".staging"
         }
         production {
-            applicationId "com.react_native_starter_kit"
-            versionCode 1
-            versionName "1.0"
 //            signingConfig signingConfigs.release
         }
     }
