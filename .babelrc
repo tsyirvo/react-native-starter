@@ -1,7 +1,6 @@
 {
   "presets": [
-    "env",
-    "react-native"
+    "module:metro-react-native-babel-preset"
   ],
   "env": {
     "production": {
@@ -11,28 +10,27 @@
     }
   },
   "plugins": [
-    "transform-inline-environment-variables",
-    "transform-decorators-legacy",
     [
       "module-resolver",
       {
         "root": [
           "./src"
         ],
+        "extensions": [
+          ".ios.js",
+          ".android.js",
+          ".js",
+          ".json"
+        ],
         "alias": {
-          "store": "./src/redux/store",
-          "actions": "./src/redux/actions",
-          "actionTypes": "./src/redux/actionTypes",
-          "reducers": "./src/redux/reducers",
-          "epic": "./src/redux/epic",
-          "selectors": "./src/redux/selectors",
-          "routes": "./src/routes",
-          "utils": "./src/utils",
+          "assets": "./src/assetss",
+          "component": "./src/components",
           "shared": "./src/components/shared",
-          "styles": "./src/styles",
-          "sc": "./src/styles/styledComponents",
           "pages": "./src/pages",
-          "components": "./src/components"
+          "redux": "./src/redux",
+          "routes": "./src/routes",
+          "styles": "./src/styles",
+          "utils": "./src/utils"
         }
       }
     ]

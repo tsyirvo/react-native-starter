@@ -1,6 +1,0 @@
-// Actions
-export const FETCH_POSTS_SUCCEEDED = 'FETCH_POSTS_SUCCEEDED';
-export const FETCH_POSTS_FAILED = 'FETCH_POSTS_FAILED';
-
-// Epic
-export const FETCH_POSTS = 'FETCH_POSTS';
