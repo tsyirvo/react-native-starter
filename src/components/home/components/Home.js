@@ -1,21 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import Config from 'react-native-config';
 
 import Button from 'shared/Button';
+import Box from 'shared/Box';
+import Text from 'shared/Text';
 
-const Home = ({ navigation }) => {
-  console.log('config', Config.NODE_ENV);
+const Home = ({ navigation }) => (
+  <Box flex={1} justifyContent="center" alignItems="center">
+    <Text fontSize={4}>Home Component</Text>
 
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home Component</Text>
-
-      <Button onPress={() => navigation.navigate('Details')}>
-        <Text>Go to details</Text>
-      </Button>
-    </View>
-  );
-};
+    <Button onPress={() => navigation.navigate('Details')}>
+      <Text mt={3}>Go to details</Text>
+    </Button>
+  </Box>
+);
 
 export default Home;
