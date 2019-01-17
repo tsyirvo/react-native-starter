@@ -2,7 +2,7 @@ apply plugin: "com.android.application"
 
 // Specific config for RN Config
 project.ext.envConfigFiles = [
-        dev: ".env.development",
+        development: ".env.development",
         staging: ".env.staging",
         production: ".env.production",
 ]
@@ -116,7 +116,7 @@ android {
         minSdkVersion safeExtGet('minSdkVersion', 16)
         targetSdkVersion safeExtGet('targetSdkVersion', 26)
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -139,8 +139,8 @@ android {
     }
     flavorDimensions "version"
     productFlavors {
-        dev {
-            applicationIdSuffix ".dev"
+        development {
+            applicationIdSuffix ".development"
         }
         staging {
             applicationIdSuffix ".staging"
