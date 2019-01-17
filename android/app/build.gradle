@@ -169,6 +169,16 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        eachDependency { DependencyResolveDetails details ->
+            if (details.requested.name == 'android-jsc') {
+                details.useTarget group: details.requested.group, name: 'android-jsc-intl', version: 'r236355'
+            }
+        }
+    }
+}
+
 dependencies {
     implementation project(':react-native-config')
     implementation project(':lottie-react-native')

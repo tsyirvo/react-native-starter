@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "jsc-android": "236355.1.1",
     "lottie-react-native": "2.5.11",
     "react": "16.6.3",
     "react-native": "0.57.8",
