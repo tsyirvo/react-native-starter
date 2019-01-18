@@ -1,33 +1,21 @@
 {
-  "presets": [
-    "module:metro-react-native-babel-preset"
-  ],
+  "presets": ["module:metro-react-native-babel-preset"],
   "env": {
     "production": {
-      "plugins": [
-        "transform-remove-console"
-      ]
+      "plugins": ["transform-remove-console"]
     }
   },
   "plugins": [
     [
       "module-resolver",
       {
-        "root": [
-          "./src"
-        ],
-        "extensions": [
-          ".ios.js",
-          ".android.js",
-          ".js",
-          ".json"
-        ],
+        "root": ["./src"],
+        "extensions": [".ios.js", ".android.js", ".js", ".json"],
         "alias": {
-          "assets": "./src/assetss",
+          "assets": "./src/assets",
           "component": "./src/components",
           "shared": "./src/components/shared",
           "pages": "./src/pages",
-          "redux": "./src/redux",
           "routes": "./src/routes",
           "styles": "./src/styles",
           "utils": "./src/utils"
