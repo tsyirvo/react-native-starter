@@ -1,31 +1,49 @@
 /* eslint-disable */
 
 const sharp = require('sharp');
-// const imageOptim = require('imageoptim-api');
+const imageOptim = require('imageoptim');
 const fs = require('fs');
 const path = require('path');
 const ora = require('ora');
 const chalk = require('chalk');
 
-const createIosVersion = (filePath, fileName, fileExtension, dataDir) => {
+const createIosVersion = async (filePath, fileName, fileExtension, dataDir) => {
   const generateIos = ora({
     text: `Generating the iOS images versions`,
-    color: 'blue',
+    color: 'yellow',
   }).start();
 
   const image = sharp(filePath);
 
-  image.metadata().then(({ width }) => {
-    image.toFile(`${dataDir}/${fileName}@3x.${fileExtension}`);
-    image
-      .resize(Math.round(parseInt(width / 1.5, 10)))
-      .toFile(`${dataDir}/${fileName}@2x.${fileExtension}`);
-    image
-      .resize(Math.round(parseInt(width / 3, 10)))
-      .toFile(`${dataDir}/${fileName}.${fileExtension}`);
-  });
+  const { width } = await image.metadata();
 
-  generateIos.succeed('iOS images generated');
+  // 3X
+  await image.toFile(`${dataDir}/${fileName}@3x.${fileExtension}`);
+
+  // 2X
+  await image
+    .resize(Math.round(parseInt(width / 1.5, 10)))
+    .toFile(`${dataDir}/${fileName}@2x.${fileExtension}`);
+
+  // 1X
+  await image
+    .resize(Math.round(parseInt(width / 3, 10)))
+    .toFile(`${dataDir}/${fileName}.${fileExtension}`);
+
+  generateIos.succeed('iOS images successfully generated');
+
+  const optimizingIos = ora({
+    text: `Optimizing the iOS images versions`,
+    color: 'yellow',
+  }).start();
+
+  await imageOptim.optim([
+    `${dataDir}/${fileName}.${fileExtension}`,
+    `${dataDir}/${fileName}@2x.${fileExtension}`,
+    `${dataDir}/${fileName}@3x.${fileExtension}`,
+  ]);
+
+  optimizingIos.succeed('iOS images successfully optimized');
 };
 
 const handleIos = (img, dir) => {
@@ -102,6 +120,4 @@ const imageGenerator = (img, dir = '') => {
       chalk.red('Folders and multiple images are not supported yet!')
     );
   }
-
-  console.log(chalk.green('All images were imported! 🎉'));
 })();
