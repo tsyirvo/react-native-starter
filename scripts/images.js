@@ -7,10 +7,12 @@ const path = require('path');
 const ora = require('ora');
 const chalk = require('chalk');
 
+/* ***** *****  iOS logic  ***** ***** */
+
 const createIosVersion = async (filePath, fileName, fileExtension, dataDir) => {
   const generateIos = ora({
     text: `Generating the iOS images versions`,
-    color: 'yellow',
+    color: 'white',
   }).start();
 
   const image = sharp(filePath);
@@ -34,7 +36,7 @@ const createIosVersion = async (filePath, fileName, fileExtension, dataDir) => {
 
   const optimizingIos = ora({
     text: `Optimizing the iOS images versions`,
-    color: 'yellow',
+    color: 'white',
   }).start();
 
   await imageOptim.optim([
@@ -97,13 +99,102 @@ const handleIos = (img, dir) => {
   }
 };
 
+/* ***** *****  Android logic  ***** ***** */
+
+const createAndroidVersion = async (
+  filePath,
+  fileName,
+  fileExtension,
+  dataDir
+) => {
+  const generateAndroid = ora({
+    text: `Generating the Android images versions`,
+    color: 'white',
+  }).start();
+
+  const androidPathX1 = 'drawable-mdpi/';
+  const androidPathX2 = 'drawable-xhdpi/';
+  const androidPathX3 = 'drawable-xxhdpi/';
+
+  const image = sharp(filePath);
+
+  const { width } = await image.metadata();
+
+  // 3X
+  await image.toFile(
+    `${dataDir}/${androidPathX3}/${fileName}.${fileExtension}`
+  );
+
+  // 2X
+  await image
+    .resize(Math.round(parseInt(width / 1.5, 10)))
+    .toFile(`${dataDir}/${androidPathX2}/${fileName}.${fileExtension}`);
+
+  // 1X
+  await image
+    .resize(Math.round(parseInt(width / 3, 10)))
+    .toFile(`${dataDir}/${androidPathX1}/${fileName}.${fileExtension}`);
+
+  generateAndroid.succeed('Android images successfully generated');
+
+  const optimizingIos = ora({
+    text: `Optimizing the Android images versions`,
+    color: 'white',
+  }).start();
+
+  await imageOptim.optim([
+    `${dataDir}/${androidPathX3}/${fileName}.${fileExtension}`,
+    `${dataDir}/${androidPathX2}/${fileName}.${fileExtension}`,
+    `${dataDir}/${androidPathX1}/${fileName}.${fileExtension}`,
+  ]);
+
+  optimizingIos.succeed('Android images successfully optimized');
+};
+
+const handleAndroid = (img, dir) => {
+  const filePath = `${dir}${img}`;
+
+  // Get image name and extension
+  const dotIndex = img.indexOf('.');
+  const fileName = img.slice(0, dotIndex);
+  const fileExtension = img.slice(dotIndex + 1, img.length);
+  const fileFullName = `${fileName}.${fileExtension}`;
+
+  // Android config
+  const androidPath = './../android/app/src/main/res/';
+
+  const dataDir = path.resolve(`${__dirname}${androidPath}`);
+  const androidPathX1 = 'drawable-mdpi/';
+  const androidPathX2 = 'drawable-xhdpi/';
+  const androidPathX3 = 'drawable-xxhdpi/';
+
+  // Check if the image already exist
+  if (
+    !fs.existsSync(`${dataDir}/${androidPathX1}/${fileFullName}`) ||
+    !fs.existsSync(`${dataDir}/${androidPathX2}/${fileFullName}`) ||
+    !fs.existsSync(`${dataDir}/${androidPathX3}/${fileFullName}`)
+  ) {
+    if (
+      !fs.existsSync(`${dataDir}/${androidPathX1}`) ||
+      !fs.existsSync(`${dataDir}/${androidPathX2}`) ||
+      !fs.existsSync(`${dataDir}/${androidPathX3}`)
+    ) {
+      fs.mkdirSync(`${dataDir}/${androidPathX1}`);
+      fs.mkdirSync(`${dataDir}/${androidPathX2}`);
+      fs.mkdirSync(`${dataDir}/${androidPathX3}`);
+    }
+
+    createAndroidVersion(filePath, fileName, fileExtension, dataDir);
+  } else {
+    console.log(chalk.yellow('Android image already imported!'));
+  }
+};
+
+/* ***** *****  Shared logic  ***** ***** */
+
 const imageGenerator = (img, dir = '') => {
   handleIos(img, dir);
-
-  // // Android config
-  // const androidPathx1 = './android/app/src/main/res/drawable-mdpi/';
-  // const androidPathx2 = './android/app/src/main/res/drawable-xhdpi/';
-  // const androidPathx3 = './android/app/src/main/res/drawable-xxhdpi/';
+  handleAndroid(img, dir);
 };
 
 (() => {
