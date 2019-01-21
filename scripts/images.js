@@ -33,33 +33,9 @@ const createIosVersion = async (filePath, fileName, fileExtension, dataDir) => {
     .toFile(`${dataDir}/${fileName}.${fileExtension}`);
 
   generateIos.succeed('iOS images successfully generated');
-
-  const optimizingIos = ora({
-    text: `Optimizing the iOS images versions`,
-    color: 'white',
-  }).start();
-
-  await imageOptim.optim([
-    `${dataDir}/${fileName}.${fileExtension}`,
-    `${dataDir}/${fileName}@2x.${fileExtension}`,
-    `${dataDir}/${fileName}@3x.${fileExtension}`,
-  ]);
-
-  optimizingIos.succeed('iOS images successfully optimized');
 };
 
-const handleIos = (img, dir) => {
-  const filePath = `${dir}${img}`;
-
-  // Get image name and extension
-  const dotIndex = img.indexOf('.');
-  const fileName = img.slice(0, dotIndex);
-  const fileExtension = img.slice(dotIndex + 1, img.length);
-
-  // iOS config
-  const iosPath = './../ios/react_native_starter_kit/Images.xcassets/';
-  const imgFolderExtension = '.imageset';
-
+const handleIos = (filePath, fileName, fileExtension, dataDir) => {
   const jsonContentIos = `{
     "images" : [
       {
@@ -84,16 +60,17 @@ const handleIos = (img, dir) => {
     }
   }`;
 
-  const dataDir = path.resolve(
-    `${__dirname}${iosPath}${fileName}${imgFolderExtension}`
-  );
-
   // Check if the image already exist
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir);
-    fs.writeFile(`${dataDir}/Contents.json`, jsonContentIos, 'utf8', () => {
-      createIosVersion(filePath, fileName, fileExtension, dataDir);
-    });
+    fs.writeFile(
+      `${dataDir}/Contents.json`,
+      jsonContentIos,
+      'utf8',
+      async () => {
+        await createIosVersion(filePath, fileName, fileExtension, dataDir);
+      }
+    );
   } else {
     console.log(chalk.yellow('iOS image already imported!'));
   }
@@ -105,16 +82,15 @@ const createAndroidVersion = async (
   filePath,
   fileName,
   fileExtension,
-  dataDir
+  dataDir,
+  androidPathX1,
+  androidPathX2,
+  androidPathX3
 ) => {
   const generateAndroid = ora({
     text: `Generating the Android images versions`,
     color: 'white',
   }).start();
-
-  const androidPathX1 = 'drawable-mdpi/';
-  const androidPathX2 = 'drawable-xhdpi/';
-  const androidPathX3 = 'drawable-xxhdpi/';
 
   const image = sharp(filePath);
 
@@ -136,38 +112,18 @@ const createAndroidVersion = async (
     .toFile(`${dataDir}/${androidPathX1}/${fileName}.${fileExtension}`);
 
   generateAndroid.succeed('Android images successfully generated');
-
-  const optimizingIos = ora({
-    text: `Optimizing the Android images versions`,
-    color: 'white',
-  }).start();
-
-  await imageOptim.optim([
-    `${dataDir}/${androidPathX3}/${fileName}.${fileExtension}`,
-    `${dataDir}/${androidPathX2}/${fileName}.${fileExtension}`,
-    `${dataDir}/${androidPathX1}/${fileName}.${fileExtension}`,
-  ]);
-
-  optimizingIos.succeed('Android images successfully optimized');
 };
 
-const handleAndroid = (img, dir) => {
-  const filePath = `${dir}${img}`;
-
-  // Get image name and extension
-  const dotIndex = img.indexOf('.');
-  const fileName = img.slice(0, dotIndex);
-  const fileExtension = img.slice(dotIndex + 1, img.length);
-  const fileFullName = `${fileName}.${fileExtension}`;
-
-  // Android config
-  const androidPath = './../android/app/src/main/res/';
-
-  const dataDir = path.resolve(`${__dirname}${androidPath}`);
-  const androidPathX1 = 'drawable-mdpi/';
-  const androidPathX2 = 'drawable-xhdpi/';
-  const androidPathX3 = 'drawable-xxhdpi/';
-
+const handleAndroid = async (
+  dataDir,
+  androidPathX1,
+  androidPathX2,
+  androidPathX3,
+  fileFullName,
+  filePath,
+  fileName,
+  fileExtension
+) => {
   // Check if the image already exist
   if (
     !fs.existsSync(`${dataDir}/${androidPathX1}/${fileFullName}`) ||
@@ -184,7 +140,15 @@ const handleAndroid = (img, dir) => {
       fs.mkdirSync(`${dataDir}/${androidPathX3}`);
     }
 
-    createAndroidVersion(filePath, fileName, fileExtension, dataDir);
+    await createAndroidVersion(
+      filePath,
+      fileName,
+      fileExtension,
+      dataDir,
+      androidPathX1,
+      androidPathX2,
+      androidPathX3
+    );
   } else {
     console.log(chalk.yellow('Android image already imported!'));
   }
@@ -192,9 +156,59 @@ const handleAndroid = (img, dir) => {
 
 /* ***** *****  Shared logic  ***** ***** */
 
-const imageGenerator = (img, dir = '') => {
-  handleIos(img, dir);
-  handleAndroid(img, dir);
+const imageGenerator = async (img, dir = '') => {
+  const filePath = `${dir}${img}`;
+
+  const dotIndex = img.indexOf('.');
+  const slashIndex = img.lastIndexOf('/');
+  const fileName = img.slice(slashIndex === -1 ? 0 : slashIndex + 1, dotIndex);
+  const fileExtension = img.slice(dotIndex + 1, img.length);
+  const fileFullName = `${fileName}.${fileExtension}`;
+
+  // Android config
+  const androidPath = './../android/app/src/main/res/';
+
+  const androidDataDir = path.resolve(`${__dirname}${androidPath}`);
+
+  const androidPathX1 = 'drawable-mdpi/';
+  const androidPathX2 = 'drawable-xhdpi/';
+  const androidPathX3 = 'drawable-xxhdpi/';
+
+  // iOS config
+  const iosPath = './../ios/react_native_starter_kit/Images.xcassets/';
+  const imgFolderExtension = '.imageset';
+
+  const iosDataDir = path.resolve(
+    `${__dirname}${iosPath}${fileName}${imgFolderExtension}`
+  );
+
+  await handleIos(filePath, fileName, fileExtension, iosDataDir);
+  await handleAndroid(
+    androidDataDir,
+    androidPathX1,
+    androidPathX2,
+    androidPathX3,
+    fileFullName,
+    filePath,
+    fileName,
+    fileExtension
+  );
+
+  const optimizingIos = ora({
+    text: `Optimizing the images`,
+    color: 'white',
+  }).start();
+
+  await imageOptim.optim([
+    `${iosDataDir}/${fileName}.${fileExtension}`,
+    `${iosDataDir}/${fileName}@2x.${fileExtension}`,
+    `${iosDataDir}/${fileName}@3x.${fileExtension}`,
+    `${androidDataDir}/${androidPathX3}/${fileName}.${fileExtension}`,
+    `${androidDataDir}/${androidPathX2}/${fileName}.${fileExtension}`,
+    `${androidDataDir}/${androidPathX1}/${fileName}.${fileExtension}`,
+  ]);
+
+  optimizingIos.succeed('Images successfully optimized');
 };
 
 (() => {
