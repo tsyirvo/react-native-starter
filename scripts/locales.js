@@ -22,7 +22,7 @@ const langs = [];
 const main = async () => {
   const spinCSV = ora({
     text: 'Downloading locales...',
-    color: 'green',
+    color: 'white',
   }).start();
 
   const jsonObj = await csv().fromStream(request.get(spriteURL));
@@ -30,7 +30,7 @@ const main = async () => {
 
   const spinParse = ora({
     text: 'Parsing...',
-    color: 'yellow',
+    color: 'white',
   }).start();
 
   for (const key in jsonObj[0]) {
@@ -67,7 +67,7 @@ const main = async () => {
   const i18nFile = path.join(dataDir, 'i18n.json');
   const spinWrite = ora({
     text: `Writing JSON i18n target file... [${i18nFile}]`,
-    color: 'blue',
+    color: 'white',
   }).start();
   try {
     await mkdir(dataDir, {
