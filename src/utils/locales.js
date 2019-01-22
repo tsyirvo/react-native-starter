@@ -22,10 +22,11 @@ const getDeviceLanguage = () => {
   return 'en';
 };
 
-const getString = (target, key, defaultKey) => target[key] || defaultKey;
+const getString = (target, key, defaultKey) =>
+  (target && target[key]) || defaultKey;
 
 const doesStartsWithVowel = param => {
-  const letter = param[0];
+  const letter = param[0].toLowerCase();
 
   if (
     letter === 'a' ||
@@ -48,8 +49,8 @@ const getTranslations = (category, key, params, elisionParam = null) => {
   // Handle elision of the translation depending on a param
   if (elisionParam && params[elisionParam]) {
     newKey = doesStartsWithVowel(params[elisionParam])
-      ? `${key}.vowel`
-      : `${key}.consonant`;
+      ? `${key}_vowel`
+      : `${key}_consonant`;
   }
 
   const res = getString(translations[lang][category], newKey, key);
