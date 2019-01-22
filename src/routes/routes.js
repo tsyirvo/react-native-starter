@@ -6,6 +6,7 @@ const AppNavigator = createStackNavigator(
   {
     Home: Pages.Home,
     Details: Pages.Details,
+    // inject routes before this
   },
   {
     initialRouteName: 'Home',
