@@ -17,7 +17,7 @@ const Home = ({ navigation }) => (
       <Text mt={3}>{getTranslations('home', 'navigation_details')}</Text>
     </Button>
 
-    {GITHUB_TOKEN && (
+    {GITHUB_TOKEN !== '' && (
       <Button onPress={() => navigation.navigate('Github')}>
         <Text mt={3}>{getTranslations('home', 'navigation_github')}</Text>
       </Button>
