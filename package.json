@@ -39,6 +39,7 @@
     "styled-system": "3.2.1"
   },
   "devDependencies": {
+    "@storybook/react-native": "4.1.7",
     "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
     "babel-plugin-module-resolver": "3.1.2",
