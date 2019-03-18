@@ -38,8 +38,6 @@ yarn
 
 To run the app, you need to have the necessaries env files.
 
-Download [this file](https://drive.google.com/open?id=1_B_mjvVAH_pmWRjEoYWumrGe0ktirYXA) and [this file](https://drive.google.com/open?id=1O_FZJvCeD7YTFgI27JKGUHiH54Cry3n6), get the content and create the corresponding files named `.env.development`, `.env.staging` and `.env.production` then place them in the root of the project folder.
-
 ### Running the project
 
 To launch the React Native packager:
@@ -76,7 +74,7 @@ For Android: in the `Build Variants` tab, select the environment and build mode 
 
 All the translations are managed on a Google Excel doc. The app currently support EN and FR langages.
 
-The translations can be found [via this link](https://docs.google.com/spreadsheets/d/1XLlhDd9iUHVJgvNXulMaPATnhS0WHO1QdZrgcVsUGIk/edit#gid=0/)
+The translations can be found [via this link](https://docs.google.com/spreadsheets/d/1OZXKQsSQH7mYDFTEEgN-drJSR9N-z5bTxml0CY1cu3c/edit#gid=0/)
 
 To sync the translations in the app, just run:
 
