@@ -24,14 +24,9 @@
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js
 node_modules/react-native/flow/
-node_modules/react-native/flow-github/
 
 [options]
 emoji=true
-module.system.node.resolve_dirname=node_modules
-module.system.node.resolve_dirname=./src
-module.system.node.resolve_dirname=src/components
-module.system.node.resolve_dirname=src/redux
 
 esproposal.optional_chaining=enable
 esproposal.nullish_coalescing=enable
@@ -71,4 +66,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 
 [version]
-^0.78.0
+^0.92.0
