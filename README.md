@@ -10,10 +10,16 @@ You need to have Watchman installed:
 brew install watchman
 ```
 
+Install Cocoapods if needed:
+
+```
+sudo gem install cocoapods
+```
+
 Install the React Native CLI:
 
 ```
-npm i - g react-native-cli
+yarn global add react-native-cli
 ```
 
 Install Yarn or have least have version 1.1.0 already installed:
@@ -28,6 +34,12 @@ Install the packages:
 yarn
 ```
 
+### Env files
+
+To run the app, you need to have the necessaries env files.
+
+Download [this file](https://drive.google.com/open?id=1_B_mjvVAH_pmWRjEoYWumrGe0ktirYXA) and [this file](https://drive.google.com/open?id=1O_FZJvCeD7YTFgI27JKGUHiH54Cry3n6), get the content and create the corresponding files named `.env.development`, `.env.staging` and `.env.production` then place them in the root of the project folder.
+
 ### Running the project
 
 To launch the React Native packager:
@@ -36,11 +48,15 @@ To launch the React Native packager:
 yarn start
 ```
 
-Then for a simulator:
+### Run in a specific environment
 
-```
-react-native run-<PLATFORM>
-```
+The iOS app and the Android one both support 3 (development, staging and production) different environment, backed by the corresponding `.env` file.
+
+To launch the app in a specific environment, the steps varies depending on the platform you're using:
+
+For iOS: select the corresponding `Target` and `Scheme` then launch the app.
+
+For Android: in the `Build Variants` tab, select the environment and build mode in which you want to launch the app then run it.
 
 ## Stack
 
@@ -48,11 +64,47 @@ react-native run-<PLATFORM>
 
 [React Navigation](https://reactnavigation.org/)
 
+[Apollo](https://www.apollographql.com/docs/react/)
+
 [Styled System](https://jxnblk.com/styled-system/)
 
 [React Native Config](https://github.com/luggit/react-native-config)
 
 [Lottie](https://github.com/airbnb/lottie-react-native/)
+
+## Internationalization
+
+All the translations are managed on a Google Excel doc. The app currently support EN and FR langages.
+
+The translations can be found [via this link](https://docs.google.com/spreadsheets/d/1XLlhDd9iUHVJgvNXulMaPATnhS0WHO1QdZrgcVsUGIk/edit#gid=0/)
+
+To sync the translations in the app, just run:
+
+```
+yarn sync-locales
+```
+
+## Adding images
+
+All images are stored in the native images catalog for both iOS and Android.
+
+To simplify the adding process and optimizing those images your can run the following command:
+
+```
+yarn add-image path/to/the/image/to/add
+```
+
+Currently you can only add images one by one.
+
+## Generate new components
+
+You can automaticaly generated new pages with all necessary imports and components with the command
+
+```
+yarn add-component
+```
+
+A CLI prompt will ask you all the infos about the naming.
 
 ## Tips
 

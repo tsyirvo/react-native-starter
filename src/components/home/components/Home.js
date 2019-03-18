@@ -7,10 +7,12 @@ import Button from 'shared/Button';
 import Box from 'shared/Box';
 import Text from 'shared/Text';
 
-const { GITHUB_TOKEN } = Config;
+const { GITHUB_TOKEN, NODE_ENV } = Config;
 
 const Home = ({ navigation }) => (
   <Box flex={1} justifyContent="center" alignItems="center">
+    <Text fontSize={4}>{`Env: ${NODE_ENV}`}</Text>
+
     <Text fontSize={4}>{getTranslations('home', 'page_title')}</Text>
 
     <Button onPress={() => navigation.navigate('Details')}>

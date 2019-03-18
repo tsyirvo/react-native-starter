@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 const spriteURL =
-  'https://docs.google.com/spreadsheets/u/0/d/1OZXKQsSQH7mYDFTEEgN-drJSR9N-z5bTxml0CY1cu3c/export?format=csv';
+  'https://docs.google.com/spreadsheets/u/2/d/1XLlhDd9iUHVJgvNXulMaPATnhS0WHO1QdZrgcVsUGIk/export?format=csv';
 
 const chalk = require('chalk');
 const request = require('request');
