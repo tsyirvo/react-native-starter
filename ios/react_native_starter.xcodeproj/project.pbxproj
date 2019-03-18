@@ -502,7 +502,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8DC9DB53223FCA0300F56DCC /* react_native_starter.development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = react_native_starter.development.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DC9DB54223FCA0300F56DCC /* react_native_starterDevelopment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = react_native_starterDevelopment.plist; path = "/Users/tsyirvo/Documents/Code/starter-kits/test/react_native_starter/ios/react_native_starterDevelopment.plist"; sourceTree = "<absolute>"; };
+		8DC9DB54223FCA0300F56DCC /* react_native_starter.development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = react_native_starter.development.plist; path = "/Users/tsyirvo/Documents/Code/starter-kits/test/react_native_starter/ios/react_native_starter.development.plist"; sourceTree = "<absolute>"; };
 		8DC9DB79223FCB8A00F56DCC /* react_native_starter.staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = react_native_starter.staging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC9DB7A223FCB8A00F56DCC /* react_native_starter.staging.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = react_native_starter.staging.plist; path = "/Users/tsyirvo/Documents/Code/starter-kits/test/react_native_starter/ios/react_native_starter.staging.plist"; sourceTree = "<absolute>"; };
 		9B165972DFE6453FBC15F762 /* libRNScreens.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNScreens.a; sourceTree = "<group>"; };
@@ -767,7 +767,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				8DB3D830223C19E400662BB3 /* Recovered References */,
-				8DC9DB54223FCA0300F56DCC /* react_native_starterDevelopment.plist */,
+				8DC9DB54223FCA0300F56DCC /* react_native_starter.development.plist */,
 				8DC9DB7A223FCB8A00F56DCC /* react_native_starter.staging.plist */,
 			);
 			indentWidth = 2;
@@ -1672,7 +1672,7 @@
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
-				INFOPLIST_FILE = react_native_starterDevelopment.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/../../../../starter-kits/test/react_native_starter/ios/react_native_starter.development.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1707,7 +1707,7 @@
 					"$(SRCROOT)/../node_modules/lottie-react-native/src/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 				);
-				INFOPLIST_FILE = react_native_starterDevelopment.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/../../../../starter-kits/test/react_native_starter/ios/react_native_starter.development.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
