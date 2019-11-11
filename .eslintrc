@@ -10,7 +10,11 @@
     ],
     "import/no-unresolved": 1,
     "react/prop-types": 0,
-    "module-resolver/use-alias": 2
+    "module-resolver/use-alias": 2,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-curly-newline": 0,
+    "react/state-in-constructor": 0,
+    "react/static-property-placement": 0
   },
   "globals": {
     "fetch": true

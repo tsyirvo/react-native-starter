@@ -12,7 +12,10 @@ const Home = ({ navigation }) => (
   <Box flex={1} justifyContent="center" alignItems="center">
     <Text fontSize={4}>{getTranslations('home', 'page_title')}</Text>
 
-    <Button onPress={() => navigation.navigate('Details')}>
+    <Button
+      testID="goto-details"
+      onPress={() => navigation.navigate('Details')}
+    >
       <Text mt={3}>{getTranslations('home', 'navigation_details')}</Text>
     </Button>
 
