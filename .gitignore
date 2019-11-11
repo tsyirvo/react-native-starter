@@ -60,3 +60,6 @@ buck-out/
 
 # Jest cache
 .jest
+
+# ESLint cache
+.eslintcache
