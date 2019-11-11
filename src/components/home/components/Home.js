@@ -1,5 +1,4 @@
 import React from 'react';
-import Config from 'react-native-config';
 
 import getTranslations from 'utils/locales';
 
@@ -7,7 +6,7 @@ import Button from 'shared/Button';
 import Box from 'shared/Box';
 import Text from 'shared/Text';
 
-const { GITHUB_TOKEN } = Config;
+const GITHUB_TOKEN = '';
 
 const Home = ({ navigation }) => (
   <Box flex={1} justifyContent="center" alignItems="center">

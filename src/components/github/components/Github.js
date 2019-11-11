@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Image } from 'react-native';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -19,8 +19,6 @@ const query = gql`
 `;
 
 class Github extends Component {
-  state = {};
-
   goBack = () => {
     const { navigation } = this.props;
 
@@ -40,7 +38,7 @@ class Github extends Component {
             } = data;
 
             return (
-              <Fragment>
+              <>
                 <Text fontSize={4} mb={3}>
                   {getTranslations('github', 'page_title')}
                 </Text>
@@ -66,7 +64,7 @@ class Github extends Component {
                     {getTranslations('github', 'navigation_back')}
                   </Text>
                 </Button>
-              </Fragment>
+              </>
             );
           }}
         </Query>

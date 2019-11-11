@@ -3,7 +3,6 @@ import { ThemeProvider } from 'styled-components';
 import { useScreens } from 'react-native-screens';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-import Config from 'react-native-config';
 
 import AppContainer from 'routes/routes';
 
@@ -11,8 +10,8 @@ import theme from 'styles/theme';
 
 useScreens();
 
-// GraphQL Client
-const { API, GITHUB_TOKEN } = Config;
+const API = '';
+const GITHUB_TOKEN = '';
 
 const client = new ApolloClient({
   uri: API,

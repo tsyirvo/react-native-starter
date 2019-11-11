@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "0940"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "echo &quot;.env.development&quot; &gt; /tmp/envfile&#10;">
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -37,10 +28,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8DC9DB2F223FCA0300F56DCC"
-               BuildableName = "react_native_starter.development.app"
-               BlueprintName = "react_native_starter.development"
-               ReferencedContainer = "container:react_native_starter.xcodeproj">
+               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+               BuildableName = "rnStarter.app"
+               BlueprintName = "rnStarter"
+               ReferencedContainer = "container:rnStarter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BuildableName = "rnStarterTests.xctest"
+               BlueprintName = "rnStarterTests"
+               ReferencedContainer = "container:rnStarter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,14 +56,24 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BuildableName = "rnStarterTests.xctest"
+               BlueprintName = "rnStarterTests"
+               ReferencedContainer = "container:rnStarter.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8DC9DB2F223FCA0300F56DCC"
-            BuildableName = "react_native_starter.development.app"
-            BlueprintName = "react_native_starter.development"
-            ReferencedContainer = "container:react_native_starter.xcodeproj">
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "rnStarter.app"
+            BlueprintName = "rnStarter"
+            ReferencedContainer = "container:rnStarter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,10 +93,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8DC9DB2F223FCA0300F56DCC"
-            BuildableName = "react_native_starter.development.app"
-            BlueprintName = "react_native_starter.development"
-            ReferencedContainer = "container:react_native_starter.xcodeproj">
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "rnStarter.app"
+            BlueprintName = "rnStarter"
+            ReferencedContainer = "container:rnStarter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,10 +112,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8DC9DB2F223FCA0300F56DCC"
-            BuildableName = "react_native_starter.development.app"
-            BlueprintName = "react_native_starter.development"
-            ReferencedContainer = "container:react_native_starter.xcodeproj">
+            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+            BuildableName = "rnStarter.app"
+            BlueprintName = "rnStarter"
+            ReferencedContainer = "container:rnStarter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
