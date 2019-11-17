@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page component should render correctly 1`] = `
+<Styled(View)
+  alignItems="center"
+  flex={1}
+  justifyContent="center"
+>
+  <Text
+    fontSize={4}
+    testID="home_title"
+  >
+    Page d'accueil
+  </Text>
+  <Button
+    onPress={[Function]}
+    testID="goto_details"
+  >
+    <Text
+      mt={3}
+    >
+      Aller à la page détails
+    </Text>
+  </Button>
+</Styled(View)>
+`;

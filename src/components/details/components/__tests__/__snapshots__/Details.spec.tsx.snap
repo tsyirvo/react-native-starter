@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details page component should render correctly 1`] = `
+<Styled(View)
+  alignItems="center"
+  flex={1}
+  justifyContent="center"
+>
+  <Text
+    fontSize={4}
+    testID="details_title"
+  >
+    Détails
+  </Text>
+  <Button
+    onPress={[Function]}
+    testID="back_button"
+  >
+    <Text
+      mt={3}
+    >
+      Retour
+    </Text>
+  </Button>
+</Styled(View)>
+`;
