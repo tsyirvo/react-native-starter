@@ -1,7 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-
 import * as Pages from './pages';
 
 const AppNavigator = createStackNavigator(

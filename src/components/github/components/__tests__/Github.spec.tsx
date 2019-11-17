@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Github from 'components/github';
+import Github from '../Github';
 
 describe('Github page component', () => {
   // given
-    const props = { navigation: {goBack: jest.fn()} };
+  const props = { navigation: { goBack: jest.fn() } as any };
 
   it('should render correctly', () => {
     // When
@@ -14,5 +14,4 @@ describe('Github page component', () => {
     // Then
     expect(wrapper).toMatchSnapshot();
   });
-
 });

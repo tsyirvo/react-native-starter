@@ -22,10 +22,13 @@ const getDeviceLanguage = () => {
   return 'en';
 };
 
-const getString = (target, key, defaultKey) =>
-  (target && target[key]) || defaultKey;
+const getString = (
+  target: { [key: string]: any },
+  key: string,
+  defaultKey: string
+) => (target && target[key]) || defaultKey;
 
-const doesStartsWithVowel = param => {
+const doesStartsWithVowel = (param: string) => {
   const letter = param[0].toLowerCase();
 
   if (
@@ -42,22 +45,30 @@ const doesStartsWithVowel = param => {
   return false;
 };
 
-const getTranslations = (category, key, params, elisionParam = null) => {
+const getTranslations = (
+  category: string,
+  key: string,
+  params?: { [key: string]: any },
+  elisionParam?: string
+) => {
   const lang = getDeviceLanguage();
   let newKey = key;
 
   // Handle elision of the translation depending on a param
-  if (elisionParam && params[elisionParam]) {
+  if (!!elisionParam && params && params[elisionParam]) {
     newKey = doesStartsWithVowel(params[elisionParam])
       ? `${key}_vowel`
       : `${key}_consonant`;
   }
 
-  const res = getString(translations[lang][category], newKey, key);
+  const res = getString((translations[lang] as any)[category], newKey, key);
 
   if (!res) return res;
 
-  return res.replace(/\/%(.*?)%\//g, (matching, param) => params[param]);
+  return res.replace(
+    /\/%(.*?)%\//g,
+    (_: string, param: string) => params && params[param]
+  );
 };
 
 export default getTranslations;

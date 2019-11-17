@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Query } from 'react-apollo';
+import { Query, QueryResult } from 'react-apollo';
 import gql from 'graphql-tag';
+import styled from 'styled-components/native';
 
-import getTranslations from 'utils/locales';
+import { INavigationTypes } from 'types/navigation.types';
 
-import Box from 'shared/Box';
-import Text from 'shared/Text';
-import Button from 'shared/Button';
+import getTranslations from '@utils/locales';
+
+import Box from '@shared/Box';
+import Text from '@shared/Text';
+import Button from '@shared/Button';
+
+interface IProps {
+  navigation: INavigationTypes;
+}
 
 const query = gql`
   {
@@ -18,8 +25,8 @@ const query = gql`
   }
 `;
 
-class Github extends Component {
-  goBack = () => {
+class Github extends Component<IProps> {
+  _goBack = () => {
     const { navigation } = this.props;
 
     navigation.goBack(null);
@@ -29,7 +36,7 @@ class Github extends Component {
     return (
       <Box flex={1} justifyContent="center" alignItems="center">
         <Query query={query}>
-          {({ loading, error, data }) => {
+          {({ loading, error, data }: QueryResult) => {
             if (loading) return <Text>Loading...</Text>;
             if (error) return <Text>Some error happened :</Text>;
 
@@ -43,10 +50,7 @@ class Github extends Component {
                   {getTranslations('github', 'page_title')}
                 </Text>
 
-                <Image
-                  source={{ uri: avatarUrl }}
-                  style={{ width: 100, height: 100, borderRadius: 50 }}
-                />
+                <SImage source={{ uri: avatarUrl }} />
 
                 <Text fontSize={3} mt={3}>
                   {`${getTranslations(
@@ -59,7 +63,7 @@ class Github extends Component {
                   )} ${login}`}
                 </Text>
 
-                <Button onPress={this.goBack}>
+                <Button onPress={this._goBack}>
                   <Text mt={3}>
                     {getTranslations('github', 'navigation_back')}
                   </Text>
@@ -72,5 +76,11 @@ class Github extends Component {
     );
   }
 }
+
+const SImage = styled.Image`
+  width: 100;
+  height: 100;
+  border-radius: 50;
+`;
 
 export default Github;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import {
   space,
   color,
@@ -12,7 +12,9 @@ import {
   maxWidth,
 } from 'styled-system';
 
-const StyledText = styled.Text`
+import { TText } from 'types/Text.types';
+
+const StyledText = styled.Text<TText>`
   ${space}
   ${color}
   ${fontSize}

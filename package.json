@@ -1,5 +1,5 @@
 {
-  "name": "rnStarter",
+  "name": "rn-starter",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,7 +7,9 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ./ --cache --fix --ignore-path .gitignore",
+    "test:staged": "jest --findRelatedTests",
+    "lint": "eslint ./ --cache --fix --ignore-path .gitignore && tslint --fix --project tsconfig.json",
+    "prettify": "yarn prettier './**/*.{ts,tsx}'",
     "sync-locales": "node scripts/locales.js",
     "add-image": "node scripts/images.js",
     "add-component": "hygen componentGenerator new",
@@ -19,8 +21,10 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
+    "*.ts?(x)": [
+      "yarn lint",
+      "yarn test:staged",
+      "yarn prettify",
       "git add"
     ]
   },
@@ -42,9 +46,19 @@
   "devDependencies": {
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.7.0",
+    "@babel/plugin-transform-flow-strip-types": "7.6.3",
     "@babel/runtime": "7.7.2",
     "@react-native-community/eslint-config": "0.0.5",
     "@storybook/react-native": "5.2.6",
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.5",
+    "@types/jest": "24.0.23",
+    "@types/react": "16.9.11",
+    "@types/react-native": "0.60.22",
+    "@types/react-navigation": "3.4.0",
+    "@types/react-test-renderer": "16.9.1",
+    "@types/styled-components": "4.4.0",
+    "@types/styled-system": "5.1.3",
     "babel-eslint": "10.0.3",
     "babel-jest": "24.9.0",
     "babel-plugin-module-resolver": "3.2.0",
@@ -78,9 +92,12 @@
     "react-test-renderer": "16.9.0",
     "request": "2.88.0",
     "sharp": "0.23.2",
+    "ts-jest": "24.1.0",
+    "tslint": "5.20.1",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-eslint-rules": "5.4.0",
+    "tslint-react": "4.1.0",
+    "typescript": "3.7.2",
     "util": "0.12.1"
-  },
-  "jest": {
-    "preset": "react-native"
   }
 }

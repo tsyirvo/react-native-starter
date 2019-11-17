@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Details from 'components/details';
+import Details from '../Details';
 
 describe('Details page component', () => {
   // given
-    const props = { navigation: {goBack: jest.fn()} };
+  const props = { navigation: { goBack: jest.fn() } as any };
 
   it('should render correctly', () => {
     // When
@@ -19,7 +19,9 @@ describe('Details page component', () => {
     // When
     const wrapper = shallow(<Details {...props} />);
 
-    wrapper.findWhere(node => node.prop('testID') === 'back-button').simulate('press');
+    wrapper
+      .findWhere(node => node.prop('testID') === 'back-button')
+      .simulate('press');
 
     // Then
     expect(props.navigation.goBack.mock.calls.length).toBe(1);

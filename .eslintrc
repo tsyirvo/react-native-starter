@@ -5,7 +5,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
     "import/no-unresolved": 1,
@@ -27,18 +27,19 @@
     "import/resolver": {
       "babel-module": {
         "alias": {
-          "assets": "./src/assets",
-          "component": "./src/components",
-          "shared": "./src/components/shared",
-          "pages": "./src/pages",
-          "routes": "./src/routes",
-          "styles": "./src/styles",
-          "utils": "./src/utils"
+          "@assets": "./src/assets",
+          "@components": "./src/components",
+          "@shared": "./src/components/shared",
+          "@pages": "./src/pages",
+          "@types": "./src/types",
+          "@routes": "./src/routes",
+          "@styles": "./src/styles",
+          "@utils": "./src/utils"
         }
       },
       "react-native": {},
       "node": {
-        "extensions": [".js", ".jsx", ".json", ".native.js"]
+        "extensions": [".js", ".jsx", ".json", ".native.js", ".ts", ".tsx"]
       }
     }
   }

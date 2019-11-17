@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Home from 'components/home';
+import Home from '../Home';
 
 describe('Home page component', () => {
   // given
-    const props = { navigation: {navigate: jest.fn()} };
+  const props = { navigation: { navigate: jest.fn() } as any };
 
   it('should render correctly', () => {
     // When
@@ -19,10 +19,11 @@ describe('Home page component', () => {
     // When
     const wrapper = shallow(<Home {...props} />);
 
-    wrapper.findWhere(node => node.prop('testID') === 'goto-details').simulate('press');
+    wrapper
+      .findWhere(node => node.prop('testID') === 'goto-details')
+      .simulate('press');
 
     // Then
     expect(props.navigation.navigate.mock.calls.length).toBe(1);
   });
-
 });
