@@ -7,8 +7,8 @@ interface IProps {
   testID?: string;
 }
 
-const Button = ({ onPress, children }: IProps) => (
-  <TouchableOpacity testID="button-touchable" onPress={onPress}>
+const Button = ({ onPress, children, testID }: IProps) => (
+  <TouchableOpacity testID={testID} onPress={onPress}>
     {children}
   </TouchableOpacity>
 );

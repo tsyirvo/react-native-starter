@@ -20,9 +20,11 @@ const Home = ({ navigation }: IProps) => {
 
   return (
     <Box flex={1} justifyContent="center" alignItems="center">
-      <Text fontSize={4}>{getTranslations('home', 'page_title')}</Text>
+      <Text testID="home_title" fontSize={4}>
+        {getTranslations('home', 'page_title')}
+      </Text>
 
-      <Button testID="goto-details" onPress={goToDetails}>
+      <Button testID="goto_details" onPress={goToDetails}>
         <Text mt={3}>{getTranslations('home', 'navigation_details')}</Text>
       </Button>
 

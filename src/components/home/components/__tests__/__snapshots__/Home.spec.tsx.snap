@@ -8,12 +8,13 @@ exports[`Home page component should render correctly 1`] = `
 >
   <Text
     fontSize={4}
+    testID="home_title"
   >
     Page d'accueil
   </Text>
   <Button
     onPress={[Function]}
-    testID="goto-details"
+    testID="goto_details"
   >
     <Text
       mt={3}

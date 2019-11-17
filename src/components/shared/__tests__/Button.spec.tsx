@@ -6,7 +6,7 @@ import Button from '../Button';
 
 describe('Button shared component', () => {
   // given
-  const props = { onPress: jest.fn() };
+  const props = { onPress: jest.fn(), testID: 'button' };
   const child = <Text>Some text</Text>;
 
   it('should render correctly without children', () => {
@@ -30,7 +30,7 @@ describe('Button shared component', () => {
     const wrapper = shallow(<Button {...props}>{child}</Button>);
 
     wrapper
-      .findWhere(node => node.prop('testID') === 'button-touchable')
+      .findWhere(node => node.prop('testID') === 'button')
       .simulate('press');
 
     // Then

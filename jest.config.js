@@ -30,7 +30,7 @@ module.exports = {
   // This is needed to have a global window object in our tests
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/'],
-  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
+  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
     '\\.(ts|tsx)$': 'ts-jest',

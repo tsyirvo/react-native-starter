@@ -17,9 +17,11 @@ const Details = ({ navigation }: IProps) => {
 
   return (
     <Box flex={1} justifyContent="center" alignItems="center">
-      <Text fontSize={4}>{getTranslations('details', 'page_title')}</Text>
+      <Text testID="details_title" fontSize={4}>
+        {getTranslations('details', 'page_title')}
+      </Text>
 
-      <Button testID="back-button" onPress={goBack}>
+      <Button testID="back_button" onPress={goBack}>
         <Text mt={3}>{getTranslations('details', 'navigation_back')}</Text>
       </Button>
     </Box>

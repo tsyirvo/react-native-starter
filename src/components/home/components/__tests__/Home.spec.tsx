@@ -20,7 +20,7 @@ describe('Home page component', () => {
     const wrapper = shallow(<Home {...props} />);
 
     wrapper
-      .findWhere(node => node.prop('testID') === 'goto-details')
+      .findWhere(node => node.prop('testID') === 'goto_details')
       .simulate('press');
 
     // Then

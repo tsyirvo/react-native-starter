@@ -8,12 +8,13 @@ exports[`Details page component should render correctly 1`] = `
 >
   <Text
     fontSize={4}
+    testID="details_title"
   >
     Détails
   </Text>
   <Button
     onPress={[Function]}
-    testID="back-button"
+    testID="back_button"
   >
     <Text
       mt={3}
