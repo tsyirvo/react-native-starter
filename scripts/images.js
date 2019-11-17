@@ -175,7 +175,7 @@ const imageGenerator = async (img, dir = '') => {
   const androidPathX3 = 'drawable-xxhdpi/';
 
   // iOS config
-  const iosPath = './../ios/react_native_starter_kit/Images.xcassets/';
+  const iosPath = './../ios/rnStarter/Images.xcassets/';
   const imgFolderExtension = '.imageset';
 
   const iosDataDir = path.resolve(
