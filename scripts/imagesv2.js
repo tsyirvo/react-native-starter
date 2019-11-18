@@ -178,10 +178,9 @@ const createForIos = () => {
         'utf8',
         async () => {
           await moveIosImages(iosDataDir);
+          res();
         }
       );
-
-      res();
     } catch (err) {
       console.log('err', err);
       rej();
@@ -217,7 +216,7 @@ const generateImages = async arg => {
   await createForIos();
   creatingIos.succeed('All images were successfully create for iOS');
 
-  // await deleteTmpFolder();
+  await deleteTmpFolder();
 };
 
 (() => {
