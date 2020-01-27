@@ -18,6 +18,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
@@ -48,6 +49,8 @@
   "devDependencies": {
     "@babel/core": "7.8.3",
     "@babel/runtime": "7.8.3",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
     "@react-native-community/eslint-config": "0.0.7",
     "@storybook/react-native": "5.3.9",
     "@storybook/react-native-server": "5.3.9",
