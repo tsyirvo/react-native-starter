@@ -13,7 +13,8 @@
     "sync-locales": "node scripts/locales.js",
     "add-image": "node scripts/images.js",
     "add-component": "hygen componentGenerator new",
-    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules && yarn"
+    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules && yarn",
+    "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook"
   },
   "husky": {
     "hooks": {
@@ -49,6 +50,7 @@
     "@babel/runtime": "7.8.3",
     "@react-native-community/eslint-config": "0.0.7",
     "@storybook/react-native": "5.3.9",
+    "@storybook/react-native-server": "5.3.9",
     "@types/enzyme": "3.10.4",
     "@types/enzyme-adapter-react-16": "1.0.5",
     "@types/jest": "24.9.1",
@@ -60,6 +62,7 @@
     "@types/styled-system": "5.1.4",
     "babel-eslint": "10.0.3",
     "babel-jest": "25.1.0",
+    "babel-loader": "8.0.6",
     "babel-plugin-module-resolver": "4.0.0",
     "babel-plugin-transform-remove-console": "6.9.4",
     "chalk": "3.0.0",
