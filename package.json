@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "test:staged": "jest --findRelatedTests",
+    "test:staged": "jest -o",
     "lint": "eslint ./ --cache --fix --ignore-path .gitignore && tslint --fix --project tsconfig.json",
     "prettify": "yarn prettier './**/*.{ts,tsx}'",
     "sync-locales": "node scripts/locales.js",
