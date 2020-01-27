@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { useScreens } from 'react-native-screens';
+import { enableScreens } from 'react-native-screens';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
@@ -8,7 +8,7 @@ import AppContainer from 'routes/routes';
 
 import theme from 'styles/theme';
 
-useScreens();
+enableScreens();
 
 const API = '';
 const GITHUB_TOKEN = '';
