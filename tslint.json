@@ -5,7 +5,9 @@
     "tslint-react",
     "tslint-config-prettier"
   ],
-  "jsRules": {},
+  "jsRules": {
+    "no-console": [true, "warn", "error", "group"]
+  },
   "rules": {
     "interface-name": false,
     "jsx-no-lambda": true,
@@ -14,6 +16,7 @@
     "ordered-imports": false,
     "curly": false,
     "member-access": false,
-    "variable-name": false
+    "variable-name": false,
+    "no-console": [true, "warn", "error", "group"]
   }
 }
