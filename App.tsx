@@ -8,7 +8,10 @@ import AppContainer from 'routes/routes';
 
 import theme from 'styles/theme';
 
+import { getRatio } from '@utils/dimensions';
+
 enableScreens();
+getRatio();
 
 const API = '';
 const GITHUB_TOKEN = '';
