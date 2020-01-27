@@ -9,7 +9,7 @@
     "test": "jest",
     "test:staged": "jest -o",
     "lint": "eslint ./ --cache --fix --ignore-path .gitignore && tslint --fix --project tsconfig.json",
-    "prettify": "yarn prettier './**/*.{ts,tsx}'",
+    "prettify": "yarn prettier --write './**/*.{ts,tsx}'",
     "sync-locales": "node scripts/locales.js",
     "add-image": "node scripts/images.js",
     "add-component": "hygen componentGenerator new",
