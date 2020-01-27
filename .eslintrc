@@ -1,20 +1,37 @@
 {
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["module-resolver"],
+  "extends": [
+    "airbnb",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["module-resolver", "@typescript-eslint", "react-hooks"],
   "rules": {
+    "no-underscore-dangle": 0,
+
+    "import/no-unresolved": 1,
+    "import/extensions": 0,
+    "import/no-mutable-exports": 0,
+
+    "module-resolver/use-alias": 2,
+
     "react/jsx-filename-extension": [
       1,
       {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
-    "import/no-unresolved": 1,
     "react/prop-types": 0,
-    "module-resolver/use-alias": 2,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-curly-newline": 0,
     "react/state-in-constructor": 0,
-    "react/static-property-placement": 0
+    "react/static-property-placement": 0,
+
+    "react-hooks/rules-of-hooks": "error",
+
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/interface-name-prefix": [2, { "prefixWithI": "always" }]
   },
   "globals": {
     "fetch": true
@@ -22,7 +39,15 @@
   "env": {
     "jest": true
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
   "settings": {
     "import/resolver": {
       "babel-module": {
@@ -42,5 +67,13 @@
         "extensions": [".js", ".jsx", ".json", ".native.js", ".ts", ".tsx"]
       }
     }
-  }
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js",
+    "_templates",
+    "scripts"
+  ]
 }

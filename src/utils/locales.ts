@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Platform, NativeModules } from 'react-native';
 
 import translations from '../../data/i18n.json';

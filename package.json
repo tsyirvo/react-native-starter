@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "test:staged": "jest -o",
-    "lint": "eslint ./ --cache --fix --ignore-path .gitignore && tslint --fix --project tsconfig.json",
+    "tsc": "tsc --noEmit --project tsconfig.json",
+    "lint": "eslint ./ --ext .js,.ts,.tsx --cache --fix --ignore-path .gitignore",
     "prettify": "yarn prettier --write './**/*.{ts,tsx}'",
     "sync-locales": "node scripts/locales.js",
     "add-image": "node scripts/images.js",
@@ -18,11 +19,12 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS && lint-staged"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS && lint-staged",
+      "pre-commit": "yarn tsc"
     }
   },
   "lint-staged": {
-    "*.ts?(x)": [
+    "*.{js,ts,tsx}": [
       "yarn lint",
       "yarn test:staged",
       "yarn prettify"
@@ -62,6 +64,8 @@
     "@types/react-test-renderer": "16.9.2",
     "@types/styled-components": "4.4.2",
     "@types/styled-system": "5.1.4",
+    "@typescript-eslint/eslint-plugin": "2.17.0",
+    "@typescript-eslint/parser": "2.17.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "25.1.0",
     "babel-loader": "8.0.6",
@@ -83,6 +87,7 @@
     "eslint-plugin-module-resolver": "0.16.0",
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-react": "7.18.0",
+    "eslint-plugin-react-hooks": "2.3.0",
     "fs": "0.0.1-security",
     "husky": "4.2.1",
     "hygen": "5.0.3",
@@ -98,10 +103,6 @@
     "request": "2.88.0",
     "sharp": "0.24.0",
     "ts-jest": "25.0.0",
-    "tslint": "6.0.0",
-    "tslint-config-prettier": "1.18.0",
-    "tslint-eslint-rules": "5.4.0",
-    "tslint-react": "4.2.0",
     "typescript": "3.7.5",
     "util": "0.12.1"
   },
