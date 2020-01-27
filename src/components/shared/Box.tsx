@@ -18,11 +18,15 @@ import {
   maxHeight,
   minHeight,
   zIndex,
+  layout,
+  flexbox,
 } from 'styled-system';
 
 import { TBox } from 'types/Box.types';
 
 const Box = styled.View<TBox>`
+  ${layout}
+  ${flexbox}
   ${space}
   ${width}
   ${fontSize}
