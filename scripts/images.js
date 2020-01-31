@@ -6,51 +6,159 @@ const fs = require('fs');
 const path = require('path');
 const ora = require('ora');
 const chalk = require('chalk');
+const rimraf = require('rimraf');
 
-/* ***** *****  iOS logic  ***** ***** */
+let imgData = {};
 
-const createIosVersion = async (filePath, fileName, fileExtension, dataDir) => {
-  const generateIos = ora({
-    text: `Generating the iOS images versions`,
-    color: 'white',
-  }).start();
+// Check wether the param is a file or a folder
+const checkArgumentType = arg => {
+  if (fs.lstatSync(arg).isFile()) return 'file';
 
-  const image = sharp(filePath);
-
-  const { width } = await image.metadata();
-
-  // 3X
-  await image.toFile(`${dataDir}/${fileName}@3x.${fileExtension}`);
-
-  // 2X
-  await image
-    .resize(Math.round(parseInt(width / 1.5, 10)))
-    .toFile(`${dataDir}/${fileName}@2x.${fileExtension}`);
-
-  // 1X
-  await image
-    .resize(Math.round(parseInt(width / 3, 10)))
-    .toFile(`${dataDir}/${fileName}.${fileExtension}`);
-
-  generateIos.succeed('iOS images successfully generated');
+  return 'folder';
 };
 
-const handleIos = (filePath, fileName, fileExtension, dataDir) => {
-  const jsonContentIos = `{
+// Create a tmp folder for the images
+const createTmpFolder = () => {
+  return new Promise(async (res, rej) => {
+    try {
+      fs.mkdir(`${__dirname}/tmp/1x`, { recursive: true }, err => {
+        if (err) throw err;
+      });
+      fs.mkdir(`${__dirname}/tmp/2x`, { recursive: true }, err => {
+        if (err) throw err;
+      });
+      fs.mkdir(`${__dirname}/tmp/3x`, { recursive: true }, err => {
+        if (err) throw err;
+      });
+
+      res();
+    } catch (err) {
+      console.log('err', err);
+      rej();
+    }
+  });
+};
+
+// Create the tmp folder for the images
+const deleteTmpFolder = () => {
+  return new Promise((res, rej) => {
+    try {
+      rimraf.sync(`${__dirname}/tmp`);
+      res();
+    } catch (err) {
+      console.log('err', err);
+      rej();
+    }
+  });
+};
+
+// Create the three image resolutions
+const createImageResolutions = img => {
+  return new Promise(async (res, rej) => {
+    try {
+      const image = sharp(img);
+
+      const { width } = await image.metadata();
+
+      // 3X
+      await image.toFile(`${__dirname}/tmp/3x/${imgData.fileFullName}`);
+
+      // 2X
+      await image
+        .resize(Math.round(parseInt(width / 1.5, 10)))
+        .toFile(`${__dirname}/tmp/2x/${imgData.fileFullName}`);
+
+      // 1X
+      await image
+        .resize(Math.round(parseInt(width / 3, 10)))
+        .toFile(`${__dirname}/tmp/1x/${imgData.fileFullName}`);
+
+      res();
+    } catch (err) {
+      console.log('err', err);
+      rej();
+    }
+  });
+};
+
+const getImageData = img => {
+  const dotIndex = img.indexOf('.');
+  const slashIndex = img.lastIndexOf('/');
+  const fileName = img.slice(slashIndex === -1 ? 0 : slashIndex + 1, dotIndex);
+  const fileExtension = img.slice(dotIndex + 1, img.length);
+  const fileFullName = `${fileName}.${fileExtension}`;
+
+  imgData = {
+    fileName,
+    fileExtension,
+    fileFullName,
+  };
+};
+
+const compressImages = () => {
+  return new Promise(async (res, rej) => {
+    try {
+      await imageOptim.optim([
+        `${__dirname}/tmp/3x/${imgData.fileFullName}`,
+        `${__dirname}/tmp/2x/${imgData.fileFullName}`,
+        `${__dirname}/tmp/1x/${imgData.fileFullName}`,
+      ]);
+      res();
+    } catch (err) {
+      console.log('err', err);
+      rej();
+    }
+  });
+};
+
+const moveIosImages = destPath => {
+  return new Promise(async (res, rej) => {
+    try {
+      fs.copyFileSync(
+        `${__dirname}/tmp/3x/${imgData.fileFullName}`,
+        `${destPath}/${imgData.fileName}@3x.${imgData.fileExtension}`
+      );
+      fs.copyFileSync(
+        `${__dirname}/tmp/2x/${imgData.fileFullName}`,
+        `${destPath}/${imgData.fileName}@2x.${imgData.fileExtension}`
+      );
+      fs.copyFileSync(
+        `${__dirname}/tmp/1x/${imgData.fileFullName}`,
+        `${destPath}/${imgData.fileName}.${imgData.fileExtension}`
+      );
+
+      res();
+    } catch (err) {
+      console.log('err', err);
+      rej();
+    }
+  });
+};
+
+const createForIos = () => {
+  return new Promise(async (res, rej) => {
+    try {
+      // iOS config
+      const iosPath = './../ios/rnStarter/Images.xcassets/';
+      const imgFolderExtension = '.imageset';
+      const iosDataDir = path.resolve(
+        `${__dirname}${iosPath}${imgData.fileName}${imgFolderExtension}`
+      );
+      const jsonContentIos = `{
     "images" : [
       {
         "idiom" : "universal",
-        "filename" : "${fileName}.${fileExtension}",
+        "filename" : "${imgData.fileName}.${imgData.fileExtension}",
         "scale" : "1x"
       },
       {
         "idiom" : "universal",
-        "filename" : "${fileName}@2x.${fileExtension}",
+        "filename" : "${imgData.fileName}@2x.${imgData.fileExtension}",
         "scale" : "2x"
       },
       {
         "idiom" : "universal",
-        "filename" : "${fileName}@3x.${fileExtension}",
+        "filename" : "${imgData.fileName}@3x.${imgData.fileExtension}",
         "scale" : "3x"
       }
     ],
@@ -60,169 +168,137 @@ const handleIos = (filePath, fileName, fileExtension, dataDir) => {
     }
   }`;
 
-  // Check if the image already exist
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir);
-    fs.writeFile(
-      `${dataDir}/Contents.json`,
-      jsonContentIos,
-      'utf8',
-      async () => {
-        await createIosVersion(filePath, fileName, fileExtension, dataDir);
+      if (!fs.existsSync(iosDataDir)) {
+        fs.mkdirSync(iosDataDir);
       }
-    );
-  } else {
-    console.log(chalk.yellow('iOS image already imported!'));
-  }
-};
 
-/* ***** *****  Android logic  ***** ***** */
-
-const createAndroidVersion = async (
-  filePath,
-  fileName,
-  fileExtension,
-  dataDir,
-  androidPathX1,
-  androidPathX2,
-  androidPathX3
-) => {
-  const generateAndroid = ora({
-    text: `Generating the Android images versions`,
-    color: 'white',
-  }).start();
-
-  const image = sharp(filePath);
-
-  const { width } = await image.metadata();
-
-  // 3X
-  await image.toFile(
-    `${dataDir}/${androidPathX3}/${fileName}.${fileExtension}`
-  );
-
-  // 2X
-  await image
-    .resize(Math.round(parseInt(width / 1.5, 10)))
-    .toFile(`${dataDir}/${androidPathX2}/${fileName}.${fileExtension}`);
-
-  // 1X
-  await image
-    .resize(Math.round(parseInt(width / 3, 10)))
-    .toFile(`${dataDir}/${androidPathX1}/${fileName}.${fileExtension}`);
-
-  generateAndroid.succeed('Android images successfully generated');
-};
-
-const handleAndroid = async (
-  dataDir,
-  androidPathX1,
-  androidPathX2,
-  androidPathX3,
-  fileFullName,
-  filePath,
-  fileName,
-  fileExtension
-) => {
-  // Check if the image already exist
-  if (
-    !fs.existsSync(`${dataDir}/${androidPathX1}/${fileFullName}`) ||
-    !fs.existsSync(`${dataDir}/${androidPathX2}/${fileFullName}`) ||
-    !fs.existsSync(`${dataDir}/${androidPathX3}/${fileFullName}`)
-  ) {
-    if (
-      !fs.existsSync(`${dataDir}/${androidPathX1}`) ||
-      !fs.existsSync(`${dataDir}/${androidPathX2}`) ||
-      !fs.existsSync(`${dataDir}/${androidPathX3}`)
-    ) {
-      fs.mkdirSync(`${dataDir}/${androidPathX1}`);
-      fs.mkdirSync(`${dataDir}/${androidPathX2}`);
-      fs.mkdirSync(`${dataDir}/${androidPathX3}`);
+      fs.writeFile(
+        `${iosDataDir}/Contents.json`,
+        jsonContentIos,
+        'utf8',
+        async () => {
+          await moveIosImages(iosDataDir);
+          res();
+        }
+      );
+    } catch (err) {
+      console.log('err', err);
+      rej();
     }
-
-    await createAndroidVersion(
-      filePath,
-      fileName,
-      fileExtension,
-      dataDir,
-      androidPathX1,
-      androidPathX2,
-      androidPathX3
-    );
-  } else {
-    console.log(chalk.yellow('Android image already imported!'));
-  }
+  });
 };
 
-/* ***** *****  Shared logic  ***** ***** */
+const moveAndroidImages = destPath => {
+  return new Promise(async (res, rej) => {
+    try {
+      fs.copyFileSync(
+        `${__dirname}/tmp/3x/${imgData.fileFullName}`,
+        `${destPath}/drawable-xxhdpi/${imgData.fileName}.${imgData.fileExtension}`
+      );
+      fs.copyFileSync(
+        `${__dirname}/tmp/2x/${imgData.fileFullName}`,
+        `${destPath}/drawable-xhdpi/${imgData.fileName}.${imgData.fileExtension}`
+      );
+      fs.copyFileSync(
+        `${__dirname}/tmp/1x/${imgData.fileFullName}`,
+        `${destPath}/drawable-mdpi/${imgData.fileName}.${imgData.fileExtension}`
+      );
 
-const imageGenerator = async (img, dir = '') => {
-  const filePath = `${dir}${img}`;
+      res();
+    } catch (err) {
+      console.log('err', err);
+      rej();
+    }
+  });
+};
 
-  const dotIndex = img.indexOf('.');
-  const slashIndex = img.lastIndexOf('/');
-  const fileName = img.slice(slashIndex === -1 ? 0 : slashIndex + 1, dotIndex);
-  const fileExtension = img.slice(dotIndex + 1, img.length);
-  const fileFullName = `${fileName}.${fileExtension}`;
+createForAndroid = () => {
+  return new Promise(async (res, rej) => {
+    try {
+      // Android config
+      const androidPath = './../android/app/src/main/res/';
+      const androidDataDir = path.resolve(`${__dirname}${androidPath}`);
 
-  // Android config
-  const androidPath = './../android/app/src/main/res/';
+      if (!fs.existsSync(`${androidDataDir}/drawable-mdpi`)) {
+        fs.mkdirSync(`${androidDataDir}/drawable-mdpi`);
+      }
+      if (!fs.existsSync(`${androidDataDir}/drawable-xhdpi`)) {
+        fs.mkdirSync(`${androidDataDir}/drawable-xhdpi`);
+      }
+      if (!fs.existsSync(`${androidDataDir}/drawable-xxhdpi`)) {
+        fs.mkdirSync(`${androidDataDir}/drawable-xxhdpi`);
+      }
 
-  const androidDataDir = path.resolve(`${__dirname}${androidPath}`);
+      await moveAndroidImages(androidDataDir);
+      res();
+    } catch (err) {
+      console.log('err', err);
+      rej();
+    }
+  });
+};
 
-  const androidPathX1 = 'drawable-mdpi/';
-  const androidPathX2 = 'drawable-xhdpi/';
-  const androidPathX3 = 'drawable-xxhdpi/';
+const generateImages = async arg => {
+  getImageData(arg);
 
-  // iOS config
-  const iosPath = './../ios/rnStarter/Images.xcassets/';
-  const imgFolderExtension = '.imageset';
+  await createTmpFolder();
 
-  const iosDataDir = path.resolve(
-    `${__dirname}${iosPath}${fileName}${imgFolderExtension}`
-  );
-
-  await handleIos(filePath, fileName, fileExtension, iosDataDir);
-  await handleAndroid(
-    androidDataDir,
-    androidPathX1,
-    androidPathX2,
-    androidPathX3,
-    fileFullName,
-    filePath,
-    fileName,
-    fileExtension
-  );
-
-  const optimizingIos = ora({
-    text: `Optimizing the images`,
+  const creatingVersions = ora({
+    text: `Creating the different images versions`,
     color: 'white',
   }).start();
+  await createImageResolutions(arg);
+  creatingVersions.succeed(
+    'All versions of the images were successfully created'
+  );
 
-  await imageOptim.optim([
-    `${iosDataDir}/${fileName}.${fileExtension}`,
-    `${iosDataDir}/${fileName}@2x.${fileExtension}`,
-    `${iosDataDir}/${fileName}@3x.${fileExtension}`,
-    `${androidDataDir}/${androidPathX3}/${fileName}.${fileExtension}`,
-    `${androidDataDir}/${androidPathX2}/${fileName}.${fileExtension}`,
-    `${androidDataDir}/${androidPathX1}/${fileName}.${fileExtension}`,
-  ]);
+  const optimnizingImages = ora({
+    text: `Optimizing all images`,
+    color: 'white',
+  }).start();
+  await compressImages();
+  optimnizingImages.succeed('All images were successfully optimized');
 
-  optimizingIos.succeed('Images successfully optimized');
+  const creatingIos = ora({
+    text: `Creating the iOS images`,
+    color: 'white',
+  }).start();
+  await createForIos();
+  creatingIos.succeed('All images were successfully create for iOS');
+
+  const creatingAndroid = ora({
+    text: `Creating the Android images`,
+    color: 'white',
+  }).start();
+  await createForAndroid();
+  creatingAndroid.succeed('All images were successfully create for Android');
+
+  await deleteTmpFolder();
 };
 
 (() => {
-  const argv = process.argv[2];
+  const argv = process.argv.slice(2);
   if (!argv) {
-    console.log(chalk.red('Missing image argument!'));
+    console.log(chalk.red('No arguments were passed!'));
     process.exit();
   }
 
-  if (argv.indexOf('.') > -1) {
-    imageGenerator(argv);
+  if (argv.length === 1) {
+    const fileType = checkArgumentType(argv[0]);
+
+    switch (fileType) {
+      case 'file':
+        generateImages(argv[0]);
+        break;
+      default:
+        console.log(
+          chalk.red(
+            'Arguments that are not unique files are not supported yet!'
+          )
+        );
+        break;
+    }
   } else {
-    console.log(
-      chalk.red('Folders and multiple images are not supported yet!')
-    );
+    console.log(chalk.red('Multiple arguments are not supported yet!'));
   }
 })();
