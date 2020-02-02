@@ -15,7 +15,15 @@
     "add-image": "node scripts/images.js",
     "add-component": "hygen componentGenerator new",
     "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules && yarn",
-    "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook"
+    "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
+    "ios:patch": "cd ios && fastlane incrementVersionNumber bump_type:patch && cd ..",
+    "ios:minor": "cd ios &&  fastlane incrementVersionNumber bump_type:minor && cd..",
+    "ios:major": "cd ios &&  fastlane incrementVersionNumber bump_type:major && cd..",
+    "ios:beta": "cd ios &&  fastlane beta && cd..",
+    "ios:matchPull": "cd ios &&  fastlane matchPull && cd..",
+    "ios:addTesters": "cd ios &&  fastlane addTesters && cd..",
+    "android:beta": "cd android &&  fastlane beta && cd..",
+    "android:deploy": "cd android &&  fastlane deploy && cd.."
   },
   "husky": {
     "hooks": {

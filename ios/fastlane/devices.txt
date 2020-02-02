@@ -1,0 +1,2 @@
+Device ID	Device Name
+theDeviceIdGoesHere	Gab
