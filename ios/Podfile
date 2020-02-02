@@ -44,6 +44,10 @@ target 'rnStarter' do
 
   pod 'RNCMaskedView', :path => '../node_modules/@react-native-community/masked-view'
 
+
+
+  pod 'RNDevMenu', :path => '../node_modules/react-native-dev-menu'
+
   target 'rnStarterTests' do
     inherit! :search_paths
     # Pods for testing
