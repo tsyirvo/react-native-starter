@@ -21,7 +21,9 @@
     "ios:major": "cd ios &&  fastlane incrementVersionNumber bump_type:major && cd..",
     "ios:beta": "cd ios &&  fastlane beta && cd..",
     "ios:matchPull": "cd ios &&  fastlane matchPull && cd..",
-    "ios:addTesters": "cd ios &&  fastlane addTesters && cd.."
+    "ios:addTesters": "cd ios &&  fastlane addTesters && cd..",
+    "android:beta": "cd android &&  fastlane beta && cd..",
+    "android:deploy": "cd android &&  fastlane deploy && cd.."
   },
   "husky": {
     "hooks": {
