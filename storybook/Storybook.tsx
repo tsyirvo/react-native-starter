@@ -1,4 +1,5 @@
-/* eslint-disable */
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
 
 import React, { Component, ComponentClass, ReactNode } from 'react';
 
