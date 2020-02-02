@@ -39,6 +39,21 @@ platform :ios do
     )
   end
 
+  ### Register new devices to the Apple portal ##
+  desc "Add new testers devices IDs to the profiles"
+  lane :addTesters do
+    register_devices(
+      devices_file: "./fastlane/devices.txt"
+    )
+    sync_code_signing(
+      app_identifier: "#{ENV["IOS_APP_ID"]}",
+      type: "#{ENV["MATCH_TYPE"]}",
+      git_url: "#{ENV["MATCH_GIT_URL"]}",
+      git_branch: "#{ENV["MATCH_GIT_BRANCH"]}",
+      force_for_new_devices: true
+    )
+  end
+
   ### Building the app ##
   desc "Build the app"
   lane :buildApp do
