@@ -10,6 +10,8 @@ import theme from 'styles/theme';
 
 import { getRatio } from '@utils/dimensions';
 
+import Storybook from './storybook/Storybook';
+
 enableScreens();
 getRatio();
 
@@ -22,11 +24,13 @@ const client = new ApolloClient({
 });
 
 const Root = () => (
-  <ThemeProvider theme={theme}>
-    <ApolloProvider client={client}>
-      <AppContainer />
-    </ApolloProvider>
-  </ThemeProvider>
+  <Storybook>
+    <ThemeProvider theme={theme}>
+      <ApolloProvider client={client}>
+        <AppContainer />
+      </ApolloProvider>
+    </ThemeProvider>
+  </Storybook>
 );
 
 export default Root;
