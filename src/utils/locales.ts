@@ -1,25 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prefer-destructuring */
 
 import { Platform, NativeModules } from 'react-native';
 
 import translations from '../../data/i18n.json';
 
-const getDeviceLanguage = () => {
-  if (
-    Platform.OS === 'ios' &&
-    NativeModules.SettingsManager &&
-    NativeModules.SettingsManager.settings.AppleLocale.substr(0, 2) === 'fr'
-  ) {
-    return 'fr';
+type supportedLanguages = 'en' | 'fr';
+
+const getDeviceLanguage = (): supportedLanguages => {
+  const { SettingsManager, I18nManager } = NativeModules;
+  let deviceLocale;
+
+  switch (Platform.OS) {
+    case 'ios':
+      deviceLocale = SettingsManager?.settings?.AppleLocale?.substr(0, 2);
+      if (!deviceLocale)
+        deviceLocale = SettingsManager?.settings?.AppleLanguages[0];
+      break;
+    case 'android':
+    default:
+      deviceLocale = I18nManager?.localeIdentifier?.substr(0, 2);
+      break;
   }
 
-  if (
-    Platform.OS === 'android' &&
-    NativeModules.I18nManager &&
-    NativeModules.I18nManager.localeIdentifier.substr(0, 2) === 'fr'
-  ) {
-    return 'fr';
-  }
+  if (deviceLocale === 'fr') return deviceLocale;
 
   return 'en';
 };
