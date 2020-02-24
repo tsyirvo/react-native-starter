@@ -37,18 +37,17 @@ const getString = (
 const doesStartsWithVowel = (param: string) => {
   const letter = param[0].toLowerCase();
 
-  if (
-    letter === 'a' ||
-    letter === 'e' ||
-    letter === 'i' ||
-    letter === 'o' ||
-    letter === 'u' ||
-    letter === 'y'
-  ) {
-    return true;
+  switch (letter) {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
+    case 'y':
+      return true;
+    default:
+      return false;
   }
-
-  return false;
 };
 
 const getTranslations = (
@@ -60,7 +59,7 @@ const getTranslations = (
   const lang = getDeviceLanguage();
   let newKey = key;
 
-  // Handle elision of the translation depending on a param
+  // Handle elision of the translation depending on a param (mainly for french locales)
   if (!!elisionParam && params && params[elisionParam]) {
     newKey = doesStartsWithVowel(params[elisionParam])
       ? `${key}_vowel`
