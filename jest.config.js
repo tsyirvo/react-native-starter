@@ -29,14 +29,11 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
   // This is needed to have a global window object in our tests
   testEnvironment: 'jsdom',
-  testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/'],
-  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
+  testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/', 'e2e/'],
+  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$',
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
     '\\.(ts|tsx)$': 'ts-jest',
   },
-  transformIgnorePatterns: [
-    `node_modules/(?!(${externalDependencies.join('|')})/)`,
-  ],
   snapshotSerializers: ['enzyme-to-json/serializer'],
 };
