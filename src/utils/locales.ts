@@ -55,7 +55,7 @@ const getTranslations = (
   key: string,
   params?: { [key: string]: any },
   elisionParam?: string
-) => {
+): string => {
   const lang = getDeviceLanguage();
   let newKey = key;
 

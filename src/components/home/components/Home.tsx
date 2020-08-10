@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, ReactElement } from 'react';
 
 import { INavigationTypes } from 'types/navigation.types';
 
@@ -14,7 +14,7 @@ interface IProps {
 
 const GITHUB_TOKEN = '';
 
-const Home = ({ navigation }: IProps) => {
+const Home = ({ navigation }: IProps): ReactElement => {
   const goToDetails = useCallback(() => navigation.navigate('Details'), []);
   const goToGithub = useCallback(() => navigation.navigate('Github'), []);
 

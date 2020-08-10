@@ -11,11 +11,3 @@ exports[`Button shared component should render correctly with a children 1`] = `
   </Text>
 </TouchableOpacity>
 `;
-
-exports[`Button shared component should render correctly without children 1`] = `
-<TouchableOpacity
-  activeOpacity={0.2}
-  onPress={[MockFunction]}
-  testID="button"
-/>
-`;

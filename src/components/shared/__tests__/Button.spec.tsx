@@ -9,14 +9,6 @@ describe('Button shared component', () => {
   const props = { onPress: jest.fn(), testID: 'button' };
   const child = <Text>Some text</Text>;
 
-  it('should render correctly without children', () => {
-    // When
-    const wrapper = shallow(<Button {...props} />);
-
-    // Then
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('should render correctly with a children', () => {
     // When
     const wrapper = shallow(<Button {...props}>{child}</Button>);
@@ -30,7 +22,7 @@ describe('Button shared component', () => {
     const wrapper = shallow(<Button {...props}>{child}</Button>);
 
     wrapper
-      .findWhere(node => node.prop('testID') === 'button')
+      .findWhere((node) => node.prop('testID') === 'button')
       .simulate('press');
 
     // Then

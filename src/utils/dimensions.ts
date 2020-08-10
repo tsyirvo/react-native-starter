@@ -8,7 +8,7 @@ const heightIphoneX = 812;
 let heightRatio = 1;
 let widthRatio = 1;
 
-export const getRatio = () => {
+export const getRatio = (): void => {
   if (height !== heightIphoneX) {
     heightRatio = height / heightIphoneX;
   }

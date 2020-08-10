@@ -22,7 +22,7 @@ describe('Details page component', () => {
     const wrapper = shallow(<Details {...props} />);
 
     wrapper
-      .findWhere(node => node.prop('testID') === 'back_button')
+      .findWhere((node) => node.prop('testID') === 'back_button')
       .simulate('press');
 
     // Then

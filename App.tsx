@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { enableScreens } from 'react-native-screens';
 import ApolloClient from 'apollo-boost';
@@ -23,7 +23,7 @@ const client = new ApolloClient({
   headers: { Authorization: `bearer ${GITHUB_TOKEN}` },
 });
 
-const Root = () => (
+const Root = (): ReactElement => (
   <Storybook>
     <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>

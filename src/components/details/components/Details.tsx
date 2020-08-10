@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, ReactElement } from 'react';
 
 import { INavigationTypes } from 'types/navigation.types';
 
@@ -12,7 +12,7 @@ interface IProps {
   navigation: INavigationTypes;
 }
 
-const Details = ({ navigation }: IProps) => {
+const Details = ({ navigation }: IProps): ReactElement => {
   const goBack = useCallback(() => navigation.goBack(null), []);
 
   return (
