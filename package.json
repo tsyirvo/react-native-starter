@@ -27,14 +27,13 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS && lint-staged",
-      "pre-commit": "yarn tsc"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "yarn lint",
-      "yarn test:staged",
       "yarn prettify"
     ]
   },
