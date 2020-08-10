@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 
 import theme from 'styles/theme';
 
-// import './rn-addons';
+import './rn-addons';
 
 // import all stories
 configure(() => {
