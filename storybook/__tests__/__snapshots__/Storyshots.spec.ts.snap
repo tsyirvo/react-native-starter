@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Button with text 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#00aced",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    alignItems="center"
+    flex={1}
+    justifyContent="center"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+      testID=""
+    >
+      <Text
+        style={
+          Array [
+            Object {},
+          ]
+        }
+      >
+        Default story
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Storyshots Text colors 1`] = `
+<View
+  alignItems="center"
+  flex={1}
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <Text
+    fontSize={4}
+    style={
+      Array [
+        Object {
+          "fontSize": 24,
+        },
+      ]
+    }
+  >
+    Some text
+  </Text>
+</View>
+`;

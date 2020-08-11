@@ -1,21 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button shared component should render correctly with a children 1`] = `
+exports[`Shared primitives Button component should render correctly with a text children 1`] = `
 <TouchableOpacity
   activeOpacity={0.2}
   onPress={[MockFunction]}
-  testID="button"
+  testID=""
 >
   <Text>
     Some text
   </Text>
 </TouchableOpacity>
-`;
-
-exports[`Button shared component should render correctly without children 1`] = `
-<TouchableOpacity
-  activeOpacity={0.2}
-  onPress={[MockFunction]}
-  testID="button"
-/>
 `;

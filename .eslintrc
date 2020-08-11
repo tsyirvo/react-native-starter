@@ -31,7 +31,7 @@
 
     "@typescript-eslint/indent": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/interface-name-prefix": [2, { "prefixWithI": "always" }]
+    "@typescript-eslint/ban-ts-comment": 1
   },
   "globals": {
     "fetch": true
@@ -59,7 +59,8 @@
           "@types": "./src/types",
           "@routes": "./src/routes",
           "@styles": "./src/styles",
-          "@utils": "./src/utils"
+          "@utils": "./src/utils",
+          "@tests": "./src/tests"
         }
       },
       "react-native": {},

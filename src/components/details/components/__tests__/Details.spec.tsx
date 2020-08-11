@@ -2,6 +2,9 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+import { fireEvent } from '@testing-library/react-native';
+
+import render from '@tests/utils';
 
 import Details from '../Details';
 
@@ -19,13 +22,11 @@ describe('Details page component', () => {
 
   it('should trigger the goBack method when the button is pressed', () => {
     // When
-    const wrapper = shallow(<Details {...props} />);
+    const { getByTestId } = render(<Details {...props} />);
 
-    wrapper
-      .findWhere(node => node.prop('testID') === 'back_button')
-      .simulate('press');
+    fireEvent.press(getByTestId('back_button'));
 
     // Then
-    expect(props.navigation.goBack.mock.calls.length).toBe(1);
+    expect(props.navigation.goBack).toHaveBeenCalled();
   });
 });

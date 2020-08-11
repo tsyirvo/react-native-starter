@@ -1,7 +1,11 @@
 /* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/ban-ts-ignore */
 
-import React, { Component, ComponentClass, ReactNode } from 'react';
+import React, {
+  Component,
+  ComponentClass,
+  ReactNode,
+  ReactElement,
+} from 'react';
 
 const initialState = {
   isStorybookShown: false,
@@ -15,15 +19,15 @@ class Storybook extends Component<Props, State> {
 
   StorybookUIRoot?: ComponentClass;
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (__DEV__) {
-      import('react-native-dev-menu').then(DevMenu => {
-        // @ts-ignore
+      import('react-native-dev-menu').then((DevMenu) => {
+        // @ts-expect-error
         DevMenu.addItem('Toggle Storybook', () => {
-          import('.').then(StorybookUI => {
+          import('.').then((StorybookUI) => {
             this.StorybookUIRoot = StorybookUI.StorybookUIRootView;
 
-            this.setState(state => ({
+            this.setState((state) => ({
               ...state,
               isStorybookShown: !state.isStorybookShown,
             }));
@@ -33,7 +37,7 @@ class Storybook extends Component<Props, State> {
     }
   }
 
-  render() {
+  render(): ReactElement {
     const { isStorybookShown } = this.state;
     const { children } = this.props;
 

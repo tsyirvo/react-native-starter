@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 import { Query, QueryResult } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components/native';
@@ -25,13 +25,13 @@ const query = gql`
 `;
 
 class Github extends Component<IProps> {
-  _goBack = () => {
+  _goBack = (): void => {
     const { navigation } = this.props;
 
     navigation.goBack(null);
   };
 
-  render() {
+  render(): ReactElement {
     return (
       <Box flex={1} justifyContent="center" alignItems="center">
         <Query query={query}>
