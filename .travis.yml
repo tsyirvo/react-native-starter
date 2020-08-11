@@ -1,0 +1,45 @@
+env:
+  global:
+    - NODE_VERSION=10
+
+cache:
+  - npm
+  - cocoapods
+
+stages:
+  - name: tests_and_lint
+  - name: e2e_ios
+
+addons:
+  homebrew:
+    packages:
+      - applesimutils
+    taps: wix/brew
+
+install:
+  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
+  - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  - nvm install $NODE_VERSION
+  - nvm use $NODE_VERSION
+  - nvm alias default $NODE_VERSION
+  - npm install >/dev/null 2>&1
+
+jobs:
+  include:
+    - stage: tests_and_lint
+      language: node_js
+      script:
+        - npm run test
+        - npm run tsc
+        - npm run lint
+    - stage: e2e_ios
+      language: objective-c
+      os: osx
+      osx_image: xcode11.6
+      script:
+        - gem install xcpretty >/dev/null 2>&1
+        - npm install -g react-native-cli >/dev/null 2>&1
+        - npm install -g detox-cli >/dev/null 2>&1
+        - cd ios; pod install >/dev/null 2>&1; cd ..;
+        - ./scripts/ci/build.ios.sh
+        - detox test --configuration ios.sim.release --cleanup
