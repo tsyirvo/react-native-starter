@@ -1,45 +1,83 @@
-env:
-  global:
-    - NODE_VERSION=10
-
-cache:
-  - npm
-  - cocoapods
-
 stages:
   - name: tests_and_lint
   - name: e2e_ios
+  # - name: e2e_android
 
-addons:
-  homebrew:
-    packages:
-      - applesimutils
-    taps: wix/brew
-
-install:
-  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
-  - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  - nvm install $NODE_VERSION
-  - nvm use $NODE_VERSION
-  - nvm alias default $NODE_VERSION
-  - npm install >/dev/null 2>&1
+cache:
+  directories:
+    - 'node_modules'
 
 jobs:
   include:
+    #
+    # Run Jest test, Typescript check and ESlint
+    #
     - stage: tests_and_lint
       language: node_js
+      cache: npm
+      install:
+        - . ./scripts/ci/install.nvm.sh
+        - npm install >/dev/null 2>&1
       script:
         - npm run test
         - npm run tsc
         - npm run lint
+    #
+    # E2E test for iOS
+    #
     - stage: e2e_ios
       language: objective-c
+      cache:
+        npm: true
+        cocoapods: true
+        bundler: true
+      addons:
+        homebrew:
+          packages:
+            - applesimutils
+          taps: wix/brew
       os: osx
       osx_image: xcode11.6
-      script:
+      install:
+        - . ./scripts/ci/install.nvm.sh
         - gem install xcpretty >/dev/null 2>&1
-        - npm install -g react-native-cli >/dev/null 2>&1
-        - npm install -g detox-cli >/dev/null 2>&1
+        - ./scripts/ci/install.dependencies.sh
         - cd ios; pod install >/dev/null 2>&1; cd ..;
-        - ./scripts/ci/build.ios.sh
-        - detox test --configuration ios.sim.release --cleanup
+      script:
+        - ./scripts/ci/detox.ios.sh
+    #
+    # E2E test for Android
+    #
+    # - stage: e2e_android
+    #   language: android
+    #   env:
+    #     - ADB_INSTALL_TIMEOUT=8
+    #     - ANDROID_HOME=/usr/local/android-sdk
+    #     - ANDROID_SDK_ROOT=/usr/local/android-sdk
+    #     - TOOLS=${ANDROID_HOME}/tools
+    #     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+    #   cache: npm
+    #   android:
+    #     components:
+    #       - tools
+    #       - platform-tools
+    #       - tools
+    #       - build-tools-28.0.3
+    #       - android-28
+    #       - extra-google-m2repository
+    #       - extra-android-m2repository
+    #       - sys-img-x86-android-28
+    #   licenses:
+    #     - 'android-sdk-license-.+'
+    #     - 'android-sdk-preview-license-.+'
+    #     - 'google-gdk-license-.+'
+    #   before_install:
+    #     - yes | sdkmanager "build-tools;28.0.3" >/dev/null 2>&1
+    #     - yes | sdkmanager "platforms;android-28" >/dev/null 2>&1
+    #   install:
+    #     - . ./scripts/ci/install.nvm.sh
+    #     - ./scripts/ci/install.dependencies.sh
+    #   before_script:
+    #     - ./scripts/ci/emulator.android.sh
+    #   script:
+    #     - ./scripts/ci/detox.android.sh
