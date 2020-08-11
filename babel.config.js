@@ -28,6 +28,7 @@ module.exports = {
           '@routes': './src/routes',
           '@styles': './src/styles',
           '@utils': './src/utils',
+          '@tests': './src/tests',
         },
       },
     ],

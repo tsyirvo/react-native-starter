@@ -59,7 +59,8 @@
           "@types": "./src/types",
           "@routes": "./src/routes",
           "@styles": "./src/styles",
-          "@utils": "./src/utils"
+          "@utils": "./src/utils",
+          "@tests": "./src/tests"
         }
       },
       "react-native": {},

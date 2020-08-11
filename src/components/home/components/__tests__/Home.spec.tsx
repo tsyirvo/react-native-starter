@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React from 'react';
+import { fireEvent } from '@testing-library/react-native';
 import { shallow } from 'enzyme';
+
+import render from '@tests/utils';
 
 import Home from '../Home';
 
@@ -17,15 +20,13 @@ describe('Home page component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should trigger the goBack method when the button is pressed', () => {
+  it('should trigger the navigate method when the button is pressed', () => {
     // When
-    const wrapper = shallow(<Home {...props} />);
+    const { getByTestId } = render(<Home {...props} />);
 
-    wrapper
-      .findWhere((node) => node.prop('testID') === 'goto_details')
-      .simulate('press');
+    fireEvent.press(getByTestId('goto_details'));
 
     // Then
-    expect(props.navigation.navigate.mock.calls.length).toBe(1);
+    expect(props.navigation.navigate).toHaveBeenCalled();
   });
 });

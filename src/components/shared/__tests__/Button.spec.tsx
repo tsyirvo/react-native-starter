@@ -1,15 +1,18 @@
 import React from 'react';
 import { Text } from 'react-native';
+import { fireEvent } from '@testing-library/react-native';
 import { shallow } from 'enzyme';
+
+import render from '@tests/utils';
 
 import Button from '../Button';
 
-describe('Button shared component', () => {
+describe('Shared primitives Button component', () => {
   // given
-  const props = { onPress: jest.fn(), testID: 'button' };
+  const props = { onPress: jest.fn() };
   const child = <Text>Some text</Text>;
 
-  it('should render correctly with a children', () => {
+  it('should render correctly with a text children', () => {
     // When
     const wrapper = shallow(<Button {...props}>{child}</Button>);
 
@@ -17,15 +20,13 @@ describe('Button shared component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should trigger the onPress props', () => {
+  it('should trigger the onPress props when pressed', () => {
     // When
-    const wrapper = shallow(<Button {...props}>{child}</Button>);
+    const { getByText } = render(<Button {...props}>{child}</Button>);
 
-    wrapper
-      .findWhere((node) => node.prop('testID') === 'button')
-      .simulate('press');
+    fireEvent.press(getByText('Some text'));
 
     // Then
-    expect(props.onPress.mock.calls.length).toBe(1);
+    expect(props.onPress).toHaveBeenCalled();
   });
 });

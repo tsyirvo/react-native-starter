@@ -22,7 +22,8 @@
       "@types/*": ["./types/*"],
       "@routes/*": ["./routes/*"],
       "@styles/*": ["./styles/*"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@tests/*": ["./tests/*"]
     }
   },
   "exclude": [

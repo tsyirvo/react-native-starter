@@ -24,9 +24,17 @@ module.exports = {
     '@routes(.*)$': '<rootDir>/src/routes/$1',
     '@styles(.*)$': '<rootDir>/src/styles/$1',
     '@utils(.*)$': '<rootDir>/src/utils/$1',
+    '@tests(.*)$': '<rootDir>/src/tests/$1',
   },
   preset: 'react-native',
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
+  setupFilesAfterEnv: [
+    '<rootDir>/src/tests/setupTests.js',
+    '@testing-library/jest-native/extend-expect',
+  ],
+  transformIgnorePatterns: [
+    'node_modules/(?!(jest-)?react-native|@?react-navigation)',
+  ],
+  setupFiles: ['./node_modules/react-native-gesture-handler/jestSetup.js'],
   // This is needed to have a global window object in our tests
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/', 'e2e/'],
