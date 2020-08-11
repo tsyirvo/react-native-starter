@@ -89,7 +89,7 @@
     "babel-plugin-transform-remove-console": "6.9.4",
     "chalk": "4.1.0",
     "csvtojson": "2.0.10",
-    "detox": "15.1.4",
+    "detox": "17.3.5",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.3",
     "enzyme-to-json": "3.5.0",
@@ -108,6 +108,7 @@
     "hygen": "6.0.4",
     "imageoptim": "0.5.0",
     "jest": "25.5.4",
+    "jest-circus": "26.3.0",
     "lint-staged": "10.2.11",
     "metro-react-native-babel-preset": "0.58.0",
     "ora": "5.0.0",
@@ -121,27 +122,5 @@
     "ts-jest": "25.5.1",
     "typescript": "3.9.7",
     "util": "0.12.3"
-  },
-  "detox": {
-    "test-runner": "jest",
-    "runner-config": "e2e/config.json",
-    "configurations": {
-      "ios.sim.debug": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/rnStarter.app",
-        "build": "xcodebuild -workspace ios/rnStarter.xcworkspace -scheme rnStarter -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
-        "type": "ios.simulator",
-        "device": {
-          "type": "iPhone X"
-        }
-      },
-      "android.emu.debug": {
-        "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
-        "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
-        "type": "android.emulator",
-        "device": {
-          "avdName": "Pixel_3_API_28"
-        }
-      }
-    }
   }
 }
