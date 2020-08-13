@@ -1,16 +1,16 @@
+env:
+  global:
+    - NODE_VERSION=10
+
 stages:
   - name: tests_and_lint
   - name: e2e_ios
   # - name: e2e_android
 
-cache:
-  directories:
-    - 'node_modules'
-
-jobs:
+matrix:
   include:
     #
-    # Run Jest test, Typescript check and ESlint
+    # Run Jest test, Typescript check, ESlint and DangerJS
     #
     - stage: tests_and_lint
       language: node_js
@@ -28,10 +28,6 @@ jobs:
     #
     - stage: e2e_ios
       language: objective-c
-      cache:
-        npm: true
-        cocoapods: true
-        bundler: true
       addons:
         homebrew:
           packages:
@@ -39,10 +35,14 @@ jobs:
           taps: wix/brew
       os: osx
       osx_image: xcode11.6
+      cache:
+        directories:
+          - node_modules
       install:
         - . ./scripts/ci/install.nvm.sh
         - gem install xcpretty >/dev/null 2>&1
-        - ./scripts/ci/install.dependencies.sh
+        - gem install xcpretty-travis-formatter >/dev/null 2>&1
+        - npm install >/dev/null 2>&1
         - cd ios; pod install >/dev/null 2>&1; cd ..;
       script:
         - ./scripts/ci/detox.ios.sh
@@ -57,7 +57,9 @@ jobs:
     #     - ANDROID_SDK_ROOT=/usr/local/android-sdk
     #     - TOOLS=${ANDROID_HOME}/tools
     #     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-    #   cache: npm
+    #   cache:
+    #     directories:
+    #       - node_modules
     #   android:
     #     components:
     #       - tools
@@ -77,7 +79,7 @@ jobs:
     #     - yes | sdkmanager "platforms;android-28" >/dev/null 2>&1
     #   install:
     #     - . ./scripts/ci/install.nvm.sh
-    #     - ./scripts/ci/install.dependencies.sh
+    #     - npm install >/dev/null 2>&1
     #   before_script:
     #     - ./scripts/ci/emulator.android.sh
     #   script:
