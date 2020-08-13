@@ -19,9 +19,10 @@ jobs:
         - . ./scripts/ci/install.nvm.sh
         - npm install >/dev/null 2>&1
       script:
-        - npm run test
-        - npm run tsc
-        - npm run lint
+        - yarn test
+        - yarn tsc
+        - yarn lint
+        - yarn danger ci
     #
     # E2E test for iOS
     #
