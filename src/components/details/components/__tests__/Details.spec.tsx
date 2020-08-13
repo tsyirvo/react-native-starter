@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import { fireEvent } from '@testing-library/react-native';
