@@ -1,5 +1,9 @@
 # React Native Starter
 
+[![Build Status](https://travis-ci.org/tsyirvo/react-native-starter.svg?branch=develop)](https://travis-ci.org/tsyirvo/react-native-starter)
+
+---
+
 ## The basics
 
 ### Dependencies and installation

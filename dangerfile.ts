@@ -106,21 +106,15 @@ if (!prComponentsHaveStories) {
 
 /* ***** *****  Warn about config changes  ***** ***** */
 
-const prConfigFiles = prFiles.filter(configOnlyFilter);
+const prConfigFiles = prFiles.some(configOnlyFilter);
 
 if (prConfigFiles) {
-  warn(
-    `Beware, ${
-      prConfigFiles.length === 1
-        ? 'a configuration file has'
-        : 'some configuration files have'
-    } been modified.`
-  );
+  warn(`Beware, some configuration files have been modified.`);
 }
 
 /* ***** *****  Warn about potentially CodePush incompatible changes   ***** ***** */
 
-const potentialBreak = prFiles.filter(breakingOnlyFilter);
+const potentialBreak = prFiles.some(breakingOnlyFilter);
 
 if (potentialBreak) {
   warn(
