@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-echo no | android create avd --force -n test -t android-28 --abi default/x86
-emulator -avd test -no-audio -no-window &
+echo no | avdmanager create avd --force -n test  -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
+emulator -verbose -avd test -no-accel -no-snapshot -no-window -noaudio -camera-back none -camera-front none -selinux permissive -qemu -m 2048 &
 android-wait-for-emulator
 adb shell input keyevent 82 &

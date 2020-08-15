@@ -82,9 +82,10 @@ if (pr.body.length < 10) {
 /* ***** *****  Check if tests have been forgotten  ***** ***** */
 
 const prSrcChanges = prFiles.some((p) => includes(p, 'src/'));
+const prAndroidSrcChanges = prFiles.some((p) => includes(p, 'app/src/'));
 const prTestChanges = prFiles.some((p) => includes(p, '__tests__/'));
 
-if (prSrcChanges && !prTestChanges) {
+if (prSrcChanges && !prAndroidSrcChanges && !prTestChanges) {
   warn(
     'This PR does not include changes to tests, even though it affects app code.'
   );
