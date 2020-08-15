@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0FDE13A3159A8D4DBEC3EEBC /* libPods-rnStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC3B3EB94B367CC75AC04C3 /* libPods-rnStarter.a */; };
+		103C002C33DB635694EEC1DE /* libPods-rnStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DB9B8D87E29C7350E9F7B2 /* libPods-rnStarter.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -30,7 +30,6 @@
 		1EEDFEA8EEA4A17EB9070BF8 /* Pods-rnStarter-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarter-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-rnStarter-tvOSTests/Pods-rnStarter-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		3D12095EE462C83DA055AA6A /* Pods-rnStarter-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarter-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-rnStarter-tvOS/Pods-rnStarter-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5536EB91DA4931077896CCB8 /* libPods-rnStarterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FC3B3EB94B367CC75AC04C3 /* libPods-rnStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D8D6D72AFEC41A6CE92F2B /* Pods-rnStarter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarter.debug.xcconfig"; path = "Target Support Files/Pods-rnStarter/Pods-rnStarter.debug.xcconfig"; sourceTree = "<group>"; };
 		83B5570888130D408694BB41 /* Pods-rnStarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarter.release.xcconfig"; path = "Target Support Files/Pods-rnStarter/Pods-rnStarter.release.xcconfig"; sourceTree = "<group>"; };
 		8D8E3E40E82BEE4CB1979763 /* libPods-rnStarter-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +37,7 @@
 		AC53A1BE9BF4C3BADD6765F9 /* libPods-rnStarter-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BD8BF624E83A870044E31D /* rnStarter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rnStarter-Bridging-Header.h"; sourceTree = "<group>"; };
 		B6BD8BFB24E83E2F0044E31D /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
+		B8DB9B8D87E29C7350E9F7B2 /* libPods-rnStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5A8B98FEB365C44CAFE472 /* Pods-rnStarterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarterTests.release.xcconfig"; path = "Target Support Files/Pods-rnStarterTests/Pods-rnStarterTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FDE13A3159A8D4DBEC3EEBC /* libPods-rnStarter.a in Frameworks */,
+				103C002C33DB635694EEC1DE /* libPods-rnStarter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,10 +109,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				5FC3B3EB94B367CC75AC04C3 /* libPods-rnStarter.a */,
 				AC53A1BE9BF4C3BADD6765F9 /* libPods-rnStarter-tvOS.a */,
 				8D8E3E40E82BEE4CB1979763 /* libPods-rnStarter-tvOSTests.a */,
 				5536EB91DA4931077896CCB8 /* libPods-rnStarterTests.a */,
+				B8DB9B8D87E29C7350E9F7B2 /* libPods-rnStarter.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -160,7 +160,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				7E56BBDAB6C52481C63905B0 /* [CP] Copy Pods Resources */,
+				1BBC9899E63CCC8772CE2C1E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -229,9 +229,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "cd $PROJECT_DIR/..\nexport NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		7E56BBDAB6C52481C63905B0 /* [CP] Copy Pods Resources */ = {
+		1BBC9899E63CCC8772CE2C1E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
