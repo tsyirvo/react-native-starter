@@ -6,7 +6,7 @@ type Props = {
   delay?: number;
 };
 
-const Fallback = ({ delay = 500 }: Props): ReactElement => {
+const Fallback = ({ delay }: Props): ReactElement => {
   const [showLoading, toggleLoading] = useState(false);
 
   useEffect(() => {
@@ -17,6 +17,10 @@ const Fallback = ({ delay = 500 }: Props): ReactElement => {
   }, [delay]);
 
   return <>{showLoading && <Text>Loading ...</Text>}</>;
+};
+
+Fallback.defaultProps = {
+  delay: 500,
 };
 
 export default Fallback;
