@@ -1,8 +1,6 @@
 import React, { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { enableScreens } from 'react-native-screens';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -19,21 +17,11 @@ import Storybook from './storybook/Storybook';
 enableScreens();
 getRatio();
 
-const API = '';
-const GITHUB_TOKEN = '';
-
-const client = new ApolloClient({
-  uri: API,
-  headers: { Authorization: `bearer ${GITHUB_TOKEN}` },
-});
-
 const Root = (): ReactElement => (
   <Storybook>
     <ThemeProvider theme={theme}>
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <ApolloProvider client={client}>
-          <AppContainer />
-        </ApolloProvider>
+        <AppContainer />
       </SafeAreaProvider>
     </ThemeProvider>
   </Storybook>

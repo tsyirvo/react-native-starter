@@ -13,11 +13,8 @@ interface IProps {
   navigation: INavigationTypes;
 }
 
-const GITHUB_TOKEN = '';
-
 const Home = ({ navigation }: IProps): ReactElement => {
   const goToDetails = useCallback(() => navigation.navigate('Details'), []);
-  const goToGithub = useCallback(() => navigation.navigate('Github'), []);
 
   return (
     <SafeView>
@@ -29,12 +26,6 @@ const Home = ({ navigation }: IProps): ReactElement => {
         <Button testID="goto_details" onPress={goToDetails}>
           <Text mt={3}>{getTranslations('home', 'navigation_details')}</Text>
         </Button>
-
-        {GITHUB_TOKEN !== '' && (
-          <Button onPress={goToGithub}>
-            <Text mt={3}>{getTranslations('home', 'navigation_github')}</Text>
-          </Button>
-        )}
       </Box>
     </SafeView>
   );

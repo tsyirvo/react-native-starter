@@ -2,29 +2,15 @@
   "en": {
     "home": {
       "page_title": "Page d'accueil",
-      "navigation_details": "Aller à la page détails",
-      "navigation_github": "Aller à la page d'info Github"
+      "navigation_details": "Aller à la page détails"
     },
-    "details": { "page_title": "Détails", "navigation_back": "Retour" },
-    "github": {
-      "page_title": "Github",
-      "navigation_back": "Retour",
-      "profil_name_consonant": "Profil de",
-      "profil_name_vowel": "Profil d'"
-    }
+    "details": { "page_title": "Détails", "navigation_back": "Retour" }
   },
   "fr": {
     "home": {
       "page_title": "Home page",
-      "navigation_details": "Go to the details page",
-      "navigation_github": "Go to the details Github info page"
+      "navigation_details": "Go to the details page"
     },
-    "details": { "page_title": "Details", "navigation_back": "Back" },
-    "github": {
-      "page_title": "Github",
-      "navigation_back": "Back",
-      "profil_name_consonant": "Profil of",
-      "profil_name_vowel": "Profil of"
-    }
+    "details": { "page_title": "Details", "navigation_back": "Back" }
   }
 }
