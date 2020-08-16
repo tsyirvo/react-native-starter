@@ -1,2 +1,6 @@
-export { default as Home } from 'components/home';
-export { default as Details } from 'components/details';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('components/home'));
+const Details = lazy(() => import('components/details'));
+
+export { Home, Details };

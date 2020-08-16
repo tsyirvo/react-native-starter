@@ -12,19 +12,19 @@ import theme from 'styles/theme';
 
 import { getRatio } from '@utils/dimensions';
 
-import Storybook from './storybook/Storybook';
+import StorybookProvider from './storybook/Storybook';
 
 enableScreens();
 getRatio();
 
 const Root = (): ReactElement => (
-  <Storybook>
+  <StorybookProvider>
     <ThemeProvider theme={theme}>
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <AppContainer />
       </SafeAreaProvider>
     </ThemeProvider>
-  </Storybook>
+  </StorybookProvider>
 );
 
 export default Root;

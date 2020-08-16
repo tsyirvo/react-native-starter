@@ -14,7 +14,7 @@ interface IProps {
 }
 
 const Details = ({ navigation }: IProps): ReactElement => {
-  const goBack = useCallback(() => navigation.goBack(null), []);
+  const goBack = useCallback(() => navigation.goBack(), []);
 
   return (
     <SafeView>
