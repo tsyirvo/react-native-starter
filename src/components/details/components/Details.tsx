@@ -1,7 +1,6 @@
 import React, { useCallback, ReactElement } from 'react';
 
-import { INavigationTypes } from 'types/navigation.types';
-
+import { DetailsScreenNavigationProp } from '@routes/routes.types';
 import getTranslations from '@utils/locales';
 
 import Button from '@shared/Button';
@@ -10,7 +9,7 @@ import Text from '@shared/Text';
 import SafeView from '@shared/SafeView';
 
 interface IProps {
-  navigation: INavigationTypes;
+  navigation: DetailsScreenNavigationProp;
 }
 
 const Details = ({ navigation }: IProps): ReactElement => {

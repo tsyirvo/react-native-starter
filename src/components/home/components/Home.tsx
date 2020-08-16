@@ -1,7 +1,6 @@
 import React, { useCallback, ReactElement } from 'react';
 
-import { INavigationTypes } from 'types/navigation.types';
-
+import { HomeScreenNavigationProp } from '@routes/routes.types';
 import getTranslations from '@utils/locales';
 
 import Button from '@shared/Button';
@@ -9,11 +8,11 @@ import Box from '@shared/Box';
 import Text from '@shared/Text';
 import SafeView from '@shared/SafeView';
 
-interface IProps {
-  navigation: INavigationTypes;
-}
+type Props = {
+  navigation: HomeScreenNavigationProp;
+};
 
-const Home = ({ navigation }: IProps): ReactElement => {
+const Home = ({ navigation }: Props): ReactElement => {
   const goToDetails = useCallback(() => navigation.navigate('Details'), []);
 
   return (
