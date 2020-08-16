@@ -13,7 +13,6 @@ import java.util.List;
 
 import com.zoontek.rndevmenu.RNDevMenuPackage;
 import org.reactnative.maskedview.RNCMaskedViewPackage;
-import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.swmansion.rnscreens.RNScreensPackage;

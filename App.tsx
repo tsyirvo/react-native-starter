@@ -3,6 +3,10 @@ import { ThemeProvider } from 'styled-components';
 import { enableScreens } from 'react-native-screens';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from 'react-native-safe-area-context';
 
 import AppContainer from 'routes/routes';
 
@@ -26,9 +30,11 @@ const client = new ApolloClient({
 const Root = (): ReactElement => (
   <Storybook>
     <ThemeProvider theme={theme}>
-      <ApolloProvider client={client}>
-        <AppContainer />
-      </ApolloProvider>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <ApolloProvider client={client}>
+          <AppContainer />
+        </ApolloProvider>
+      </SafeAreaProvider>
     </ThemeProvider>
   </Storybook>
 );
