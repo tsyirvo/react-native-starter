@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Pressable } from 'react-native';
 
 interface IProps {
   onPress: () => void;
@@ -8,9 +8,9 @@ interface IProps {
 }
 
 const Button = ({ onPress, children, testID }: IProps): ReactElement => (
-  <TouchableOpacity testID={testID} onPress={onPress}>
+  <Pressable testID={testID} onPress={onPress}>
     {children}
-  </TouchableOpacity>
+  </Pressable>
 );
 
 Button.defaultProps = {
