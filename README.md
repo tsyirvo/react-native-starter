@@ -66,13 +66,13 @@ For Android: in the `Build Variants` tab, select the environment and build mode 
 
 [React Navigation](https://reactnavigation.org/)
 
-[Apollo](https://www.apollographql.com/docs/react/)
+[Styled Components](https://styled-components.com/)
 
 [Styled System](https://jxnblk.com/styled-system/)
 
-[React Native Config](https://github.com/luggit/react-native-config)
+[React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/)
 
-[Lottie](https://github.com/airbnb/lottie-react-native/)
+[React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 
 ## Internationalization
 
