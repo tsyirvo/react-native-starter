@@ -137,10 +137,14 @@ yarn add-image path/to/the/image/to/add
 
 ## Generate new components
 
-You can automaticaly generated new pages or components with all necessary imports and default content with the command
+You can automaticaly generated new pages or components (functional or class ones) with all necessary imports and default content with thoses commands:
 
 ```
-yarn add-component
+yarn generate:page
+or
+yarn generate:fc
+or
+yarn generate:class
 ```
 
 A CLI prompt will ask you all the infos.

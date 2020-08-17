@@ -4,7 +4,7 @@ exports[`Storyshots Button with text 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#00aced",
+      "backgroundColor": "#fff",
       "flex": 1,
     }
   }
