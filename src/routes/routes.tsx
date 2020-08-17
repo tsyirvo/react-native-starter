@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import FallbackLoader from '@shared/FallbackLoader';
 
-import { Home, Details } from './pages';
+import * as Pages from './pages';
 import { RootStackParamList } from './routes.types';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -18,14 +18,15 @@ const RootStack = (): ReactElement => (
       >
         <Stack.Screen
           name="Home"
-          component={Home}
+          component={Pages.Home}
           options={{ title: 'My app', headerShown: false }}
         />
         <Stack.Screen
           name="Details"
-          component={Details}
+          component={Pages.Details}
           initialParams={{ someProps: 'Some value' }}
         />
+        {/* inject screens before this */}
       </Stack.Navigator>
     </Suspense>
   </NavigationContainer>

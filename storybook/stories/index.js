@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-console */
 
 import React from 'react';
 import { storiesOf, addDecorator } from '@storybook/react-native';
@@ -17,8 +16,8 @@ addDecorator(withKnobs);
 storiesOf('Button', module)
   .addParameters({
     backgrounds: [
-      { name: 'twitter', value: '#00aced', default: true },
-      { name: 'facebook', value: '#3b5998' },
+      { name: 'white', value: '#fff', default: true },
+      { name: 'black', value: '#000' },
     ],
   })
   .add('with text', () => (
