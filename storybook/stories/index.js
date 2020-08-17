@@ -19,7 +19,7 @@ storiesOf('Button', module)
       { name: 'black', value: '#000' },
     ],
   })
-  .add('with text', () => (
+  .add('default state', () => (
     <Flex justifyContent="center" alignItems="center">
       <Button onPress={action('Pressed')}>
         <Text>Default story</Text>
@@ -35,7 +35,7 @@ const options = {
   xLarge: 'xLarge',
 };
 
-storiesOf('Text', module).add('colors', () => (
+storiesOf('Text', module).add('default state', () => (
   <Flex justifyContent="center" alignItems="center">
     <Text fontSize={select('Font size', options, 'regular')}>Some text</Text>
   </Flex>

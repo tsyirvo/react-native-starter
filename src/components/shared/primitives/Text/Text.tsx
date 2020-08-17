@@ -32,6 +32,7 @@ ${variant({
 
 Text.defaultProps = {
   variant: 'regular',
+  color: 'black',
 };
 
 export const Title = styled(Text)`
