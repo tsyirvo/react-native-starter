@@ -3,17 +3,16 @@ to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/<%= 
 ---
 import React, { ReactElement } from 'react';
 
-import Box from '@shared/Box';
-import Text from '@shared/Text';
+import { Flex, Title } from '@shared/primitives';
 
 type Props = {
   someProps?: string;
 };
 
 const <%= h.changeCase.pascalCase(componentName) %> = ({ someProps }: Props): ReactElement => (
-  <Box flex={1} justifyContent="center" alignItems="center">
-    <Text><%= h.changeCase.pascalCase(componentName) %> functional component</Text>
-  </Box>
+  <Flex justifyContent="center" alignItems="center">
+    <Title><%= h.changeCase.pascalCase(componentName) %> functional component</Title>
+  </Flex>
 );
 
 <%= h.changeCase.pascalCase(componentName) %>.defaultProps = {

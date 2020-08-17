@@ -4,7 +4,7 @@ import React from 'react';
 import { storiesOf, addDecorator } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
-import { withKnobs, number } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 
 import { Flex, Text } from '@shared/primitives';
 import Button from '@shared/Button';
@@ -27,8 +27,16 @@ storiesOf('Button', module)
     </Flex>
   ));
 
+const options = {
+  Small: 'small',
+  Medium: 'medium',
+  Regular: 'regular',
+  large: 'large',
+  xLarge: 'xLarge',
+};
+
 storiesOf('Text', module).add('colors', () => (
   <Flex justifyContent="center" alignItems="center">
-    <Text fontSize={number('Font size', 4)}>Some text</Text>
+    <Text fontSize={select('Font size', options, 'regular')}>Some text</Text>
   </Flex>
 ));
