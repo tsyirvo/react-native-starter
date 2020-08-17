@@ -4,8 +4,7 @@ import { DetailsScreenNavigationProp } from '@routes/routes.types';
 import getTranslations from '@utils/locales';
 
 import Button from '@shared/Button';
-import Box from '@shared/Box';
-import Text from '@shared/Text';
+import { Flex, Title, Text } from '@shared/primitives';
 import SafeView from '@shared/SafeView';
 
 interface IProps {
@@ -17,15 +16,17 @@ const Details = ({ navigation }: IProps): ReactElement => {
 
   return (
     <SafeView>
-      <Box flex={1} justifyContent="center" alignItems="center">
-        <Text testID="details_title" fontSize={4}>
+      <Flex flex={1} justifyContent="center" alignItems="center">
+        <Title testID="details_title" variant="xLarge">
           {getTranslations('details', 'page_title')}
-        </Text>
+        </Title>
 
         <Button testID="back_button" onPress={goBack}>
-          <Text mt={3}>{getTranslations('details', 'navigation_back')}</Text>
+          <Text mt="medium">
+            {getTranslations('details', 'navigation_back')}
+          </Text>
         </Button>
-      </Box>
+      </Flex>
     </SafeView>
   );
 };

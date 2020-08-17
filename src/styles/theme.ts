@@ -5,6 +5,7 @@ export default {
     ...brandColors,
     black: '#000',
     white: '#fff',
+    grey: '#e5e5e5',
     blue: '#457b9d',
     green: '#2a9d8f',
     yellow: '#e9c46a',
