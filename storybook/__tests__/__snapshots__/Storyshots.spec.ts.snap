@@ -1,64 +1,264 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button default state 1`] = `
+exports[`Storyshots Box With a size, color and radiuses 1`] = `
 <View
+  alignItems="center"
+  justifyContent="center"
   style={
-    Object {
-      "backgroundColor": "#fff",
-      "flex": 1,
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
   }
 >
   <View
-    alignItems="center"
-    justifyContent="center"
+    bg="grey"
+    borderRadius="medium"
+    size={100}
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
+          "backgroundColor": "#e5e5e5",
+          "borderRadius": 16,
+          "height": 100,
+          "width": 100,
         },
       ]
     }
+  />
+</View>
+`;
+
+exports[`Storyshots Box With border props on a full width 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <View
+    bg="grey"
+    borderBottomColor="green"
+    borderBottomWidth={4}
+    height={50}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#e5e5e5",
+          "borderBottomColor": "#2a9d8f",
+          "borderBottomWidth": 4,
+          "height": 50,
+          "width": "100%",
+        },
+      ]
+    }
+    width="100%"
+  />
+</View>
+`;
+
+exports[`Storyshots Box With position props and odd size 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <View
+    bg="grey"
+    height={50}
+    left={20}
+    mb={50}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#e5e5e5",
+          "height": 50,
+          "left": 20,
+          "marginBottom": 50,
+          "top": 125,
+          "width": 100,
+        },
+      ]
+    }
+    top={125}
+    width="100"
+  />
+</View>
+`;
+
+exports[`Storyshots Button With a text content 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
   >
-    <View
-      accessible={true}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      testID=""
+    <Text
+      color="black"
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+        ]
+      }
+      variant="regular"
     >
-      <Text
-        color="black"
-        style={
-          Array [
-            Object {
-              "color": "#000",
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-          ]
-        }
-        variant="regular"
-      >
-        Default story
-      </Text>
-    </View>
+      Click here
+    </Text>
   </View>
 </View>
 `;
 
-exports[`Storyshots Text default state 1`] = `
+exports[`Storyshots Button With an image content 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <Image
+      source={
+        Object {
+          "uri": "https://reactnative.dev/img/tiny_logo.png",
+        }
+      }
+      style={
+        Object {
+          "height": 100,
+          "width": 100,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Storyshots FallbackLoader With a 3 seconds delay 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+/>
+`;
+
+exports[`Storyshots FallbackLoader With default props 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+/>
+`;
+
+exports[`Storyshots FallbackLoader Without delay 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+/>
+`;
+
+exports[`Storyshots Text With a custom variant 1`] = `
 <View
   alignItems="center"
   justifyContent="center"
@@ -76,7 +276,120 @@ exports[`Storyshots Text default state 1`] = `
 >
   <Text
     color="black"
-    fontSize="regular"
+    style={
+      Array [
+        Object {
+          "color": "#000",
+          "fontSize": 24,
+          "lineHeight": 33,
+        },
+      ]
+    }
+    variant="large"
+  >
+    Large variant
+  </Text>
+</View>
+`;
+
+exports[`Storyshots Text With custom positionning 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <Text
+    color="black"
+    mt={100}
+    paddingY={10}
+    pl={20}
+    style={
+      Array [
+        Object {
+          "color": "#000",
+          "fontSize": 16,
+          "lineHeight": 24,
+          "marginTop": 100,
+          "paddingBottom": 10,
+          "paddingLeft": 20,
+          "paddingTop": 10,
+        },
+      ]
+    }
+    variant="regular"
+  >
+    Custom position
+  </Text>
+</View>
+`;
+
+exports[`Storyshots Text With custom styles 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <Text
+    color="blue"
+    fontWeight={600}
+    lineHeight={50}
+    style={
+      Array [
+        Object {
+          "color": "#457b9d",
+          "fontSize": 16,
+          "fontWeight": "600",
+          "lineHeight": 50,
+          "textAlign": "center",
+        },
+      ]
+    }
+    textAlign="center"
+    variant="regular"
+  >
+    Custom styles
+  </Text>
+</View>
+`;
+
+exports[`Storyshots Text Without any props 1`] = `
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <Text
+    color="black"
     style={
       Array [
         Object {
@@ -88,7 +401,7 @@ exports[`Storyshots Text default state 1`] = `
     }
     variant="regular"
   >
-    Some text
+    Default styles
   </Text>
 </View>
 `;
@@ -98,6 +411,7 @@ exports[`Storyshots Theme Colors 1`] = `
   <View>
     <View
       alignItems="center"
+      justifyContent="center"
       mb={150}
       style={
         Array [
@@ -106,6 +420,7 @@ exports[`Storyshots Theme Colors 1`] = `
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
+            "justifyContent": "center",
             "marginBottom": 150,
           },
         ]
@@ -406,6 +721,7 @@ exports[`Storyshots Theme Colors 1`] = `
 exports[`Storyshots Theme FontSizes 1`] = `
 <View
   alignItems="center"
+  justifyContent="center"
   style={
     Array [
       Object {
@@ -413,6 +729,7 @@ exports[`Storyshots Theme FontSizes 1`] = `
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "justifyContent": "center",
       },
     ]
   }
@@ -508,6 +825,7 @@ exports[`Storyshots Theme FontSizes 1`] = `
 exports[`Storyshots Theme Radiuses 1`] = `
 <View
   alignItems="center"
+  justifyContent="center"
   style={
     Array [
       Object {
@@ -515,6 +833,7 @@ exports[`Storyshots Theme Radiuses 1`] = `
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
+        "justifyContent": "center",
       },
     ]
   }
@@ -655,174 +974,144 @@ exports[`Storyshots Theme Radiuses 1`] = `
 `;
 
 exports[`Storyshots Theme Spaces 1`] = `
-Array [
-  <View
-    alignItems="center"
+<View
+  alignItems="center"
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <Text
+    color="black"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "color": "#000",
+          "fontSize": 16,
+          "lineHeight": 24,
         },
       ]
     }
+    variant="regular"
   >
-    <Text
-      color="black"
-      style={
-        Array [
-          Object {
-            "color": "#000",
-            "fontSize": 16,
-            "lineHeight": 24,
-          },
-        ]
-      }
-      variant="regular"
-    >
-      small - 8px
-    </Text>
-    <View
-      bg="grey"
-      height={8}
-      mb={8}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#e5e5e5",
-            "height": 8,
-            "marginBottom": 8,
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    />
-  </View>,
+    small - 8px
+  </Text>
   <View
-    alignItems="center"
+    bg="grey"
+    height={8}
+    mb={8}
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "backgroundColor": "#e5e5e5",
+          "height": 8,
+          "marginBottom": 8,
+          "width": "100%",
         },
       ]
     }
-  >
-    <Text
-      color="black"
-      style={
-        Array [
-          Object {
-            "color": "#000",
-            "fontSize": 16,
-            "lineHeight": 24,
-          },
-        ]
-      }
-      variant="regular"
-    >
-      medium - 16px
-    </Text>
-    <View
-      bg="grey"
-      height={16}
-      mb={16}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#e5e5e5",
-            "height": 16,
-            "marginBottom": 16,
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    />
-  </View>,
-  <View
-    alignItems="center"
+    width="100%"
+  />
+  <Text
+    color="black"
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "color": "#000",
+          "fontSize": 16,
+          "lineHeight": 24,
         },
       ]
     }
+    variant="regular"
   >
-    <Text
-      color="black"
-      style={
-        Array [
-          Object {
-            "color": "#000",
-            "fontSize": 16,
-            "lineHeight": 24,
-          },
-        ]
-      }
-      variant="regular"
-    >
-      large - 24px
-    </Text>
-    <View
-      bg="grey"
-      height={24}
-      mb={24}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#e5e5e5",
-            "height": 24,
-            "marginBottom": 24,
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    />
-  </View>,
+    medium - 16px
+  </Text>
   <View
-    alignItems="center"
+    bg="grey"
+    height={16}
+    mb={16}
     style={
       Array [
         Object {
-          "alignItems": "center",
+          "backgroundColor": "#e5e5e5",
+          "height": 16,
+          "marginBottom": 16,
+          "width": "100%",
         },
       ]
     }
+    width="100%"
+  />
+  <Text
+    color="black"
+    style={
+      Array [
+        Object {
+          "color": "#000",
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+      ]
+    }
+    variant="regular"
   >
-    <Text
-      color="black"
-      style={
-        Array [
-          Object {
-            "color": "#000",
-            "fontSize": 16,
-            "lineHeight": 24,
-          },
-        ]
-      }
-      variant="regular"
-    >
-      xLarge - 32px
-    </Text>
-    <View
-      bg="grey"
-      height={32}
-      mb={32}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "#e5e5e5",
-            "height": 32,
-            "marginBottom": 32,
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    />
-  </View>,
-]
+    large - 24px
+  </Text>
+  <View
+    bg="grey"
+    height={24}
+    mb={24}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#e5e5e5",
+          "height": 24,
+          "marginBottom": 24,
+          "width": "100%",
+        },
+      ]
+    }
+    width="100%"
+  />
+  <Text
+    color="black"
+    style={
+      Array [
+        Object {
+          "color": "#000",
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+      ]
+    }
+    variant="regular"
+  >
+    xLarge - 32px
+  </Text>
+  <View
+    bg="grey"
+    height={32}
+    mb={32}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#e5e5e5",
+          "height": 32,
+          "marginBottom": 32,
+          "width": "100%",
+        },
+      ]
+    }
+    width="100%"
+  />
+</View>
 `;

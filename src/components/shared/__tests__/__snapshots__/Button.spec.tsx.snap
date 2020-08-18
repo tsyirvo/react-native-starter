@@ -3,7 +3,6 @@
 exports[`Shared primitives Button component should render correctly with a text children 1`] = `
 <Pressable
   onPress={[MockFunction]}
-  testID=""
 >
   <Text>
     Some text
