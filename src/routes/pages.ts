@@ -1,11 +1,11 @@
 import { lazy } from 'react';
 
 const Home = lazy(() => import('components/home'));
-const Details = lazy(() => import('components/details'));
+const OtherPage = lazy(() => import('components/otherPage'));
 // inject pages before this
 
 export {
   Home,
-  Details,
+  OtherPage,
   // inject exports before this
 };

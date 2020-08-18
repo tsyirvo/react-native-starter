@@ -1,4 +1,5 @@
 import React, { useCallback, ReactElement } from 'react';
+import { StatusBar, ScrollView } from 'react-native';
 
 import { HomeScreenNavigationProp } from '@routes/routes.types';
 import getTranslations from '@utils/locales';
@@ -7,26 +8,43 @@ import Button from '@shared/Button';
 import { Flex, Title, Text } from '@shared/primitives';
 import SafeView from '@shared/SafeView';
 
+import Header from './Header';
+import Informations from './Informations';
+
 type Props = {
   navigation: HomeScreenNavigationProp;
 };
 
 const Home = ({ navigation }: Props): ReactElement => {
-  const goToDetails = useCallback(() => navigation.navigate('Details'), []);
+  const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
 
   return (
-    <SafeView>
-      <Flex justifyContent="center" alignItems="center">
-        <Title testID="home_title" variant="xLarge">
-          {getTranslations('home', 'page_title')}
-        </Title>
+    <SafeView edges={['bottom']}>
+      <ScrollView>
+        <StatusBar barStyle="light-content" />
 
-        <Button testID="goto_details" onPress={goToDetails}>
-          <Text mt="medium">
-            {getTranslations('home', 'navigation_details')}
-          </Text>
-        </Button>
-      </Flex>
+        <Header />
+
+        <Flex px={25} pb={150}>
+          <Title fontWeight={600} mt={25}>
+            {getTranslations('home', 'navigation_title')}
+          </Title>
+          <Button
+            testID="goto_otherPage"
+            onPress={goToOtherPage}
+            bg="grey"
+            py={5}
+            px={15}
+            alignItems="center"
+            mt={20}
+            borderRadius="medium"
+          >
+            <Text>{getTranslations('home', 'navigation_content')}</Text>
+          </Button>
+
+          <Informations />
+        </Flex>
+      </ScrollView>
     </SafeView>
   );
 };

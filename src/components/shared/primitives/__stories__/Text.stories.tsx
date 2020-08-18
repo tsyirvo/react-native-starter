@@ -19,7 +19,7 @@ storiesOf('Text', module)
   ))
   .add('With custom styles', () => (
     <CenteredContent>
-      <Text color="blue" fontWeight={600} lineHeight={50} textAlign="center">
+      <Text color="blue" fontWeight={600} lineHeight="50px" textAlign="center">
         Custom styles
       </Text>
     </CenteredContent>

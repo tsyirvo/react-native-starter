@@ -1,29 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Details page component should render correctly 1`] = `
+exports[`OtherPage page component should render correctly 1`] = `
 <SafeView>
   <Styled(Styled(View))
     alignItems="center"
-    flex={1}
     justifyContent="center"
   >
     <Styled(Styled(Text))
       color="black"
-      testID="details_title"
-      variant="xLarge"
+      fontWeight={600}
+      testID="otherPage_title"
+      variant="large"
     >
-      Détails
+      Another page
     </Styled(Styled(Text))>
     <Button
+      alignItems="center"
+      bg="grey"
+      borderRadius="medium"
+      mt={20}
       onPress={[Function]}
+      px={15}
+      py={5}
       testID="back_button"
     >
       <Styled(Text)
         color="black"
-        mt="medium"
         variant="regular"
       >
-        Retour
+        Back
       </Styled(Text)>
     </Button>
   </Styled(Styled(View))>

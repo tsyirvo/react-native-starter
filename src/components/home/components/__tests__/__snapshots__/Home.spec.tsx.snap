@@ -1,30 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home page component should render correctly 1`] = `
-<SafeView>
-  <Styled(Styled(View))
-    alignItems="center"
-    justifyContent="center"
-  >
-    <Styled(Styled(Text))
-      color="black"
-      testID="home_title"
-      variant="xLarge"
+<SafeView
+  edges={
+    Array [
+      "bottom",
+    ]
+  }
+>
+  <ScrollView>
+    <StatusBar
+      animated={false}
+      barStyle="light-content"
+      showHideTransition="fade"
+    />
+    <Header />
+    <Styled(Styled(View))
+      pb={150}
+      px={25}
     >
-      Page d'accueil
-    </Styled(Styled(Text))>
-    <Button
-      onPress={[Function]}
-      testID="goto_details"
-    >
-      <Styled(Text)
+      <Styled(Styled(Text))
         color="black"
-        mt="medium"
-        variant="regular"
+        fontWeight={600}
+        mt={25}
+        variant="large"
       >
-        Aller à la page détails
-      </Styled(Text)>
-    </Button>
-  </Styled(Styled(View))>
+        Navigate to another page
+      </Styled(Styled(Text))>
+      <Button
+        alignItems="center"
+        bg="grey"
+        borderRadius="medium"
+        mt={20}
+        onPress={[Function]}
+        px={15}
+        py={5}
+        testID="goto_otherPage"
+      >
+        <Styled(Text)
+          color="black"
+          variant="regular"
+        >
+          Press to navigate
+        </Styled(Text)>
+      </Button>
+      <Informations />
+    </Styled(Styled(View))>
+  </ScrollView>
 </SafeView>
 `;

@@ -34,7 +34,7 @@ exports[`Storyshots Box With a size, color and radiuses 1`] = `
 </View>
 `;
 
-exports[`Storyshots Box With border props on a full width 1`] = `
+exports[`Storyshots Box With border props and full width 1`] = `
 <View
   alignItems="center"
   justifyContent="center"
@@ -105,7 +105,7 @@ exports[`Storyshots Box With position props and odd size 1`] = `
       ]
     }
     top={125}
-    width="100"
+    width={100}
   />
 </View>
 `;
@@ -139,21 +139,29 @@ exports[`Storyshots Button With a text content 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
   >
-    <Text
-      color="black"
+    <View
       style={
         Array [
-          Object {
-            "color": "#000",
-            "fontSize": 16,
-            "lineHeight": 24,
-          },
+          Object {},
         ]
       }
-      variant="regular"
     >
-      Click here
-    </Text>
+      <Text
+        color="black"
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontSize": 16,
+              "lineHeight": 24,
+            },
+          ]
+        }
+        variant="regular"
+      >
+        Click here
+      </Text>
+    </View>
   </View>
 </View>
 `;
@@ -187,19 +195,27 @@ exports[`Storyshots Button With an image content 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
   >
-    <Image
-      source={
-        Object {
-          "uri": "https://reactnative.dev/img/tiny_logo.png",
-        }
-      }
+    <View
       style={
-        Object {
-          "height": 100,
-          "width": 100,
-        }
+        Array [
+          Object {},
+        ]
       }
-    />
+    >
+      <Image
+        source={
+          Object {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          }
+        }
+        style={
+          Object {
+            "height": 100,
+            "width": 100,
+          }
+        }
+      />
+    </View>
   </View>
 </View>
 `;
@@ -352,7 +368,7 @@ exports[`Storyshots Text With custom styles 1`] = `
   <Text
     color="blue"
     fontWeight={600}
-    lineHeight={50}
+    lineHeight="50px"
     style={
       Array [
         Object {

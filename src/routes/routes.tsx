@@ -2,6 +2,8 @@ import React, { ReactElement, Suspense } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import getTranslations from '@utils/locales';
+
 import FallbackLoader from '@shared/FallbackLoader';
 
 import * as Pages from './pages';
@@ -19,11 +21,12 @@ const RootStack = (): ReactElement => (
         <Stack.Screen
           name="Home"
           component={Pages.Home}
-          options={{ title: 'My app', headerShown: false }}
+          options={{ title: 'Home', headerShown: false }}
         />
         <Stack.Screen
-          name="Details"
-          component={Pages.Details}
+          name="OtherPage"
+          component={Pages.OtherPage}
+          options={{ title: getTranslations('otherPage', 'page_name') }}
           initialParams={{ someProps: 'Some value' }}
         />
         {/* inject screens before this */}
