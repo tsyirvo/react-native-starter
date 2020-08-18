@@ -65,3 +65,6 @@ test-results.json
 
 # ESLint cache
 .eslintcache
+
+# ENV files
+.env
