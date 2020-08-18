@@ -12,7 +12,7 @@ storiesOf('Box', module)
       <Box size={100} bg="grey" borderRadius="medium" />
     </CenteredContent>
   ))
-  .add('With border props on a full width', () => (
+  .add('With border props and full width', () => (
     <CenteredContent>
       <Box
         width="100%"

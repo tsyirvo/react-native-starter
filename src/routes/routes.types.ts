@@ -4,8 +4,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 export type RootStackParamList = {
   Home: undefined;
-  Details: { someProps: string } | undefined;
-  About: undefined;
+  OtherPage: { someProps: string } | undefined;
   // inject stack types before this
 };
 
@@ -15,8 +14,8 @@ export type HomeScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Home'
 >;
-export type DetailsScreenNavigationProp = StackNavigationProp<
+export type OtherPageScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'Details'
+  'OtherPage'
 >;
 // inject page types before this

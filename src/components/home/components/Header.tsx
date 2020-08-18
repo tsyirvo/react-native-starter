@@ -1,0 +1,22 @@
+import React, { ReactElement } from 'react';
+import { ImageBackground } from 'react-native';
+
+import { Flex, Text } from '@shared/primitives';
+
+const uri = { uri: 'header' };
+const styles = {
+  width: '100%',
+  height: 350,
+};
+
+const Header = (): ReactElement => (
+  <ImageBackground source={uri} style={styles}>
+    <Flex justifyContent="flex-end" alignItems="center" mb={25}>
+      <Text variant="large" color="white">
+        React Native Starter
+      </Text>
+    </Flex>
+  </ImageBackground>
+);
+
+export default Header;

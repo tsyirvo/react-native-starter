@@ -19,11 +19,12 @@ const RootStack = (): ReactElement => (
         <Stack.Screen
           name="Home"
           component={Pages.Home}
-          options={{ title: 'My app', headerShown: false }}
+          options={{ title: 'Home', headerShown: false }}
         />
         <Stack.Screen
-          name="Details"
-          component={Pages.Details}
+          name="OtherPage"
+          component={Pages.OtherPage}
+          options={{ title: 'Some other page' }}
           initialParams={{ someProps: 'Some value' }}
         />
         {/* inject screens before this */}

@@ -34,7 +34,7 @@ exports[`Storyshots Box With a size, color and radiuses 1`] = `
 </View>
 `;
 
-exports[`Storyshots Box With border props on a full width 1`] = `
+exports[`Storyshots Box With border props and full width 1`] = `
 <View
   alignItems="center"
   justifyContent="center"
