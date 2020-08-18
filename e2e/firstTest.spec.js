@@ -1,6 +1,6 @@
 import { device, expect, element, by } from 'detox';
 
-describe('Home test', () => {
+describe('Basic test', () => {
   beforeAll(async () => {
     await device.reloadReactNative();
   });
@@ -9,9 +9,9 @@ describe('Home test', () => {
     await expect(element(by.id('home_title'))).toBeVisible();
   });
 
-  it('should show the details page after tap', async () => {
-    await element(by.id('goto_details')).tap();
-    await expect(element(by.id('details_title'))).toBeVisible();
+  it('should show the other page after tap', async () => {
+    await element(by.id('goto_otherPage')).tap();
+    await expect(element(by.id('otherPage_title'))).toBeVisible();
   });
 
   it('should show home screen after tap', async () => {

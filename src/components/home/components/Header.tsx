@@ -12,7 +12,7 @@ const styles = {
 const Header = (): ReactElement => (
   <ImageBackground source={uri} style={styles}>
     <Flex justifyContent="flex-end" alignItems="center" mb={25}>
-      <Text variant="large" color="white">
+      <Text testID="home_title" variant="large" color="white">
         React Native Starter
       </Text>
     </Flex>
