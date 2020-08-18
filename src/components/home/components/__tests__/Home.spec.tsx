@@ -24,7 +24,7 @@ describe('Home page component', () => {
     // When
     const { getByTestId } = render(<Home {...props} />);
 
-    fireEvent.press(getByTestId('goto_details'));
+    fireEvent.press(getByTestId('goto_otherPage'));
 
     // Then
     expect(props.navigation.navigate).toHaveBeenCalled();

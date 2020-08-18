@@ -1,15 +1,23 @@
 import React, { ReactElement } from 'react';
 import { Pressable } from 'react-native';
 
-interface IProps {
+import { Box } from './primitives';
+import { BoxProps } from './primitives/Box/Box.types';
+
+type Props = BoxProps & {
   onPress: () => void;
   children: Element;
   testID?: string | undefined;
-}
+};
 
-const Button = ({ onPress, children, testID }: IProps): ReactElement => (
+const Button = ({
+  onPress,
+  children,
+  testID,
+  ...rest
+}: Props): ReactElement => (
   <Pressable testID={testID} onPress={onPress}>
-    {children}
+    <Box {...rest}>{children}</Box>
   </Pressable>
 );
 

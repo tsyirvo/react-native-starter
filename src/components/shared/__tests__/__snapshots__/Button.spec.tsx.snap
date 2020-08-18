@@ -4,8 +4,10 @@ exports[`Shared primitives Button component should render correctly with a text 
 <Pressable
   onPress={[MockFunction]}
 >
-  <Text>
-    Some text
-  </Text>
+  <Styled(View)>
+    <Text>
+      Some text
+    </Text>
+  </Styled(View)>
 </Pressable>
 `;

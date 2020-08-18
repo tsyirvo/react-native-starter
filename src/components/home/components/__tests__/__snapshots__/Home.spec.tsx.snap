@@ -27,15 +27,20 @@ exports[`Home page component should render correctly 1`] = `
         Navigate to another page
       </Styled(Styled(Text))>
       <Button
+        alignItems="center"
+        bg="grey"
+        borderRadius="medium"
+        mt={20}
         onPress={[Function]}
-        testID="goto_details"
+        px={15}
+        py={5}
+        testID="goto_otherPage"
       >
         <Styled(Text)
           color="black"
-          mt="medium"
           variant="regular"
         >
-          Press here to navigate
+          Press to navigate
         </Styled(Text)>
       </Button>
       <Informations />

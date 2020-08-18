@@ -15,12 +15,17 @@ exports[`OtherPage page component should render correctly 1`] = `
       An other page
     </Styled(Styled(Text))>
     <Button
+      alignItems="center"
+      bg="grey"
+      borderRadius="medium"
+      mt={20}
       onPress={[Function]}
+      px={15}
+      py={5}
       testID="back_button"
     >
       <Styled(Text)
         color="black"
-        mt="medium"
         variant="regular"
       >
         Back

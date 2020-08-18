@@ -29,10 +29,17 @@ const Home = ({ navigation }: Props): ReactElement => {
           <Title fontWeight={600} mt={25}>
             {getTranslations('home', 'navigation_title')}
           </Title>
-          <Button testID="goto_otherPage" onPress={goToOtherPage}>
-            <Text mt="medium">
-              {getTranslations('home', 'navigation_content')}
-            </Text>
+          <Button
+            testID="goto_otherPage"
+            onPress={goToOtherPage}
+            bg="grey"
+            py={5}
+            px={15}
+            alignItems="center"
+            mt={20}
+            borderRadius="medium"
+          >
+            <Text>{getTranslations('home', 'navigation_content')}</Text>
           </Button>
 
           <Informations />

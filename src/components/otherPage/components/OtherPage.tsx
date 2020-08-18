@@ -7,11 +7,11 @@ import Button from '@shared/Button';
 import { Flex, Title, Text } from '@shared/primitives';
 import SafeView from '@shared/SafeView';
 
-interface IProps {
+type Props = {
   navigation: OtherPageScreenNavigationProp;
-}
+};
 
-const OtherPage = ({ navigation }: IProps): ReactElement => {
+const OtherPage = ({ navigation }: Props): ReactElement => {
   const goBack = useCallback(() => navigation.goBack(), []);
 
   return (
@@ -21,10 +21,17 @@ const OtherPage = ({ navigation }: IProps): ReactElement => {
           {getTranslations('otherPage', 'page_title')}
         </Title>
 
-        <Button testID="back_button" onPress={goBack}>
-          <Text mt="medium">
-            {getTranslations('otherPage', 'navigation_back')}
-          </Text>
+        <Button
+          testID="back_button"
+          onPress={goBack}
+          bg="grey"
+          py={5}
+          px={15}
+          alignItems="center"
+          mt={20}
+          borderRadius="medium"
+        >
+          <Text>{getTranslations('otherPage', 'navigation_back')}</Text>
         </Button>
       </Flex>
     </SafeView>
