@@ -2,6 +2,8 @@ import React, { ReactElement, Suspense } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import getTranslations from '@utils/locales';
+
 import FallbackLoader from '@shared/FallbackLoader';
 
 import * as Pages from './pages';
@@ -24,7 +26,7 @@ const RootStack = (): ReactElement => (
         <Stack.Screen
           name="OtherPage"
           component={Pages.OtherPage}
-          options={{ title: 'Some other page' }}
+          options={{ title: getTranslations('otherPage', 'page_name') }}
           initialParams={{ someProps: 'Some value' }}
         />
         {/* inject screens before this */}
