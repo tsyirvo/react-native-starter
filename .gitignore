@@ -65,3 +65,6 @@ test-results.json
 
 # ESLint cache
 .eslintcache
+
+# react-native-config codegen
+ios/tmp.xcconfig

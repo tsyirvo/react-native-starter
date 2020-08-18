@@ -1,5 +1,12 @@
 apply plugin: "com.android.application"
 
+project.ext.envConfigFiles = [
+    development: ".env.development",
+    staging: ".env.staging",
+    production: ".env.production",
+]
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 import com.android.build.OutputFile
 
 /**
@@ -122,6 +129,8 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+     flavorDimensions "default"
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -133,6 +142,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        resValue "string", "build_config_package", "com.rnstarter"
         
         // Detox config
         testBuildType System.getProperty('testBuildType', 'debug')  // This will later be used to control the test apk build type
@@ -154,12 +164,27 @@ android {
             keyPassword 'android'
         }
     }
+     productFlavors {
+         development {
+             applicationIdSuffix 'development'
+             resValue "string", "build_config_package", "com.rnstarter"
+         }
+         staging {
+             applicationIdSuffix 'staging'
+             resValue "string", "build_config_package", "com.rnstarter"
+         }
+         production {
+             applicationIdSuffix 'production'
+             resValue "string", "build_config_package", "com.rnstarter"
+         }
+     }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
         }
         release {
-            // Caution! In production, you need to generate your own keystore file.
+            // Caution! In production, you neeto generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
