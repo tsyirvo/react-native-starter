@@ -4,7 +4,7 @@ import { Pressable } from 'react-native';
 interface IProps {
   onPress: () => void;
   children: Element;
-  testID?: string;
+  testID?: string | undefined;
 }
 
 const Button = ({ onPress, children, testID }: IProps): ReactElement => (
@@ -14,7 +14,7 @@ const Button = ({ onPress, children, testID }: IProps): ReactElement => (
 );
 
 Button.defaultProps = {
-  testID: '',
+  testID: undefined,
 };
 
 export default Button;

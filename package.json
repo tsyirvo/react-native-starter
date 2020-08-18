@@ -24,6 +24,7 @@
     "generate:fc": "npx hygen generators fc",
     "generate:class": "npx hygen generators class",
     "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules && yarn",
+    "prestorybook": "rnstl",
     "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
     "ios:patch": "cd ios && fastlane incrementVersionNumber bump_type:patch && cd ..",
     "ios:minor": "cd ios &&  fastlane incrementVersionNumber bump_type:minor && cd..",
@@ -44,6 +45,16 @@
     "*.{js,ts,tsx}": [
       "yarn prettify"
     ]
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./src",
+        "./storybook"
+      ],
+      "pattern": "**/*.stories.tsx",
+      "outputFile": "./storybook/storyLoader.js"
+    }
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
@@ -125,6 +136,7 @@
     "prettier": "2.0.5",
     "react-dom": "16.11.0",
     "react-native-dev-menu": "4.0.2",
+    "react-native-storybook-loader": "2.0.2",
     "react-test-renderer": "16.13.1",
     "recursive-readdir-sync": "1.0.6",
     "request": "2.88.2",

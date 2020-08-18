@@ -149,6 +149,14 @@ yarn generate:class
 
 A CLI prompt will ask you all the infos.
 
+## Use the storybook
+
+A Storybook is already configured with some addons.
+
+To access it, you can access the dev menu on the device and select _Toggle Storybook_ to have it shown in place of the app.
+
+If new stories are not shown on the list, try running the command `yarn storybook` which automatically create a file importing all stories respecting a predefined pattern. This command also enable to use the Storybook with a remote server and change stories from a navigator outside of the app.
+
 ## Tests
 
 There are basic tests with [Jest](https://jestjs.io/) and [Testing Library](https://testing-library.com/) that you can run with:
