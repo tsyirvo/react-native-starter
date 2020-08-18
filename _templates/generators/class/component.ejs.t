@@ -3,8 +3,7 @@ to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/<%= 
 ---
 import React, { Component, ReactElement } from 'react';
 
-import Box from '@shared/Box';
-import Text from '@shared/Text';
+import { Flex, Title } from '@shared/primitives';
 
 type Props = {
   someProps?: string;
@@ -21,9 +20,9 @@ class <%= h.changeCase.pascalCase(componentName) %> extends Component<Props, Sta
 
   render(): ReactElement {
     return (
-      <Box flex={1} justifyContent="center" alignItems="center">
-        <Text><%= h.changeCase.pascalCase(componentName) %> class component</Text>
-      </Box>
+      <Flex justifyContent="center" alignItems="center">
+        <Title><%= h.changeCase.pascalCase(componentName) %> class component</Title>
+      </Flex>
     );
   }
 }

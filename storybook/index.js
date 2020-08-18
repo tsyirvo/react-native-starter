@@ -11,6 +11,7 @@ import './rn-addons';
 
 // import all stories
 configure(() => {
+  require('../src/styles/__stories__/theme.story');
   require('./stories');
 }, module);
 

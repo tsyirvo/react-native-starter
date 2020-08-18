@@ -2,27 +2,29 @@
 
 exports[`Home page component should render correctly 1`] = `
 <SafeView>
-  <Styled(View)
+  <Styled(Styled(View))
     alignItems="center"
-    flex={1}
     justifyContent="center"
   >
-    <Text
-      fontSize={4}
+    <Styled(Styled(Text))
+      color="black"
       testID="home_title"
+      variant="xLarge"
     >
       Page d'accueil
-    </Text>
+    </Styled(Styled(Text))>
     <Button
       onPress={[Function]}
       testID="goto_details"
     >
-      <Text
-        mt={3}
+      <Styled(Text)
+        color="black"
+        mt="medium"
+        variant="regular"
       >
         Aller à la page détails
-      </Text>
+      </Styled(Text)>
     </Button>
-  </Styled(View)>
+  </Styled(Styled(View))>
 </SafeView>
 `;

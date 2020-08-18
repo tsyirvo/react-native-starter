@@ -1,3 +1,7 @@
 import initStoryshots from '@storybook/addon-storyshots';
 
-initStoryshots();
+import render from '@tests/utils';
+
+initStoryshots({
+  renderer: render,
+});

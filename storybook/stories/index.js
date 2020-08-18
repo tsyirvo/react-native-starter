@@ -4,11 +4,10 @@ import React from 'react';
 import { storiesOf, addDecorator } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
-import { withKnobs, number } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 
-import Box from '@shared/Box';
+import { Flex, Text } from '@shared/primitives';
 import Button from '@shared/Button';
-import Text from '@shared/Text';
 
 addDecorator(withBackgrounds);
 addDecorator(withKnobs);
@@ -20,16 +19,24 @@ storiesOf('Button', module)
       { name: 'black', value: '#000' },
     ],
   })
-  .add('with text', () => (
-    <Box flex={1} justifyContent="center" alignItems="center">
+  .add('default state', () => (
+    <Flex justifyContent="center" alignItems="center">
       <Button onPress={action('Pressed')}>
         <Text>Default story</Text>
       </Button>
-    </Box>
+    </Flex>
   ));
 
-storiesOf('Text', module).add('colors', () => (
-  <Box flex={1} justifyContent="center" alignItems="center">
-    <Text fontSize={number('Font size', 4)}>Some text</Text>
-  </Box>
+const options = {
+  Small: 'small',
+  Medium: 'medium',
+  Regular: 'regular',
+  large: 'large',
+  xLarge: 'xLarge',
+};
+
+storiesOf('Text', module).add('default state', () => (
+  <Flex justifyContent="center" alignItems="center">
+    <Text fontSize={select('Font size', options, 'regular')}>Some text</Text>
+  </Flex>
 ));

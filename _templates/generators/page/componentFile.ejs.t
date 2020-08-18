@@ -3,8 +3,7 @@ to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/<%= 
 ---
 import React, { Component, ReactElement } from 'react';
 
-import Box from '@shared/Box';
-import Text from '@shared/Text';
+import { Flex, Title } from '@shared/primitives';
 import SafeView from '@shared/SafeView';
 
 type Props = {
@@ -23,9 +22,9 @@ class <%= h.changeCase.pascalCase(componentName) %> extends Component<Props, Sta
   render(): ReactElement {
     return (
       <SafeView>
-        <Box flex={1} justifyContent="center" alignItems="center">
-          <Text><%= h.changeCase.pascalCase(componentName) %> page</Text>
-        </Box>
+        <Flex justifyContent="center" alignItems="center">
+          <Title><%= h.changeCase.pascalCase(componentName) %> page</Title>
+        </Flex>
       </SafeView>
     );
   }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ReactElement } from 'react';
 
-import Text from '@shared/Text';
+import { Text } from '@shared/primitives';
 
 type Props = {
   delay?: number;
