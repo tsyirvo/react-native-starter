@@ -25,6 +25,6 @@ storiesOf('Box', module)
   ))
   .add('With position props and odd size', () => (
     <CenteredContent>
-      <Box width="100" height={50} bg="grey" top={125} left={20} mb={50} />
+      <Box width={100} height={50} bg="grey" top={125} left={20} mb={50} />
     </CenteredContent>
   ));

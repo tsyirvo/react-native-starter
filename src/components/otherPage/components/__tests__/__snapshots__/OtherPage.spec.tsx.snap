@@ -12,7 +12,7 @@ exports[`OtherPage page component should render correctly 1`] = `
       testID="otherPage_title"
       variant="large"
     >
-      An other page
+      Another page
     </Styled(Styled(Text))>
     <Button
       alignItems="center"

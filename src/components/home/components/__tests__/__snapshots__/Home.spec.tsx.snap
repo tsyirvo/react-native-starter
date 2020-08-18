@@ -16,6 +16,7 @@ exports[`Home page component should render correctly 1`] = `
     />
     <Header />
     <Styled(Styled(View))
+      pb={150}
       px={25}
     >
       <Styled(Styled(Text))

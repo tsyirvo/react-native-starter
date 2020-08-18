@@ -25,7 +25,7 @@ const Home = ({ navigation }: Props): ReactElement => {
 
         <Header />
 
-        <Flex px={25}>
+        <Flex px={25} pb={150}>
           <Title fontWeight={600} mt={25}>
             {getTranslations('home', 'navigation_title')}
           </Title>

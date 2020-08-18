@@ -105,7 +105,7 @@ exports[`Storyshots Box With position props and odd size 1`] = `
       ]
     }
     top={125}
-    width="100"
+    width={100}
   />
 </View>
 `;
@@ -368,7 +368,7 @@ exports[`Storyshots Text With custom styles 1`] = `
   <Text
     color="blue"
     fontWeight={600}
-    lineHeight={50}
+    lineHeight="50px"
     style={
       Array [
         Object {
