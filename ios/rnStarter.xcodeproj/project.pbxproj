@@ -13,6 +13,24 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		B6BD8BFC24E83E2F0044E31D /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BD8BFB24E83E2F0044E31D /* Dummy.swift */; };
+		B6FB16AA24EC92100035A6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		B6FB16AB24EC92100035A6B9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BD8BFB24E83E2F0044E31D /* Dummy.swift */; };
+		B6FB16AC24EC92100035A6B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		B6FB16AE24EC92100035A6B9 /* libPods-rnStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DB9B8D87E29C7350E9F7B2 /* libPods-rnStarter.a */; };
+		B6FB16B024EC92100035A6B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		B6FB16B124EC92100035A6B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
+		B6FB16BD24EC92610035A6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		B6FB16BE24EC92610035A6B9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BD8BFB24E83E2F0044E31D /* Dummy.swift */; };
+		B6FB16BF24EC92610035A6B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		B6FB16C124EC92610035A6B9 /* libPods-rnStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DB9B8D87E29C7350E9F7B2 /* libPods-rnStarter.a */; };
+		B6FB16C324EC92610035A6B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		B6FB16C424EC92610035A6B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
+		B6FB16D024EC92760035A6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		B6FB16D124EC92760035A6B9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BD8BFB24E83E2F0044E31D /* Dummy.swift */; };
+		B6FB16D224EC92760035A6B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		B6FB16D424EC92760035A6B9 /* libPods-rnStarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DB9B8D87E29C7350E9F7B2 /* libPods-rnStarter.a */; };
+		B6FB16D624EC92760035A6B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		B6FB16D724EC92760035A6B9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +55,12 @@
 		AC53A1BE9BF4C3BADD6765F9 /* libPods-rnStarter-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BD8BF624E83A870044E31D /* rnStarter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rnStarter-Bridging-Header.h"; sourceTree = "<group>"; };
 		B6BD8BFB24E83E2F0044E31D /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
+		B6FB16B724EC92100035A6B9 /* D_RNStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D_RNStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6FB16B824EC92100035A6B9 /* rnStarter copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "rnStarter copy-Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter copy-Info.plist"; sourceTree = "<absolute>"; };
+		B6FB16CA24EC92610035A6B9 /* S_RNStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = S_RNStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6FB16CB24EC92610035A6B9 /* rnStarter-development copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "rnStarter-development copy-Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter-development copy-Info.plist"; sourceTree = "<absolute>"; };
+		B6FB16DD24EC92760035A6B9 /* P_RNStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P_RNStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6FB16DE24EC92760035A6B9 /* rnStarter-staging copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "rnStarter-staging copy-Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter-staging copy-Info.plist"; sourceTree = "<absolute>"; };
 		B8DB9B8D87E29C7350E9F7B2 /* libPods-rnStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5A8B98FEB365C44CAFE472 /* Pods-rnStarterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarterTests.release.xcconfig"; path = "Target Support Files/Pods-rnStarterTests/Pods-rnStarterTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -50,6 +74,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				103C002C33DB635694EEC1DE /* libPods-rnStarter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16AD24EC92100035A6B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16AE24EC92100035A6B9 /* libPods-rnStarter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16C024EC92610035A6B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16C124EC92610035A6B9 /* libPods-rnStarter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16D324EC92760035A6B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16D424EC92760035A6B9 /* libPods-rnStarter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +181,9 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				00DD854C7C05BABEADF2CF49 /* Pods */,
+				B6FB16B824EC92100035A6B9 /* rnStarter copy-Info.plist */,
+				B6FB16CB24EC92610035A6B9 /* rnStarter-development copy-Info.plist */,
+				B6FB16DE24EC92760035A6B9 /* rnStarter-staging copy-Info.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -143,6 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* rnStarter.app */,
+				B6FB16B724EC92100035A6B9 /* D_RNStarter.app */,
+				B6FB16CA24EC92610035A6B9 /* S_RNStarter.app */,
+				B6FB16DD24EC92760035A6B9 /* P_RNStarter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,6 +223,69 @@
 			name = rnStarter;
 			productName = rnStarter;
 			productReference = 13B07F961A680F5B00A75B9A /* rnStarter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B6FB16A624EC92100035A6B9 /* rnStarter-development */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6FB16B424EC92100035A6B9 /* Build configuration list for PBXNativeTarget "rnStarter-development" */;
+			buildPhases = (
+				B6FB16A724EC92100035A6B9 /* [CP] Check Pods Manifest.lock */,
+				B6FB16A824EC92100035A6B9 /* Start Packager */,
+				B6FB16A924EC92100035A6B9 /* Sources */,
+				B6FB16AD24EC92100035A6B9 /* Frameworks */,
+				B6FB16AF24EC92100035A6B9 /* Resources */,
+				B6FB16B224EC92100035A6B9 /* Bundle React Native code and images */,
+				B6FB16B324EC92100035A6B9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "rnStarter-development";
+			productName = rnStarter;
+			productReference = B6FB16B724EC92100035A6B9 /* D_RNStarter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B6FB16B924EC92610035A6B9 /* rnStarter-staging */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6FB16C724EC92610035A6B9 /* Build configuration list for PBXNativeTarget "rnStarter-staging" */;
+			buildPhases = (
+				B6FB16BA24EC92610035A6B9 /* [CP] Check Pods Manifest.lock */,
+				B6FB16BB24EC92610035A6B9 /* Start Packager */,
+				B6FB16BC24EC92610035A6B9 /* Sources */,
+				B6FB16C024EC92610035A6B9 /* Frameworks */,
+				B6FB16C224EC92610035A6B9 /* Resources */,
+				B6FB16C524EC92610035A6B9 /* Bundle React Native code and images */,
+				B6FB16C624EC92610035A6B9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "rnStarter-staging";
+			productName = rnStarter;
+			productReference = B6FB16CA24EC92610035A6B9 /* S_RNStarter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B6FB16CC24EC92760035A6B9 /* rnStarter-production */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6FB16DA24EC92760035A6B9 /* Build configuration list for PBXNativeTarget "rnStarter-production" */;
+			buildPhases = (
+				B6FB16CD24EC92760035A6B9 /* [CP] Check Pods Manifest.lock */,
+				B6FB16CE24EC92760035A6B9 /* Start Packager */,
+				B6FB16CF24EC92760035A6B9 /* Sources */,
+				B6FB16D324EC92760035A6B9 /* Frameworks */,
+				B6FB16D524EC92760035A6B9 /* Resources */,
+				B6FB16D824EC92760035A6B9 /* Bundle React Native code and images */,
+				B6FB16D924EC92760035A6B9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "rnStarter-production";
+			productName = rnStarter;
+			productReference = B6FB16DD24EC92760035A6B9 /* P_RNStarter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -200,6 +317,9 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* rnStarter */,
+				B6FB16A624EC92100035A6B9 /* rnStarter-development */,
+				B6FB16B924EC92610035A6B9 /* rnStarter-staging */,
+				B6FB16CC24EC92760035A6B9 /* rnStarter-production */,
 			);
 		};
 /* End PBXProject section */
@@ -211,6 +331,33 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16AF24EC92100035A6B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16B024EC92100035A6B9 /* Images.xcassets in Resources */,
+				B6FB16B124EC92100035A6B9 /* LaunchScreen.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16C224EC92610035A6B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16C324EC92610035A6B9 /* Images.xcassets in Resources */,
+				B6FB16C424EC92610035A6B9 /* LaunchScreen.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16D524EC92760035A6B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16D624EC92760035A6B9 /* Images.xcassets in Resources */,
+				B6FB16D724EC92760035A6B9 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +418,225 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B6FB16A724EC92100035A6B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rnStarter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FB16A824EC92100035A6B9 /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FB16B224EC92100035A6B9 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd $PROJECT_DIR/..\nexport NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		B6FB16B324EC92100035A6B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnStarter/Pods-rnStarter-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnStarter/Pods-rnStarter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FB16BA24EC92610035A6B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rnStarter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FB16BB24EC92610035A6B9 /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FB16C524EC92610035A6B9 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd $PROJECT_DIR/..\nexport NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		B6FB16C624EC92610035A6B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnStarter/Pods-rnStarter-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnStarter/Pods-rnStarter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FB16CD24EC92760035A6B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rnStarter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FB16CE24EC92760035A6B9 /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B6FB16D824EC92760035A6B9 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd $PROJECT_DIR/..\nexport NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		B6FB16D924EC92760035A6B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnStarter/Pods-rnStarter-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnStarter/Pods-rnStarter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -300,6 +666,36 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				B6BD8BFC24E83E2F0044E31D /* Dummy.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16A924EC92100035A6B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16AA24EC92100035A6B9 /* AppDelegate.m in Sources */,
+				B6FB16AB24EC92100035A6B9 /* Dummy.swift in Sources */,
+				B6FB16AC24EC92100035A6B9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16BC24EC92610035A6B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16BD24EC92610035A6B9 /* AppDelegate.m in Sources */,
+				B6FB16BE24EC92610035A6B9 /* Dummy.swift in Sources */,
+				B6FB16BF24EC92610035A6B9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6FB16CF24EC92760035A6B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FB16D024EC92760035A6B9 /* AppDelegate.m in Sources */,
+				B6FB16D124EC92760035A6B9 /* Dummy.swift in Sources */,
+				B6FB16D224EC92760035A6B9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +878,156 @@
 			};
 			name = Release;
 		};
+		B6FB16B524EC92100035A6B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65D8D6D72AFEC41A6CE92F2B /* Pods-rnStarter.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = "rnStarter copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.development;
+				PRODUCT_NAME = D_RNStarter;
+				SWIFT_OBJC_BRIDGING_HEADER = "rnStarter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		B6FB16B624EC92100035A6B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83B5570888130D408694BB41 /* Pods-rnStarter.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "rnStarter copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.development;
+				PRODUCT_NAME = D_RNStarter;
+				SWIFT_OBJC_BRIDGING_HEADER = "rnStarter-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		B6FB16C824EC92610035A6B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65D8D6D72AFEC41A6CE92F2B /* Pods-rnStarter.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = "rnStarter-development copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.staging;
+				PRODUCT_NAME = S_RNStarter;
+				SWIFT_OBJC_BRIDGING_HEADER = "rnStarter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		B6FB16C924EC92610035A6B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83B5570888130D408694BB41 /* Pods-rnStarter.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "rnStarter-development copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.staging;
+				PRODUCT_NAME = S_RNStarter;
+				SWIFT_OBJC_BRIDGING_HEADER = "rnStarter-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		B6FB16DB24EC92760035A6B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65D8D6D72AFEC41A6CE92F2B /* Pods-rnStarter.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = "rnStarter-staging copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.production;
+				PRODUCT_NAME = P_RNStarter;
+				SWIFT_OBJC_BRIDGING_HEADER = "rnStarter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		B6FB16DC24EC92760035A6B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83B5570888130D408694BB41 /* Pods-rnStarter.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = "rnStarter-staging copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.production;
+				PRODUCT_NAME = P_RNStarter;
+				SWIFT_OBJC_BRIDGING_HEADER = "rnStarter-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -499,6 +1045,33 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6FB16B424EC92100035A6B9 /* Build configuration list for PBXNativeTarget "rnStarter-development" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6FB16B524EC92100035A6B9 /* Debug */,
+				B6FB16B624EC92100035A6B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6FB16C724EC92610035A6B9 /* Build configuration list for PBXNativeTarget "rnStarter-staging" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6FB16C824EC92610035A6B9 /* Debug */,
+				B6FB16C924EC92610035A6B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6FB16DA24EC92760035A6B9 /* Build configuration list for PBXNativeTarget "rnStarter-production" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6FB16DB24EC92760035A6B9 /* Debug */,
+				B6FB16DC24EC92760035A6B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
