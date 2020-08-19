@@ -56,11 +56,11 @@
 		B6BD8BF624E83A870044E31D /* rnStarter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rnStarter-Bridging-Header.h"; sourceTree = "<group>"; };
 		B6BD8BFB24E83E2F0044E31D /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		B6FB16B724EC92100035A6B9 /* D_RNStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D_RNStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6FB16B824EC92100035A6B9 /* rnStarter copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "rnStarter copy-Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter copy-Info.plist"; sourceTree = "<absolute>"; };
+		B6FB16B824EC92100035A6B9 /* rnStarter-production Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "rnStarter-production Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter-production Info.plist"; sourceTree = "<absolute>"; };
 		B6FB16CA24EC92610035A6B9 /* S_RNStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = S_RNStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6FB16CB24EC92610035A6B9 /* rnStarter-development copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "rnStarter-development copy-Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter-development copy-Info.plist"; sourceTree = "<absolute>"; };
+		B6FB16CB24EC92610035A6B9 /* rnStarter-development Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "rnStarter-development Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter-development Info.plist"; sourceTree = "<absolute>"; };
 		B6FB16DD24EC92760035A6B9 /* P_RNStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P_RNStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6FB16DE24EC92760035A6B9 /* rnStarter-staging copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "rnStarter-staging copy-Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter-staging copy-Info.plist"; sourceTree = "<absolute>"; };
+		B6FB16DE24EC92760035A6B9 /* rnStarter-staging Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "rnStarter-staging Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter-staging Info.plist"; sourceTree = "<absolute>"; };
 		B8DB9B8D87E29C7350E9F7B2 /* libPods-rnStarter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5A8B98FEB365C44CAFE472 /* Pods-rnStarterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarterTests.release.xcconfig"; path = "Target Support Files/Pods-rnStarterTests/Pods-rnStarterTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -181,9 +181,9 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				00DD854C7C05BABEADF2CF49 /* Pods */,
-				B6FB16B824EC92100035A6B9 /* rnStarter copy-Info.plist */,
-				B6FB16CB24EC92610035A6B9 /* rnStarter-development copy-Info.plist */,
-				B6FB16DE24EC92760035A6B9 /* rnStarter-staging copy-Info.plist */,
+				B6FB16B824EC92100035A6B9 /* rnStarter-production Info.plist */,
+				B6FB16CB24EC92610035A6B9 /* rnStarter-development Info.plist */,
+				B6FB16DE24EC92760035A6B9 /* rnStarter-staging Info.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -887,7 +887,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				INFOPLIST_FILE = "rnStarter copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/rnStarter-development Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
@@ -912,7 +912,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "rnStarter copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/rnStarter-development Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
@@ -937,7 +937,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				INFOPLIST_FILE = "rnStarter-development copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/rnStarter-staging Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
@@ -962,7 +962,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "rnStarter-development copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/rnStarter-staging Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
@@ -987,7 +987,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				INFOPLIST_FILE = "rnStarter-staging copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/rnStarter-production Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
@@ -1012,7 +1012,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = "rnStarter-staging copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/rnStarter-production Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
