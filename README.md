@@ -84,9 +84,9 @@ yarn start
 You can run the simulators with the commands below:
 
 ```
-react-native run-ios
+yarn ios:[development|staging|production]
 or
-react-native run-android
+yarn android:[development|staging|production]
 ```
 
 ## Run in a specific environment (To finalize)
