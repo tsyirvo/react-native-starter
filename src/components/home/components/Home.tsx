@@ -1,6 +1,5 @@
 import React, { useCallback, ReactElement } from 'react';
 import { StatusBar, ScrollView } from 'react-native';
-import Config from 'react-native-config';
 
 import { HomeScreenNavigationProp } from '@routes/routes.types';
 import getTranslations from '@utils/locales';
@@ -18,8 +17,6 @@ type Props = {
 
 const Home = ({ navigation }: Props): ReactElement => {
   const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
-
-  console.log('Config', Config);
 
   return (
     <SafeView edges={['bottom']}>
