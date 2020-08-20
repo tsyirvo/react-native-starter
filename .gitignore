@@ -68,3 +68,10 @@ test-results.json
 
 # ENV files
 .env
+.env.development
+.env.staging
+.env.production
+
+# Firebase config file
+android/app/google-services.json
+android/app/**/google-services.json
