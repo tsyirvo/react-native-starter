@@ -75,3 +75,5 @@ test-results.json
 # Firebase config file
 android/app/google-services.json
 android/app/**/google-services.json
+ios/GoogleService-Info.plist
+ios/**/GoogleService-Info.plist
