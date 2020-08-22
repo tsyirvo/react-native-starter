@@ -32,6 +32,7 @@
     "metro.config.js",
     "jest.config.js",
     "_templates",
-    "scripts"
+    "scripts",
+    "src/tests/__mocks__/*"
   ]
 }
