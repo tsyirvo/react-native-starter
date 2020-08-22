@@ -76,6 +76,7 @@
     "jest.config.js",
     "_templates",
     "scripts",
-    "storybook/storyLoader.js"
+    "storybook/storyLoader.js",
+    "src/tests/__mocks__/*"
   ]
 }
