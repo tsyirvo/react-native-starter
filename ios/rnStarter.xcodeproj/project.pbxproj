@@ -17,7 +17,7 @@
 		4A4D674410E5D1D20D446C68 /* libPods-rnStarter-development.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E85D54761AE3776ED3A1F3 /* libPods-rnStarter-development.a */; };
 		507CA611CE04DB8AB1798859 /* libPods-rnStarter-staging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8250816CF3B83CBB3BD3F11 /* libPods-rnStarter-staging.a */; };
 		B6BD8BFC24E83E2F0044E31D /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BD8BFB24E83E2F0044E31D /* Dummy.swift */; };
-		B6DA3F5424F0736D00B17683 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6DA3F5324F0736C00B17683 /* GoogleService-Info.plist */; };
+		B6D686A524F164DA004C5A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6D686A424F164DA004C5A0E /* GoogleService-Info.plist */; };
 		B6FB16AA24EC92100035A6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		B6FB16AB24EC92100035A6B9 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BD8BFB24E83E2F0044E31D /* Dummy.swift */; };
 		B6FB16AC24EC92100035A6B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -63,7 +63,7 @@
 		AC53A1BE9BF4C3BADD6765F9 /* libPods-rnStarter-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BD8BF624E83A870044E31D /* rnStarter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rnStarter-Bridging-Header.h"; sourceTree = "<group>"; };
 		B6BD8BFB24E83E2F0044E31D /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
-		B6DA3F5324F0736C00B17683 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6D686A424F164DA004C5A0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6FB16B724EC92100035A6B9 /* D_RNStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D_RNStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6FB16B824EC92100035A6B9 /* rnStarter-production Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "rnStarter-production Info.plist"; path = "/Users/gabrielhofman/repos/personal/react-native-starter/ios/rnStarter-production Info.plist"; sourceTree = "<absolute>"; };
 		B6FB16CA24EC92610035A6B9 /* S_RNStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = S_RNStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,7 +209,7 @@
 		B6DA3F4A24F06FB600B17683 /* development */ = {
 			isa = PBXGroup;
 			children = (
-				B6DA3F5324F0736C00B17683 /* GoogleService-Info.plist */,
+				B6D686A424F164DA004C5A0E /* GoogleService-Info.plist */,
 			);
 			path = development;
 			sourceTree = "<group>";
@@ -371,7 +371,7 @@
 			files = (
 				B6FB16B024EC92100035A6B9 /* Images.xcassets in Resources */,
 				B6FB16B124EC92100035A6B9 /* LaunchScreen.xib in Resources */,
-				B6DA3F5424F0736D00B17683 /* GoogleService-Info.plist in Resources */,
+				B6D686A524F164DA004C5A0E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

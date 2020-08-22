@@ -1,5 +1,6 @@
-import React, { useCallback, ReactElement } from 'react';
+import React, { useCallback, ReactElement, useEffect } from 'react';
 import { StatusBar, ScrollView } from 'react-native';
+import analytics from '@react-native-firebase/analytics';
 
 import { HomeScreenNavigationProp } from '@routes/routes.types';
 import getTranslations from '@utils/locales';
@@ -17,6 +18,13 @@ type Props = {
 
 const Home = ({ navigation }: Props): ReactElement => {
   const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
+
+  useEffect(() => {
+    analytics().setUserProperties({
+      username: 'tsyirvo',
+      email: 'tsyirvo@gab.ninja',
+    });
+  }, []);
 
   return (
     <SafeView edges={['bottom']}>
