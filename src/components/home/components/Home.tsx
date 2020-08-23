@@ -1,6 +1,7 @@
 import React, { useCallback, ReactElement, useEffect } from 'react';
 import { StatusBar, ScrollView } from 'react-native';
 import analytics from '@react-native-firebase/analytics';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import { HomeScreenNavigationProp } from '@routes/routes.types';
 import getTranslations from '@utils/locales';
@@ -17,10 +18,17 @@ type Props = {
 };
 
 const Home = ({ navigation }: Props): ReactElement => {
-  const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
+  // const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
+  const goToOtherPage = useCallback(() => crashlytics().crash(), []);
 
   useEffect(() => {
     analytics().setUserProperties({
+      username: 'tsyirvo',
+      email: 'tsyirvo@gab.ninja',
+    });
+
+    crashlytics().setUserId('123');
+    crashlytics().setAttributes({
       username: 'tsyirvo',
       email: 'tsyirvo@gab.ninja',
     });

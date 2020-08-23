@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import analytics from '@react-native-firebase/analytics';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import getTranslations from '@utils/locales';
 
@@ -30,6 +31,7 @@ const RootStack = (): ReactElement => {
 
     if (previousRouteName !== currentRouteName) {
       analytics().setCurrentScreen(currentRouteName);
+      crashlytics().setAttribute('currentScreen', currentRouteName);
     }
 
     routeNameRef.current = currentRouteName;
