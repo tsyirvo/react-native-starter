@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		103C002C33DB635694EEC1DE /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		103C002C33DB635694EEC1DE /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -16,6 +16,8 @@
 		3336EB5DF09FE7077E50C0DA /* libPods-rnStarter-production.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C39910B0E567F8990134886 /* libPods-rnStarter-production.a */; };
 		4A4D674410E5D1D20D446C68 /* libPods-rnStarter-development.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E85D54761AE3776ED3A1F3 /* libPods-rnStarter-development.a */; };
 		507CA611CE04DB8AB1798859 /* libPods-rnStarter-staging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8250816CF3B83CBB3BD3F11 /* libPods-rnStarter-staging.a */; };
+		B6050EF024F9648A00B3171E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6050EEF24F9648A00B3171E /* GoogleService-Info.plist */; };
+		B6050EF224F9649800B3171E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6050EF124F9649800B3171E /* GoogleService-Info.plist */; };
 		B6BD8BFC24E83E2F0044E31D /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BD8BFB24E83E2F0044E31D /* Dummy.swift */; };
 		B6D686A524F164DA004C5A0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6D686A424F164DA004C5A0E /* GoogleService-Info.plist */; };
 		B6FB16AA24EC92100035A6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -61,6 +63,8 @@
 		9B202841C6F75B32C850E983 /* Pods-rnStarter-production.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarter-production.debug.xcconfig"; path = "Target Support Files/Pods-rnStarter-production/Pods-rnStarter-production.debug.xcconfig"; sourceTree = "<group>"; };
 		A8250816CF3B83CBB3BD3F11 /* libPods-rnStarter-staging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter-staging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC53A1BE9BF4C3BADD6765F9 /* libPods-rnStarter-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6050EEF24F9648A00B3171E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6050EF124F9649800B3171E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6BD8BF624E83A870044E31D /* rnStarter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rnStarter-Bridging-Header.h"; sourceTree = "<group>"; };
 		B6BD8BFB24E83E2F0044E31D /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		B6D686A424F164DA004C5A0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -83,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				103C002C33DB635694EEC1DE /* BuildFile in Frameworks */,
+				103C002C33DB635694EEC1DE /* (null) in Frameworks */,
 				21074FEA456806FABBF785C8 /* libPods-rnStarter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +221,7 @@
 		B6DA3F4D24F0720800B17683 /* staging */ = {
 			isa = PBXGroup;
 			children = (
+				B6050EEF24F9648A00B3171E /* GoogleService-Info.plist */,
 			);
 			path = staging;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 		B6DA3F4E24F0720E00B17683 /* production */ = {
 			isa = PBXGroup;
 			children = (
+				B6050EF124F9649800B3171E /* GoogleService-Info.plist */,
 			);
 			path = production;
 			sourceTree = "<group>";
@@ -385,6 +391,7 @@
 			files = (
 				B6FB16C324EC92610035A6B9 /* Images.xcassets in Resources */,
 				B6FB16C424EC92610035A6B9 /* LaunchScreen.xib in Resources */,
+				B6050EF024F9648A00B3171E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +401,7 @@
 			files = (
 				B6FB16D624EC92760035A6B9 /* Images.xcassets in Resources */,
 				B6FB16D724EC92760035A6B9 /* LaunchScreen.xib in Resources */,
+				B6050EF224F9649800B3171E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

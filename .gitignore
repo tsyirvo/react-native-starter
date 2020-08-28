@@ -72,9 +72,3 @@ test-results.json
 .env.development
 .env.staging
 .env.production
-
-# Firebase config file
-android/app/google-services.json
-android/app/**/google-services.json
-ios/GoogleService-Info.plist
-ios/**/GoogleService-Info.plist

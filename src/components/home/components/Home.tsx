@@ -18,8 +18,7 @@ type Props = {
 };
 
 const Home = ({ navigation }: Props): ReactElement => {
-  // const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
-  const goToOtherPage = useCallback(() => crashlytics().crash(), []);
+  const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
 
   useEffect(() => {
     analytics().setUserProperties({
