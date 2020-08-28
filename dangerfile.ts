@@ -5,8 +5,6 @@ import todos from 'danger-plugin-todos';
 import jest from 'danger-plugin-jest';
 import includes from 'lodash/includes';
 import * as fs from 'fs';
-// @ts-expect-error
-import recurseSync from 'recursive-readdir-sync';
 
 /* ***** *****  Danger setup  ***** ***** */
 
@@ -35,15 +33,15 @@ const componentsOnlyFilter = (filename: string) =>
   !includes(filename, '__tests__') &&
   !includes(filename, '__mocks__') &&
   typescriptReactOnly(filename);
+const storiesFilter = (filename: string) =>
+  includes(filename, 'src/components') &&
+  includes(filename, '__stories__') &&
+  typescriptReactOnly(filename);
 const breakingOnlyFilter = (filename: string) =>
   includes(filename, 'src/ios') ||
   includes(filename, 'src/android') ||
   includes(filename, 'package.json');
 
-const allSrcFiles = recurseSync('./src');
-const allStoryFiles = allSrcFiles.filter(
-  (f: string) => f.includes('__stories__/') && f.includes('.story.')
-);
 const prFiles = modified.concat(created).filter(filesOnly);
 
 /* ***** *****  Utils  ***** ***** */
@@ -56,7 +54,7 @@ const getFilesName = (filenames: string[]) =>
     if (!name || name.length === 0) {
       return null;
     }
-    return name;
+    return name.toLowerCase();
   });
 
 /* ***** *****  Check for jest errors  ***** ***** */
@@ -93,7 +91,8 @@ if (prSrcChanges && !prTestChanges) {
 /* ***** *****  Check if stories have been forgotten  ***** ***** */
 
 const prComponents = prFiles.filter(componentsOnlyFilter);
-const allStoryNames = getFilesName(allStoryFiles);
+const prStories = prFiles.filter(storiesFilter);
+const allStoryNames = getFilesName(prStories);
 const prComponentNames = getFilesName(prComponents);
 
 const prComponentsHaveStories = prComponentNames.every((comp) => {
@@ -101,7 +100,9 @@ const prComponentsHaveStories = prComponentNames.every((comp) => {
 });
 
 if (!prComponentsHaveStories) {
-  warn("It seems that some modified components don't have stories associated.");
+  warn(
+    'It seems that you created or modified components but not the story file associated.'
+  );
 }
 
 /* ***** *****  Warn about config changes  ***** ***** */

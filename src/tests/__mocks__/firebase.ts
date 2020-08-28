@@ -6,3 +6,10 @@ jest.mock('@react-native-firebase/analytics', () => {
     setCurrentScreen: jest.fn(),
   });
 });
+
+jest.mock('@react-native-firebase/crashlytics', () => {
+  return () => ({
+    setUserId: jest.fn(),
+    setAttributes: jest.fn(),
+  });
+});

@@ -146,7 +146,6 @@
     "react-native-dev-menu": "4.0.2",
     "react-native-storybook-loader": "2.0.2",
     "react-test-renderer": "16.13.1",
-    "recursive-readdir-sync": "1.0.6",
     "request": "2.88.2",
     "sharp": "0.25.4",
     "ts-jest": "25.5.1",
