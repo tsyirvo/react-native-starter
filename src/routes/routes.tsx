@@ -1,6 +1,11 @@
-import React, { ReactElement, Suspense } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { ReactElement, Suspense, useRef, useCallback } from 'react';
+import {
+  NavigationContainer,
+  NavigationContainerRef,
+} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import analytics from '@react-native-firebase/analytics';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 import getTranslations from '@utils/locales';
 
@@ -11,28 +16,54 @@ import { RootStackParamList } from './routes.types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-const RootStack = (): ReactElement => (
-  <NavigationContainer>
-    <Suspense fallback={<FallbackLoader />}>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{ gestureEnabled: true }}
-      >
-        <Stack.Screen
-          name="Home"
-          component={Pages.Home}
-          options={{ title: 'Home', headerShown: false }}
-        />
-        <Stack.Screen
-          name="OtherPage"
-          component={Pages.OtherPage}
-          options={{ title: getTranslations('otherPage', 'page_name') }}
-          initialParams={{ someProps: 'Some value' }}
-        />
-        {/* inject screens before this */}
-      </Stack.Navigator>
-    </Suspense>
-  </NavigationContainer>
-);
+const RootStack = (): ReactElement => {
+  const routeNameRef = useRef<string>();
+  const navigationRef = useRef<NavigationContainerRef>(null);
+
+  const onReady = useCallback(() => {
+    routeNameRef.current = navigationRef?.current?.getCurrentRoute()?.name;
+  }, []);
+
+  const onStateChange = useCallback(() => {
+    const previousRouteName = routeNameRef.current;
+    const currentRouteName =
+      navigationRef?.current?.getCurrentRoute()?.name || '';
+
+    if (previousRouteName !== currentRouteName) {
+      analytics().setCurrentScreen(currentRouteName);
+      crashlytics().setAttribute('currentScreen', currentRouteName);
+    }
+
+    routeNameRef.current = currentRouteName;
+  }, []);
+
+  return (
+    <NavigationContainer
+      ref={navigationRef}
+      onReady={onReady}
+      onStateChange={onStateChange}
+    >
+      <Suspense fallback={<FallbackLoader />}>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ gestureEnabled: true }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={Pages.Home}
+            options={{ title: 'Home', headerShown: false }}
+          />
+          <Stack.Screen
+            name="OtherPage"
+            component={Pages.OtherPage}
+            options={{ title: getTranslations('otherPage', 'page_name') }}
+            initialParams={{ someProps: 'Some value' }}
+          />
+          {/* inject screens before this */}
+        </Stack.Navigator>
+      </Suspense>
+    </NavigationContainer>
+  );
+};
 
 export default RootStack;

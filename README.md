@@ -113,6 +113,8 @@ For Android: in the `Build Variants` tab, select the environment and build mode 
 
 [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 
+[Firebase](https://firebase.google.com/)
+
 ## Internationalization (To improve)
 
 All the translations are managed on a Google Excel doc. The app currently support EN and FR langages and can easily support new ones.
@@ -188,6 +190,14 @@ yarn tsc
 ```
 
 There is a precommit git hook that run the prettify command to have a consistent formatting.
+
+## Crash reports & Analytics
+
+You need to create your own Firebase config files and put them where needed on Android and iOS.
+
+You can refer [here](https://firebase.google.com/docs/projects/multiprojects) to learn how to do this to multiple targets projects like this one.
+
+One the projects are setup, you will have access to the Crashlytics and Analytics dashboard on Firebase.
 
 ## Tips
 
