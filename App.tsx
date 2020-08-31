@@ -5,6 +5,7 @@ import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
+import codePush from 'react-native-code-push';
 
 import AppContainer from 'routes/routes';
 
@@ -27,4 +28,10 @@ const Root = (): ReactElement => (
   </StorybookProvider>
 );
 
-export default Root;
+const codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_SUSPEND,
+  minimumBackgroundDuration: 180,
+};
+
+export default codePush(codePushOptions)(Root);

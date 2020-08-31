@@ -115,6 +115,8 @@ For Android: in the `Build Variants` tab, select the environment and build mode 
 
 [Firebase](https://firebase.google.com/)
 
+[CodePush](https://github.com/microsoft/react-native-code-push)
+
 ## Internationalization (To improve)
 
 All the translations are managed on a Google Excel doc. The app currently support EN and FR langages and can easily support new ones.
@@ -198,6 +200,14 @@ You need to create your own Firebase config files and put them where needed on A
 You can refer [here](https://firebase.google.com/docs/projects/multiprojects) to learn how to do this to multiple targets projects like this one.
 
 One the projects are setup, you will have access to the Crashlytics and Analytics dashboard on Firebase.
+
+## CodePush
+
+You have the possibility to bypass updating your apps via the platform stores when updating only JS files or image assets.
+
+You first need to configure you app token for iOS and Android (read [here](https://github.com/microsoft/react-native-code-push)), then create a new release.
+
+By default, the development and staging environments share the same CodePush release, and the development one is unique.
 
 ## Tips
 
