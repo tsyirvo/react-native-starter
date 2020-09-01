@@ -123,7 +123,7 @@
     "imageoptim": "0.5.0",
     "jest": "25.5.4",
     "jest-circus": "26.3.0",
-    "lint-staged": "10.2.11",
+    "lint-staged": "10.2.13",
     "lodash": "4.17.20",
     "metro-react-native-babel-preset": "0.62.0",
     "ora": "5.0.0",
