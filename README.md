@@ -84,9 +84,9 @@ yarn start
 You can run the simulators with the commands below:
 
 ```
-yarn ios:[development|staging|production]
+make ios-run-[development|staging|production]
 or
-yarn android:[development|staging|production]
+make android-run-[development|staging|production]
 ```
 
 ## Run in a specific environment (To finalize)
@@ -214,5 +214,5 @@ By default, the development and staging environments share the same CodePush rel
 Sometimes, React Native can produce cryptic errors... To handle thoses scenarios, you can use the following command:
 
 ```
-yarn clean-cache
+make clean
 ```
