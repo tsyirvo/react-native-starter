@@ -10,13 +10,8 @@
     "url": "https://github.com/tsyirvo/react-native-starter/issues"
   },
   "scripts": {
-    "android:development": "react-native run-android --variant=developmentDebug --appIdSuffix=development",
-    "android:staging": "react-native run-android --variant=stagingDebug --appIdSuffix=staging",
-    "android:production": "react-native run-android --variant=productionDebug --appIdSuffix=production",
-    "ios:development": "react-native run-ios --scheme=rnStarter-development",
-    "ios:staging": "react-native run-ios --scheme=rnStarter-staging",
-    "ios:production": "react-native run-ios --scheme=rnStarter-production",
     "start": "react-native start",
+    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules && yarn",
     "test": "jest --runInBand --outputFile test-results.json --json",
     "test:staged": "jest -o --passWithNoTests --runInBand",
     "tsc": "tsc --noEmit --project tsconfig.json",
@@ -27,17 +22,8 @@
     "generate:page": "npx hygen generators page",
     "generate:fc": "npx hygen generators fc",
     "generate:class": "npx hygen generators class",
-    "clean-cache": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules && yarn",
     "prestorybook": "rnstl",
-    "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
-    "ios:patch": "cd ios && fastlane incrementVersionNumber bump_type:patch && cd ..",
-    "ios:minor": "cd ios &&  fastlane incrementVersionNumber bump_type:minor && cd..",
-    "ios:major": "cd ios &&  fastlane incrementVersionNumber bump_type:major && cd..",
-    "ios:beta": "cd ios &&  fastlane beta && cd..",
-    "ios:matchPull": "cd ios &&  fastlane matchPull && cd..",
-    "ios:addTesters": "cd ios &&  fastlane addTesters && cd..",
-    "android:beta": "cd android &&  fastlane beta && cd..",
-    "android:deploy": "cd android &&  fastlane deploy && cd.."
+    "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook"
   },
   "husky": {
     "hooks": {
