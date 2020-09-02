@@ -89,7 +89,7 @@ or
 make android-run-[development|staging|production]
 ```
 
-## Run in a specific environment (To finalize)
+## Run in a specific environment
 
 The iOS app and the Android one both support 3 (development, staging and production) different environments, backed by the corresponding `.env` file.
 
@@ -128,6 +128,8 @@ To sync the translations in the app, just run:
 ```
 yarn sync-locales
 ```
+
+If you prefer, you can change this and use a dedicated library. I created this because of specific problematics I was faced with in my projects.
 
 ## Adding images
 

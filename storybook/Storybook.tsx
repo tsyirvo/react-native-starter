@@ -22,7 +22,7 @@ class Storybook extends Component<Props, State> {
   componentDidMount(): void {
     if (__DEV__) {
       import('react-native-dev-menu').then((DevMenu) => {
-        // @ts-expect-error
+        // @ts-expect-error: Methods on dynamic import not recognized
         DevMenu.addItem('Toggle Storybook', () => {
           import('.').then((StorybookUI) => {
             this.StorybookUIRoot = StorybookUI.StorybookUIRootView;

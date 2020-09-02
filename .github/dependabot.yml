@@ -3,12 +3,11 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
-      day: 'saturday'
-      time: '06:00'
+      interval: 'daily'
+      time: '03:00'
       timezone: 'Europe/Paris'
     target-branch: 'develop'
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     ignore:
       - dependency-name: 'react'
       - dependency-name: '@types/react'
