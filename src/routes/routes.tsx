@@ -30,7 +30,7 @@ const RootStack = (): ReactElement => {
       navigationRef?.current?.getCurrentRoute()?.name || '';
 
     if (previousRouteName !== currentRouteName) {
-      analytics().setCurrentScreen(currentRouteName);
+      analytics().logScreenView({ screen_name: currentRouteName });
       crashlytics().setAttribute('currentScreen', currentRouteName);
     }
 
