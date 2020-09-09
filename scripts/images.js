@@ -11,23 +11,24 @@ const rimraf = require('rimraf');
 let imgData = {};
 
 // Check wether the param is a file or a folder
-const checkArgumentType = arg => {
+const checkArgumentType = (arg) => {
   if (fs.lstatSync(arg).isFile()) return 'file';
+  if (fs.lstatSync(arg).isDirectory()) return 'folder';
 
-  return 'folder';
+  return 'unsupported';
 };
 
 // Create a tmp folder for the images
 const createTmpFolder = () => {
   return new Promise(async (res, rej) => {
     try {
-      fs.mkdir(`${__dirname}/tmp/1x`, { recursive: true }, err => {
+      fs.mkdirSync(`${__dirname}/tmp/1x`, { recursive: true }, (err) => {
         if (err) throw err;
       });
-      fs.mkdir(`${__dirname}/tmp/2x`, { recursive: true }, err => {
+      fs.mkdirSync(`${__dirname}/tmp/2x`, { recursive: true }, (err) => {
         if (err) throw err;
       });
-      fs.mkdir(`${__dirname}/tmp/3x`, { recursive: true }, err => {
+      fs.mkdirSync(`${__dirname}/tmp/3x`, { recursive: true }, (err) => {
         if (err) throw err;
       });
 
@@ -53,7 +54,7 @@ const deleteTmpFolder = () => {
 };
 
 // Create the three image resolutions
-const createImageResolutions = img => {
+const createImageResolutions = (img) => {
   return new Promise(async (res, rej) => {
     try {
       const image = sharp(img);
@@ -81,12 +82,10 @@ const createImageResolutions = img => {
   });
 };
 
-const getImageData = img => {
-  const dotIndex = img.indexOf('.');
-  const slashIndex = img.lastIndexOf('/');
-  const fileName = img.slice(slashIndex === -1 ? 0 : slashIndex + 1, dotIndex);
-  const fileExtension = img.slice(dotIndex + 1, img.length);
-  const fileFullName = `${fileName}.${fileExtension}`;
+const getImageData = (img) => {
+  const fileExtension = path.extname(img);
+  const fileName = path.basename(img, fileExtension);
+  const fileFullName = path.basename(img);
 
   imgData = {
     fileName,
@@ -111,7 +110,7 @@ const compressImages = () => {
   });
 };
 
-const moveIosImages = destPath => {
+const moveIosImages = (destPath) => {
   return new Promise(async (res, rej) => {
     try {
       fs.copyFileSync(
@@ -145,28 +144,28 @@ const createForIos = () => {
         `${__dirname}${iosPath}${imgData.fileName}${imgFolderExtension}`
       );
       const jsonContentIos = `{
-    "images" : [
-      {
-        "idiom" : "universal",
-        "filename" : "${imgData.fileName}.${imgData.fileExtension}",
-        "scale" : "1x"
-      },
-      {
-        "idiom" : "universal",
-        "filename" : "${imgData.fileName}@2x.${imgData.fileExtension}",
-        "scale" : "2x"
-      },
-      {
-        "idiom" : "universal",
-        "filename" : "${imgData.fileName}@3x.${imgData.fileExtension}",
-        "scale" : "3x"
-      }
-    ],
-    "info" : {
-      "version" : 1,
-      "author" : "xcode"
-    }
-  }`;
+        "images" : [
+          {
+            "idiom" : "universal",
+            "filename" : "${imgData.fileName}.${imgData.fileExtension}",
+            "scale" : "1x"
+          },
+          {
+            "idiom" : "universal",
+            "filename" : "${imgData.fileName}@2x.${imgData.fileExtension}",
+            "scale" : "2x"
+          },
+          {
+            "idiom" : "universal",
+            "filename" : "${imgData.fileName}@3x.${imgData.fileExtension}",
+            "scale" : "3x"
+          }
+        ],
+        "info" : {
+          "version" : 1,
+          "author" : "xcode"
+        }
+      }`;
 
       if (!fs.existsSync(iosDataDir)) {
         fs.mkdirSync(iosDataDir);
@@ -188,20 +187,20 @@ const createForIos = () => {
   });
 };
 
-const moveAndroidImages = destPath => {
+const moveAndroidImages = (destPath) => {
   return new Promise(async (res, rej) => {
     try {
       fs.copyFileSync(
         `${__dirname}/tmp/3x/${imgData.fileFullName}`,
-        `${destPath}/drawable-xxhdpi/${imgData.fileName}.${imgData.fileExtension}`
+        `${destPath}/drawable-xxhdpi/${imgData.fileFullName}`
       );
       fs.copyFileSync(
         `${__dirname}/tmp/2x/${imgData.fileFullName}`,
-        `${destPath}/drawable-xhdpi/${imgData.fileName}.${imgData.fileExtension}`
+        `${destPath}/drawable-xhdpi/${imgData.fileFullName}`
       );
       fs.copyFileSync(
         `${__dirname}/tmp/1x/${imgData.fileFullName}`,
-        `${destPath}/drawable-mdpi/${imgData.fileName}.${imgData.fileExtension}`
+        `${destPath}/drawable-mdpi/${imgData.fileFullName}`
       );
 
       res();
@@ -238,67 +237,77 @@ createForAndroid = () => {
   });
 };
 
-const generateImages = async arg => {
-  getImageData(arg);
+const generateImages = (arg) => {
+  return new Promise(async (res, rej) => {
+    try {
+      getImageData(arg);
 
-  await createTmpFolder();
+      await createTmpFolder();
 
-  const creatingVersions = ora({
-    text: `Creating the different images versions`,
-    color: 'white',
-  }).start();
-  await createImageResolutions(arg);
-  creatingVersions.succeed(
-    'All versions of the images were successfully created'
-  );
+      const creatingVersions = ora({
+        text: `Creating the different images versions`,
+        color: 'white',
+      }).start();
+      await createImageResolutions(arg);
+      creatingVersions.succeed(
+        'All versions of the images were successfully created'
+      );
 
-  const optimnizingImages = ora({
-    text: `Optimizing all images`,
-    color: 'white',
-  }).start();
-  await compressImages();
-  optimnizingImages.succeed('All images were successfully optimized');
+      const optimnizingImages = ora({
+        text: `Optimizing all images`,
+        color: 'white',
+      }).start();
+      await compressImages();
+      optimnizingImages.succeed('All images were successfully optimized');
 
-  const creatingIos = ora({
-    text: `Creating the iOS images`,
-    color: 'white',
-  }).start();
-  await createForIos();
-  creatingIos.succeed('All images were successfully create for iOS');
+      const creatingIos = ora({
+        text: `Creating the iOS images`,
+        color: 'white',
+      }).start();
+      await createForIos();
+      creatingIos.succeed('All images were successfully create for iOS');
 
-  const creatingAndroid = ora({
-    text: `Creating the Android images`,
-    color: 'white',
-  }).start();
-  await createForAndroid();
-  creatingAndroid.succeed('All images were successfully create for Android');
+      const creatingAndroid = ora({
+        text: `Creating the Android images`,
+        color: 'white',
+      }).start();
+      await createForAndroid();
+      creatingAndroid.succeed(
+        'All images were successfully create for Android'
+      );
 
-  await deleteTmpFolder();
+      await deleteTmpFolder();
+
+      res();
+    } catch (err) {
+      console.log('err', err);
+      rej();
+    }
+  });
 };
 
-(() => {
+(async () => {
   const argv = process.argv.slice(2);
   if (!argv) {
     console.log(chalk.red('No arguments were passed!'));
     process.exit();
   }
 
-  if (argv.length === 1) {
-    const fileType = checkArgumentType(argv[0]);
+  console.log('argv', argv);
+
+  for await (arg of argv) {
+    const fileType = checkArgumentType(arg);
 
     switch (fileType) {
       case 'file':
-        generateImages(argv[0]);
+        await generateImages(arg);
+        break;
+      case 'folder':
+        console.log(chalk.red('Folders are not supported yet!'));
         break;
       default:
-        console.log(
-          chalk.red(
-            'Arguments that are not unique files are not supported yet!'
-          )
-        );
+        console.log(chalk.red('The arguments passed are not supported!'));
         break;
     }
-  } else {
-    console.log(chalk.red('Multiple arguments are not supported yet!'));
   }
 })();
