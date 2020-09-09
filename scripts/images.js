@@ -34,7 +34,7 @@ const createTmpFolder = () => {
 
       res();
     } catch (err) {
-      console.log('err', err);
+      console.log('createTmpFolder err', err);
       rej();
     }
   });
@@ -47,7 +47,7 @@ const deleteTmpFolder = () => {
       rimraf.sync(`${__dirname}/tmp`);
       res();
     } catch (err) {
-      console.log('err', err);
+      console.log('deleteTmpFolder err', err);
       rej();
     }
   });
@@ -76,7 +76,7 @@ const createImageResolutions = (img) => {
 
       res();
     } catch (err) {
-      console.log('err', err);
+      console.log('createImageResolutions err', err);
       rej();
     }
   });
@@ -86,6 +86,11 @@ const getImageData = (img) => {
   const fileExtension = path.extname(img);
   const fileName = path.basename(img, fileExtension);
   const fileFullName = path.basename(img);
+
+  if (!fileExtension) {
+    console.log(chalk.red('A file you passed has no extension :/'));
+    throw 'Check the args passed to the script';
+  }
 
   imgData = {
     fileName,
@@ -104,7 +109,7 @@ const compressImages = () => {
       ]);
       res();
     } catch (err) {
-      console.log('err', err);
+      console.log('compressImages err', err);
       rej();
     }
   });
@@ -128,7 +133,7 @@ const moveIosImages = (destPath) => {
 
       res();
     } catch (err) {
-      console.log('err', err);
+      console.log('moveIosImages err', err);
       rej();
     }
   });
@@ -181,7 +186,7 @@ const createForIos = () => {
         }
       );
     } catch (err) {
-      console.log('err', err);
+      console.log('createForIos err', err);
       rej();
     }
   });
@@ -205,7 +210,7 @@ const moveAndroidImages = (destPath) => {
 
       res();
     } catch (err) {
-      console.log('err', err);
+      console.log('moveAndroidImages err', err);
       rej();
     }
   });
@@ -231,7 +236,7 @@ createForAndroid = () => {
       await moveAndroidImages(androidDataDir);
       res();
     } catch (err) {
-      console.log('err', err);
+      console.log('createForAndroid err', err);
       rej();
     }
   });
@@ -280,8 +285,49 @@ const generateImages = (arg) => {
 
       res();
     } catch (err) {
-      console.log('err', err);
+      console.log('generateImages err', err);
       rej();
+    }
+  });
+};
+
+const handleFileType = async (arg) => {
+  return new Promise(async (res, rej) => {
+    try {
+      const fileType = checkArgumentType(arg);
+
+      switch (fileType) {
+        case 'file':
+          console.log('file', arg);
+
+          await generateImages(arg);
+          break;
+        case 'folder':
+          fs.readdir(arg, async (err, files) => {
+            if (err) {
+              console.log(
+                chalk.red('An error occured while reading the directory')
+              );
+            }
+
+            console.log('files', files);
+
+            for await (file of files) {
+              console.log('folder file', `${arg}/${file}`);
+
+              await handleFileType(`${arg}/${file}`);
+            }
+          });
+          break;
+        default:
+          console.log(chalk.red('The arguments passed are not supported!'));
+          break;
+      }
+
+      res();
+    } catch (err) {
+      console.log('handleFileType err', err);
+      ref();
     }
   });
 };
@@ -296,18 +342,6 @@ const generateImages = (arg) => {
   console.log('argv', argv);
 
   for await (arg of argv) {
-    const fileType = checkArgumentType(arg);
-
-    switch (fileType) {
-      case 'file':
-        await generateImages(arg);
-        break;
-      case 'folder':
-        console.log(chalk.red('Folders are not supported yet!'));
-        break;
-      default:
-        console.log(chalk.red('The arguments passed are not supported!'));
-        break;
-    }
+    await handleFileType(arg);
   }
 })();
