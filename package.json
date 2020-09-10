@@ -79,7 +79,7 @@
     "@storybook/addon-storyshots": "5.3.19",
     "@storybook/react-native": "5.3.19",
     "@storybook/react-native-server": "5.3.19",
-    "@testing-library/jest-native": "3.3.0",
+    "@testing-library/jest-native": "3.4.2",
     "@testing-library/react-native": "7.0.2",
     "@types/enzyme": "3.10.5",
     "@types/enzyme-adapter-react-16": "1.0.6",
