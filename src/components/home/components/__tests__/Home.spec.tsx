@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
-import { shallow } from 'enzyme';
 
 import render from '@tests/utils';
 
@@ -14,7 +13,7 @@ describe('Home page component', () => {
 
   it('should render correctly', () => {
     // When
-    const wrapper = shallow(<Home {...props} />);
+    const wrapper = render(<Home {...props} />);
 
     // Then
     expect(wrapper).toMatchSnapshot();

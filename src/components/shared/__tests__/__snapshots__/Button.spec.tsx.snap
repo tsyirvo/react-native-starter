@@ -1,13 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shared primitives Button component should render correctly with a text children 1`] = `
-<Pressable
-  onPress={[MockFunction]}
+<View
+  accessible={true}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
 >
-  <Styled(View)>
+  <View
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
     <Text>
       Some text
     </Text>
-  </Styled(View)>
-</Pressable>
+  </View>
+</View>
 `;
