@@ -126,7 +126,7 @@
     "lint-staged": "10.3.0",
     "lodash": "4.17.20",
     "metro-react-native-babel-preset": "0.62.0",
-    "ora": "5.0.0",
+    "ora": "5.1.0",
     "path": "0.12.7",
     "prettier": "2.1.1",
     "react-dom": "16.11.0",
