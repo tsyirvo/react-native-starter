@@ -7,6 +7,7 @@ const path = require('path');
 const ora = require('ora');
 const chalk = require('chalk');
 const rimraf = require('rimraf');
+const isImage = require('is-image');
 
 let imgData = {};
 
@@ -295,7 +296,9 @@ const handleFileType = async (arg) =>
 
       switch (fileType) {
         case 'file':
-          await generateImages(arg);
+          if (isImage(arg)) {
+            await generateImages(arg);
+          }
           break;
         case 'folder':
           fs.readdir(arg, async (err, files) => {
