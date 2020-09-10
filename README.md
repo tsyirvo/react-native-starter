@@ -207,9 +207,13 @@ One the projects are setup, you will have access to the Crashlytics and Analytic
 
 You have the possibility to bypass updating your apps via the platform stores when updating only JS files or image assets.
 
-You first need to configure you app token for iOS and Android (read [here](https://github.com/microsoft/react-native-code-push)), then create a new release.
+You first need to configure you app token for iOS and Android (read [here](https://github.com/microsoft/react-native-code-push)), add it where needed, then create a new release.
 
-By default, the development and staging environments share the same CodePush release, and the development one is unique.
+For iOS, check the individual targets `.plist` files and insert the value for `CODEPUSH_KEY`.
+
+For Android, in `app/build.gradle`, where the flavors are defined, insert the key values.
+
+By default, the development env can be left out of the config and only the staging and production one have to be setup with the keys.
 
 ## Tips
 
