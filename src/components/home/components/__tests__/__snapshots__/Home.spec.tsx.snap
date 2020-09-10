@@ -1,51 +1,286 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home page component should render correctly 1`] = `
-<SafeView
+<RNCSafeAreaView
   edges={
     Array [
       "bottom",
     ]
   }
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
 >
-  <ScrollView>
-    <StatusBar
-      animated={false}
-      barStyle="light-content"
-      showHideTransition="fade"
-    />
-    <Header />
-    <Styled(Styled(View))
-      pb={150}
-      px={25}
-    >
-      <Styled(Styled(Text))
-        color="black"
-        fontWeight={600}
-        mt={25}
-        variant="large"
+  <RCTScrollView>
+    <View>
+      <View
+        accessibilityIgnoresInvertColors={true}
+        style={
+          Object {
+            "height": 350,
+            "width": "100%",
+          }
+        }
       >
-        Navigate to another page
-      </Styled(Styled(Text))>
-      <Button
-        alignItems="center"
-        bg="grey"
-        borderRadius="medium"
-        mt={20}
-        onPress={[Function]}
-        px={15}
-        py={5}
-        testID="goto_otherPage"
+        <Image
+          source={
+            Object {
+              "uri": "header",
+            }
+          }
+          style={
+            Array [
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              Object {
+                "height": 350,
+                "width": "100%",
+              },
+              undefined,
+            ]
+          }
+        />
+        <View
+          alignItems="center"
+          justifyContent="flex-end"
+          mb={25}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "marginBottom": 25,
+              },
+            ]
+          }
+        >
+          <Text
+            color="white"
+            style={
+              Array [
+                Object {
+                  "color": "#fff",
+                  "fontSize": 24,
+                  "lineHeight": 33,
+                },
+              ]
+            }
+            testID="home_title"
+            variant="large"
+          >
+            React Native Starter
+          </Text>
+        </View>
+      </View>
+      <View
+        pb={150}
+        px={25}
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "paddingBottom": 150,
+              "paddingLeft": 25,
+              "paddingRight": 25,
+            },
+          ]
+        }
       >
-        <Styled(Text)
+        <Text
           color="black"
+          fontWeight={600}
+          mt={25}
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontSize": 24,
+                "fontWeight": "600",
+                "lineHeight": 33,
+                "marginTop": 25,
+              },
+            ]
+          }
+          variant="large"
+        >
+          Navigate to another page
+        </Text>
+        <View
+          accessible={true}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          testID="goto_otherPage"
+        >
+          <View
+            alignItems="center"
+            bg="grey"
+            borderRadius="medium"
+            mt={20}
+            px={15}
+            py={5}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#e5e5e5",
+                  "borderRadius": 16,
+                  "marginTop": 20,
+                  "paddingBottom": 5,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 5,
+                },
+              ]
+            }
+          >
+            <Text
+              color="black"
+              style={
+                Array [
+                  Object {
+                    "color": "#000",
+                    "fontSize": 16,
+                    "lineHeight": 24,
+                  },
+                ]
+              }
+              variant="regular"
+            >
+              Press to navigate
+            </Text>
+          </View>
+        </View>
+        <Text
+          color="black"
+          fontWeight={600}
+          mb={10}
+          mt={25}
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontSize": 24,
+                "fontWeight": "600",
+                "lineHeight": 33,
+                "marginBottom": 10,
+                "marginTop": 25,
+              },
+            ]
+          }
+          variant="large"
+        >
+          Storybook
+        </Text>
+        <Text
+          color="black"
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontSize": 16,
+                "lineHeight": 24,
+              },
+            ]
+          }
           variant="regular"
         >
-          Press to navigate
-        </Styled(Text)>
-      </Button>
-      <Informations />
-    </Styled(Styled(View))>
-  </ScrollView>
-</SafeView>
+          Access the Storybook form the Dev Menu with
+           Cmd+R
+        </Text>
+        <Text
+          color="black"
+          fontWeight={600}
+          mb={10}
+          mt={25}
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontSize": 24,
+                "fontWeight": "600",
+                "lineHeight": 33,
+                "marginBottom": 10,
+                "marginTop": 25,
+              },
+            ]
+          }
+          variant="large"
+        >
+          Tests
+        </Text>
+        <Text
+          color="black"
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontSize": 16,
+                "lineHeight": 24,
+              },
+            ]
+          }
+          variant="regular"
+        >
+          You can run tests with Jest or Detox
+        </Text>
+        <Text
+          color="black"
+          fontWeight={600}
+          mb={10}
+          mt={25}
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontSize": 24,
+                "fontWeight": "600",
+                "lineHeight": 33,
+                "marginBottom": 10,
+                "marginTop": 25,
+              },
+            ]
+          }
+          variant="large"
+        >
+          Formatting & type checking
+        </Text>
+        <Text
+          color="black"
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontSize": 16,
+                "lineHeight": 24,
+              },
+            ]
+          }
+          variant="regular"
+        >
+          The code is checked with ESLint, Prettier and TypeScript
+        </Text>
+      </View>
+    </View>
+  </RCTScrollView>
+</RNCSafeAreaView>
 `;

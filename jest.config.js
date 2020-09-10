@@ -16,7 +16,6 @@ module.exports = {
   },
   preset: 'react-native',
   setupFilesAfterEnv: [
-    '<rootDir>/src/tests/setupTests.js',
     '<rootDir>/src/tests/__mocks__/firebase.ts',
     '@testing-library/jest-native/extend-expect',
   ],
@@ -26,5 +25,4 @@ module.exports = {
   transform: {
     '^.+\\.js$': 'babel-jest',
   },
-  snapshotSerializers: ['enzyme-to-json/serializer'],
 };

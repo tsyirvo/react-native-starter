@@ -178,14 +178,17 @@ android {
          development {
              applicationIdSuffix 'development'
              resValue "string", "build_config_package", "com.rnstarter"
+             resValue "string", "CodePushDeploymentKey", ""
          }
          staging {
              applicationIdSuffix 'staging'
              resValue "string", "build_config_package", "com.rnstarter"
+             resValue "string", "CodePushDeploymentKey", "<INSERT_STAGING_KEY>"
          }
          production {
              applicationIdSuffix 'production'
              resValue "string", "build_config_package", "com.rnstarter"
+             resValue "string", "CodePushDeploymentKey", "<INSERT_PRODUCTION_KEY>"
          }
      }
 

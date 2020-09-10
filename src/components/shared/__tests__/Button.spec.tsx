@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { fireEvent } from '@testing-library/react-native';
-import { shallow } from 'enzyme';
 
 import render from '@tests/utils';
 
@@ -14,7 +13,7 @@ describe('Shared primitives Button component', () => {
 
   it('should render correctly with a text children', () => {
     // When
-    const wrapper = shallow(<Button {...props}>{child}</Button>);
+    const wrapper = render(<Button {...props}>{child}</Button>);
 
     // Then
     expect(wrapper).toMatchSnapshot();

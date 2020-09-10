@@ -1,5 +1,4 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { fireEvent } from '@testing-library/react-native';
 
 import render from '@tests/utils';
@@ -12,7 +11,7 @@ describe('OtherPage page component', () => {
 
   it('should render correctly', () => {
     // When
-    const wrapper = shallow(<OtherPage {...props} />);
+    const wrapper = render(<OtherPage {...props} />);
 
     // Then
     expect(wrapper).toMatchSnapshot();

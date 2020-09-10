@@ -1,36 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OtherPage page component should render correctly 1`] = `
-<SafeView>
-  <Styled(Styled(View))
+<RNCSafeAreaView
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
     alignItems="center"
     justifyContent="center"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+        },
+      ]
+    }
   >
-    <Styled(Styled(Text))
+    <Text
       color="black"
       fontWeight={600}
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontSize": 24,
+            "fontWeight": "600",
+            "lineHeight": 33,
+          },
+        ]
+      }
       testID="otherPage_title"
       variant="large"
     >
       Another page
-    </Styled(Styled(Text))>
-    <Button
-      alignItems="center"
-      bg="grey"
-      borderRadius="medium"
-      mt={20}
-      onPress={[Function]}
-      px={15}
-      py={5}
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       testID="back_button"
     >
-      <Styled(Text)
-        color="black"
-        variant="regular"
+      <View
+        alignItems="center"
+        bg="grey"
+        borderRadius="medium"
+        mt={20}
+        px={15}
+        py={5}
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#e5e5e5",
+              "borderRadius": 16,
+              "marginTop": 20,
+              "paddingBottom": 5,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 5,
+            },
+          ]
+        }
       >
-        Back
-      </Styled(Text)>
-    </Button>
-  </Styled(Styled(View))>
-</SafeView>
+        <Text
+          color="black"
+          style={
+            Array [
+              Object {
+                "color": "#000",
+                "fontSize": 16,
+                "lineHeight": 24,
+              },
+            ]
+          }
+          variant="regular"
+        >
+          Back
+        </Text>
+      </View>
+    </View>
+  </View>
+</RNCSafeAreaView>
 `;

@@ -5,9 +5,8 @@ to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/__te
 
 import React from 'react';
 // import { fireEvent } from '@testing-library/react-native';
-import { shallow } from 'enzyme';
 
-// import render from '@tests/utils';
+import render from '@tests/utils';
 
 import <%= h.changeCase.pascalCase(componentName) %> from '../<%= h.changeCase.pascalCase(componentName) %>';
 
@@ -17,7 +16,7 @@ describe('<%= h.changeCase.pascalCase(componentName) %> component', () => {
 
   it('should render correctly', () => {
     // When
-    const wrapper = shallow(<<%= h.changeCase.pascalCase(componentName) %> {...props} />);
+    const wrapper = render(<<%= h.changeCase.pascalCase(componentName) %> {...props} />);
 
     // Then
     expect(wrapper).toMatchSnapshot();

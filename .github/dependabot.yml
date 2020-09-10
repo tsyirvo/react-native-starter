@@ -8,16 +8,8 @@ updates:
       timezone: 'Europe/Paris'
     target-branch: 'develop'
     open-pull-requests-limit: 5
+    allow:
+      - dependency-type: 'production'
     ignore:
       - dependency-name: 'react'
-      - dependency-name: '@types/react'
       - dependency-name: 'react-native'
-      - dependency-name: '@types/react-native'
-      - dependency-name: 'metro-react-native-babel-preset'
-      - dependency-name: 'react-dom'
-      - dependency-name: '@storybook/*'
-      - dependency-name: 'babel-jest'
-      - dependency-name: 'jest'
-      - dependency-name: 'jest-circus'
-      - dependency-name: 'ts-jest'
-      - dependency-name: '@types/jest'
