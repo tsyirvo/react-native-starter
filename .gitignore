@@ -53,6 +53,7 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 */fastlane/.env
+android/fastlane/api-*.json
 
 # Bundle artifact
 *.jsbundle
@@ -72,3 +73,7 @@ test-results.json
 .env.development
 .env.staging
 .env.production
+
+# Android builds
+#
+android/app/*/*/*.aab
