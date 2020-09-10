@@ -135,10 +135,10 @@ If you prefer, you can change this and use a dedicated library. I created this b
 
 All images are stored in the native images catalogs for both iOS and Android.
 
-To simplify the adding process, and optimizing those images, you can run the following command (one image at the time for now):
+To simplify the adding process, and optimizing those images, you can run the following command (as many as you want or a whole folder):
 
 ```
-yarn add-image path/to/the/image/to/add
+yarn add-image [path/to/the/image/to/add | path/to/the/folder]
 ```
 
 ## Generate new components

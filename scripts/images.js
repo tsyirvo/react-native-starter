@@ -19,8 +19,8 @@ const checkArgumentType = (arg) => {
 };
 
 // Create a tmp folder for the images
-const createTmpFolder = () => {
-  return new Promise(async (res, rej) => {
+const createTmpFolder = () =>
+  new Promise(async (res, rej) => {
     try {
       fs.mkdirSync(`${__dirname}/tmp/1x`, { recursive: true }, (err) => {
         if (err) throw err;
@@ -38,24 +38,23 @@ const createTmpFolder = () => {
       rej();
     }
   });
-};
 
 // Create the tmp folder for the images
-const deleteTmpFolder = () => {
-  return new Promise((res, rej) => {
+const deleteTmpFolder = () =>
+  new Promise((res, rej) => {
     try {
       rimraf.sync(`${__dirname}/tmp`);
+
       res();
     } catch (err) {
       console.log('deleteTmpFolder err', err);
       rej();
     }
   });
-};
 
 // Create the three image resolutions
-const createImageResolutions = (img) => {
-  return new Promise(async (res, rej) => {
+const createImageResolutions = (img) =>
+  new Promise(async (res, rej) => {
     try {
       const image = sharp(img);
 
@@ -80,16 +79,14 @@ const createImageResolutions = (img) => {
       rej();
     }
   });
-};
 
 const getImageData = (img) => {
   const fileExtension = path.extname(img);
   const fileName = path.basename(img, fileExtension);
   const fileFullName = path.basename(img);
 
-  if (!fileExtension) {
-    console.log(chalk.red('A file you passed has no extension :/'));
-    throw 'Check the args passed to the script';
+  if (fileFullName === '.DS_Store') {
+    return 'abort';
   }
 
   imgData = {
@@ -99,24 +96,24 @@ const getImageData = (img) => {
   };
 };
 
-const compressImages = () => {
-  return new Promise(async (res, rej) => {
+const compressImages = () =>
+  new Promise(async (res, rej) => {
     try {
       await imageOptim.optim([
         `${__dirname}/tmp/3x/${imgData.fileFullName}`,
         `${__dirname}/tmp/2x/${imgData.fileFullName}`,
         `${__dirname}/tmp/1x/${imgData.fileFullName}`,
       ]);
+
       res();
     } catch (err) {
       console.log('compressImages err', err);
       rej();
     }
   });
-};
 
-const moveIosImages = (destPath) => {
-  return new Promise(async (res, rej) => {
+const moveIosImages = (destPath) =>
+  new Promise(async (res, rej) => {
     try {
       fs.copyFileSync(
         `${__dirname}/tmp/3x/${imgData.fileFullName}`,
@@ -137,10 +134,9 @@ const moveIosImages = (destPath) => {
       rej();
     }
   });
-};
 
-const createForIos = () => {
-  return new Promise(async (res, rej) => {
+const createForIos = () =>
+  new Promise(async (res, rej) => {
     try {
       // iOS config
       const iosPath = './../ios/rnStarter/Images.xcassets/';
@@ -182,6 +178,7 @@ const createForIos = () => {
         'utf8',
         async () => {
           await moveIosImages(iosDataDir);
+
           res();
         }
       );
@@ -190,10 +187,9 @@ const createForIos = () => {
       rej();
     }
   });
-};
 
-const moveAndroidImages = (destPath) => {
-  return new Promise(async (res, rej) => {
+const moveAndroidImages = (destPath) =>
+  new Promise(async (res, rej) => {
     try {
       fs.copyFileSync(
         `${__dirname}/tmp/3x/${imgData.fileFullName}`,
@@ -214,10 +210,9 @@ const moveAndroidImages = (destPath) => {
       rej();
     }
   });
-};
 
-createForAndroid = () => {
-  return new Promise(async (res, rej) => {
+createForAndroid = () =>
+  new Promise(async (res, rej) => {
     try {
       // Android config
       const androidPath = './../android/app/src/main/res/';
@@ -234,18 +229,19 @@ createForAndroid = () => {
       }
 
       await moveAndroidImages(androidDataDir);
+
       res();
     } catch (err) {
       console.log('createForAndroid err', err);
       rej();
     }
   });
-};
 
-const generateImages = (arg) => {
-  return new Promise(async (res, rej) => {
+const generateImages = (arg) =>
+  new Promise(async (res, rej) => {
     try {
-      getImageData(arg);
+      const result = getImageData(arg);
+      if (result === 'abort') return res();
 
       await createTmpFolder();
 
@@ -283,23 +279,22 @@ const generateImages = (arg) => {
 
       await deleteTmpFolder();
 
+      console.log(chalk.green(`${imgData.fileName} successfuly imported !`));
+
       res();
     } catch (err) {
       console.log('generateImages err', err);
       rej();
     }
   });
-};
 
-const handleFileType = async (arg) => {
-  return new Promise(async (res, rej) => {
+const handleFileType = async (arg) =>
+  new Promise(async (res, rej) => {
     try {
       const fileType = checkArgumentType(arg);
 
       switch (fileType) {
         case 'file':
-          console.log('file', arg);
-
           await generateImages(arg);
           break;
         case 'folder':
@@ -310,11 +305,7 @@ const handleFileType = async (arg) => {
               );
             }
 
-            console.log('files', files);
-
             for await (file of files) {
-              console.log('folder file', `${arg}/${file}`);
-
               await handleFileType(`${arg}/${file}`);
             }
           });
@@ -330,7 +321,6 @@ const handleFileType = async (arg) => {
       ref();
     }
   });
-};
 
 (async () => {
   const argv = process.argv.slice(2);
@@ -338,8 +328,6 @@ const handleFileType = async (arg) => {
     console.log(chalk.red('No arguments were passed!'));
     process.exit();
   }
-
-  console.log('argv', argv);
 
   for await (arg of argv) {
     await handleFileType(arg);
