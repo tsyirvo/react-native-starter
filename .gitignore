@@ -74,6 +74,8 @@ test-results.json
 .env.staging
 .env.production
 
-# Android builds
+# Android releases
 #
+android/fastlane/api-*.json
+android/private_key.pepk
 android/app/*/*/*.aab

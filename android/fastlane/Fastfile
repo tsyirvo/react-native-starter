@@ -1,19 +1,107 @@
 default_platform(:android)
 
 platform :android do
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics(
-      api_token: "#{ENV["CRASHLYTICS_TOKEN"]}",
-      build_secret: "#{ENV["CRASHLYTICS_SECRET"]}",
-      notifications: true,
+  ### Setup correct options based on target env and apk type ###
+  before_all do |command, options|
+    case options[:env]
+      when "prod"
+        ENV["FLAVOR"] = 'production'
+        ENV["TRACK"] = 'alpha'
+      when "staging"
+        ENV["FLAVOR"] = 'staging'
+        ENV["TRACK"] = 'alpha'
+      else
+        UI.error 'No env was specified'
+        next
+    end
+
+    case options[:binary]
+      when "aab"
+        ENV["TASK"] = 'bundle'
+      else
+        ENV["TASK"] = 'assemble'
+    end
+  end
+
+  ### Releases steps ###
+  lane :check_git_status do |options|
+    ensure_git_branch(
+      branch: '^master|develop$',
+    )
+    ensure_git_status_clean
+  end
+
+  lane :build do |options|
+    gradle(
+      task: 'clean',
+      print_command_output: false,
+    )
+    gradle(
+      task: ENV["TASK"],
+      flavor: ENV["FLAVOR"],
+      build_type: 'Release',
+      # print_command_output: false,
     )
   end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  lane :deploy_appCenter do |options|
+    appcenter_upload(
+      api_token: ENV['APPCENTER_API_TOKEN'],
+      owner_type: ENV['APPCENTER_OWNER_TYPE'],
+      owner_name: ENV['APPCENTER_OWNER_NAME'],
+      app_name: ENV['APPCENTER_APP_NAME'],
+      notify_testers: false,
+    )
+  end
+
+  lane :deploy_playStore do |options|
+    upload_to_play_store(
+      track: ENV["TRACK"],
+      release_status: 'draft',
+      skip_upload_apk: true,
+    )
+  end
+
+  ### Releases management ###
+  lane :beta do |options|
+    # check_git_status
+    build
+    deploy_appCenter
+  end
+
+  lane :release do |options|
+    # check_git_status
+    build
+    deploy_playStore
+  end
+
+  ### Tracks promotions ###
+  lane :promote_alpha_to_beta do
+    upload_to_play_store(
+      track: 'alpha',
+      track_promote_to: 'beta',
+    )
+  end
+
+  lane :promote_beta_to_production do
+    upload_to_play_store(
+      track: 'beta',
+      track_promote_to: 'production',
+    )
+  end
+
+  ### Versionning utilities ###
+  lane :get_android_version_code do |options|
+    google_play_track_version_codes(
+      package_name: ENV["ANDROID_PACKAGE_ID"],
+      track: options[:track],
+    )
+  end
+
+  lane :get_android_release_names do |options|
+    google_play_track_release_names(
+      package_name: ENV["ANDROID_PACKAGE_ID"],
+      track: options[:track],
+    )
   end
 end
