@@ -116,6 +116,7 @@
     "husky": "4.2.5",
     "hygen": "6.0.4",
     "imageoptim": "0.5.0",
+    "is-image": "3.0.0",
     "jest": "25.5.4",
     "jest-circus": "26.3.0",
     "lint-staged": "10.3.0",
