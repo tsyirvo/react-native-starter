@@ -2,9 +2,9 @@ import React, { useCallback, ReactElement, useEffect } from 'react';
 import { StatusBar, ScrollView } from 'react-native';
 import analytics from '@react-native-firebase/analytics';
 import crashlytics from '@react-native-firebase/crashlytics';
+import { useTranslation } from 'react-i18next';
 
 import { HomeScreenNavigationProp } from '@routes/routes.types';
-import getTranslations from '@utils/locales';
 
 import Button from '@shared/Button';
 import { Flex, Title, Text } from '@shared/primitives';
@@ -18,6 +18,8 @@ type Props = {
 };
 
 const Home = ({ navigation }: Props): ReactElement => {
+  const { t } = useTranslation();
+
   const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const Home = ({ navigation }: Props): ReactElement => {
 
         <Flex px={25} pb={150}>
           <Title fontWeight={600} mt={25}>
-            {getTranslations('home', 'navigation_title')}
+            {t('home.navigation_title')}
           </Title>
           <Button
             testID="goto_otherPage"
@@ -54,7 +56,7 @@ const Home = ({ navigation }: Props): ReactElement => {
             mt={20}
             borderRadius="medium"
           >
-            <Text>{getTranslations('home', 'navigation_content')}</Text>
+            <Text>{t('home.navigation_content')}</Text>
           </Button>
 
           <Informations />

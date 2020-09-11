@@ -1,30 +1,33 @@
 import React, { ReactElement } from 'react';
 import { Platform } from 'react-native';
-
-import getTranslations from '@utils/locales';
+import { useTranslation } from 'react-i18next';
 
 import { Title, Text } from '@shared/primitives';
 
-const Informations = (): ReactElement => (
-  <>
-    <Title fontWeight={600} mt={25} mb={10}>
-      {getTranslations('home', 'storybook_title')}
-    </Title>
-    <Text>
-      {getTranslations('home', 'storybook_content')}
-      {Platform.OS === 'ios' ? ' Cmd+R' : ' Cmd+M'}
-    </Text>
+const Informations = (): ReactElement => {
+  const { t } = useTranslation();
 
-    <Title fontWeight={600} mt={25} mb={10}>
-      {getTranslations('home', 'test_title')}
-    </Title>
-    <Text>{getTranslations('home', 'test_content')}</Text>
+  return (
+    <>
+      <Title fontWeight={600} mt={25} mb={10}>
+        {t('home.storybook_title')}
+      </Title>
+      <Text>
+        {t('home.storybook_content')}
+        {Platform.OS === 'ios' ? ' Cmd+R' : ' Cmd+M'}
+      </Text>
 
-    <Title fontWeight={600} mt={25} mb={10}>
-      {getTranslations('home', 'formatting_title')}
-    </Title>
-    <Text>{getTranslations('home', 'formatting_content')}</Text>
-  </>
-);
+      <Title fontWeight={600} mt={25} mb={10}>
+        {t('home.test_title')}
+      </Title>
+      <Text>{t('home.test_content')}</Text>
+
+      <Title fontWeight={600} mt={25} mb={10}>
+        {t('home.formatting_title')}
+      </Title>
+      <Text>{t('home.formatting_content')}</Text>
+    </>
+  );
+};
 
 export default Informations;

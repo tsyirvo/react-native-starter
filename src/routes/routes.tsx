@@ -6,8 +6,7 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import analytics from '@react-native-firebase/analytics';
 import crashlytics from '@react-native-firebase/crashlytics';
-
-import getTranslations from '@utils/locales';
+import { useTranslation } from 'react-i18next';
 
 import FallbackLoader from '@shared/FallbackLoader';
 
@@ -17,6 +16,8 @@ import { RootStackParamList } from './routes.types';
 const Stack = createStackNavigator<RootStackParamList>();
 
 const RootStack = (): ReactElement => {
+  const { t } = useTranslation();
+
   const routeNameRef = useRef<string>();
   const navigationRef = useRef<NavigationContainerRef>(null);
 
@@ -56,7 +57,7 @@ const RootStack = (): ReactElement => {
           <Stack.Screen
             name="OtherPage"
             component={Pages.OtherPage}
-            options={{ title: getTranslations('otherPage', 'page_name') }}
+            options={{ title: t('otherPage.page_name') }}
             initialParams={{ someProps: 'Some value' }}
           />
           {/* inject screens before this */}

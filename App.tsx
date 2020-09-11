@@ -15,6 +15,8 @@ import { getRatio } from '@utils/dimensions';
 
 import StorybookProvider from './storybook/Storybook';
 
+import './src/i18n';
+
 enableScreens();
 getRatio();
 
