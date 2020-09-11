@@ -1,80 +1,133 @@
 default_platform(:ios)
 
 platform :ios do
-  ### Project management ###
-  desc "Increment the app build number"
-  lane :incrementBuildNumber do
-    ensure_git_status_clean
-    increment_build_number(
-      xcodeproj: "./#{ENV["IOS_PROJECT"]}"
-    )
-  end
-
-  desc "Increment the app version number"
-  lane :incrementVersionNumber do |options|
-    # ensure_git_status_clean
-    increment_version_number(
-      bump_type: options[:bump_type]
-    )
-  end
-
-  desc "Commit the version bump and add a tag for the current release"
-  lane :commitBumpAndAddTag do
-    commit_version_bump(
-      xcodeproj: "./#{ENV["IOS_PROJECT"]}"
-    )
-    add_git_tag
-    push_to_git_remote
-  end
-
-  ### Certificate management ###
-  desc "Pull the app necessary certificates & profiles"
-  lane :matchPull do
-    sync_code_signing(
-      app_identifier: "#{ENV["IOS_APP_ID"]}",
-      type: "#{ENV["MATCH_TYPE"]}",
-      git_url: "#{ENV["MATCH_GIT_URL"]}",
-      git_branch: "#{ENV["MATCH_GIT_BRANCH"]}",
-      readonly: true
-    )
+  ### Setup correct options based on the passed params ###
+  before_all do |command, options|
+    case options[:env]
+      when "prod"
+        ENV["BUNDLE_ID_SUFFIX"] = ''
+        ENV["SCHEME"] = 'rnStarter-production'
+      when "staging"
+        ENV["BUNDLE_ID_SUFFIX"] = '.staging'
+        ENV["SCHEME"] = 'rnStarter-staging'
+      else
+        UI.error 'No env was specified'
+        next
+    end
   end
 
   ### Register new devices to the Apple portal ##
-  desc "Add new testers devices IDs to the profiles"
-  lane :addTesters do
+  lane :add_testers do |options|
     register_devices(
-      devices_file: "./fastlane/devices.txt"
+      devices_file: "./fastlane/devices.txt",
     )
-    sync_code_signing(
-      app_identifier: "#{ENV["IOS_APP_ID"]}",
-      type: "#{ENV["MATCH_TYPE"]}",
-      git_url: "#{ENV["MATCH_GIT_URL"]}",
-      git_branch: "#{ENV["MATCH_GIT_BRANCH"]}",
-      force_for_new_devices: true
+    match(
+      app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
+      team_id: ENV["IOS_TEAM_ID"],
+      type: 'development',
+      force_for_new_devices: true,
+    )
+    match(
+      app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
+      team_id: ENV["IOS_TEAM_ID"],
+      type: 'appstore',
+      force_for_new_devices: true,
+    )
+    match(
+      app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
+      team_id: ENV["IOS_TEAM_ID"],
+      type: 'adhoc',
+      force_for_new_devices: true,
     )
   end
 
-  ### Building the app ##
-  desc "Build the app"
-  lane :buildApp do
-    build_app(
-      workspace: "./#{ENV["IOS_WORKSPACE"]}",
-      scheme: "#{ENV["BUILD_SCHEME"]}",
-      export_method: "app-store",
+  ### Get the latest Certificates ###
+  lane :match_pull_all do |options|
+    if options[:readonly].nil?
+      options[:readonly] = true
+    end
+
+    match(
+      app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
+      team_id: ENV["IOS_TEAM_ID"],
+      type: 'development',
+      readonly: options[:readonly],
+    )
+    match_pull_app_store
+    match_pull_ad_hoc
+  end
+
+  lane :match_pull_ad_hoc do |options|
+    match(
+      app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
+      team_id: ENV["IOS_TEAM_ID"],
+      type: 'adhoc',
+      readonly: options[:readonly],
+    )
+  end
+
+  lane :match_pull_app_store do |options|
+    match(
+      app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
+      team_id: ENV["IOS_TEAM_ID"],
+      type: 'appstore',
+      readonly: options[:readonly],
+    )
+  end
+
+  ### Releases steps ###
+  private_lane :check_git_status do |options|
+    ensure_git_branch(
+      branch: '^master|develop$',
+    )
+    ensure_git_status_clean
+  end
+
+  private_lane :build do |options|
+    gym(
+      workspace: ENV["IOS_WORKSPACE"],
+      configuration: "Release",
+      scheme: ENV["SCHEME"],
+      export_method: ENV["METHOD"],
       silent: true,
-      include_bitcode: true,
-      include_symbols: true,
-      skip_submission: true,
-      skip_waiting_for_build_processing: true
+      clean: true,
     )
   end
 
-  ### Beta ###
-  desc "Push a new beta build to TestFlight"
-  lane :beta do
-    incrementBuildNumber
-    buildApp
-    upload_to_testflight
-    push_to_git_remote
+  private_lane :deploy_app_center do |options|
+    appcenter_upload(
+      api_token: ENV['APPCENTER_API_TOKEN'],
+      owner_type: ENV['APPCENTER_OWNER_TYPE'],
+      owner_name: ENV['APPCENTER_OWNER_NAME'],
+      app_name: ENV['APPCENTER_APP_NAME'],
+      notify_testers: false,
+    )
+  end
+
+  private_lane :deploy_apple_connect do |options|
+    pilot(
+      app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
+      team_id: ENV["IOS_TEAM_ID"],
+      skip_waiting_for_build_processing: true,
+    )
+  end
+
+  ### Releases management ###
+  lane :beta do |options|
+    ENV["METHOD"] = "ad-hoc"
+
+    # check_git_status
+    match_pull_ad_hoc
+    build
+    deploy_app_center
+  end
+
+  lane :release do |options|
+    ENV["METHOD"] = "app-store"
+
+    # check_git_status
+    match_pull_app_store
+    build
+    deploy_apple_connect
   end
 end

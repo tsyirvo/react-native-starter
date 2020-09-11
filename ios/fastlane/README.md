@@ -12,40 +12,60 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios incrementBuildNumber
+### ios add_testers
 ```
-fastlane ios incrementBuildNumber
+fastlane ios add_testers
 ```
-Increment the app build number
-### ios incrementVersionNumber
+
+### ios match_pull_all
 ```
-fastlane ios incrementVersionNumber
+fastlane ios match_pull_all
 ```
-Increment the app version number
-### ios commitBumpAndAddTag
+
+### ios match_pull_ad_hoc
 ```
-fastlane ios commitBumpAndAddTag
+fastlane ios match_pull_ad_hoc
 ```
-Commit the version bump and add a tag for the current release
-### ios matchPull
+
+### ios match_pull_app_store
 ```
-fastlane ios matchPull
+fastlane ios match_pull_app_store
 ```
-Pull the app necessary certificates & profiles
-### ios buildApp
+
+### ios check_git_status
 ```
-fastlane ios buildApp
+fastlane ios check_git_status
 ```
-Build the app
+
+### ios build
+```
+fastlane ios build
+```
+
+### ios deploy_app_center
+```
+fastlane ios deploy_app_center
+```
+
+### ios deploy_apple_connect
+```
+fastlane ios deploy_apple_connect
+```
+
 ### ios beta
 ```
 fastlane ios beta
 ```
-Push a new beta build to TestFlight
+
+### ios release
+```
+fastlane ios release
+```
+
 
 ----
 

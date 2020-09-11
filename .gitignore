@@ -52,9 +52,6 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-*/fastlane/.env
-android/fastlane/api-*.json
-
 # Bundle artifact
 *.jsbundle
 
@@ -78,4 +75,8 @@ test-results.json
 #
 android/fastlane/api-*.json
 android/private_key.pepk
-android/app/*/*/*.aab
+android/app/*/release/*.aab
+
+# iOS releases
+#
+ios/*.dSYM.zip
