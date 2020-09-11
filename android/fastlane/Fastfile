@@ -31,7 +31,7 @@ platform :android do
     ensure_git_status_clean
   end
 
-  lane :build do |options|
+  private_lane :build do |options|
     gradle(
       task: 'clean',
       print_command_output: false,
@@ -44,7 +44,7 @@ platform :android do
     )
   end
 
-  lane :deploy_appCenter do |options|
+  private_lane :deploy_appCenter do |options|
     appcenter_upload(
       api_token: ENV['APPCENTER_API_TOKEN'],
       owner_type: ENV['APPCENTER_OWNER_TYPE'],
@@ -54,7 +54,7 @@ platform :android do
     )
   end
 
-  lane :deploy_playStore do |options|
+  private_lane :deploy_playStore do |options|
     upload_to_play_store(
       track: ENV["TRACK"],
       release_status: 'draft',
