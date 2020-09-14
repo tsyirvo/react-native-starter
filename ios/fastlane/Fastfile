@@ -1,22 +1,32 @@
 default_platform(:ios)
 
 platform :ios do
-  ### Setup correct options based on the passed params ###
+  ### 
+  ###   Setup correct options based on the passed params
+  ###
   before_all do |command, options|
+    env["BUILD_NUMBER"] = Time.now.utc.strftime("%Y%m%d.%H%M.%S")
+
     case options[:env]
       when "prod"
-        ENV["BUNDLE_ID_SUFFIX"] = ''
-        ENV["SCHEME"] = 'rnStarter-production'
+        ENV["BUNDLE_ID_SUFFIX"] = ""
+        ENV["SCHEME"] = "rnStarter-production"
+        ENV["TAG"] = "ios/prod*"
+        ENV["TITLE"] = "iOS Production"
       when "staging"
-        ENV["BUNDLE_ID_SUFFIX"] = '.staging'
-        ENV["SCHEME"] = 'rnStarter-staging'
+        ENV["BUNDLE_ID_SUFFIX"] = ".staging"
+        ENV["SCHEME"] = "rnStarter-staging"
+        ENV["TAG"] = "ios/staging*"
+        ENV["TITLE"] = "iOS Staging"
       else
-        UI.error 'No env was specified'
+        UI.error "No env was specified"
         next
     end
   end
 
-  ### Register new devices to the Apple portal ##
+  ###
+  ###   Register new devices to the Apple portal
+  ###
   lane :add_testers do |options|
     register_devices(
       devices_file: "./fastlane/devices.txt",
@@ -24,24 +34,26 @@ platform :ios do
     match(
       app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
       team_id: ENV["IOS_TEAM_ID"],
-      type: 'development',
+      type: "development",
       force_for_new_devices: true,
     )
     match(
       app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
       team_id: ENV["IOS_TEAM_ID"],
-      type: 'appstore',
+      type: "appstore",
       force_for_new_devices: true,
     )
     match(
       app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
       team_id: ENV["IOS_TEAM_ID"],
-      type: 'adhoc',
+      type: "adhoc",
       force_for_new_devices: true,
     )
   end
 
-  ### Get the latest Certificates ###
+  ###
+  ###   Get the latest Certificates
+  ###
   lane :match_pull_all do |options|
     if options[:readonly].nil?
       options[:readonly] = true
@@ -50,7 +62,7 @@ platform :ios do
     match(
       app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
       team_id: ENV["IOS_TEAM_ID"],
-      type: 'development',
+      type: "development",
       readonly: options[:readonly],
     )
     match_pull_app_store
@@ -61,7 +73,7 @@ platform :ios do
     match(
       app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
       team_id: ENV["IOS_TEAM_ID"],
-      type: 'adhoc',
+      type: "adhoc",
       readonly: options[:readonly],
     )
   end
@@ -70,20 +82,43 @@ platform :ios do
     match(
       app_identifier: ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
       team_id: ENV["IOS_TEAM_ID"],
-      type: 'appstore',
+      type: "appstore",
       readonly: options[:readonly],
     )
   end
 
-  ### Releases steps ###
+  ###
+  ###   Verify is this release has added features since the last one
+  ###
+  private_lane :verify do |options|
+    is_releaseable = analyze_commits(
+      match: ENV["TAG"]
+    )
+
+    unless is_releaseable
+      UI.error "No user facing changes since the last release !"
+    end
+  end
+
+  ###
+  ###   Releases steps
+  ###
   private_lane :check_git_status do |options|
     ensure_git_branch(
-      branch: '^master|develop$',
+      branch: "^master|develop$",
     )
     ensure_git_status_clean
   end
 
   private_lane :build do |options|
+    env["NEXT_VERSION"] = lane_context[SharedValues::RELEASE_NEXT_VERSION]
+
+    increment_version_number(
+      version_number: env["NEXT_VERSION"],
+    )
+    increment_build_number_in_plist(
+      build_number: env["BUILD_NUMBER"],
+    )
     gym(
       workspace: ENV["IOS_WORKSPACE"],
       configuration: "Release",
@@ -96,10 +131,10 @@ platform :ios do
 
   private_lane :deploy_app_center do |options|
     appcenter_upload(
-      api_token: ENV['APPCENTER_API_TOKEN'],
-      owner_type: ENV['APPCENTER_OWNER_TYPE'],
-      owner_name: ENV['APPCENTER_OWNER_NAME'],
-      app_name: ENV['APPCENTER_APP_NAME'],
+      api_token: ENV["APPCENTER_API_TOKEN"],
+      owner_type: ENV["APPCENTER_OWNER_TYPE"],
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
+      app_name: ENV["APPCENTER_APP_NAME"],
       notify_testers: false,
     )
   end
@@ -112,22 +147,45 @@ platform :ios do
     )
   end
 
-  ### Releases management ###
+  ###
+  ###   Releases management
+  ###
   lane :beta do |options|
     ENV["METHOD"] = "ad-hoc"
 
     # check_git_status
+    next unless verify
     match_pull_ad_hoc
     build
     deploy_app_center
+    post_deploy
   end
 
   lane :release do |options|
     ENV["METHOD"] = "app-store"
 
     # check_git_status
+    next unless verify
     match_pull_app_store
     build
     deploy_apple_connect
+    post_deploy
+  end
+
+  ###
+  ###   Post deploy steps
+  ###
+  lane :post_deploy do |options|
+    notes = conventional_changelog(
+      title: ENV["TITLE"],
+      format: "markdown",
+    )
+
+    add_git_tag(
+      tag: "ios/#{options[:env]}/#{env["NEXT_VERSION"]}/#{env["BUILD_NUMBER"]}"
+    )
+    push_git_tags
+
+    UI.error notes
   end
 end
