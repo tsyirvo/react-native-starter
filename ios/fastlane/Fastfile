@@ -11,13 +11,13 @@ platform :ios do
         ENV["SCHEME"] = "rnStarter-production"
         ENV["TAG"] = "ios/prod*"
         ENV["ENV"] = "prod"
-        ENV["TITLE"] = "iOS Production"
+        ENV["TITLE"] = "- iOS Production"
       when "staging"
         ENV["BUNDLE_ID_SUFFIX"] = ".staging"
         ENV["SCHEME"] = "rnStarter-staging"
         ENV["TAG"] = "ios/staging*"
         ENV["ENV"] = "staging"
-        ENV["TITLE"] = "iOS Staging"
+        ENV["TITLE"] = "- iOS Staging"
       else
         UI.error "No env was specified"
         next
@@ -180,13 +180,13 @@ platform :ios do
   ###
   ###   Post deploy steps
   ###
-  lane :post_deploy do |options|
+  private_lane :post_deploy do |options|
     notes = conventional_changelog(
       title: ENV["TITLE"],
       format: "markdown",
       commit_url: ENV["GIT_URL"],
     )
-    build_number = get_build_number_from_xcodeproj(
+    build_number = get_build_number_from_plist(
       xcodeproj: ENV["IOS_XCODEPROJ"],
       scheme: ENV["SCHEME"],
       build_configuration_name: 'Release',
@@ -196,5 +196,7 @@ platform :ios do
       tag: "ios/#{ENV["ENV"]}/#{ENV["NEXT_VERSION"]}/#{build_number}"
     )
     push_git_tags
+
+    File.open("../../CHANGELOG.md", "a") { |file| file.write notes}
   end
 end
