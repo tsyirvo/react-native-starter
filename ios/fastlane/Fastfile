@@ -5,18 +5,18 @@ platform :ios do
   ###   Setup correct options based on the passed params
   ###
   before_all do |command, options|
-    env["BUILD_NUMBER"] = Time.now.utc.strftime("%Y%m%d.%H%M.%S")
-
     case options[:env]
       when "prod"
         ENV["BUNDLE_ID_SUFFIX"] = ""
         ENV["SCHEME"] = "rnStarter-production"
         ENV["TAG"] = "ios/prod*"
+        ENV["ENV"] = "prod"
         ENV["TITLE"] = "iOS Production"
       when "staging"
         ENV["BUNDLE_ID_SUFFIX"] = ".staging"
         ENV["SCHEME"] = "rnStarter-staging"
         ENV["TAG"] = "ios/staging*"
+        ENV["ENV"] = "staging"
         ENV["TITLE"] = "iOS Staging"
       else
         UI.error "No env was specified"
@@ -91,13 +91,9 @@ platform :ios do
   ###   Verify is this release has added features since the last one
   ###
   private_lane :verify do |options|
-    is_releaseable = analyze_commits(
+    analyze_commits(
       match: ENV["TAG"]
     )
-
-    unless is_releaseable
-      UI.error "No user facing changes since the last release !"
-    end
   end
 
   ###
@@ -111,13 +107,18 @@ platform :ios do
   end
 
   private_lane :build do |options|
-    env["NEXT_VERSION"] = lane_context[SharedValues::RELEASE_NEXT_VERSION]
+    ENV["NEXT_VERSION"] = lane_context[SharedValues::RELEASE_NEXT_VERSION]
 
-    increment_version_number(
-      version_number: env["NEXT_VERSION"],
+    UI.error ENV["NEXT_VERSION"]
+
+    increment_version_number_in_plist(
+      version_number: ENV["NEXT_VERSION"],
+      xcodeproj: ENV["IOS_XCODEPROJ"],
+      scheme: ENV["SCHEME"],
     )
     increment_build_number_in_plist(
-      build_number: env["BUILD_NUMBER"],
+      xcodeproj: ENV["IOS_XCODEPROJ"],
+      scheme: ENV["SCHEME"],
     )
     gym(
       workspace: ENV["IOS_WORKSPACE"],
@@ -154,11 +155,15 @@ platform :ios do
     ENV["METHOD"] = "ad-hoc"
 
     # check_git_status
-    next unless verify
-    match_pull_ad_hoc
-    build
-    deploy_app_center
-    post_deploy
+
+    if verify
+      match_pull_ad_hoc
+      build
+      deploy_app_center
+      post_deploy
+    else
+      UI.error "No user facing changes since the last release !"
+    end
   end
 
   lane :release do |options|
@@ -179,13 +184,17 @@ platform :ios do
     notes = conventional_changelog(
       title: ENV["TITLE"],
       format: "markdown",
+      commit_url: ENV["GIT_URL"],
+    )
+    build_number = get_build_number_from_xcodeproj(
+      xcodeproj: ENV["IOS_XCODEPROJ"],
+      scheme: ENV["SCHEME"],
+      build_configuration_name: 'Release',
     )
 
     add_git_tag(
-      tag: "ios/#{options[:env]}/#{env["NEXT_VERSION"]}/#{env["BUILD_NUMBER"]}"
+      tag: "ios/#{ENV["ENV"]}/#{ENV["NEXT_VERSION"]}/#{build_number}"
     )
     push_git_tags
-
-    UI.error notes
   end
 end
