@@ -3,8 +3,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
-import CenteredContent from '@shared/CenteredContent';
-import { Text } from '@shared/primitives';
+import CenteredContent from '$shared/CenteredContent';
+import { Text } from '$shared/primitives';
 
 storiesOf('Text', module)
   .add('Without any props', () => (

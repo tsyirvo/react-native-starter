@@ -52,15 +52,14 @@
     "import/resolver": {
       "babel-module": {
         "alias": {
-          "@assets": "./src/assets",
-          "@components": "./src/components",
-          "@shared": "./src/components/shared",
-          "@pages": "./src/pages",
-          "@types": "./src/types",
-          "@routes": "./src/routes",
-          "@styles": "./src/styles",
-          "@utils": "./src/utils",
-          "@tests": "./src/tests"
+          "$assets": "./src/assets",
+          "$components": "./src/components",
+          "$shared": "./src/components/shared",
+          "$pages": "./src/pages",
+          "$routes": "./src/routes",
+          "$styles": "./src/styles",
+          "$utils": "./src/utils",
+          "$tests": "./src/tests"
         }
       },
       "react-native": {},

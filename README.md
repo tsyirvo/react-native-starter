@@ -117,19 +117,13 @@ For Android: in the `Build Variants` tab, select the environment and build mode 
 
 [CodePush](https://github.com/microsoft/react-native-code-push)
 
-## Internationalization (To improve)
+[React i18Next](https://react.i18next.com/)
 
-All the translations are managed on a Google Excel doc. The app currently support EN and FR langages and can easily support new ones.
+## Internationalization
 
-The template for the translations can be found [via this link](https://docs.google.com/spreadsheets/d/1OZXKQsSQH7mYDFTEEgN-drJSR9N-z5bTxml0CY1cu3c/edit#gid=0/)
+All the translations are managed on separate `.json` file located in the `src/i18n/locales/` folder.
 
-To sync the translations in the app, just run:
-
-```
-yarn sync-locales
-```
-
-If you prefer, you can change this and use a dedicated library. I created this because of specific problematics I was faced with in my projects.
+Refer to the documentation of React i18Next for explanation on how to use the library.
 
 ## Adding images
 

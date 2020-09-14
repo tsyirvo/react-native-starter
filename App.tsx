@@ -7,13 +7,13 @@ import {
 } from 'react-native-safe-area-context';
 import codePush from 'react-native-code-push';
 
-import AppContainer from 'routes/routes';
-
-import theme from 'styles/theme';
-
-import { getRatio } from '@utils/dimensions';
+import AppContainer from '$routes/routes';
+import theme from '$styles/theme';
+import { getRatio } from '$utils/dimensions';
 
 import StorybookProvider from './storybook/Storybook';
+
+import './src/i18n';
 
 enableScreens();
 getRatio();

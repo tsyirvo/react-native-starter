@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
 
-import render from '@tests/utils';
+import render from '$tests/utils';
 
 import OtherPage from '../OtherPage';
 

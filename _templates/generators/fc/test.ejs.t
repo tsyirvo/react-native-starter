@@ -6,7 +6,7 @@ to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/__te
 import React from 'react';
 // import { fireEvent } from '@testing-library/react-native';
 
-import render from '@tests/utils';
+import render from '$tests/utils';
 
 import <%= h.changeCase.pascalCase(componentName) %> from '../<%= h.changeCase.pascalCase(componentName) %>';
 

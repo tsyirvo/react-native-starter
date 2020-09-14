@@ -3,7 +3,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
-import CenteredContent from '@shared/CenteredContent';
+import CenteredContent from '$shared/CenteredContent';
 import FallbackLoader from '../FallbackLoader';
 
 storiesOf('FallbackLoader', module)

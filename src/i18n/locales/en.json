@@ -1,0 +1,20 @@
+{
+  "translation": {
+    "home": {
+      "page_title": "Home page",
+      "navigation_title": "Navigate to another page",
+      "navigation_content": "Press to navigate",
+      "storybook_title": "Storybook",
+      "storybook_content": "Access the Storybook form the Dev Menu with",
+      "test_title": "Tests",
+      "test_content": "You can run tests with Jest or Detox",
+      "formatting_title": "Formatting & type checking",
+      "formatting_content": "The code is checked with ESLint, Prettier and TypeScript"
+    },
+    "otherPage": {
+      "page_name": "Another page",
+      "page_title": "Another page",
+      "navigation_back": "Back"
+    }
+  }
+}

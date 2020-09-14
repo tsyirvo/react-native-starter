@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { ImageBackground } from 'react-native';
 
-import { Flex, Text } from '@shared/primitives';
+import { Flex, Text } from '$shared/primitives';
 
 const uri = { uri: 'header' };
 const styles = {

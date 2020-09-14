@@ -9,7 +9,7 @@ import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import { withKnobs, text } from '@storybook/addon-knobs';
 // import { action } from '@storybook/addon-actions';
 
-import Box from '@shared/Box';
+import Box from '$shared/Box';
 
 import <%= h.changeCase.pascalCase(componentName) %> from '../<%= h.changeCase.pascalCase(componentName) %>';
 

@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 
 import theme from 'styles/theme';
 
-import { Flex } from '@shared/primitives';
+import { Flex } from '$shared/primitives';
 
 import { loadStories } from './storyLoader';
 

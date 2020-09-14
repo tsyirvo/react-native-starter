@@ -4,8 +4,8 @@ import React, { Fragment } from 'react';
 import { ScrollView } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 
-import { Box, Text, Title } from '@shared/primitives';
-import CenteredContent from '@shared/CenteredContent';
+import { Box, Text, Title } from '$shared/primitives';
+import CenteredContent from '$shared/CenteredContent';
 import theme from '../theme';
 
 storiesOf('Theme', module)
