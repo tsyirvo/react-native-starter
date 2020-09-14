@@ -119,6 +119,8 @@ For Android: in the `Build Variants` tab, select the environment and build mode 
 
 [React i18Next](https://react.i18next.com/)
 
+[Fastlane](https://fastlane.tools/)
+
 ## Internationalization
 
 All the translations are managed on separate `.json` file located in the `src/i18n/locales/` folder.
@@ -208,6 +210,60 @@ For iOS, check the individual targets `.plist` files and insert the value for `C
 For Android, in `app/build.gradle`, where the flavors are defined, insert the key values.
 
 By default, the development env can be left out of the config and only the staging and production one have to be setup with the keys.
+
+## Releases and Beta deployments
+
+The releases automation is handled with [Fastlane](https://fastlane.tools/). You will need to install it before using it.
+
+You will have to complete the `.env` files in both fastlane directories (ios and android) before being able to run the following lanes.
+
+There are multiples lanes to do the most common things, and they need to be launched from the `ios` or `android` folder.
+
+The versions are automaticaly handled based on the commit history.
+
+For both Android and iOS, you can release beta versions to [App Center](https://appcenter.ms/) that either use the production or the staging env:
+
+```
+fastlane beta env:[staging|prod]
+```
+
+The same is applicable to deploy the apps to the respective stores platforms (Play Store & Apple Connect) with the commands:
+
+```
+fastlane release env:[staging|prod]
+```
+
+There are also platform specific lanes.
+
+For Android:, the AABs uploaded to the play store are in the alpha track by default, so you can move it up with those commands:
+
+```
+fastlane promote_alpha_to_beta
+and
+fastlane promote_beta_to_production
+```
+
+For iOS, you have to manage the signing and adding testers to your profiles.
+
+To add testers to you App Center beta releases, their devices UUIDs need to be added to your account, simply add their devices info to the `ios/fastlane/devices.txt` file.
+
+To generate new profiles to be able to deploy to theses users, run:
+
+```
+fastlane match_pull_all readonly:false
+```
+
+On a new machine or if you need to fetch the latest certificates and profiles, run the command without options like so:
+
+```
+fastlane match_pull_all
+```
+
+You can check the expiracy date of push certificates and create new ones if necessary (validity is less than 30 days). This will also generate a new .p12 on which you will have to assign a password, then upload it to you backend. To do so, run the following command:
+
+```
+fastlane pem_check
+```
 
 ## Tips
 

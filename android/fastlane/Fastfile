@@ -1,19 +1,169 @@
 default_platform(:android)
 
 platform :android do
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics(
-      api_token: "#{ENV["CRASHLYTICS_TOKEN"]}",
-      build_secret: "#{ENV["CRASHLYTICS_SECRET"]}",
-      notifications: true,
+  ###
+  ###   Setup correct options based on target env and apk type
+  ###
+  before_all do |command, options|
+    case options[:env]
+      when "prod"
+        ENV["FLAVOR"] = "production"
+        ENV["TRACK"] = "alpha"
+        ENV["TAG"] = "android/prod*"
+        ENV["ENV"] = "prod"
+        ENV["TITLE"] = "Android Production"
+      when "staging"
+        ENV["FLAVOR"] = "staging"
+        ENV["TRACK"] = "alpha"
+        ENV["TAG"] = "android/staging*"
+        ENV["ENV"] = "staging"
+        ENV["TITLE"] = "Android Staging"
+      else
+        UI.error "No env was specified"
+        next
+    end
+
+    case options[:binary]
+      when "aab"
+        ENV["TASK"] = "bundle"
+      else
+        ENV["TASK"] = "assemble"
+    end
+  end
+
+  ###
+  ###   Verify is this release has added features since the last one
+  ###
+  private_lane :verify do |options|
+    analyze_commits(
+      match: ENV["TAG"]
     )
   end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  ###
+  ###   Releases steps
+  ###
+  private_lane :check_git_status do |options|
+    ensure_git_branch(
+      branch: "^master|develop$",
+    )
+    ensure_git_status_clean
+  end
+
+  private_lane :build do |options|
+    ENV["NEXT_VERSION"] = lane_context[SharedValues::RELEASE_NEXT_VERSION]
+
+    increment_version_code
+    gradle(
+      task: "clean",
+      print_command_output: false,
+    )
+    gradle(
+      task: ENV["TASK"],
+      flavor: ENV["FLAVOR"],
+      build_type: "Release",
+      properties: {
+        "vname" => ENV["NEXT_VERSION"]
+      }
+    )
+  end
+
+  private_lane :deploy_appCenter do |options|
+    appcenter_upload(
+      api_token: ENV["APPCENTER_API_TOKEN"],
+      owner_type: ENV["APPCENTER_OWNER_TYPE"],
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
+      app_name: ENV["APPCENTER_APP_NAME"],
+      notify_testers: false,
+    )
+  end
+
+  private_lane :deploy_playStore do |options|
+    upload_to_play_store(
+      track: ENV["TRACK"],
+      release_status: "draft",
+      skip_upload_apk: true,
+    )
+  end
+
+  ###
+  ###   Releases management
+  ###
+  lane :beta do |options|
+    # check_git_status
+
+    if verify
+      build
+      deploy_appCenter
+      post_deploy
+    else
+      UI.error "No user facing changes since the last release !"
+    end
+  end
+
+  lane :release do |options|
+    # check_git_status
+
+    if verify
+      build
+      deploy_playStore
+      post_deploy
+    else
+      UI.error "No user facing changes since the last release !"
+    end
+  end
+
+  ###
+  ###   Tracks promotions
+  ###
+  lane :promote_alpha_to_beta do
+    upload_to_play_store(
+      track: "alpha",
+      track_promote_to: "beta",
+    )
+  end
+
+  lane :promote_beta_to_production do
+    upload_to_play_store(
+      track: "beta",
+      track_promote_to: "production",
+    )
+  end
+
+  ###
+  ###   Versionning utilities
+  ###
+  lane :get_android_version_code do |options|
+    google_play_track_version_codes(
+      package_name: ENV["ANDROID_PACKAGE_ID"],
+      track: options[:track],
+    )
+  end
+
+  lane :get_android_release_names do |options|
+    google_play_track_release_names(
+      package_name: ENV["ANDROID_PACKAGE_ID"],
+      track: options[:track],
+    )
+  end
+
+  ###
+  ###   Post deploy steps
+  ###
+  private_lane :post_deploy do |options|
+    notes = conventional_changelog(
+      title: ENV["TITLE"],
+      format: "markdown",
+      commit_url: ENV["GIT_URL"],
+    )
+    build_number = android_get_version_code
+
+    add_git_tag(
+      tag: "android/#{ENV["ENV"]}/#{ENV["NEXT_VERSION"]}/#{build_number}"
+    )
+    push_git_tags
+
+    File.open("../../CHANGELOG.md", "a") { |file| file.write notes}
+    push_to_git_remote
   end
 end
