@@ -88,6 +88,18 @@ platform :ios do
   end
 
   ###
+  ###   Renew the push certificate
+  ###
+  lane :pem_check do |options|
+    pem(
+      app_identifier:  ENV["IOS_APP_ID"] + ENV["BUNDLE_ID_SUFFIX"],
+      generate_p12: true,
+      save_private_key: true,
+      team_id: ENV["IOS_TEAM_ID"],
+    )
+  end
+
+  ###
   ###   Verify is this release has added features since the last one
   ###
   private_lane :verify do |options|

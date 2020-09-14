@@ -259,6 +259,12 @@ On a new machine or if you need to fetch the latest certificates and profiles, r
 fastlane match_pull_all
 ```
 
+You can check the expiracy date of push certificates and create new ones if necessary (validity is less than 30 days). This will also generate a new .p12 on which you will have to assign a password, then upload it to you backend. To do so, run the following command:
+
+```
+fastlane pem_check
+```
+
 ## Tips
 
 Sometimes, React Native can produce cryptic errors... To handle thoses scenarios, you can use the following command:
