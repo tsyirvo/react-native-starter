@@ -11,13 +11,13 @@ platform :android do
         ENV["TRACK"] = "alpha"
         ENV["TAG"] = "android/prod*"
         ENV["ENV"] = "prod"
-        ENV["TITLE"] = "- Android Production"
+        ENV["TITLE"] = "Android Production"
       when "staging"
         ENV["FLAVOR"] = "staging"
         ENV["TRACK"] = "alpha"
         ENV["TAG"] = "android/staging*"
         ENV["ENV"] = "staging"
-        ENV["TITLE"] = "- Android Staging"
+        ENV["TITLE"] = "Android Staging"
       else
         UI.error "No env was specified"
         next
@@ -164,5 +164,6 @@ platform :android do
     push_git_tags
 
     File.open("../../CHANGELOG.md", "a") { |file| file.write notes}
+    push_to_git_remote
   end
 end

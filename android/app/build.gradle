@@ -154,7 +154,7 @@ android {
         applicationId "com.rnstarter"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode 2
         versionName verName
         multiDexEnabled true
 
