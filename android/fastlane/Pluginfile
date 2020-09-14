@@ -3,3 +3,6 @@
 # Ensure this file is checked in to source control!
 
 gem 'fastlane-plugin-appcenter'
+gem 'fastlane-plugin-versioning_android'
+gem 'fastlane-plugin-semantic_release'
+gem 'fastlane-plugin-increment_version_code'

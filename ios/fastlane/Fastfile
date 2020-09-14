@@ -109,8 +109,6 @@ platform :ios do
   private_lane :build do |options|
     ENV["NEXT_VERSION"] = lane_context[SharedValues::RELEASE_NEXT_VERSION]
 
-    UI.error ENV["NEXT_VERSION"]
-
     increment_version_number_in_plist(
       version_number: ENV["NEXT_VERSION"],
       xcodeproj: ENV["IOS_XCODEPROJ"],
@@ -170,11 +168,15 @@ platform :ios do
     ENV["METHOD"] = "app-store"
 
     # check_git_status
-    next unless verify
-    match_pull_app_store
-    build
-    deploy_apple_connect
-    post_deploy
+    
+    if verify
+      match_pull_app_store
+      build
+      deploy_apple_connect
+      post_deploy
+    else
+      UI.error "No user facing changes since the last release !"
+    end
   end
 
   ###

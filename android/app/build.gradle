@@ -134,6 +134,12 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+def verName = "1.0.0"
+
+if (project.hasProperty("vname")) {
+    verName = vname
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -148,8 +154,8 @@ android {
         applicationId "com.rnstarter"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.0"
+        versionCode 1
+        versionName verName
         multiDexEnabled true
 
         resValue "string", "build_config_package", "com.rnstarter"
