@@ -3,8 +3,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
-import CenteredContent from '@shared/CenteredContent';
-import { Box } from '@shared/primitives';
+import CenteredContent from '$shared/CenteredContent';
+import { Box } from '$shared/primitives';
 
 storiesOf('Box', module)
   .add('With a size, color and radiuses', () => (

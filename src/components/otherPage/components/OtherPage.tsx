@@ -3,11 +3,10 @@ import { Platform } from 'react-native';
 import analytics from '@react-native-firebase/analytics';
 import { useTranslation } from 'react-i18next';
 
-import { OtherPageScreenNavigationProp } from '@routes/routes.types';
-
-import Button from '@shared/Button';
-import { Flex, Title, Text } from '@shared/primitives';
-import SafeView from '@shared/SafeView';
+import { OtherPageScreenNavigationProp } from '$routes/routes.types';
+import Button from '$shared/Button';
+import { Flex, Title, Text } from '$shared/primitives';
+import SafeView from '$shared/SafeView';
 
 type Props = {
   navigation: OtherPageScreenNavigationProp;

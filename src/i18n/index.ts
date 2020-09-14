@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import getDeviceLanguage from '@utils/getDeviceLanguage';
+import getDeviceLanguage from '$utils/getDeviceLanguage';
 
 import fr from './locales/fr.json';
 import en from './locales/en.json';

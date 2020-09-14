@@ -3,7 +3,7 @@ to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/<%= 
 ---
 import React, { ReactElement } from 'react';
 
-import { Flex, Title } from '@shared/primitives';
+import { Flex, Title } from '$shared/primitives';
 
 type Props = {
   someProps?: string;

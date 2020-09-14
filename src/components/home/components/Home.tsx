@@ -4,11 +4,10 @@ import analytics from '@react-native-firebase/analytics';
 import crashlytics from '@react-native-firebase/crashlytics';
 import { useTranslation } from 'react-i18next';
 
-import { HomeScreenNavigationProp } from '@routes/routes.types';
-
-import Button from '@shared/Button';
-import { Flex, Title, Text } from '@shared/primitives';
-import SafeView from '@shared/SafeView';
+import { HomeScreenNavigationProp } from '$routes/routes.types';
+import Button from '$shared/Button';
+import { Flex, Title, Text } from '$shared/primitives';
+import SafeView from '$shared/SafeView';
 
 import Header from './Header';
 import Informations from './Informations';

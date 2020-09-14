@@ -15,15 +15,14 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
-      "@assets/*": ["./assets/*"],
-      "@components/*": ["./components/*"],
-      "@shared/*": ["./components/shared/*"],
-      "@pages/*": ["./pages/*"],
-      "@types/*": ["./types/*"],
-      "@routes/*": ["./routes/*"],
-      "@styles/*": ["./styles/*"],
-      "@utils/*": ["./utils/*"],
-      "@tests/*": ["./tests/*"]
+      "$assets/*": ["./assets/*"],
+      "$components/*": ["./components/*"],
+      "$shared/*": ["./components/shared/*"],
+      "$pages/*": ["./pages/*"],
+      "$routes/*": ["./routes/*"],
+      "$styles/*": ["./styles/*"],
+      "$utils/*": ["./utils/*"],
+      "$tests/*": ["./tests/*"]
     }
   },
   "exclude": [

@@ -8,7 +8,7 @@ import analytics from '@react-native-firebase/analytics';
 import crashlytics from '@react-native-firebase/crashlytics';
 import { useTranslation } from 'react-i18next';
 
-import FallbackLoader from '@shared/FallbackLoader';
+import FallbackLoader from '$shared/FallbackLoader';
 
 import * as Pages from './pages';
 import { RootStackParamList } from './routes.types';

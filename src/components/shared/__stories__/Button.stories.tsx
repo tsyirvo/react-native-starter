@@ -5,8 +5,8 @@ import { Image } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 
-import CenteredContent from '@shared/CenteredContent';
-import { Text } from '@shared/primitives';
+import CenteredContent from '$shared/CenteredContent';
+import { Text } from '$shared/primitives';
 import Button from '../Button';
 
 storiesOf('Button', module)
