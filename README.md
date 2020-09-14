@@ -219,6 +219,8 @@ You will have to complete the `.env` files in both fastlane directories (ios and
 
 There are multiples lanes to do the most common things, and they need to be launched from the `ios` or `android` folder.
 
+The versions are automaticaly handled based on the commit history.
+
 For both Android and iOS, you can release beta versions to [App Center](https://appcenter.ms/) that either use the production or the staging env:
 
 ```
