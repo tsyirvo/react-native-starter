@@ -1984,23 +1984,23 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
-"@react-native-firebase/analytics@7.6.7":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.6.7.tgz#5fb152419064f1a91c736d77ee26932cf9765cad"
-  integrity sha512-KTdML2wXPPNIZyt7whSuSbtl35BoO/yo9LYX7XqqSj7gKJck86Xr9CjgvWNY75t7T4Ng0n6zpRI3eQCVmpx7GQ==
+"@react-native-firebase/analytics@7.6.8":
+  version "7.6.8"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.6.8.tgz#c551c5a328061ce177deab61e10814fa030aeeea"
+  integrity sha512-gm4xoJva6lfPCQVprbymm6TY6FwdRsLUwVZt9GM0XY+KrvJV3yk6vhlCafvpRZCEhvVQmW8QDCf0p9VaIygv9g==
 
-"@react-native-firebase/app@8.4.5":
-  version "8.4.5"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.5.tgz#a5194c34a1f75af8641153163700305ae578d31d"
-  integrity sha512-27qsFzX2Z1GPDyU8tUhYYCUkMlhYYCd/XJvteprTAjC8R6zPGdn/Y9Xxdrwkvhpj8Ply19lsxZ8UfvYIUbgOIQ==
+"@react-native-firebase/app@8.4.6":
+  version "8.4.6"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.6.tgz#05b4a48f2cd452acc88dd7b816a4ca934140927f"
+  integrity sha512-4eZR133QuScvGs4IQQd6qMvQ5E1mtydVTy3DtuBCeiIqtvN8ZxBYoSMgcUmYGS4VafbS2nPh85g4e3BlaIJ2XA==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/crashlytics@8.4.9":
-  version "8.4.9"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-8.4.9.tgz#46979f3d34d669201b843fff0feb7bb47739b753"
-  integrity sha512-++t75V+5xd1OWnZ2511zkTmKRDyOHumGqPriUezQ/27ObYrNYQJkkYad3O3FYI/hRWC4GndlvdSz6Z2FGMtHNA==
+"@react-native-firebase/crashlytics@8.4.11":
+  version "8.4.11"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-8.4.11.tgz#0534666b95550ac02f23d52189ff763072009c63"
+  integrity sha512-/qdO2bXj9DPjKBMpatDbZa4fvEBMCJtTMNjPqvrDdKZY8Yjh6dxrKVRCcIoy3Fwrs1NR7aYuAJlPAxyK0jcMrg==
   dependencies:
     stacktrace-js "^2.0.0"
 
