@@ -47,9 +47,9 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
-    "@react-native-firebase/analytics": "7.6.7",
-    "@react-native-firebase/app": "8.4.5",
-    "@react-native-firebase/crashlytics": "8.4.9",
+    "@react-native-firebase/analytics": "10.1.0",
+    "@react-native-firebase/app": "10.1.0",
+    "@react-native-firebase/crashlytics": "10.1.0",
     "@react-navigation/native": "5.8.10",
     "@react-navigation/stack": "5.12.8",
     "i18next": "19.8.4",

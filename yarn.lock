@@ -1984,23 +1984,23 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
-"@react-native-firebase/analytics@7.6.7":
-  version "7.6.7"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-7.6.7.tgz#5fb152419064f1a91c736d77ee26932cf9765cad"
-  integrity sha512-KTdML2wXPPNIZyt7whSuSbtl35BoO/yo9LYX7XqqSj7gKJck86Xr9CjgvWNY75t7T4Ng0n6zpRI3eQCVmpx7GQ==
+"@react-native-firebase/analytics@10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-10.1.0.tgz#8b503f08051ff3cf730ad83d418a307ffd32f11c"
+  integrity sha512-upTGcw5wl47lIeyhjsKFlXuJz2Fg7BbuAcgwq+FJ9sqkTJxDPRW/aHACsd9+WAs/UiwcGEpcT8gzgkvoJp68dg==
 
-"@react-native-firebase/app@8.4.5":
-  version "8.4.5"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.5.tgz#a5194c34a1f75af8641153163700305ae578d31d"
-  integrity sha512-27qsFzX2Z1GPDyU8tUhYYCUkMlhYYCd/XJvteprTAjC8R6zPGdn/Y9Xxdrwkvhpj8Ply19lsxZ8UfvYIUbgOIQ==
+"@react-native-firebase/app@10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-10.1.0.tgz#4242933c52b4b753ba48216092c0447677118342"
+  integrity sha512-O8IxJU0K3mmmxaz2EZW+BuC08agr3m2eybxBq+SkcJri1fv95qVsNabABWPS7h4uSHQ5m1qHCtQJnvbnHwMrvA==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/crashlytics@8.4.9":
-  version "8.4.9"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-8.4.9.tgz#46979f3d34d669201b843fff0feb7bb47739b753"
-  integrity sha512-++t75V+5xd1OWnZ2511zkTmKRDyOHumGqPriUezQ/27ObYrNYQJkkYad3O3FYI/hRWC4GndlvdSz6Z2FGMtHNA==
+"@react-native-firebase/crashlytics@10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-10.1.0.tgz#ea17e9c5459c7029d4bc238487ebc8773073b139"
+  integrity sha512-680evgIlSk//34Svi9ElDf+bgSMFDSOhMTXaSlMO022SdfEkBhLyuVkqcmuykxJkWtJlyYvZ+cq+CtcAotyOLQ==
   dependencies:
     stacktrace-js "^2.0.0"
 
