@@ -80,3 +80,6 @@ android/app/*/release/*.aab
 
 # iOS releases
 ios/*.dSYM.zip
+
+# react-native-config codegen
+ios/tmp.xcconfig

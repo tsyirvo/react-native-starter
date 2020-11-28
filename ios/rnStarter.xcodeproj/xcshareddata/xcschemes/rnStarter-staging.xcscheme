@@ -10,13 +10,13 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "cp ${PROJECT_DIR}/../.env.staging ${PROJECT_DIR}/../.env&#10;">
+               scriptText = "cp &quot;${PROJECT_DIR}/../.env.staging&quot; &quot;${PROJECT_DIR}/../.env&quot;&#10;&quot;${SRCROOT}/.../node_modules/react-native-config/ios/ReactNativeConfig/BuildDotenvConfig.rb&quot; &quot;${SRCROOT}/..&quot; &quot;${SRCROOT}/tmp.xcconfig&quot;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-                     BuildableName = "rnStarter.app"
-                     BlueprintName = "rnStarter"
+                     BlueprintIdentifier = "B6FB16B924EC92610035A6B9"
+                     BuildableName = "S_RNStarter.app"
+                     BlueprintName = "rnStarter-staging"
                      ReferencedContainer = "container:rnStarter.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>

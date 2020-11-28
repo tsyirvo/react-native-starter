@@ -119,7 +119,7 @@ def enableProguardInReleaseBuilds = false
  * give correct results when using with locales other than en-US.  Note that
  * this variant is about 6MiB larger per architecture than default.
  */
-def jscFlavor = 'org.webkit:android-jsc:+'
+def jscFlavor = 'org.webkit:android-jsc-intl:+'
 
 /**
  * Whether to enable the Hermes VM.
@@ -150,7 +150,7 @@ android {
         applicationId "com.rnstarter"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
+        versionCode 1
         versionName verName
         multiDexEnabled true
 
@@ -188,17 +188,17 @@ android {
          development {
              applicationIdSuffix 'development'
              resValue "string", "build_config_package", "com.rnstarter"
-             resValue "string", "CodePushDeploymentKey", ""
+             resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
          }
          staging {
              applicationIdSuffix 'staging'
              resValue "string", "build_config_package", "com.rnstarter"
-             resValue "string", "CodePushDeploymentKey", "<INSERT_STAGING_KEY>"
+             resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
          }
          production {
-             applicationIdSuffix 'production'
+             applicationIdSuffix ''
              resValue "string", "build_config_package", "com.rnstarter"
-             resValue "string", "CodePushDeploymentKey", "<INSERT_PRODUCTION_KEY>"
+             resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
          }
      }
 
@@ -235,6 +235,7 @@ android {
 }
 
 dependencies {
+    implementation "androidx.multidex:multidex:2.0.1"
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
