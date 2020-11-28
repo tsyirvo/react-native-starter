@@ -15,7 +15,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "B6FB16CC24EC92760035A6B9"
-                     BuildableName = "P_RNStarter.app"
+                     BuildableName = "Starter.app"
                      BlueprintName = "rnStarter-production"
                      ReferencedContainer = "container:rnStarter.xcodeproj">
                   </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B6FB16CC24EC92760035A6B9"
-               BuildableName = "P_RNStarter.app"
+               BuildableName = "Starter.app"
                BlueprintName = "rnStarter-production"
                ReferencedContainer = "container:rnStarter.xcodeproj">
             </BuildableReference>
@@ -63,7 +63,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B6FB16CC24EC92760035A6B9"
-            BuildableName = "P_RNStarter.app"
+            BuildableName = "Starter.app"
             BlueprintName = "rnStarter-production"
             ReferencedContainer = "container:rnStarter.xcodeproj">
          </BuildableReference>
@@ -79,7 +79,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B6FB16CC24EC92760035A6B9"
-            BuildableName = "P_RNStarter.app"
+            BuildableName = "Starter.app"
             BlueprintName = "rnStarter-production"
             ReferencedContainer = "container:rnStarter.xcodeproj">
          </BuildableReference>

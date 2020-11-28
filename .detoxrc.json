@@ -3,7 +3,7 @@
   "runner-config": "e2e/config.json",
   "configurations": {
     "ios.sim.debug": {
-      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/S_RNStarter.app",
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Starter_Staging.app",
       "build": "xcodebuild -workspace ios/rnStarter.xcworkspace -scheme rnStarter-staging -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.simulator",
       "device": {
@@ -11,7 +11,7 @@
       }
     },
     "ios.sim.release": {
-      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/S_RNStarter.app",
+      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/Starter_Staging.app",
       "build": "xcodebuild -workspace ios/rnStarter.xcworkspace -scheme rnStarter-staging -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.simulator",
       "device": {
