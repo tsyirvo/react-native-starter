@@ -1,9 +1,5 @@
 apply plugin: "com.android.application"
 
-// Firebase
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
-
 // React Native Config
 project.ext.envConfigFiles = [
     development: ".env.development",
@@ -219,15 +215,6 @@ android {
 
             // Detox-specific additions to pro-guard
             proguardFile "${rootProject.projectDir}/../node_modules/detox/android/detox/proguard-rules-app.pro"
-
-            /* Add the firebaseCrashlytics extension (by default,
-            * it's disabled to improve build speeds) and set
-            * nativeSymbolUploadEnabled to true. */
-            firebaseCrashlytics {
-                nativeSymbolUploadEnabled true
-                strippedNativeLibsDir "build/ndklibs/obj"
-                unstrippedNativeLibsDir "build/ndklibs/libs"
-            }
         }
     }
 

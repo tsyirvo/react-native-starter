@@ -1,11 +1,6 @@
-import React, { ReactElement, Suspense, useRef, useCallback } from 'react';
-import {
-  NavigationContainer,
-  NavigationContainerRef,
-} from '@react-navigation/native';
+import React, { ReactElement, Suspense } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import analytics from '@react-native-firebase/analytics';
-import crashlytics from '@react-native-firebase/crashlytics';
 import { useTranslation } from 'react-i18next';
 
 import FallbackLoader from '$shared/FallbackLoader';
@@ -18,32 +13,8 @@ const Stack = createStackNavigator<RootStackParamList>();
 const RootStack = (): ReactElement => {
   const { t } = useTranslation();
 
-  const routeNameRef = useRef<string>();
-  const navigationRef = useRef<NavigationContainerRef>(null);
-
-  const onReady = useCallback(() => {
-    routeNameRef.current = navigationRef?.current?.getCurrentRoute()?.name;
-  }, []);
-
-  const onStateChange = useCallback(() => {
-    const previousRouteName = routeNameRef.current;
-    const currentRouteName =
-      navigationRef?.current?.getCurrentRoute()?.name || '';
-
-    if (previousRouteName !== currentRouteName) {
-      analytics().logScreenView({ screen_name: currentRouteName });
-      crashlytics().setAttribute('currentScreen', currentRouteName);
-    }
-
-    routeNameRef.current = currentRouteName;
-  }, []);
-
   return (
-    <NavigationContainer
-      ref={navigationRef}
-      onReady={onReady}
-      onStateChange={onStateChange}
-    >
+    <NavigationContainer>
       <Suspense fallback={<FallbackLoader />}>
         <Stack.Navigator
           initialRouteName="Home"

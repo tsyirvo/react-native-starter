@@ -113,8 +113,6 @@ For Android: in the `Build Variants` tab, select the environment and build mode 
 
 [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 
-[Firebase](https://firebase.google.com/)
-
 [CodePush](https://github.com/microsoft/react-native-code-push)
 
 [React i18Next](https://react.i18next.com/)
@@ -190,14 +188,6 @@ yarn tsc
 ```
 
 There is a precommit git hook that run the prettify command to have a consistent formatting.
-
-## Crash reports & Analytics
-
-You need to create your own Firebase config files and put them where needed on Android and iOS.
-
-You can refer [here](https://firebase.google.com/docs/projects/multiprojects) to learn how to do this to multiple targets projects like this one.
-
-One the projects are setup, you will have access to the Crashlytics and Analytics dashboard on Firebase.
 
 ## CodePush
 

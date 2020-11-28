@@ -15,7 +15,6 @@ module.exports = {
   },
   preset: 'react-native',
   setupFilesAfterEnv: [
-    '<rootDir>/src/tests/__mocks__/firebase.ts',
     '<rootDir>/src/tests/setupTests.ts',
     '@testing-library/jest-native/extend-expect',
   ],

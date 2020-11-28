@@ -1,7 +1,5 @@
-import React, { useCallback, ReactElement, useEffect } from 'react';
+import React, { useCallback, ReactElement } from 'react';
 import { StatusBar, ScrollView } from 'react-native';
-import analytics from '@react-native-firebase/analytics';
-import crashlytics from '@react-native-firebase/crashlytics';
 import { useTranslation } from 'react-i18next';
 
 import { HomeScreenNavigationProp } from '$routes/routes.types';
@@ -20,19 +18,6 @@ const Home = ({ navigation }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
-
-  useEffect(() => {
-    analytics().setUserProperties({
-      username: 'tsyirvo',
-      email: 'tsyirvo@gab.ninja',
-    });
-
-    crashlytics().setUserId('123');
-    crashlytics().setAttributes({
-      username: 'tsyirvo',
-      email: 'tsyirvo@gab.ninja',
-    });
-  }, []);
 
   return (
     <SafeView edges={['bottom']}>
