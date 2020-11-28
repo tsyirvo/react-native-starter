@@ -14,7 +14,9 @@ matrix:
     #
     - stage: tests_and_lint
       language: node_js
-      cache: npm
+      cache:
+        npm: true
+        yarn: true
       install:
         - . ./scripts/ci/install.nvm.sh
         - npm install >/dev/null 2>&1
@@ -36,8 +38,14 @@ matrix:
       os: osx
       osx_image: xcode11.6
       cache:
+        npm: true
+        yarn: true
+        cocoapods: true
         directories:
-          - node_modules
+          - $HOME/Library/Caches/Homebrew
+      before_cache:
+        - brew cleanup
+      podfile: ios/Podfile
       install:
         - . ./scripts/ci/install.nvm.sh
         - gem install xcpretty >/dev/null 2>&1

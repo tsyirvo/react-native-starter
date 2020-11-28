@@ -1,6 +1,4 @@
-import React, { useCallback, ReactElement, useEffect } from 'react';
-import { Platform } from 'react-native';
-import analytics from '@react-native-firebase/analytics';
+import React, { useCallback, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { OtherPageScreenNavigationProp } from '$routes/routes.types';
@@ -16,14 +14,6 @@ const OtherPage = ({ navigation }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const goBack = useCallback(() => navigation.goBack(), []);
-
-  useEffect(() => {
-    analytics().logEvent('pageMounted', {
-      name: 'OtherPage',
-      os: Platform.OS,
-      someProps: 'Some value',
-    });
-  }, []);
 
   return (
     <SafeView>

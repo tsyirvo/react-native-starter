@@ -22,7 +22,7 @@ android-run-staging: ## Run the Android app in the staging env
 	react-native run-android --variant=stagingDebug --appIdSuffix=staging
 
 android-run-production: ## Run the Android app in the production env
-	react-native run-android --variant=productionDebug --appIdSuffix=production
+	react-native run-android --variant=productionDebug
 
 ios-run-development: ## Run the iOS app in the development env
 	react-native run-ios --scheme=rnStarter-development
