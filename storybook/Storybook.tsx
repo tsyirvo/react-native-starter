@@ -1,11 +1,6 @@
-/* eslint-disable no-undef */
+/* eslint-disable import/dynamic-import-chunkname */
 
-import React, {
-  Component,
-  ComponentClass,
-  ReactNode,
-  ReactElement,
-} from 'react';
+import React, { Component, ComponentClass, ReactNode } from 'react';
 
 const initialState = {
   isStorybookShown: false,
@@ -17,15 +12,15 @@ type Props = { children: ReactNode };
 class Storybook extends Component<Props, State> {
   state = initialState;
 
-  StorybookUIRoot?: ComponentClass;
+  storybookUIRoot?: ComponentClass;
 
   componentDidMount(): void {
     if (__DEV__) {
-      import('react-native-dev-menu').then((DevMenu) => {
+      import('react-native-dev-menu').then((devMenu) => {
         // @ts-expect-error: Methods on dynamic import not recognized
-        DevMenu.addItem('Toggle Storybook', () => {
-          import('.').then((StorybookUI) => {
-            this.StorybookUIRoot = StorybookUI.StorybookUIRootView;
+        devMenu.addItem('Toggle Storybook', () => {
+          import('.').then((storybookUI) => {
+            this.storybookUIRoot = storybookUI.StorybookUIRootView;
 
             this.setState((state) => ({
               ...state,
@@ -37,19 +32,14 @@ class Storybook extends Component<Props, State> {
     }
   }
 
-  render(): ReactElement {
+  render() {
     const { isStorybookShown } = this.state;
     const { children } = this.props;
 
-    return (
-      <>
-        {isStorybookShown && this.StorybookUIRoot ? (
-          <this.StorybookUIRoot />
-        ) : (
-          children
-        )}
-      </>
-    );
+    if (isStorybookShown && this.storybookUIRoot)
+      return <this.storybookUIRoot />;
+
+    return children;
   }
 }
 

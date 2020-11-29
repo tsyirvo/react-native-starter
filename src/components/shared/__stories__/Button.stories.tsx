@@ -7,6 +7,7 @@ import { action } from '@storybook/addon-actions';
 
 import CenteredContent from '$shared/CenteredContent';
 import { Text } from '$shared/primitives';
+
 import Button from '../Button';
 
 storiesOf('Button', module)

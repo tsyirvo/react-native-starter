@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { Platform } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { Title, Text } from '$shared/primitives';
 
-const Informations = (): ReactElement => {
+const Informations = () => {
   const { t } = useTranslation();
 
   return (

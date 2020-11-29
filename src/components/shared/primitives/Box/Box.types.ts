@@ -1,3 +1,4 @@
+import { ViewProps } from 'react-native';
 import {
   SpaceProps,
   LayoutProps,
@@ -10,7 +11,8 @@ import {
   TypographyProps,
 } from 'styled-system';
 
-export type BoxProps = SpaceProps &
+export type BoxProps = ViewProps &
+  SpaceProps &
   ColorProps &
   LayoutProps &
   FlexboxProps &

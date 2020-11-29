@@ -6,6 +6,7 @@ import { storiesOf } from '@storybook/react-native';
 
 import { Box, Text, Title } from '$shared/primitives';
 import CenteredContent from '$shared/CenteredContent';
+
 import theme from '../theme';
 
 storiesOf('Theme', module)
@@ -45,12 +46,13 @@ storiesOf('Theme', module)
       {(Object.keys(theme.fontSizes) as Array<
         keyof typeof theme.fontSizes
       >).map((size) => {
-        if (size === 'xLarge')
+        if (size === 'xLarge') {
           return (
             <Title key={size} variant={size} mb="medium">
               {`This is a ${size} text`}
             </Title>
           );
+        }
 
         return (
           <Text key={size} variant={size} mb="medium">

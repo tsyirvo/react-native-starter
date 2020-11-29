@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { ImageBackground } from 'react-native';
 
 import { Flex, Text } from '$shared/primitives';
@@ -9,7 +9,7 @@ const styles = {
   height: 350,
 };
 
-const Header = (): ReactElement => (
+const Header = () => (
   <ImageBackground source={uri} style={styles}>
     <Flex justifyContent="flex-end" alignItems="center" mb={25}>
       <Text testID="home_title" variant="large" color="white">

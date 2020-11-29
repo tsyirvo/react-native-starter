@@ -1,37 +1,99 @@
 {
-  "extends": [
-    "airbnb",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "plugins": ["module-resolver", "@typescript-eslint", "react-hooks"],
+  "extends": ["airbnb-typescript", "prettier", "prettier/@typescript-eslint"],
+  "plugins": ["module-resolver", "@typescript-eslint", "react-hooks", "react"],
   "rules": {
-    "no-underscore-dangle": 0,
+    "import/no-unresolved": "warn",
+    "import/extensions": "off",
+    "import/no-mutable-exports": "off",
+    "import/dynamic-import-chunkname": "error",
+    "import/prefer-default-export": "error",
 
-    "import/no-unresolved": 1,
-    "import/extensions": 0,
-    "import/no-mutable-exports": 0,
-
-    "module-resolver/use-alias": 2,
+    "module-resolver/use-alias": "error",
 
     "react/jsx-filename-extension": [
-      1,
+      "warn",
       {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
-    "react/prop-types": 0,
-    "react/jsx-props-no-spreading": 0,
-    "react/jsx-curly-newline": 0,
-    "react/state-in-constructor": 0,
-    "react/static-property-placement": 0,
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-curly-newline": "off",
+    "react/state-in-constructor": "off",
+    "react/static-property-placement": "off",
+    "react/no-deprecated": "warn",
+    "react/destructuring-assignment": ["error", "always"],
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-curly-brace-presence": ["error", "never"],
+    "react/jsx-handler-names": "error",
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "ignoreDOMComponents": false,
+        "ignoreRefs": false,
+        "allowArrowFunctions": false,
+        "allowFunctions": false,
+        "allowBind": false
+      }
+    ],
+    // "react/jsx-no-constructed-context-values": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-no-useless-fragment": "error",
+    "react/jsx-pascal-case": "error",
+    "react/no-access-state-in-setstate": "error",
+    "react/no-array-index-key": "error",
+    "react/no-children-prop": "error",
+    "react/no-direct-mutation-state": "error",
 
     "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
 
-    "@typescript-eslint/indent": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/ban-ts-comment": 1
+    "import/order": [
+      "error",
+      {
+        "pathGroups": [
+          {
+            "pattern": "$*/**",
+            "group": "parent",
+            "position": "before"
+          }
+        ],
+        "groups": [["builtin", "external"], "parent", ["sibling", "index"]],
+        "newlines-between": "always"
+      }
+    ],
+
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "variable",
+        "types": ["boolean"],
+        "format": ["PascalCase"],
+        "prefix": ["is", "should", "has", "can", "did", "will"]
+      },
+      {
+        "selector": "memberLike",
+        "modifiers": ["private"],
+        "format": ["camelCase"],
+        "leadingUnderscore": "require"
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      }
+    ]
+    // "@typescript/prefer-optional-chain": "error",
+    // "@typescript/prefer-includes": "error",
+    // "@typescript/prefer-regexp-exec": "error"
   },
   "globals": {
     "fetch": true
@@ -41,7 +103,7 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "ecmaFeatures": {
       "jsx": true
     },
@@ -76,6 +138,8 @@
     "_templates",
     "scripts",
     "storybook/storyLoader.js",
-    "src/tests/__mocks__/*"
+    "__mocks__",
+    "dangerfile.ts",
+    "e2e/environment.js"
   ]
 }

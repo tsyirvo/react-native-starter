@@ -1,3 +1,5 @@
+/* eslint-disable import/dynamic-import-chunkname */
+
 import { lazy } from 'react';
 
 const Home = lazy(() => import('components/home'));
