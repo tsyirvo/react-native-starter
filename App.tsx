@@ -1,35 +1,43 @@
-import React, { ReactElement } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { enableScreens } from 'react-native-screens';
-import {
-  SafeAreaProvider,
-  initialWindowMetrics,
-} from 'react-native-safe-area-context';
+import React from 'react';
 import codePush from 'react-native-code-push';
+import {
+  initialWindowMetrics,
+  SafeAreaProvider,
+} from 'react-native-safe-area-context';
+import { enableScreens } from 'react-native-screens';
+import { ThemeProvider } from 'styled-components';
 
+import ErrorBoundary from '$components/errorBoundary';
 import AppContainer from '$routes/routes';
 import theme from '$styles/theme';
+import config from '$utils/config';
 import { getRatio } from '$utils/dimensions';
 
-import StorybookProvider from './storybook/Storybook';
-
 import './src/i18n';
+import StorybookProvider from './storybook/Storybook';
 
 enableScreens();
 getRatio();
 
-const Root = (): ReactElement => (
-  <StorybookProvider>
-    <ThemeProvider theme={theme}>
-      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <AppContainer />
-      </SafeAreaProvider>
-    </ThemeProvider>
-  </StorybookProvider>
+const Root = () => (
+  <ThemeProvider theme={theme}>
+    <ErrorBoundary>
+      <StorybookProvider>
+        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <AppContainer />
+        </SafeAreaProvider>
+      </StorybookProvider>
+    </ErrorBoundary>
+  </ThemeProvider>
 );
 
+const isCodepushEnabled = () =>
+  !!(config.androidCodepushKey || config.iosCodepushKey);
+
 const codePushOptions = {
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  checkFrequency: isCodepushEnabled()
+    ? codePush.CheckFrequency.ON_APP_RESUME
+    : codePush.CheckFrequency.MANUAL,
   installMode: codePush.InstallMode.ON_NEXT_SUSPEND,
   minimumBackgroundDuration: 180,
 };

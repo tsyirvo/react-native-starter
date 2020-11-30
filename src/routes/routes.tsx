@@ -1,4 +1,4 @@
-import React, { ReactElement, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +10,7 @@ import { RootStackParamList } from './routes.types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-const RootStack = (): ReactElement => {
+const RootStack = () => {
   const { t } = useTranslation();
 
   return (

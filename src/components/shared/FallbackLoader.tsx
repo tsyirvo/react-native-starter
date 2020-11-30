@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactElement } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Text } from '$shared/primitives';
 
@@ -6,8 +6,8 @@ type Props = {
   delay?: number;
 };
 
-const Fallback = ({ delay }: Props): ReactElement => {
-  const [showLoading, toggleLoading] = useState(false);
+const Fallback = ({ delay }: Props) => {
+  const [isShowingLoading, toggleLoading] = useState(false);
 
   useEffect(() => {
     const timeout = setTimeout(() => toggleLoading(true), delay);
@@ -16,7 +16,9 @@ const Fallback = ({ delay }: Props): ReactElement => {
     };
   }, [delay]);
 
-  return <>{showLoading && <Text>Loading ...</Text>}</>;
+  if (isShowingLoading) return <Text>Loading ...</Text>;
+
+  return null;
 };
 
 Fallback.defaultProps = {

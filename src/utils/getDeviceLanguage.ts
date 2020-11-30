@@ -1,9 +1,10 @@
 import { Platform, NativeModules } from 'react-native';
 
-type supportedLanguages = 'en' | 'fr';
+type SupportedLanguages = 'en' | 'fr';
 
-const getDeviceLanguage = (): supportedLanguages => {
+const getDeviceLanguage = (): SupportedLanguages => {
   const { SettingsManager, I18nManager } = NativeModules;
+
   let deviceLocale;
 
   switch (Platform.OS) {

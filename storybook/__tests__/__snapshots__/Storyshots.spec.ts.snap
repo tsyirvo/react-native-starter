@@ -139,29 +139,21 @@ exports[`Storyshots Button With a text content 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
   >
-    <View
+    <Text
+      color="black"
       style={
         Array [
-          Object {},
+          Object {
+            "color": "#000",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
         ]
       }
+      variant="regular"
     >
-      <Text
-        color="black"
-        style={
-          Array [
-            Object {
-              "color": "#000",
-              "fontSize": 16,
-              "lineHeight": 24,
-            },
-          ]
-        }
-        variant="regular"
-      >
-        Click here
-      </Text>
-    </View>
+      Click here
+    </Text>
   </View>
 </View>
 `;
@@ -195,27 +187,19 @@ exports[`Storyshots Button With an image content 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
   >
-    <View
-      style={
-        Array [
-          Object {},
-        ]
+    <Image
+      source={
+        Object {
+          "uri": "https://reactnative.dev/img/tiny_logo.png",
+        }
       }
-    >
-      <Image
-        source={
-          Object {
-            "uri": "https://reactnative.dev/img/tiny_logo.png",
-          }
+      style={
+        Object {
+          "height": 100,
+          "width": 100,
         }
-        style={
-          Object {
-            "height": 100,
-            "width": 100,
-          }
-        }
-      />
-    </View>
+      }
+    />
   </View>
 </View>
 `;

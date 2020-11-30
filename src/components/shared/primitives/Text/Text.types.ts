@@ -1,3 +1,4 @@
+import { TextProps as BaseTextProps } from 'react-native';
 import {
   SpaceProps,
   LayoutProps,
@@ -5,7 +6,11 @@ import {
   TypographyProps,
 } from 'styled-system';
 
-export type TextProps = SpaceProps & LayoutProps & ColorProps & TypographyProps;
+export type TextProps = BaseTextProps &
+  SpaceProps &
+  LayoutProps &
+  ColorProps &
+  TypographyProps;
 
 export type VariantProps = {
   variant?: 'small' | 'medium' | 'regular' | 'large' | 'xLarge';

@@ -14,16 +14,8 @@ exports[`Shared primitives Button component should render correctly with a text 
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
 >
-  <View
-    style={
-      Array [
-        Object {},
-      ]
-    }
-  >
-    <Text>
-      Some text
-    </Text>
-  </View>
+  <Text>
+    Some text
+  </Text>
 </View>
 `;
