@@ -2,8 +2,7 @@ import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { OtherPageScreenNavigationProp } from '$routes/routes.types';
-import Button from '$shared/Button';
-import { Flex, Title, Text, Box } from '$shared/primitives';
+import { Flex, Title, Text, Button } from '$shared/primitives';
 import SafeView from '$shared/SafeView';
 
 type Props = {
@@ -22,17 +21,13 @@ const OtherPage = ({ navigation }: Props) => {
           {t('otherPage.page_title')}
         </Title>
 
-        <Button testID="back_button" onPress={goBack}>
-          <Box
-            bg="grey"
-            py={5}
-            px={15}
-            alignItems="center"
-            mt={20}
-            borderRadius="medium"
-          >
-            <Text>{t('otherPage.navigation_back')}</Text>
-          </Box>
+        <Button
+          alignItems="center"
+          mt="medium"
+          testID="back_button"
+          onPress={goBack}
+        >
+          <Text>{t('otherPage.navigation_back')}</Text>
         </Button>
       </Flex>
     </SafeView>

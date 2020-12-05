@@ -1,10 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
+import { addDecorator, storiesOf } from '@storybook/react-native';
+import { withKnobs, select } from '@storybook/addon-knobs';
 
 import CenteredContent from '$shared/CenteredContent';
 import { Text } from '$shared/primitives';
+
+addDecorator(withKnobs);
 
 storiesOf('Text', module)
   .add('Without any props', () => (
@@ -14,7 +17,15 @@ storiesOf('Text', module)
   ))
   .add('With a custom variant', () => (
     <CenteredContent>
-      <Text variant="large">Large variant</Text>
+      <Text
+        variant={select(
+          'Variant',
+          ['small', 'medium', 'regular', 'large'],
+          'large'
+        )}
+      >
+        Large variant
+      </Text>
     </CenteredContent>
   ))
   .add('With custom styles', () => (

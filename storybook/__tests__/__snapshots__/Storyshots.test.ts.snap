@@ -138,6 +138,17 @@ exports[`Storyshots Button With a text content 1`] = `
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#e5e5e5",
+          "borderRadius": 16,
+          "paddingHorizontal": 16,
+          "paddingVertical": 8,
+        },
+      ]
+    }
+    variant="base"
   >
     <Text
       color="black"
@@ -154,52 +165,6 @@ exports[`Storyshots Button With a text content 1`] = `
     >
       Click here
     </Text>
-  </View>
-</View>
-`;
-
-exports[`Storyshots Button With an image content 1`] = `
-<View
-  alignItems="center"
-  justifyContent="center"
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "justifyContent": "center",
-      },
-    ]
-  }
->
-  <View
-    accessible={true}
-    focusable={true}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-  >
-    <Image
-      source={
-        Object {
-          "uri": "https://reactnative.dev/img/tiny_logo.png",
-        }
-      }
-      style={
-        Object {
-          "height": 100,
-          "width": 100,
-        }
-      }
-    />
   </View>
 </View>
 `;
@@ -256,6 +221,322 @@ exports[`Storyshots FallbackLoader Without delay 1`] = `
     ]
   }
 />
+`;
+
+exports[`Storyshots Input Not editable 1`] = `
+<View
+  alignItems="center"
+  alignSelf="center"
+  flex={1}
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "width": "80%",
+      },
+    ]
+  }
+  width="80%"
+>
+  <View
+    mt="medium"
+    style={
+      Array [
+        Object {
+          "marginTop": 16,
+          "width": "80%",
+        },
+      ]
+    }
+    width="80%"
+  >
+    <Text
+      color="black"
+      mb="small"
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontSize": 16,
+            "lineHeight": 24,
+            "marginBottom": 8,
+          },
+        ]
+      }
+      testID="input-label"
+      variant="regular"
+    >
+      Some label
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      editable={false}
+      placeholder="Type here"
+      placeholderTextColor="#e5e5e5"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "borderBottomColor": "#e5e5e5",
+          },
+          Object {
+            "borderBottomWidth": 1,
+            "fontSize": 16,
+            "padding": 0,
+            "paddingBottom": 5,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+    />
+  </View>
+</View>
+`;
+
+exports[`Storyshots Input With a label 1`] = `
+<View
+  alignItems="center"
+  alignSelf="center"
+  flex={1}
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "width": "80%",
+      },
+    ]
+  }
+  width="80%"
+>
+  <View
+    mt="medium"
+    style={
+      Array [
+        Object {
+          "marginTop": 16,
+          "width": "80%",
+        },
+      ]
+    }
+    width="80%"
+  >
+    <Text
+      color="black"
+      mb="small"
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontSize": 16,
+            "lineHeight": 24,
+            "marginBottom": 8,
+          },
+        ]
+      }
+      testID="input-label"
+      variant="regular"
+    >
+      Some label
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      editable={true}
+      placeholder="Type here"
+      placeholderTextColor="#e5e5e5"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "borderBottomColor": "#e5e5e5",
+          },
+          Object {
+            "borderBottomWidth": 1,
+            "fontSize": 16,
+            "padding": 0,
+            "paddingBottom": 5,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+    />
+  </View>
+</View>
+`;
+
+exports[`Storyshots Input With an error 1`] = `
+<View
+  alignItems="center"
+  alignSelf="center"
+  flex={1}
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "width": "80%",
+      },
+    ]
+  }
+  width="80%"
+>
+  <View
+    mt="medium"
+    style={
+      Array [
+        Object {
+          "marginTop": 16,
+          "width": "80%",
+        },
+      ]
+    }
+    width="80%"
+  >
+    <Text
+      color="black"
+      mb="small"
+      style={
+        Array [
+          Object {
+            "color": "#000",
+            "fontSize": 16,
+            "lineHeight": 24,
+            "marginBottom": 8,
+          },
+        ]
+      }
+      testID="input-label"
+      variant="regular"
+    >
+      Some label
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      editable={true}
+      error="An error"
+      placeholder="Type here"
+      placeholderTextColor="#e5e5e5"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "borderBottomColor": "#ef233c",
+          },
+          Object {
+            "borderBottomWidth": 1,
+            "fontSize": 16,
+            "padding": 0,
+            "paddingBottom": 5,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+    />
+    <View
+      alignItems="center"
+      flexDirection="row"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
+      testID="input-error"
+    >
+      <Text
+        color="red"
+        style={
+          Array [
+            Object {
+              "color": "#ef233c",
+              "fontSize": 12,
+              "lineHeight": 17,
+            },
+          ]
+        }
+        variant="small"
+      >
+        An error
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Storyshots Input Without label 1`] = `
+<View
+  alignItems="center"
+  alignSelf="center"
+  flex={1}
+  justifyContent="center"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "justifyContent": "center",
+        "width": "80%",
+      },
+    ]
+  }
+  width="80%"
+>
+  <View
+    mt="medium"
+    style={
+      Array [
+        Object {
+          "marginTop": 16,
+          "width": "80%",
+        },
+      ]
+    }
+    width="80%"
+  >
+    <TextInput
+      allowFontScaling={true}
+      editable={true}
+      placeholderTextColor="#e5e5e5"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "borderBottomColor": "#e5e5e5",
+          },
+          Object {
+            "borderBottomWidth": 1,
+            "fontSize": 16,
+            "padding": 0,
+            "paddingBottom": 5,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value="Some value"
+    />
+  </View>
+</View>
 `;
 
 exports[`Storyshots Text With a custom variant 1`] = `
