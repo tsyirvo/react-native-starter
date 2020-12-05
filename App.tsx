@@ -6,6 +6,7 @@ import {
 } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
 import { ThemeProvider } from 'styled-components';
+import { StatusBar } from 'react-native';
 
 import ErrorBoundary from '$components/errorBoundary';
 import AppContainer from '$routes/routes';
@@ -21,6 +22,8 @@ getRatio();
 
 const Root = () => (
   <ThemeProvider theme={theme}>
+    <StatusBar barStyle="light-content" />
+
     <ErrorBoundary>
       <StorybookProvider>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>

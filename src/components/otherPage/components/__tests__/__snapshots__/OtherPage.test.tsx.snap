@@ -43,7 +43,9 @@ exports[`OtherPage page component should render correctly 1`] = `
     </Text>
     <View
       accessible={true}
+      alignItems="center"
       focusable={true}
+      mt="medium"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -53,46 +55,36 @@ exports[`OtherPage page component should render correctly 1`] = `
       onResponderTerminate={[Function]}
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#e5e5e5",
+            "borderRadius": 16,
+            "marginTop": 16,
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          },
+        ]
+      }
       testID="back_button"
+      variant="base"
     >
-      <View
-        alignItems="center"
-        bg="grey"
-        borderRadius="medium"
-        mt={20}
-        px={15}
-        py={5}
+      <Text
+        color="black"
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#e5e5e5",
-              "borderRadius": 16,
-              "marginTop": 20,
-              "paddingBottom": 5,
-              "paddingLeft": 15,
-              "paddingRight": 15,
-              "paddingTop": 5,
+              "color": "#000",
+              "fontSize": 16,
+              "lineHeight": 24,
             },
           ]
         }
+        variant="regular"
       >
-        <Text
-          color="black"
-          style={
-            Array [
-              Object {
-                "color": "#000",
-                "fontSize": 16,
-                "lineHeight": 24,
-              },
-            ]
-          }
-          variant="regular"
-        >
-          Back
-        </Text>
-      </View>
+        Back
+      </Text>
     </View>
   </View>
 </RNCSafeAreaView>

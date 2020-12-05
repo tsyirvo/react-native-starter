@@ -1,7 +1,6 @@
 import React, { Component, ErrorInfo, ReactElement } from 'react';
 
-import { Flex, Box, Title, Text } from '$shared/primitives';
-import Button from '$shared/Button';
+import { Flex, Title, Text, Button } from '$shared/primitives';
 import SafeView from '$shared/SafeView';
 
 type ErrorBoundaryProps = {
@@ -51,17 +50,12 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               administrator.
             </Text>
 
-            <Button onPress={this.handleApplicationReset}>
-              <Box
-                bg="grey"
-                py="small"
-                px="medium"
-                mt="large"
-                alignItems="center"
-                borderRadius="medium"
-              >
-                <Text textAlign="center">Relaunch the app</Text>
-              </Box>
+            <Button
+              mt="large"
+              alignItems="center"
+              onPress={this.handleApplicationReset}
+            >
+              <Text textAlign="center">Relaunch the app</Text>
             </Button>
           </Flex>
         </SafeView>
