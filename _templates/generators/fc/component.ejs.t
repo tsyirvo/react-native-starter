@@ -15,8 +15,4 @@ const <%= h.changeCase.pascalCase(componentName) %> = ({ someProps }: Props) => 
   </Flex>
 );
 
-<%= h.changeCase.pascalCase(componentName) %>.defaultProps = {
-  someProps: 'Some value',
-};
-
 export default <%= h.changeCase.pascalCase(componentName) %>;

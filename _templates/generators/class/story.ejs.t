@@ -25,6 +25,6 @@ storiesOf('<%= h.changeCase.pascalCase(componentName) %>', module)
   })
   .add('default state', () => (
     <Box flex={1} justifyContent="center" alignItems="center">
-      <<%= h.changeCase.pascalCase(componentName) %> someProps={text('someProps', 'Some value')} />
+      <<%= h.changeCase.pascalCase(componentName) %> someProps={text('Some Props', 'Some value')} />
     </Box>
   ));
