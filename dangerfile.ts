@@ -68,7 +68,7 @@ schedule(
   todos({
     ignore: ['CHANGELOG.md', /tests/, /stories/],
     keywords: ['TODO', 'FIXME', 'TO-DO', 'TO-FIX'],
-  })
+  }),
 );
 
 /* ***** *****  Ask for a title & description  ***** ***** */
@@ -84,7 +84,7 @@ const prTestChanges = prFiles.some((p) => includes(p, '__tests__/'));
 
 if (prSrcChanges && !prTestChanges) {
   warn(
-    'This PR does not include changes to tests, even though it affects app code.'
+    'This PR does not include changes to tests, even though it affects app code.',
   );
 }
 
@@ -101,7 +101,7 @@ const prComponentsHaveStories = prComponentNames.every((comp) => {
 
 if (!prComponentsHaveStories) {
   warn(
-    'It seems that you created or modified components but not the story file associated.'
+    'It seems that you created or modified components but not the story file associated.',
   );
 }
 
@@ -119,6 +119,6 @@ const potentialBreak = prFiles.some(breakingOnlyFilter);
 
 if (potentialBreak) {
   warn(
-    'Beware, native files or the package.json have been modified. This may break future CodePush updates. Please add a flag to this PR to prevent failed releases.'
+    'Beware, native files or the package.json have been modified. This may break future CodePush updates. Please add a flag to this PR to prevent failed releases.',
   );
 }

@@ -1,3 +1,1 @@
-import OtherPage from './components/OtherPage';
-
-export default OtherPage;
+export { default } from './components/OtherPage';

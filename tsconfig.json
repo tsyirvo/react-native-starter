@@ -22,7 +22,8 @@
       "$routes/*": ["./routes/*"],
       "$styles/*": ["./styles/*"],
       "$utils/*": ["./utils/*"],
-      "$tests/*": ["./tests/*"]
+      "$tests/*": ["./tests/*"],
+      "$i18n/*": ["./i18n/*"]
     }
   },
   "exclude": [

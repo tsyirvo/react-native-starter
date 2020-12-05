@@ -21,7 +21,7 @@ storiesOf('Text', module)
         variant={select(
           'Variant',
           ['small', 'medium', 'regular', 'large'],
-          'large'
+          'large',
         )}
       >
         Large variant

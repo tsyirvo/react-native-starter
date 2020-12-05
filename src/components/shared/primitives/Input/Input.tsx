@@ -52,7 +52,7 @@ const Input = forwardRef<TextInput, Props>(
         </Box>
       )}
     </Box>
-  )
+  ),
 );
 
 export default Input;

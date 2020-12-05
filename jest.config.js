@@ -12,6 +12,7 @@ module.exports = {
     '$styles(.*)$': '<rootDir>/src/styles/$1',
     '$utils(.*)$': '<rootDir>/src/utils/$1',
     '$tests(.*)$': '<rootDir>/src/tests/$1',
+    '$i18n(.*)$': '<rootDir>/src/i18n/$1',
   },
   preset: 'react-native',
   setupFilesAfterEnv: [
