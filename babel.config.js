@@ -28,6 +28,7 @@ module.exports = {
           $styles: './src/styles',
           $utils: './src/utils',
           $tests: './src/tests',
+          $i18n: './src/i18n',
         },
       },
     ],

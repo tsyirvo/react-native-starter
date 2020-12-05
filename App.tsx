@@ -8,6 +8,7 @@ import { enableScreens } from 'react-native-screens';
 import { ThemeProvider } from 'styled-components';
 import { StatusBar } from 'react-native';
 
+import LocaleProvider from '$components/contexts/LocaleProvider';
 import ErrorBoundary from '$components/errorBoundary';
 import AppContainer from '$routes/routes';
 import theme from '$styles/theme';
@@ -24,13 +25,15 @@ const Root = () => (
   <ThemeProvider theme={theme}>
     <StatusBar barStyle="light-content" />
 
-    <ErrorBoundary>
-      <StorybookProvider>
-        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <AppContainer />
-        </SafeAreaProvider>
-      </StorybookProvider>
-    </ErrorBoundary>
+    <LocaleProvider>
+      <ErrorBoundary>
+        <StorybookProvider>
+          <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+            <AppContainer />
+          </SafeAreaProvider>
+        </StorybookProvider>
+      </ErrorBoundary>
+    </LocaleProvider>
   </ThemeProvider>
 );
 

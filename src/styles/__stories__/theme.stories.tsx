@@ -23,7 +23,7 @@ storiesOf('Theme', module)
               mb={theme.space[space]}
             />
           </Fragment>
-        )
+        ),
       )}
     </CenteredContent>
   ))
@@ -36,7 +36,7 @@ storiesOf('Theme', module)
               <Text>{color}</Text>
               <Box size={100} bg={theme.colors[color]} />
             </Box>
-          )
+          ),
         )}
       </CenteredContent>
     </ScrollView>
