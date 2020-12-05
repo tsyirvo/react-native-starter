@@ -1,5 +1,5 @@
 ---
-to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/__tests__/<%= h.changeCase.pascalCase(componentName) %>.spec.tsx
+to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/__tests__/<%= h.changeCase.pascalCase(componentName) %>.test.tsx
 ---
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
