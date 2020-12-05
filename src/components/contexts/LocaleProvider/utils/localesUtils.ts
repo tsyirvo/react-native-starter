@@ -1,6 +1,6 @@
 import { Platform, NativeModules } from 'react-native';
 
-import config, { SupportedLocales } from '$utils/config';
+import config from '$utils/config';
 
 const getDeviceLanguage = () => {
   /* eslint-disable-next-line */

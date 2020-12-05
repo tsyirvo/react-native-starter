@@ -15,6 +15,11 @@
       "page_name": "Another page",
       "page_title": "Another page",
       "navigation_back": "Back"
+    },
+    "errorBoundary": {
+      "title": "Error",
+      "description": "An unknown error occured. If the error persist, contact an administrator.",
+      "cta": "Relaunch the app"
     }
   }
 }

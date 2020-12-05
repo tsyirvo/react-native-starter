@@ -15,6 +15,11 @@
       "page_name": "Une autre page",
       "page_title": "Une autre page",
       "navigation_back": "Retour en arrière"
+    },
+    "errorBoundary": {
+      "title": "Erreur",
+      "description": "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
+      "cta": "Relancer l'app"
     }
   }
 }
