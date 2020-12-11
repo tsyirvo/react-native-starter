@@ -52,7 +52,7 @@
     "@react-navigation/stack": "5.12.8",
     "i18next": "19.8.4",
     "react": "16.13.1",
-    "react-i18next": "11.8.2",
+    "react-i18next": "11.8.3",
     "react-native": "0.63.3",
     "react-native-code-push": "6.4.0",
     "react-native-config": "1.4.1",
