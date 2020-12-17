@@ -54,7 +54,7 @@
     "react": "16.13.1",
     "react-i18next": "11.8.4",
     "react-native": "0.63.3",
-    "react-native-code-push": "6.4.0",
+    "react-native-code-push": "6.4.1",
     "react-native-config": "1.4.1",
     "react-native-gesture-handler": "1.9.0",
     "react-native-reanimated": "1.13.2",
