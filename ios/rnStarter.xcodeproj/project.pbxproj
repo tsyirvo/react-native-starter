@@ -232,6 +232,14 @@
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
+					B6FB16A624EC92100035A6B9 = {
+						DevelopmentTeam = G5GA4WNLS9;
+						ProvisioningStyle = Manual;
+					};
+					B6FB16B924EC92610035A6B9 = {
+						DevelopmentTeam = G5GA4WNLS9;
+						ProvisioningStyle = Manual;
+					};
 					B6FB16CC24EC92760035A6B9 = {
 						DevelopmentTeam = G5GA4WNLS9;
 						ProvisioningStyle = Manual;
@@ -688,8 +696,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = G5GA4WNLS9;
 				INFOPLIST_FILE = "$(SRCROOT)/development-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited) @executable_path/Frameworks";
@@ -700,8 +710,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_ROOT}/Headers/Public/React/React-Core.modulemap\" -Xcc -fmodule-map-file=\"${PODS_ROOT}/Headers/Public/SSZipArchive/SSZipArchive.modulemap\" -Xcc -fmodule-map-file=\"${PODS_ROOT}/Headers/Public/yoga/Yoga.modulemap\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rnstarter.development;
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.development;
 				PRODUCT_NAME = Starter_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "match Development ninja.gab.rnStarter.development";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -719,7 +730,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G5GA4WNLS9;
 				INFOPLIST_FILE = "$(SRCROOT)/development-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited) @executable_path/Frameworks";
@@ -730,8 +743,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_ROOT}/Headers/Public/React/React-Core.modulemap\" -Xcc -fmodule-map-file=\"${PODS_ROOT}/Headers/Public/SSZipArchive/SSZipArchive.modulemap\" -Xcc -fmodule-map-file=\"${PODS_ROOT}/Headers/Public/yoga/Yoga.modulemap\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rnstarter.development;
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.development;
 				PRODUCT_NAME = Starter_Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "match Development ninja.gab.rnStarter.development";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -748,8 +762,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = G5GA4WNLS9;
 				INFOPLIST_FILE = "$(SRCROOT)/staging-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -759,8 +776,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rnstarter.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.staging;
 				PRODUCT_NAME = Starter_Staging;
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc ninja.gab.rnStarter.staging";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -777,7 +795,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G5GA4WNLS9;
 				INFOPLIST_FILE = "$(SRCROOT)/staging-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -787,8 +808,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rnstarter.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.staging;
 				PRODUCT_NAME = Starter_Staging;
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc ninja.gab.rnStarter.staging";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
@@ -804,7 +826,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -818,9 +840,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rnstarter;
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter;
 				PRODUCT_NAME = Starter;
-				PROVISIONING_PROFILE_SPECIFIER = "match Development ninja.gab.rnStarter";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore ninja.gab.rnStarter";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -837,7 +859,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G5GA4WNLS9;
@@ -850,9 +872,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rnstarter;
+				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter;
 				PRODUCT_NAME = Starter;
-				PROVISIONING_PROFILE_SPECIFIER = "match Development ninja.gab.rnStarter";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore ninja.gab.rnStarter";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
