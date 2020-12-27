@@ -20,13 +20,14 @@ platform :android do
   private_lane :build do |options|
     if options[:task]
       android_set_version_code(
-        version_code: Time.now.utc.strftime("%Y%m%d.%H%M.%S"),
+        version_code: Time.now.to_i / 60,
       )
       gradle(
         tasks: ["clean", options[:task]],
       )
     else
       UI.error "`task` option is required"
+      exit
     end
   end
 
@@ -48,7 +49,7 @@ platform :android do
         notify_testers: false,
         release_notes: sh(
           log: false,
-          command: "yarn version:changelog",
+          command: "yarn --silent version:changelog",
         ),
       )
     else
@@ -66,8 +67,11 @@ platform :android do
         track: "alpha",
         release_status: "draft",
         skip_upload_apk: true,
-        validate_only: false,
-        json_key_data: ENV["ANDROID_JSON_KEY"],
+        skip_upload_metadata: true,
+        skip_upload_changelogs: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true,
+        json_key: ENV["ANDROID_JSON_KEY"],
       )
     else
       UI.error "No user facing changes since the last release!"

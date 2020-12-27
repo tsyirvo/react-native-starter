@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>20201227.0900.08</string>
 	<key>CODEPUSH_KEY</key>
 	<string>$(IOS_CODEPUSH_KEY)</string>
 	<key>LSRequiresIPhoneOS</key>

@@ -12,12 +12,13 @@ platform :ios do
         options[:app_identifier] = ENV["IOS_APP_ID"]
         options[:type] = "appstore"
       when "staging"
-        options[:app_identifier] = ENV["IOS_APP_ID"] + ".staging"
+        options[:app_identifier] = "#{ENV["IOS_APP_ID"]}.staging"
         options[:type] = "adhoc"
       when "development"
-        options[:app_identifier] = ENV["IOS_APP_ID"] + ".development"
+        options[:app_identifier] = "#{ENV["IOS_APP_ID"]}.development"
         options[:type] = "development"
       else
+        UI.error "`env` option is required"
         exit
     end
 
@@ -63,9 +64,9 @@ platform :ios do
       when "production"
         options[:app_identifier] = ENV["IOS_APP_ID"]
       when "staging"
-        options[:app_identifier] = ENV["IOS_APP_ID"] + ".staging"
+        options[:app_identifier] = "#{ENV["IOS_APP_ID"]}.staging"
       when "development"
-        options[:app_identifier] = ENV["IOS_APP_ID"] + ".development"
+        options[:app_identifier] = "#{ENV["IOS_APP_ID"]}.development"
       else
         exit
     end
@@ -110,6 +111,7 @@ platform :ios do
       )
     else
       UI.error "`method` and `scheme` options are required"
+      exit
     end
   end
 
@@ -136,7 +138,7 @@ platform :ios do
         notify_testers: false,
         release_notes: sh(
           log: false,
-          command: "yarn version:changelog",
+          command: "yarn --silent version:changelog",
         ),
       )
     else
@@ -161,7 +163,7 @@ platform :ios do
         skip_waiting_for_build_processing: true,
         changelog: sh(
           log: false,
-          command: "yarn version:changelog",
+          command: "yarn --silent version:changelog",
         ),
       )
     else
