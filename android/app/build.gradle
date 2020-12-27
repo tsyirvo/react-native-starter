@@ -130,12 +130,6 @@ def jscFlavor = 'org.webkit:android-jsc-intl:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
-def verName = "1.0.0"
-
-if (project.hasProperty("vname")) {
-    verName = vname
-}
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -147,14 +141,14 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rnstarter"
+        applicationId "ninja.gab.rnStarter"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName verName
+        versionCode 26817803
+        versionName "1.0.0"
         multiDexEnabled true
 
-        resValue "string", "build_config_package", "com.rnstarter"
+        resValue "string", "build_config_package", "ninja.gab.rnStarter"
         
         // Detox config
         testBuildType System.getProperty('testBuildType', 'debug')  // This will later be used to control the test apk build type
@@ -187,17 +181,17 @@ android {
      productFlavors {
          development {
              applicationIdSuffix 'development'
-             resValue "string", "build_config_package", "com.rnstarter"
+             resValue "string", "build_config_package", "ninja.gab.rnStarter"
              resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
          }
          staging {
              applicationIdSuffix 'staging'
-             resValue "string", "build_config_package", "com.rnstarter"
+             resValue "string", "build_config_package", "ninja.gab.rnStarter"
              resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
          }
          production {
              applicationIdSuffix ''
-             resValue "string", "build_config_package", "com.rnstarter"
+             resValue "string", "build_config_package", "ninja.gab.rnStarter"
              resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
          }
      }

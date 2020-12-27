@@ -22,7 +22,10 @@
     "generate:fc": "npx hygen generators fc",
     "generate:class": "npx hygen generators class",
     "prestorybook": "rnstl",
-    "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook"
+    "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
+    "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
+    "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\"",
+    "version:tag": "standard-version"
   },
   "husky": {
     "hooks": {
@@ -127,6 +130,7 @@
     "react-native-storybook-loader": "2.0.2",
     "react-test-renderer": "16.13.1",
     "sharp": "0.26.0",
+    "standard-version": "9.0.0",
     "ts-jest": "25.5.1",
     "typescript": "4.0.2"
   }

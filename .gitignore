@@ -53,6 +53,7 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 */fastlane/README.md
+*/fastlane/.env
 
 # Bundle artifact
 *.jsbundle
@@ -83,3 +84,6 @@ ios/*.dSYM.zip
 
 # react-native-config codegen
 ios/tmp.xcconfig
+
+# Play store
+android/api-*

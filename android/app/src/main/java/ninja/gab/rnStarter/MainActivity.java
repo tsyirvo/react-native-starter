@@ -1,4 +1,4 @@
-package com.rnstarter;
+package ninja.gab.rnStarter;
 
 import com.facebook.react.ReactActivity;
 
