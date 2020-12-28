@@ -8,7 +8,7 @@ platform :android do
   desc "Verify that the current build has new user facing features"
   private_lane :verify do
     analyze_commits(
-      match: "*"
+      match: "v*"
     )
   end
 
@@ -23,7 +23,7 @@ platform :android do
         version_code: Time.now.to_i / 60,
       )
       gradle(
-        tasks: ["clean", options[:task]],
+        task: options[:task],
       )
     else
       UI.error "`task` option is required"
@@ -67,11 +67,8 @@ platform :android do
         track: "alpha",
         release_status: "draft",
         skip_upload_apk: true,
-        skip_upload_metadata: true,
-        skip_upload_changelogs: true,
-        skip_upload_images: true,
-        skip_upload_screenshots: true,
         json_key: ENV["ANDROID_JSON_KEY"],
+        aab: ENV["AAB_PATH"],
       )
     else
       UI.error "No user facing changes since the last release!"

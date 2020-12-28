@@ -26,12 +26,24 @@ platform :ios do
       options[:force_for_new_devices] = true
     end
 
-    match(
-      app_identifier: options[:app_identifier],
-      type: options[:type],
-      readonly: options[:readonly],
-      force_for_new_devices: options[:force_for_new_devices],
-    )
+    if options[:is_ci] == true
+      match(
+        app_identifier: options[:app_identifier],
+        type: options[:type],
+        readonly: options[:readonly],
+        force_for_new_devices: options[:force_for_new_devices],
+        keychain_name: options[:keychain_name],
+        keychain_password: options[:keychain_password],
+        git_private_key: ENV["MATCH_GIT_PRIVATE_KEY_CI"],
+      )
+    else 
+      match(
+        app_identifier: options[:app_identifier],
+        type: options[:type],
+        readonly: options[:readonly],
+        force_for_new_devices: options[:force_for_new_devices],
+      )
+    end
   end
 
   desc "Pull all Certificates for every schemes"
@@ -85,7 +97,19 @@ platform :ios do
   desc "Verify that the current build has new user facing features"
   private_lane :verify do
     analyze_commits(
-      match: "*"
+      match: "v*"
+    )
+  end
+
+  desc "Create a temporary Keychain to be used when running on CI"
+  lane :keychain_setup do
+    create_keychain(
+      name: "KeychainCI",
+      password: ENV["KEYCHAIN_CI_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
     )
   end
 
@@ -120,11 +144,14 @@ platform :ios do
   ##############################################
 
   desc "Create and upload a Staging build"
-  lane :release_staging do
+  lane :release_staging do |options|
     if verify
       match_pull(
         env: "staging",
         readonly: true,
+        is_ci: options[:is_ci],
+        keychain_name: "KeychainCI",
+        keychain_password: ENV["KEYCHAIN_CI_PASSWORD"],
       )
       build(
         method: "ad-hoc",
@@ -147,17 +174,29 @@ platform :ios do
   end
 
   desc "Create and upload a Production build"
-  lane :release_production do
+  lane :release_production do |options|
     if verify
+      if options[:is_ci] == true
+        api_key = app_store_connect_api_key(
+          key_id: ENV["APPLE_CONNECT_KEY_ID"],
+          issuer_id: ENV["APPLE_CONNECT_ISSUER_ID"],
+          key_filepath: ENV["APPLE_CONNECT_KEY_PATH"],
+        )
+      end
+
       match_pull(
         env: "production",
         readonly: true,
+        is_ci: options[:is_ci],
+        keychain_name: "KeychainCI",
+        keychain_password: ENV["KEYCHAIN_CI_PASSWORD"],
       )
       build(
         method: "app-store",
         scheme: "rnStarter-production",
       )
       upload_to_testflight(
+        api_key: api_key,
         app_identifier: ENV["IOS_APP_ID"],
         team_id: ENV["IOS_TEAM_ID"],
         skip_waiting_for_build_processing: true,

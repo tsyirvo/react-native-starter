@@ -86,4 +86,4 @@ ios/*.dSYM.zip
 ios/tmp.xcconfig
 
 # Play store
-android/api-*
+android/google-credential-key.json
