@@ -1,94 +1,94 @@
-env:
-  global:
-    - NODE_VERSION=10
+# env:
+#   global:
+#     - NODE_VERSION=10
 
-stages:
-  - name: tests_and_lint
-  - name: e2e_ios
-  # - name: e2e_android
+# stages:
+#   - name: tests_and_lint
+#   - name: e2e_ios
+#   # - name: e2e_android
 
-matrix:
-  include:
-    #
-    # Run Jest test, Typescript check, ESlint and DangerJS
-    #
-    - stage: tests_and_lint
-      language: node_js
-      cache:
-        npm: true
-        yarn: true
-      install:
-        - . ./scripts/ci/install.nvm.sh
-        - npm install >/dev/null 2>&1
-      script:
-        - yarn test
-        - yarn tsc
-        - yarn lint
-        - yarn danger ci
-    #
-    # E2E test for iOS
-    #
-    - stage: e2e_ios
-      language: objective-c
-      addons:
-        homebrew:
-          packages:
-            - applesimutils
-          taps: wix/brew
-      os: osx
-      osx_image: xcode11.6
-      cache:
-        npm: true
-        yarn: true
-        cocoapods: true
-        directories:
-          - $HOME/Library/Caches/Homebrew
-      before_cache:
-        - brew cleanup
-      podfile: ios/Podfile
-      install:
-        - . ./scripts/ci/install.nvm.sh
-        - gem install xcpretty >/dev/null 2>&1
-        - gem install xcpretty-travis-formatter >/dev/null 2>&1
-        - npm install >/dev/null 2>&1
-        - cd ios; pod install >/dev/null 2>&1; cd ..;
-      script:
-        - ./scripts/ci/detox.ios.sh
-    #
-    # E2E test for Android
-    #
-    # - stage: e2e_android
-    #   language: android
-    #   env:
-    #     - ADB_INSTALL_TIMEOUT=8
-    #     - ANDROID_HOME=/usr/local/android-sdk
-    #     - ANDROID_SDK_ROOT=/usr/local/android-sdk
-    #     - TOOLS=${ANDROID_HOME}/tools
-    #     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-    #   cache:
-    #     directories:
-    #       - node_modules
-    #   android:
-    #     components:
-    #       - tools
-    #       - platform-tools
-    #       - tools
-    #       - build-tools-29.0.2
-    #       - android-29
-    #       - extra-google-m2repository
-    #       - extra-android-m2repository
-    #       - sys-img-x86-android-28
-    #   licenses:
-    #     - 'android-sdk-license-.+'
-    #     - 'android-sdk-preview-license-.+'
-    #     - 'google-gdk-license-.+'
-    #   before_install:
-    #     - yes | sdkmanager "build-tools;29.0.2" >/dev/null 2>&1
-    #     - yes | sdkmanager "platforms;android-29" >/dev/null 2>&1
-    #   install:
-    #     - . ./scripts/ci/install.nvm.sh
-    #     - npm install >/dev/null 2>&1
-    #   before_script:
-    #     - ./scripts/ci/emulator.android.sh
-    #   script:
-    #     - ./scripts/ci/detox.android.sh
+# matrix:
+#   include:
+#     #
+#     # Run Jest test, Typescript check, ESlint and DangerJS
+#     #
+#     - stage: tests_and_lint
+#       language: node_js
+#       cache:
+#         npm: true
+#         yarn: true
+#       install:
+#         - . ./scripts/ci/install.nvm.sh
+#         - npm install >/dev/null 2>&1
+#       script:
+#         - yarn test
+#         - yarn tsc
+#         - yarn lint
+#         - yarn danger ci
+#     #
+#     # E2E test for iOS
+#     #
+#     - stage: e2e_ios
+#       language: objective-c
+#       addons:
+#         homebrew:
+#           packages:
+#             - applesimutils
+#           taps: wix/brew
+#       os: osx
+#       osx_image: xcode11.6
+#       cache:
+#         npm: true
+#         yarn: true
+#         cocoapods: true
+#         directories:
+#           - $HOME/Library/Caches/Homebrew
+#       before_cache:
+#         - brew cleanup
+#       podfile: ios/Podfile
+#       install:
+#         - . ./scripts/ci/install.nvm.sh
+#         - gem install xcpretty >/dev/null 2>&1
+#         - gem install xcpretty-travis-formatter >/dev/null 2>&1
+#         - npm install >/dev/null 2>&1
+#         - cd ios; pod install >/dev/null 2>&1; cd ..;
+#       script:
+#         - ./scripts/ci/detox.ios.sh
+#     #
+#     # E2E test for Android
+#     #
+#     # - stage: e2e_android
+#     #   language: android
+#     #   env:
+#     #     - ADB_INSTALL_TIMEOUT=8
+#     #     - ANDROID_HOME=/usr/local/android-sdk
+#     #     - ANDROID_SDK_ROOT=/usr/local/android-sdk
+#     #     - TOOLS=${ANDROID_HOME}/tools
+#     #     - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+#     #   cache:
+#     #     directories:
+#     #       - node_modules
+#     #   android:
+#     #     components:
+#     #       - tools
+#     #       - platform-tools
+#     #       - tools
+#     #       - build-tools-29.0.2
+#     #       - android-29
+#     #       - extra-google-m2repository
+#     #       - extra-android-m2repository
+#     #       - sys-img-x86-android-28
+#     #   licenses:
+#     #     - 'android-sdk-license-.+'
+#     #     - 'android-sdk-preview-license-.+'
+#     #     - 'google-gdk-license-.+'
+#     #   before_install:
+#     #     - yes | sdkmanager "build-tools;29.0.2" >/dev/null 2>&1
+#     #     - yes | sdkmanager "platforms;android-29" >/dev/null 2>&1
+#     #   install:
+#     #     - . ./scripts/ci/install.nvm.sh
+#     #     - npm install >/dev/null 2>&1
+#     #   before_script:
+#     #     - ./scripts/ci/emulator.android.sh
+#     #   script:
+#     #     - ./scripts/ci/detox.android.sh
