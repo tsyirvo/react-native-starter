@@ -24,8 +24,7 @@
     "prestorybook": "rnstl",
     "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
-    "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\"",
-    "version:tag": "standard-version"
+    "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\""
   },
   "husky": {
     "hooks": {
