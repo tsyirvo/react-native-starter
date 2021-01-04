@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/tsyirvo/react-native-starter/compare/v1.0.0...v1.1.0) (2021-01-04)
+
+
+### Features
+
+* migrate to Github Actions ([#140](https://github.com/tsyirvo/react-native-starter/issues/140)) ([64a38f0](https://github.com/tsyirvo/react-native-starter/commit/64a38f0a1268179c2e608261fbd778b03fc65eb8))
+
 ## 1.0.0 (2020-12-27)
 
 
