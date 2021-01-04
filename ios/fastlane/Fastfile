@@ -57,7 +57,7 @@ platform :ios do
   end
 
   desc "Create new Certificates when adding new testers UDID"
-  lane :add_testers do
+  lane :add_testers do |options|
     register_devices(
       devices_file: "./fastlane/devices.txt",
     )
@@ -66,6 +66,7 @@ platform :ios do
       match_pull(
         env: env,
         readonly: false,
+        is_ci: options[:is_ci],
       )
     end
   end
