@@ -1,76 +1,43 @@
 # React Native Starter
 
-[![Build Status](https://travis-ci.org/tsyirvo/react-native-starter.svg?branch=develop)](https://travis-ci.org/tsyirvo/react-native-starter)
+  - [Explanations](#explanations)
+  - [The setup](#the-setup)
+  - [Runing the project](#runing-the-project)
+  - [Stack](#stack)
+  - [Internationalization](#internationalization)
+  - [Adding images](#adding-images)
+  - [Generate new components](#generate-new-components)
+  - [Using the storybook](#using-the-storybook)
+  - [Tests](#tests)
+  - [Formatting and type checking](#formatting-and-type-checking)
+  - [Github Actions](#github-actions)
+  - [CodePush](#codepush)
+  - [Release and Beta deployments](#release-and-beta-deployments)
+  - [Tips](#tips)
 
 ---
 
+## Explanations
+
+This starter is the one I used in all my personal projects.
+
+It's a basic start, but with most of the common dependencies I use so I can start new projetcts more easily.
+
+For the app itself there are already multiple environments (dev, staging and prod), a navigation library, internationalization, OTA updates with *Code Push*, some base components primitives with *Styled System*.
+
+On the dev side, a test stack is setup (unit and E2E), a CI on *Github Actions* with release automation thanks to *Fastlane*, a *Storybook* with some base addons, *TypeScript* is also configured with *ESLint* and *Prettier*, commits are linted to automated the release workflows and changelog generation.
+
+There are also some utilities to generate new components or pages automatically, a script to compress images and add them to the native catalogs. A pre commit hook runs on staged files for code quality checks.
+
+There is no data handling library since it varies from one project to the next.
+
 ## The setup
 
-### React Native setup
 
-Those steps apply for a MacOS setup with the use of `brew` to install the tools.
-
-You need to have Node (at least version 10) and Watchman installed:
+Install the packages and iOS Pods:
 
 ```
-brew install node
-brew install watchman
-```
-
-Install the React Native CLI:
-
-```
-yarn global add react-native-cli
-```
-
-### iOS setup
-
-You need to have Xcode installed with the `Command Line Tools` downloaded.
-
-Install Cocoapods if needed:
-
-```
-sudo gem install cocoapods
-```
-
-### Android setup
-
-You first need to have the Java Development Kit installed:
-
-```
-brew cask install adoptopenjdk/openjdk/adoptopenjdk8
-```
-
-You can now install [Android Studio](https://developer.android.com/studio) and with it, download the following:
-
-- Android SDK
-- Android SDK Platform
-- Android NDK
-- Android Virtual Device
-
-Once it's done, add the `sdk` to your environment variables and the following folders to your path:
-
-```
-ANDROID_HOME=$HOME/Library/Android/sdk
-$ANDROID_HOME/emulator
-$ANDROID_HOME/tools
-$ANDROID_HOME/tools/bin
-$ANDROID_HOME/platform-tools
-
-```
-
-### Dependencies installations
-
-Install the packages:
-
-```
-yarn
-```
-
-For iOS, you need to install the pods.
-
-```
-cd ios && pod install
+yarn install:all
 ```
 
 ## Runing the project
@@ -81,23 +48,16 @@ To launch the React Native packager:
 yarn start
 ```
 
-You can run the simulators with the commands below:
+You can launch the simulators with the following commands:
 
 ```
-make ios-run-[development|staging|production]
+yarn ios:[development|staging|production]
+```
 or
-make android-run-[development|staging|production]
+
 ```
-
-## Run in a specific environment
-
-The iOS app and the Android one both support 3 (development, staging and production) different environments, backed by the corresponding `.env` file.
-
-To launch the app in a specific environment, the steps varies depending on the platform you're using:
-
-For iOS: select the corresponding `Target` and `Scheme` then launch the app.
-
-For Android: in the `Build Variants` tab, select the environment and build mode in which you want to launch the app then run it.
+yarn android:[development|staging|production]
+```
 
 ## Stack
 
@@ -123,16 +83,16 @@ For Android: in the `Build Variants` tab, select the environment and build mode 
 
 All the translations are managed on separate `.json` file located in the `src/i18n/locales/` folder.
 
-Refer to the documentation of React i18Next for explanation on how to use the library.
+Refer to the documentation of [React i18Next](https://react.i18next.com/) for explanations on how to use the library.
 
 ## Adding images
 
-All images are stored in the native images catalogs for both iOS and Android.
+All images are stored in the native images catalogs for both *iOS* and *Android*.
 
-To simplify the adding process, and optimizing those images, you can run the following command (as many as you want or a whole folder):
+To simplify the adding process, and optimizing those images, you can run the following command:
 
 ```
-yarn add-image [path/to/the/image/to/add | path/to/the/folder]
+yarn image:add [path/to/the/image/to/add|path/to/the/folder]
 ```
 
 ## Generate new components
@@ -140,18 +100,14 @@ yarn add-image [path/to/the/image/to/add | path/to/the/folder]
 You can automaticaly generated new pages or components (functional or class ones) with all necessary imports and default content with thoses commands:
 
 ```
-yarn generate:page
-or
-yarn generate:fc
-or
-yarn generate:class
+yarn generate:[page|fc|class]
 ```
 
 A CLI prompt will ask you all the infos.
 
-## Use the storybook
+## Using the storybook
 
-A Storybook is already configured with some addons.
+A *Storybook* is already configured with some addons.
 
 To access it, you can access the dev menu on the device and select _Toggle Storybook_ to have it shown in place of the app.
 
@@ -168,13 +124,13 @@ yarn test
 For E2E tests, you can use [Detox](https://github.com/wix/Detox) for both OS:
 
 ```
-npx detox build -c [release|debug] ios.sim.[release|debug]
-npx detox test -c [release|debug] ios.sim.[release|debug]
+npx detox build -c ios.sim.[release|debug]
+npx detox test -c ios.sim.[release|debug]
 
 or
 
-npx detox build -c [release|debug] android.emu.[release|debug]
-npx detox test -c [release|debug] android.emu.[release|debug]
+npx detox build -c android.emu.[release|debug]
+npx detox test -c android.emu.[release|debug]
 ```
 
 ## Formatting and type checking
@@ -189,21 +145,29 @@ yarn tsc
 
 There is a precommit git hook that run the prettify command to have a consistent formatting.
 
+## Github Actions
+
+The project is configured to have the CI running on *Github Actions* with a *Git Flow*.
+
+The two main workflows are the following:
+
+A *Quality* workflow runs against all PR targetting *develop*. It handles running tests, linting and TypeScript checks.
+
+A *Deploy* one, which release a new build of the app on App Center and on the stores.
+
+You can look at the *.yml* files to view all the workflows, and check the Github environment variables you will need if you want it to run on your end.
+
 ## CodePush
 
 You have the possibility to bypass updating your apps via the platform stores when updating only JS files or image assets.
 
-You first need to configure you app token for iOS and Android (read [here](https://github.com/microsoft/react-native-code-push)), add it where needed, then create a new release.
-
-For iOS, check the individual targets `.plist` files and insert the value for `CODEPUSH_KEY`.
-
-For Android, in `app/build.gradle`, where the flavors are defined, insert the key values.
+You first need to configure you app token for iOS and Android (read [here](https://github.com/microsoft/react-native-code-push)), add it to the env files, then create a new release.
 
 By default, the development env can be left out of the config and only the staging and production one have to be setup with the keys.
 
-## Releases and Beta deployments
+## Release and Beta deployments
 
-The releases automation is handled with [Fastlane](https://fastlane.tools/). You will need to install it before using it.
+The releases automation is handled with [Fastlane](https://fastlane.tools/). You will need to install it before using it locally.
 
 You will have to complete the `.env` files in both fastlane directories (ios and android) before being able to run the following lanes.
 
@@ -211,39 +175,29 @@ There are multiples lanes to do the most common things, and they need to be laun
 
 The versions are automaticaly handled based on the commit history.
 
-For both Android and iOS, you can release beta versions to [App Center](https://appcenter.ms/) that either use the production or the staging env:
+For both Android and iOS, you can release beta versions to [App Center](https://appcenter.ms/):
 
 ```
-fastlane beta env:[staging|prod]
+fastlane release_staging
 ```
 
 The same is applicable to deploy the apps to the respective stores platforms (Play Store & Apple Connect) with the commands:
 
 ```
-fastlane release env:[staging|prod]
+fastlane release_production
 ```
 
-There are also platform specific lanes.
+For iOS, you have to manage the signing and adding testers to your profiles. It is done here with [Fastlane Match](https://docs.fastlane.tools/actions/match/).
 
-For Android:, the AABs uploaded to the play store are in the alpha track by default, so you can move it up with those commands:
-
-```
-fastlane promote_alpha_to_beta
-and
-fastlane promote_beta_to_production
-```
-
-For iOS, you have to manage the signing and adding testers to your profiles.
-
-To add testers to you App Center beta releases, their devices UUIDs need to be added to your account, simply add their devices info to the `ios/fastlane/devices.txt` file.
+To add testers to your App Center beta releases, their devices UDIDs need to be added to your account, simply add their devices info to the `ios/fastlane/devices.txt` file.
 
 To generate new profiles to be able to deploy to theses users, run:
 
 ```
-fastlane match_pull_all readonly:false
+fastlane add_testers
 ```
 
-On a new machine or if you need to fetch the latest certificates and profiles, run the command without options like so:
+On a new machine or if you need to fetch the latest certificates and profiles, run the command like so:
 
 ```
 fastlane match_pull_all
@@ -260,5 +214,10 @@ fastlane pem_check
 Sometimes, React Native can produce cryptic errors... To handle thoses scenarios, you can use the following command:
 
 ```
-make clean
+yarn clean
+```
+then 
+
+```
+yarn install:all
 ```
