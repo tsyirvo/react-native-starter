@@ -22,7 +22,7 @@ const iOSUpdater = regexpUpdater(iOSVersionRegexp);
 const androidUpdater = regexpUpdater(androidVersionRegexp);
 
 module.exports = {
-  releaseCommitMessageFormat: 'chore(release): v{{currentTag}} [skip ci]',
+  releaseCommitMessageFormat: 'chore(release): v{{currentTag}}',
   bumpFiles: [
     {
       filename: 'package.json',
