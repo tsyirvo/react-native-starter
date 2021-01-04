@@ -1,6 +1,6 @@
 {
   "name": "rn-starter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -11,21 +11,27 @@
   },
   "scripts": {
     "start": "react-native start",
-    "clean": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules && yarn",
+    "ios:development": "react-native run-ios --scheme=rnStarter-development",
+    "ios:staging": "react-native run-ios --scheme=rnStarter-staging",
+    "ios:production": "react-native run-ios --scheme=rnStarter-production",
+    "android:development": "react-native run-android --variant=developmentDebug --appIdSuffix=development",
+    "android:staging": "react-native run-android --variant=stagingDebug --appIdSuffix=staging",
+    "android:production": "react-native run-android --variant=productionDebug",
+    "clean": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules",
+    "install:all": "yarn && npx pod-install",
     "test": "jest --runInBand --outputFile test-results.json --json",
     "test:staged": "jest -o --passWithNoTests --runInBand",
     "tsc": "tsc --noEmit --project tsconfig.json",
     "lint": "eslint ./ --ext .js,.ts,.tsx --cache --fix --ignore-path .gitignore",
     "prettify": "yarn prettier --write './**/*.{ts,tsx}'",
-    "add-image": "node scripts/images.js",
+    "image:add": "node scripts/images.js",
     "generate:page": "npx hygen generators page",
     "generate:fc": "npx hygen generators fc",
     "generate:class": "npx hygen generators class",
     "prestorybook": "rnstl",
     "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
-    "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\"",
-    "version:tag": "standard-version"
+    "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\""
   },
   "husky": {
     "hooks": {
@@ -55,7 +61,7 @@
     "@react-navigation/stack": "5.12.8",
     "i18next": "19.8.4",
     "react": "16.13.1",
-    "react-i18next": "11.8.4",
+    "react-i18next": "11.8.5",
     "react-native": "0.63.3",
     "react-native-code-push": "6.4.1",
     "react-native-config": "1.4.1",
