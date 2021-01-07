@@ -14312,10 +14312,10 @@ react-native-animatable@1.3.3:
   dependencies:
     prop-types "^15.7.2"
 
-react-native-code-push@6.4.1:
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-6.4.1.tgz#4e8f5733e518464ed8a58a446dc09bf8b868c299"
-  integrity sha512-ik+XHj5DvFt+iqa00DnEO6QOrOaeGYrKp2IZIoEQHUOZ+Iqd6nAvfh1gsx4JOlBHj5ZEahTiG8M+u2Dl3rqi2w==
+react-native-code-push@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-7.0.0.tgz#d897e2ed82e82103689d2281d2c785d084e62d82"
+  integrity sha512-k2zZEnX00C8zxrhrrePOzVI77//YKvRa46uqtBECeYOZrGBo6VHp/sFFHBvUQed2dloS508+7g+qbarIt2FIqA==
   dependencies:
     code-push "^4.0.2"
     glob "^7.1.6"
@@ -15301,7 +15301,7 @@ semver@7.0.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.0.0.tgz#5f3ca35761e47e05b206c6daff2cf814f0316b8e"
   integrity sha512-+GB6zVA9LWh6zovYQLALHwv5rb2PHGlJi3lfiqIHxR0uuwCgefcOJc59v9fv1w8GbStwxuuqqAjI9NMAOOgq1A==
 
-semver@7.3.2, semver@^7.2.1, semver@^7.3.2:
+semver@7.3.2:
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
   integrity sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
@@ -15311,7 +15311,7 @@ semver@^4.0.3:
   resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.6.tgz#300bc6e0e86374f7ba61068b5b1ecd57fc6532da"
   integrity sha1-MAvG4OhjdPe6YQaLWx7NV/xlMto=
 
-semver@^7.1.1:
+semver@^7.1.1, semver@^7.2.1, semver@^7.3.2:
   version "7.3.4"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.4.tgz#27aaa7d2e4ca76452f98d3add093a72c943edc97"
   integrity sha512-tCfb2WLjqFAtXn4KEdxIhalnRtoKFN7nAwj0B3ZXCbQloV2tq5eDbcTmT68JJD3nRJq24/XgxtQKFIpQdtvmVw==
