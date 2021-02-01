@@ -1848,10 +1848,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@react-native-async-storage/async-storage@1.13.2":
-  version "1.13.2"
-  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.13.2.tgz#649f78527f16cd5a87071a888219ef7a35ef5c79"
-  integrity sha512-isTDvUApRJPVWFxV15yrQSOGqarX7cIedq/y4N5yWSnotf68D9qvDEv1I7rCXhkBDi0u4OJt6GA9dksUT0D3wg==
+"@react-native-async-storage/async-storage@1.13.4":
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.13.4.tgz#05d29b7884be16fc3c40dcaa44e02fa291a020a2"
+  integrity sha512-P7cbA77XNhUFEBKAIaex17mKI/Db1RQHZVwplagskqzEnpqB+Yi+/l8QeOMr5OJdfmPkBA+V7DOmuWeB8Po6cQ==
   dependencies:
     deep-assign "^3.0.0"
 
