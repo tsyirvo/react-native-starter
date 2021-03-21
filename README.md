@@ -23,7 +23,7 @@ This starter is the one I used in all my personal projects.
 
 It's a basic start, but with most of the common dependencies I use so I can start new projetcts more easily.
 
-For the app itself there are already multiple environments (dev, staging and prod), a navigation library, internationalization, OTA updates with *Code Push*, some base components primitives with *Styled System*.
+You need to have Node (at least version 12) and Watchman installed:
 
 On the dev side, a test stack is setup (unit and E2E), a CI on *Github Actions* with release automation thanks to *Fastlane*, a *Storybook* with some base addons, *TypeScript* is also configured with *ESLint* and *Prettier*, commits are linted to automated the release workflows and changelog generation.
 
