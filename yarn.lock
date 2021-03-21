@@ -8676,7 +8676,7 @@ imageoptim@0.5.0:
     image-type "2.0.1"
     inherit "2.2.2"
     lodash "3.5.0"
-    pngout-bin "2.0.1"
+    pngout-bin "5.0.0"
     q "1.1.2"
     q-io "1.11.6"
     read-chunk "1.0.1"
@@ -12405,7 +12405,7 @@ plist@3.0.1, plist@^3.0.1:
     xmlbuilder "^9.0.7"
     xmldom "0.1.x"
 
-pngout-bin@2.0.1, pngout-bin@5.0.0:
+pngout-bin@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/pngout-bin/-/pngout-bin-5.0.0.tgz#c64d61ea5b7c2acbc87ff0686a237edb1c367cdc"
   integrity sha512-QlAzWV3XOThgQXk50oAFGg7dwsZenFpVd+sBR129q82HFD6zmpa8E1NhvzW5vongK6divVJY2+Y1LdFqKZ6/AQ==

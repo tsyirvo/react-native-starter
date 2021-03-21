@@ -134,8 +134,5 @@
     "standard-version": "9.1.1",
     "ts-jest": "26.5.4",
     "typescript": "4.2.3"
-  },
-  "resolutions": {
-    "pngout-bin": "5.0.0"
   }
 }
