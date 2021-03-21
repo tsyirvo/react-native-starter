@@ -44,6 +44,7 @@ exports[`OtherPage page component should render correctly 1`] = `
     <View
       accessible={true}
       alignItems="center"
+      collapsable={false}
       focusable={true}
       mt="medium"
       onBlur={[Function]}

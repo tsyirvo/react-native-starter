@@ -23,7 +23,7 @@
       "build": "cd android && ./gradlew assembleStagingDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
       "type": "android.emulator",
       "device": {
-        "avdName": "Pixel_3a_API_28"
+        "avdName": "Pixel_3a_API_30_x86"
       }
     },
     "android.emu.release": {
@@ -31,7 +31,7 @@
       "build": "cd android && ./gradlew assembleStagingRelease assembleAndroidTest -DtestBuildType=release && cd ..",
       "type": "android.emulator",
       "device": {
-        "avdName": "Pixel_3a_API_28"
+        "avdName": "Pixel_3a_API_30_x86"
       }
     },
     "android.emu.ci": {

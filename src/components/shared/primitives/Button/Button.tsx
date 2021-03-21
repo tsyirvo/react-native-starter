@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Pressable, PressableProps } from 'react-native';
 import styled from 'styled-components/native';
 import {
@@ -20,7 +20,7 @@ type Props = PressableProps &
   ButtonProps &
   VariantProps & {
     onPress: () => void;
-    children: Element;
+    children: ReactElement;
   };
 
 const SButton = styled(Pressable)<ButtonProps & VariantProps>`
