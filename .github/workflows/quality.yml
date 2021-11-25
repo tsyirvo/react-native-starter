@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - develop
+    paths:
+      - '**.ts'
+      - '**.tsx'
 
 jobs:
   quality:
