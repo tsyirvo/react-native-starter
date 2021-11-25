@@ -139,5 +139,8 @@
     "standard-version": "9.0.0",
     "ts-jest": "25.5.1",
     "typescript": "4.0.2"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   }
 }
