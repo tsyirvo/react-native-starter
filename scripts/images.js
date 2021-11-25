@@ -118,15 +118,15 @@ const moveIosImages = (destPath) =>
     try {
       fs.copyFileSync(
         `${__dirname}/tmp/3x/${imgData.fileFullName}`,
-        `${destPath}/${imgData.fileName}@3x.${imgData.fileExtension}`
+        `${destPath}/${imgData.fileName}@3x.${imgData.fileExtension}`,
       );
       fs.copyFileSync(
         `${__dirname}/tmp/2x/${imgData.fileFullName}`,
-        `${destPath}/${imgData.fileName}@2x.${imgData.fileExtension}`
+        `${destPath}/${imgData.fileName}@2x.${imgData.fileExtension}`,
       );
       fs.copyFileSync(
         `${__dirname}/tmp/1x/${imgData.fileFullName}`,
-        `${destPath}/${imgData.fileName}.${imgData.fileExtension}`
+        `${destPath}/${imgData.fileName}.${imgData.fileExtension}`,
       );
 
       res();
@@ -143,7 +143,7 @@ const createForIos = () =>
       const iosPath = './../ios/rnStarter/Images.xcassets/';
       const imgFolderExtension = '.imageset';
       const iosDataDir = path.resolve(
-        `${__dirname}${iosPath}${imgData.fileName}${imgFolderExtension}`
+        `${__dirname}${iosPath}${imgData.fileName}${imgFolderExtension}`,
       );
       const jsonContentIos = `{
         "images" : [
@@ -181,7 +181,7 @@ const createForIos = () =>
           await moveIosImages(iosDataDir);
 
           res();
-        }
+        },
       );
     } catch (err) {
       console.log('createForIos err', err);
@@ -194,15 +194,15 @@ const moveAndroidImages = (destPath) =>
     try {
       fs.copyFileSync(
         `${__dirname}/tmp/3x/${imgData.fileFullName}`,
-        `${destPath}/drawable-xxhdpi/${imgData.fileFullName}`
+        `${destPath}/drawable-xxhdpi/${imgData.fileFullName}`,
       );
       fs.copyFileSync(
         `${__dirname}/tmp/2x/${imgData.fileFullName}`,
-        `${destPath}/drawable-xhdpi/${imgData.fileFullName}`
+        `${destPath}/drawable-xhdpi/${imgData.fileFullName}`,
       );
       fs.copyFileSync(
         `${__dirname}/tmp/1x/${imgData.fileFullName}`,
-        `${destPath}/drawable-mdpi/${imgData.fileFullName}`
+        `${destPath}/drawable-mdpi/${imgData.fileFullName}`,
       );
 
       res();
@@ -252,7 +252,7 @@ const generateImages = (arg) =>
       }).start();
       await createImageResolutions(arg);
       creatingVersions.succeed(
-        'All versions of the images were successfully created'
+        'All versions of the images were successfully created',
       );
 
       const optimnizingImages = ora({
@@ -275,7 +275,7 @@ const generateImages = (arg) =>
       }).start();
       await createForAndroid();
       creatingAndroid.succeed(
-        'All images were successfully create for Android'
+        'All images were successfully create for Android',
       );
 
       await deleteTmpFolder();
@@ -304,7 +304,7 @@ const handleFileType = async (arg) =>
           fs.readdir(arg, async (err, files) => {
             if (err) {
               console.log(
-                chalk.red('An error occured while reading the directory')
+                chalk.red('An error occured while reading the directory'),
               );
             }
 

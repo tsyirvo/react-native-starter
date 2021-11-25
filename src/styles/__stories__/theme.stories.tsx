@@ -43,9 +43,9 @@ storiesOf('Theme', module)
   ))
   .add('FontSizes', () => (
     <CenteredContent>
-      {(Object.keys(theme.fontSizes) as Array<
-        keyof typeof theme.fontSizes
-      >).map((size) => {
+      {(
+        Object.keys(theme.fontSizes) as Array<keyof typeof theme.fontSizes>
+      ).map((size) => {
         if (size === 'xLarge') {
           return (
             <Title key={size} variant={size} mb="medium">
