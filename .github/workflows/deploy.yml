@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - master
+    paths:
+      - '*'
 
 jobs:
   quality:
@@ -140,6 +142,7 @@ jobs:
       - name: Upload a Staging build to App Center
         run: bundle exec fastlane release_staging
         working-directory: android
+
 
       # - name: Upload a Production build to the Play Console
       #   run: bundle exec fastlane release_production

@@ -1,9 +1,10 @@
-import styled from 'styled-components/native';
+import { Text as RNText } from 'react-native';
+import styled from 'styled-components';
 import { space, layout, color, typography, variant } from 'styled-system';
 
 import { TextProps, VariantProps } from './Text.types';
 
-export const Text = styled.Text<TextProps & VariantProps>`
+export const Text = styled(RNText)<TextProps & VariantProps>`
   ${variant({
     variants: {
       small: {

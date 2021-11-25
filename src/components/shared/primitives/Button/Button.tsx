@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Pressable, PressableProps } from 'react-native';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import {
   space,
   layout,

@@ -1,6 +1,12 @@
 {
   "extends": ["airbnb-typescript", "prettier"],
-  "plugins": ["module-resolver", "@typescript-eslint", "react-hooks", "react"],
+  "plugins": [
+    "module-resolver",
+    "@typescript-eslint",
+    "react-hooks",
+    "react",
+    "import"
+  ],
   "rules": {
     "import/no-unresolved": "warn",
     "import/extensions": "off",
@@ -129,6 +135,9 @@
       "node": {
         "extensions": [".js", ".jsx", ".json", ".native.js", ".ts", ".tsx"]
       }
+    },
+    "react": {
+      "version": "detect"
     }
   },
   "ignorePatterns": [
