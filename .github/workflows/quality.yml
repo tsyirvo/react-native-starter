@@ -5,8 +5,7 @@ on:
     branches:
       - develop
     paths:
-      - '**.ts'
-      - '**.tsx'
+      - '*'
 
 jobs:
   quality:

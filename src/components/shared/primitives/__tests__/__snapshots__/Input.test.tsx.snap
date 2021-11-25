@@ -14,12 +14,10 @@ exports[`Shared primitives Input component should render correctly 1`] = `
   width="80%"
 >
   <TextInput
-    allowFontScaling={true}
     editable={true}
     onChangeText={[MockFunction]}
     placeholder="Placeholder"
     placeholderTextColor="#e5e5e5"
-    rejectResponderTermination={true}
     style={
       Array [
         Object {
