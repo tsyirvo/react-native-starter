@@ -171,6 +171,7 @@
 				B6FB16AF24EC92100035A6B9 /* Resources */,
 				B6FB16B224EC92100035A6B9 /* Bundle React Native code and images */,
 				B6FB16B324EC92100035A6B9 /* [CP] Copy Pods Resources */,
+				B4F30799D13275BF710242EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,6 +304,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B4F30799D13275BF710242EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rnStarter-development/Pods-rnStarter-development-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rnStarter-development/Pods-rnStarter-development-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B6FB16A724EC92100035A6B9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -693,7 +712,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D39D155AF1172F2248F67FB7 /* Pods-rnStarter-development.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -713,7 +732,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.development;
 				PRODUCT_NAME = Starter_Dev;
 				PROVISIONING_PROFILE_SPECIFIER = "match Development ninja.gab.rnStarter.development";
-				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_INCLUDE_PATHS = "$(inherited)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -727,7 +746,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36E2909F692E7C01CDB8A3FD /* Pods-rnStarter-development.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
@@ -746,7 +765,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ninja.gab.rnStarter.development;
 				PRODUCT_NAME = Starter_Dev;
 				PROVISIONING_PROFILE_SPECIFIER = "match Development ninja.gab.rnStarter.development";
-				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_INCLUDE_PATHS = "$(inherited)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
@@ -759,7 +778,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 620C6AC292F65826F0A4BAD4 /* Pods-rnStarter-staging.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -792,7 +811,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0C75AA4F0009A69DACF71880 /* Pods-rnStarter-staging.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -823,7 +842,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B202841C6F75B32C850E983 /* Pods-rnStarter-production.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -856,7 +875,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CA05D70504D8A16496B9B42 /* Pods-rnStarter-production.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
