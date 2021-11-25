@@ -172,9 +172,9 @@ android {
         release {
             if (project.hasProperty('UPLOAD_STORE_FILE')) {
                 storeFile file(UPLOAD_STORE_FILE)
-                storePassword project.env.get("ANDROID_UPLOAD_PASSWORD", "")
+                storePassword ANDROID_UPLOAD_PASSWORD
                 keyAlias UPLOAD_KEY_ALIAS
-                keyPassword project.env.get("ANDROID_UPLOAD_PASSWORD", "")
+                keyPassword ANDROID_UPLOAD_PASSWORD
             }
         }
     }
