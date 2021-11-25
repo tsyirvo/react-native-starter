@@ -16,7 +16,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '10.23.0'
+          node-version: '14.18.1'
 
       - name: Check node_modules cache
         uses: actions/cache@v2
@@ -56,7 +56,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '10.23.0'
+          node-version: '14.18.1'
 
       - name: Check node_modules cache
         uses: actions/cache@v2
@@ -119,10 +119,10 @@ jobs:
           echo "${{secrets.STAGING_ENV}}" > .env.staging.asc
           gpg -d --passphrase "${{secrets.STAGING_ENV_PASSPHRASE}}" --batch .env.staging.asc > .env.staging
 
-      - name: Populate the Production env file
-        run: |
-          echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
-          gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
+      # - name: Populate the Production env file
+      #   run: |
+      #     echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
+      #     gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
 
       - name: Set the current app version based on commit history
         run: yarn version:bump
@@ -165,7 +165,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '10.23.0'
+          node-version: '14.18.1'
 
       - name: Check node_modules cache
         uses: actions/cache@v2
@@ -223,10 +223,10 @@ jobs:
           echo "${{secrets.STAGING_ENV}}" > .env.staging.asc
           gpg -d --passphrase "${{secrets.STAGING_ENV_PASSPHRASE}}" --batch .env.staging.asc > .env.staging
 
-      - name: Populate the Production env file
-        run: |
-          echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
-          gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
+      # - name: Populate the Production env file
+      #   run: |
+      #     echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
+      #     gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
 
       - name: Set the current app version based on commit history
         run: yarn version:bump
