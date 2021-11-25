@@ -79,6 +79,7 @@ test-results.json
 android/fastlane/api-*.json
 android/private_key.pepk
 android/app/*/release/*.aab
+android/google-credential-key.json
 
 # iOS releases
 ios/*.dSYM.zip

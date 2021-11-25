@@ -16,7 +16,9 @@ type Props = {
 const Home = ({ navigation }: Props) => {
   const { t } = useTranslation();
 
-  const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), []);
+  const goToOtherPage = useCallback(() => navigation.navigate('OtherPage'), [
+    navigation,
+  ]);
 
   return (
     <SafeView edges={['bottom']}>

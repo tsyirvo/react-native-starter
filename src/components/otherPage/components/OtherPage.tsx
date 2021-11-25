@@ -12,7 +12,7 @@ type Props = {
 const OtherPage = ({ navigation }: Props) => {
   const { t } = useTranslation();
 
-  const goBack = useCallback(() => navigation.goBack(), []);
+  const goBack = useCallback(() => navigation.goBack(), [navigation]);
 
   return (
     <SafeView>

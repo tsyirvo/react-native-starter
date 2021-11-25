@@ -78,7 +78,7 @@ PODS:
     - FlipperKit/FlipperKitNetworkPlugin
   - fmt (6.2.1)
   - glog (0.3.5)
-  - JWT (3.0.0-beta.12):
+  - JWT (3.0.0-beta.14):
     - Base64 (~> 1.1.2)
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.180)
@@ -464,24 +464,23 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Base64
     - CocoaAsyncSocket
     - Flipper
     - Flipper-Boost-iOSX
     - Flipper-DoubleConversion
     - Flipper-Fmt
     - Flipper-Folly
+    - Flipper-Glog
+    - Flipper-PeerTalk
     - Flipper-RSocket
     - FlipperKit
     - fmt
+    - JWT
     - libevent
     - OpenSSL-Universal
-    - YogaKit
-  trunk:
-    - Base64
-    - Flipper-Glog
-    - Flipper-PeerTalk
-    - JWT
     - SSZipArchive
+    - YogaKit
 
 EXTERNAL SOURCES:
   boost:
@@ -568,7 +567,7 @@ SPEC CHECKSUMS:
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   CodePush: b51b7ac64c07d4eacfc8cc5750a1dd28adbf2528
-  DoubleConversion: cde416483dac037923206447da6e1454df403714
+  DoubleConversion: 831926d9b8bf8166fd87886c4abab286c2422662
   FBLazyVector: de148e8310b8b878db304ceea2fec13f2c02e3a0
   FBReactNativeSpec: 6192956c9e346013d5f1809ba049af720b11c6a4
   Flipper: 30e8eeeed6abdc98edaf32af0cda2f198be4b733
@@ -581,8 +580,8 @@ SPEC CHECKSUMS:
   Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
   FlipperKit: d8d346844eca5d9120c17d441a2f38596e8ed2b9
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
+  glog: 5337263514dd6f09803962437687240c5dc39aa4
+  JWT: ef71dfb03e1f842081e64dc42eef0e164f35d251
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
   RCT-Folly: a21c126816d8025b547704b777a2ba552f3d9fa9

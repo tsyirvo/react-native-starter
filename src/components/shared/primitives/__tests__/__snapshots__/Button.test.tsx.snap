@@ -3,6 +3,7 @@
 exports[`Shared primitives Button component should render correctly with a text children 1`] = `
 <View
   accessible={true}
+  collapsable={false}
   focusable={true}
   onBlur={[Function]}
   onClick={[Function]}

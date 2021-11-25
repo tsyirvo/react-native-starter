@@ -2,6 +2,7 @@ import { device, expect, element, by } from 'detox';
 
 describe('Basic test', () => {
   beforeAll(async () => {
+    await device.launchApp();
     await device.reloadReactNative();
   });
 
