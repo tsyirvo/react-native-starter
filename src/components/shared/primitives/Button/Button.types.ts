@@ -10,13 +10,13 @@ import {
 } from 'styled-system';
 
 export type ButtonProps = SpaceProps &
-  LayoutProps &
-  ColorProps &
-  BorderProps &
-  BorderRadiusProps &
-  PositionProps &
-  TypographyProps &
-  FlexboxProps;
+LayoutProps &
+ColorProps &
+BorderProps &
+BorderRadiusProps &
+PositionProps &
+TypographyProps &
+FlexboxProps;
 
 export type VariantProps = {
   variant?: 'base' | 'baseDisabled';

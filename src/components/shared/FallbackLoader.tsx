@@ -11,6 +11,7 @@ const Fallback = ({ delay }: Props) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => toggleLoading(true), delay);
+
     return () => {
       clearTimeout(timeout);
     };

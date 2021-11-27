@@ -17,11 +17,11 @@ import { ButtonProps, VariantProps } from './Button.types';
 import variants from './Button.variants';
 
 type Props = PressableProps &
-  ButtonProps &
-  VariantProps & {
-    onPress: () => void;
-    children: ReactElement;
-  };
+ButtonProps &
+VariantProps & {
+  onPress: () => void;
+  children: ReactElement;
+};
 
 const SButton = styled(Pressable)<ButtonProps & VariantProps>`
   ${variant({

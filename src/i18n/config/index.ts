@@ -4,18 +4,18 @@ import * as RNLocalize from 'react-native-localize';
 import { config, storageKeys } from '$core/constants';
 import AppStorage from '$core/storage';
 
-const translationGetters = {
+type SupportedLocales = 'en' | 'fr';
+type TranslationGetters = Record<SupportedLocales, () => object>;
+
+const translationGetters: TranslationGetters = {
   en: () => require('$i18n/locales/en.json'),
   fr: () => require('$i18n/locales/fr.json'),
 };
-
-type SupportedLocales = keyof typeof translationGetters;
 
 /* ***** *****  Utils  ***** ***** */
 
 const getPhoneLocale = () => {
   const localeFallback = { languageTag: config.defaultLocale };
-
   const { languageTag } =
     RNLocalize.findBestAvailableLanguage(config.supportedLocales) ??
     localeFallback;
@@ -34,7 +34,7 @@ const storeLocaleInStorage = (locale: string) => {
 const setAppLocale = (locale: string, saveToStorage?: boolean) => {
   let translations = translationGetters[locale as SupportedLocales];
 
-  if (!translations) {
+  if (!config.supportedLocales.includes(locale)) {
     translations = translationGetters.en;
   }
 
@@ -65,7 +65,6 @@ export function initI18n() {
   }
 
   setAppLocale(locale, true);
-
   RNLocalize.addEventListener('change', () => {
     setAppLocale(getPhoneLocale(), true);
   });

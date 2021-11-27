@@ -12,12 +12,12 @@ import {
 } from 'styled-system';
 
 export type BoxProps = ViewProps &
-  SpaceProps &
-  ColorProps &
-  LayoutProps &
-  FlexboxProps &
-  BackgroundProps &
-  BorderProps &
-  BorderRadiusProps &
-  PositionProps &
-  TypographyProps;
+SpaceProps &
+ColorProps &
+LayoutProps &
+FlexboxProps &
+BackgroundProps &
+BorderProps &
+BorderRadiusProps &
+PositionProps &
+TypographyProps;

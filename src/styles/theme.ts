@@ -1,6 +1,6 @@
 const brandColors = {};
 
-export default {
+const theme = {
   colors: {
     ...brandColors,
     black: '#000',
@@ -34,3 +34,7 @@ export default {
     medium: 16,
   },
 };
+
+export type Theme = typeof theme;
+
+export default theme;

@@ -13,6 +13,8 @@ import {
   typography,
 } from 'styled-system';
 
+import { Theme } from '$styles/theme';
+
 import { BoxProps } from './Box.types';
 
 export const Box = styled(RNView)<BoxProps>`
@@ -33,5 +35,5 @@ export const Flex = styled(Box)`
 `;
 
 export const GreyBox = styled(Box)`
-  background-color: ${(p) => p.theme.colors.grey};
+  background-color: ${(p: { theme: Theme }) => p.theme.colors.grey};
 `;

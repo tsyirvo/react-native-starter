@@ -25,6 +25,7 @@ describe('Shared primitives Input component', () => {
     const { getByPlaceholderText } = render(<Input {...props} />);
 
     const input = getByPlaceholderText('Placeholder');
+
     fireEvent.changeText(input, 'data');
 
     // Then
