@@ -1,6 +1,12 @@
 module.exports = {
   extends: ['airbnb-typescript', 'prettier'],
-  plugins: ['@typescript-eslint', 'react-hooks', 'react', 'import'],
+  plugins: [
+    '@typescript-eslint',
+    'react-hooks',
+    'react',
+    'react-native',
+    'import',
+  ],
   rules: {
     'import/dynamic-import-chunkname': 'error',
     'import/export': 'error',
@@ -104,6 +110,10 @@ module.exports = {
 
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+
+    'react-native/no-unused-styles': 'error',
+    'react-native/no-inline-styles': 'warn',
+    'react-native/no-inline-styles': 'error',
 
     '@typescript-eslint/array-type': ['warn', { default: 'array' }],
     '@typescript-eslint/await-thenable': 'error',
