@@ -48,6 +48,9 @@ const setAppLocale = (locale: string, saveToStorage?: boolean) => {
 
 /* ***** *****  I18n  ***** ***** */
 
+i18n.fallbacks = true;
+i18n.translations = { en: translationGetters.en() };
+
 export function initI18n() {
   let locale;
 
