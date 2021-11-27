@@ -23,7 +23,7 @@ const RootStack = () => (
       <Stack.Screen
         name="OtherPage"
         component={Pages.OtherPage}
-        options={{ title: i18n.t('otherPage.page_name') }}
+        options={{ title: i18n.t('otherPage.navigation.backCta') }}
         initialParams={{ someProps: 'Some value' }}
       />
       {/* inject screens before this */}

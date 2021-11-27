@@ -16,7 +16,7 @@ const OtherPage = ({ navigation }: Props) => {
     <SafeView>
       <Flex justifyContent="center" alignItems="center">
         <Title fontWeight={600} testID="otherPage_title" variant="large">
-          {i18n.t('otherPage.page_title')}
+          {i18n.t('otherPage.navigation.title')}
         </Title>
 
         <Button
@@ -25,7 +25,7 @@ const OtherPage = ({ navigation }: Props) => {
           testID="back_button"
           onPress={goBack}
         >
-          <Text>{i18n.t('otherPage.navigation_back')}</Text>
+          <Text>{i18n.t('otherPage.navigation.backCta')}</Text>
         </Button>
       </Flex>
     </SafeView>

@@ -26,7 +26,7 @@ const Home = ({ navigation }: Props) => {
 
         <Flex px="large" pb={150}>
           <Title fontWeight={600} mt="large">
-            {i18n.t('home.navigation_title')}
+            {i18n.t('home.navigation.title')}
           </Title>
           <Button
             testID="goto_otherPage"
@@ -34,7 +34,7 @@ const Home = ({ navigation }: Props) => {
             alignItems="center"
             mt="medium"
           >
-            <Text>{i18n.t('home.navigation_content')}</Text>
+            <Text>{i18n.t('home.navigation.content')}</Text>
           </Button>
 
           <Informations />
