@@ -22,6 +22,7 @@ module.exports = {
         alias: {
           $assets: './src/assets',
           $components: './src/components',
+          $core: './src/core',
           $shared: './src/components/shared',
           $pages: './src/pages',
           $routes: './src/routes',

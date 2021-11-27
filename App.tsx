@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import codePush from 'react-native-code-push';
 import {
   initialWindowMetrics,
@@ -6,39 +7,36 @@ import {
 } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
 import { ThemeProvider } from 'styled-components';
-import { StatusBar } from 'react-native';
 
-import LocaleProvider from '$components/contexts/LocaleProvider';
-import ErrorBoundary from '$components/errorBoundary';
-import AppContainer from '$routes/routes';
 import theme from '$styles/theme';
-import config from '$utils/config';
-import { getRatio } from '$utils/dimensions';
+import AppContainer from '$routes/routes';
+import ErrorBoundary from '$components/errorBoundary';
+import { initI18n } from '$i18n/config';
+import { config, getDimensionRatio } from '$core/constants';
 
-import './src/i18n';
 import StorybookProvider from './storybook/Storybook';
 
 enableScreens();
-getRatio();
+
+initI18n();
+getDimensionRatio();
 
 const Root = () => (
   <ThemeProvider theme={theme}>
     <StatusBar barStyle="light-content" />
 
-    <LocaleProvider>
-      <ErrorBoundary>
-        <StorybookProvider>
-          <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-            <AppContainer />
-          </SafeAreaProvider>
-        </StorybookProvider>
-      </ErrorBoundary>
-    </LocaleProvider>
+    <ErrorBoundary>
+      <StorybookProvider>
+        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <AppContainer />
+        </SafeAreaProvider>
+      </StorybookProvider>
+    </ErrorBoundary>
   </ThemeProvider>
 );
 
 const isCodepushEnabled = () =>
-  !!(config.androidCodepushKey || config.iosCodepushKey);
+  !!(config.android.codepushKey || config.ios.codepushKey);
 
 const codePushOptions = {
   checkFrequency: isCodepushEnabled()

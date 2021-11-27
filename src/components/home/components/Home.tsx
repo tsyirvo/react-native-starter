@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
 import { HomeScreenNavigationProp } from '$routes/routes.types';
 import { Flex, Text, Title, Button } from '$shared/primitives';
 import SafeView from '$shared/SafeView';
+import i18n from '$i18n/config';
 
 import Header from './Header';
 import Informations from './Informations';
@@ -14,8 +14,6 @@ type Props = {
 };
 
 const Home = ({ navigation }: Props) => {
-  const { t } = useTranslation();
-
   const goToOtherPage = useCallback(
     () => navigation.navigate('OtherPage'),
     [navigation],
@@ -28,7 +26,7 @@ const Home = ({ navigation }: Props) => {
 
         <Flex px="large" pb={150}>
           <Title fontWeight={600} mt="large">
-            {t('home.navigation_title')}
+            {i18n.t('home.navigation_title')}
           </Title>
           <Button
             testID="goto_otherPage"
@@ -36,7 +34,7 @@ const Home = ({ navigation }: Props) => {
             alignItems="center"
             mt="medium"
           >
-            <Text>{t('home.navigation_content')}</Text>
+            <Text>{i18n.t('home.navigation_content')}</Text>
           </Button>
 
           <Informations />
