@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 
-import { OtherPageScreenNavigationProp } from '$routes/routes.types';
-import { Flex, Title, Text, Button } from '$shared/primitives';
-import SafeView from '$shared/SafeView';
+import { Button, Flex, Text, Title } from '$components/shared/primitives';
+import SafeView from '$components/shared/SafeView';
 import i18n from '$i18n/config';
+import { OtherPageScreenNavigationProp } from '$routes/routes.types';
 
 type Props = {
   navigation: OtherPageScreenNavigationProp;

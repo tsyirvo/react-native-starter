@@ -1,5 +1,5 @@
-import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
+import React from 'react';
 
 import render from '$tests/utils';
 

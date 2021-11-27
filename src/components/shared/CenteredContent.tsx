@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 
-import { Flex } from '$shared/primitives';
-import { BoxProps } from '$shared/primitives/Box/Box.types';
+import { Flex } from '$components/shared/primitives';
+import { BoxProps } from '$components/shared/primitives/Box/Box.types';
 
 type Props = BoxProps & {
   children: ReactElement | ReactElement[];

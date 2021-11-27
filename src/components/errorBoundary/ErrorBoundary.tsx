@@ -1,8 +1,8 @@
 import React, { Component, ErrorInfo, ReactElement } from 'react';
 
+import { Button, Flex, Text, Title } from '$components/shared/primitives';
+import SafeView from '$components/shared/SafeView';
 import i18n from '$i18n/config';
-import { Button, Flex, Text, Title } from '$shared/primitives';
-import SafeView from '$shared/SafeView';
 
 type ErrorBoundaryProps = {
   children: ReactElement;

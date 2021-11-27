@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React from 'react';
-import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
-import CenteredContent from '$shared/CenteredContent';
-import { Text } from '$shared/primitives';
+import CenteredContent from '$components/shared/CenteredContent';
+import { Text } from '$components/shared/primitives';
 
 import Button from '../Button';
 

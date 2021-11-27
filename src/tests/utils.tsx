@@ -4,8 +4,8 @@ import { render as rtlRender, RenderAPI } from '@testing-library/react-native';
 import React, { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import theme from '$styles/theme';
 import { initI18n } from '$i18n/config';
+import theme from '$styles/theme';
 
 initI18n();
 

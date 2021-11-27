@@ -36,7 +36,7 @@
     "test:ios:release": "detox test -c ios.sim.release --record-logs all --debug-synchronization 500 --take-screenshots failing --record-videos failing --workers 1",
     "//// QUALITY ////": "",
     "tsc": "tsc --noEmit",
-    "lint": "eslint ./ --ext .js,.ts,.tsx --cache --fix --ignore-path .gitignore",
+    "lint": "eslint ./src --ext .js,.ts,.tsx --cache --fix --ignore-path .gitignore",
     "prettify": "yarn prettier --write './**/*.{js,ts,tsx}'",
     "prestorybook": "rnstl",
     "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
@@ -55,8 +55,8 @@
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "bash -c tsc --noEmit",
-      "yarn lint",
-      "yarn prettify"
+      "bash -c yarn lint",
+      "bash -c yarn prettify"
     ]
   },
   "config": {
@@ -116,7 +116,7 @@
     "babel-eslint": "10.1.0",
     "babel-jest": "27.3.1",
     "babel-loader": "8.2.3",
-    "babel-plugin-module-resolver": "4.1.0",
+    "babel-plugin-root-import": "6.6.0",
     "babel-plugin-transform-remove-console": "6.9.4",
     "chalk": "4.1.2",
     "danger": "10.7.1",
@@ -127,6 +127,7 @@
     "eslint-config-airbnb-typescript": "16.0.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-import-resolver-babel-module": "5.3.1",
+    "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
     "eslint-import-resolver-react-native": "0.2.0",
     "eslint-import-resolver-typescript": "2.5.0",
     "eslint-plugin-import": "2.25.3",

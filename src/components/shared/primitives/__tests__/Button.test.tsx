@@ -1,6 +1,6 @@
+import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
-import { fireEvent } from '@testing-library/react-native';
 
 import render from '$tests/utils';
 
