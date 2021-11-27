@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - master
+    paths:
+      - '*'
 
 jobs:
   quality:
@@ -119,10 +121,10 @@ jobs:
           echo "${{secrets.STAGING_ENV}}" > .env.staging.asc
           gpg -d --passphrase "${{secrets.STAGING_ENV_PASSPHRASE}}" --batch .env.staging.asc > .env.staging
 
-      - name: Populate the Production env file
-        run: |
-          echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
-          gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
+      # - name: Populate the Production env file
+      #   run: |
+      #     echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
+      #     gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
 
       - name: Set the current app version based on commit history
         run: yarn version:bump
@@ -140,6 +142,7 @@ jobs:
       - name: Upload a Staging build to App Center
         run: bundle exec fastlane release_staging
         working-directory: android
+
 
       # - name: Upload a Production build to the Play Console
       #   run: bundle exec fastlane release_production
@@ -222,10 +225,10 @@ jobs:
           echo "${{secrets.STAGING_ENV}}" > .env.staging.asc
           gpg -d --passphrase "${{secrets.STAGING_ENV_PASSPHRASE}}" --batch .env.staging.asc > .env.staging
 
-      - name: Populate the Production env file
-        run: |
-          echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
-          gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
+      # - name: Populate the Production env file
+      #   run: |
+      #     echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
+      #     gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
 
       - name: Set the current app version based on commit history
         run: yarn version:bump

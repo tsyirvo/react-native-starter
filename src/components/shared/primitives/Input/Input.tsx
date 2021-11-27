@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { TextInput, TextInputProps } from 'react-native';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
 import theme from '$styles/theme';
 

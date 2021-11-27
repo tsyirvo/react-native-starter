@@ -1,0 +1,79 @@
+--------- beginning of main
+11-25 20:50:57.016 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.033 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.051 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.068 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.083 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.101 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.116 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.134 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.146 24123 24167 D DetoxWSClient: Received action 'currentStatus' (ID #4, params={})
+11-25 20:50:57.146 24123 24163 I DetoxDispatcher: Handling action 'currentStatus' (ID #4)...
+11-25 20:50:57.147 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.147 24123 24163 I DetoxWSClient: Sending out action 'currentStatusResult' (ID #4)
+11-25 20:50:57.148 24123 24163 I DetoxDispatcher: Done with action 'currentStatus'
+11-25 20:50:57.174 24123 24123 I Detox   : UIManagerModule is busy
+11-25 20:50:57.193 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.260 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.261 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.263 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.264 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.265 24123 24162 I DetoxWSClient: Sending out action 'invokeResult' (ID #3)
+11-25 20:50:57.265 24123 24162 I DetoxDispatcher: Done with action 'invoke'
+11-25 20:50:57.267 24123 24167 D DetoxWSClient: Received action 'invoke' (ID #5, params={"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["otherPage_title"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]})
+11-25 20:50:57.267 24123 24162 I DetoxDispatcher: Handling action 'invoke' (ID #5)...
+11-25 20:50:57.267 24123 24162 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForTestId, [otherPage_title]
+11-25 20:50:57.267 24123 24162 D Detox   : class androidx.test.espresso.Espresso, onView, [(with tag value: is "otherPage_title" and view has effective visibility=VISIBLE)]
+11-25 20:50:57.267 24123 24162 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForSufficientlyVisible, [75]
+11-25 20:50:57.268 24123 24162 D Detox   : class com.wix.detox.espresso.DetoxAssertion, assertMatcher, [androidx.test.espresso.ViewInteraction@fdf205a, at least 75 percent of the view's area is displayed to the user.]
+11-25 20:50:57.268 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.270 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.270 24123 24123 I ViewInteraction: Checking 'MatchesViewAssertion(Detox){viewMatcher=at least 75 percent of the view's area is displayed to the user.}' assertion on view (with tag value: is "otherPage_title" and view has effective visibility=VISIBLE)
+11-25 20:50:57.271 24123 24162 I DetoxWSClient: Sending out action 'invokeResult' (ID #5)
+11-25 20:50:57.271 24123 24162 I DetoxDispatcher: Done with action 'invoke'
+11-25 20:50:57.628 24123 24167 D DetoxWSClient: Received action 'invoke' (ID #6, params={"target":{"type":"Class","value":"com.wix.detox.espresso.EspressoDetox"},"method":"perform","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["back_button"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxViewActions"},"method":"click","args":[]}}]})
+11-25 20:50:57.628 24123 24162 I DetoxDispatcher: Handling action 'invoke' (ID #6)...
+11-25 20:50:57.628 24123 24162 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForTestId, [back_button]
+11-25 20:50:57.628 24123 24162 D Detox   : class androidx.test.espresso.Espresso, onView, [(with tag value: is "back_button" and view has effective visibility=VISIBLE)]
+11-25 20:50:57.628 24123 24162 D Detox   : class com.wix.detox.espresso.DetoxViewActions, click, []
+11-25 20:50:57.628 24123 24162 D Detox   : class com.wix.detox.espresso.EspressoDetox, perform, [androidx.test.espresso.ViewInteraction@d78628b, com.wix.detox.espresso.action.RNClickAction@cca7f68]
+11-25 20:50:57.630 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.631 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.631 24123 24123 I ViewInteraction: Performing 'com.wix.detox.espresso.action.detoxsingletap@77a1f81 click' action on view (with tag value: is "back_button" and view has effective visibility=VISIBLE)
+11-25 20:50:57.664 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.665 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:57.706 24123 24123 W UiControllerImpl: Waiting for: DELAY_HAS_PAST for 100 iterations.
+11-25 20:50:57.930 24123 24123 W UiControllerImpl: Waiting for: DELAY_HAS_PAST for 200 iterations.
+11-25 20:50:57.968 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.978 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:57.997 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.015 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.030 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.049 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.067 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.084 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.104 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.124 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.131 24123 24167 D DetoxWSClient: Received action 'currentStatus' (ID #7, params={})
+11-25 20:50:58.131 24123 24163 I DetoxDispatcher: Handling action 'currentStatus' (ID #7)...
+11-25 20:50:58.132 24123 24123 I Detox   : AnimatedModule is busy.
+11-25 20:50:58.132 24123 24163 I DetoxWSClient: Sending out action 'currentStatusResult' (ID #7)
+11-25 20:50:58.132 24123 24163 I DetoxDispatcher: Done with action 'currentStatus'
+11-25 20:50:58.178 24123 24123 I Detox   : UIManagerModule is busy
+11-25 20:50:58.204 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:58.271 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:58.273 24123 24123 I chatty  : uid=10148(ninja.gab.rnStarter.staging) identical 2 lines
+11-25 20:50:58.274 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:58.275 24123 24162 I DetoxWSClient: Sending out action 'invokeResult' (ID #6)
+11-25 20:50:58.275 24123 24162 I DetoxDispatcher: Done with action 'invoke'
+11-25 20:50:58.278 24123 24167 D DetoxWSClient: Received action 'invoke' (ID #8, params={"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["home_title"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]})
+11-25 20:50:58.278 24123 24162 I DetoxDispatcher: Handling action 'invoke' (ID #8)...
+11-25 20:50:58.278 24123 24162 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForTestId, [home_title]
+11-25 20:50:58.278 24123 24162 D Detox   : class androidx.test.espresso.Espresso, onView, [(with tag value: is "home_title" and view has effective visibility=VISIBLE)]
+11-25 20:50:58.278 24123 24162 D Detox   : class com.wix.detox.espresso.DetoxMatcher, matcherForSufficientlyVisible, [75]
+11-25 20:50:58.278 24123 24162 D Detox   : class com.wix.detox.espresso.DetoxAssertion, assertMatcher, [androidx.test.espresso.ViewInteraction@9f0540a, at least 75 percent of the view's area is displayed to the user.]
+11-25 20:50:58.279 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:58.281 24123 24123 D IdlingResourceRegistry: All idling resources are idle.
+11-25 20:50:58.281 24123 24123 I ViewInteraction: Checking 'MatchesViewAssertion(Detox){viewMatcher=at least 75 percent of the view's area is displayed to the user.}' assertion on view (with tag value: is "home_title" and view has effective visibility=VISIBLE)
+11-25 20:50:58.282 24123 24162 I DetoxWSClient: Sending out action 'invokeResult' (ID #8)
+11-25 20:50:58.282 24123 24162 I DetoxDispatcher: Done with action 'invoke'

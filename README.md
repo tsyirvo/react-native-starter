@@ -1,5 +1,6 @@
 # React Native Starter
 
+- [React Native Starter](#react-native-starter)
   - [Explanations](#explanations)
   - [The setup](#the-setup)
   - [Runing the project](#runing-the-project)
@@ -23,16 +24,15 @@ This starter is the one I used in all my personal projects.
 
 It's a basic start, but with most of the common dependencies I use so I can start new projetcts more easily.
 
-You need to have Node (at least version 12) and Watchman installed:
+You need to have Node (at least version 14) and Watchman installed:
 
-On the dev side, a test stack is setup (unit and E2E), a CI on *Github Actions* with release automation thanks to *Fastlane*, a *Storybook* with some base addons, *TypeScript* is also configured with *ESLint* and *Prettier*, commits are linted to automated the release workflows and changelog generation.
+On the dev side, a test stack is setup (unit and E2E), a CI on _Github Actions_ with release automation thanks to _Fastlane_, a _Storybook_ with some base addons, _TypeScript_ is also configured with _ESLint_ and _Prettier_, commits are linted to automated the release workflows and changelog generation.
 
 There are also some utilities to generate new components or pages automatically, a script to compress images and add them to the native catalogs. A pre commit hook runs on staged files for code quality checks.
 
 There is no data handling library since it varies from one project to the next.
 
 ## The setup
-
 
 Install the packages and iOS Pods:
 
@@ -53,6 +53,7 @@ You can launch the simulators with the following commands:
 ```
 yarn ios:[development|staging|production]
 ```
+
 or
 
 ```
@@ -87,7 +88,7 @@ Refer to the documentation of [React i18Next](https://react.i18next.com/) for ex
 
 ## Adding images
 
-All images are stored in the native images catalogs for both *iOS* and *Android*.
+All images are stored in the native images catalogs for both _iOS_ and _Android_.
 
 To simplify the adding process, and optimizing those images, you can run the following command:
 
@@ -107,7 +108,7 @@ A CLI prompt will ask you all the infos.
 
 ## Using the storybook
 
-A *Storybook* is already configured with some addons.
+A _Storybook_ is already configured with some addons.
 
 To access it, you can access the dev menu on the device and select _Toggle Storybook_ to have it shown in place of the app.
 
@@ -147,15 +148,15 @@ There is a precommit git hook that run the prettify command to have a consistent
 
 ## Github Actions
 
-The project is configured to have the CI running on *Github Actions* with a *Git Flow*.
+The project is configured to have the CI running on _Github Actions_ with a _Git Flow_.
 
 The two main workflows are the following:
 
-A *Quality* workflow runs against all PR targetting *develop*. It handles running tests, linting and TypeScript checks.
+A _Quality_ workflow runs against all PR targetting _develop_. It handles running tests, linting and TypeScript checks.
 
-A *Deploy* one, which release a new build of the app on App Center and on the stores.
+A _Deploy_ one, which release a new build of the app on App Center and on the stores.
 
-You can look at the *.yml* files to view all the workflows, and check the Github environment variables you will need if you want it to run on your end.
+You can look at the _.yml_ files to view all the workflows, and check the Github environment variables you will need if you want it to run on your end.
 
 ## CodePush
 
@@ -216,7 +217,8 @@ Sometimes, React Native can produce cryptic errors... To handle thoses scenarios
 ```
 yarn clean
 ```
-then 
+
+then
 
 ```
 yarn install:all

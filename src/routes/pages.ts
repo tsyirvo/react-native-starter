@@ -1,9 +1,5 @@
-/* eslint-disable import/dynamic-import-chunkname */
-
-import { lazy } from 'react';
-
-const Home = lazy(() => import('components/home'));
-const OtherPage = lazy(() => import('components/otherPage'));
+import Home from 'components/home';
+import OtherPage from 'components/otherPage';
 // inject pages before this
 
 export {

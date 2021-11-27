@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/dynamic-import-chunkname */
 
 import React, { Component, ComponentClass, ReactNode } from 'react';

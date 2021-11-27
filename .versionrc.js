@@ -1,4 +1,5 @@
-const iOSVersionRegexp = /(<key>CFBundleShortVersionString<\/key>\s*?<string>)(\d+\.\d+\.\d+)(<\/string>)/;
+const iOSVersionRegexp =
+  /(<key>CFBundleShortVersionString<\/key>\s*?<string>)(\d+\.\d+\.\d+)(<\/string>)/;
 const androidVersionRegexp = /(versionName ")(\d+\.\d+\.\d+)(")/;
 
 const regexpUpdater = (regexp) => {
