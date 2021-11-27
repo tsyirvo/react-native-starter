@@ -1,10 +1,15 @@
 import i18n from 'i18n-js';
 import * as RNLocalize from 'react-native-localize';
 
-import AppStorage from '$core/storage';
 import { config, storageKeys } from '$core/constants';
-import fr from '$i18n/locales/fr.json';
-import en from '$i18n/locales/en.json';
+import AppStorage from '$core/storage';
+
+const translationGetters = {
+  en: () => require('$i18n/locales/en.json'),
+  fr: () => require('$i18n/locales/fr.json'),
+};
+
+type SupportedLocales = keyof typeof translationGetters;
 
 /* ***** *****  Utils  ***** ***** */
 
@@ -27,6 +32,13 @@ const storeLocaleInStorage = (locale: string) => {
 };
 
 const setAppLocale = (locale: string, saveToStorage?: boolean) => {
+  let translations = translationGetters[locale as SupportedLocales];
+
+  if (!translations) {
+    translations = translationGetters.en;
+  }
+
+  i18n.translations = { [locale]: translations() };
   i18n.locale = locale;
 
   if (saveToStorage) {
@@ -36,15 +48,11 @@ const setAppLocale = (locale: string, saveToStorage?: boolean) => {
 
 /* ***** *****  I18n  ***** ***** */
 
-i18n.fallbacks = true;
-i18n.translations = { en, fr };
-
 export function initI18n() {
   let locale;
 
   try {
     locale = AppStorage.getString(storageKeys.appStorage.locale);
-    console.log('storage locale', locale);
   } catch (err) {
     // TODO(error): Send to error monitoring
   }
