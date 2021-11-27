@@ -2,16 +2,22 @@ module.exports = {
   extends: ['airbnb-typescript', 'prettier'],
   plugins: ['@typescript-eslint', 'react-hooks', 'react', 'import'],
   rules: {
+    'import/dynamic-import-chunkname': 'error',
+    'import/export': 'error',
+    'import/extensions': 'off',
+    'import/newline-after-import': 'error',
+    'import/no-cycle': ['error', { ignoreExternal: true }],
+    'import/no-duplicates': 'error',
+    'import/no-extraneous-dependencies': 'error',
+    'import/no-mutable-exports': 'error',
+    'import/no-nodejs-modules': 'error',
+    'import/no-self-import': 'error',
     'import/no-unresolved': [
-      'warn',
+      'error',
       {
         ignore: ['$'],
       },
     ],
-    'import/extensions': 'off',
-    'import/no-mutable-exports': 'off',
-    'import/dynamic-import-chunkname': 'error',
-    'import/prefer-default-export': 'error',
     'import/order': [
       'error',
       {
@@ -30,6 +36,7 @@ module.exports = {
         },
       },
     ],
+    'import/prefer-default-export': 'error',
 
     'react/destructuring-assignment': ['error', 'always'],
     'react/function-component-definition': [

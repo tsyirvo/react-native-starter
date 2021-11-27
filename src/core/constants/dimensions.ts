@@ -1,3 +1,5 @@
+/* eslint-disable import/no-mutable-exports */
+
 import { Dimensions } from 'react-native';
 
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
