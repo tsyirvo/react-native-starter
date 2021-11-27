@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, { forwardRef } from 'react';
 import { TextInput, TextInputProps } from 'react-native';
 import styled from 'styled-components';
