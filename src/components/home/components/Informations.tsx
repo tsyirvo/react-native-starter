@@ -1,33 +1,29 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { useTranslation } from 'react-i18next';
 
 import { Title, Text } from '$shared/primitives';
+import i18n from '$i18n/config';
 
-const Informations = () => {
-  const { t } = useTranslation();
+const Informations = () => (
+  <>
+    <Title fontWeight={600} mt={25} mb={10}>
+      {i18n.t('home.storybook.title')}
+    </Title>
+    <Text>
+      {i18n.t('home.storybook.content')}
+      {Platform.OS === 'ios' ? ' Cmd+R' : ' Cmd+M'}
+    </Text>
 
-  return (
-    <>
-      <Title fontWeight={600} mt={25} mb={10}>
-        {t('home.storybook_title')}
-      </Title>
-      <Text>
-        {t('home.storybook_content')}
-        {Platform.OS === 'ios' ? ' Cmd+R' : ' Cmd+M'}
-      </Text>
+    <Title fontWeight={600} mt={25} mb={10}>
+      {i18n.t('home.tests.title')}
+    </Title>
+    <Text>{i18n.t('home.tests.content')}</Text>
 
-      <Title fontWeight={600} mt={25} mb={10}>
-        {t('home.test_title')}
-      </Title>
-      <Text>{t('home.test_content')}</Text>
-
-      <Title fontWeight={600} mt={25} mb={10}>
-        {t('home.formatting_title')}
-      </Title>
-      <Text>{t('home.formatting_content')}</Text>
-    </>
-  );
-};
+    <Title fontWeight={600} mt={25} mb={10}>
+      {i18n.t('home.formatting.title')}
+    </Title>
+    <Text>{i18n.t('home.formatting.content')}</Text>
+  </>
+);
 
 export default Informations;

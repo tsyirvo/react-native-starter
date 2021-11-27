@@ -1,10 +1,10 @@
 import React, { Component, ErrorInfo, ReactElement } from 'react';
-import { withTranslation, WithTranslation } from 'react-i18next';
 
-import { Flex, Title, Text, Button } from '$shared/primitives';
+import i18n from '$i18n/config';
+import { Button, Flex, Text, Title } from '$shared/primitives';
 import SafeView from '$shared/SafeView';
 
-type ErrorBoundaryProps = WithTranslation & {
+type ErrorBoundaryProps = {
   children: ReactElement;
 };
 
@@ -33,7 +33,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     const { hasError } = this.state;
-    const { children, t } = this.props;
+    const { children } = this.props;
 
     if (hasError) {
       return (
@@ -44,16 +44,18 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             justifyContent="center"
             width="80%"
           >
-            <Title mb="large">{t('errorBoundary.title')}</Title>
+            <Title mb="large">{i18n.t('errorBoundary.title')}</Title>
 
-            <Text textAlign="center">{t('errorBoundary.description')}</Text>
+            <Text textAlign="center">
+              {i18n.t('errorBoundary.description')}
+            </Text>
 
             <Button
               mt="large"
               alignItems="center"
               onPress={this.handleApplicationReset}
             >
-              <Text textAlign="center">{t('errorBoundary.cta')}</Text>
+              <Text textAlign="center">{i18n.t('errorBoundary.cta')}</Text>
             </Button>
           </Flex>
         </SafeView>
@@ -64,4 +66,4 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 }
 
-export default withTranslation()(ErrorBoundary);
+export default ErrorBoundary;

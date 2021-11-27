@@ -15,10 +15,7 @@ module.exports = {
     '$i18n(.*)$': '<rootDir>/src/i18n/$1',
   },
   preset: 'react-native',
-  setupFilesAfterEnv: [
-    '<rootDir>/src/tests/setupTests.ts',
-    '@testing-library/jest-native/extend-expect',
-  ],
+  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   setupFiles: ['./node_modules/react-native-gesture-handler/jestSetup.js'],
   testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/', 'e2e/'],
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$',

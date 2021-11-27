@@ -17,6 +17,7 @@
     "paths": {
       "$assets/*": ["./assets/*"],
       "$components/*": ["./components/*"],
+      "$core/*": ["./core/*"],
       "$shared/*": ["./components/shared/*"],
       "$pages/*": ["./pages/*"],
       "$routes/*": ["./routes/*"],
