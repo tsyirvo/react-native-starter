@@ -59,23 +59,6 @@
     "//// MISC ////": "",
     "prepare": "husky install"
   },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "bash -c tsc --noEmit",
-      "bash -c yarn lint",
-      "bash -c yarn prettify"
-    ]
-  },
-  "config": {
-    "react-native-storybook-loader": {
-      "searchDir": [
-        "./src",
-        "./storybook"
-      ],
-      "pattern": "**/*.stories.tsx",
-      "outputFile": "./storybook/storyLoader.js"
-    }
-  },
   "dependencies": {
     "@react-native-masked-view/masked-view": "0.2.6",
     "@react-navigation/native": "6.0.6",
@@ -152,5 +135,71 @@
   },
   "resolutions": {
     "graceful-fs": "^4.2.4"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "bash -c tsc --noEmit",
+      "bash -c yarn lint",
+      "bash -c yarn prettify"
+    ]
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./src",
+        "./storybook"
+      ],
+      "pattern": "**/*.stories.tsx",
+      "outputFile": "./storybook/storyLoader.js"
+    }
+  },
+  "jest": {
+    "cacheDirectory": ".jest/cache",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "^styled-components$": "<rootDir>/node_modules/styled-components/native/dist/styled-components.native.cjs.js"
+    },
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/",
+      "e2e/"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "prettier": {
+    "useTabs": false,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": false,
+    "semi": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "tsyirvo-react-native"
+    ]
   }
 }
