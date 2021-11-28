@@ -8,5 +8,9 @@ updates:
       time: '08:00'
       timezone: 'Europe/Paris'
     target-branch: 'develop'
+    open-pull-requests-limit: 5
     allow:
       - dependency-type: 'production'
+    ignore:
+      - dependency-name: 'react'
+      - dependency-name: 'react-native'
