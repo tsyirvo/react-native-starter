@@ -9,7 +9,7 @@ import includes from 'lodash/includes';
 
 /* ***** *****  Danger setup  ***** ***** */
 
-const { pr } = danger.github;
+// const { pr } = danger.github;
 const modified = danger.git.modified_files;
 const created = danger.git.created_files;
 
@@ -83,11 +83,11 @@ schedule(
 
 /* ***** *****  Ask for a title & description  ***** ***** */
 
-const prLength = 10;
+// const prLength = 10;
 
-if (pr.body.length < prLength) {
-  warn('Please include a description of your PR changes.');
-}
+// if (pr.body.length < prLength) {
+//   warn('Please include a description of your PR changes.');
+// }
 
 /* ***** *****  Check if tests have been forgotten  ***** ***** */
 
