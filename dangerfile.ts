@@ -1,10 +1,11 @@
+/* eslint-disable import/no-nodejs-modules */
 /* eslint-disable import/no-extraneous-dependencies */
 
 import { danger, warn, schedule } from 'danger';
-import todos from 'danger-plugin-todos';
 import jest from 'danger-plugin-jest';
-import includes from 'lodash/includes';
+import todos from 'danger-plugin-todos';
 import * as fs from 'fs';
+import includes from 'lodash/includes';
 
 /* ***** *****  Danger setup  ***** ***** */
 
@@ -49,11 +50,20 @@ const prFiles = modified.concat(created).filter(filesOnly);
 const getFilesName = (filenames: string[]) =>
   filenames.map((f: string) => {
     const match = f.match(/([^/\\]+\.\w+)$/);
-    const name = match && match[1].split('.')[0];
+    const matchIndex = 1;
+    const fileNameIndex = 0;
+    const matchArray = match?.[matchIndex];
 
-    if (!name || name.length === 0) {
+    if (!matchArray) {
       return null;
     }
+
+    const name = matchArray.split('.')[fileNameIndex];
+
+    if (!name || !name.length) {
+      return null;
+    }
+
     return name.toLowerCase();
   });
 
@@ -73,16 +83,18 @@ schedule(
 
 /* ***** *****  Ask for a title & description  ***** ***** */
 
-if (pr.body.length < 10) {
+const prLength = 10;
+
+if (pr.body.length < prLength) {
   warn('Please include a description of your PR changes.');
 }
 
 /* ***** *****  Check if tests have been forgotten  ***** ***** */
 
-const prSrcChanges = prFiles.some((p) => includes(p, 'src/'));
-const prTestChanges = prFiles.some((p) => includes(p, '__tests__/'));
+const hasPrSrcChanges = prFiles.some((p) => includes(p, 'src/'));
+const hasPrTestChanges = prFiles.some((p) => includes(p, '__tests__/'));
 
-if (prSrcChanges && !prTestChanges) {
+if (hasPrSrcChanges && !hasPrTestChanges) {
   warn(
     'This PR does not include changes to tests, even though it affects app code.',
   );
@@ -95,11 +107,11 @@ const prStories = prFiles.filter(storiesFilter);
 const allStoryNames = getFilesName(prStories);
 const prComponentNames = getFilesName(prComponents);
 
-const prComponentsHaveStories = prComponentNames.every((comp) => {
+const hasPrComponentsHaveStories = prComponentNames.every((comp) => {
   return allStoryNames.includes(comp);
 });
 
-if (!prComponentsHaveStories) {
+if (!hasPrComponentsHaveStories) {
   warn(
     'It seems that you created or modified components but not the story file associated.',
   );
@@ -107,17 +119,17 @@ if (!prComponentsHaveStories) {
 
 /* ***** *****  Warn about config changes  ***** ***** */
 
-const prConfigFiles = prFiles.some(configOnlyFilter);
+const hasPrConfigFiles = prFiles.some(configOnlyFilter);
 
-if (prConfigFiles) {
+if (hasPrConfigFiles) {
   warn(`Beware, some configuration files have been modified.`);
 }
 
 /* ***** *****  Warn about potentially CodePush incompatible changes   ***** ***** */
 
-const potentialBreak = prFiles.some(breakingOnlyFilter);
+const hasPotentialBreak = prFiles.some(breakingOnlyFilter);
 
-if (potentialBreak) {
+if (hasPotentialBreak) {
   warn(
     'Beware, native files or the package.json have been modified. This may break future CodePush updates. Please add a flag to this PR to prevent failed releases.',
   );

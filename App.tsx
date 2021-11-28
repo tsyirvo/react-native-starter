@@ -35,7 +35,7 @@ const Root = () => (
 );
 
 const isCodepushEnabled = () =>
-  !!(config.android.codepushKey || config.ios.codepushKey);
+  !!(config.android.codepushKey ?? config.ios.codepushKey);
 
 const codePushOptions = {
   checkFrequency: isCodepushEnabled()
@@ -45,4 +45,5 @@ const codePushOptions = {
   minimumBackgroundDuration: 180,
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 export default codePush(codePushOptions)(Root);
