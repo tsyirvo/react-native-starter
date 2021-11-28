@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React from 'react';
+import { select, withKnobs } from '@storybook/addon-knobs';
 import { addDecorator, storiesOf } from '@storybook/react-native';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import React from 'react';
 
-import CenteredContent from '$shared/CenteredContent';
-import { Text } from '$shared/primitives';
+import CenteredContent from '$components/shared/CenteredContent';
+import { Text } from '$components/shared/primitives';
 
 addDecorator(withKnobs);
 

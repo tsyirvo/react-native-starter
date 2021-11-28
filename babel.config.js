@@ -7,32 +7,15 @@ module.exports = {
   },
   plugins: [
     [
-      'module-resolver',
+      'babel-plugin-root-import',
       {
-        root: ['./src'],
-        extensions: [
-          '.ios.js',
-          '.android.js',
-          '.js',
-          '.jsx',
-          '.json',
-          '.ts',
-          '.tsx',
+        paths: [
+          {
+            rootPathSuffix: 'src',
+            rootPathPrefix: '$',
+          },
         ],
-        alias: {
-          $assets: './src/assets',
-          $components: './src/components',
-          $core: './src/core',
-          $shared: './src/components/shared',
-          $pages: './src/pages',
-          $routes: './src/routes',
-          $styles: './src/styles',
-          $utils: './src/utils',
-          $tests: './src/tests',
-          $i18n: './src/i18n',
-        },
       },
-      'react-native-reanimated/plugin',
     ],
     'react-native-reanimated/plugin',
   ],

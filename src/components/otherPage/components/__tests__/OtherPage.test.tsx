@@ -1,5 +1,10 @@
-import React from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { fireEvent } from '@testing-library/react-native';
+import React from 'react';
 
 import render from '$tests/utils';
 

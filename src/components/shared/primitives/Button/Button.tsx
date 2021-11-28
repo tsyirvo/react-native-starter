@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, { ReactElement } from 'react';
 import { Pressable, PressableProps } from 'react-native';
 import styled from 'styled-components';

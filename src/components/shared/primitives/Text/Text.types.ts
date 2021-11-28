@@ -7,10 +7,10 @@ import {
 } from 'styled-system';
 
 export type TextProps = BaseTextProps &
-  SpaceProps &
-  LayoutProps &
-  ColorProps &
-  TypographyProps;
+SpaceProps &
+LayoutProps &
+ColorProps &
+TypographyProps;
 
 export type VariantProps = {
   variant?: 'small' | 'medium' | 'regular' | 'large' | 'xLarge';

@@ -8,12 +8,11 @@ import {
 import { enableScreens } from 'react-native-screens';
 import { ThemeProvider } from 'styled-components';
 
-import theme from '$styles/theme';
-import AppContainer from '$routes/routes';
-import ErrorBoundary from '$components/errorBoundary';
-import { initI18n } from '$i18n/config';
-import { config, getDimensionRatio } from '$core/constants';
-
+import ErrorBoundary from './src/components/errorBoundary';
+import { config, getDimensionRatio } from './src/core/constants';
+import { initI18n } from './src/i18n/config';
+import AppContainer from './src/routes/routes';
+import theme from './src/styles/theme';
 import StorybookProvider from './storybook/Storybook';
 
 enableScreens();

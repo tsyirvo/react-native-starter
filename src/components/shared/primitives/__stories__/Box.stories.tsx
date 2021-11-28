@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React from 'react';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
-import CenteredContent from '$shared/CenteredContent';
-import { Box } from '$shared/primitives';
+import CenteredContent from '$components/shared/CenteredContent';
+import { Box } from '$components/shared/primitives';
 
 storiesOf('Box', module)
   .add('With a size, color and radiuses', () => (

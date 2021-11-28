@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, { forwardRef } from 'react';
 import { TextInput, TextInputProps } from 'react-native';
 import styled from 'styled-components';
 
-import theme from '$styles/theme';
+import theme, { Theme } from '$styles/theme';
 
 import { Box } from '../Box';
 import { Text } from '../Text';
@@ -21,7 +23,7 @@ const styles = {
 };
 
 const STextInput = styled(TextInput)<{ error?: string }>`
-  border-bottom-color: ${(p) =>
+  border-bottom-color: ${(p: { theme: Theme; error?: string }) =>
     p.error ? p.theme.colors.red : p.theme.colors.grey};
 `;
 

@@ -1,18 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
+import { storiesOf } from '@storybook/react-native';
 import React, { Fragment } from 'react';
 import { ScrollView } from 'react-native';
-import { storiesOf } from '@storybook/react-native';
 
-import { Box, Text, Title } from '$shared/primitives';
-import CenteredContent from '$shared/CenteredContent';
+import CenteredContent from '$components/shared/CenteredContent';
+import { Box, Text, Title } from '$components/shared/primitives';
 
 import theme from '../theme';
 
 storiesOf('Theme', module)
   .add('Spaces', () => (
     <CenteredContent>
-      {(Object.keys(theme.space) as Array<keyof typeof theme.space>).map(
+      {(Object.keys(theme.space) as (keyof typeof theme.space)[]).map(
         (space) => (
           <Fragment key={space}>
             <Text>{`${space} - ${theme.space[space]}px`}</Text>
@@ -30,7 +30,7 @@ storiesOf('Theme', module)
   .add('Colors', () => (
     <ScrollView>
       <CenteredContent mb={150}>
-        {(Object.keys(theme.colors) as Array<keyof typeof theme.colors>).map(
+        {(Object.keys(theme.colors) as (keyof typeof theme.colors)[]).map(
           (color) => (
             <Box alignItems="center" key={color} mb={25}>
               <Text>{color}</Text>
@@ -44,7 +44,7 @@ storiesOf('Theme', module)
   .add('FontSizes', () => (
     <CenteredContent>
       {(
-        Object.keys(theme.fontSizes) as Array<keyof typeof theme.fontSizes>
+        Object.keys(theme.fontSizes) as (keyof typeof theme.fontSizes)[]
       ).map((size) => {
         if (size === 'xLarge') {
           return (

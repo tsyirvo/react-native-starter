@@ -8,8 +8,8 @@ type Props = NativeSafeAreaViewProps;
 
 const styles = { flex: 1 };
 
-const SafeView = ({ children, ...rest }: Props) => (
-  <SafeAreaView style={styles} {...rest}>
+const SafeView = ({ children, edges }: Props) => (
+  <SafeAreaView style={styles} edges={edges}>
     {children}
   </SafeAreaView>
 );

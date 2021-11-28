@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React from 'react';
 import { storiesOf } from '@storybook/react-native';
+import React from 'react';
 
-import CenteredContent from '$shared/CenteredContent';
+import CenteredContent from '$components/shared/CenteredContent';
 
 import FallbackLoader from '../FallbackLoader';
 
