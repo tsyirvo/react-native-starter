@@ -38,8 +38,3 @@ jobs:
           yarn test
           yarn tsc
           yarn lint
-
-      - name: Run DangerJS
-        env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
-        run: yarn danger ci

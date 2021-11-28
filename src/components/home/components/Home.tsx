@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { ScrollView } from 'react-native';
 
-import { Button, Flex, Text, Title } from '$/components/shared/primitives';
+import { Button, Flex, Text, Title } from '$components/shared/primitives';
 import SafeView from '$components/shared/SafeView';
 import i18n from '$i18n/config';
 import { HomeScreenNavigationProp } from '$routes/routes.types';

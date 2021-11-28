@@ -1,7 +1,8 @@
 {
   "name": "rn-starter",
   "version": "1.1.0",
-  "private": true,
+  "description": "Default starter with basic builtin and configs used in my React Native projects",
+  "author": "Gabriel Hofman <gabriel.hofman.00@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/tsyirvo/react-native-starter.git"
@@ -9,6 +10,12 @@
   "bugs": {
     "url": "https://github.com/tsyirvo/react-native-starter/issues"
   },
+  "keywords": [
+    "React Native",
+    "Starter",
+    "Boilerplate"
+  ],
+  "license": "ISC",
   "scripts": {
     "start": "react-native start",
     "//// SETUP ////": "",
@@ -23,7 +30,7 @@
     "android:staging": "react-native run-android --variant=stagingDebug --appIdSuffix=staging",
     "android:production": "react-native run-android --variant=productionDebug",
     "//// TESTS ////": "",
-    "test": "jest --runInBand --outputFile test-results.json --json",
+    "test": "jest --runInBand",
     "test:staged": "jest -o --passWithNoTests --runInBand",
     "//// E2E ////": "",
     "test:android:build": "detox build -c android.sim.debug --workers 2",
@@ -35,8 +42,8 @@
     "test:ios:release:build": "detox build -c ios.sim.release --workers 1",
     "test:ios:release": "detox test -c ios.sim.release --record-logs all --debug-synchronization 500 --take-screenshots failing --record-videos failing --workers 1",
     "//// QUALITY ////": "",
-    "tsc": "tsc --noEmit",
-    "lint": "eslint ./src --ext .js,.ts,.tsx --cache --fix --ignore-path .gitignore",
+    "tsc": "tsc",
+    "lint": "eslint ./ --ext .js,.ts,.tsx --fix --ignore-path .gitignore",
     "prettify": "yarn prettier --write './**/*.{js,ts,tsx}'",
     "prestorybook": "rnstl",
     "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
@@ -51,23 +58,6 @@
     "version:tag": "standard-version",
     "//// MISC ////": "",
     "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "bash -c tsc --noEmit",
-      "bash -c yarn lint",
-      "bash -c yarn prettify"
-    ]
-  },
-  "config": {
-    "react-native-storybook-loader": {
-      "searchDir": [
-        "./src",
-        "./storybook"
-      ],
-      "pattern": "**/*.stories.tsx",
-      "outputFile": "./storybook/storyLoader.js"
-    }
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "0.2.6",
@@ -111,32 +101,14 @@
     "@types/react-test-renderer": "17.0.1",
     "@types/styled-components": "5.1.15",
     "@types/styled-system": "5.1.13",
-    "@typescript-eslint/eslint-plugin": "5.4.0",
-    "@typescript-eslint/parser": "5.4.0",
-    "babel-eslint": "10.1.0",
     "babel-jest": "27.3.1",
     "babel-loader": "8.2.3",
     "babel-plugin-root-import": "6.6.0",
     "babel-plugin-transform-remove-console": "6.9.4",
     "chalk": "4.1.2",
-    "danger": "10.7.1",
-    "danger-plugin-jest": "1.3.0",
-    "danger-plugin-todos": "1.3.0",
     "detox": "19.1.0",
     "eslint": "8.3.0",
-    "eslint-config-airbnb-typescript": "16.0.0",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-import-resolver-babel-module": "5.3.1",
-    "eslint-import-resolver-babel-plugin-root-import": "1.1.1",
-    "eslint-import-resolver-react-native": "0.2.0",
-    "eslint-import-resolver-typescript": "2.5.0",
-    "eslint-plugin-import": "2.25.3",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-module-resolver": "1.4.0",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.27.1",
-    "eslint-plugin-react-hooks": "4.3.0",
-    "eslint-plugin-react-native": "3.11.0",
+    "eslint-config-tsyirvo-react-native": "1.0.1",
     "husky": "7.0.4",
     "hygen": "6.1.0",
     "imageoptim": "0.5.0",
@@ -160,5 +132,71 @@
   },
   "resolutions": {
     "graceful-fs": "^4.2.4"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "bash -c tsc --noEmit",
+      "bash -c yarn lint",
+      "bash -c yarn prettify"
+    ]
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./src",
+        "./storybook"
+      ],
+      "pattern": "**/*.stories.tsx",
+      "outputFile": "./storybook/storyLoader.js"
+    }
+  },
+  "jest": {
+    "cacheDirectory": ".jest/cache",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "^styled-components$": "<rootDir>/node_modules/styled-components/native/dist/styled-components.native.cjs.js"
+    },
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/",
+      "e2e/"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "prettier": {
+    "useTabs": false,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": false,
+    "semi": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "tsyirvo-react-native"
+    ]
   }
 }
