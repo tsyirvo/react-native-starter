@@ -30,7 +30,7 @@
     "android:staging": "react-native run-android --variant=stagingDebug --appIdSuffix=staging",
     "android:production": "react-native run-android --variant=productionDebug",
     "//// TESTS ////": "",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --outputFile test-results.json --json",
     "test:staged": "jest -o --passWithNoTests --runInBand",
     "//// E2E ////": "",
     "test:android:build": "detox build -c android.sim.debug --workers 2",
