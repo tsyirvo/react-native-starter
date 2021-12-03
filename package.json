@@ -73,7 +73,7 @@
     "react-native-mmkv": "1.5.3",
     "react-native-reanimated": "2.2.4",
     "react-native-safe-area-context": "3.3.2",
-    "react-native-screens": "3.9.0",
+    "react-native-screens": "3.10.0",
     "styled-components": "5.3.3",
     "styled-system": "5.1.5"
   },
