@@ -1,6 +1,7 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import codePush from 'react-native-code-push';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   initialWindowMetrics,
   SafeAreaProvider,
@@ -21,17 +22,25 @@ enableScreens();
 initI18n();
 getDimensionRatio();
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
 const Root = () => (
   <ThemeProvider theme={theme}>
     <StatusBar barStyle="light-content" />
 
-    <ErrorBoundary>
-      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <Sandbox>
-          <AppContainer />
-        </Sandbox>
-      </SafeAreaProvider>
-    </ErrorBoundary>
+    <GestureHandlerRootView style={styles.container}>
+      <ErrorBoundary>
+        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <Sandbox>
+            <AppContainer />
+          </Sandbox>
+        </SafeAreaProvider>
+      </ErrorBoundary>
+    </GestureHandlerRootView>
   </ThemeProvider>
 );
 
