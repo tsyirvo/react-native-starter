@@ -2,11 +2,9 @@
 
 exports[`Shared primitives Input component should render correctly 1`] = `
 <View
-  mt="medium"
   style={
     Array [
       Object {
-        "marginTop": 16,
         "width": "80%",
       },
     ]
