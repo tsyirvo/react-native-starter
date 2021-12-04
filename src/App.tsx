@@ -14,7 +14,7 @@ import { initI18n } from './i18n/config';
 import AppContainer from './routes/routes';
 import theme from './styles/theme';
 
-import DebugMenu from '$debugMenu';
+import Sandbox from '$sandbox';
 
 enableScreens();
 
@@ -27,9 +27,9 @@ const Root = () => (
 
     <ErrorBoundary>
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <DebugMenu>
+        <Sandbox>
           <AppContainer />
-        </DebugMenu>
+        </Sandbox>
       </SafeAreaProvider>
     </ErrorBoundary>
   </ThemeProvider>

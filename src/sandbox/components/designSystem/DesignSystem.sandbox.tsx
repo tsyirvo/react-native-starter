@@ -1,0 +1,31 @@
+import { useNavigation } from '@react-navigation/core';
+import React from 'react';
+
+import { Box } from '$components/shared/primitives';
+import { DesignSystemScreenNavigationProp } from '$sandbox/navigation/DebugStack.types';
+
+import MenuCategory from '../menu/components/MenuCategory';
+import MenuLine from '../menu/components/MenuLine';
+
+const DesignSystemSandbox = () => {
+  const navigation: DesignSystemScreenNavigationProp = useNavigation();
+
+  const menuItems = [
+    {
+      label: 'Fallback Loader',
+      onPress: () => navigation.navigate('FallbackLoader'),
+    },
+  ];
+
+  return (
+    <Box p="medium">
+      <MenuCategory category="Design System">
+        {menuItems.map(({ label, onPress }) => (
+          <MenuLine key={label} label={label} onPress={onPress} />
+        ))}
+      </MenuCategory>
+    </Box>
+  );
+};
+
+export default DesignSystemSandbox;
