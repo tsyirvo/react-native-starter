@@ -4,11 +4,11 @@ import { ScrollView } from 'react-native';
 import { Box, Text } from '$components/shared/primitives';
 import theme from '$styles/theme';
 
-import CenteredContent from '../menu/components/CenteredContent';
+import SandBoxItem from '../menu/components/SandboxItem';
 
 const SpacesSandbox = () => (
   <ScrollView>
-    <CenteredContent>
+    <SandBoxItem isSingle>
       {(Object.keys(theme.space) as (keyof typeof theme.space)[]).map(
         (space) => (
           <Fragment key={space}>
@@ -22,7 +22,7 @@ const SpacesSandbox = () => (
           </Fragment>
         ),
       )}
-    </CenteredContent>
+    </SandBoxItem>
   </ScrollView>
 );
 

@@ -1,35 +1,27 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 
-import { Input, Text } from '$components/shared/primitives';
+import { Input } from '$components/shared/primitives';
 
-import CenteredContent from '../menu/components/CenteredContent';
+import SandBoxItem from '../menu/components/SandboxItem';
 
 const InputSandbox = () => (
   <ScrollView>
-    <CenteredContent>
-      <Text pb="small">Input with a label</Text>
-
+    <SandBoxItem title="Input with a label">
       <Input label="Some label" placeholder="Type here" />
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">Input with an error</Text>
-
+    <SandBoxItem title="Input with an error">
       <Input label="Some label" placeholder="Type here" error="An error" />
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">Input without label</Text>
-
+    <SandBoxItem title="Input without label">
       <Input value="Some value" />
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">Input not editable</Text>
-
+    <SandBoxItem title="Input not editable">
       <Input label="Some label" placeholder="Type here" editable={false} />
-    </CenteredContent>
+    </SandBoxItem>
   </ScrollView>
 );
 

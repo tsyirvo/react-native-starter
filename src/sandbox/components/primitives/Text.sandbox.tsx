@@ -3,37 +3,29 @@ import { ScrollView } from 'react-native';
 
 import { Text } from '$components/shared/primitives';
 
-import CenteredContent from '../menu/components/CenteredContent';
+import SandBoxItem from '../menu/components/SandboxItem';
 
 const TextSandbox = () => (
   <ScrollView>
-    <CenteredContent>
-      <Text pb="small">Text without any props</Text>
-
+    <SandBoxItem title="Text without any props">
       <Text>Default styles</Text>
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">Text with a custom variant</Text>
-
+    <SandBoxItem title="Text with a custom variant">
       <Text variant="medium">Large variant</Text>
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">Text with custom styles</Text>
-
+    <SandBoxItem title="Text with custom styles">
       <Text color="blue" fontWeight={600} lineHeight="50px" textAlign="center">
         Custom styles
       </Text>
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">Text with custom positionning</Text>
-
+    <SandBoxItem title="Text with custom positionning">
       <Text mt={100} pl={20} py={10}>
         Custom position
       </Text>
-    </CenteredContent>
+    </SandBoxItem>
   </ScrollView>
 );
 

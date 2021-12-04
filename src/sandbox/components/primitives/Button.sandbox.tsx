@@ -3,17 +3,15 @@ import { ScrollView } from 'react-native';
 
 import { Button, Text } from '$components/shared/primitives';
 
-import CenteredContent from '../menu/components/CenteredContent';
+import SandBoxItem from '../menu/components/SandboxItem';
 
 const ButtonSandbox = () => (
   <ScrollView>
-    <CenteredContent>
-      <Text pb="small">Button with a text content</Text>
-
+    <SandBoxItem title="Button with a text content">
       <Button onPress={() => console.log('Text pressed')}>
         <Text>Click here</Text>
       </Button>
-    </CenteredContent>
+    </SandBoxItem>
   </ScrollView>
 );
 

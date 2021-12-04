@@ -4,11 +4,11 @@ import { ScrollView } from 'react-native';
 import { Text, Title } from '$components/shared/primitives';
 import theme from '$styles/theme';
 
-import CenteredContent from '../menu/components/CenteredContent';
+import SandBoxItem from '../menu/components/SandboxItem';
 
 const FontSizesSandbox = () => (
   <ScrollView>
-    <CenteredContent>
+    <SandBoxItem isSingle>
       {(Object.keys(theme.fontSizes) as (keyof typeof theme.fontSizes)[]).map(
         (size) => {
           if (size === 'xLarge') {
@@ -26,7 +26,7 @@ const FontSizesSandbox = () => (
           );
         },
       )}
-    </CenteredContent>
+    </SandBoxItem>
   </ScrollView>
 );
 

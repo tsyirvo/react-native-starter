@@ -1,21 +1,17 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box } from '$components/shared/primitives';
 
-import CenteredContent from '../menu/components/CenteredContent';
+import SandBoxItem from '../menu/components/SandboxItem';
 
 const BoxSandbox = () => (
   <ScrollView>
-    <CenteredContent>
-      <Text pb="small">Box with a size, color and radiuses</Text>
-
+    <SandBoxItem title="Box with a size, color and radiuses">
       <Box size={100} bg="grey" borderRadius="medium" />
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">Box with border props and full width</Text>
-
+    <SandBoxItem title="Box with border props and full width">
       <Box
         width="100%"
         height={50}
@@ -23,13 +19,11 @@ const BoxSandbox = () => (
         borderBottomColor="green"
         borderBottomWidth={4}
       />
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">Box with position props and odd size</Text>
-
+    <SandBoxItem title="Box with position props and odd size">
       <Box width={100} height={50} bg="grey" left={50} mb={50} />
-    </CenteredContent>
+    </SandBoxItem>
   </ScrollView>
 );
 

@@ -29,7 +29,7 @@ const STextInput = styled(TextInput)<{ error?: string }>`
 
 const Input = forwardRef<TextInput, Props>(
   ({ label, error, editable = true, ...props }, ref) => (
-    <Box width="80%" mt="medium">
+    <Box width="80%">
       {label && (
         <Text color="black" mb="small" testID="input-label">
           {label}

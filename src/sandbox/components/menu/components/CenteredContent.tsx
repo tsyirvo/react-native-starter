@@ -8,7 +8,7 @@ import { BoxProps } from '$components/shared/primitives/Box/Box.types';
 type CenteredContentProps = BoxProps;
 
 const CenteredContent: FC<CenteredContentProps> = ({ children, ...props }) => (
-  <Flex justifyContent="center" alignItems="center" p="medium" {...props}>
+  <Flex justifyContent="center" alignItems="center" {...props}>
     {children}
   </Flex>
 );

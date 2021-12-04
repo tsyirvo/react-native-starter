@@ -4,11 +4,11 @@ import { ScrollView } from 'react-native';
 import { Box, Text } from '$components/shared/primitives';
 import theme from '$styles/theme';
 
-import CenteredContent from '../menu/components/CenteredContent';
+import SandBoxItem from '../menu/components/SandboxItem';
 
 const ColorsSandbox = () => (
   <ScrollView>
-    <CenteredContent>
+    <SandBoxItem isSingle>
       {(Object.keys(theme.colors) as (keyof typeof theme.colors)[]).map(
         (color) => (
           <Box alignItems="center" key={color} mb={25}>
@@ -17,7 +17,7 @@ const ColorsSandbox = () => (
           </Box>
         ),
       )}
-    </CenteredContent>
+    </SandBoxItem>
   </ScrollView>
 );
 

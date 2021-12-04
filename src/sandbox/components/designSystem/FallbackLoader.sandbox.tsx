@@ -2,29 +2,22 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 
 import FallbackLoader from '$components/shared/FallbackLoader';
-import { Text } from '$components/shared/primitives';
 
-import CenteredContent from '../menu/components/CenteredContent';
+import SandBoxItem from '../menu/components/SandboxItem';
 
 const FallbackLoaderSandbox = () => (
   <ScrollView>
-    <CenteredContent>
-      <Text pb="small">FallbackLoader default props</Text>
-
+    <SandBoxItem title="FallbackLoader default props">
       <FallbackLoader />
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">FallbackLoader default props</Text>
-
+    <SandBoxItem title="FallbackLoader without delay">
       <FallbackLoader delay={0} />
-    </CenteredContent>
+    </SandBoxItem>
 
-    <CenteredContent>
-      <Text pb="small">FallbackLoader default props</Text>
-
+    <SandBoxItem title="FallbackLoader with a 3sec delay">
       <FallbackLoader delay={3000} />
-    </CenteredContent>
+    </SandBoxItem>
   </ScrollView>
 );
 
