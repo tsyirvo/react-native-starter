@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/core';
-import React from 'react';
 
 import { Box } from '$components/shared/primitives';
 import { DesignSystemScreenNavigationProp } from '$sandbox/navigation/DebugStack.types';

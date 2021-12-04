@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import { render as rtlRender, RenderAPI } from '@testing-library/react-native';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { initI18n } from '$i18n/config';

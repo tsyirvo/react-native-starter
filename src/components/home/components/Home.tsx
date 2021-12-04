@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { ScrollView } from 'react-native';
 
 import { Button, Flex, Text, Title } from '$components/shared/primitives';

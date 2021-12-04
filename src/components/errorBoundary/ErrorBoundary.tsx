@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactElement } from 'react';
+import { Component, ErrorInfo, ReactElement } from 'react';
 
 import { Button, Flex, Text, Title } from '$components/shared/primitives';
 import SafeView from '$components/shared/SafeView';

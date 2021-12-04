@@ -1,7 +1,7 @@
 ---
 to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/<%= h.changeCase.pascalCase(componentName) %>.tsx
 ---
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import { Flex, Title } from '$shared/primitives';
 import SafeView from '$shared/SafeView';

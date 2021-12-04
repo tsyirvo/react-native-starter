@@ -1,4 +1,3 @@
-import React from 'react';
 import { Platform } from 'react-native';
 
 import { Text, Title } from '$components/shared/primitives';
