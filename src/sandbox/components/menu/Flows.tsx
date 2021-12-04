@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MenuCategory from './components/MenuCategory';
 
 const Flows = () => {

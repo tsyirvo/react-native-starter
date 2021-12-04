@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React, { ReactElement, Suspense, useEffect, useState } from 'react';
+import { ReactElement, Suspense, useEffect, useState } from 'react';
 
 import FallbackLoader from '$components/shared/FallbackLoader';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Pressable } from 'react-native';
 
 import { Box, Text } from '$components/shared/primitives';

@@ -1,8 +1,6 @@
 ---
 to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/<%= h.changeCase.pascalCase(componentName) %>.tsx
 ---
-import React from 'react';
-
 import { Flex, Title } from '$shared/primitives';
 
 type Props = {

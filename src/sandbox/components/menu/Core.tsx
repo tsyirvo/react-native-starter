@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/core';
-import React from 'react';
 
 import { MenuScreenNavigationProp } from '$sandbox/navigation/DebugStack.types';
 

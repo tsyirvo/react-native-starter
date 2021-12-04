@@ -1,4 +1,3 @@
-import React from 'react';
 import { ImageBackground } from 'react-native';
 
 import { Flex, Text } from '$components/shared/primitives';

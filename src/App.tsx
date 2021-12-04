@@ -1,4 +1,3 @@
-import React from 'react';
 import { StatusBar, StyleSheet } from 'react-native';
 import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
