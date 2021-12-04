@@ -50,11 +50,13 @@
     "generate:page": "npx hygen generators page",
     "generate:fc": "npx hygen generators fc",
     "generate:class": "npx hygen generators class",
+    "generate:icons": "svgr --native --typescript --ignore-existing --svgo-config src/components/icons/svgs/config/svgo.json --index-template src/components/icons/svgs/config/index-template.js --template src/components/icons/svgs/config/icon-template.js --out-dir src/components/icons/components src/components/icons/svgs",
     "//// VERSIONNING ////": "",
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
     "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\"",
     "version:tag": "standard-version",
     "//// MISC ////": "",
+    "perf:bundle": "npx react-native-bjsxBracketSameLineundle-visualizer",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -73,6 +75,7 @@
     "react-native-reanimated": "2.2.4",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "3.10.0",
+    "react-native-svg": "12.1.1",
     "styled-components": "5.3.3",
     "styled-system": "5.1.5"
   },
@@ -81,6 +84,7 @@
     "@babel/runtime": "7.16.3",
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
+    "@svgr/cli": "5.5.0",
     "@testing-library/jest-native": "4.0.4",
     "@testing-library/react-native": "8.0.0",
     "@types/i18n-js": "3.8.2",
@@ -110,6 +114,7 @@
     "lodash": "4.17.21",
     "metro-react-native-babel-preset": "0.66.2",
     "ora": "6.0.1",
+    "patch-package": "6.4.7",
     "path": "0.12.7",
     "prettier": "2.5.0",
     "react-dom": "17.0.1",
@@ -170,13 +175,13 @@
     "tabWidth": 2,
     "singleQuote": true,
     "trailingComma": "all",
-    "jsxBracketSameLine": false,
     "jsxSingleQuote": false,
     "semi": true
   },
   "eslintConfig": {
     "extends": [
       "tsyirvo-react-native"
-    ]
+    ],
+    "ignorePatterns": "src/components/icons/components/"
   }
 }

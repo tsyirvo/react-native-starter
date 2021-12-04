@@ -13,3 +13,4 @@
 -keep class ninja.gab.rnStarter.BuildConfig { *; }
 -keepresources string/build_config_package
 -keep class com.facebook.react.turbomodule.** { *; }
+-keep public class com.horcrux.svg.** {*;}
