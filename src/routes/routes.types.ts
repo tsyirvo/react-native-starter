@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { StackNavigationProp } from '@react-navigation/stack';
 
 /* ***** *****  Stack router types  ***** ***** */

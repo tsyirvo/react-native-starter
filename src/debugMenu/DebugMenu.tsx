@@ -1,19 +1,10 @@
-/* eslint-disable import/dynamic-import-chunkname */
 /* eslint-disable import/no-extraneous-dependencies */
 
-import React, {
-  lazy,
-  ReactElement,
-  Suspense,
-  useEffect,
-  useState,
-} from 'react';
-import { ScrollView } from 'react-native';
+import React, { ReactElement, Suspense, useEffect, useState } from 'react';
 
 import FallbackLoader from '$components/shared/FallbackLoader';
-import { Box } from '$components/shared/primitives';
 
-const SpacesDebugPage = lazy(async () => import('./components/theme/Spaces'));
+import DebugStack from './navigation/DebugStack';
 
 type DebugMenuProps = {
   children: ReactElement;
@@ -46,13 +37,9 @@ const DebugMenu = ({ children }: DebugMenuProps) => {
   }
 
   return (
-    <ScrollView>
-      <Box>
-        <Suspense fallback={<FallbackLoader />}>
-          <SpacesDebugPage />
-        </Suspense>
-      </Box>
-    </ScrollView>
+    <Suspense fallback={<FallbackLoader />}>
+      <DebugStack />
+    </Suspense>
   );
 };
 

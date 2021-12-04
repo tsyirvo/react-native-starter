@@ -8,13 +8,13 @@ import {
 import { enableScreens } from 'react-native-screens';
 import { ThemeProvider } from 'styled-components';
 
-import DebugMenu from '$components/debugMenu';
-
 import ErrorBoundary from './components/errorBoundary';
 import { config, getDimensionRatio } from './core/constants';
 import { initI18n } from './i18n/config';
 import AppContainer from './routes/routes';
 import theme from './styles/theme';
+
+import DebugMenu from '$debugMenu';
 
 enableScreens();
 
