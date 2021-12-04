@@ -1,15 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, { ReactElement } from 'react';
+import React, { FC } from 'react';
 
 import { Flex } from '$components/shared/primitives';
 import { BoxProps } from '$components/shared/primitives/Box/Box.types';
 
-type Props = BoxProps & {
-  children: ReactElement | ReactElement[];
-};
+type CenteredContentProps = BoxProps;
 
-const CenteredContent = ({ children, ...props }: Props) => (
+const CenteredContent: FC<CenteredContentProps> = ({ children, ...props }) => (
   <Flex justifyContent="center" alignItems="center" {...props}>
     {children}
   </Flex>

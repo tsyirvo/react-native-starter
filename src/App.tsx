@@ -8,12 +8,13 @@ import {
 import { enableScreens } from 'react-native-screens';
 import { ThemeProvider } from 'styled-components';
 
-import ErrorBoundary from './src/components/errorBoundary';
-import { config, getDimensionRatio } from './src/core/constants';
-import { initI18n } from './src/i18n/config';
-import AppContainer from './src/routes/routes';
-import theme from './src/styles/theme';
-import StorybookProvider from './storybook/Storybook';
+import ErrorBoundary from './components/errorBoundary';
+import { config, getDimensionRatio } from './core/constants';
+import { initI18n } from './i18n/config';
+import AppContainer from './routes/routes';
+import theme from './styles/theme';
+
+import Sandbox from '$sandbox';
 
 enableScreens();
 
@@ -25,11 +26,11 @@ const Root = () => (
     <StatusBar barStyle="light-content" />
 
     <ErrorBoundary>
-      <StorybookProvider>
-        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <Sandbox>
           <AppContainer />
-        </SafeAreaProvider>
-      </StorybookProvider>
+        </Sandbox>
+      </SafeAreaProvider>
     </ErrorBoundary>
   </ThemeProvider>
 );
