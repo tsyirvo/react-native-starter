@@ -1,0 +1,34 @@
+diff --git a/node_modules/react-native-svg/src/ReactNativeSVG.ts b/node_modules/react-native-svg/src/ReactNativeSVG.ts
+index cc15811..794a956 100644
+--- a/node_modules/react-native-svg/src/ReactNativeSVG.ts
++++ b/node_modules/react-native-svg/src/ReactNativeSVG.ts
+@@ -24,14 +24,6 @@ import Mask from './elements/Mask';
+ import Marker from './elements/Marker';
+ import ForeignObject from './elements/ForeignObject';
+ import { parse, SvgAst, SvgFromUri, SvgFromXml, SvgUri, SvgXml } from './xml';
+-import {
+-  SvgCss,
+-  SvgCssUri,
+-  SvgWithCss,
+-  SvgWithCssUri,
+-  inlineStyles,
+-} from './css';
+-import { LocalSvg, WithLocalSvg, loadLocalRawResource } from './LocalSvg';
+ import {
+   RNSVGCircle,
+   RNSVGClipPath,
+@@ -87,14 +79,6 @@ export {
+   SvgFromXml,
+   SvgUri,
+   SvgXml,
+-  SvgCss,
+-  SvgCssUri,
+-  SvgWithCss,
+-  SvgWithCssUri,
+-  inlineStyles,
+-  LocalSvg,
+-  WithLocalSvg,
+-  loadLocalRawResource,
+   Shape,
+   RNSVGMarker,
+   RNSVGMask,
