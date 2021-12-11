@@ -69,6 +69,7 @@
     "react-native": "0.66.3",
     "react-native-code-push": "7.0.4",
     "react-native-config": "1.4.5",
+    "react-native-fast-image": "8.5.11",
     "react-native-gesture-handler": "2.1.0",
     "react-native-localize": "2.1.5",
     "react-native-mmkv": "1.5.3",
