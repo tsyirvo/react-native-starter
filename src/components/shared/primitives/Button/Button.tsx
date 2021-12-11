@@ -1,52 +1,55 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { ReactElement } from 'react';
-import { Pressable, PressableProps } from 'react-native';
-import styled from 'styled-components';
 import {
-  space,
-  layout,
-  color,
-  flexbox,
+  useRestyle,
+  spacing,
   border,
-  borderRadius,
-  position,
-  typography,
-  variant,
-} from 'styled-system';
+  backgroundColor,
+  SpacingProps,
+  BorderProps,
+  BackgroundColorProps,
+  VariantProps,
+  createVariant,
+  createRestyleComponent,
+} from '@shopify/restyle';
+import { Pressable } from 'react-native';
 
-import { ButtonProps, VariantProps } from './Button.types';
-import variants from './Button.variants';
+import { Box, Text } from '$components/shared/primitives';
+import { Theme } from '$styles/theme';
 
-type Props = PressableProps &
-  ButtonProps &
-  VariantProps & {
+const restyleFunctions = [spacing, border, backgroundColor];
+
+type BaseProps = SpacingProps<Theme> &
+  BorderProps<Theme> &
+  BackgroundColorProps<Theme>;
+
+type ButtonProps = BaseProps &
+  VariantProps<Theme, 'buttonVariants'> & {
     onPress: () => void;
-    children: ReactElement;
+    label: string;
   };
 
-const SButton = styled(Pressable)<ButtonProps & VariantProps>`
-  ${variant({
-    variants,
-  })}
-  ${space}
-  ${layout}
-  ${color}
-  ${border}
-  ${borderRadius}
-  ${position}
-  ${typography}
-  ${flexbox}
-`;
+const ButtonVariant = createVariant({
+  themeKey: 'buttonVariants',
+});
 
-SButton.defaultProps = {
-  variant: 'base',
+const PrimitiveButton = createRestyleComponent<
+  VariantProps<Theme, 'buttonVariants'> & React.ComponentProps<typeof Box>,
+  Theme
+>([ButtonVariant], Pressable);
+
+const Button = ({ onPress, label, ...rest }: ButtonProps) => {
+  const props = useRestyle(restyleFunctions, rest);
+
+  return (
+    <PrimitiveButton>
+      <Pressable onPress={onPress}>
+        <Box {...props}>
+          <Text>{label}</Text>
+        </Box>
+      </Pressable>
+    </PrimitiveButton>
+  );
 };
-
-const Button = ({ onPress, children, ...rest }: Props) => (
-  <SButton onPress={onPress} {...rest}>
-    {children}
-  </SButton>
-);
 
 export default Button;

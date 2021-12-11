@@ -10,7 +10,7 @@ import Flows from './Flows';
 const Menu = () => (
   <SafeView edges={['bottom']}>
     <ScrollView>
-      <Box p="medium">
+      <Box p="global_24">
         <Core />
 
         <Components />

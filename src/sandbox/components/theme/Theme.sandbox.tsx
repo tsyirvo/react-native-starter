@@ -29,7 +29,7 @@ const ThemeSandbox = () => {
   ];
 
   return (
-    <Box p="medium">
+    <Box p="global_24">
       <MenuCategory category="Theme">
         {menuItems.map(({ label, onPress }) => (
           <MenuLine key={label} label={label} onPress={onPress} />

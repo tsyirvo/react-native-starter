@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { ScrollView } from 'react-native';
 
-import { Button, Flex, Text, Title } from '$components/shared/primitives';
+import { Box, Text } from '$components/shared/primitives';
 import SafeView from '$components/shared/SafeView';
 import i18n from '$i18n/config';
 import { HomeScreenNavigationProp } from '$routes/routes.types';
@@ -24,21 +24,19 @@ const Home = ({ navigation }: Props) => {
       <ScrollView>
         <Header />
 
-        <Flex px="large" pb={150}>
-          <Title fontWeight={600} mt="large">
-            {i18n.t('home.navigation.title')}
-          </Title>
-          <Button
+        <Box px="global_24" pb="global_32">
+          <Text mt="global_32">{i18n.t('home.navigation.title')}</Text>
+          {/* <Button
             testID="goto_otherPage"
             onPress={goToOtherPage}
             alignItems="center"
             mt="medium"
           >
             <Text>{i18n.t('home.navigation.content')}</Text>
-          </Button>
+          </Button> */}
 
           <Informations />
-        </Flex>
+        </Box>
       </ScrollView>
     </SafeView>
   );

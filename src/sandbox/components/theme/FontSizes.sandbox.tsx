@@ -1,30 +1,28 @@
 import { ScrollView } from 'react-native';
 
-import { Text, Title } from '$components/shared/primitives';
-import theme from '$styles/theme';
+import { Text } from '$components/shared/primitives';
+import { FontSizes, fontSizes } from '$styles/fonts';
 
 import SandBoxItem from '../menu/components/SandboxItem';
 
 const FontSizesSandbox = () => (
   <ScrollView>
     <SandBoxItem isSingle>
-      {(Object.keys(theme.fontSizes) as (keyof typeof theme.fontSizes)[]).map(
-        (size) => {
-          if (size === 'xLarge') {
-            return (
-              <Title key={size} variant={size} mb="medium">
-                {`This is a ${size} text`}
-              </Title>
-            );
-          }
-
+      {(Object.keys(fontSizes) as FontSizes[]).map((size) => {
+        if (size === 'xLarge') {
           return (
-            <Text key={size} variant={size} mb="medium">
+            <Text key={size} variant={size} mb="global_24">
               {`This is a ${size} text`}
             </Text>
           );
-        },
-      )}
+        }
+
+        return (
+          <Text key={size} variant={size} mb="global_24">
+            {`This is a ${size} text`}
+          </Text>
+        );
+      })}
     </SandBoxItem>
   </ScrollView>
 );

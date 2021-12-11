@@ -1,6 +1,6 @@
 import { ImageBackground } from 'react-native';
 
-import { Flex, Text } from '$components/shared/primitives';
+import { Box, Text } from '$components/shared/primitives';
 
 const uri = { uri: 'header' };
 const styles = {
@@ -10,11 +10,11 @@ const styles = {
 
 const Header = () => (
   <ImageBackground source={uri} style={styles}>
-    <Flex justifyContent="flex-end" alignItems="center" mb={25}>
+    <Box justifyContent="flex-end" alignItems="center" mb="global_24">
       <Text testID="home_title" variant="large" color="white">
         React Native Starter
       </Text>
-    </Flex>
+    </Box>
   </ImageBackground>
 );
 

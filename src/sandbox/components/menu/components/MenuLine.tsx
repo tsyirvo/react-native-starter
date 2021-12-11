@@ -10,9 +10,9 @@ type MenuLineProps = {
 };
 
 const MenuLine = ({ label, onPress }: MenuLineProps) => (
-  <Box pb="small">
+  <Box pb="global_8">
     <Pressable onPress={onPress}>
-      <Text mb="small">{label}</Text>
+      <Text mb="global_8">{label}</Text>
     </Pressable>
 
     <Separator color="grey" />

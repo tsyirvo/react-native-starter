@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Flex, Text } from '$components/shared/primitives';
+import { Box, Text } from '$components/shared/primitives';
 
 import CenteredContent from './CenteredContent';
 import Separator from './Separator';
@@ -11,13 +11,13 @@ type SandBoxItemProps = {
 };
 
 const SandBoxItem: FC<SandBoxItemProps> = ({ title, isSingle, children }) => (
-  <Flex px="medium" pt="small">
+  <Box px="global_24" pt="global_8">
     {!!title && <Text>{title}</Text>}
 
-    <CenteredContent py="medium">{children}</CenteredContent>
+    <CenteredContent py="global_24">{children}</CenteredContent>
 
     {!isSingle && <Separator color="grey" />}
-  </Flex>
+  </Box>
 );
 
 export default SandBoxItem;

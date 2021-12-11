@@ -1,39 +1,18 @@
-import { View as RNView } from 'react-native';
-import styled from 'styled-components';
-import {
-  space,
-  layout,
-  color,
-  flexbox,
-  background,
-  border,
-  borderRadius,
-  position,
-  shadow,
-  typography,
-} from 'styled-system';
+/* eslint-disable react/jsx-props-no-spreading */
+
+import { boxRestyleFunctions, createBox, useRestyle } from '@shopify/restyle';
+import { forwardRef } from 'react';
 
 import { Theme } from '$styles/theme';
 
-import { BoxProps } from './Box.types';
+export type BoxProps = React.ComponentPropsWithRef<typeof PrimitiveBox>;
 
-export const Box = styled(RNView)<BoxProps>`
-  ${space}
-  ${layout}
-  ${background}
-  ${color}
-  ${border}
-  ${borderRadius}
-  ${position}
-  ${typography}
-  ${shadow}
-  ${flexbox}
-`;
+const PrimitiveBox = createBox<Theme>();
 
-export const Flex = styled(Box)`
-  flex: 1;
-`;
+const Box = forwardRef(({ ...rest }: BoxProps, ref) => {
+  const props = useRestyle(boxRestyleFunctions, rest);
 
-export const GreyBox = styled(Box)`
-  background-color: ${(p: { theme: Theme }) => p.theme.colors.grey};
-`;
+  return <PrimitiveBox ref={ref} {...props} />;
+});
+
+export default Box;

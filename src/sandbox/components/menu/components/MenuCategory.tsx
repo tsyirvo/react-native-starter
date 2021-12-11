@@ -7,8 +7,8 @@ type MenuCategoryProps = {
 };
 
 const MenuCategory: FC<MenuCategoryProps> = ({ category, children }) => (
-  <Box pb="large">
-    <Text variant="large" pb="small">
+  <Box pb="global_24">
+    <Text variant="large" pb="global_8">
       {category}
     </Text>
 

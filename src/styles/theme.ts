@@ -1,40 +1,52 @@
-const brandColors = {};
+import { createTheme, useTheme } from '@shopify/restyle';
+import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
-const theme = {
-  colors: {
-    ...brandColors,
-    black: '#000',
-    white: '#fff',
-    grey: '#e5e5e5',
-    blue: '#457b9d',
-    green: '#2a9d8f',
-    yellow: '#e9c46a',
-    red: '#ef233c',
+import breakpoints from './breakpoints';
+import colors from './colors';
+import textVariants from './fonts';
+import borderRadii from './radius';
+import spacing from './spacing';
+
+/* ***** *****  Theme definition  ***** ***** */
+
+export const theme = createTheme({
+  colors,
+  spacing,
+  borderRadii,
+  textVariants,
+  breakpoints,
+  buttonVariants: {
+    base: {
+      paddingHorizontal: 'global_16',
+      paddingVertical: 'global_8',
+      borderRadius: 'global_8',
+      backgroundColor: 'grey',
+    },
+    baseDisabled: {
+      paddingHorizontal: 'global_16',
+      paddingVertical: 'global_8',
+      borderRadius: 'global_8',
+      backgroundColor: 'red',
+    },
   },
-  space: {
-    small: 8,
-    medium: 16,
-    large: 24,
-    xLarge: 32,
-  },
-  fonts: {
-    ios: 'San Francisco',
-    android: 'Roboto',
-  },
-  fontSizes: {
-    small: 12,
-    medium: 14,
-    regular: 16,
-    large: 24,
-    xLarge: 32,
-  },
-  radii: {
-    small: 4,
-    regular: 8,
-    medium: 16,
-  },
-};
+});
+
+/* ***** *****  Theme utilities  ***** ***** */
+
+export const useAppTheme = () => useTheme<Theme>();
+
+export const makeAppStyles =
+  <T extends NamedStyles<T>>(styles: (appTheme: Theme) => T) =>
+  () => {
+    const restyleTheme = useAppTheme();
+
+    return styles(restyleTheme);
+  };
+
+/* ***** *****  Types  ***** ***** */
 
 export type Theme = typeof theme;
 
-export default theme;
+type NamedStyles<T> = {
+  [P in keyof T]: ViewStyle | TextStyle | ImageStyle;
+};

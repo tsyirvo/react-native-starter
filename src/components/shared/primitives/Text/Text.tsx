@@ -1,52 +1,18 @@
-import { Text as RNText } from 'react-native';
-import styled from 'styled-components';
-import { space, layout, color, typography, variant } from 'styled-system';
+/* eslint-disable react/jsx-props-no-spreading */
 
-import { TextProps, VariantProps } from './Text.types';
+import { textRestyleFunctions, createText, useRestyle } from '@shopify/restyle';
+import { forwardRef } from 'react';
 
-export const Text = styled(RNText)<TextProps & VariantProps>`
-  ${variant({
-    variants: {
-      small: {
-        fontSize: 'small',
-        lineHeight: '17px',
-      },
-      medium: {
-        fontSize: 'medium',
-        lineHeight: '24px',
-      },
-      regular: {
-        fontSize: 'regular',
-        lineHeight: '24px',
-      },
-      large: {
-        fontSize: 'large',
-        lineHeight: '33px',
-      },
-    },
-  })}
-  ${space}
-  ${layout}
-  ${color}
-  ${typography}
-`;
+import { Theme } from '$styles/theme';
 
-Text.defaultProps = {
-  variant: 'regular',
-  color: 'black',
-};
+type TextProps = React.ComponentPropsWithRef<typeof PrimitiveText>;
 
-export const Title = styled(Text)`
-  ${variant({
-    variants: {
-      xLarge: {
-        fontSize: 'xLarge',
-        lineHeight: '45px',
-      },
-    },
-  })}
-`;
+const PrimitiveText = createText<Theme>();
 
-Title.defaultProps = {
-  variant: 'large',
-};
+const Text = forwardRef(({ ...rest }: TextProps, ref) => {
+  const props = useRestyle(textRestyleFunctions, rest);
+
+  return <PrimitiveText ref={ref} {...props} />;
+});
+
+export default Text;
