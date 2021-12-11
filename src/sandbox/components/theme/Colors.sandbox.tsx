@@ -12,7 +12,7 @@ const ColorsSandbox = () => (
       {(Object.keys(theme.colors) as Colors[]).map((color) => (
         <Box alignItems="center" key={color} mb="global_24">
           <Text>{color}</Text>
-          <Box width={100} height={100} bg={color} />
+          <Box width={100} aspectRatio={1} bg={color} />
         </Box>
       ))}
     </SandBoxItem>

@@ -28,12 +28,12 @@ const textVariants = {
   },
   medium: {
     fontFamily: fontFamily.regular,
-    fontSize: fontSizes.medium,
+    fontSize: fontSizes.regular,
     lineHeight: lineHeight.medium,
   },
   regular: {
     fontFamily: fontFamily.regular,
-    fontSize: fontSizes.regular,
+    fontSize: fontSizes.medium,
     lineHeight: lineHeight.medium,
   },
   large: {

@@ -2,32 +2,63 @@
 
 exports[`Shared primitives Button component should render correctly with a text children 1`] = `
 <View
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
   style={
     Array [
       Object {
-        "backgroundColor": "#e5e5e5",
-        "borderRadius": 16,
         "paddingHorizontal": 16,
         "paddingVertical": 8,
       },
     ]
   }
-  variant="base"
 >
-  <Text>
-    Some text
-  </Text>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+          Array [
+            Object {
+              "display": "flex",
+            },
+            Array [
+              Object {},
+            ],
+          ],
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "display": "flex",
+            },
+            Array [
+              Object {
+                "display": "flex",
+              },
+            ],
+          ]
+        }
+      >
+        Some text
+      </Text>
+    </View>
+  </View>
 </View>
 `;

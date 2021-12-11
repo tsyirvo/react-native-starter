@@ -5,11 +5,16 @@ exports[`Shared primitives Input component should render correctly 1`] = `
   style={
     Array [
       Object {
-        "width": "80%",
+        "display": "flex",
       },
+      Array [
+        Object {
+          "display": "flex",
+          "width": "80%",
+        },
+      ],
     ]
   }
-  width="80%"
 >
   <TextInput
     editable={true}
@@ -19,13 +24,13 @@ exports[`Shared primitives Input component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "borderBottomColor": "#e5e5e5",
-        },
-        Object {
           "borderBottomWidth": 1,
           "fontSize": 16,
           "padding": 0,
           "paddingBottom": 5,
+        },
+        Object {
+          "borderBottomColor": "#e5e5e5",
         },
       ]
     }

@@ -6,6 +6,7 @@ import colors from './colors';
 import textVariants from './fonts';
 import borderRadii from './radius';
 import spacing from './spacing';
+import buttonVariants from './variants';
 
 /* ***** *****  Theme definition  ***** ***** */
 
@@ -15,20 +16,7 @@ export const theme = createTheme({
   borderRadii,
   textVariants,
   breakpoints,
-  buttonVariants: {
-    base: {
-      paddingHorizontal: 'global_16',
-      paddingVertical: 'global_8',
-      borderRadius: 'global_8',
-      backgroundColor: 'grey',
-    },
-    baseDisabled: {
-      paddingHorizontal: 'global_16',
-      paddingVertical: 'global_8',
-      borderRadius: 'global_8',
-      backgroundColor: 'red',
-    },
-  },
+  buttonVariants,
 });
 
 /* ***** *****  Theme utilities  ***** ***** */

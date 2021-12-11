@@ -1,6 +1,6 @@
 import { Component, ErrorInfo, ReactElement } from 'react';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box, Button, Text } from '$components/shared/primitives';
 import SafeView from '$components/shared/SafeView';
 import i18n from '$i18n/config';
 
@@ -50,13 +50,12 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               {i18n.t('errorBoundary.description')}
             </Text>
 
-            {/* <Button
-              mt="large"
+            <Button
+              mt="global_32"
               alignItems="center"
               onPress={this.handleApplicationReset}
-            >
-              <Text textAlign="center">{i18n.t('errorBoundary.cta')}</Text>
-            </Button> */}
+              label={i18n.t('errorBoundary.cta')}
+            />
           </Box>
         </SafeView>
       );

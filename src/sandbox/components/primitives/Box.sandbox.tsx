@@ -21,7 +21,7 @@ const BoxSandbox = () => (
     </SandBoxItem>
 
     <SandBoxItem title="Box with position props and odd size">
-      <Box width={100} height={50} bg="grey" left="global_32" mb="global_32" />
+      <Box width={100} height={50} bg="grey" left={50} mb="global_32" />
     </SandBoxItem>
   </ScrollView>
 );

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box, Button, Text } from '$components/shared/primitives';
 import SafeView from '$components/shared/SafeView';
 import i18n from '$i18n/config';
 import { OtherPageScreenNavigationProp } from '$routes/routes.types';
@@ -19,14 +19,13 @@ const OtherPage = ({ navigation }: Props) => {
           {i18n.t('otherPage.navigation.title')}
         </Text>
 
-        {/* <Button
+        <Button
           alignItems="center"
-          mt="medium"
+          mt="global_24"
           testID="back_button"
           onPress={goBack}
-        >
-          <Text>{i18n.t('otherPage.navigation.backCta')}</Text>
-        </Button> */}
+          label={i18n.t('otherPage.navigation.backCta')}
+        />
       </Box>
     </SafeView>
   );
