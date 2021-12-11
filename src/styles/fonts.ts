@@ -7,8 +7,8 @@ const fontFamily = {
 
 export const fontSizes = {
   small: 12,
-  medium: 14,
-  regular: 16,
+  regular: 14,
+  medium: 16,
   large: 24,
   xLarge: 32,
 };
@@ -26,12 +26,12 @@ const textVariants = {
     fontSize: fontSizes.small,
     lineHeight: lineHeight.small,
   },
-  medium: {
+  regular: {
     fontFamily: fontFamily.regular,
     fontSize: fontSizes.regular,
-    lineHeight: lineHeight.medium,
+    lineHeight: lineHeight.small,
   },
-  regular: {
+  medium: {
     fontFamily: fontFamily.regular,
     fontSize: fontSizes.medium,
     lineHeight: lineHeight.medium,

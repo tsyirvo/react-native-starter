@@ -1,12 +1,15 @@
 /* ***** *****  Button  ***** ***** */
 
 const buttonVariants = {
-  base: {
+  defaults: {
+    paddingHorizontal: 'global_16',
+    paddingVertical: 'global_8',
     borderRadius: 'global_16',
+  },
+  base: {
     backgroundColor: 'grey',
   },
   baseDisabled: {
-    borderRadius: 'global_16',
     backgroundColor: 'grey',
   },
 };

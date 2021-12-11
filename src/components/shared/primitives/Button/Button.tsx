@@ -48,10 +48,6 @@ type ButtonProps = BaseProps &
 
 const ButtonVariant = createVariant({
   themeKey: 'buttonVariants',
-  defaults: {
-    paddingHorizontal: 'global_16',
-    paddingVertical: 'global_8',
-  },
 });
 
 const PrimitiveButton = createRestyleComponent<
@@ -59,7 +55,13 @@ const PrimitiveButton = createRestyleComponent<
   Theme
 >([ButtonVariant]);
 
-const Button = ({ onPress, label, variant, testID, ...rest }: ButtonProps) => {
+const Button = ({
+  onPress,
+  label,
+  variant = 'base',
+  testID,
+  ...rest
+}: ButtonProps) => {
   const props = useRestyle(restyleFunctions, rest);
 
   return (

@@ -9,10 +9,10 @@ type TextProps = React.ComponentPropsWithRef<typeof PrimitiveText>;
 
 const PrimitiveText = createText<Theme>();
 
-const Text = forwardRef(({ ...rest }: TextProps, ref) => {
-  const props = useRestyle(textRestyleFunctions, rest);
+const Text = forwardRef(({ variant = 'regular', ...rest }: TextProps, ref) => {
+  const props = useRestyle(textRestyleFunctions, { variant, ...rest });
 
-  return <PrimitiveText ref={ref} {...props} />;
+  return <PrimitiveText ref={ref} variant={variant} {...props} />;
 });
 
 export default Text;
