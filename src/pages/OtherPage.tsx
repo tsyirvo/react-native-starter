@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { Box, Button, Text } from '$components/shared/primitives';
 import SafeView from '$components/shared/SafeView';
 import i18n from '$i18n/config';
-import { OtherPageScreenNavigationProp } from '$routes/routes.types';
+import { OtherPageScreenNavigationProp } from '$navigation/navigation.types';
 
 type Props = {
   navigation: OtherPageScreenNavigationProp;
