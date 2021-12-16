@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { ScrollView } from 'react-native';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box, Text } from '$components/ui/primitives';
 import spacing, { Spacing } from '$styles/spacing';
 import { theme } from '$styles/theme';
 

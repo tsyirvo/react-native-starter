@@ -2,8 +2,8 @@
 
 import { FC } from 'react';
 
-import { Box } from '$components/shared/primitives';
-import { BoxProps } from '$components/shared/primitives/box/Box';
+import { Box } from '$components/ui/primitives';
+import { BoxProps } from '$components/ui/primitives/box/Box';
 
 type CenteredContentProps = BoxProps;
 

@@ -1,6 +1,6 @@
 import { Pressable } from 'react-native';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box, Text } from '$components/ui/primitives';
 
 import Separator from './Separator';
 

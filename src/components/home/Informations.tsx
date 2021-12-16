@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 
-import { Text } from '$components/shared/primitives';
+import { Text } from '$components/ui/primitives';
 import i18n from '$i18n/config';
 
 const Informations = () => (

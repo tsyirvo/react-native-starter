@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native';
 
-import { Text } from '$components/shared/primitives';
+import { Text } from '$components/ui/primitives';
 
 import SandBoxItem from '../menu/components/SandboxItem';
 

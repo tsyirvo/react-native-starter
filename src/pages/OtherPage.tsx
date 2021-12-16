@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
-import { Box, Button, Text } from '$components/shared/primitives';
-import SafeView from '$components/shared/SafeView';
+import { Box, Button, Text } from '$components/ui/primitives';
+import SafeView from '$components/ui/SafeView';
 import i18n from '$i18n/config';
 import { OtherPageScreenNavigationProp } from '$navigation/navigation.types';
 

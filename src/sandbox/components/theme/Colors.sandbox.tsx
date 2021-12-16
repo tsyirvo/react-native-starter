@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box, Text } from '$components/ui/primitives';
 import { Colors } from '$styles/colors';
 import { theme } from '$styles/theme';
 

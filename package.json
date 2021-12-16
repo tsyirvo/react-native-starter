@@ -132,7 +132,8 @@
     "*.{js,ts,tsx}": [
       "bash -c tsc --noEmit",
       "bash -c yarn lint",
-      "bash -c yarn prettify"
+      "bash -c yarn prettify",
+      "bash -c yarn test"
     ]
   },
   "jest": {

@@ -20,7 +20,7 @@ import {
 } from '@shopify/restyle';
 import { Pressable } from 'react-native';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box, Text } from '$components/ui/primitives';
 import { Theme } from '$styles/theme';
 
 const restyleFunctions = [

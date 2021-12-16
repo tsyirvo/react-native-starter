@@ -1,9 +1,8 @@
 import { ScrollView } from 'react-native';
 
-import Header from '$components/home/Header';
-import Informations from '$components/home/Informations';
-import { Box, Button, Text } from '$components/shared/primitives';
-import SafeView from '$components/shared/SafeView';
+import { Header, Informations } from '$components/home';
+import { Box, Button, Text } from '$components/ui/primitives';
+import SafeView from '$components/ui/SafeView';
 import i18n from '$i18n/config';
 import { HomeScreenNavigationProp } from '$navigation/navigation.types';
 

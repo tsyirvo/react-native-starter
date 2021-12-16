@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box, Text } from '$components/ui/primitives';
 
 import CenteredContent from './CenteredContent';
 import Separator from './Separator';
