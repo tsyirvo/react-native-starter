@@ -15,13 +15,13 @@ const TextSandbox = () => (
     </SandBoxItem>
 
     <SandBoxItem title="Text with custom styles">
-      <Text color="blue" fontWeight={600} lineHeight="50px" textAlign="center">
+      <Text color="blue" textAlign="center">
         Custom styles
       </Text>
     </SandBoxItem>
 
     <SandBoxItem title="Text with custom positionning">
-      <Text mt={100} pl={20} py={10}>
+      <Text mt="global_32" pl="global_24" py="global_8">
         Custom position
       </Text>
     </SandBoxItem>

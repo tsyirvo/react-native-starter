@@ -1,19 +1,20 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { Box } from '$components/shared/primitives';
-import { BoxProps } from '$components/shared/primitives/Box/Box.types';
+import { BoxProps } from '$components/shared/primitives/box/Box';
+import { Colors } from '$styles/colors';
 
 type SeparatorProps = BoxProps & {
-  height?: string;
-  color?: string;
+  height?: number;
+  color?: Colors;
 };
 
+const DEFAULT_HEIGHT = 2;
+
 const Separator = ({
-  height = '2px',
+  height = DEFAULT_HEIGHT,
   color = 'black',
   ...rest
-}: SeparatorProps) => (
-  <Box height={height} width="100%" backgroundColor={color} {...rest} />
-);
+}: SeparatorProps) => <Box height={height} width="100%" bg={color} {...rest} />;
 
 export default Separator;

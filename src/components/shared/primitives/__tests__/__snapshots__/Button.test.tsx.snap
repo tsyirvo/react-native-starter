@@ -2,18 +2,6 @@
 
 exports[`Shared primitives Button component should render correctly with a text children 1`] = `
 <View
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
   style={
     Array [
       Object {
@@ -24,10 +12,61 @@ exports[`Shared primitives Button component should render correctly with a text 
       },
     ]
   }
-  variant="base"
 >
-  <Text>
-    Some text
-  </Text>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "display": "flex",
+          },
+          Array [
+            Object {
+              "display": "flex",
+            },
+            Array [
+              Object {},
+            ],
+          ],
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "display": "flex",
+              "fontFamily": "WorkSans-Regular",
+              "fontSize": 14,
+              "lineHeight": 17,
+            },
+            Array [
+              Object {
+                "display": "flex",
+                "fontFamily": "WorkSans-Regular",
+                "fontSize": 14,
+                "lineHeight": 17,
+              },
+            ],
+          ]
+        }
+      >
+        Some text
+      </Text>
+    </View>
+  </View>
 </View>
 `;

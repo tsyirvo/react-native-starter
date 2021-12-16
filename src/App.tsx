@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar, StyleSheet } from 'react-native';
 import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -6,13 +7,13 @@ import {
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
-import { ThemeProvider } from 'styled-components';
+
+import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
 import { config, getDimensionRatio } from './core/constants';
 import { initI18n } from './i18n/config';
 import AppContainer from './routes/routes';
-import theme from './styles/theme';
 
 import Sandbox from '$sandbox';
 

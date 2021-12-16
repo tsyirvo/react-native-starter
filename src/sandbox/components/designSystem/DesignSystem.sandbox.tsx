@@ -17,7 +17,7 @@ const DesignSystemSandbox = () => {
   ];
 
   return (
-    <Box p="medium">
+    <Box p="global_24">
       <MenuCategory category="Design System">
         {menuItems.map(({ label, onPress }) => (
           <MenuLine key={label} label={label} onPress={onPress} />

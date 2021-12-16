@@ -4,7 +4,7 @@ import { fireEvent } from '@testing-library/react-native';
 
 import render from '$tests/utils';
 
-import Input from '../Input';
+import Input from '../input/Input';
 
 describe('Shared primitives Input component', () => {
   // given
