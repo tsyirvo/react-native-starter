@@ -15,7 +15,7 @@ gpg -d --passphrase="$GPG_PASSPHRASE" --batch google-credential-key.asc > androi
 echo "$FASTLANE_ENV_ANDROID" > .env.fastlane.android.asc
 gpg -d --passphrase="$GPG_PASSPHRASE" --batch .env.fastlane.android.asc > android/fastlane/.env
 
-# App .env
+# App Staging .env
 echo "$STAGING_ENV" > .env.staging.asc
 gpg -d --passphrase="$GPG_PASSPHRASE" --batch .env.staging.asc > .env.staging
 
