@@ -29,6 +29,9 @@ exports[`OtherPage page component should render correctly 1`] = `
         Array [
           Object {
             "display": "flex",
+            "fontFamily": "WorkSans-Bold",
+            "fontSize": 24,
+            "lineHeight": 24,
           },
           Array [
             Object {
@@ -48,48 +51,45 @@ exports[`OtherPage page component should render correctly 1`] = `
       style={
         Array [
           Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 8,
+            "display": "flex",
           },
+          Array [
+            Object {
+              "display": "flex",
+              "marginTop": 24,
+            },
+          ],
         ]
       }
     >
       <View
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        testID="back_button"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#e5e5e5",
+              "borderRadius": 16,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+          ]
+        }
       >
         <View
-          style={
-            Array [
-              Object {
-                "display": "flex",
-              },
-              Array [
-                Object {
-                  "display": "flex",
-                },
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "marginTop": 24,
-                  },
-                ],
-              ],
-            ]
-          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          testID="back_button"
         >
-          <Text
+          <View
             style={
               Array [
                 Object {
@@ -99,12 +99,38 @@ exports[`OtherPage page component should render correctly 1`] = `
                   Object {
                     "display": "flex",
                   },
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                    },
+                  ],
                 ],
               ]
             }
           >
-            Back
-          </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "display": "flex",
+                    "fontFamily": "WorkSans-Regular",
+                    "fontSize": 14,
+                    "lineHeight": 17,
+                  },
+                  Array [
+                    Object {
+                      "display": "flex",
+                      "fontFamily": "WorkSans-Regular",
+                      "fontSize": 14,
+                      "lineHeight": 17,
+                    },
+                  ],
+                ]
+              }
+            >
+              Back
+            </Text>
+          </View>
         </View>
       </View>
     </View>

@@ -5,6 +5,8 @@ exports[`Shared primitives Button component should render correctly with a text 
   style={
     Array [
       Object {
+        "backgroundColor": "#e5e5e5",
+        "borderRadius": 16,
         "paddingHorizontal": 16,
         "paddingVertical": 8,
       },
@@ -47,10 +49,16 @@ exports[`Shared primitives Button component should render correctly with a text 
           Array [
             Object {
               "display": "flex",
+              "fontFamily": "WorkSans-Regular",
+              "fontSize": 14,
+              "lineHeight": 17,
             },
             Array [
               Object {
                 "display": "flex",
+                "fontFamily": "WorkSans-Regular",
+                "fontSize": 14,
+                "lineHeight": 17,
               },
             ],
           ]

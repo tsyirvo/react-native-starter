@@ -12,7 +12,7 @@ const SpacesSandbox = () => (
     <SandBoxItem isSingle>
       {(Object.keys(theme.spacing) as Spacing[]).map((space) => (
         <Fragment key={space}>
-          <Text>{`${space} - ${space}px`}</Text>
+          <Text mb="global_8">{space}</Text>
           <Box width="100%" height={spacing[space]} bg="grey" mb="global_32" />
         </Fragment>
       ))}

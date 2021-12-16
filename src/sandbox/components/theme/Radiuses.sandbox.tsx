@@ -11,7 +11,8 @@ const RadiusesSandbox = () => (
     <SandBoxItem isSingle>
       {(Object.keys(theme.borderRadii) as BorderRadii[]).map((radius) => (
         <Box alignItems="center" key={radius} mb="global_24">
-          <Text>{radius}</Text>
+          <Text mb="global_8">{radius}</Text>
+
           <Box width={100} height={100} bg="grey" borderRadius={radius} />
         </Box>
       ))}

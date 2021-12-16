@@ -8,21 +8,11 @@ import SandBoxItem from '../menu/components/SandboxItem';
 const FontSizesSandbox = () => (
   <ScrollView>
     <SandBoxItem isSingle>
-      {(Object.keys(fontSizes) as FontSizes[]).map((size) => {
-        if (size === 'xLarge') {
-          return (
-            <Text key={size} variant={size} mb="global_24">
-              {`This is a ${size} text`}
-            </Text>
-          );
-        }
-
-        return (
-          <Text key={size} variant={size} mb="global_24">
-            {`This is a ${size} text`}
-          </Text>
-        );
-      })}
+      {(Object.keys(fontSizes) as FontSizes[]).map((size) => (
+        <Text key={size} variant={size} mb="global_24">
+          {`This is a ${size} text`}
+        </Text>
+      ))}
     </SandBoxItem>
   </ScrollView>
 );

@@ -35,7 +35,7 @@ const Input = forwardRef<TextInput, Props>(
     const errorStyles = error ? styles.errorState : styles.defaultState;
 
     return (
-      <Box width="80%">
+      <Box width="100%">
         {label && (
           <Text color="black" mb="global_8" testID="input-label">
             {label}

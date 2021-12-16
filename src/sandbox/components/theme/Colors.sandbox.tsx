@@ -10,9 +10,10 @@ const ColorsSandbox = () => (
   <ScrollView>
     <SandBoxItem isSingle>
       {(Object.keys(theme.colors) as Colors[]).map((color) => (
-        <Box alignItems="center" key={color} mb="global_24">
-          <Text>{color}</Text>
-          <Box width={100} aspectRatio={1} bg={color} />
+        <Box key={color} alignItems="center" mb="global_24">
+          <Text pb="global_8">{color}</Text>
+
+          <Box borderRadius="global_8" width={100} aspectRatio={1} bg={color} />
         </Box>
       ))}
     </SandBoxItem>
