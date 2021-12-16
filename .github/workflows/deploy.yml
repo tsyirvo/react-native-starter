@@ -93,33 +93,15 @@ jobs:
           bundle install --jobs 4 --retry 3
         working-directory: android
 
-      - name: Create the release.keystore
-        run: |
-          echo "${{secrets.RELEASE_KEYSTORE}}" > release.keystore.asc
-          gpg -d --passphrase "${{secrets.RELEASE_KEYSTORE_PASSPHRASE}}" --batch release.keystore.asc > app/release.keystore
-        working-directory: android
-
-      - name: Create the Google Credential Key
-        run: |
-          echo "${{secrets.GOOGLE_CREDENTIAL_KEY}}" > google-credential-key.json.asc
-          gpg -d --passphrase "${{secrets.GOOGLE_CREDENTIAL_KEY_PASSPHRASE}}" --batch google-credential-key.json.asc > google-credential-key.json
-        working-directory: android
-
-      - name: Populate the Fastlane env file
-        run: |
-          echo "${{secrets.FASTLANE_ENV_ANDROID}}" > .env.fastlane.android.asc
-          gpg -d --passphrase "${{secrets.FASTLANE_ENV_ANDROID_PASSPHRASE}}" --batch .env.fastlane.android.asc > fastlane/.env
-        working-directory: android
-
-      - name: Populate the Staging env file
-        run: |
-          echo "${{secrets.STAGING_ENV}}" > .env.staging.asc
-          gpg -d --passphrase "${{secrets.STAGING_ENV_PASSPHRASE}}" --batch .env.staging.asc > .env.staging
-
-      # - name: Populate the Production env file
-      #   run: |
-      #     echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
-      #     gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
+      - name: Decrypt Android keys
+        run: sh ./.github/scripts/decryptAndroidKeys.sh
+        env:
+          RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
+          GRADDLE_PROPERTIES: ${{ secrets.GRADDLE_PROPERTIES }}
+          GOOGLE_CREDENTIAL_KEY: ${{ secrets.GOOGLE_CREDENTIAL_KEY }}
+          FASTLANE_ENV_ANDROID: ${{ secrets.FASTLANE_ENV_ANDROID }}
+          STAGING_ENV: ${{ secrets.STAGING_ENV }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Set the current app version based on commit history
         run: yarn version:bump
@@ -138,9 +120,9 @@ jobs:
         run: bundle exec fastlane release_staging
         working-directory: android
 
-      # - name: Upload a Production build to the Play Console
-      #   run: bundle exec fastlane release_production
-      #   working-directory: android
+    # - name: Upload a Production build to the Play Console
+    #   run: bundle exec fastlane release_production
+    #   working-directory: android
 
   ios:
     runs-on: macos-latest
@@ -202,27 +184,13 @@ jobs:
         run: pod install
         working-directory: ios
 
-      - name: Create the Apple Connect Key
-        run: |
-          echo "${{secrets.APPLE_CONNECT_KEY}}" > AuthKey_7GF3V4HFK9.p8.asc
-          gpg -d --passphrase "${{secrets.APPLE_CONNECT_KEY_PASSPHRASE}}" --batch AuthKey_7GF3V4HFK9.p8.asc > AuthKey_7GF3V4HFK9.p8
-        working-directory: ios
-
-      - name: Populate the Fastlane env file
-        run: |
-          echo "${{secrets.FASTLANE_ENV_IOS}}" > .env.fastlane.ios.asc
-          gpg -d --passphrase "${{secrets.FASTLANE_ENV_IOS_PASSPHRASE}}" --batch .env.fastlane.ios.asc > fastlane/.env
-        working-directory: ios
-
-      - name: Populate the Staging env file
-        run: |
-          echo "${{secrets.STAGING_ENV}}" > .env.staging.asc
-          gpg -d --passphrase "${{secrets.STAGING_ENV_PASSPHRASE}}" --batch .env.staging.asc > .env.staging
-
-      # - name: Populate the Production env file
-      #   run: |
-      #     echo "${{secrets.PRODUCTION_ENV}}" > .env.production.asc
-      #     gpg -d --passphrase "${{secrets.PRODUCTION_ENV_PASSPHRASE}}" --batch .env.production.asc > .env.production
+      - name: Decrypt iOS keys
+        run: sh ./.github/scripts/decryptIosKeys.sh
+        env:
+          APPLE_CONNECT_KEY: ${{ secrets.APPLE_CONNECT_KEY }}
+          FASTLANE_ENV_IOS: ${{ secrets.FASTLANE_ENV_IOS }}
+          STAGING_ENV: ${{ secrets.STAGING_ENV }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Set the current app version based on commit history
         run: yarn version:bump
