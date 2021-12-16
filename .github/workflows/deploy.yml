@@ -3,131 +3,131 @@ name: Deploy
 on:
   pull_request:
     branches:
-      - develop
+      - master
     paths:
       - '*'
 
 jobs:
-  # quality:
-  #   runs-on: ubuntu-latest
+  quality:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Checkout repo
-  #       uses: actions/checkout@v2
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-  #     - name: Setup NodeJS
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: '14.18.1'
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.18.1'
 
-  #     - name: Check node_modules cache
-  #       uses: actions/cache@v2
-  #       id: yarn-cache
-  #       with:
-  #         path: node_modules
-  #         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-yarn-
+      - name: Check node_modules cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-  #     - name: Install JS dependencies if not cached
-  #       if: steps.yarn-cache.outputs.cache-hit != 'true'
-  #       run: yarn
+      - name: Install JS dependencies if not cached
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
 
-  #     - name: Run quality checks
-  #       run: |
-  #         yarn test
-  #         yarn tsc
-  #         yarn lint
+      - name: Run quality checks
+        run: |
+          yarn test
+          yarn tsc
+          yarn lint
 
-  # android:
-  #   runs-on: ubuntu-latest
+  android:
+    runs-on: ubuntu-latest
 
-  # needs: quality
+    needs: quality
 
-  # steps:
-  #   - name: Checkout repo
-  #     uses: actions/checkout@v2
-  #     with:
-  #       fetch-depth: 0
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-  #   - name: Setup NodeJS
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: '14.18.1'
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.18.1'
 
-  #   - name: Check node_modules cache
-  #     uses: actions/cache@v2
-  #     id: yarn-cache
-  #     with:
-  #       path: node_modules
-  #       key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-  #       restore-keys: |
-  #         ${{ runner.os }}-yarn-
+      - name: Check node_modules cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-  #   - name: Install JS dependencies if not cached
-  #     if: steps.yarn-cache.outputs.cache-hit != 'true'
-  #     run: yarn
+      - name: Install JS dependencies if not cached
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
 
-  #   - name: Setup Java
-  #     uses: actions/setup-java@v1
-  #     with:
-  #       java-version: '11'
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
 
-  #   - name: Setup Ruby
-  #     uses: ruby/setup-ruby@v1
-  #     with:
-  #       ruby-version: 2.6
-  #       bundler-cache: true
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+          bundler-cache: true
 
-  #   - name: Check Bundler cache
-  #     uses: actions/cache@v2
-  #     with:
-  #       path: android/vendor/bundle
-  #       key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-  #       restore-keys: |
-  #         ${{ runner.os }}-gems-
+      - name: Check Bundler cache
+        uses: actions/cache@v2
+        with:
+          path: android/vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
 
-  #   - name: Install Gem dependencies
-  #     run: |
-  #       bundle config path vendor/bundle
-  #       bundle install --jobs 4 --retry 3
-  #     working-directory: android
+      - name: Install Gem dependencies
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+        working-directory: android
 
-  #   - name: Decrypt Android keys
-  #     run: sh ./.github/scripts/decryptAndroidKeys.sh
-  #     env:
-  #       RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
-  #       GRADDLE_PROPERTIES: ${{ secrets.GRADDLE_PROPERTIES }}
-  #       GOOGLE_CREDENTIAL_KEY: ${{ secrets.GOOGLE_CREDENTIAL_KEY }}
-  #       FASTLANE_ENV_ANDROID: ${{ secrets.FASTLANE_ENV_ANDROID }}
-  #       STAGING_ENV: ${{ secrets.STAGING_ENV }}
-  #       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Decrypt Android keys
+        run: sh ./.github/scripts/decryptAndroidKeys.sh
+        env:
+          RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
+          GRADDLE_PROPERTIES: ${{ secrets.GRADDLE_PROPERTIES }}
+          GOOGLE_CREDENTIAL_KEY: ${{ secrets.GOOGLE_CREDENTIAL_KEY }}
+          FASTLANE_ENV_ANDROID: ${{ secrets.FASTLANE_ENV_ANDROID }}
+          STAGING_ENV: ${{ secrets.STAGING_ENV }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
-  #   - name: Set the current app version based on commit history
-  #     run: yarn version:bump
+      - name: Set the current app version based on commit history
+        run: yarn version:bump
 
-  #   - name: Check Gradle cache
-  #     uses: actions/cache@v2
-  #     with:
-  #       path: |
-  #         ~/.gradle/caches
-  #         ~/.gradle/wrapper
-  #       key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-  #       restore-keys: |
-  #         ${{ runner.os }}-gradle-
+      - name: Check Gradle cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
-  #   - name: Upload a Staging build to App Center
-  #     run: bundle exec fastlane release_staging
-  #     working-directory: android
+      - name: Upload a Staging build to App Center
+        run: bundle exec fastlane release_staging
+        working-directory: android
 
-  # - name: Upload a Production build to the Play Console
-  #   run: bundle exec fastlane release_production
-  #   working-directory: android
+    # - name: Upload a Production build to the Play Console
+    #   run: bundle exec fastlane release_production
+    #   working-directory: android
 
   ios:
     runs-on: macos-latest
 
-    # needs: quality
+    needs: quality
 
     steps:
       - name: Checkout repo
