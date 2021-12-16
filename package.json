@@ -48,7 +48,6 @@
     "//// UTILITIES ////": "",
     "image:add": "node scripts/images.js",
     "generate:page": "npx hygen generators page",
-    "generate:fc": "npx hygen generators fc",
     "generate:icons": "svgr --native --typescript --ignore-existing --svgo-config src/components/icons/svgs/config/svgo.json --index-template src/components/icons/svgs/config/index-template.js --template src/components/icons/svgs/config/icon-template.js --out-dir src/components/icons/components src/components/icons/svgs",
     "//// VERSIONNING ////": "",
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
