@@ -17,7 +17,7 @@
   ],
   "license": "ISC",
   "scripts": {
-    "start": "react-native start",
+    "start": "react-native start --reset-cache",
     "//// SETUP ////": "",
     "install:all": "yarn && npx pod-install",
     "clean": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules",

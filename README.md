@@ -5,10 +5,12 @@
   - [The setup](#the-setup)
   - [Runing the project](#runing-the-project)
   - [Stack](#stack)
+  - [Env files](#env-files)
+  - [App signin](#app-signin)
   - [Internationalization](#internationalization)
   - [Adding images](#adding-images)
   - [Generate new components](#generate-new-components)
-  - [Using the storybook](#using-the-storybook)
+  - [Using the custom Sandbox](#using-the-custom-sandbox)
   - [Tests](#tests)
   - [Formatting and type checking](#formatting-and-type-checking)
   - [Github Actions](#github-actions)
@@ -24,11 +26,11 @@ This starter is the one I used in all my personal projects.
 
 It's a basic start, but with most of the common dependencies I use so I can start new projetcts more easily.
 
-You need to have Node (at least version 14) and Watchman installed:
+You need to have Node (at least version 14), Watchman and CocoaPods (if on iOS) installed. Check the [React Native docs](https://reactnative.dev/docs/environment-setup) on how to preoperly setup your dev environment.
 
-On the dev side, a test stack is setup (unit and E2E), a CI on _Github Actions_ with release automation thanks to _Fastlane_, a _Storybook_ with some base addons, _TypeScript_ is also configured with _ESLint_ and _Prettier_, commits are linted to automated the release workflows and changelog generation.
+On the dev side, a test stack is setup (unit, functional and E2E), a CI on _Github Actions_ with release automation thanks to _Fastlane_, a custom _Storybook_, _TypeScript_ is also configured with _ESLint_ and _Prettier_. Commits are linted to automate the release workflows and the changelog generation.
 
-There are also some utilities to generate new components or pages automatically, a script to compress images and add them to the native catalogs. A pre commit hook runs on staged files for code quality checks.
+There are also some utilities to generate new pages automatically, a script to compress images and add them to the native catalogs. A pre commit hook runs on staged files for code quality checks.
 
 There is no data handling library since it varies from one project to the next.
 
@@ -62,13 +64,15 @@ yarn android:[development|staging|production]
 
 ## Stack
 
+The most useful libraries already builtin are the following:
+
 [React Native](https://facebook.github.io/react-native/)
 
 [React Navigation](https://reactnavigation.org/)
 
-[Styled Components](https://styled-components.com/)
+[Restyle](https://github.com/Shopify/restyle/)
 
-[Styled System](https://jxnblk.com/styled-system/)
+[i18 JS](https://github.com/fnando/i18n-js/)
 
 [React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/)
 
@@ -76,15 +80,29 @@ yarn android:[development|staging|production]
 
 [CodePush](https://github.com/microsoft/react-native-code-push)
 
-[React i18Next](https://react.i18next.com/)
+A few other interesting things are configured, don't hesitate to look around.
 
-[Fastlane](https://fastlane.tools/)
+## Env files
+
+The starter is configured with three distinct environments by default, Development, Staging and Production.
+
+This is easier to work with on a real app, and allows you to have different enviroment variables easily, among other things.
+
+There are three .env files at the root, one for each env. Feel free to edit them and add the necessary values to it so the app can work properly.
+
+## App signin
+
+Both OSs have their own signin requirements, don't forget to edit those, since currently it's using placeholder ones that won't work for you.
+
+For iOS, you will need to setup a valid Bundle ID with a matching Provisioning Profile.
+
+For Android, the default debug signin is already there and functional, but you will need to create your own keystore for running in release mode. You can check the [React Native Android documentation](https://reactnative.dev/docs/signed-apk-android) for help.
 
 ## Internationalization
 
 All the translations are managed on separate `.json` file located in the `src/i18n/locales/` folder.
 
-Refer to the documentation of [React i18Next](https://react.i18next.com/) for explanations on how to use the library.
+Refer to the documentation of [i18 JS](https://github.com/fnando/i18n-js/) for explanations on how to use it.
 
 ## Adding images
 
@@ -98,21 +116,19 @@ yarn image:add [path/to/the/image/to/add|path/to/the/folder]
 
 ## Generate new components
 
-You can automaticaly generated new pages or components (functional or class ones) with all necessary imports and default content with thoses commands:
+You can automaticaly generated new pages with all the necessary files, tests and injection with this command:
 
 ```
-yarn generate:[page|fc|class]
+yarn generate:page
 ```
 
 A CLI prompt will ask you all the infos.
 
-## Using the storybook
+## Using the custom Sandbox
 
-A _Storybook_ is already configured with some addons.
+A custom _Sandbox_ is configured with some basic examples and navigation.
 
-To access it, you can access the dev menu on the device and select _Toggle Storybook_ to have it shown in place of the app.
-
-If new stories are not shown on the list, try running the command `yarn storybook` which automatically create a file importing all stories respecting a predefined pattern. This command also enable to use the Storybook with a remote server and change stories from a navigator outside of the app.
+To access it, you can access the dev menu on the device and select _Toggle Sandbox_ to have it shown in place of the app.
 
 ## Tests
 
@@ -130,13 +146,13 @@ npx detox test -c ios.sim.[release|debug]
 
 or
 
-npx detox build -c android.emu.[release|debug]
-npx detox test -c android.emu.[release|debug]
+npx detox build -c android.sim.[release|debug]
+npx detox test -c android.sim.[release|debug]
 ```
 
 ## Formatting and type checking
 
-The project is using [ESlint](https://eslint.org/), [Prettier](https://prettier.io/) and [TypeScript](https://www.typescriptlang.org/) for code formating and type checking, you can run the checks with those commands:
+The project is using a custom [ESlint](https://eslint.org/) config ([see here](https://github.com/tsyirvo/eslint-config-tsyirvo-react-native)), [Prettier](https://prettier.io/) and [TypeScript](https://www.typescriptlang.org/) for code formating and type checking, you can run the checks with those commands:
 
 ```
 yarn lint
@@ -144,7 +160,7 @@ yarn prettify
 yarn tsc
 ```
 
-There is a precommit git hook that run the prettify command to have a consistent formatting.
+There is a precommit git hook that run some of those commands to have a consistent formatting and type checking.
 
 ## Github Actions
 
@@ -160,7 +176,7 @@ You can look at the _.yml_ files to view all the workflows, and check the Github
 
 ## CodePush
 
-You have the possibility to bypass updating your apps via the platform stores when updating only JS files or image assets.
+You have the possibility to bypass updating your apps via the platform stores when updating only JS/TS files or image assets.
 
 You first need to configure you app token for iOS and Android (read [here](https://github.com/microsoft/react-native-code-push)), add it to the env files, then create a new release.
 
