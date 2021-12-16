@@ -2,7 +2,7 @@
 
 import { ReactElement, Suspense, useEffect, useState } from 'react';
 
-import FallbackLoader from '$components/shared/FallbackLoader';
+import FallbackLoader from '$components/ui/FallbackLoader';
 
 import DebugStack from './navigation/DebugStack';
 

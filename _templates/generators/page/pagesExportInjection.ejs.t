@@ -1,6 +1,6 @@
 ---
 inject: true
 before: // inject exports before this
-to: src/routes/pages.ts
+to: src/navigation/pages.ts
 ---
-<%= h.changeCase.pascalCase(componentName) %>,
+  <%= h.changeCase.pascalCase(componentName) %>,

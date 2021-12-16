@@ -1,7 +1,7 @@
 import { Component, ErrorInfo, ReactElement } from 'react';
 
-import { Box, Button, Text } from '$components/shared/primitives';
-import SafeView from '$components/shared/SafeView';
+import { Box, Button, Text } from '$components/ui/primitives';
+import SafeView from '$components/ui/SafeView';
 import i18n from '$i18n/config';
 
 type ErrorBoundaryProps = {

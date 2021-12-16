@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native';
 
-import FallbackLoader from '$components/shared/FallbackLoader';
+import FallbackLoader from '$components/ui/FallbackLoader';
 
 import SandBoxItem from '../menu/components/SandboxItem';
 

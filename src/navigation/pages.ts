@@ -1,5 +1,5 @@
-import Home from '$components/home';
-import OtherPage from '$components/otherPage';
+import Home from '$pages/Home';
+import OtherPage from '$pages/OtherPage';
 // inject pages before this
 
 export {

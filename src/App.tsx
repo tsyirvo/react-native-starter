@@ -13,7 +13,7 @@ import { theme } from '$styles/theme';
 import ErrorBoundary from './components/errorBoundary';
 import { config, getDimensionRatio } from './core/constants';
 import { initI18n } from './i18n/config';
-import AppContainer from './routes/routes';
+import RootStack from './navigation/navigation';
 
 import Sandbox from '$sandbox';
 
@@ -36,7 +36,7 @@ const Root = () => (
       <ErrorBoundary>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <Sandbox>
-            <AppContainer />
+            <RootStack />
           </Sandbox>
         </SafeAreaProvider>
       </ErrorBoundary>

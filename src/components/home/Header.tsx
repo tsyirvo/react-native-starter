@@ -1,6 +1,6 @@
 import { ImageBackground } from 'react-native';
 
-import { Box, Text } from '$components/shared/primitives';
+import { Box, Text } from '$components/ui/primitives';
 import { makeAppStyles } from '$styles/theme';
 
 const uri = { uri: 'header' };

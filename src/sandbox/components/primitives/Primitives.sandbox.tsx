@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 
-import { Box } from '$components/shared/primitives';
+import { Box } from '$components/ui/primitives';
 import { PrimitivesScreenNavigationProp } from '$sandbox/navigation/DebugStack.types';
 
 import MenuCategory from '../menu/components/MenuCategory';

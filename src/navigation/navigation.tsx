@@ -3,8 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import i18n from '$i18n/config';
 
+import { RootStackParamList } from './navigation.types';
 import * as Pages from './pages';
-import { RootStackParamList } from './routes.types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 

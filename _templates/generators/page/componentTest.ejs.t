@@ -1,22 +1,24 @@
 ---
-to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/__tests__/<%= h.changeCase.pascalCase(componentName) %>.test.tsx
+to: src/pages/__tests__/<%= h.changeCase.pascalCase(componentName) %>.test.tsx
 ---
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-// import { fireEvent } from '@testing-library/react-native';
-
-import render from '$tests/utils';
+import { render } from '$tests/utils';
 
 import <%= h.changeCase.pascalCase(componentName) %> from '../<%= h.changeCase.pascalCase(componentName) %>';
 
-describe('<%= h.changeCase.pascalCase(componentName) %> page component', () => {
-  // given
+describe('<%= h.changeCase.pascalCase(componentName) %> page', () => {
+  // Given
+  const props = { navigation: { navigate: jest.fn() } as any };
 
   it('should render correctly', () => {
-    // When
-    const wrapper = render(<<%= h.changeCase.pascalCase(componentName) %> />);
+    // Given
+    const { getByText } = render(<<%= h.changeCase.pascalCase(componentName) %> {...props} />);
 
     // Then
-    expect(wrapper).toMatchSnapshot();
+    expect(getByText('<%= h.changeCase.pascalCase(componentName) %> page')).toBeDefined();
   });
 });

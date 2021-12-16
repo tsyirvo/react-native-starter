@@ -1,7 +1,7 @@
 import { ScrollView } from 'react-native';
 
-import { Box } from '$components/shared/primitives';
-import SafeView from '$components/shared/SafeView';
+import { Box } from '$components/ui/primitives';
+import SafeView from '$components/ui/SafeView';
 
 import Components from './Components';
 import Core from './Core';
