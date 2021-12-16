@@ -44,6 +44,7 @@ type ButtonProps = BaseProps &
     onPress: () => void;
     label: string;
     testID?: string;
+    isEnabled?: boolean;
   };
 
 const ButtonVariant = createVariant({
@@ -60,13 +61,14 @@ const Button = ({
   label,
   variant = 'base',
   testID,
+  isEnabled = true,
   ...rest
 }: ButtonProps) => {
   const props = useRestyle(restyleFunctions, rest);
 
   return (
     <PrimitiveButton variant={variant}>
-      <Pressable testID={testID} onPress={onPress}>
+      <Pressable testID={testID} onPress={onPress} disabled={!isEnabled}>
         <Box {...props}>
           <Text>{label}</Text>
         </Box>

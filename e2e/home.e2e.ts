@@ -1,9 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import { device, expect, element, by } from 'detox';
 
 describe('Basic test', () => {
   beforeAll(async () => {
     await device.launchApp();
-    await device.reloadReactNative();
   });
 
   it('should have home welcome text', async () => {

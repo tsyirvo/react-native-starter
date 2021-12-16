@@ -1,73 +1,74 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { fireEvent } from '@testing-library/react-native';
-
-import render from '$tests/utils';
+import { render, fireEvent } from '$tests/utils';
 
 import Input from '../input/Input';
 
-describe('Shared primitives Input component', () => {
-  // given
-  const props = {
-    onChangeText: jest.fn(),
-    placeholder: 'Placeholder',
-  };
+describe('Input component', () => {
+  // Given
+  const onChangeText = jest.fn();
+  const props = { onChangeText };
 
-  it('should render correctly', () => {
-    // When
-    const wrapper = render(<Input {...props} />);
-
-    // Then
-    expect(wrapper).toMatchSnapshot();
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
-  it('should trigger the onChangeText props when typing', () => {
-    // When
-    const { getByPlaceholderText } = render(<Input {...props} />);
+  it('should render correctly', () => {
+    // Given
+    const { getByTestId } = render(<Input {...props} />);
 
-    const input = getByPlaceholderText('Placeholder');
+    // Then
+    expect(getByTestId('inputID')).toBeDefined();
+  });
+
+  it('should call the onChangeText method when typing', () => {
+    // Given
+    const { getByTestId } = render(<Input {...props} />);
+
+    // When
+    const input = getByTestId('inputID');
 
     fireEvent.changeText(input, 'data');
 
     // Then
-    expect(props.onChangeText).toHaveBeenCalled();
+    expect(onChangeText).toHaveBeenCalled();
   });
 
   it('should not show error by default', () => {
-    // When
+    // Given
     const { queryByTestId } = render(<Input {...props} />);
 
-    const error = queryByTestId('input-error');
+    const error = queryByTestId('inputID-error');
 
     // Then
     expect(error).toBeNull();
   });
 
   it('should show error when defined', () => {
-    // When
+    // Given
     const { getByTestId } = render(<Input {...props} error="Some error" />);
 
-    const error = getByTestId('input-error');
+    const error = getByTestId('inputID-error');
 
     // Then
     expect(error).toBeDefined();
   });
 
   it('should not show a label if not provided', () => {
-    // When
+    // Given
     const { queryByTestId } = render(<Input {...props} />);
 
-    const label = queryByTestId('input-label');
+    const label = queryByTestId('inputID-label');
 
     // Then
     expect(label).toBeNull();
   });
 
   it('should show a label when defined', () => {
-    // When
+    // Given
     const { getByTestId } = render(<Input {...props} label="Some label" />);
 
-    const label = getByTestId('input-label');
+    const label = getByTestId('inputID-label');
 
     // Then
     expect(label).toBeDefined();

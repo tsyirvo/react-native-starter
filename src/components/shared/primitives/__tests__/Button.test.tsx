@@ -1,30 +1,54 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { fireEvent } from '@testing-library/react-native';
-
-import render from '$tests/utils';
+import { render, fireEvent } from '$tests/utils';
 
 import Button from '../button/Button';
 
-describe('Shared primitives Button component', () => {
-  // given
-  const props = { onPress: jest.fn(), label: 'Some text' };
+describe('Button component', () => {
+  // Given
+  const onPress = jest.fn();
+  const label = 'Some text';
+  const props = { onPress, label };
 
-  it('should render correctly with a text children', () => {
-    // When
-    const wrapper = render(<Button {...props} />);
-
-    // Then
-    expect(wrapper).toMatchSnapshot();
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
-  it('should trigger the onPress props when pressed', () => {
-    // When
+  it('should render correctly with a text', () => {
+    // Given
     const { getByText } = render(<Button {...props} />);
 
+    // Then
+    expect(getByText(label)).toBeDefined();
+  });
+
+  it('should render correctly with a text and a custom variant', () => {
+    // Given
+    const { getByText } = render(<Button variant="baseDisabled" {...props} />);
+
+    // Then
+    expect(getByText(label)).toBeDefined();
+  });
+
+  it('should call the onPress method', () => {
+    // Given
+    const { getByText } = render(<Button {...props} />);
+
+    // When
     fireEvent.press(getByText('Some text'));
 
     // Then
-    expect(props.onPress).toHaveBeenCalled();
+    expect(onPress).toHaveBeenCalled();
+  });
+
+  it('should not call the onPress method when disabled', () => {
+    // Given
+    const { getByText } = render(<Button isEnabled={false} {...props} />);
+
+    // When
+    fireEvent.press(getByText('Some text'));
+
+    // Then
+    expect(onPress).not.toHaveBeenCalled();
   });
 });

@@ -3,28 +3,27 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { fireEvent } from '@testing-library/react-native';
-
-import render from '$tests/utils';
+import { render, fireEvent } from '$tests/utils';
 
 import Home from '../Home';
 
-describe('Home page component', () => {
-  // given
+describe('Home component', () => {
+  // Given
   const props = { navigation: { navigate: jest.fn() } as any };
 
   it('should render correctly', () => {
-    // When
-    const wrapper = render(<Home {...props} />);
+    // Given
+    const { getByText } = render(<Home {...props} />);
 
     // Then
-    expect(wrapper).toMatchSnapshot();
+    expect(getByText('React Native Starter')).toBeDefined();
   });
 
   it('should trigger the navigate method when the button is pressed', () => {
-    // When
+    // Given
     const { getByTestId } = render(<Home {...props} />);
 
+    // When
     fireEvent.press(getByTestId('goto_otherPage'));
 
     // Then
