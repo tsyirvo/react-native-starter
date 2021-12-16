@@ -3,28 +3,28 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { fireEvent } from '@testing-library/react-native';
-
-import render from '$tests/utils';
+import i18n from '$i18n/config';
+import { render, fireEvent } from '$tests/utils';
 
 import OtherPage from '../OtherPage';
 
-describe('OtherPage page component', () => {
-  // given
+describe('OtherPage component', () => {
+  // Given
   const props = { navigation: { goBack: jest.fn() } as any };
 
   it('should render correctly', () => {
-    // When
-    const wrapper = render(<OtherPage {...props} />);
+    // Given
+    const { getByText } = render(<OtherPage {...props} />);
 
     // Then
-    expect(wrapper).toMatchSnapshot();
+    expect(getByText(i18n.t('otherPage.navigation.title'))).toBeDefined();
   });
 
   it('should trigger the goBack method when the button is pressed', () => {
-    // When
+    // Given
     const { getByTestId } = render(<OtherPage {...props} />);
 
+    // When
     fireEvent.press(getByTestId('back_button'));
 
     // Then
