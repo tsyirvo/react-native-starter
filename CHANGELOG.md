@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/tsyirvo/react-native-starter/compare/v1.1.0...v1.2.0) (2021-12-17)
+
+
+### Features
+
+* automate svg generation and usage ([#247](https://github.com/tsyirvo/react-native-starter/issues/247)) ([093d8d1](https://github.com/tsyirvo/react-native-starter/commit/093d8d1c23a4e1ad135f938ab0a708b27dce31a1))
+* extract ESLint and TS config to an external package ([#242](https://github.com/tsyirvo/react-native-starter/issues/242)) ([8052eb8](https://github.com/tsyirvo/react-native-starter/commit/8052eb853aa998d0b369dac2ce7a582431f1f79f))
+* migrate to new i18n lib ([#240](https://github.com/tsyirvo/react-native-starter/issues/240)) ([131704f](https://github.com/tsyirvo/react-native-starter/commit/131704fcc4485c751f4694ecdf0dff435b78755a))
+* migrate to Restyle ([#255](https://github.com/tsyirvo/react-native-starter/issues/255)) ([dcae421](https://github.com/tsyirvo/react-native-starter/commit/dcae421dff1b251bbace170e6e87f2a198347282))
+* remove storybook in favor of custom sandbox ([#243](https://github.com/tsyirvo/react-native-starter/issues/243)) ([892be69](https://github.com/tsyirvo/react-native-starter/commit/892be69e8a426e2cdefb4f64107f032853331782))
+* rework app structure ([#258](https://github.com/tsyirvo/react-native-starter/issues/258)) ([e887350](https://github.com/tsyirvo/react-native-starter/commit/e88735008452052c57503ee4a5ccb132c25e9d5e))
+* update eslint/babel/ts configs ([#241](https://github.com/tsyirvo/react-native-starter/issues/241)) ([bcb2902](https://github.com/tsyirvo/react-native-starter/commit/bcb29023b7ad0208c440d74729a8559b4fd21eb0))
+* update github actions release flow ([#261](https://github.com/tsyirvo/react-native-starter/issues/261)) ([6ddd87c](https://github.com/tsyirvo/react-native-starter/commit/6ddd87c218f3257797443e89f907ffa25ee5e393))
+* update testing strategy ([#257](https://github.com/tsyirvo/react-native-starter/issues/257)) ([979d48d](https://github.com/tsyirvo/react-native-starter/commit/979d48ddb3390e3db0bfabf68a8d7443d4a087f4))
+
 ## [1.1.0](https://github.com/tsyirvo/react-native-starter/compare/v1.0.0...v1.1.0) (2021-01-04)
 
 
