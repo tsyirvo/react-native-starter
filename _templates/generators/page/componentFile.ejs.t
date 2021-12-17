@@ -1,33 +1,20 @@
 ---
-to: src/components/<%= h.changeCase.pascalCase(componentName) %>/components/<%= h.changeCase.pascalCase(componentName) %>.tsx
+to: src/pages/<%= h.changeCase.pascalCase(componentName) %>.tsx
 ---
-import React, { Component } from 'react';
+import { Box, Text } from '$components/ui/primitives';
+import SafeView from '$components/ui/SafeView';
+import { <%= h.changeCase.pascalCase(componentName) %>ScreenNavigationProp } from '$navigation/navigation.types';
 
-import { Flex, Title } from '$shared/primitives';
-import SafeView from '$shared/SafeView';
-
-type Props = {
-  someProps?: string;
+type <%= h.changeCase.pascalCase(componentName) %>Props = {
+  navigation: <%= h.changeCase.pascalCase(componentName) %>ScreenNavigationProp;
 };
 
-const initialState = {
-  someState: 'Some state',
-};
-
-type State = typeof initialState;
-
-class <%= h.changeCase.pascalCase(componentName) %> extends Component<Props, State> {
-  state = initialState;
-
-  render() {
-    return (
-      <SafeView>
-        <Flex justifyContent="center" alignItems="center">
-          <Title><%= h.changeCase.pascalCase(componentName) %> page</Title>
-        </Flex>
-      </SafeView>
-    );
-  }
-}
+const <%= h.changeCase.pascalCase(componentName) %> = ({ navigation }: <%= h.changeCase.pascalCase(componentName) %>Props) => (
+  <SafeView edges={['bottom']}>
+    <Box flex={1}>
+      <Text variant="large"><%= h.changeCase.pascalCase(componentName) %> page</Text>
+    </Box>
+  </SafeView>
+);
 
 export default <%= h.changeCase.pascalCase(componentName) %>;

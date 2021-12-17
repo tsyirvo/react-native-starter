@@ -1,10 +1,10 @@
-import React, { Component, ErrorInfo, ReactElement } from 'react';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { Component, ErrorInfo, ReactElement } from 'react';
 
-import { Flex, Title, Text, Button } from '$shared/primitives';
-import SafeView from '$shared/SafeView';
+import { Box, Button, Text } from '$components/ui/primitives';
+import SafeView from '$components/ui/SafeView';
+import i18n from '$i18n/config';
 
-type ErrorBoundaryProps = WithTranslation & {
+type ErrorBoundaryProps = {
   children: ReactElement;
 };
 
@@ -21,7 +21,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  componentDidCatch(_: Error, errorInfo: ErrorInfo) {
     console.log('Send error for reporting', errorInfo);
   }
 
@@ -33,29 +33,34 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     const { hasError } = this.state;
-    const { children, t } = this.props;
+    const { children } = this.props;
 
     if (hasError) {
       return (
         <SafeView>
-          <Flex
+          <Box
+            flex={1}
             alignSelf="center"
             alignItems="center"
             justifyContent="center"
             width="80%"
           >
-            <Title mb="large">{t('errorBoundary.title')}</Title>
+            <Text variant="large" mb="global_8">
+              {i18n.t('errorBoundary.title')}
+            </Text>
 
-            <Text textAlign="center">{t('errorBoundary.description')}</Text>
+            <Text variant="medium" textAlign="center">
+              {i18n.t('errorBoundary.description')}
+            </Text>
 
-            <Button
-              mt="large"
-              alignItems="center"
-              onPress={this.handleApplicationReset}
-            >
-              <Text textAlign="center">{t('errorBoundary.cta')}</Text>
-            </Button>
-          </Flex>
+            <Box mt="global_32">
+              <Button
+                alignItems="center"
+                onPress={this.handleApplicationReset}
+                label={i18n.t('errorBoundary.cta')}
+              />
+            </Box>
+          </Box>
         </SafeView>
       );
     }
@@ -64,4 +69,4 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 }
 
-export default withTranslation()(ErrorBoundary);
+export default ErrorBoundary;

@@ -28,6 +28,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
 android/java*
 
 # node.js
@@ -78,6 +79,7 @@ test-results.json
 android/fastlane/api-*.json
 android/private_key.pepk
 android/app/*/release/*.aab
+android/google-credential-key.json
 
 # iOS releases
 ios/*.dSYM.zip
@@ -87,3 +89,6 @@ ios/tmp.xcconfig
 
 # Play store
 android/google-credential-key.json
+
+# Detox
+artifacts/

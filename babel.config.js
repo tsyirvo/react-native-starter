@@ -1,5 +1,10 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
+  presets: [
+    [
+      'module:metro-react-native-babel-preset',
+      { useTransformReactJSXExperimental: true },
+    ],
+  ],
   env: {
     production: {
       plugins: ['transform-remove-console'],
@@ -7,30 +12,22 @@ module.exports = {
   },
   plugins: [
     [
-      'module-resolver',
+      '@babel/plugin-transform-react-jsx',
       {
-        root: ['./src'],
-        extensions: [
-          '.ios.js',
-          '.android.js',
-          '.js',
-          '.jsx',
-          '.json',
-          '.ts',
-          '.tsx',
-        ],
-        alias: {
-          $assets: './src/assets',
-          $components: './src/components',
-          $shared: './src/components/shared',
-          $pages: './src/pages',
-          $routes: './src/routes',
-          $styles: './src/styles',
-          $utils: './src/utils',
-          $tests: './src/tests',
-          $i18n: './src/i18n',
-        },
+        runtime: 'automatic',
       },
     ],
+    [
+      'babel-plugin-root-import',
+      {
+        paths: [
+          {
+            rootPathSuffix: 'src',
+            rootPathPrefix: '$',
+          },
+        ],
+      },
+    ],
+    'react-native-reanimated/plugin',
   ],
 };

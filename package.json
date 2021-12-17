@@ -1,7 +1,8 @@
 {
   "name": "rn-starter",
-  "version": "1.1.0",
-  "private": true,
+  "version": "1.2.0",
+  "description": "Default starter with basic builtin and configs used in my React Native projects",
+  "author": "Gabriel Hofman <gabriel.hofman.00@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/tsyirvo/react-native-starter.git"
@@ -9,135 +10,167 @@
   "bugs": {
     "url": "https://github.com/tsyirvo/react-native-starter/issues"
   },
+  "keywords": [
+    "React Native",
+    "Starter",
+    "Boilerplate"
+  ],
+  "license": "ISC",
   "scripts": {
-    "start": "react-native start",
+    "start": "react-native start --reset-cache",
+    "//// SETUP ////": "",
+    "install:all": "yarn && npx pod-install",
+    "clean": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules",
+    "//// IOS ////": "",
     "ios:development": "react-native run-ios --scheme=rnStarter-development",
     "ios:staging": "react-native run-ios --scheme=rnStarter-staging",
     "ios:production": "react-native run-ios --scheme=rnStarter-production",
+    "//// ANDROID ////": "",
     "android:development": "react-native run-android --variant=developmentDebug --appIdSuffix=development",
     "android:staging": "react-native run-android --variant=stagingDebug --appIdSuffix=staging",
     "android:production": "react-native run-android --variant=productionDebug",
-    "clean": "watchman watch-del-all && rm -rf $TMPDIR/react-* && rm -rf $TMPDIR/metro-* && rm -rf node_modules",
-    "install:all": "yarn && npx pod-install",
-    "test": "jest --runInBand --outputFile test-results.json --json",
+    "//// TESTS ////": "",
+    "test": "jest --runInBand",
     "test:staged": "jest -o --passWithNoTests --runInBand",
-    "tsc": "tsc --noEmit --project tsconfig.json",
-    "lint": "eslint ./ --ext .js,.ts,.tsx --cache --fix --ignore-path .gitignore",
-    "prettify": "yarn prettier --write './**/*.{ts,tsx}'",
+    "//// E2E ////": "",
+    "test:android:build": "detox build -c android.sim.debug --workers 2",
+    "test:android": "detox test -c android.sim.debug --workers 1",
+    "test:android:release:build": "detox build -c android.sim.release --workers 1",
+    "test:android:release": "detox test -c android.sim.release --record-logs all --debug-synchronization 500 --take-screenshots failing --record-videos failing --workers 1",
+    "test:ios:build": "detox build -c ios.sim.debug --workers 1",
+    "test:ios": "detox test -c ios.sim.debug --workers 1",
+    "test:ios:release:build": "detox build -c ios.sim.release --workers 1",
+    "test:ios:release": "detox test -c ios.sim.release --record-logs all --debug-synchronization 500 --take-screenshots failing --record-videos failing --workers 1",
+    "//// QUALITY ////": "",
+    "tsc": "tsc",
+    "lint": "eslint ./ --ext .js,.ts,.tsx --fix --ignore-path .gitignore",
+    "prettify": "yarn prettier --write './**/*.{js,ts,tsx}'",
+    "//// UTILITIES ////": "",
     "image:add": "node scripts/images.js",
     "generate:page": "npx hygen generators page",
-    "generate:fc": "npx hygen generators fc",
-    "generate:class": "npx hygen generators class",
-    "prestorybook": "rnstl",
-    "storybook": "(adb reverse tcp:7007 tcp:7007 || true) && start-storybook",
+    "generate:icons": "svgr --native --typescript --ignore-existing --svgo-config src/components/icons/svgs/config/svgo.json --index-template src/components/icons/svgs/config/index-template.js --template src/components/icons/svgs/config/icon-template.js --out-dir src/components/icons/components src/components/icons/svgs",
+    "//// VERSIONNING ////": "",
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
-    "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\""
+    "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\"",
+    "version:tag": "standard-version",
+    "//// MISC ////": "",
+    "perf:bundle": "npx react-native-bjsxBracketSameLineundle-visualizer",
+    "prepare": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
+  "dependencies": {
+    "@react-native-masked-view/masked-view": "0.2.6",
+    "@react-navigation/core": "6.1.0",
+    "@react-navigation/native": "6.0.6",
+    "@react-navigation/stack": "6.0.11",
+    "@shopify/restyle": "1.6.1",
+    "i18n-js": "3.8.0",
+    "react": "17.0.2",
+    "react-native": "0.66.4",
+    "react-native-code-push": "7.0.4",
+    "react-native-config": "1.4.5",
+    "react-native-fast-image": "8.5.11",
+    "react-native-gesture-handler": "2.1.0",
+    "react-native-keyboard-aware-scroll-view": "0.9.5",
+    "react-native-localize": "2.1.6",
+    "react-native-mmkv": "1.5.4",
+    "react-native-reanimated": "2.3.1",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "3.10.1",
+    "react-native-svg": "12.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@babel/plugin-transform-react-jsx": "7.16.0",
+    "@babel/runtime": "7.16.3",
+    "@commitlint/cli": "15.0.0",
+    "@commitlint/config-conventional": "15.0.0",
+    "@svgr/cli": "5.5.0",
+    "@testing-library/jest-native": "4.0.4",
+    "@testing-library/react-native": "9.0.0",
+    "@types/i18n-js": "3.8.2",
+    "@types/jest": "27.0.3",
+    "@types/lodash": "4.14.178",
+    "@types/react": "17.0.37",
+    "@types/react-native": "0.66.9",
+    "@types/react-navigation": "3.4.0",
+    "@types/react-test-renderer": "17.0.1",
+    "babel-jest": "27.4.5",
+    "babel-loader": "8.2.3",
+    "babel-plugin-root-import": "6.6.0",
+    "babel-plugin-transform-remove-console": "6.9.4",
+    "chalk": "4.1.2",
+    "detox": "19.3.1",
+    "eslint": "8.3.0",
+    "eslint-config-tsyirvo-react-native": "1.1.1",
+    "husky": "7.0.4",
+    "hygen": "6.1.0",
+    "imageoptim": "0.5.0",
+    "is-image": "3.0.0",
+    "jest": "27.4.5",
+    "jest-circus": "27.4.5",
+    "lint-staged": "12.1.2",
+    "lodash": "4.17.21",
+    "metro-react-native-babel-preset": "0.66.2",
+    "ora": "6.0.1",
+    "patch-package": "6.4.7",
+    "path": "0.12.7",
+    "prettier": "2.5.1",
+    "react-dom": "17.0.1",
+    "react-native-dev-menu": "4.0.2",
+    "react-test-renderer": "17.0.2",
+    "sharp": "0.29.3",
+    "standard-version": "9.3.2",
+    "ts-jest": "27.1.1",
+    "typescript": "4.5.4"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "yarn prettify"
+      "bash -c tsc --noEmit",
+      "bash -c yarn lint",
+      "bash -c yarn prettify",
+      "bash -c yarn test"
     ]
   },
-  "config": {
-    "react-native-storybook-loader": {
-      "searchDir": [
-        "./src",
-        "./storybook"
-      ],
-      "pattern": "**/*.stories.tsx",
-      "outputFile": "./storybook/storyLoader.js"
+  "jest": {
+    "cacheDirectory": ".jest/cache",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "e2e/"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
     }
   },
-  "dependencies": {
-    "@react-native-async-storage/async-storage": "1.13.2",
-    "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/native": "5.8.10",
-    "@react-navigation/stack": "5.12.8",
-    "i18next": "19.8.4",
-    "react": "16.13.1",
-    "react-i18next": "11.8.5",
-    "react-native": "0.63.3",
-    "react-native-code-push": "6.4.1",
-    "react-native-config": "1.4.1",
-    "react-native-gesture-handler": "1.9.0",
-    "react-native-reanimated": "1.13.2",
-    "react-native-safe-area-context": "3.1.9",
-    "react-native-screens": "2.16.1",
-    "styled-components": "5.2.1",
-    "styled-system": "5.1.5"
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
-  "devDependencies": {
-    "@babel/core": "7.11.6",
-    "@babel/runtime": "7.11.2",
-    "@commitlint/cli": "9.1.2",
-    "@commitlint/config-conventional": "9.1.2",
-    "@storybook/addon-actions": "5.3.19",
-    "@storybook/addon-backgrounds": "5.3.19",
-    "@storybook/addon-knobs": "5.3.19",
-    "@storybook/addon-ondevice-actions": "5.3.19",
-    "@storybook/addon-ondevice-backgrounds": "5.3.19",
-    "@storybook/addon-ondevice-knobs": "5.3.19",
-    "@storybook/addon-storyshots": "5.3.19",
-    "@storybook/react-native": "5.3.19",
-    "@storybook/react-native-server": "5.3.19",
-    "@testing-library/jest-native": "3.4.2",
-    "@testing-library/react-native": "7.0.2",
-    "@types/jest": "26.0.9",
-    "@types/lodash": "4.14.161",
-    "@types/react": "16.9.46",
-    "@types/react-native": "0.63.8",
-    "@types/react-navigation": "3.4.0",
-    "@types/react-test-renderer": "16.9.3",
-    "@types/styled-components": "5.1.3",
-    "@types/styled-system": "5.1.10",
-    "@typescript-eslint/eslint-plugin": "4.8.2",
-    "@typescript-eslint/parser": "4.8.2",
-    "babel-eslint": "10.1.0",
-    "babel-jest": "26.3.0",
-    "babel-loader": "8.1.0",
-    "babel-plugin-module-resolver": "4.0.0",
-    "babel-plugin-transform-remove-console": "6.9.4",
-    "chalk": "4.1.0",
-    "danger": "10.4.0",
-    "danger-plugin-jest": "1.3.0",
-    "danger-plugin-todos": "1.3.0",
-    "detox": "17.4.5",
-    "eslint": "7.8.1",
-    "eslint-config-airbnb-typescript": "12.0.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-import-resolver-babel-module": "5.1.2",
-    "eslint-import-resolver-react-native": "0.2.0",
-    "eslint-plugin-import": "2.22.0",
-    "eslint-plugin-jsx-a11y": "6.3.1",
-    "eslint-plugin-module-resolver": "1.0.0",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-react": "7.21.5",
-    "eslint-plugin-react-hooks": "4.1.0",
-    "husky": "4.2.5",
-    "hygen": "6.0.4",
-    "imageoptim": "0.5.0",
-    "is-image": "3.0.0",
-    "jest": "25.5.4",
-    "jest-circus": "26.3.0",
-    "lint-staged": "10.3.0",
-    "lodash": "4.17.20",
-    "metro-react-native-babel-preset": "0.62.0",
-    "ora": "5.1.0",
-    "path": "0.12.7",
-    "prettier": "2.1.1",
-    "react-dom": "16.11.0",
-    "react-native-dev-menu": "4.0.2",
-    "react-native-storybook-loader": "2.0.2",
-    "react-test-renderer": "16.13.1",
-    "sharp": "0.26.0",
-    "standard-version": "9.0.0",
-    "ts-jest": "25.5.1",
-    "typescript": "4.0.2"
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "extends": [
+      "tsyirvo-react-native"
+    ],
+    "ignorePatterns": "src/components/icons/components/"
   }
 }

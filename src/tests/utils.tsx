@@ -1,17 +1,26 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import { render as rtlRender, RenderAPI } from '@testing-library/react-native';
-import React, { ReactElement } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@shopify/restyle';
+import {
+  cleanup,
+  render as rtlRender,
+  RenderAPI,
+} from '@testing-library/react-native';
+import { ReactElement } from 'react';
 
-import theme from '$styles/theme';
+import { initI18n } from '$i18n/config';
+import { theme } from '$styles/theme';
 
-const render = (page: ReactElement): RenderAPI => {
-  const pageContainerComponent = (
-    <ThemeProvider theme={theme}>{page}</ThemeProvider>
-  );
+initI18n();
 
-  return rtlRender(pageContainerComponent);
+afterEach(cleanup);
+
+const customRender = (component: ReactElement): RenderAPI => {
+  const wrapper = <ThemeProvider theme={theme}>{component}</ThemeProvider>;
+
+  return rtlRender(wrapper);
 };
 
-export default render;
+// re-export everything
+export * from '@testing-library/react-native';
+export { customRender as render };

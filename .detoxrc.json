@@ -7,7 +7,7 @@
       "build": "xcodebuild -workspace ios/rnStarter.xcworkspace -scheme rnStarter-staging -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.simulator",
       "device": {
-        "type": "iPhone 11"
+        "type": "iPhone 13"
       }
     },
     "ios.sim.release": {
@@ -15,31 +15,23 @@
       "build": "xcodebuild -workspace ios/rnStarter.xcworkspace -scheme rnStarter-staging -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.simulator",
       "device": {
-        "type": "iPhone 11"
+        "type": "iPhone 13"
       }
     },
-    "android.emu.debug": {
+    "android.sim.debug": {
       "binaryPath": "android/app/build/outputs/apk/staging/debug/app-staging-debug.apk",
       "build": "cd android && ./gradlew assembleStagingDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
       "type": "android.emulator",
       "device": {
-        "avdName": "Pixel_3a_API_28"
+        "avdName": "Pixel_5_API_30"
       }
     },
-    "android.emu.release": {
+    "android.sim.release": {
       "binaryPath": "android/app/build/outputs/apk/staging/release/app-staging-release.apk",
       "build": "cd android && ./gradlew assembleStagingRelease assembleAndroidTest -DtestBuildType=release && cd ..",
       "type": "android.emulator",
       "device": {
-        "avdName": "Pixel_3a_API_28"
-      }
-    },
-    "android.emu.ci": {
-      "binaryPath": "android/app/build/outputs/apk/staging/release/app-staging-release.apk",
-      "build": "cd android && ./gradlew assembleStagingRelease assembleAndroidTest -DtestBuildType=release && cd ..",
-      "type": "android.emulator",
-      "device": {
-        "avdName": "test"
+        "avdName": "Pixel_5_API_30"
       }
     }
   }

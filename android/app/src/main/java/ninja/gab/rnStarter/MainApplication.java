@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.microsoft.codepush.react.CodePush;
 import androidx.multidex.MultiDexApplication;
+import com.facebook.react.bridge.JSIModulePackage;
 
 public class MainApplication extends MultiDexApplication implements ReactApplication {
 
@@ -39,6 +40,11 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
         @Override
         protected String getJSMainModuleName() {
           return "index";
+        }
+
+        @Override
+        protected JSIModulePackage getJSIModulePackage() {
+          return new JSIPackage();
         }
       };
 

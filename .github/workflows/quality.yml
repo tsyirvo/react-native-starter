@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - develop
+    paths:
+      - '*'
 
 jobs:
   quality:
@@ -16,7 +18,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '10.23.0'
+          node-version: '14.18.1'
 
       - name: Check node_modules cache
         uses: actions/cache@v2
@@ -36,8 +38,3 @@ jobs:
           yarn test
           yarn tsc
           yarn lint
-
-      - name: Run DangerJS
-        env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
-        run: yarn danger ci

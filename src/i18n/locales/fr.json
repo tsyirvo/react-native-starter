@@ -1,25 +1,32 @@
 {
-  "translation": {
-    "home": {
-      "page_title": "Page d'accueil",
-      "navigation_title": "Naviguer vers une autre page",
-      "navigation_content": "Touchez pour naviguer",
-      "storybook_title": "Storybook",
-      "storybook_content": "Accéder au Storybook avec",
-      "test_title": "Tests",
-      "test_content": "Vous pouvez faire tourner les tests avec Jest ou Detox",
-      "formatting_title": "Formatage & type checking",
-      "formatting_content": "Le code est vérifié avec ESLint, Prettier and TypeScript"
+  "home": {
+    "navigation": {
+      "title": "Naviguer vers une autre page",
+      "content": "Touchez pour naviguer"
     },
-    "otherPage": {
-      "page_name": "Une autre page",
-      "page_title": "Une autre page",
-      "navigation_back": "Retour en arrière"
+    "storybook": {
+      "title": "Storybook",
+      "content": "Accéder au Storybook avec"
     },
-    "errorBoundary": {
-      "title": "Erreur",
-      "description": "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
-      "cta": "Relancer l'app"
+    "tests": {
+      "title": "Tests",
+      "content": "Vous pouvez faire tourner les tests avec Jest ou Detox"
+    },
+    "formatting": {
+      "title": "Formatage & type checking",
+      "content": "Le code est vérifié avec ESLint, Prettier and TypeScript"
     }
+  },
+  "otherPage": {
+    "navigation": {
+      "tabBar": "Une autre page",
+      "title": "Une autre page",
+      "backCta": "Retour en arrière"
+    }
+  },
+  "errorBoundary": {
+    "title": "Erreur",
+    "description": "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
+    "cta": "Relancer l'app"
   }
 }
