@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar, StyleSheet } from 'react-native';
 import codePush from 'react-native-code-push';
@@ -43,6 +44,14 @@ const Root = () => (
     </GestureHandlerRootView>
   </ThemeProvider>
 );
+
+Sentry.init({
+  dsn: config.sentryDsn,
+  // Change the sample rate to prevent maxing out quotas
+  tracesSampleRate: 1,
+  environment: config.env,
+  debug: config.isDev,
+});
 
 const isCodepushEnabled = () =>
   !!(config.android.codepushKey ?? config.ios.codepushKey);
