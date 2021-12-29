@@ -2,7 +2,7 @@ import { useNavigationContainerRef } from '@react-navigation/core';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { routingInstrumentation } from '$core/errorMonitoring';
+import { routingInstrumentation } from '$core/monitoring/errorMonitoring';
 import i18n from '$i18n/config';
 
 import { RootStackParamList } from './navigation.types';

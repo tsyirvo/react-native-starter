@@ -8,7 +8,7 @@ import {
 } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
 
-import * as Monitoring from '$core/errorMonitoring';
+import * as Monitoring from '$core/monitoring/errorMonitoring';
 import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
