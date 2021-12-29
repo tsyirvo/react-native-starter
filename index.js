@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';
 import { AppRegistry } from 'react-native';
 
-import errorMonitoring from '$core/errorMonitoring';
+import { ErrorMonitoring } from '$core/monitoring';
 
 import { name as appName } from './app.json';
 import Root from './src/App.tsx';
 
-errorMonitoring.init();
+ErrorMonitoring.init();
 
 AppRegistry.registerComponent(appName, () => Root);

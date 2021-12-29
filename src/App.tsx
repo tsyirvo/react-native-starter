@@ -8,6 +8,7 @@ import {
 } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
 
+import * as Monitoring from '$core/monitoring/errorMonitoring';
 import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
@@ -56,4 +57,4 @@ const codePushOptions = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-export default codePush(codePushOptions)(Root);
+export default codePush(codePushOptions)(Monitoring.wrap(Root));
