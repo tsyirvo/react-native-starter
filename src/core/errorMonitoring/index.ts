@@ -7,6 +7,9 @@ import { Primitives } from '$types';
 const prodSampleRate = 0.05;
 const fullSampleRate = 1;
 
+export const routingInstrumentation =
+  new Sentry.ReactNavigationInstrumentation();
+
 class ErrorMonitoring {
   init() {
     const sampleRate =
@@ -19,6 +22,12 @@ class ErrorMonitoring {
       enabled: isEnabled,
       environment: config.env,
       debug: config.isDebug,
+      integrations: [
+        new Sentry.ReactNativeTracing({
+          tracingOrigins: ['localhost', 'codepushupdates.azureedge.net', /^\//],
+          routingInstrumentation,
+        }),
+      ],
     });
   }
 
@@ -58,5 +67,7 @@ class ErrorMonitoring {
     Sentry.addBreadcrumb(breadcrumb);
   }
 }
+
+export * from '@sentry/react-native';
 
 export default new ErrorMonitoring();
