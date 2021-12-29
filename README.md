@@ -16,6 +16,7 @@
   - [Github Actions](#github-actions)
   - [CodePush](#codepush)
   - [Release and Beta deployments](#release-and-beta-deployments)
+  - [Configure the tools](#configure-the-tools)
   - [Tips](#tips)
 
 ---
@@ -225,6 +226,15 @@ You can check the expiracy date of push certificates and create new ones if nece
 ```
 fastlane pem_check
 ```
+
+## Configure the tools
+
+Some tools are installed in the project, but you'll need to add your API keys and such to have them work properly. Check the documentation of each of those libraries on how to do this.
+
+You will have to finalize the following configurations:
+
+- Sentry
+- CodePush
 
 ## Tips
 

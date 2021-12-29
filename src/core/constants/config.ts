@@ -5,6 +5,8 @@ const config = {
   supportedLocales: ['en', 'fr'],
   appName: RNConfig.APP_NAME,
   env: RNConfig.ENV,
+  isDebug: __DEV__,
+  sentryDsn: RNConfig.SENTRY_DSN,
   ios: {
     codepushKey: RNConfig.IOS_CODEPUSH_KEY,
   },
