@@ -54,7 +54,7 @@
     "version:changelog": "standard-version --skip.commit --skip.tag --dry-run --silent --bumpFiles \"package.json\" | awk 'NR > 5 { print }' | sed \"s/(\\[.*$//\" | sed \"s/[^[:alnum:][:punct:][:space:]]//g\"",
     "version:tag": "standard-version",
     "//// MISC ////": "",
-    "perf:bundle": "npx react-native-bjsxBracketSameLineundle-visualizer",
+    "perf:bundle": "npx react-native-bundle-visualizer",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -77,7 +77,8 @@
     "react-native-reanimated": "2.3.1",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "3.10.1",
-    "react-native-svg": "12.1.1"
+    "react-native-svg": "12.1.1",
+    "react-native-toast-message": "2.1.1"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",
