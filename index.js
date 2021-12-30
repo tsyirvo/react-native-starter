@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+
 import 'react-native-gesture-handler';
 import { AppRegistry } from 'react-native';
 
