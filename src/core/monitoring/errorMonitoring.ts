@@ -13,11 +13,17 @@ const fullSampleRate = 1;
 export const routingInstrumentation =
   new Sentry.ReactNavigationInstrumentation();
 
-class ErrorMonitoring {
+class ErrorMonitoringClass {
+  /* ***** *****  Setup  ***** ***** */
+
   init() {
     const sampleRate =
       config.env === 'production' ? prodSampleRate : fullSampleRate;
     const isEnabled = config.env !== 'development' && !config.isDebug;
+
+    if (!config.sentryDsn) {
+      return;
+    }
 
     Sentry.init({
       dsn: config.sentryDsn,
@@ -75,6 +81,7 @@ class ErrorMonitoring {
   }
 }
 
-export * from '@sentry/react-native';
+const ErrorMonitoring = new ErrorMonitoringClass();
 
-export default new ErrorMonitoring();
+export * from '@sentry/react-native';
+export default ErrorMonitoring;

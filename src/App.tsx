@@ -51,8 +51,7 @@ const Root = () => (
   </ThemeProvider>
 );
 
-const isCodepushEnabled = () =>
-  !!(config.android.codepushKey ?? config.ios.codepushKey);
+const isCodepushEnabled = () => !!config.codepushKey;
 
 const codePushOptions = {
   checkFrequency: isCodepushEnabled()

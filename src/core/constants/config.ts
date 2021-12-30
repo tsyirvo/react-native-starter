@@ -1,5 +1,7 @@
 import RNConfig from 'react-native-config';
 
+import { isIOS } from './platform';
+
 const config = {
   defaultLocale: 'en',
   supportedLocales: ['en', 'fr'],
@@ -7,12 +9,10 @@ const config = {
   env: RNConfig.ENV,
   isDebug: __DEV__,
   sentryDsn: RNConfig.SENTRY_DSN,
-  ios: {
-    codepushKey: RNConfig.IOS_CODEPUSH_KEY,
-  },
-  android: {
-    codepushKey: RNConfig.ANDROID_CODEPUSH_KEY,
-  },
+  mixpanelToken: RNConfig.MIXPANEL_TOKEN,
+  codepushKey: isIOS
+    ? RNConfig.IOS_CODEPUSH_KEY
+    : RNConfig.ANDROID_CODEPUSH_KEY,
 };
 
 export default config;

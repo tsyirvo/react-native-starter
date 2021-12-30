@@ -8,8 +8,10 @@ import Toaster from '$core/toaster';
 import { ErrorType, NetworkErrorType, UserMessageType } from './logger.types';
 import hasUserMessage from './logger.utils';
 
-class Logger {
-  showToast(userMessage: UserMessageType) {
+class LoggerClass {
+  /* ***** *****  UI  ***** ***** */
+
+  showToast(userMessage?: UserMessageType) {
     // Display a Toast for the user if needed
     if (hasUserMessage(userMessage)) {
       Toaster.show({
@@ -23,6 +25,8 @@ class Logger {
   removeToast() {
     Toaster.hide();
   }
+
+  /* ***** *****  Logging  ***** ***** */
 
   networkError({ description, requestData, userMessage }: NetworkErrorType) {
     ErrorMonitoring.breadcrumbs({
@@ -56,4 +60,6 @@ class Logger {
   }
 }
 
-export default new Logger();
+const Logger = new LoggerClass();
+
+export default Logger;

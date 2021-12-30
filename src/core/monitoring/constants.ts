@@ -27,3 +27,9 @@ export const tags = {
   locale: 'Locale',
   env: 'Environment',
 };
+
+/* ***** *****  Errors  ***** ***** */
+
+export const errors = {
+  sdk: 'sdk',
+};

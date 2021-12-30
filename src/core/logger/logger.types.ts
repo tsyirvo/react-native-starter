@@ -15,7 +15,7 @@ export type NetworkErrorType = {
     statusCode?: number;
     reason?: string;
   };
-  userMessage: UserMessageType;
+  userMessage?: UserMessageType;
 };
 
 /* ***** *****  Error  ***** ***** */
@@ -24,5 +24,5 @@ export type ErrorType = {
   error: unknown;
   type: string;
   message: string;
-  userMessage: UserMessageType;
+  userMessage?: UserMessageType;
 };
