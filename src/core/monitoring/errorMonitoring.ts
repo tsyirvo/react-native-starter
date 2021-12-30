@@ -1,4 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import * as Sentry from '@sentry/react-native';
+import { CaptureContext } from '@sentry/types';
 
 import { config } from '$core/constants';
 
@@ -47,12 +50,12 @@ class ErrorMonitoring {
     Sentry.captureEvent(event);
   }
 
-  expeption(exception: unknown) {
+  exception(exception: unknown) {
     Sentry.captureException(exception);
   }
 
-  message(message: string) {
-    Sentry.captureMessage(message);
+  message(message: string, context?: CaptureContext | Sentry.Severity) {
+    Sentry.captureMessage(message, context);
   }
 
   tag(key: string, value: Primitives) {
@@ -65,6 +68,10 @@ class ErrorMonitoring {
 
   breadcrumbs(breadcrumb: Sentry.Breadcrumb) {
     Sentry.addBreadcrumb(breadcrumb);
+  }
+
+  scope(callback: (scope: Sentry.Scope) => void) {
+    Sentry.withScope(callback);
   }
 }
 
