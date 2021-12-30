@@ -7,8 +7,10 @@ import {
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
+import Toast from 'react-native-toast-message';
 
 import * as Monitoring from '$core/monitoring/errorMonitoring';
+import toastConfig from '$core/toaster/layouts';
 import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
@@ -37,7 +39,11 @@ const Root = () => (
       <ErrorBoundary>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           <Sandbox>
-            <RootStack />
+            <>
+              <RootStack />
+
+              <Toast config={toastConfig} />
+            </>
           </Sandbox>
         </SafeAreaProvider>
       </ErrorBoundary>
