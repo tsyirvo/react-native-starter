@@ -11,6 +11,7 @@ import Toast from 'react-native-toast-message';
 
 import * as Monitoring from '$core/monitoring/errorMonitoring';
 import toastConfig from '$core/toaster/layouts';
+import AppUpdateNeeded from '$pages/AppUpdateNeeded';
 import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
@@ -43,6 +44,8 @@ const App = () => (
               <RootStack />
 
               <Toast config={toastConfig} />
+
+              <AppUpdateNeeded />
             </>
           </Sandbox>
         </SafeAreaProvider>
