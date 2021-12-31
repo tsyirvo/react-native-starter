@@ -26,6 +26,13 @@ export const breadcrumbsCategory = {
 export const tags = {
   locale: 'Locale',
   env: 'Environment',
+  codepush: 'Codepush',
+};
+
+/* ***** *****  Contexts  ***** ***** */
+
+export const contexts = {
+  codepush: 'Codepush',
 };
 
 /* ***** *****  Errors  ***** ***** */

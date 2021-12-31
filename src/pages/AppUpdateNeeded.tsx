@@ -5,6 +5,7 @@ import { Box, Text } from '$components/ui/primitives';
 import { config } from '$core/constants';
 import FeatureFlags from '$core/featureFlags';
 import useRunOnMount from '$hooks/useRunOnMount';
+import i18n from '$i18n/config';
 
 const AppUpdateNeeded = () => {
   const [isAppUnsupported, setIsAppUnsupported] = useState(false);
@@ -38,12 +39,10 @@ const AppUpdateNeeded = () => {
       px="global_32"
     >
       <Text variant="large" pb="global_8">
-        Your app is outdated
+        {i18n.t('appUpdate.title')}
       </Text>
 
-      <Text textAlign="center">
-        Please go update the application to access the latest features
-      </Text>
+      <Text textAlign="center">{i18n.t('appUpdate.description')}</Text>
     </Box>
   );
 };
