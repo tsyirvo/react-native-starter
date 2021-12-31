@@ -1,6 +1,8 @@
 {
   "name": "rn-starter",
   "version": "1.2.0",
+  "buildNumber": "100",
+  "codePush": "0",
   "description": "Default starter with basic builtin and configs used in my React Native projects",
   "author": "Gabriel Hofman <gabriel.hofman.00@gmail.com>",
   "repository": {
