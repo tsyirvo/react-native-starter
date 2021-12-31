@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { ScrollView } from 'react-native';
 
 import { Header, Informations } from '$components/home';
 import { Box, Button, Text } from '$components/ui/primitives';
 import SafeView from '$components/ui/SafeView';
+import FeatureFlags from '$core/featureFlags';
 import i18n from '$i18n/config';
 import { HomeScreenNavigationProp } from '$navigation/navigation.types';
 
@@ -12,6 +14,16 @@ type Props = {
 
 const Home = ({ navigation }: Props) => {
   const goToOtherPage = () => navigation.navigate('OtherPage');
+
+  useEffect(() => {
+    const areFlagsEnabled = FeatureFlags.getBooleanValue(
+      'areFeatureFlagsEnabled',
+    );
+    const source = FeatureFlags.getValueSource('areFeatureFlagsEnabled');
+
+    console.log('areFlagsEnabled', areFlagsEnabled);
+    console.log('source', source);
+  }, []);
 
   return (
     <SafeView edges={['bottom']}>

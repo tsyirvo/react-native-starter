@@ -58,6 +58,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@react-native-firebase/app": "14.1.0",
+    "@react-native-firebase/remote-config": "14.1.0",
     "@react-native-masked-view/masked-view": "0.2.6",
     "@react-navigation/core": "6.1.0",
     "@react-navigation/native": "6.0.6",

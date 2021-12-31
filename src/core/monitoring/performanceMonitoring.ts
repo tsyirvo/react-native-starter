@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/react-native';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Span, TransactionContext } from '@sentry/types';
 
-class PerformanceMonitoring {
+class PerformanceMonitoringClass {
   startTransaction(context: TransactionContext) {
     Sentry.startTransaction(context);
   }
@@ -18,4 +18,6 @@ class PerformanceMonitoring {
   }
 }
 
-export default new PerformanceMonitoring();
+const PerformanceMonitoring = new PerformanceMonitoringClass();
+
+export default PerformanceMonitoring;
