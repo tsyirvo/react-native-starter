@@ -13,11 +13,10 @@ class AnalyticsClass {
     try {
       await mixpanel.init();
     } catch (error) {
-      console.log('Error', error);
       Logger.error({
         error,
         type: errors.sdk,
-        message: 'Failed to initialize',
+        message: 'Failed to initialize Analytics',
       });
     }
   }

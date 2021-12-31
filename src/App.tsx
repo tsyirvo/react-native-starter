@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Root = () => (
+const App = () => (
   <ThemeProvider theme={theme}>
     <StatusBar barStyle="light-content" />
 
@@ -62,4 +62,4 @@ const codePushOptions = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-export default codePush(codePushOptions)(Monitoring.wrap(Root));
+export default codePush(codePushOptions)(Monitoring.wrap(App));
