@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: "com.google.gms.google-services"
 
 // React Native Config
 project.ext.envConfigFiles = [
@@ -89,7 +90,8 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-
+// Sentry config
+apply from: "../../node_modules/@sentry/react-native/sentry.gradle"
 // CodePush config
 apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
@@ -236,6 +238,7 @@ android {
 }
 
 dependencies {
+    implementation project(':@sentry_react-native')
     implementation "androidx.multidex:multidex:2.0.1"
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion

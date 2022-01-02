@@ -1,6 +1,7 @@
+import React from 'react';
 import { ScrollView } from 'react-native';
 
-import { Header, Informations } from '$components/home';
+import { Header, Informations, Version } from '$components/home';
 import { Box, Button, Text } from '$components/ui/primitives';
 import SafeView from '$components/ui/SafeView';
 import i18n from '$i18n/config';
@@ -33,6 +34,7 @@ const Home = ({ navigation }: Props) => {
           </Box>
 
           <Informations />
+          <Version />
         </Box>
       </ScrollView>
     </SafeView>

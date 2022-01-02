@@ -5,6 +5,7 @@
   - [The setup](#the-setup)
   - [Runing the project](#runing-the-project)
   - [Stack](#stack)
+  - [Configure the tooling](#configure-the-tooling)
   - [Env files](#env-files)
   - [App signin](#app-signin)
   - [Internationalization](#internationalization)
@@ -81,6 +82,17 @@ The most useful libraries already builtin are the following:
 [CodePush](https://github.com/microsoft/react-native-code-push)
 
 A few other interesting things are configured, don't hesitate to look around.
+
+## Configure the tooling
+
+Some tools are installed in the project, but you'll need to add your API keys and such to have them work properly. Check the documentation of each of those libraries on how to do this. If you don't do this, the app won't launch at all.
+
+You will have to finalize the following configurations:
+
+- Sentry
+- CodePush
+- MixPanel
+- Firebase
 
 ## Env files
 

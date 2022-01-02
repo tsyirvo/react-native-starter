@@ -1,17 +1,23 @@
 import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar, StyleSheet } from 'react-native';
-import codePush from 'react-native-code-push';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   initialWindowMetrics,
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
+import Toast from 'react-native-toast-message';
 
+import { syncCodepush } from '$core/codepush';
+import * as Monitoring from '$core/monitoring/errorMonitoring';
+import toastConfig from '$core/toaster/layouts';
+import useRunOnMount from '$hooks/useRunOnMount';
+import AppUpdateNeeded from '$pages/AppUpdateNeeded';
+import MaintenanceMode from '$pages/MaintenanceMode';
 import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
-import { config, getDimensionRatio } from './core/constants';
+import { getDimensionRatio } from './core/constants';
 import { initI18n } from './i18n/config';
 import RootStack from './navigation/navigation';
 
@@ -28,32 +34,35 @@ const styles = StyleSheet.create({
   },
 });
 
-const Root = () => (
-  <ThemeProvider theme={theme}>
-    <StatusBar barStyle="light-content" />
+const App = () => {
+  useRunOnMount(() => {
+    syncCodepush().catch((error) => {
+      console.log('Codepush sync error: ', error);
+    });
+  });
 
-    <GestureHandlerRootView style={styles.container}>
-      <ErrorBoundary>
-        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <Sandbox>
-            <RootStack />
-          </Sandbox>
-        </SafeAreaProvider>
-      </ErrorBoundary>
-    </GestureHandlerRootView>
-  </ThemeProvider>
-);
+  return (
+    <ThemeProvider theme={theme}>
+      <StatusBar barStyle="light-content" />
 
-const isCodepushEnabled = () =>
-  !!(config.android.codepushKey ?? config.ios.codepushKey);
+      <GestureHandlerRootView style={styles.container}>
+        <ErrorBoundary>
+          <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+            <Sandbox>
+              <>
+                <RootStack />
 
-const codePushOptions = {
-  checkFrequency: isCodepushEnabled()
-    ? codePush.CheckFrequency.ON_APP_RESUME
-    : codePush.CheckFrequency.MANUAL,
-  installMode: codePush.InstallMode.ON_NEXT_SUSPEND,
-  minimumBackgroundDuration: 180,
+                <Toast config={toastConfig} />
+
+                <AppUpdateNeeded />
+                <MaintenanceMode />
+              </>
+            </Sandbox>
+          </SafeAreaProvider>
+        </ErrorBoundary>
+      </GestureHandlerRootView>
+    </ThemeProvider>
+  );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-export default codePush(codePushOptions)(Root);
+export default Monitoring.wrap(App);
