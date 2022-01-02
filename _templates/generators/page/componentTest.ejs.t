@@ -8,7 +8,7 @@ import { render } from '$tests/utils';
 import <%= h.changeCase.pascalCase(componentName) %> from '../<%= h.changeCase.pascalCase(componentName) %>';
 
 describe('<%= h.changeCase.pascalCase(componentName) %> page', () => {
-  // Given
+  // Setup
   const props = {
     navigation: navigationProps as unknown as <%= h.changeCase.pascalCase(componentName) %>ScreenNavigationProp,
   };

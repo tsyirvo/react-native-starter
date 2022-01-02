@@ -8,7 +8,7 @@ import { render, fireEvent } from '$tests/utils';
 import OtherPage from '../OtherPage';
 
 describe('OtherPage component', () => {
-  // Given
+  // Setup
   const props = {
     navigation: navigationProps as unknown as OtherPageScreenNavigationProp,
   };

@@ -7,7 +7,7 @@ import { render, fireEvent } from '$tests/utils';
 import Home from '../Home';
 
 describe('Home component', () => {
-  // Given
+  // Setup
   const props = {
     navigation: navigationProps as unknown as HomeScreenNavigationProp,
   };
