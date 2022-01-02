@@ -20,14 +20,14 @@
 		8D667FB3276B8B56003E3D16 /* WorkSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E164770E9E2F4C8E9EA9FCD0 /* WorkSans-Light.ttf */; };
 		8D667FB4276B8B56003E3D16 /* WorkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC13B7CAA39541D0A49CA2F7 /* WorkSans-Medium.ttf */; };
 		8D667FB5276B8B56003E3D16 /* WorkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C97FACC16B940D4AB831FF5 /* WorkSans-Regular.ttf */; };
-		8D9A5D3D277EF8EE00A9BA9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D9A5D3C277EF8EE00A9BA9E /* GoogleService-Info.plist */; };
-		8D9A5D3F277EF90300A9BA9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D9A5D3E277EF90300A9BA9E /* GoogleService-Info.plist */; };
-		8D9A5D41277EF90F00A9BA9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D9A5D40277EF90F00A9BA9E /* GoogleService-Info.plist */; };
 		8D9E43DA2572550400252552 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8D9E43D92572550400252552 /* Config.xcconfig */; };
 		8D9E43DB2572550400252552 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8D9E43D92572550400252552 /* Config.xcconfig */; };
 		8D9E43DC2572550400252552 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8D9E43D92572550400252552 /* Config.xcconfig */; };
 		8D9E44292572572400252552 /* development-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6FB16CB24EC92610035A6B9 /* development-Info.plist */; };
 		8D9E442D2572572E00252552 /* staging-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6FB16DE24EC92760035A6B9 /* staging-Info.plist */; };
+		8DA25280278213310026FB4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2527F278213310026FB4A /* GoogleService-Info.plist */; };
+		8DA252832782136A0026FB4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA252822782136A0026FB4A /* GoogleService-Info.plist */; };
+		8DA25286278213720026FB4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DA25285278213720026FB4A /* GoogleService-Info.plist */; };
 		B6FB16AA24EC92100035A6B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		B6FB16AC24EC92100035A6B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		B6FB16B024EC92100035A6B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -60,10 +60,10 @@
 		80BD178EE6184013A317FEB3 /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WorkSans-Bold.ttf"; path = "../src/assets/fonts/WorkSans-Bold.ttf"; sourceTree = "<group>"; };
 		81E85D54761AE3776ED3A1F3 /* libPods-rnStarter-development.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter-development.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA05D70504D8A16496B9B42 /* Pods-rnStarter-production.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarter-production.release.xcconfig"; path = "Target Support Files/Pods-rnStarter-production/Pods-rnStarter-production.release.xcconfig"; sourceTree = "<group>"; };
-		8D9A5D3C277EF8EE00A9BA9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8D9A5D3E277EF90300A9BA9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/Projects/RN Starter/Prod/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8D9A5D40277EF90F00A9BA9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/Projects/RN Starter/Staging/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D9E43D92572550400252552 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		8DA2527F278213310026FB4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8DA252822782136A0026FB4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8DA25285278213720026FB4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9B202841C6F75B32C850E983 /* Pods-rnStarter-production.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rnStarter-production.debug.xcconfig"; path = "Target Support Files/Pods-rnStarter-production/Pods-rnStarter-production.debug.xcconfig"; sourceTree = "<group>"; };
 		A8250816CF3B83CBB3BD3F11 /* libPods-rnStarter-staging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rnStarter-staging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6FB16B724EC92100035A6B9 /* Starter_Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Starter_Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,11 +195,35 @@
 		8D9A5D3B277EF8D300A9BA9E /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				8D9A5D40277EF90F00A9BA9E /* GoogleService-Info.plist */,
-				8D9A5D3E277EF90300A9BA9E /* GoogleService-Info.plist */,
-				8D9A5D3C277EF8EE00A9BA9E /* GoogleService-Info.plist */,
+				8DA25284278213720026FB4A /* Dev */,
+				8DA252812782136A0026FB4A /* Prod */,
+				8DA2527E278213310026FB4A /* Staging */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		8DA2527E278213310026FB4A /* Staging */ = {
+			isa = PBXGroup;
+			children = (
+				8DA2527F278213310026FB4A /* GoogleService-Info.plist */,
+			);
+			path = Staging;
+			sourceTree = "<group>";
+		};
+		8DA252812782136A0026FB4A /* Prod */ = {
+			isa = PBXGroup;
+			children = (
+				8DA252822782136A0026FB4A /* GoogleService-Info.plist */,
+			);
+			path = Prod;
+			sourceTree = "<group>";
+		};
+		8DA25284278213720026FB4A /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				8DA25285278213720026FB4A /* GoogleService-Info.plist */,
+			);
+			path = Dev;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,7 +350,7 @@
 			files = (
 				8D9E44292572572400252552 /* development-Info.plist in Resources */,
 				B6FB16B024EC92100035A6B9 /* Images.xcassets in Resources */,
-				8D9A5D3D277EF8EE00A9BA9E /* GoogleService-Info.plist in Resources */,
+				8DA25286278213720026FB4A /* GoogleService-Info.plist in Resources */,
 				8D9E43DA2572550400252552 /* Config.xcconfig in Resources */,
 				B6FB16B124EC92100035A6B9 /* LaunchScreen.xib in Resources */,
 				2A37C14FB47344C882070F82 /* WorkSans-Bold.ttf in Resources */,
@@ -342,7 +366,7 @@
 			files = (
 				8D667FAE276B8B50003E3D16 /* WorkSans-Bold.ttf in Resources */,
 				8D667FAF276B8B50003E3D16 /* WorkSans-Light.ttf in Resources */,
-				8D9A5D41277EF90F00A9BA9E /* GoogleService-Info.plist in Resources */,
+				8DA25280278213310026FB4A /* GoogleService-Info.plist in Resources */,
 				8D667FB0276B8B50003E3D16 /* WorkSans-Medium.ttf in Resources */,
 				8D667FB1276B8B50003E3D16 /* WorkSans-Regular.ttf in Resources */,
 				B6FB16C324EC92610035A6B9 /* Images.xcassets in Resources */,
@@ -357,7 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D667FB2276B8B56003E3D16 /* WorkSans-Bold.ttf in Resources */,
-				8D9A5D3F277EF90300A9BA9E /* GoogleService-Info.plist in Resources */,
+				8DA252832782136A0026FB4A /* GoogleService-Info.plist in Resources */,
 				8D667FB3276B8B56003E3D16 /* WorkSans-Light.ttf in Resources */,
 				8D667FB4276B8B56003E3D16 /* WorkSans-Medium.ttf in Resources */,
 				8D667FB5276B8B56003E3D16 /* WorkSans-Regular.ttf in Resources */,
