@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/tsyirvo/react-native-starter/compare/v1.2.0...v1.3.0) (2022-01-02)
+
+
+### Features
+
+* add a logger class to handle errors ([#267](https://github.com/tsyirvo/react-native-starter/issues/267)) ([92793fc](https://github.com/tsyirvo/react-native-starter/commit/92793fc37755360a78156b2affe1bb0fe9f19c8a))
+* add a maintenance screen ([#273](https://github.com/tsyirvo/react-native-starter/issues/273)) ([6a75d8c](https://github.com/tsyirvo/react-native-starter/commit/6a75d8c7fc7aaa56979ae7785fec5bc40459795f))
+* add an error monitoring tool ([#263](https://github.com/tsyirvo/react-native-starter/issues/263)) ([bbcccf0](https://github.com/tsyirvo/react-native-starter/commit/bbcccf0aa4d4ddb917e7acc490f86e43c62c5d59))
+* add app icons ([#271](https://github.com/tsyirvo/react-native-starter/issues/271)) ([8a4cd2c](https://github.com/tsyirvo/react-native-starter/commit/8a4cd2c0b8653cc721d1928fb67bf6fd0dd447ce))
+* add useful hooks often needed in projects ([#270](https://github.com/tsyirvo/react-native-starter/issues/270)) ([05ecebd](https://github.com/tsyirvo/react-native-starter/commit/05ecebd97513f3238b108184bbc7f1ba088e83b0))
+* better app versioning ([#272](https://github.com/tsyirvo/react-native-starter/issues/272)) ([5c1e973](https://github.com/tsyirvo/react-native-starter/commit/5c1e973cab5dd79edebc403db3e06e6dbcf961cb))
+* configure feature flags ([#269](https://github.com/tsyirvo/react-native-starter/issues/269)) ([52a4c64](https://github.com/tsyirvo/react-native-starter/commit/52a4c640e7e2b03673b0b1a7f3610f29ce1c64c4))
+* create an analytics abstraction ([#268](https://github.com/tsyirvo/react-native-starter/issues/268)) ([e58fa06](https://github.com/tsyirvo/react-native-starter/commit/e58fa06a2fd76ee636bee551be8fc474b0242787))
+* implement a toaster component ([#266](https://github.com/tsyirvo/react-native-starter/issues/266)) ([20cffb0](https://github.com/tsyirvo/react-native-starter/commit/20cffb0f2a4724e4bea2c0e884c23946ceb06790))
+* setup performance monitoring ([#265](https://github.com/tsyirvo/react-native-starter/issues/265)) ([18874ae](https://github.com/tsyirvo/react-native-starter/commit/18874aeb1bb56f84b2c1d24bb5591fd0fb48b3c7))
+
+
+### Bug Fixes
+
+* add missing files for the CI build ([#276](https://github.com/tsyirvo/react-native-starter/issues/276)) ([16d58e3](https://github.com/tsyirvo/react-native-starter/commit/16d58e30e691b1c1a083c7dacbe24f0f3f7db453))
+* fix the iOS Firebase config ([#278](https://github.com/tsyirvo/react-native-starter/issues/278)) ([c04ec60](https://github.com/tsyirvo/react-native-starter/commit/c04ec60ad4cac75ea3e10ad7ab48542e57581e3c))
+* pass the env variables to the CI scripts ([#277](https://github.com/tsyirvo/react-native-starter/issues/277)) ([be7f797](https://github.com/tsyirvo/react-native-starter/commit/be7f7971c88f8f694cae4d94c205a3b7f4f6fe71))
+
 ## [1.2.0](https://github.com/tsyirvo/react-native-starter/compare/v1.1.0...v1.2.0) (2021-12-17)
 
 
