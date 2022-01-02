@@ -15,7 +15,7 @@ const AppUpdateNeeded = () => {
       'lastSupportedAppVersion',
     );
 
-    if (!lastSupportedVersion || lastSupportedVersion === '') {
+    if (!lastSupportedVersion) {
       // We can't get last supported version, so leave the app running
       return;
     }
