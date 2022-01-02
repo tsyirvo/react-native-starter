@@ -101,6 +101,8 @@ jobs:
           GOOGLE_CREDENTIAL_KEY: ${{ secrets.GOOGLE_CREDENTIAL_KEY }}
           FASTLANE_ENV_ANDROID: ${{ secrets.FASTLANE_ENV_ANDROID }}
           STAGING_ENV: ${{ secrets.STAGING_ENV }}
+          SENTRY_CONFIG: ${{ secrets.SENTRY_CONFIG }}
+          FIREBASE_STAGING_ANDROID: ${{ secrets.FIREBASE_STAGING_ANDROID }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Set the current app version based on commit history
@@ -190,6 +192,8 @@ jobs:
           APPLE_CONNECT_KEY: ${{ secrets.APPLE_CONNECT_KEY }}
           FASTLANE_ENV_IOS: ${{ secrets.FASTLANE_ENV_IOS }}
           STAGING_ENV: ${{ secrets.STAGING_ENV }}
+          SENTRY_CONFIG: ${{ secrets.SENTRY_CONFIG }}
+          FIREBASE_STAGING_IOS: ${{ secrets.FIREBASE_STAGING_IOS }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Set the current app version based on commit history
