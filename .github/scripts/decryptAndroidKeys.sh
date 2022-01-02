@@ -19,5 +19,13 @@ gpg -d --passphrase="$GPG_PASSPHRASE" --batch .env.fastlane.android.asc > androi
 echo "$STAGING_ENV" > .env.staging.asc
 gpg -d --passphrase="$GPG_PASSPHRASE" --batch .env.staging.asc > .env.staging
 
+# Sentry config
+echo "$SENTRY_CONFIG" > sentry.properties.asc
+gpg -d --passphrase="$GPG_PASSPHRASE" --batch sentry.properties.asc > android/sentry.properties
+
+# Firebase Staging
+echo "$FIREBASE_STAGING_ANDROID" > google-services.json.asc
+gpg -d --passphrase="$GPG_PASSPHRASE" --batch google-services.json.asc > android/app/src/staging/google-services.json
+
 # Delete base files
-rm release.keystore.asc gradle.properties.asc google-credential-key.asc .env.fastlane.android.asc .env.staging.asc
+rm release.keystore.asc gradle.properties.asc google-credential-key.asc .env.fastlane.android.asc .env.staging.asc sentry.properties.asc google-services.json.asc
