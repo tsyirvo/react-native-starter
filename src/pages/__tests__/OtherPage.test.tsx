@@ -1,16 +1,17 @@
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import i18n from '$i18n/config';
+import { OtherPageScreenNavigationProp } from '$navigation/navigation.types';
+import navigationProps from '$tests/defaultNavigationProp';
 import { render, fireEvent } from '$tests/utils';
 
 import OtherPage from '../OtherPage';
 
 describe('OtherPage component', () => {
   // Given
-  const props = { navigation: { goBack: jest.fn() } as any };
+  const props = {
+    navigation: navigationProps as unknown as OtherPageScreenNavigationProp,
+  };
 
   it('should render correctly', () => {
     // Given

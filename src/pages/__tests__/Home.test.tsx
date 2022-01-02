@@ -1,15 +1,16 @@
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { HomeScreenNavigationProp } from '$navigation/navigation.types';
+import navigationProps from '$tests/defaultNavigationProp';
 import { render, fireEvent } from '$tests/utils';
 
 import Home from '../Home';
 
 describe('Home component', () => {
   // Given
-  const props = { navigation: { navigate: jest.fn() } as any };
+  const props = {
+    navigation: navigationProps as unknown as HomeScreenNavigationProp,
+  };
 
   it('should render correctly', () => {
     // Given
