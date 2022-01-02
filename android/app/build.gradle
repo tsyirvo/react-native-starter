@@ -148,7 +148,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 26819354
-        versionName "1.2.0"
+        versionName "1.3.0"
         multiDexEnabled true
 
         resValue "string", "build_config_package", "ninja.gab.rnStarter"
