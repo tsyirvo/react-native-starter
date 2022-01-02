@@ -33,6 +33,10 @@
     "title": "Your app is outdated",
     "description": "Please go update the application to access the latest features"
   },
+  "maintenanceMode": {
+    "title": "The app is in maintenance",
+    "description": "It will be available online as soon as possible"
+  },
   "codepush": {
     "title": "Update is required",
     "description": "An app update is mandatory to be able to use the application.",

@@ -29,12 +29,6 @@ export const tags = {
   codepush: 'Codepush',
 };
 
-/* ***** *****  Contexts  ***** ***** */
-
-export const contexts = {
-  codepush: 'Codepush',
-};
-
 /* ***** *****  Errors  ***** ***** */
 
 export const errors = {
