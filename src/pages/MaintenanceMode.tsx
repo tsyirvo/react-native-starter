@@ -26,6 +26,7 @@ const MaintenanceMode = () => {
       width="100%"
       height="100%"
       px="global_32"
+      testID="maintenanceModePage"
     >
       <Text variant="large" pb="global_8">
         {i18n.t('maintenanceMode.title')}
