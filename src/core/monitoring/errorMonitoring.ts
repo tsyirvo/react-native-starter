@@ -5,6 +5,8 @@ import { CaptureContext } from '@sentry/types';
 
 import { config } from '$core/constants';
 
+import { tags } from './constants';
+
 import { Primitives } from '$types';
 
 const prodSampleRate = 0.05;
@@ -38,6 +40,8 @@ class ErrorMonitoringClass {
         }),
       ],
     });
+
+    this.tag(tags.codepush, config.codePush);
   }
 
   /* ***** *****  User related  ***** ***** */

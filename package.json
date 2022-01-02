@@ -1,6 +1,8 @@
 {
   "name": "rn-starter",
   "version": "1.2.0",
+  "buildNumber": "100",
+  "codePush": "0",
   "description": "Default starter with basic builtin and configs used in my React Native projects",
   "author": "Gabriel Hofman <gabriel.hofman.00@gmail.com>",
   "repository": {
@@ -82,7 +84,8 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "3.10.1",
     "react-native-svg": "12.1.1",
-    "react-native-toast-message": "2.1.1"
+    "react-native-toast-message": "2.1.1",
+    "semver": "7.3.5"
   },
   "devDependencies": {
     "@babel/core": "7.16.0",
@@ -102,6 +105,7 @@
     "@types/react-native": "0.66.9",
     "@types/react-navigation": "3.4.0",
     "@types/react-test-renderer": "17.0.1",
+    "@types/semver": "7.3.9",
     "babel-jest": "27.4.5",
     "babel-loader": "8.2.3",
     "babel-plugin-lodash": "3.3.4",

@@ -1,5 +1,6 @@
 import remoteConfig from '@react-native-firebase/remote-config';
 
+import { config } from '$core/constants';
 import Logger from '$core/logger';
 import { errors } from '$core/monitoring/constants';
 
@@ -12,6 +13,10 @@ class FeatureFlagsClass {
     try {
       await this.setDefault();
       await this.fetchConfig();
+
+      if (config.isDebug) {
+        await this.forceFetch();
+      }
     } catch (error) {
       Logger.error({
         error,
@@ -45,6 +50,12 @@ class FeatureFlagsClass {
         message: 'Failed to fetch remoteConfig',
       });
     }
+  }
+
+  async forceFetch() {
+    const forceFetchValue = 0;
+
+    await remoteConfig().fetch(forceFetchValue);
   }
 
   /* ***** *****  Reading values  ***** ***** */

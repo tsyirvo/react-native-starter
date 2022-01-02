@@ -28,5 +28,14 @@
     "title": "Error",
     "description": "An unknown error occured. If the error persist, contact an administrator.",
     "cta": "Relaunch the app"
+  },
+  "appUpdate": {
+    "title": "Your app is outdated",
+    "description": "Please go update the application to access the latest features"
+  },
+  "codepush": {
+    "title": "Update is required",
+    "description": "An app update is mandatory to be able to use the application.",
+    "cta": "Install now"
   }
 }

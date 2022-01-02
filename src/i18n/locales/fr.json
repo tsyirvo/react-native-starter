@@ -28,5 +28,14 @@
     "title": "Erreur",
     "description": "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
     "cta": "Relancer l'app"
+  },
+  "appUpdate": {
+    "title": "Votre app est trop vieille",
+    "description": "Merci de la mettre à jour pour utiliser les dernières fonctionnalités"
+  },
+  "codepush": {
+    "title": "Mise à jour requise",
+    "description": "Une mise à jour de l'application est requise pour fonctionner.",
+    "cta": "Installer maintenant"
   }
 }
