@@ -33,6 +33,10 @@
     "title": "Votre app est trop vieille",
     "description": "Merci de la mettre à jour pour utiliser les dernières fonctionnalités"
   },
+  "maintenanceMode": {
+    "title": "L'app est en maintenance",
+    "description": "Elle sera de nouveau fonctionnelle au plus vite"
+  },
   "codepush": {
     "title": "Mise à jour requise",
     "description": "Une mise à jour de l'application est requise pour fonctionner.",

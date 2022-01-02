@@ -13,6 +13,7 @@ import * as Monitoring from '$core/monitoring/errorMonitoring';
 import toastConfig from '$core/toaster/layouts';
 import useRunOnMount from '$hooks/useRunOnMount';
 import AppUpdateNeeded from '$pages/AppUpdateNeeded';
+import MaintenanceMode from '$pages/MaintenanceMode';
 import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
@@ -54,6 +55,7 @@ const App = () => {
                 <Toast config={toastConfig} />
 
                 <AppUpdateNeeded />
+                <MaintenanceMode />
               </>
             </Sandbox>
           </SafeAreaProvider>
