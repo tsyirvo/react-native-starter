@@ -8290,10 +8290,10 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
-mixpanel-react-native@1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/mixpanel-react-native/-/mixpanel-react-native-1.3.4.tgz#5c0efc72f770192931518d8d4be96643a38215da"
-  integrity sha512-X0SDtTB+0mnRYxhS2HwSrnKJGlXM2/PMguUhIN+ytDZccrLv+keKSwb32LMPmgKD4MFgk7Xk8CtFOFweCwlZig==
+mixpanel-react-native@1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/mixpanel-react-native/-/mixpanel-react-native-1.3.6.tgz#012feca355e020005abb6a33b4b8caba144eff58"
+  integrity sha512-54IH0J3T+1p/8QZAT3c++wtTkDMZsegvK4/XbJZPMYC4H2dL4H8+kVQmOwQntnQGq9Un87M7wyFkWqGghfDi1A==
 
 mkdirp-classic@^0.5.2, mkdirp-classic@^0.5.3:
   version "0.5.3"
