@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
 type SvgHeartRateProps = SvgProps & {
-  color?: string,
+  color?: string;
 };
 
 const SvgHeartRate = ({ color, ...props }: SvgHeartRateProps) => (

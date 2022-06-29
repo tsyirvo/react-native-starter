@@ -5,7 +5,6 @@ import {
   initialWindowMetrics,
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
-import { enableScreens } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
 
 import { syncCodepush } from '$core/codepush';
@@ -22,8 +21,6 @@ import { initI18n } from './i18n/config';
 import RootStack from './navigation/navigation';
 
 import Sandbox from '$sandbox';
-
-enableScreens();
 
 initI18n();
 getDimensionRatio();

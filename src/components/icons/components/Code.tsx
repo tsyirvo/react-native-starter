@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, { SvgProps, G, Path } from 'react-native-svg';
 
 type SvgCodeProps = SvgProps & {
-  color?: string,
+  color?: string;
 };
 
 const SvgCode = ({ color, ...props }: SvgCodeProps) => (

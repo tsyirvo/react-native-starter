@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
 type SvgGridProps = SvgProps & {
-  color?: string,
+  color?: string;
 };
 
 const SvgGrid = ({ color, ...props }: SvgGridProps) => (

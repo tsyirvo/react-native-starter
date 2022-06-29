@@ -1,45 +1,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import {
-  useRestyle,
-  spacing,
-  border,
-  backgroundColor,
-  SpacingProps,
-  BorderProps,
-  BackgroundColorProps,
-  VariantProps,
-  createVariant,
   createRestyleComponent,
-  layout,
-  LayoutProps,
-  SpacingShorthandProps,
-  spacingShorthand,
-  BackgroundColorShorthandProps,
-  backgroundColorShorthand,
+  createVariant,
+  VariantProps,
 } from '@shopify/restyle';
 import { Pressable } from 'react-native';
 
 import { Box, Text } from '$components/ui/primitives';
 import { Theme } from '$styles/theme';
 
-const restyleFunctions = [
-  spacing,
-  spacingShorthand,
-  backgroundColor,
-  backgroundColorShorthand,
-  border,
-  layout,
-];
+import { BoxProps } from '../box/Box';
 
-type BaseProps = SpacingProps<Theme> &
-  SpacingShorthandProps<Theme> &
-  BackgroundColorProps<Theme> &
-  BackgroundColorShorthandProps<Theme> &
-  BorderProps<Theme> &
-  LayoutProps<Theme>;
-
-type ButtonProps = BaseProps &
+type ButtonProps = BoxProps &
   VariantProps<Theme, 'buttonVariants'> & {
     onPress: () => void;
     label: string;
@@ -63,18 +36,14 @@ const Button = ({
   testID,
   isEnabled = true,
   ...rest
-}: ButtonProps) => {
-  const props = useRestyle(restyleFunctions, rest);
-
-  return (
-    <PrimitiveButton variant={variant}>
-      <Pressable testID={testID} onPress={onPress} disabled={!isEnabled}>
-        <Box {...props}>
-          <Text>{label}</Text>
-        </Box>
-      </Pressable>
-    </PrimitiveButton>
-  );
-};
+}: ButtonProps) => (
+  <PrimitiveButton variant={variant}>
+    <Pressable testID={testID} onPress={onPress} disabled={!isEnabled}>
+      <Box {...rest}>
+        <Text>{label}</Text>
+      </Box>
+    </Pressable>
+  </PrimitiveButton>
+);
 
 export default Button;

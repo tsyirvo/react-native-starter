@@ -2,7 +2,7 @@ import {
   breadcrumbsCategory,
   breadcrumbType,
 } from '$core/monitoring/constants';
-import ErrorMonitoring, { Severity } from '$core/monitoring/errorMonitoring';
+import ErrorMonitoring from '$core/monitoring/errorMonitoring';
 import Toaster from '$core/toaster';
 
 import { ErrorType, NetworkErrorType, UserMessageType } from './logger.types';
@@ -33,7 +33,7 @@ class LoggerClass {
       type: breadcrumbType.http,
       category: breadcrumbsCategory.network,
       message: description,
-      level: Severity.Error,
+      level: 'error',
       timestamp: Date.now(),
       data: {
         url: requestData.request,
@@ -50,7 +50,7 @@ class LoggerClass {
     const errorMessage = `[${type}]: ${message}`;
 
     ErrorMonitoring.scope((scope) => {
-      scope.setLevel(Severity.Error);
+      scope.setLevel('error');
 
       ErrorMonitoring.exception(error);
       ErrorMonitoring.message(errorMessage);
