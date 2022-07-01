@@ -9731,10 +9731,10 @@ react-native-localize@2.1.7:
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-2.1.7.tgz#f1dda0c6fd58ab06b5b119cb4a507ab8800b9823"
   integrity sha512-phimOUtDLiqY2ba7Rjk9KpuaVSo7iGMNnwr7rjBVqlhmtTF3ShQ1FPFPxOyUrzDU9jLtj1xMi7MXWYuiVg660Q==
 
-react-native-mmkv@1.5.4:
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-1.5.4.tgz#41336c147c7190d2fea87c4de0be4c9b72a0c881"
-  integrity sha512-nmS5RO0tfH+KdJ0uVUPahsqw1IVXQOt+Kk6cI1/FMJz5dmvoKVC03XGYh91wmiFJFYqlKA+XFlKAhZUsLZqBYQ==
+react-native-mmkv@2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.4.2.tgz#6a0ee009d13dafe12834885a434f1cc5aa04851b"
+  integrity sha512-0JubkaYOub4pFko5ButzFpy7VaPqt3bhHG8jiRBBhNw97KiYMhyO95eZm4JUp3tSP2KSw7WUY+8pwnyBco+ffg==
 
 react-native-reanimated@2.3.1:
   version "2.3.1"
