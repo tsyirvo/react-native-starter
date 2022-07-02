@@ -422,7 +422,7 @@ PODS:
     - React-perflogger (= 0.66.4)
   - RNCMaskedView (0.2.6):
     - React-Core
-  - RNDevMenu (4.0.2):
+  - RNDevMenu (4.1.0):
     - React-Core
     - React-Core/DevSupport
     - React-RCTNetwork
@@ -757,7 +757,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: dec32ee6f2e2a26e13e58152271535fadff5455a
   ReactCommon: 57b69f6383eafcbd7da625bfa6003810332313c4
   RNCMaskedView: c298b644a10c0c142055b3ae24d83879ecb13ccd
-  RNDevMenu: fd325b5554b61fe7f48d9205a3877cf5ee88cd7c
+  RNDevMenu: 40dcdfb0653664c654b5afcf3e77a6fb9f280e34
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNFBApp: 9646e09d041ea159b84584865212e4cf33acd179
   RNFBRemoteConfig: 6942909a1232c22cadfe8a7061b5bea5273bb02b
