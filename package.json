@@ -35,7 +35,7 @@
     "android:staging": "react-native run-android --variant=stagingDebug --appIdSuffix=staging",
     "android:production": "react-native run-android --variant=productionDebug",
     "//// TESTS ////": "",
-    "test": "jest --runInBand",
+    "test": "jest",
     "test:staged": "jest -o --passWithNoTests --runInBand",
     "//// E2E ////": "",
     "test:android:build": "detox build -c android.sim.debug --workers 2",
@@ -117,8 +117,8 @@
     "chalk": "4.1.2",
     "concurrently": "7.2.2",
     "detox": "19.3.1",
-    "eslint": "8.3.0",
-    "eslint-config-tsyirvo-react-native": "1.1.1",
+    "eslint": "8.19.0",
+    "eslint-config-tsyirvo-react-native": "1.2.0",
     "husky": "7.0.4",
     "hygen": "6.1.0",
     "imageoptim": "0.5.0",
@@ -137,7 +137,7 @@
     "sharp": "0.29.3",
     "standard-version": "9.3.2",
     "ts-jest": "27.1.1",
-    "typescript": "4.5.4"
+    "typescript": "4.7.4"
   },
   "resolutions": {
     "graceful-fs": "^4.2.4"

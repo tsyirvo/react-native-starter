@@ -52,6 +52,7 @@ const App = () => {
                 <Toast config={toastConfig} />
 
                 <AppUpdateNeeded />
+
                 <MaintenanceMode />
               </>
             </Sandbox>

@@ -14,7 +14,7 @@ const OtherPage = ({ navigation }: Props) => {
 
   return (
     <SafeView>
-      <Box justifyContent="center" alignItems="center">
+      <Box alignItems="center" justifyContent="center">
         <Text testID="otherPage_title" variant="large">
           {i18n.t('otherPage.navigation.title')}
         </Text>
@@ -22,9 +22,9 @@ const OtherPage = ({ navigation }: Props) => {
         <Box mt="global_24">
           <Button
             alignItems="center"
+            label={i18n.t('otherPage.navigation.backCta')}
             testID="back_button"
             onPress={goBack}
-            label={i18n.t('otherPage.navigation.backCta')}
           />
         </Box>
       </Box>

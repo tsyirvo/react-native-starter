@@ -38,7 +38,7 @@ const Button = ({
   ...rest
 }: ButtonProps) => (
   <PrimitiveButton variant={variant}>
-    <Pressable testID={testID} onPress={onPress} disabled={!isEnabled}>
+    <Pressable disabled={!isEnabled} testID={testID} onPress={onPress}>
       <Box {...rest}>
         <Text>{label}</Text>
       </Box>

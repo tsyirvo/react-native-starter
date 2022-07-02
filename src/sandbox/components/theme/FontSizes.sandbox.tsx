@@ -9,7 +9,7 @@ const FontSizesSandbox = () => (
   <ScrollView>
     <SandBoxItem isSingle>
       {(Object.keys(fontSizes) as FontSizes[]).map((size) => (
-        <Text key={size} variant={size} mb="global_24">
+        <Text key={size} mb="global_24" variant={size}>
           {`This is a ${size} text`}
         </Text>
       ))}

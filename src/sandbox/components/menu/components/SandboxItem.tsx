@@ -11,7 +11,7 @@ type SandBoxItemProps = {
 };
 
 const SandBoxItem: FC<SandBoxItemProps> = ({ title, isSingle, children }) => (
-  <Box px="global_24" pt="global_8">
+  <Box pt="global_8" px="global_24">
     {!!title && <Text>{title}</Text>}
 
     <CenteredContent py="global_24">{children}</CenteredContent>

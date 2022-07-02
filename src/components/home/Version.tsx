@@ -10,7 +10,7 @@ const Version = () => {
   const toggleVersion = () => setIsShowAll((prevValue) => !prevValue);
 
   return (
-    <Box pt="global_32" alignItems="flex-end">
+    <Box alignItems="flex-end" pt="global_32">
       <Pressable onPress={toggleVersion}>
         <Text variant="small">
           {`Version: v${config.version}${

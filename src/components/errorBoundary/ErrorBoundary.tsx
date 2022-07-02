@@ -39,25 +39,25 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       return (
         <SafeView>
           <Box
-            flex={1}
-            alignSelf="center"
             alignItems="center"
+            alignSelf="center"
+            flex={1}
             justifyContent="center"
             width="80%"
           >
-            <Text variant="large" mb="global_8">
+            <Text mb="global_8" variant="large">
               {i18n.t('errorBoundary.title')}
             </Text>
 
-            <Text variant="medium" textAlign="center">
+            <Text textAlign="center" variant="medium">
               {i18n.t('errorBoundary.description')}
             </Text>
 
             <Box mt="global_32">
               <Button
                 alignItems="center"
-                onPress={this.handleApplicationReset}
                 label={i18n.t('errorBoundary.cta')}
+                onPress={this.handleApplicationReset}
               />
             </Box>
           </Box>

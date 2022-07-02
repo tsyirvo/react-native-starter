@@ -25,16 +25,18 @@ const RootStack = () => {
         screenOptions={{ gestureEnabled: true }}
       >
         <Stack.Screen
-          name="Home"
           component={Pages.Home}
+          name="Home"
           options={{ title: 'Home', headerShown: false }}
         />
+
         <Stack.Screen
-          name="OtherPage"
           component={Pages.OtherPage}
-          options={{ title: i18n.t('otherPage.navigation.title') }}
           initialParams={{ someProps: 'Some value' }}
+          name="OtherPage"
+          options={{ title: i18n.t('otherPage.navigation.title') }}
         />
+
         {/* inject screens before this */}
       </Stack.Navigator>
     </NavigationContainer>

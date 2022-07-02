@@ -8,9 +8,9 @@ const ButtonSandbox = () => (
   <ScrollView>
     <SandBoxItem title="Button with a text content">
       <Button
+        label="Click here"
         variant="base"
         onPress={() => console.log('Text pressed')}
-        label="Click here"
       />
     </SandBoxItem>
   </ScrollView>

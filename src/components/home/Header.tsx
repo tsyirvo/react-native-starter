@@ -18,12 +18,12 @@ const Header = () => {
   return (
     <ImageBackground source={uri} style={styles.image}>
       <Box
+        alignItems="center"
         flex={1}
         justifyContent="flex-end"
-        alignItems="center"
         mb="global_24"
       >
-        <Text testID="home_title" variant="large" color="white">
+        <Text color="white" testID="home_title" variant="large">
           React Native Starter
         </Text>
       </Box>
