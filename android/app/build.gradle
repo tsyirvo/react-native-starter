@@ -186,16 +186,19 @@ android {
              applicationIdSuffix 'development'
              resValue "string", "build_config_package", "ninja.gab.rnStarter"
              resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
+             resValue 'string', "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis())
          }
          staging {
              applicationIdSuffix 'staging'
              resValue "string", "build_config_package", "ninja.gab.rnStarter"
              resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
+             resValue 'string', "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis())
          }
          production {
              applicationIdSuffix ''
              resValue "string", "build_config_package", "ninja.gab.rnStarter"
              resValue "string", "CodePushDeploymentKey", project.env.get("ANDROID_CODEPUSH_KEY", "")
+             resValue 'string', "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis())
          }
      }
 
