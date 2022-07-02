@@ -15,6 +15,6 @@ const Separator = ({
   height = DEFAULT_HEIGHT,
   color = 'black',
   ...rest
-}: SeparatorProps) => <Box height={height} width="100%" bg={color} {...rest} />;
+}: SeparatorProps) => <Box bg={color} height={height} width="100%" {...rest} />;
 
 export default Separator;

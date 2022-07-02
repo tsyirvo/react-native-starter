@@ -21,13 +21,13 @@ const MaintenanceMode = () => {
 
   return (
     <Box
-      justifyContent="center"
       alignItems="center"
-      width="100%"
       height="100%"
+      justifyContent="center"
       px="global_32"
+      width="100%"
     >
-      <Text variant="large" pb="global_8">
+      <Text pb="global_8" variant="large">
         {i18n.t('maintenanceMode.title')}
       </Text>
 

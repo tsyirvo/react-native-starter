@@ -13,7 +13,8 @@ const SpacesSandbox = () => (
       {(Object.keys(theme.spacing) as Spacing[]).map((space) => (
         <Fragment key={space}>
           <Text mb="global_8">{space}</Text>
-          <Box width="100%" height={spacing[space]} bg="grey" mb="global_32" />
+
+          <Box bg="grey" height={spacing[space]} mb="global_32" width="100%" />
         </Fragment>
       ))}
     </SandBoxItem>

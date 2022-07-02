@@ -17,9 +17,7 @@ const Sandbox = ({ children }: SandboxProps) => {
     if (__DEV__) {
       const importDevMenu = async () => {
         await import('react-native-dev-menu').then((devMenu) => {
-          // @ts-expect-error: Methods on dynamic import not recognized
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-          devMenu.addItem('Toggle Sandbox', () =>
+          void devMenu.addItem('Toggle Sandbox', () =>
             setIsShown((prevState) => !prevState),
           );
         });

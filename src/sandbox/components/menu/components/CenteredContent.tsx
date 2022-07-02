@@ -8,7 +8,7 @@ import { BoxProps } from '$components/ui/primitives/box/Box';
 type CenteredContentProps = BoxProps;
 
 const CenteredContent: FC<CenteredContentProps> = ({ children, ...props }) => (
-  <Box justifyContent="center" alignItems="center" {...props}>
+  <Box alignItems="center" justifyContent="center" {...props}>
     {children}
   </Box>
 );

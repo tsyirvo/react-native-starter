@@ -1,4 +1,3 @@
-import { Severity } from '@sentry/react-native';
 import { Alert } from 'react-native';
 import codePush from 'react-native-code-push';
 
@@ -26,7 +25,7 @@ export const syncCodepush = async () => {
               message: `CodePush update v${
                 updateState?.appVersion ?? 'NotFound'
               } was downloaded`,
-              level: Severity.Info,
+              level: 'info',
             });
 
             const isMandatory = updateState?.isMandatory;

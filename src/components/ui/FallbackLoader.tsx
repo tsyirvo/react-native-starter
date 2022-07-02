@@ -7,10 +7,10 @@ type Props = {
 };
 
 const Fallback = ({ delay }: Props) => {
-  const [isShowingLoading, toggleLoading] = useState(false);
+  const [isShowingLoading, setIsShowingLoading] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => toggleLoading(true), delay);
+    const timeout = setTimeout(() => setIsShowingLoading(true), delay);
 
     return () => {
       clearTimeout(timeout);

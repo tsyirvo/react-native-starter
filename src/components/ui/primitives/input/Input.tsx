@@ -44,18 +44,18 @@ const Input = forwardRef<TextInput, Props>(
 
         <TextInput
           ref={ref}
-          testID="inputID"
-          style={[styles.input, errorStyles]}
-          underlineColorAndroid="transparent"
-          placeholderTextColor={theme.colors.grey}
           editable={isEditable}
+          placeholderTextColor={theme.colors.grey}
+          style={[styles.input, errorStyles]}
+          testID="inputID"
+          underlineColorAndroid="transparent"
           {...props}
           onChangeText={props.onChangeText}
         />
 
         {!!error && (
-          <Box flexDirection="row" alignItems="center" testID="inputID-error">
-            <Text variant="small" color="red">
+          <Box alignItems="center" flexDirection="row" testID="inputID-error">
+            <Text color="red" variant="small">
               {error}
             </Text>
           </Box>

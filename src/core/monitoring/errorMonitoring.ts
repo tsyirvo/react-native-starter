@@ -1,7 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import * as Sentry from '@sentry/react-native';
-import { CaptureContext } from '@sentry/types';
 
 import { config } from '$core/constants';
 
@@ -64,7 +61,7 @@ class ErrorMonitoringClass {
     Sentry.captureException(exception);
   }
 
-  message(message: string, context?: CaptureContext | Sentry.Severity) {
+  message(message: string, context?: Sentry.Scope) {
     Sentry.captureMessage(message, context);
   }
 

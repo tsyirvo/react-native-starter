@@ -1,10 +1,5 @@
 module.exports = {
-  presets: [
-    [
-      'module:metro-react-native-babel-preset',
-      { useTransformReactJSXExperimental: true },
-    ],
-  ],
+  presets: ['module:metro-react-native-babel-preset'],
   env: {
     production: {
       plugins: ['transform-remove-console'],

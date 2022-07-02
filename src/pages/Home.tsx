@@ -19,21 +19,22 @@ const Home = ({ navigation }: Props) => {
       <ScrollView>
         <Header />
 
-        <Box px="global_24" pb="global_32">
-          <Text variant="large" mt="global_32">
+        <Box pb="global_32" px="global_24">
+          <Text mt="global_32" variant="large">
             {i18n.t('home.navigation.title')}
           </Text>
 
           <Box mt="global_8">
             <Button
-              testID="goto_otherPage"
-              onPress={goToOtherPage}
               alignItems="center"
               label={i18n.t('home.navigation.content')}
+              testID="goto_otherPage"
+              onPress={goToOtherPage}
             />
           </Box>
 
           <Informations />
+
           <Version />
         </Box>
       </ScrollView>
