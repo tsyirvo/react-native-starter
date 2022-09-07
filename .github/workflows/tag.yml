@@ -27,6 +27,11 @@ jobs:
         with:
           node-version: '14.18.1'
 
+      - name: Configure Git
+        run: |
+          git config --global user.name 'tsyirvo'
+          git config --global user.email 'gabriel.hofman.00@gmail.com'
+
       - name: Update the app version and tag it
         run: npx standard-version
 
