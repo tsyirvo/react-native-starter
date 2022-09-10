@@ -2,12 +2,11 @@
 import imagemin from 'imagemin';
 import imageminMozjpeg from 'imagemin-mozjpeg';
 import imageminPngquant from 'imagemin-pngquant';
-import ora from 'ora';
 import type { Sharp } from 'sharp';
 import sharp from 'sharp';
 
 import ImageMetadata from './imageMetadata.js';
-import { print, TMP_DIR } from './utils.js';
+import { print, showSpinner, TMP_DIR } from './utils.js';
 
 /* ***** *****  Compress the generated images  ***** ***** */
 
@@ -24,10 +23,7 @@ const compressImage = async ({
   });
 
 const compressAllResolutions = async () => {
-  const compressingResolutions = ora({
-    text: `Compressing the images`,
-    color: 'white',
-  }).start();
+  const finishSpinner = showSpinner(`Compressing the images`);
 
   const { image1xName, image2xName, image3xName } =
     ImageMetadata.getImageMetadata();
@@ -54,7 +50,7 @@ const compressAllResolutions = async () => {
     });
   }
 
-  compressingResolutions.succeed('Compressed the images successfully');
+  finishSpinner('Compressed the images successfully');
 };
 
 /* ***** *****  Handle all images resolutions  ***** ***** */
@@ -79,10 +75,9 @@ const generateAllResolutions = async ({
   image: Sharp;
   width: number;
 }) => {
-  const creatingResolutions = ora({
-    text: `Creating the different images resolutions`,
-    color: 'white',
-  }).start();
+  const finishSpinner = showSpinner(
+    `Creating the different images resolutions`,
+  );
 
   const { image1xName, image2xName, image3xName } =
     ImageMetadata.getImageMetadata();
@@ -112,7 +107,7 @@ const generateAllResolutions = async ({
     });
   }
 
-  creatingResolutions.succeed('Created the images resolutions successfully');
+  finishSpinner('Created the images resolutions successfully');
 };
 
 const createImageResolutions = async (imagePath: string) => {

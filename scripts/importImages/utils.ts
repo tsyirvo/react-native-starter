@@ -25,6 +25,15 @@ export const print = ({ message, type }: Print) => {
   }
 };
 
+export const showSpinner = (initialMessage: string) => {
+  const spinnerRef = ora({
+    text: initialMessage,
+    color: 'white',
+  }).start();
+
+  return (message: string) => spinnerRef.succeed(message);
+};
+
 /* ***** *****  Temporary folder management  ***** ***** */
 
 export const TMP_DIR = `${process.cwd()}/tmp`;
@@ -43,10 +52,7 @@ const createUniqueTmpFolder = async (variant: string) => {
 };
 
 export const createTmpImageFolders = async () => {
-  const creatingTmpFolders = ora({
-    text: `Creating the different tmp folders`,
-    color: 'white',
-  }).start();
+  const finishSpinner = showSpinner(`Creating the different tmp folders`);
 
   try {
     await Promise.all([
@@ -58,14 +64,11 @@ export const createTmpImageFolders = async () => {
     print({ message: 'Failed to create the temporary folders', type: 'error' });
   }
 
-  creatingTmpFolders.succeed('Created the different tmp folders');
+  finishSpinner('Created the different tmp folders');
 };
 
 export const deleteTmpImageFolders = () => {
-  const deletingTmpFolders = ora({
-    text: `Deleting the different tmp folders`,
-    color: 'white',
-  }).start();
+  const finishSpinner = showSpinner(`Deleting the different tmp folders`);
 
   fs.rm(TMP_DIR, { recursive: true }, (err) => {
     if (err) {
@@ -78,5 +81,5 @@ export const deleteTmpImageFolders = () => {
     print({ message: 'Deleted the temporary folders' });
   });
 
-  deletingTmpFolders.succeed('Deleted the different tmp folders');
+  finishSpinner('Deleted the different tmp folders');
 };
