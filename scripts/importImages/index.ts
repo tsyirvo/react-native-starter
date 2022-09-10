@@ -1,4 +1,4 @@
-// import checkArgumentType from './checkArgumentType.js';
+import checkArgumentType from './checkArgumentType.js';
 import {
   createTmpImageFolders,
   deleteTmpImageFolders,
@@ -17,9 +17,9 @@ const main = async () => {
 
   await createTmpImageFolders();
 
-  // for (let arg of argv) {
-  //   checkArgumentType(arg);
-  // }
+  for (let arg of argv) {
+    await checkArgumentType(arg);
+  }
 
   deleteTmpImageFolders();
 };

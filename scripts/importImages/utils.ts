@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import chalk from 'chalk';
 import fs from 'fs';
+import ora from 'ora';
 import util from 'util';
 
 /* ***** *****  Misc. utilities  ***** ***** */
@@ -26,7 +27,7 @@ export const print = ({ message, type }: Print) => {
 
 /* ***** *****  Temporary folder management  ***** ***** */
 
-const TMP_DIR = `${process.cwd()}/tmp`;
+export const TMP_DIR = `${process.cwd()}/tmp`;
 
 const makeDirAsync = util.promisify(fs.mkdir);
 
@@ -39,11 +40,14 @@ const createUniqueTmpFolder = async (variant: string) => {
       type: 'error',
     });
   }
-
-  print({ message: `Created the ${variant} temporary folder` });
 };
 
 export const createTmpImageFolders = async () => {
+  const creatingTmpFolders = ora({
+    text: `Creating the different tmp folders`,
+    color: 'white',
+  }).start();
+
   try {
     await Promise.all([
       createUniqueTmpFolder('1x'),
@@ -53,9 +57,16 @@ export const createTmpImageFolders = async () => {
   } catch (error) {
     print({ message: 'Failed to create the temporary folders', type: 'error' });
   }
+
+  creatingTmpFolders.succeed('Created the different tmp folders');
 };
 
 export const deleteTmpImageFolders = () => {
+  const deletingTmpFolders = ora({
+    text: `Deleting the different tmp folders`,
+    color: 'white',
+  }).start();
+
   fs.rm(TMP_DIR, { recursive: true }, (err) => {
     if (err) {
       print({
@@ -66,4 +77,6 @@ export const deleteTmpImageFolders = () => {
 
     print({ message: 'Deleted the temporary folders' });
   });
+
+  deletingTmpFolders.succeed('Deleted the different tmp folders');
 };

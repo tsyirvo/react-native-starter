@@ -3,6 +3,7 @@
 import fs from 'fs';
 import isImage from 'is-image';
 
+import createImageResolutions from './imageManipulations.js';
 import ImageMetadata from './imageMetadata.js';
 import { print } from './utils.js';
 
@@ -32,7 +33,7 @@ const checkPathType = (path: string) => {
   return 'unsupported';
 };
 
-const checkArgumentType = (path: string) => {
+const checkArgumentType = async (path: string) => {
   try {
     const fileType = checkPathType(path);
 
@@ -41,6 +42,8 @@ const checkArgumentType = (path: string) => {
         print({ message: 'Image found' });
 
         ImageMetadata.setImagePath(path);
+
+        await createImageResolutions(path);
 
         break;
       case 'folder':

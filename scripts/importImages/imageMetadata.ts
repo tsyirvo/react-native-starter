@@ -23,8 +23,8 @@ const extractImageData = (imagePath: string) => {
 
 const formatMetadata = () => {
   const image1xName = currentImageMetadata.imageFullName;
-  const image2xName = `${currentImageMetadata.imageName}@2x.${currentImageMetadata.imageExtension}`;
-  const image3xName = `${currentImageMetadata.imageName}@3x.${currentImageMetadata.imageExtension}`;
+  const image2xName = `${currentImageMetadata.imageName}@2x${currentImageMetadata.imageExtension}`;
+  const image3xName = `${currentImageMetadata.imageName}@3x${currentImageMetadata.imageExtension}`;
 
   return {
     image1xName,
