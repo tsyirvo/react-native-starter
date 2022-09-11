@@ -85,13 +85,9 @@ const createUniqueTmpFolder = (variant: string) => {
 export const createTmpImageFolders = () => {
   const finishSpinner = showSpinner(`Creating the different tmp folders`);
 
-  try {
-    createUniqueTmpFolder('1x');
-    createUniqueTmpFolder('2x');
-    createUniqueTmpFolder('3x');
-  } catch (error) {
-    print({ message: 'Failed to create the temporary folders', type: 'error' });
-  }
+  createUniqueTmpFolder('1x');
+  createUniqueTmpFolder('2x');
+  createUniqueTmpFolder('3x');
 
   finishSpinner('Created the different tmp folders successfully');
 };

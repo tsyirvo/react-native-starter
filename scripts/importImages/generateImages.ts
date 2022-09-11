@@ -17,11 +17,11 @@ const checkFolderContent = async (folderPath: string) => {
 
   for (let file of files) {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    await checkArgumentType(`${folderPath}/${file}`);
+    await generateImages(`${folderPath}/${file}`);
   }
 };
 
-const checkPathType = (path: string) => {
+const checkFileType = (path: string) => {
   if (fs.lstatSync(path).isFile()) {
     if (isImage(path)) {
       return 'image';
@@ -33,9 +33,9 @@ const checkPathType = (path: string) => {
   return 'unsupported';
 };
 
-const checkArgumentType = async (path: string) => {
+const generateImages = async (path: string) => {
   try {
-    const fileType = checkPathType(path);
+    const fileType = checkFileType(path);
 
     switch (fileType) {
       case 'image':
@@ -46,6 +46,7 @@ const checkArgumentType = async (path: string) => {
         await createImageResolutions(path);
         await Promise.all([createIosFiles(), createAndroidFiles()]);
 
+        ImageMetadata.clear();
         break;
       case 'folder':
         print({ message: 'Folder found' });
@@ -60,4 +61,4 @@ const checkArgumentType = async (path: string) => {
   }
 };
 
-export default checkArgumentType;
+export default generateImages;

@@ -26,15 +26,11 @@ const createAndroidFolders = async () => {
   }
 };
 
-const createAndroidFiles = async () => {
-  const finishSpinner = showSpinner(`Moving the Android assets`);
-
+const moveAllAssets = async () => {
   try {
     const { image3xName, image2xName, image1xName } =
       ImageMetadata.getImageMetadata();
     const destinationPath = getAssetPath();
-
-    await createAndroidFolders();
 
     await Promise.all([
       copyFile({
@@ -53,6 +49,13 @@ const createAndroidFiles = async () => {
   } catch (error) {
     print({ message: 'Failed to move the Android assets', type: 'error' });
   }
+};
+
+const createAndroidFiles = async () => {
+  const finishSpinner = showSpinner(`Moving the Android assets`);
+
+  await createAndroidFolders();
+  await moveAllAssets();
 
   finishSpinner('Moved the Android assets successfully');
 };

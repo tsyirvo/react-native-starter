@@ -58,15 +58,11 @@ const createJsonContent = async () => {
   await fsExtra.writeJson(`${destinationPath}/Content.json`, jsonContent);
 };
 
-const createIosFiles = async () => {
-  const finishSpinner = showSpinner(`Moving the iOS assets`);
-
+const moveAllAssets = async () => {
   try {
     const { image3xName, image2xName, image1xName } =
       ImageMetadata.getImageMetadata();
     const destinationPath = getAssetPath();
-
-    await createJsonContent();
 
     await Promise.all([
       copyFile({
@@ -85,6 +81,13 @@ const createIosFiles = async () => {
   } catch (error) {
     print({ message: 'Failed to move the iOS assets', type: 'error' });
   }
+};
+
+const createIosFiles = async () => {
+  const finishSpinner = showSpinner(`Moving the iOS assets`);
+
+  await createJsonContent();
+  await moveAllAssets();
 
   finishSpinner('Moved the iOS assets successfully');
 };
