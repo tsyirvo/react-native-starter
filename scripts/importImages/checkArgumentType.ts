@@ -6,6 +6,7 @@ import util from 'util';
 
 import createImageResolutions from './imageManipulations.js';
 import ImageMetadata from './imageMetadata.js';
+import createIosFiles from './iosHandling.js';
 import { print } from './utils.js';
 
 const readDirAsync = util.promisify(fs.readdir);
@@ -42,6 +43,7 @@ const checkArgumentType = async (path: string) => {
         ImageMetadata.setImagePath(path);
 
         await createImageResolutions(path);
+        await createIosFiles();
 
         break;
       case 'folder':

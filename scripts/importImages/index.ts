@@ -15,7 +15,7 @@ const main = async () => {
     process.exit();
   }
 
-  await createTmpImageFolders();
+  createTmpImageFolders();
 
   for (let arg of argv) {
     await checkArgumentType(arg);

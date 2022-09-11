@@ -3,7 +3,9 @@
 import chalk from 'chalk';
 import fs from 'fs';
 import ora from 'ora';
-import util from 'util';
+
+export const TMP_DIR = `${process.cwd()}/tmp`;
+export const IOS_PROJECT = 'rnStarter';
 
 /* ***** *****  Misc. utilities  ***** ***** */
 
@@ -36,35 +38,29 @@ export const showSpinner = (initialMessage: string) => {
 
 /* ***** *****  Temporary folder management  ***** ***** */
 
-export const TMP_DIR = `${process.cwd()}/tmp`;
-
-const makeDirAsync = util.promisify(fs.mkdir);
-
-const createUniqueTmpFolder = async (variant: string) => {
-  try {
-    await makeDirAsync(`${TMP_DIR}/${variant}`, { recursive: true });
-  } catch {
-    print({
-      message: `Failed to delete the ${variant} temporary folder`,
-      type: 'error',
-    });
-  }
+const createUniqueTmpFolder = (variant: string) => {
+  fs.mkdir(`${TMP_DIR}/${variant}`, { recursive: true }, (err) => {
+    if (err) {
+      print({
+        message: `Failed to create the ${variant} temporary folder`,
+        type: 'error',
+      });
+    }
+  });
 };
 
-export const createTmpImageFolders = async () => {
+export const createTmpImageFolders = () => {
   const finishSpinner = showSpinner(`Creating the different tmp folders`);
 
   try {
-    await Promise.all([
-      createUniqueTmpFolder('1x'),
-      createUniqueTmpFolder('2x'),
-      createUniqueTmpFolder('3x'),
-    ]);
+    createUniqueTmpFolder('1x');
+    createUniqueTmpFolder('2x');
+    createUniqueTmpFolder('3x');
   } catch (error) {
     print({ message: 'Failed to create the temporary folders', type: 'error' });
   }
 
-  finishSpinner('Created the different tmp folders');
+  finishSpinner('Created the different tmp folders successfully');
 };
 
 export const deleteTmpImageFolders = () => {
@@ -81,5 +77,5 @@ export const deleteTmpImageFolders = () => {
     print({ message: 'Deleted the temporary folders' });
   });
 
-  finishSpinner('Deleted the different tmp folders');
+  finishSpinner('Deleted the different tmp folders successfully');
 };
