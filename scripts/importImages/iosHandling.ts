@@ -1,11 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-nodejs-modules */
-import fs from 'fs';
 import fsExtra from 'fs-extra';
 import path from 'path';
 
 import ImageMetadata from './imageMetadata.js';
-import { IOS_PROJECT, print, showSpinner, TMP_DIR } from './utils.js';
+import {
+  copyFile,
+  createFolder,
+  IOS_PROJECT,
+  print,
+  showSpinner,
+  TMP_DIR,
+} from './utils.js';
 
 const getAssetPath = () => {
   const { imageName } = ImageMetadata.getImageMetadata();
@@ -48,37 +54,8 @@ const createJsonContent = async () => {
     }
   }`;
 
-  const isFolderAlreadyPresent = await fsExtra.pathExists(destinationPath);
-
-  if (!isFolderAlreadyPresent) {
-    fs.mkdir(destinationPath, (err) => {
-      if (err) {
-        print({
-          message: 'Failed to create the iOS destination folder',
-          type: 'error',
-        });
-      }
-    });
-  }
-
+  await createFolder(destinationPath);
   await fsExtra.writeJson(`${destinationPath}/Content.json`, jsonContent);
-};
-
-const copyImage = async ({
-  source,
-  destination,
-}: {
-  source: string;
-  destination: string;
-}) => {
-  try {
-    await fsExtra.copy(source, destination);
-  } catch {
-    print({
-      message: `Failed to copy the image`,
-      type: 'error',
-    });
-  }
 };
 
 const createIosFiles = async () => {
@@ -92,21 +69,21 @@ const createIosFiles = async () => {
     await createJsonContent();
 
     await Promise.all([
-      copyImage({
+      copyFile({
         source: `${TMP_DIR}/3x/${image3xName}`,
         destination: `${destinationPath}/${image3xName}`,
       }),
-      copyImage({
+      copyFile({
         source: `${TMP_DIR}/2x/${image2xName}`,
         destination: `${destinationPath}/${image2xName}`,
       }),
-      copyImage({
+      copyFile({
         source: `${TMP_DIR}/1x/${image1xName}`,
         destination: `${destinationPath}/${image1xName}`,
       }),
     ]);
   } catch (error) {
-    print({ message: 'Failed to create the temporary folders', type: 'error' });
+    print({ message: 'Failed to move the iOS assets', type: 'error' });
   }
 
   finishSpinner('Moved the iOS assets successfully');

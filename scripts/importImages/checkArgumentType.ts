@@ -4,6 +4,7 @@ import fs from 'fs';
 import isImage from 'is-image';
 import util from 'util';
 
+import createAndroidFiles from './androidHandling.js';
 import createImageResolutions from './imageManipulations.js';
 import ImageMetadata from './imageMetadata.js';
 import createIosFiles from './iosHandling.js';
@@ -43,7 +44,7 @@ const checkArgumentType = async (path: string) => {
         ImageMetadata.setImagePath(path);
 
         await createImageResolutions(path);
-        await createIosFiles();
+        await Promise.all([createIosFiles(), createAndroidFiles()]);
 
         break;
       case 'folder':

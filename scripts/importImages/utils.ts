@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import chalk from 'chalk';
 import fs from 'fs';
+import fsExtra from 'fs-extra';
 import ora from 'ora';
 
 export const TMP_DIR = `${process.cwd()}/tmp`;
@@ -34,6 +35,38 @@ export const showSpinner = (initialMessage: string) => {
   }).start();
 
   return (message: string) => spinnerRef.succeed(message);
+};
+
+export const createFolder = async (destinationPath: string) => {
+  const isFolderAlreadyPresent = await fsExtra.pathExists(destinationPath);
+
+  if (!isFolderAlreadyPresent) {
+    fs.mkdir(destinationPath, (err) => {
+      if (err) {
+        print({
+          message: `Failed to create the following folder: ${destinationPath}`,
+          type: 'error',
+        });
+      }
+    });
+  }
+};
+
+export const copyFile = async ({
+  source,
+  destination,
+}: {
+  source: string;
+  destination: string;
+}) => {
+  try {
+    await fsExtra.copy(source, destination);
+  } catch {
+    print({
+      message: `Failed to copy the following image: ${source}`,
+      type: 'error',
+    });
+  }
 };
 
 /* ***** *****  Temporary folder management  ***** ***** */
