@@ -2,6 +2,7 @@ import i18n from 'i18n-js';
 import * as RNLocalize from 'react-native-localize';
 
 import { config, storageKeys } from '$core/constants';
+import { initDateLocale } from '$core/date';
 import AppStorage from '$core/storage';
 
 type SupportedLocales = 'en' | 'fr';
@@ -41,6 +42,8 @@ const setAppLocale = (locale: string, saveToStorage?: boolean) => {
   i18n.translations = { [locale]: translations() };
   i18n.locale = locale;
 
+  initDateLocale(locale);
+
   if (saveToStorage) {
     storeLocaleInStorage(locale);
   }
@@ -51,7 +54,7 @@ const setAppLocale = (locale: string, saveToStorage?: boolean) => {
 i18n.fallbacks = true;
 i18n.translations = { en: translationGetters.en() };
 
-export function initI18n() {
+export const initI18n = () => {
   let locale;
 
   try {
@@ -65,9 +68,10 @@ export function initI18n() {
   }
 
   setAppLocale(locale, true);
+
   RNLocalize.addEventListener('change', () => {
     setAppLocale(getPhoneLocale(), true);
   });
-}
+};
 
 export default i18n;
