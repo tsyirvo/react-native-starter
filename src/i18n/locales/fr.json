@@ -4,9 +4,9 @@
       "title": "Naviguer vers une autre page",
       "content": "Touchez pour naviguer"
     },
-    "storybook": {
-      "title": "Storybook",
-      "content": "Accéder au Storybook avec"
+    "sandbox": {
+      "title": "Sandbox",
+      "content": "Accéder à la Sandbox depuis le menu de dev avec {{command}}"
     },
     "tests": {
       "title": "Tests",

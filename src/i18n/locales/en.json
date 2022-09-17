@@ -4,9 +4,9 @@
       "title": "Navigate to another page",
       "content": "Press to navigate"
     },
-    "storybook": {
-      "title": "Storybook",
-      "content": "Access the Storybook form the Dev Menu with"
+    "sandbox": {
+      "title": "Sandbox",
+      "content": "Access the Sandbox form the Dev Menu with {{command}}"
     },
     "tests": {
       "title": "Tests",
