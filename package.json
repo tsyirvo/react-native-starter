@@ -73,6 +73,7 @@
     "@react-navigation/native-stack": "6.9.0",
     "@sentry/react-native": "4.1.0",
     "@shopify/restyle": "2.1.0",
+    "dayjs": "1.11.5",
     "i18n-js": "3.9.2",
     "lodash": "4.17.21",
     "mixpanel-react-native": "1.5.0",
