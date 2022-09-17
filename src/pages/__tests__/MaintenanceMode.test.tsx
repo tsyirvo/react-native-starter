@@ -27,9 +27,9 @@ describe('MaintenanceMode component', () => {
     jest.spyOn(FeatureFlags, 'getBooleanValue').mockReturnValue(true);
 
     // Given
-    const { queryByText } = render(<MaintenanceMode />);
+    const { getByText } = render(<MaintenanceMode />);
 
     // Then
-    expect(queryByText(pageTitle)).toBeDefined();
+    expect(getByText(pageTitle)).toBeDefined();
   });
 });

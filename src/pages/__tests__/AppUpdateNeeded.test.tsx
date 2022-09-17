@@ -54,9 +54,9 @@ describe('AppUpdateNeeded component', () => {
     jest.spyOn(FeatureFlags, 'getStringValue').mockReturnValue('1.4.0');
 
     // Given
-    const { queryByText } = render(<AppUpdateNeeded />);
+    const { getByText } = render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByText(pageTitle)).toBeDefined();
+    expect(getByText(pageTitle)).toBeDefined();
   });
 });
