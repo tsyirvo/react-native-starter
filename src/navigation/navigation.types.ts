@@ -1,4 +1,4 @@
-import { StackNavigationProp } from '@react-navigation/stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 /* ***** *****  Stack router types  ***** ***** */
 
@@ -10,11 +10,11 @@ export type RootStackParamList = {
 
 /* ***** *****  Pages navigation type  ***** ***** */
 
-export type HomeScreenNavigationProp = StackNavigationProp<
+export type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Home'
 >;
-export type OtherPageScreenNavigationProp = StackNavigationProp<
+export type OtherPageScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'OtherPage'
 >;

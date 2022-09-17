@@ -1,6 +1,7 @@
 import { useNavigationContainerRef } from '@react-navigation/core';
+import { useFlipper } from '@react-navigation/devtools';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { routingInstrumentation } from '$core/monitoring/errorMonitoring';
 import i18n from '$i18n/config';
@@ -8,16 +9,18 @@ import i18n from '$i18n/config';
 import { RootStackParamList } from './navigation.types';
 import * as Pages from './pages';
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
-  const navigation = useNavigationContainerRef();
+  const navigationRef = useNavigationContainerRef();
+
+  useFlipper(navigationRef);
 
   return (
     <NavigationContainer
-      ref={navigation}
+      ref={navigationRef}
       onReady={() => {
-        routingInstrumentation.registerNavigationContainer(navigation);
+        routingInstrumentation.registerNavigationContainer(navigationRef);
       }}
     >
       <Stack.Navigator
@@ -27,7 +30,7 @@ const RootStack = () => {
         <Stack.Screen
           component={Pages.Home}
           name="Home"
-          options={{ title: 'Home', headerShown: false }}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen

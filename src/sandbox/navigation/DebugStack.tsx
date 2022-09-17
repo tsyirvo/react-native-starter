@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Suspense } from 'react';
 
 import FallbackLoader from '$components/ui/FallbackLoader';
@@ -7,7 +7,7 @@ import FallbackLoader from '$components/ui/FallbackLoader';
 import { DebugStackParamList } from './DebugStack.types';
 import * as Pages from './pages';
 
-const Stack = createStackNavigator<DebugStackParamList>();
+const Stack = createNativeStackNavigator<DebugStackParamList>();
 
 const DebugStack = () => (
   <NavigationContainer>
