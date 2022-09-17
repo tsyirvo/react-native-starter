@@ -1,4 +1,4 @@
-import { StackNavigationProp } from '@react-navigation/stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 /* ***** *****  Stack router types  ***** ***** */
 
@@ -26,19 +26,19 @@ export type DebugStackParamList = {
 
 /* ***** *****  Pages navigation type  ***** ***** */
 
-export type MenuScreenNavigationProp = StackNavigationProp<
+export type MenuScreenNavigationProp = NativeStackNavigationProp<
   DebugStackParamList,
   'Menu'
 >;
-export type ThemeScreenNavigationProp = StackNavigationProp<
+export type ThemeScreenNavigationProp = NativeStackNavigationProp<
   DebugStackParamList,
   'Theme'
 >;
-export type PrimitivesScreenNavigationProp = StackNavigationProp<
+export type PrimitivesScreenNavigationProp = NativeStackNavigationProp<
   DebugStackParamList,
   'Primitives'
 >;
-export type DesignSystemScreenNavigationProp = StackNavigationProp<
+export type DesignSystemScreenNavigationProp = NativeStackNavigationProp<
   DebugStackParamList,
   'DesignSystem'
 >;
