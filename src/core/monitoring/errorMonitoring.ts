@@ -1,16 +1,18 @@
-import * as Sentry from '@sentry/react-native';
+import type { Event, Scope, User } from '@sentry/react-native';
+import type { Breadcrumb, CaptureContext, SeverityLevel } from '@sentry/types';
+import * as Sentry from 'sentry-expo';
 
 import { config } from '$core/constants';
 
-import { tags } from './constants';
+import { errors, tags } from './constants';
 
-import { Primitives } from '$types';
+import type { Primitives } from '$types';
 
 const prodSampleRate = 0.05;
 const fullSampleRate = 1;
 
 export const routingInstrumentation =
-  new Sentry.ReactNavigationInstrumentation();
+  new Sentry.Native.ReactNavigationInstrumentation();
 
 class ErrorMonitoringClass {
   /* ***** *****  Setup  ***** ***** */
@@ -21,6 +23,8 @@ class ErrorMonitoringClass {
     const isEnabled = config.env !== 'development' && !config.isDebug;
 
     if (!config.sentryDsn) {
+      console.log(`[${errors.sdk}]: iled to initialize Sentry - No DSN foun`);
+
       return;
     }
 
@@ -31,58 +35,60 @@ class ErrorMonitoringClass {
       environment: config.env,
       debug: config.isDebug,
       integrations: [
-        new Sentry.ReactNativeTracing({
-          tracingOrigins: ['localhost', 'codepushupdates.azureedge.net', /^\//],
+        new Sentry.Native.ReactNativeTracing({
           routingInstrumentation,
         }),
       ],
     });
 
-    this.tag(tags.codepush, config.codePush);
+    if (typeof config.runtimeVersion === 'string') {
+      this.tag('runtimeVersion', config.runtimeVersion);
+    }
+
+    this.tag('currentVersion', config.version);
   }
 
   /* ***** *****  User related  ***** ***** */
 
-  setUser(user: Sentry.User) {
-    Sentry.setUser(user);
+  setUser(user: User) {
+    Sentry.Native.setUser(user);
   }
 
   clearUser() {
-    Sentry.configureScope((scope) => scope.setUser(null));
+    Sentry.Native.configureScope((scope) => scope.setUser(null));
   }
 
   /* ***** *****  Monitoring  ***** ***** */
 
-  event(event: Sentry.Event) {
-    Sentry.captureEvent(event);
+  event(event: Event) {
+    Sentry.Native.captureEvent(event);
   }
 
   exception(exception: unknown) {
-    Sentry.captureException(exception);
+    Sentry.Native.captureException(exception);
   }
 
-  message(message: string, context?: Sentry.Scope) {
-    Sentry.captureMessage(message, context);
+  message(message: string, context?: CaptureContext | SeverityLevel) {
+    Sentry.Native.captureMessage(message, context);
   }
 
-  tag(key: string, value: Primitives) {
-    Sentry.setTag(key, value);
+  tag(key: keyof typeof tags, value: Primitives) {
+    Sentry.Native.setTag(key, value);
   }
 
   context(name: string, context: Record<string, unknown> | null) {
-    Sentry.setContext(name, context);
+    Sentry.Native.setContext(name, context);
   }
 
-  breadcrumbs(breadcrumb: Sentry.Breadcrumb) {
-    Sentry.addBreadcrumb(breadcrumb);
+  breadcrumbs(breadcrumb: Breadcrumb) {
+    Sentry.Native.addBreadcrumb(breadcrumb);
   }
 
-  scope(callback: (scope: Sentry.Scope) => void) {
-    Sentry.withScope(callback);
+  scope(callback: (scope: Scope) => void) {
+    Sentry.Native.withScope(callback);
   }
 }
 
 const ErrorMonitoring = new ErrorMonitoringClass();
 
-export * from '@sentry/react-native';
 export default ErrorMonitoring;

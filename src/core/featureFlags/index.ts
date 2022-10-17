@@ -1,22 +1,38 @@
-import remoteConfig from '@react-native-firebase/remote-config';
+import { initializeApp } from 'firebase/app';
+import {
+  getRemoteConfig,
+  getValue,
+  fetchAndActivate,
+  fetchConfig,
+  getAll,
+  getBoolean,
+  getString,
+  getNumber,
+} from 'firebase/remote-config';
 
 import { config } from '$core/constants';
 import Logger from '$core/logger';
 import { errors } from '$core/monitoring/constants';
 
-import { FeatureFlagsType } from './featureFlags.types';
+import defaultConfig from './config';
+import type { FeatureFlagsType } from './featureFlags.types';
+
+const app = initializeApp(config.firebaseConfig);
+const remoteConfig = getRemoteConfig(app);
 
 class FeatureFlagsClass {
   /* ***** *****  Setup  ***** ***** */
 
   async init() {
     try {
-      await this.setDefault();
-      await this.fetchConfig();
+      this.setDefault();
+      await this.fetchAndActivateConfig();
 
       if (config.isDebug) {
         await this.forceFetch();
       }
+
+      console.log('remoteConfig', remoteConfig);
     } catch (error) {
       Logger.error({
         error,
@@ -26,23 +42,13 @@ class FeatureFlagsClass {
     }
   }
 
-  async setDefault() {
-    try {
-      await remoteConfig().setDefaults({
-        areFeatureFlagsEnabled: true,
-      });
-    } catch (error) {
-      Logger.error({
-        error,
-        type: errors.sdk,
-        message: 'Failed to set default remoteConfig',
-      });
-    }
+  setDefault() {
+    remoteConfig.defaultConfig = defaultConfig;
   }
 
-  async fetchConfig() {
+  async fetchAndActivateConfig() {
     try {
-      await remoteConfig().fetchAndActivate();
+      await fetchAndActivate(remoteConfig);
     } catch (error) {
       Logger.error({
         error,
@@ -53,44 +59,41 @@ class FeatureFlagsClass {
   }
 
   async forceFetch() {
-    const forceFetchValue = 0;
+    await fetchConfig(remoteConfig);
+  }
 
-    await remoteConfig().fetch(forceFetchValue);
+  async checkFetchStatus() {
+    const fetchStatus = remoteConfig.lastFetchStatus;
+
+    if (fetchStatus !== 'success') {
+      await this.forceFetch();
+    }
+
+    return fetchStatus;
   }
 
   /* ***** *****  Reading values  ***** ***** */
 
   getStringValue(key: FeatureFlagsType) {
-    const flag = remoteConfig().getValue(key);
-
-    return flag.asString();
+    return getString(remoteConfig, key);
   }
 
   getNumberValue(key: FeatureFlagsType) {
-    const flag = remoteConfig().getValue(key);
-
-    return flag.asNumber();
+    return getNumber(remoteConfig, key);
   }
 
   getBooleanValue(key: FeatureFlagsType) {
-    const flag = remoteConfig().getValue(key);
-
-    return flag.asBoolean();
+    return getBoolean(remoteConfig, key);
   }
 
   getAllValues() {
-    const allFlags = remoteConfig().getAll();
-
-    return allFlags;
+    return getAll(remoteConfig);
   }
 
-  /* ***** *****  Misc  ***** ***** */
-
   getValueSource(key: FeatureFlagsType) {
-    const flag = remoteConfig().getValue(key);
-    const source = flag.getSource();
+    const flag = getValue(remoteConfig, key);
 
-    return source;
+    return flag.getSource();
   }
 }
 

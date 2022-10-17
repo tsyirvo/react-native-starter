@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { Box, Text } from '$components/ui/primitives';
-import FeatureFlags from '$core/featureFlags';
 import useRunOnMount from '$hooks/useRunOnMount';
 import i18n from '$i18n/config';
 
@@ -9,8 +8,10 @@ const MaintenanceMode = () => {
   const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
 
   useRunOnMount(() => {
-    const isMaintenanceModeEnabled =
-      FeatureFlags.getBooleanValue('isMaintenanceMode');
+    // const isMaintenanceModeEnabled =
+    //   FeatureFlags.getBooleanValue('isMaintenanceMode');
+
+    const isMaintenanceModeEnabled = false;
 
     setIsMaintenanceMode(isMaintenanceModeEnabled);
   });

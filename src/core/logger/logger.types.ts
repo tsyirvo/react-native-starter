@@ -20,9 +20,12 @@ export type NetworkErrorType = {
 
 /* ***** *****  Error  ***** ***** */
 
-export type ErrorType = {
-  error: unknown;
+export type BaseErrorType = {
   type: string;
   message: string;
+};
+
+export type ErrorType = BaseErrorType & {
+  error: unknown;
   userMessage?: UserMessageType;
 };

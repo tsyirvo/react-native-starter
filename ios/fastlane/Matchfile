@@ -1,2 +1,0 @@
-git_url(ENV["MATCH_GIT_URL"])
-username(ENV["IOS_APPLE_ID"])

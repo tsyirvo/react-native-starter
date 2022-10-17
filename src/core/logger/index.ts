@@ -5,7 +5,12 @@ import {
 import ErrorMonitoring from '$core/monitoring/errorMonitoring';
 import Toaster from '$core/toaster';
 
-import { ErrorType, NetworkErrorType, UserMessageType } from './logger.types';
+import type {
+  BaseErrorType,
+  ErrorType,
+  NetworkErrorType,
+  UserMessageType,
+} from './logger.types';
 import hasUserMessage from './logger.utils';
 
 class LoggerClass {
@@ -57,6 +62,12 @@ class LoggerClass {
     });
 
     this.showToast(userMessage);
+  }
+
+  dev({ type, message }: BaseErrorType) {
+    const errorMessage = `[${type}]: ${message}`;
+
+    console.log(errorMessage);
   }
 }
 

@@ -3,6 +3,8 @@ to: src/pages/__tests__/<%= h.changeCase.pascalCase(componentName) %>.test.tsx
 ---
 /* eslint-disable react/jsx-props-no-spreading */
 
+import { <%= h.changeCase.pascalCase(componentName) %>ScreenNavigationProp } from '$navigation/navigation.types';
+import navigationProps from '$tests/defaultNavigationProp';
 import { render } from '$tests/utils';
 
 import <%= h.changeCase.pascalCase(componentName) %> from '../<%= h.changeCase.pascalCase(componentName) %>';
