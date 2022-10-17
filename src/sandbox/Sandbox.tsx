@@ -2,6 +2,7 @@ import { registerDevMenuItems } from 'expo-dev-menu';
 import { ReactElement, Suspense, useState } from 'react';
 
 import FallbackLoader from '$components/ui/FallbackLoader';
+import Logger from '$core/logger';
 import useRunOnMount from '$hooks/useRunOnMount';
 
 import DebugStack from './navigation/DebugStack';
@@ -24,7 +25,10 @@ const Sandbox = ({ children }: SandboxProps) => {
     (async () => {
       await registerDevMenuItems(devMenuItems);
     })().catch(() => {
-      // TODO(error): Send to error monitoring
+      Logger.dev({
+        type: 'Sandbox',
+        message: 'Failed to register the Sandbox in the Dev Menu',
+      });
     });
   });
 

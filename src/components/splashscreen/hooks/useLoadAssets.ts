@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 
+import Logger from '$core/logger';
 import useRunOnMount from '$hooks/useRunOnMount';
 
 const useLoadAssets = () => {
@@ -17,8 +18,12 @@ const useLoadAssets = () => {
   useRunOnMount(() => {
     (async () => {
       await SplashScreen.preventAutoHideAsync();
-    })().catch(() => {
-      // TODO(error): Send to error monitoring
+    })().catch((error) => {
+      Logger.error({
+        type: 'SplashScreen',
+        message: 'Failed to auto hide the SplashScreen',
+        error,
+      });
     });
   });
 
@@ -27,8 +32,12 @@ const useLoadAssets = () => {
       if (areFontsLoaded) {
         await SplashScreen.hideAsync();
       }
-    })().catch(() => {
-      // TODO(error): Send to error monitoring
+    })().catch((error) => {
+      Logger.error({
+        type: 'SplashScreen',
+        message: 'Failed to hide the SplashScreen',
+        error,
+      });
     });
   }, [areFontsLoaded]);
 
