@@ -7,23 +7,19 @@ import {
 } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 
-import { syncCodepush } from '$core/codepush';
-import * as Monitoring from '$core/monitoring/errorMonitoring';
+import Splashscreen from '$components/splashscreen/Splashscreen';
 import toastConfig from '$core/toaster/layouts';
-import useRunOnMount from '$hooks/useRunOnMount';
 import AppUpdateNeeded from '$pages/AppUpdateNeeded';
 import MaintenanceMode from '$pages/MaintenanceMode';
 import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
-import { getDimensionRatio } from './core/constants';
 import { initI18n } from './i18n/config';
 import RootStack from './navigation/navigation';
 
 import Sandbox from '$sandbox';
 
 initI18n();
-getDimensionRatio();
 
 const styles = StyleSheet.create({
   container: {
@@ -31,18 +27,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = () => {
-  useRunOnMount(() => {
-    syncCodepush().catch((error) => {
-      console.log('Codepush sync error: ', error);
-    });
-  });
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <StatusBar barStyle="light-content" />
 
-  return (
-    <ThemeProvider theme={theme}>
-      <StatusBar barStyle="light-content" />
-
-      <GestureHandlerRootView style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
+      <Splashscreen>
         <ErrorBoundary>
           <SafeAreaProvider initialMetrics={initialWindowMetrics}>
             <Sandbox>
@@ -58,9 +48,9 @@ const App = () => {
             </Sandbox>
           </SafeAreaProvider>
         </ErrorBoundary>
-      </GestureHandlerRootView>
-    </ThemeProvider>
-  );
-};
+      </Splashscreen>
+    </GestureHandlerRootView>
+  </ThemeProvider>
+);
 
-export default Monitoring.wrap(App);
+export default App;

@@ -1,21 +1,20 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
-import * as Sentry from '@sentry/react-native';
-import { Span } from '@sentry/types';
+import type { ReactNavigationTransactionContext } from '@sentry/react-native';
+import type { Span } from '@sentry/types';
+import * as Sentry from 'sentry-expo';
 
 class PerformanceMonitoringClass {
-  startTransaction(context: Sentry.ReactNavigationTransactionContext) {
-    Sentry.startTransaction(context);
+  startTransaction(context: ReactNavigationTransactionContext) {
+    Sentry.Native.startTransaction(context);
   }
 
   setScope(transaction: Span) {
-    Sentry.getCurrentHub().configureScope((scope) =>
+    Sentry.Native.getCurrentHub().configureScope((scope) =>
       scope.setSpan(transaction),
     );
   }
 
   getTransaction() {
-    return Sentry.getCurrentHub().getScope()?.getTransaction();
+    return Sentry.Native.getCurrentHub().getScope()?.getTransaction();
   }
 }
 

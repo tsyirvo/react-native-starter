@@ -26,9 +26,7 @@ describe('Input component', () => {
     const { getByTestId } = render(<Input {...props} />);
 
     // When
-    const input = getByTestId('inputID');
-
-    fireEvent.changeText(input, 'data');
+    fireEvent.changeText(getByTestId('inputID'), 'data');
 
     // Then
     expect(onChangeText).toHaveBeenCalled();
@@ -38,39 +36,31 @@ describe('Input component', () => {
     // Given
     const { queryByTestId } = render(<Input {...props} />);
 
-    const error = queryByTestId('inputID-error');
-
     // Then
-    expect(error).toBeNull();
+    expect(queryByTestId('inputID-error')).toBeNull();
   });
 
   it('should show error when defined', () => {
     // Given
     const { getByTestId } = render(<Input {...props} error="Some error" />);
 
-    const error = getByTestId('inputID-error');
-
     // Then
-    expect(error).toBeDefined();
+    expect(getByTestId('inputID-error')).toBeDefined();
   });
 
   it('should not show a label if not provided', () => {
     // Given
     const { queryByTestId } = render(<Input {...props} />);
 
-    const label = queryByTestId('inputID-label');
-
     // Then
-    expect(label).toBeNull();
+    expect(queryByTestId('inputID-label')).toBeNull();
   });
 
   it('should show a label when defined', () => {
     // Given
     const { getByTestId } = render(<Input {...props} label="Some label" />);
 
-    const label = getByTestId('inputID-label');
-
     // Then
-    expect(label).toBeDefined();
+    expect(getByTestId('inputID-label')).toBeDefined();
   });
 });

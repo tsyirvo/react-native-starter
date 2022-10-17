@@ -1,26 +1,34 @@
-import RNConfig from 'react-native-config';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import { version, buildNumber, codePush } from '../../../package.json';
+import Constants from 'expo-constants';
 
-import { isIOS } from './platform';
+import { FirebaseOptions } from '../featureFlags/featureFlags.types';
+
+const appName = Constants.expoConfig?.extra?.eas?.appName as string;
+const env = Constants.expoConfig?.extra?.eas?.appEnv as string;
+const version = Constants.expoConfig?.version;
+const buildNumber = Constants.expoConfig?.ios?.buildNumber;
+const runtimeVersion = Constants.expoConfig?.runtimeVersion;
+const sentryDsn = Constants.expoConfig?.extra?.eas?.sentryDsn as string;
+const mixpanelToken = Constants.expoConfig?.extra?.eas?.mixpanelToken as string;
+const firebaseConfig = Constants.expoConfig?.extra?.eas
+  ?.firebaseConfig as FirebaseOptions;
 
 const config = {
   defaultLocale: 'en',
   supportedLocales: ['en', 'fr'],
   // Config
-  appName: RNConfig.APP_NAME,
+  appName,
+  env,
   version,
   buildNumber,
-  codePush,
-  env: RNConfig.ENV,
-  isDebug: __DEV__,
+  runtimeVersion,
+  isDebug: false,
   isTest: process.env.NODE_ENV === 'test',
   // SDK
-  sentryDsn: RNConfig.SENTRY_DSN,
-  mixpanelToken: RNConfig.MIXPANEL_TOKEN,
-  codepushKey: isIOS
-    ? RNConfig.IOS_CODEPUSH_KEY
-    : RNConfig.ANDROID_CODEPUSH_KEY,
+  sentryDsn,
+  mixpanelToken,
+  firebaseConfig,
 };
 
 export default config;

@@ -7,7 +7,8 @@ import {
 } from '@shopify/restyle';
 import { Pressable } from 'react-native';
 
-import { Box, Text } from '$components/ui/primitives';
+import Box from '$components/ui/primitives/box/Box';
+import Text from '$components/ui/primitives/text/Text';
 import { Theme } from '$styles/theme';
 
 import { BoxProps } from '../box/Box';

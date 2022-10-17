@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import { Pressable } from 'react-native';
+import React from 'react';
 
 import { Box, Text } from '$components/ui/primitives';
 import { config } from '$core/constants';
 
 const Version = () => {
-  const [isShowAll, setIsShowAll] = useState(false);
-
-  const toggleVersion = () => setIsShowAll((prevValue) => !prevValue);
+  if (!config.version || !config.buildNumber) {
+    return null;
+  }
 
   return (
     <Box alignItems="flex-end" pt="global_32">
-      <Pressable onPress={toggleVersion}>
-        <Text variant="small">
-          {`Version: v${config.version}${
-            isShowAll ? ` (${config.buildNumber}.${config.codePush})` : ''
-          }`}
-        </Text>
-      </Pressable>
+      <Text variant="small">
+        {`Version: v${config.version}:${config.buildNumber}`}
+      </Text>
+
+      {typeof config.runtimeVersion === 'string' && (
+        <Text variant="small">{`Runtime: v${config.runtimeVersion}`}</Text>
+      )}
     </Box>
   );
 };

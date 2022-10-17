@@ -3,6 +3,7 @@ import * as RNLocalize from 'react-native-localize';
 
 import { config, storageKeys } from '$core/constants';
 import { initDateLocale } from '$core/date';
+import Logger from '$core/logger';
 import AppStorage from '$core/storage';
 
 type SupportedLocales = 'en' | 'fr';
@@ -27,8 +28,12 @@ const getPhoneLocale = () => {
 const storeLocaleInStorage = (locale: string) => {
   try {
     AppStorage.set(storageKeys.appStorage.locale, locale);
-  } catch (err) {
-    // TODO(error): Send to error monitoring
+  } catch (error) {
+    Logger.error({
+      type: 'I18n',
+      message: 'Failed to set the locale in the Storage',
+      error,
+    });
   }
 };
 
@@ -59,8 +64,12 @@ export const initI18n = () => {
 
   try {
     locale = AppStorage.getString(storageKeys.appStorage.locale);
-  } catch (err) {
-    // TODO(error): Send to error monitoring
+  } catch (error) {
+    Logger.error({
+      type: 'I18n',
+      message: 'Failed to get the locale from the Storage',
+      error,
+    });
   }
 
   if (locale == null) {

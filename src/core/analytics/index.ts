@@ -4,7 +4,8 @@ import { config } from '$core/constants';
 import Logger from '$core/logger';
 import { errors } from '$core/monitoring/constants';
 
-const mixpanel = new Mixpanel(config.mixpanelToken ?? '');
+const shouldTrackAutomaticEvents = true;
+const mixpanel = new Mixpanel(config.mixpanelToken, shouldTrackAutomaticEvents);
 
 class AnalyticsClass {
   /* ***** *****  Setup  ***** ***** */

@@ -4,10 +4,9 @@ import fs from 'fs';
 import isImage from 'is-image';
 import util from 'util';
 
-import createAndroidFiles from './androidHandling.js';
+import createFiles from './createFiles.js';
 import createImageResolutions from './imageManipulations.js';
 import ImageMetadata from './imageMetadata.js';
-import createIosFiles from './iosHandling.js';
 import { print } from './utils.js';
 
 const readDirAsync = util.promisify(fs.readdir);
@@ -39,17 +38,17 @@ const generateImages = async (path: string) => {
 
     switch (fileType) {
       case 'image':
-        print({ message: 'Image found' });
+        print({ message: 'New image found' });
 
         ImageMetadata.setImagePath(path);
 
         await createImageResolutions(path);
-        await Promise.all([createIosFiles(), createAndroidFiles()]);
+        await createFiles();
 
         ImageMetadata.clear();
         break;
       case 'folder':
-        print({ message: 'Folder found' });
+        print({ message: 'New folder found' });
 
         await checkFolderContent(path);
         break;

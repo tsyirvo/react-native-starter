@@ -3,7 +3,8 @@
 import { forwardRef } from 'react';
 import { TextInput, TextInputProps } from 'react-native';
 
-import { Box, Text } from '$components/ui/primitives';
+import Box from '$components/ui/primitives/box/Box';
+import Text from '$components/ui/primitives/text/Text';
 import { fontSizes } from '$styles/fonts';
 import { makeAppStyles, theme } from '$styles/theme';
 

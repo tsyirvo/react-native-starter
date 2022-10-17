@@ -5,15 +5,23 @@ import {
 import ErrorMonitoring from '$core/monitoring/errorMonitoring';
 import Toaster from '$core/toaster';
 
-import { ErrorType, NetworkErrorType, UserMessageType } from './logger.types';
-import hasUserMessage from './logger.utils';
+import type {
+  BaseErrorType,
+  ErrorType,
+  NetworkErrorType,
+  UserMessageType,
+} from './logger.types';
 
 class LoggerClass {
   /* ***** *****  UI  ***** ***** */
 
   showToast(userMessage?: UserMessageType) {
     // Display a Toast for the user if needed
-    if (hasUserMessage(userMessage)) {
+    if (
+      userMessage &&
+      Boolean(userMessage.title) &&
+      Boolean(userMessage.message)
+    ) {
       Toaster.show({
         type: 'error',
         text1: userMessage.title,
@@ -57,6 +65,12 @@ class LoggerClass {
     });
 
     this.showToast(userMessage);
+  }
+
+  dev({ type, message }: BaseErrorType) {
+    const errorMessage = `[${type}]: ${message}`;
+
+    console.log(errorMessage);
   }
 }
 

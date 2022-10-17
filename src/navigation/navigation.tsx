@@ -1,6 +1,8 @@
-import { useNavigationContainerRef } from '@react-navigation/core';
 import { useFlipper } from '@react-navigation/devtools';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { routingInstrumentation } from '$core/monitoring/errorMonitoring';

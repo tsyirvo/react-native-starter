@@ -1,8 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
-import { ReactElement, Suspense, useEffect, useState } from 'react';
+import { registerDevMenuItems } from 'expo-dev-menu';
+import { ReactElement, Suspense, useState } from 'react';
 
 import FallbackLoader from '$components/ui/FallbackLoader';
+import Logger from '$core/logger';
+import useRunOnMount from '$hooks/useRunOnMount';
 
 import DebugStack from './navigation/DebugStack';
 
@@ -13,22 +14,23 @@ type SandboxProps = {
 const Sandbox = ({ children }: SandboxProps) => {
   const [isShown, setIsShown] = useState(false);
 
-  useEffect(() => {
-    if (__DEV__) {
-      const importDevMenu = async () => {
-        await import('react-native-dev-menu').then((devMenu) => {
-          void devMenu.addItem('Toggle Sandbox', () =>
-            setIsShown((prevState) => !prevState),
-          );
-        });
-      };
+  useRunOnMount(() => {
+    const devMenuItems = [
+      {
+        name: 'Toggle the Sandbox',
+        callback: () => setIsShown((prevState) => !prevState),
+      },
+    ];
 
-      importDevMenu().catch((err) => {
-        // TODO(error): Handle this error
-        console.log('err', err);
+    (async () => {
+      await registerDevMenuItems(devMenuItems);
+    })().catch(() => {
+      Logger.dev({
+        type: 'Sandbox',
+        message: 'Failed to register the Sandbox in the Dev Menu',
       });
-    }
-  }, []);
+    });
+  });
 
   if (!isShown) {
     return children;

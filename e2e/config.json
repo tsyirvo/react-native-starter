@@ -1,8 +1,9 @@
 {
+  "maxWorkers": 1,
   "testEnvironment": "./environment",
   "testRunner": "jest-circus/runner",
-  "testRegex": "\\.e2e\\.(j|t)s$",
   "testTimeout": 120000,
+  "testRegex": "\\.e2e\\.ts$",
   "reporters": ["detox/runners/jest/streamlineReporter"],
   "verbose": true
 }
