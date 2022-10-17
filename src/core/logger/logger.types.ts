@@ -1,9 +1,6 @@
 /* ***** *****  Toast Message  ***** ***** */
 
-type EmptyMessage = {};
-export type ValidMessage = { title: string; message: string };
-
-export type UserMessageType = EmptyMessage | ValidMessage;
+export type UserMessageType = { title: string; message: string };
 
 /* ***** *****  Network  ***** ***** */
 
