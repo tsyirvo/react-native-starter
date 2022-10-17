@@ -2,6 +2,24 @@
   "name": "rn-starter",
   "version": "1.3.0",
   "update": "0",
+  "author": "Gabriel Hofman <gabriel.hofman.00@gmail.com>",
+  "description": "Default starter with basic builtins and configs used in my React Native projects",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsyirvo/react-native-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tsyirvo/react-native-starter/issues"
+  },
+  "keywords": [
+    "React Native",
+    "Starter",
+    "Boilerplate",
+    "Expo",
+    "Development Build"
+  ],
+  "license": "ISC",
+  "type": "module",
   "scripts": {
     "start:dev": "APP_ENV=development expo start --dev-client",
     "start:test": "APP_ENV=test expo start --dev-client --no-dev --minify",
@@ -36,8 +54,6 @@
     "prepare": "husky install",
     "postinstall": "patch-package"
   },
-  "license": "ISC",
-  "type": "module",
   "dependencies": {
     "@react-native-masked-view/masked-view": "0.2.7",
     "@react-navigation/devtools": "6.0.10",
