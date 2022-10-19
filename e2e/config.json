@@ -1,5 +1,6 @@
 {
   "maxWorkers": 1,
+  "preset": "ts-jest",
   "testEnvironment": "./environment",
   "testRunner": "jest-circus/runner",
   "testTimeout": 120000,
