@@ -8,7 +8,7 @@ export const isIosTest = platform === 'ios';
 export const isAndroidTest = platform === 'android';
 
 // Shared values
-export const START_DELAY = 2500;
+export const START_DELAY = 5000;
 
 // Packager URL
 const getDeepLinkUrl = (url: string) =>
@@ -18,3 +18,5 @@ const getDevLauncherPackagerUrl = () =>
   `http://10.0.2.2:19000/index.bundle?platform=${platform}&dev=true&minify=false&disableOnboarding=1`;
 
 export const packagerUrl = getDeepLinkUrl(getDevLauncherPackagerUrl());
+
+console.log('packagerUrl', packagerUrl);

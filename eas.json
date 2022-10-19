@@ -20,7 +20,6 @@
     },
     "test:debug": {
       "extends": "development",
-      "developmentClient": false,
       "android": {
         "gradleCommand": ":app:assembleDebug :app:assembleAndroidTest -DtestBuildType=debug"
       },
@@ -29,7 +28,8 @@
       }
     },
     "test:release": {
-      "extends": "staging",
+      "extends": "development",
+      "developmentClient": false,
       "android": {
         "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release"
       },

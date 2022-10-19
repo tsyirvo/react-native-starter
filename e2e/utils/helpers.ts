@@ -1,4 +1,4 @@
-import { packagerUrl, START_DELAY } from './constants';
+import { isAndroidTest, packagerUrl, START_DELAY } from './constants';
 
 export const sleep = async (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
@@ -6,7 +6,7 @@ export const sleep = async (ms: number) =>
 export const startApp = async (config?: Detox.DeviceLaunchAppConfig) => {
   await device.launchApp({
     newInstance: true,
-    url: packagerUrl,
+    url: isAndroidTest && packagerUrl,
     ...config,
   });
 

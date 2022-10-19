@@ -1,7 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import { by, element, expect } from 'detox';
-import { startApp } from 'e2e/utils/helpers';
+
+import { startApp } from '../utils/helpers';
 
 describe('Basic test', () => {
   beforeAll(async () => {

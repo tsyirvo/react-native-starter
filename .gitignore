@@ -76,3 +76,6 @@ dist/
 
 # Jest
 coverage/\*\*/*
+
+# Detox
+e2e/.artifacts

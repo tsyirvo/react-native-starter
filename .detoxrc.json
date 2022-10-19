@@ -27,24 +27,24 @@
     "ios:debug": {
       "type": "ios.app",
       "binaryPath": "e2e/builds/TestDebug.app",
-      "build": "eas build --local --platform ios --profile test:debug --non-interactive --output e2e/builds/ios-debug.tar.gz && tar -xf e2e/builds/ios-debug.tar.gz"
+      "build": "eas build --local --platform ios --profile test:debug --non-interactive --output e2e/builds/ios-debug.tar.gz && ./scripts/detox/move-ios-debug.sh"
     },
     "ios:release": {
       "type": "ios.app",
       "binaryPath": "e2e/builds/TestRelease.app",
-      "build": "eas build --local --platform ios --profile test:release --non-interactive --output e2e/builds/ios-release.tar.gz && tar -xf e2e/builds/ios-release.tar.gz"
+      "build": "eas build --local --platform ios --profile test:release --non-interactive --output e2e/builds/ios-release.tar.gz && ./scripts/detox/move-ios-release.sh"
     },
     "android:debug": {
       "type": "android.apk",
       "binaryPath": "e2e/builds/app-debug.apk",
       "testBinaryPath": "e2e/builds/app-debug-androidTest.apk",
-      "build": "eas build --local --platform android --profile test:debug --non-interactive --output e2e/builds/android-debug.tar.gz && tar -xf e2e/builds/android-debug.tar.gz && ./scripts/detox/move-android-debug-apk.sh"
+      "build": "eas build --local --platform android --profile test:debug --non-interactive --output e2e/builds/android-debug.tar.gz && ./scripts/detox/move-android-debug.sh"
     },
     "android:release": {
       "type": "android.apk",
       "binaryPath": "e2e/builds/app-release.apk",
       "testBinaryPath": "e2e/builds/app-release-androidTest.apk",
-      "build": "eas build --local --platform android --profile test:release --non-interactive --output e2e/builds/android-release.tar.gz && tar -xf e2e/builds/android-release.tar.gz && ./scripts/detox/move-android-release-apk.sh"
+      "build": "eas build --local --platform android --profile test:release --non-interactive --output e2e/builds/android-release.tar.gz && ./scripts/detox/move-android-release.sh"
     }
   },
   "devices": {
