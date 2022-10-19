@@ -1,4 +1,4 @@
-import { ScrollView } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 
 import { Button } from '$components/ui/primitives';
 
@@ -10,7 +10,7 @@ const ButtonSandbox = () => (
       <Button
         label="Click here"
         variant="base"
-        onPress={() => console.log('Text pressed')}
+        onPress={() => Alert.alert('Text pressed')}
       />
     </SandBoxItem>
   </ScrollView>

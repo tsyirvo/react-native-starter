@@ -2,6 +2,7 @@ import { Component, ErrorInfo, ReactElement } from 'react';
 
 import { Box, Button, Text } from '$components/ui/primitives';
 import SafeView from '$components/ui/SafeView';
+import { ErrorMonitoring } from '$core/monitoring';
 import i18n from '$i18n/config';
 
 type ErrorBoundaryProps = {
@@ -21,8 +22,18 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     return { hasError: true };
   }
 
-  componentDidCatch(_: Error, errorInfo: ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.log('Send error for reporting', errorInfo);
+
+    ErrorMonitoring.breadcrumbs({
+      type: 'error',
+      level: 'error',
+      data: {
+        componentStack: errorInfo,
+      },
+    });
+
+    ErrorMonitoring.exception(error);
   }
 
   handleApplicationReset = () => {
