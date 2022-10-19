@@ -20,4 +20,9 @@ const main = async () => {
   deleteTmpImageFolders();
 };
 
-main().catch(() => null);
+main().catch(() =>
+  print({
+    message: 'An error happened while importing the images',
+    type: 'error',
+  }),
+);

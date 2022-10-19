@@ -44,7 +44,6 @@ const compressAllResolutions = async () => {
       }),
     ]);
   } catch (error) {
-    console.log('error', error);
     print({
       message: 'Failed to compress the all images resolutions',
       type: 'error',
