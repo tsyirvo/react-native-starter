@@ -1,10 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-import { device, expect, element, by } from 'detox';
+import { by, element, expect } from 'detox';
+import { startApp } from 'e2e/utils/helpers';
 
 describe('Basic test', () => {
   beforeAll(async () => {
-    await device.launchApp();
+    await startApp();
   });
 
   it('should have home welcome text', async () => {
