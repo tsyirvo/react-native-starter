@@ -5,8 +5,8 @@ import imageminPngquant from 'imagemin-pngquant';
 import type { Sharp } from 'sharp';
 import sharp from 'sharp';
 
-import ImageMetadata from './imageMetadata.js';
-import { print, showSpinner, TMP_DIR } from './utils.js';
+import ImageMetadata from './imageMetadata';
+import { print, showSpinner, TMP_DIR } from './utils';
 
 /* ***** *****  Compress the generated images  ***** ***** */
 

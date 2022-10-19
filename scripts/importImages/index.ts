@@ -1,9 +1,5 @@
-import generateImages from './generateImages.js';
-import {
-  createTmpImageFolders,
-  deleteTmpImageFolders,
-  print,
-} from './utils.js';
+import generateImages from './generateImages';
+import { createTmpImageFolders, deleteTmpImageFolders, print } from './utils';
 
 const main = async () => {
   const passedArgsIndex = 2;
@@ -24,4 +20,9 @@ const main = async () => {
   deleteTmpImageFolders();
 };
 
-await main();
+main().catch(() =>
+  print({
+    message: 'An error happened while importing the images',
+    type: 'error',
+  }),
+);
