@@ -18,5 +18,3 @@ const getDevLauncherPackagerUrl = () =>
   `http://10.0.2.2:19000/index.bundle?platform=${platform}&dev=true&minify=false&disableOnboarding=1`;
 
 export const packagerUrl = getDeepLinkUrl(getDevLauncherPackagerUrl());
-
-console.log('packagerUrl', packagerUrl);
