@@ -1,4 +1,4 @@
-import i18n from 'i18n-js';
+import { I18n } from 'i18n-js';
 import * as RNLocalize from 'react-native-localize';
 
 import { config, storageKeys } from '$core/constants';
@@ -13,6 +13,8 @@ const translationGetters: TranslationGetters = {
   en: () => require('$i18n/locales/en.json'),
   fr: () => require('$i18n/locales/fr.json'),
 };
+
+const i18n = new I18n();
 
 /* ***** *****  Utils  ***** ***** */
 
@@ -56,7 +58,7 @@ const setAppLocale = (locale: string, saveToStorage?: boolean) => {
 
 /* ***** *****  I18n  ***** ***** */
 
-i18n.fallbacks = true;
+i18n.enableFallback = true;
 i18n.translations = { en: translationGetters.en() };
 
 export const initI18n = () => {
