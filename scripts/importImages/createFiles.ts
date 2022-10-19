@@ -1,5 +1,5 @@
-import ImageMetadata from './imageMetadata.js';
-import { copyFile, print, showSpinner, TMP_DIR } from './utils.js';
+import ImageMetadata from './imageMetadata';
+import { copyFile, print, showSpinner, TMP_DIR } from './utils';
 
 const getAssetPath = () => `${process.cwd()}/src/assets/images/`;
 

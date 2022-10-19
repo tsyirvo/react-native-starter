@@ -4,10 +4,10 @@ import fs from 'fs';
 import isImage from 'is-image';
 import util from 'util';
 
-import createFiles from './createFiles.js';
-import createImageResolutions from './imageManipulations.js';
-import ImageMetadata from './imageMetadata.js';
-import { print } from './utils.js';
+import createFiles from './createFiles';
+import createImageResolutions from './imageManipulations';
+import ImageMetadata from './imageMetadata';
+import { print } from './utils';
 
 const readDirAsync = util.promisify(fs.readdir);
 
