@@ -1,4 +1,4 @@
-jest.mock('react-native-toast-message', () => ({
+module.exports = {
   show: jest.fn(),
   hide: jest.fn(),
-}));
+};
