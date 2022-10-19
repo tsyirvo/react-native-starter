@@ -19,6 +19,7 @@
     "Development Build"
   ],
   "license": "ISC",
+  "type": "module",
   "scripts": {
     "start:dev": "APP_ENV=development expo start --dev-client",
     "start:test": "APP_ENV=test expo start --dev-client --no-dev --minify",

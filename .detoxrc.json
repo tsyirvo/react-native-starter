@@ -27,12 +27,12 @@
     "ios:debug": {
       "type": "ios.app",
       "binaryPath": "e2e/builds/TestDebug.app",
-      "build": "eas build --local --platform ios --profile test:debug --non-interactive --output e2e/builds/ios-debug.tar.gz && ./scripts/detox/move-ios-debug.sh"
+      "build": "eas build --local --platform ios --profile test:debug --non-interactive --output e2e/builds/ios-debug.tar.gz && tar -xf e2e/builds/ios-debug.tar.gz  -C e2e/builds"
     },
     "ios:release": {
       "type": "ios.app",
       "binaryPath": "e2e/builds/TestRelease.app",
-      "build": "eas build --local --platform ios --profile test:release --non-interactive --output e2e/builds/ios-release.tar.gz && ./scripts/detox/move-ios-release.sh"
+      "build": "eas build --local --platform ios --profile test:release --non-interactive --output e2e/builds/ios-release.tar.gz && tar -xf e2e/builds/ios-release.tar.gz -C e2e/builds"
     },
     "android:debug": {
       "type": "android.apk",
