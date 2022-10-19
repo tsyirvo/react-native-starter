@@ -31,8 +31,6 @@ class FeatureFlagsClass {
       if (config.isDebug) {
         await this.forceFetch();
       }
-
-      console.log('remoteConfig', remoteConfig);
     } catch (error) {
       Logger.error({
         error,

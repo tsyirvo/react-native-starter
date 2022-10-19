@@ -20,28 +20,31 @@
         "enabled": true,
         "shouldTakeAutomaticSnapshots": true,
         "keepOnlyFailedTestsArtifacts": true
-      },
-      "video": {
-        "android": {
-          "bitRate": 4000000
-        },
-        "simulator": {
-          "codec": "hevc"
-        }
       }
     }
   },
   "apps": {
     "ios:debug": {
       "type": "ios.app",
-      "binaryPath": "e2e/builds/Test.app",
-      "build": "eas build --local --platform ios --profile test --non-interactive --output e2e/builds/ios.tar.gz && tar -xf e2e/builds/ios.tar.gz"
+      "binaryPath": "e2e/builds/TestDebug.app",
+      "build": "eas build --local --platform ios --profile test:debug --non-interactive --output e2e/builds/ios-debug.tar.gz && tar -xf e2e/builds/ios-debug.tar.gz  -C e2e/builds"
     },
-    "android": {
+    "ios:release": {
+      "type": "ios.app",
+      "binaryPath": "e2e/builds/TestRelease.app",
+      "build": "eas build --local --platform ios --profile test:release --non-interactive --output e2e/builds/ios-release.tar.gz && tar -xf e2e/builds/ios-release.tar.gz -C e2e/builds"
+    },
+    "android:debug": {
+      "type": "android.apk",
+      "binaryPath": "e2e/builds/app-debug.apk",
+      "testBinaryPath": "e2e/builds/app-debug-androidTest.apk",
+      "build": "eas build --local --platform android --profile test:debug --non-interactive --output e2e/builds/android-debug.tar.gz && ./scripts/detox/move-android-debug.sh"
+    },
+    "android:release": {
       "type": "android.apk",
       "binaryPath": "e2e/builds/app-release.apk",
       "testBinaryPath": "e2e/builds/app-release-androidTest.apk",
-      "build": "eas build --local --platform android --profile test --non-interactive --output e2e/builds/android.tar.gz && tar -xf e2e/builds/android.tar.gz && chmod +x ./scripts/detox/move-android-apk.sh && ./scripts/detox/move-android-apk.sh"
+      "build": "eas build --local --platform android --profile test:release --non-interactive --output e2e/builds/android-release.tar.gz && ./scripts/detox/move-android-release.sh"
     }
   },
   "devices": {
@@ -63,9 +66,17 @@
       "device": "simulator",
       "app": "ios:debug"
     },
-    "android": {
+    "ios:release": {
+      "device": "simulator",
+      "app": "ios:release"
+    },
+    "android:debug": {
       "device": "emulator",
-      "app": "android"
+      "app": "android:debug"
+    },
+    "android:release": {
+      "device": "emulator",
+      "app": "android:release"
     }
   }
 }

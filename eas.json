@@ -18,14 +18,23 @@
         "APP_ENV": "development"
       }
     },
-    "test": {
+    "test:debug": {
+      "extends": "development",
+      "android": {
+        "gradleCommand": ":app:assembleDebug :app:assembleAndroidTest -DtestBuildType=debug"
+      },
+      "env": {
+        "APP_ENV": "test:debug"
+      }
+    },
+    "test:release": {
       "extends": "development",
       "developmentClient": false,
       "android": {
         "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release"
       },
       "env": {
-        "APP_ENV": "test"
+        "APP_ENV": "test:release"
       }
     },
     "staging": {
