@@ -7,5 +7,10 @@
       "*": ["*", "*.ios.tsx", "*.android.tsx"]
     }
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "exclude": ["node_modules", "__mocks__"]
 }
