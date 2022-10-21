@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/tsyirvo/react-native-starter/compare/v1.3.0...v2.0.0) (2022-10-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate to expo with a custom development build (#341)
+
+### Features
+
+* add support for testing rules in eslint config ([#339](https://github.com/tsyirvo/react-native-starter/issues/339)) ([886147e](https://github.com/tsyirvo/react-native-starter/commit/886147e221a2f9f357d448744a157fba01916750))
+* better navigation abstractions ([#338](https://github.com/tsyirvo/react-native-starter/issues/338)) ([f5c2e66](https://github.com/tsyirvo/react-native-starter/commit/f5c2e66db4fed8cdbcd0f95c171b9bc00c529fe5))
+* migrate the image import script ([#337](https://github.com/tsyirvo/react-native-starter/issues/337)) ([c4f04df](https://github.com/tsyirvo/react-native-starter/commit/c4f04dffd6fc871a7415417ef92ccd44db10e4ce))
+* migrate to expo with a custom development build ([#341](https://github.com/tsyirvo/react-native-starter/issues/341)) ([2c91857](https://github.com/tsyirvo/react-native-starter/commit/2c91857be548f9339f5cf7d74ec8fed2f89ed9cb))
+* setup a basic date handling ([#340](https://github.com/tsyirvo/react-native-starter/issues/340)) ([4df8e4f](https://github.com/tsyirvo/react-native-starter/commit/4df8e4fa66384331b919ccf9b2e21d9fb95c0b94))
+* setup detox to work with expo ([#342](https://github.com/tsyirvo/react-native-starter/issues/342)) ([e34e581](https://github.com/tsyirvo/react-native-starter/commit/e34e581fe55dd58b727e9e2cb496c737fbd07e04))
+
+
+### Bug Fixes
+
+* handle codepush updates errors ([#318](https://github.com/tsyirvo/react-native-starter/issues/318)) ([0c5ade4](https://github.com/tsyirvo/react-native-starter/commit/0c5ade4fdaf59afca15e4ab9982cca32db3004a5))
+* update bad flipper package name ([#309](https://github.com/tsyirvo/react-native-starter/issues/309)) ([3fab231](https://github.com/tsyirvo/react-native-starter/commit/3fab2313c695396c2b0b30ee6d355f802e4ccbc3))
+
 ## [1.3.0](https://github.com/tsyirvo/react-native-starter/compare/v1.2.0...v1.3.0) (2022-01-02)
 
 

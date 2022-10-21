@@ -1,6 +1,6 @@
 {
   "name": "rn-starter",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "update": "0",
   "author": "Gabriel Hofman <gabriel.hofman.00@gmail.com>",
   "description": "Default starter with basic builtins and configs used in my React Native projects",
