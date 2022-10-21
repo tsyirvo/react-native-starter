@@ -25,7 +25,12 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '14.18.1'
+          node-version: '16.14.0'
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'tsyirvo'
+          git config --global user.email 'gabriel.hofman.00@gmail.com'
 
       - name: Update the app version and tag it
         run: npx standard-version

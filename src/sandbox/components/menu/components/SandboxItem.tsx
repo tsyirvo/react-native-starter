@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ReactNode } from 'react';
 
 import { Box, Text } from '$components/ui/primitives';
 
@@ -8,10 +8,11 @@ import Separator from './Separator';
 type SandBoxItemProps = {
   title?: string;
   isSingle?: boolean;
+  children: ReactNode;
 };
 
-const SandBoxItem: FC<SandBoxItemProps> = ({ title, isSingle, children }) => (
-  <Box px="global_24" pt="global_8">
+const SandBoxItem = ({ title, isSingle, children }: SandBoxItemProps) => (
+  <Box pt="global_8" px="global_24">
     {!!title && <Text>{title}</Text>}
 
     <CenteredContent py="global_24">{children}</CenteredContent>

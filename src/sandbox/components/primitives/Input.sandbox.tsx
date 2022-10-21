@@ -11,7 +11,7 @@ const InputSandbox = () => (
     </SandBoxItem>
 
     <SandBoxItem title="Input with an error">
-      <Input label="Some label" placeholder="Type here" error="An error" />
+      <Input error="An error" label="Some label" placeholder="Type here" />
     </SandBoxItem>
 
     <SandBoxItem title="Input without label">
@@ -19,7 +19,7 @@ const InputSandbox = () => (
     </SandBoxItem>
 
     <SandBoxItem title="Input not editable">
-      <Input label="Some label" placeholder="Type here" editable={false} />
+      <Input editable={false} label="Some label" placeholder="Type here" />
     </SandBoxItem>
   </ScrollView>
 );

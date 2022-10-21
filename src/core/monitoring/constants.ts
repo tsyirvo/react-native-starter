@@ -27,6 +27,9 @@ export const tags = {
   locale: 'Locale',
   env: 'Environment',
   codepush: 'Codepush',
+  runtimeVersion: 'RuntimeVersion',
+  currentVersion: 'CurrentVersion',
+  updatedVersion: 'UpdatedVersion',
 };
 
 /* ***** *****  Errors  ***** ***** */

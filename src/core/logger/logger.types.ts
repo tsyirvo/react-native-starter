@@ -1,9 +1,6 @@
 /* ***** *****  Toast Message  ***** ***** */
 
-type EmptyMessage = {};
-export type ValidMessage = { title: string; message: string };
-
-export type UserMessageType = EmptyMessage | ValidMessage;
+export type UserMessageType = { title: string; message: string };
 
 /* ***** *****  Network  ***** ***** */
 
@@ -20,9 +17,12 @@ export type NetworkErrorType = {
 
 /* ***** *****  Error  ***** ***** */
 
-export type ErrorType = {
-  error: unknown;
+export type BaseErrorType = {
   type: string;
   message: string;
+};
+
+export type ErrorType = BaseErrorType & {
+  error: unknown;
   userMessage?: UserMessageType;
 };

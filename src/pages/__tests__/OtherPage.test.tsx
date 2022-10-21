@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import i18n from '$i18n/config';
 import { OtherPageScreenNavigationProp } from '$navigation/navigation.types';
 import navigationProps from '$tests/defaultNavigationProp';
-import { render, fireEvent } from '$tests/utils';
+import { fireEvent, render } from '$tests/utils';
 
 import OtherPage from '../OtherPage';
 
@@ -15,10 +14,10 @@ describe('OtherPage component', () => {
 
   it('should render correctly', () => {
     // Given
-    const { getByText } = render(<OtherPage {...props} />);
+    const { getByTestId } = render(<OtherPage {...props} />);
 
     // Then
-    expect(getByText(i18n.t('otherPage.navigation.title'))).toBeDefined();
+    expect(getByTestId('otherPage_title')).toBeDefined();
   });
 
   it('should trigger the goBack method when the button is pressed', () => {

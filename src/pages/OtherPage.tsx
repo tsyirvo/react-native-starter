@@ -1,7 +1,5 @@
-import { useCallback } from 'react';
-
 import { Box, Button, Text } from '$components/ui/primitives';
-import SafeView from '$components/ui/SafeView';
+import Screen from '$components/ui/Screen';
 import i18n from '$i18n/config';
 import { OtherPageScreenNavigationProp } from '$navigation/navigation.types';
 
@@ -10,11 +8,11 @@ type Props = {
 };
 
 const OtherPage = ({ navigation }: Props) => {
-  const goBack = useCallback(() => navigation.goBack(), [navigation]);
+  const goBack = () => navigation.goBack();
 
   return (
-    <SafeView>
-      <Box justifyContent="center" alignItems="center">
+    <Screen>
+      <Box alignItems="center" justifyContent="center" mt="global_16">
         <Text testID="otherPage_title" variant="large">
           {i18n.t('otherPage.navigation.title')}
         </Text>
@@ -22,13 +20,13 @@ const OtherPage = ({ navigation }: Props) => {
         <Box mt="global_24">
           <Button
             alignItems="center"
+            label={i18n.t('otherPage.navigation.backCta')}
             testID="back_button"
             onPress={goBack}
-            label={i18n.t('otherPage.navigation.backCta')}
           />
         </Box>
       </Box>
-    </SafeView>
+    </Screen>
   );
 };
 

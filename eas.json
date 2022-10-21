@@ -1,0 +1,61 @@
+{
+  "cli": {
+    "version": ">= 1.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk",
+        "withoutCredentials": true
+      },
+      "env": {
+        "APP_ENV": "development"
+      }
+    },
+    "test:debug": {
+      "extends": "development",
+      "android": {
+        "gradleCommand": ":app:assembleDebug :app:assembleAndroidTest -DtestBuildType=debug"
+      },
+      "env": {
+        "APP_ENV": "test:debug"
+      }
+    },
+    "test:release": {
+      "extends": "development",
+      "developmentClient": false,
+      "android": {
+        "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release"
+      },
+      "env": {
+        "APP_ENV": "test:release"
+      }
+    },
+    "staging": {
+      "channel": "staging",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "APP_ENV": "staging"
+      }
+    },
+    "production": {
+      "channel": "production",
+      "autoIncrement": true,
+      "env": {
+        "APP_ENV": "production"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

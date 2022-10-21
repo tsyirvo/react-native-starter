@@ -3,7 +3,6 @@ import semverGte from 'semver/functions/gte';
 
 import { Box, Text } from '$components/ui/primitives';
 import { config } from '$core/constants';
-import FeatureFlags from '$core/featureFlags';
 import useRunOnMount from '$hooks/useRunOnMount';
 import i18n from '$i18n/config';
 
@@ -11,19 +10,23 @@ const AppUpdateNeeded = () => {
   const [isAppUnsupported, setIsAppUnsupported] = useState(false);
 
   useRunOnMount(() => {
-    const lastSupportedVersion: string = FeatureFlags.getStringValue(
-      'lastSupportedAppVersion',
-    );
+    // const lastSupportedVersion: string = FeatureFlags.getStringValue(
+    //   'lastSupportedAppVersion',
+    // );
 
-    if (!lastSupportedVersion) {
-      // We can't get last supported version, so leave the app running
-      return;
+    // if (!lastSupportedVersion) {
+    //   // We can't get last supported version, so leave the app running
+    //   return;
+    // }
+
+    const lastSupportedVersion = '1.0.0';
+
+    if (typeof config.version === 'string') {
+      const isSupported =
+        semverGte(config.version, lastSupportedVersion) || false;
+
+      setIsAppUnsupported(!isSupported);
     }
-
-    const isSupported =
-      semverGte(config.version, lastSupportedVersion) || false;
-
-    setIsAppUnsupported(!isSupported);
   });
 
   if (!isAppUnsupported) {
@@ -32,13 +35,13 @@ const AppUpdateNeeded = () => {
 
   return (
     <Box
-      justifyContent="center"
       alignItems="center"
-      width="100%"
       height="100%"
+      justifyContent="center"
       px="global_32"
+      width="100%"
     >
-      <Text variant="large" pb="global_8">
+      <Text pb="global_8" variant="large">
         {i18n.t('appUpdate.title')}
       </Text>
 

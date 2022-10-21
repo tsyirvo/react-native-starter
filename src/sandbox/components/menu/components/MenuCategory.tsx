@@ -1,14 +1,15 @@
-import { FC } from 'react';
+import { ReactNode } from 'react';
 
 import { Box, Text } from '$components/ui/primitives';
 
 type MenuCategoryProps = {
   category: string;
+  children: ReactNode;
 };
 
-const MenuCategory: FC<MenuCategoryProps> = ({ category, children }) => (
+const MenuCategory = ({ category, children }: MenuCategoryProps) => (
   <Box pb="global_24">
-    <Text variant="large" pb="global_8">
+    <Text pb="global_8" variant="large">
       {category}
     </Text>
 

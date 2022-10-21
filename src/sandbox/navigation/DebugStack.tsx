@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Suspense } from 'react';
 
 import FallbackLoader from '$components/ui/FallbackLoader';
@@ -7,7 +7,7 @@ import FallbackLoader from '$components/ui/FallbackLoader';
 import { DebugStackParamList } from './DebugStack.types';
 import * as Pages from './pages';
 
-const Stack = createStackNavigator<DebugStackParamList>();
+const Stack = createNativeStackNavigator<DebugStackParamList>();
 
 const DebugStack = () => (
   <NavigationContainer>
@@ -17,35 +17,47 @@ const DebugStack = () => (
         screenOptions={{ gestureEnabled: true }}
       >
         <Stack.Screen
-          name="Menu"
           component={Pages.Menu}
+          name="Menu"
           options={{ title: 'Sandbox' }}
         />
 
         {/* ***** ***** Core ***** ***** */}
 
         {/* Theme */}
-        <Stack.Screen name="Theme" component={Pages.ThemeSandbox} />
-        <Stack.Screen name="Spaces" component={Pages.Spaces} />
-        <Stack.Screen name="Colors" component={Pages.Colors} />
-        <Stack.Screen name="FontSizes" component={Pages.FontSizes} />
-        <Stack.Screen name="Radiuses" component={Pages.Radiuses} />
+
+        <Stack.Screen component={Pages.ThemeSandbox} name="Theme" />
+
+        <Stack.Screen component={Pages.Spaces} name="Spaces" />
+
+        <Stack.Screen component={Pages.Colors} name="Colors" />
+
+        <Stack.Screen component={Pages.FontSizes} name="FontSizes" />
+
+        <Stack.Screen component={Pages.Radiuses} name="Radiuses" />
 
         {/* ***** ***** Components ***** ***** */}
 
         {/* Primitives */}
-        <Stack.Screen name="Primitives" component={Pages.PrimitivesSandbox} />
-        <Stack.Screen name="Box" component={Pages.Box} />
-        <Stack.Screen name="Text" component={Pages.Text} />
-        <Stack.Screen name="Button" component={Pages.Button} />
-        <Stack.Screen name="Input" component={Pages.Input} />
+
+        <Stack.Screen component={Pages.PrimitivesSandbox} name="Primitives" />
+
+        <Stack.Screen component={Pages.Box} name="Box" />
+
+        <Stack.Screen component={Pages.Text} name="Text" />
+
+        <Stack.Screen component={Pages.Button} name="Button" />
+
+        <Stack.Screen component={Pages.Input} name="Input" />
 
         {/* Design System */}
+
         <Stack.Screen
-          name="DesignSystem"
           component={Pages.DesignSystemSandbox}
+          name="DesignSystem"
         />
-        <Stack.Screen name="FallbackLoader" component={Pages.FallbackLoader} />
+
+        <Stack.Screen component={Pages.FallbackLoader} name="FallbackLoader" />
       </Stack.Navigator>
     </Suspense>
   </NavigationContainer>

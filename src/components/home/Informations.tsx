@@ -1,26 +1,29 @@
-import { Platform } from 'react-native';
-
 import { Text } from '$components/ui/primitives';
+import { isIOS } from '$core/constants';
 import i18n from '$i18n/config';
 
 const Informations = () => (
   <>
-    <Text variant="large" mt="global_24" mb="global_8">
-      {i18n.t('home.storybook.title')}
-    </Text>
-    <Text>
-      {i18n.t('home.storybook.content')}
-      {Platform.OS === 'ios' ? ' Cmd+R' : ' Cmd+M'}
+    <Text mb="global_8" mt="global_24" variant="large">
+      {i18n.t('home.sandbox.title')}
     </Text>
 
-    <Text variant="large" mt="global_24" mb="global_8">
+    <Text>
+      {i18n.t('home.sandbox.content', {
+        command: isIOS ? 'Cmd+R' : 'Cmd+M',
+      })}
+    </Text>
+
+    <Text mb="global_8" mt="global_24" variant="large">
       {i18n.t('home.tests.title')}
     </Text>
+
     <Text>{i18n.t('home.tests.content')}</Text>
 
-    <Text variant="large" mt="global_24" mb="global_8">
+    <Text mb="global_8" mt="global_24" variant="large">
       {i18n.t('home.formatting.title')}
     </Text>
+
     <Text>{i18n.t('home.formatting.content')}</Text>
   </>
 );

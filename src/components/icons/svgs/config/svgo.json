@@ -1,8 +1,19 @@
 {
   "plugins": [
     {
-      "removeViewBox": false,
-      "removeXMLNS": true
+      "name": "removeDoctype"
+    },
+    {
+      "name": "removeComments"
+    },
+    {
+      "name": "removeViewBox"
+    },
+    {
+      "name": "removeXMLNS"
+    },
+    {
+      "name": "removeEmptyAttrs"
     }
   ]
 }

@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import { ImageBackground } from 'react-native';
 
 import { Box, Text } from '$components/ui/primitives';
 import { makeAppStyles } from '$styles/theme';
-
-const uri = { uri: 'header' };
 
 const useStyles = makeAppStyles(() => ({
   image: {
@@ -16,14 +16,17 @@ const Header = () => {
   const styles = useStyles();
 
   return (
-    <ImageBackground source={uri} style={styles.image}>
+    <ImageBackground
+      source={require('../../assets/images/header.jpeg')}
+      style={styles.image}
+    >
       <Box
+        alignItems="center"
         flex={1}
         justifyContent="flex-end"
-        alignItems="center"
         mb="global_24"
       >
-        <Text testID="home_title" variant="large" color="white">
+        <Text color="white" testID="home_title" variant="large">
           React Native Starter
         </Text>
       </Box>

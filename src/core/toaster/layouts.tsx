@@ -43,31 +43,31 @@ const toastConfig = {
   success: (props: BaseToastProps) => (
     <BaseToast
       {...props}
-      style={[styles.wrapper, styles.success]}
       contentContainerStyle={styles.container}
+      style={[styles.wrapper, styles.success]}
       text1Style={styles.text1}
-      text2Style={styles.text2}
       text2NumberOfLines={2}
+      text2Style={styles.text2}
     />
   ),
   error: (props: BaseToastProps) => (
     <ErrorToast
       {...props}
-      style={[styles.wrapper, styles.error]}
       contentContainerStyle={styles.container}
+      style={[styles.wrapper, styles.error]}
       text1Style={styles.text1}
-      text2Style={styles.text2}
       text2NumberOfLines={2}
+      text2Style={styles.text2}
     />
   ),
   info: (props: BaseToastProps) => (
     <InfoToast
       {...props}
-      style={[styles.wrapper, styles.info]}
       contentContainerStyle={styles.container}
+      style={[styles.wrapper, styles.info]}
       text1Style={styles.text1}
-      text2Style={styles.text2}
       text2NumberOfLines={2}
+      text2Style={styles.text2}
     />
   ),
 };

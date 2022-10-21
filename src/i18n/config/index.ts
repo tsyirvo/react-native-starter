@@ -1,7 +1,9 @@
-import i18n from 'i18n-js';
+import { I18n } from 'i18n-js';
 import * as RNLocalize from 'react-native-localize';
 
 import { config, storageKeys } from '$core/constants';
+import { initDateLocale } from '$core/date';
+import Logger from '$core/logger';
 import AppStorage from '$core/storage';
 
 type SupportedLocales = 'en' | 'fr';
@@ -11,6 +13,8 @@ const translationGetters: TranslationGetters = {
   en: () => require('$i18n/locales/en.json'),
   fr: () => require('$i18n/locales/fr.json'),
 };
+
+const i18n = new I18n();
 
 /* ***** *****  Utils  ***** ***** */
 
@@ -26,8 +30,12 @@ const getPhoneLocale = () => {
 const storeLocaleInStorage = (locale: string) => {
   try {
     AppStorage.set(storageKeys.appStorage.locale, locale);
-  } catch (err) {
-    // TODO(error): Send to error monitoring
+  } catch (error) {
+    Logger.error({
+      type: 'I18n',
+      message: 'Failed to set the locale in the Storage',
+      error,
+    });
   }
 };
 
@@ -41,6 +49,8 @@ const setAppLocale = (locale: string, saveToStorage?: boolean) => {
   i18n.translations = { [locale]: translations() };
   i18n.locale = locale;
 
+  initDateLocale(locale);
+
   if (saveToStorage) {
     storeLocaleInStorage(locale);
   }
@@ -48,16 +58,20 @@ const setAppLocale = (locale: string, saveToStorage?: boolean) => {
 
 /* ***** *****  I18n  ***** ***** */
 
-i18n.fallbacks = true;
+i18n.enableFallback = true;
 i18n.translations = { en: translationGetters.en() };
 
-export function initI18n() {
+export const initI18n = () => {
   let locale;
 
   try {
     locale = AppStorage.getString(storageKeys.appStorage.locale);
-  } catch (err) {
-    // TODO(error): Send to error monitoring
+  } catch (error) {
+    Logger.error({
+      type: 'I18n',
+      message: 'Failed to get the locale from the Storage',
+      error,
+    });
   }
 
   if (locale == null) {
@@ -65,9 +79,10 @@ export function initI18n() {
   }
 
   setAppLocale(locale, true);
+
   RNLocalize.addEventListener('change', () => {
     setAppLocale(getPhoneLocale(), true);
   });
-}
+};
 
 export default i18n;
