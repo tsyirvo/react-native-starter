@@ -79,3 +79,12 @@ coverage/\*\*/*
 
 # Detox
 e2e/.artifacts
+
+# Yarn V3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
