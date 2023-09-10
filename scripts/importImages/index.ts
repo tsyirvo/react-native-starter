@@ -1,14 +1,16 @@
 import generateImages from './generateImages';
 import { createTmpImageFolders, deleteTmpImageFolders, print } from './utils';
 
+const nodeProcess = process as NodeJS.Process;
+
 const main = async () => {
   const passedArgsIndex = 2;
-  const argv = process.argv.slice(passedArgsIndex);
+  const argv = nodeProcess.argv.slice(passedArgsIndex);
 
   if (!argv.length) {
     print({ message: 'No arguments were passed', type: 'error' });
 
-    process.exit();
+    nodeProcess.exit();
   }
 
   createTmpImageFolders();

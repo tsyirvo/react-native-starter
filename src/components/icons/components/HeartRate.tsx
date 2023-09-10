@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
 type SvgHeartRateProps = SvgProps & {
-  color?: string,
+  color?: string;
 };
 const SvgHeartRate = ({ color, ...props }: SvgHeartRateProps) => (
   <Svg width="21px" height="21px" accessibilityRole="image" {...props}>

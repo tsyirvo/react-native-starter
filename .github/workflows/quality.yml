@@ -13,15 +13,15 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup NodeJS
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16.14.0'
+          node-version: 18
 
       - name: Check node_modules cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: yarn-cache
         with:
           path: node_modules
@@ -33,8 +33,14 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Run quality checks
-        run: |
-          yarn test
-          yarn tsc
-          yarn lint
+      - name: Run tests
+        run: yarn test
+
+      - name: Run TypeScript checks
+        run: yarn tsc
+
+      - name: Run ESLint checks
+        run: yarn lint
+
+      - name: Run Prettier checks
+        run: yarn pretty:check

@@ -19,6 +19,10 @@
     "Development Build"
   ],
   "license": "ISC",
+  "engines": {
+    "yarn": ">=3",
+    "node": ">=18"
+  },
   "scripts": {
     "start:dev": "APP_ENV=development expo start --dev-client",
     "start:test": "APP_ENV=test expo start --dev-client --no-dev --minify",
@@ -44,9 +48,10 @@
     "e2e:build:android:release": "detox build --configuration android:release",
     "e2e:test:android:release": "detox test --configuration android:release",
     "//// QUALITY ////": "",
-    "tsc": "tsc",
+    "tsc": "tsc --noEmit --skipLibCheck",
     "lint": "eslint ./ --ext .js,.ts,.tsx --fix --ignore-path .gitignore",
     "prettify": "yarn prettier --write './**/*.{js,ts,tsx}'",
+    "pretty:check": "yarn prettier --check './**/*.{js,ts,tsx}'",
     "//// UTILITIES ////": "",
     "image:add": "ts-node -T ./scripts/importImages/index.ts",
     "generate:page": "npx hygen generators page && yarn lint && yarn prettify",
@@ -113,6 +118,7 @@
     "@types/imagemin-mozjpeg": "8.0.1",
     "@types/jest": "28.1.1",
     "@types/lodash": "4.14.186",
+    "@types/node": "^20.6.0",
     "@types/react": "18.0.0",
     "@types/react-native": "0.69.1",
     "@types/react-navigation": "3.4.0",
@@ -122,8 +128,8 @@
     "babel-plugin-root-import": "6.6.0",
     "babel-plugin-transform-remove-console": "6.9.4",
     "detox": "19.12.6",
-    "eslint": "8.19.0",
-    "eslint-config-tsyirvo-react-native": "1.3.0",
+    "eslint": "8.42.0",
+    "eslint-config-tsyirvo-react-native": "1.4.0",
     "expo-community-flipper": "46.0.2",
     "fs-extra": "10.1.0",
     "husky": "8.0.1",
@@ -140,7 +146,7 @@
     "standard-version": "9.5.0",
     "ts-jest": "29.0.3",
     "ts-node": "10.9.1",
-    "typescript": "4.8.3"
+    "typescript": "5.1.3"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
@@ -202,5 +208,6 @@
       "tsyirvo-react-native"
     ],
     "ignorePatterns": "src/components/icons/components/"
-  }
+  },
+  "packageManager": "yarn@3.6.0"
 }

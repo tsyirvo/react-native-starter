@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
 type SvgChevronUpProps = SvgProps & {
-  color?: string,
+  color?: string;
 };
 const SvgChevronUp = ({ color, ...props }: SvgChevronUpProps) => (
   <Svg width="21px" height="21px" accessibilityRole="image" {...props}>
