@@ -88,3 +88,8 @@ e2e/.artifacts
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Builds
+*.apk
+*.aab
+*.app
