@@ -28,8 +28,16 @@ class AnalyticsClass {
 
   /* ***** *****  User related  ***** ***** */
 
-  setUser(id: string) {
-    mixpanel.identify(id);
+  async setUser(id: string) {
+    try {
+      await mixpanel.identify(id);
+    } catch (error) {
+      Logger.error({
+        error,
+        type: errors.sdk,
+        message: 'Failed to set user to mixpanel',
+      });
+    }
   }
 
   aliasUser(currentId: string, aliasIs: string) {

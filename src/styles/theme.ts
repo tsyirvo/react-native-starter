@@ -1,7 +1,6 @@
 import { createTheme, useTheme } from '@shopify/restyle';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
-import breakpoints from './breakpoints';
 import colors from './colors';
 import textVariants from './fonts';
 import borderRadii from './radius';
@@ -15,7 +14,7 @@ export const theme = createTheme({
   spacing,
   borderRadii,
   textVariants,
-  breakpoints,
+  breakpoints: {},
   buttonVariants,
 });
 

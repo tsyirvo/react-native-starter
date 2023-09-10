@@ -14,7 +14,7 @@ class PerformanceMonitoringClass {
   }
 
   getTransaction() {
-    return Sentry.Native.getCurrentHub().getScope()?.getTransaction();
+    return Sentry.Native.getCurrentHub().getScope().getTransaction();
   }
 }
 

@@ -3,7 +3,6 @@ import type { Breadcrumb, CaptureContext, SeverityLevel } from '@sentry/types';
 import * as Sentry from 'sentry-expo';
 
 import { config } from '$core/constants';
-import Logger from '$core/logger';
 
 import { errors, tags } from './constants';
 
@@ -24,10 +23,9 @@ class ErrorMonitoringClass {
     const isEnabled = config.env !== 'development' && !config.isDebug;
 
     if (!config.sentryDsn) {
-      Logger.dev({
-        type: errors.sdk,
-        message: 'Failed to initialize Sentry - No DSN found',
-      });
+      const errorMessage = `[${errors.sdk}]: Failed to initialize Sentry - No DSN found`;
+
+      console.log(errorMessage);
 
       return;
     }
@@ -36,6 +34,7 @@ class ErrorMonitoringClass {
       dsn: config.sentryDsn,
       tracesSampleRate: sampleRate,
       enabled: isEnabled,
+      enableInExpoDevelopment: false,
       environment: config.env,
       debug: config.isDebug,
       integrations: [
