@@ -22,7 +22,6 @@ module.exports = function (api) {
           ],
         },
       ],
-      'lodash',
       'react-native-reanimated/plugin',
     ],
   };

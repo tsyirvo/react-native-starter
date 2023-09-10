@@ -17,7 +17,17 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
-    "plugins": ["sentry-expo", "expo-community-flipper"],
+    "plugins": [
+      "sentry-expo",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "flipper": true
+          }
+        }
+      ]
+    ],
     "ios": {
       "supportsTablet": false
     },
