@@ -21,8 +21,7 @@ const i18n = new I18n();
 const getPhoneLocale = () => {
   const localeFallback = { languageTag: config.defaultLocale };
   const { languageTag } =
-    RNLocalize.findBestAvailableLanguage(config.supportedLocales) ??
-    localeFallback;
+    RNLocalize.findBestLanguageTag(config.supportedLocales) ?? localeFallback;
 
   return languageTag;
 };
@@ -79,10 +78,6 @@ export const initI18n = () => {
   }
 
   setAppLocale(locale, true);
-
-  RNLocalize.addEventListener('change', () => {
-    setAppLocale(getPhoneLocale(), true);
-  });
 };
 
 export default i18n;
