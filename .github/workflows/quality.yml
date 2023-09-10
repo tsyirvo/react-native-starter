@@ -33,8 +33,14 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Run quality checks
-        run: |
-          yarn test
-          yarn tsc
-          yarn lint
+      - name: Run tests
+        run: yarn test
+
+      - name: Run TypeScript checks
+        run: yarn tsc
+
+      - name: Run ESLint checks
+        run: yarn lint
+
+      - name: Run Prettier checks
+        run: yarn pretty:check

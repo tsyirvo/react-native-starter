@@ -1,5 +1,5 @@
 {
-  "extends": "../eslint-config-tsyirvo-react-native/tsconfig.base.json",
+  "extends": "eslint-config-tsyirvo-react-native/tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

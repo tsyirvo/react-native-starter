@@ -3,7 +3,7 @@
 
 import { ExpoConfig, ConfigContext } from '@expo/config';
 
-const appEnv = process.env.APP_ENV;
+const appEnv = (process as NodeJS.Process).env.APP_ENV;
 
 let Config = {
   appEnv,
