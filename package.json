@@ -139,6 +139,7 @@
     "jest-expo": "^49.0.0",
     "lint-staged": "14.0.1",
     "patch-package": "8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "3.0.3",
     "sharp": "0.31.1",
     "standard-version": "9.5.0",
