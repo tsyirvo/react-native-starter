@@ -8,10 +8,7 @@ import {
 } from '@testing-library/react-native';
 import { ReactElement } from 'react';
 
-import { initI18n } from '$i18n/config';
 import { theme } from '$styles/theme';
-
-initI18n();
 
 afterEach(cleanup);
 

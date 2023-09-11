@@ -1,13 +1,10 @@
 import config from '$core/constants/config';
 import FeatureFlags from '$core/featureFlags';
-import i18n from '$i18n/config';
 import { render } from '$tests/utils';
 
 import AppUpdateNeeded from '../AppUpdateNeeded';
 
 describe('AppUpdateNeeded component', () => {
-  const pageTitle = i18n.t('appUpdate.title');
-
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -18,10 +15,10 @@ describe('AppUpdateNeeded component', () => {
     jest.spyOn(FeatureFlags, 'getStringValue').mockReturnValue('');
 
     // Given
-    const { queryByText } = render(<AppUpdateNeeded />);
+    const { queryByTestId } = render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByText(pageTitle)).toBeNull();
+    expect(queryByTestId('appUpdateNeeded')).toBeNull();
   });
 
   it('should render nothing if the versions are equal', () => {
@@ -30,10 +27,10 @@ describe('AppUpdateNeeded component', () => {
     jest.spyOn(FeatureFlags, 'getStringValue').mockReturnValue('1.0.0');
 
     // Given
-    const { queryByText } = render(<AppUpdateNeeded />);
+    const { queryByTestId } = render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByText(pageTitle)).toBeNull();
+    expect(queryByTestId('appUpdateNeeded')).toBeNull();
   });
 
   it('should render nothing if the flagged version is supported', () => {
@@ -42,10 +39,10 @@ describe('AppUpdateNeeded component', () => {
     jest.spyOn(FeatureFlags, 'getStringValue').mockReturnValue('1.1.0');
 
     // Given
-    const { queryByText } = render(<AppUpdateNeeded />);
+    const { queryByTestId } = render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByText(pageTitle)).toBeNull();
+    expect(queryByTestId('appUpdateNeeded')).toBeNull();
   });
 
   // it('should render the update screen when the flagged version is unsupported', () => {
