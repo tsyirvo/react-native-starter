@@ -8,7 +8,7 @@ import {
 import Toast from 'react-native-toast-message';
 
 import Splashscreen from '$components/splashscreen/Splashscreen';
-import { bootstrapSDKs } from '$core/bootstrapSDKs/bootstrapSDKs';
+import { bootstrapSDKs } from '$core/bootstrapSDKs';
 import toastConfig from '$core/toaster/layouts';
 import AppUpdateNeeded from '$pages/AppUpdateNeeded';
 import MaintenanceMode from '$pages/MaintenanceMode';

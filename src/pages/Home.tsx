@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Header, Informations, Version } from '$components/home';
 import { Box, Button, Text } from '$components/ui/primitives';
 import Screen from '$components/ui/Screen';
+import { config } from '$core/constants';
 import { HomeScreenNavigationProp } from '$navigation/navigation.types';
 
 type HomeProps = {
@@ -13,6 +14,8 @@ const Home = ({ navigation }: HomeProps) => {
   const { t } = useTranslation('homeScreen');
 
   const goToOtherPage = () => navigation.navigate('OtherPage');
+
+  console.log('config', config);
 
   return (
     <Screen>

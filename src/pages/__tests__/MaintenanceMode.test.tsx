@@ -10,7 +10,7 @@ describe('MaintenanceMode component', () => {
 
   it('should render nothing by default', () => {
     // Mocks
-    jest.spyOn(FeatureFlags, 'getBooleanValue').mockReturnValue(false);
+    jest.spyOn(FeatureFlags, 'getFlagValue').mockReturnValue(false);
 
     // Given
     const { queryByTestId } = render(<MaintenanceMode />);

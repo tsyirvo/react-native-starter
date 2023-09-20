@@ -3,63 +3,60 @@
 
 import { ExpoConfig, ConfigContext } from '@expo/config';
 
-const appEnv = (process as NodeJS.Process).env.APP_ENV;
+import { ClientEnv, Env } from './env';
 
-let Config = {
-  appEnv,
-  appName: 'RN Starter',
-  iosBundleId: 'com.tsyirvo.rnstarter',
-  androidPackageName: 'com.tsyirvo.rnstarter',
-};
+const isDevelopmentEnv = Env.APP_ENV === 'development';
+const isProductionEnv = Env.APP_ENV === 'production';
 
-switch (appEnv) {
-  case 'development':
-    Config.appName = 'Dev';
-    Config.iosBundleId = 'com.tsyirvo.rnstarter.development';
-    Config.androidPackageName = 'com.tsyirvo.rnstarter.development';
-    break;
-  case 'test:debug':
-    Config.appName = 'TestDebug';
-    Config.iosBundleId = 'com.tsyirvo.rnstarter.test.debug';
-    Config.androidPackageName = 'com.tsyirvo.rnstarter.test.debug';
-    break;
-  case 'test:release':
-    Config.appName = 'TestRelease';
-    Config.iosBundleId = 'com.tsyirvo.rnstarter.test.release';
-    Config.androidPackageName = 'com.tsyirvo.rnstarter.test.release';
-    break;
-  case 'staging':
-    Config.appName = 'Staging';
-    Config.iosBundleId = 'com.tsyirvo.rnstarter.staging';
-    Config.androidPackageName = 'com.tsyirvo.rnstarter.staging';
-    break;
-  default:
-    break;
-}
-
-const isTestEnv = appEnv === 'test:debug' || appEnv === 'test:release';
+const plugins: ExpoConfig['plugins'] = [
+  'sentry-expo',
+  [
+    'expo-build-properties',
+    {
+      ios: {
+        flipper: isDevelopmentEnv,
+      },
+    },
+  ],
+];
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: Config.appName,
+  name: Env.APP_NAME,
+  description: `${Env.APP_NAME} Mobile App`,
+  owner: Env.EXPO_ACCOUNT_OWNER,
   slug: 'rn-starter',
-  plugins:
-    isTestEnv && config.plugins
-      ? [...config.plugins, '@config-plugins/detox']
-      : config.plugins,
+  version: Env.VERSION.toString(),
+  runtimeVersion: '1.0.0',
+  jsEngine: 'hermes',
+  orientation: 'portrait',
+  icon: './assets/icon.png',
+  userInterfaceStyle: 'light',
+  splash: {
+    image: './assets/splash.png',
+    resizeMode: 'contain',
+    backgroundColor: '#ffffff',
+  },
+  updates: {
+    fallbackToCacheTimeout: 0,
+  },
+  assetBundlePatterns: ['**/*'],
   ios: {
-    ...config.ios,
-    bundleIdentifier: Config.iosBundleId,
+    supportsTablet: false,
+    bundleIdentifier: Env.BUNDLE_ID,
   },
   android: {
-    ...config.android,
-    package: Config.androidPackageName,
+    adaptiveIcon: {
+      foregroundImage: './assets/adaptive-icon.png',
+      backgroundColor: '#FFFFFF',
+    },
+    package: Env.PACKAGE,
   },
+  plugins: isProductionEnv ? plugins : [...plugins, '@config-plugins/detox'],
   extra: {
-    ...config.extra,
+    ...ClientEnv,
     eas: {
-      ...config.extra?.eas,
-      ...Config,
+      projectId: Env.EAS_PROJECT_ID,
     },
   },
 });

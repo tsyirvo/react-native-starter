@@ -12,7 +12,7 @@ describe('AppUpdateNeeded component', () => {
   it('should render nothing if the flag is empty', () => {
     // Mocks
     config.version = '1.0.0';
-    jest.spyOn(FeatureFlags, 'getStringValue').mockReturnValue('');
+    jest.spyOn(FeatureFlags, 'getFlagValue').mockReturnValue('');
 
     // Given
     const { queryByTestId } = render(<AppUpdateNeeded />);
@@ -24,7 +24,7 @@ describe('AppUpdateNeeded component', () => {
   it('should render nothing if the versions are equal', () => {
     // Mocks
     config.version = '1.0.0';
-    jest.spyOn(FeatureFlags, 'getStringValue').mockReturnValue('1.0.0');
+    jest.spyOn(FeatureFlags, 'getFlagValue').mockReturnValue('1.0.0');
 
     // Given
     const { queryByTestId } = render(<AppUpdateNeeded />);
@@ -36,7 +36,7 @@ describe('AppUpdateNeeded component', () => {
   it('should render nothing if the flagged version is supported', () => {
     // Mocks
     config.version = '1.2.0';
-    jest.spyOn(FeatureFlags, 'getStringValue').mockReturnValue('1.1.0');
+    jest.spyOn(FeatureFlags, 'getFlagValue').mockReturnValue('1.1.0');
 
     // Given
     const { queryByTestId } = render(<AppUpdateNeeded />);
