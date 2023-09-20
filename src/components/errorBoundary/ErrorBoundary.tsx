@@ -57,17 +57,17 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             width="80%"
           >
             <Text mb="global_8" variant="large">
-              {t('errorBoundary.title')}
+              {t('errorBoundary.title', { ns: 'miscScreens' })}
             </Text>
 
             <Text textAlign="center" variant="medium">
-              {t('errorBoundary.description')}
+              {t('errorBoundary.description', { ns: 'miscScreens' })}
             </Text>
 
             <Box mt="global_32">
               <Button
                 alignItems="center"
-                label={t('errorBoundary.cta')}
+                label={t('errorBoundary.cta', { ns: 'miscScreens' })}
                 onPress={this.handleApplicationReset}
               />
             </Box>
