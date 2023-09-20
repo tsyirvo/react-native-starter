@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import semverGte from 'semver/functions/gte';
 
 import { Box, Text } from '$components/ui/primitives';
 import { config } from '$core/constants';
 import useRunOnMount from '$hooks/useRunOnMount';
-import i18n from '$i18n/config';
 
 const AppUpdateNeeded = () => {
   const [isAppUnsupported, setIsAppUnsupported] = useState(false);
+
+  const { t } = useTranslation('miscScreens');
 
   useRunOnMount(() => {
     // const lastSupportedVersion: string = FeatureFlags.getStringValue(
@@ -39,13 +41,14 @@ const AppUpdateNeeded = () => {
       height="100%"
       justifyContent="center"
       px="global_32"
+      testID="appUpdateNeeded"
       width="100%"
     >
       <Text pb="global_8" variant="large">
-        {i18n.t('appUpdate.title')}
+        {t('appUpdate.title')}
       </Text>
 
-      <Text textAlign="center">{i18n.t('appUpdate.description')}</Text>
+      <Text textAlign="center">{t('appUpdate.description')}</Text>
     </Box>
   );
 };

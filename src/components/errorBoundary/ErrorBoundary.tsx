@@ -1,13 +1,13 @@
 import { Component, ErrorInfo, ReactElement } from 'react';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 import { Box, Button, Text } from '$components/ui/primitives';
 import SafeView from '$components/ui/SafeView';
 import { ErrorMonitoring } from '$core/monitoring';
-import i18n from '$i18n/config';
 
 type ErrorBoundaryProps = {
   children: ReactElement;
-};
+} & WithTranslation;
 
 type ErrorBoundaryState = {
   hasError: boolean;
@@ -44,7 +44,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     const { hasError } = this.state;
-    const { children } = this.props;
+    const { children, t } = this.props;
 
     if (hasError) {
       return (
@@ -57,17 +57,17 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             width="80%"
           >
             <Text mb="global_8" variant="large">
-              {i18n.t('errorBoundary.title')}
+              {t('errorBoundary.title', { ns: 'miscScreens' })}
             </Text>
 
             <Text textAlign="center" variant="medium">
-              {i18n.t('errorBoundary.description')}
+              {t('errorBoundary.description', { ns: 'miscScreens' })}
             </Text>
 
             <Box mt="global_32">
               <Button
                 alignItems="center"
-                label={i18n.t('errorBoundary.cta')}
+                label={t('errorBoundary.cta', { ns: 'miscScreens' })}
                 onPress={this.handleApplicationReset}
               />
             </Box>
@@ -80,4 +80,4 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 }
 
-export default ErrorBoundary;
+export default withTranslation()(ErrorBoundary);

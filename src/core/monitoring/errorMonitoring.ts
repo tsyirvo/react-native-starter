@@ -20,7 +20,7 @@ class ErrorMonitoringClass {
   init() {
     const sampleRate =
       config.env === 'production' ? prodSampleRate : fullSampleRate;
-    const isEnabled = config.env !== 'development' && !config.isDebug;
+    const isEnabled = config.env !== 'development';
 
     if (!config.sentryDsn) {
       const errorMessage = `[${errors.sdk}]: Failed to initialize Sentry - No DSN found`;
@@ -36,7 +36,6 @@ class ErrorMonitoringClass {
       enabled: isEnabled,
       enableInExpoDevelopment: false,
       environment: config.env,
-      debug: config.isDebug,
       integrations: [
         new Sentry.Native.ReactNativeTracing({
           routingInstrumentation,

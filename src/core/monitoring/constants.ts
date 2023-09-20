@@ -26,7 +26,6 @@ export const breadcrumbsCategory = {
 export const tags = {
   locale: 'Locale',
   env: 'Environment',
-  codepush: 'Codepush',
   runtimeVersion: 'RuntimeVersion',
   currentVersion: 'CurrentVersion',
   updatedVersion: 'UpdatedVersion',
@@ -36,4 +35,5 @@ export const tags = {
 
 export const errors = {
   sdk: 'sdk',
+  flagsmith: 'flagsmith',
 };

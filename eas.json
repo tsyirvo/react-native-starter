@@ -15,26 +15,25 @@
         "withoutCredentials": true
       },
       "env": {
-        "APP_ENV": "development"
+        "APP_ENV": "development",
+        "EXPO_NO_DOTENV": "1"
+      },
+      "cache": {
+        "key": "eas-1"
       }
     },
     "test:debug": {
       "extends": "development",
       "android": {
         "gradleCommand": ":app:assembleDebug :app:assembleAndroidTest -DtestBuildType=debug"
-      },
-      "env": {
-        "APP_ENV": "test:debug"
       }
     },
     "test:release": {
       "extends": "development",
       "developmentClient": false,
+      "distribution": "internal",
       "android": {
         "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release"
-      },
-      "env": {
-        "APP_ENV": "test:release"
       }
     },
     "staging": {
@@ -44,14 +43,25 @@
         "buildType": "apk"
       },
       "env": {
-        "APP_ENV": "staging"
+        "APP_ENV": "staging",
+        "EXPO_NO_DOTENV": "1",
+        "FLIPPER_DISABLE": "1"
+      },
+      "cache": {
+        "key": "eas-1"
       }
     },
     "production": {
       "channel": "production",
+      "distribution": "store",
       "autoIncrement": true,
       "env": {
-        "APP_ENV": "production"
+        "EXPO_NO_DOTENV": "1",
+        "APP_ENV": "production",
+        "FLIPPER_DISABLE": "1"
+      },
+      "cache": {
+        "key": "eas-1"
       }
     }
   },

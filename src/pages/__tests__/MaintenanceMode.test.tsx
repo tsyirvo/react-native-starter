@@ -1,25 +1,22 @@
 import FeatureFlags from '$core/featureFlags';
-import i18n from '$i18n/config';
 import { render } from '$tests/utils';
 
 import MaintenanceMode from '../MaintenanceMode';
 
 describe('MaintenanceMode component', () => {
-  const pageTitle = i18n.t('maintenanceMode.title');
-
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   it('should render nothing by default', () => {
     // Mocks
-    jest.spyOn(FeatureFlags, 'getBooleanValue').mockReturnValue(false);
+    jest.spyOn(FeatureFlags, 'getFlagValue').mockReturnValue(false);
 
     // Given
-    const { queryByText } = render(<MaintenanceMode />);
+    const { queryByTestId } = render(<MaintenanceMode />);
 
     // Then
-    expect(queryByText(pageTitle)).toBeNull();
+    expect(queryByTestId('maintenanceMode')).toBeNull();
   });
 
   // it('should render the maintenance mode when the flag is true', () => {

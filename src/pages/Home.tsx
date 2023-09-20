@@ -1,15 +1,21 @@
+import { useTranslation } from 'react-i18next';
+
 import { Header, Informations, Version } from '$components/home';
 import { Box, Button, Text } from '$components/ui/primitives';
 import Screen from '$components/ui/Screen';
-import i18n from '$i18n/config';
+import { config } from '$core/constants';
 import { HomeScreenNavigationProp } from '$navigation/navigation.types';
 
-type Props = {
+type HomeProps = {
   navigation: HomeScreenNavigationProp;
 };
 
-const Home = ({ navigation }: Props) => {
+const Home = ({ navigation }: HomeProps) => {
+  const { t } = useTranslation('homeScreen');
+
   const goToOtherPage = () => navigation.navigate('OtherPage');
+
+  console.log('config', config);
 
   return (
     <Screen>
@@ -17,13 +23,13 @@ const Home = ({ navigation }: Props) => {
 
       <Box pb="global_32" px="global_24">
         <Text mt="global_32" variant="large">
-          {i18n.t('home.navigation.title')}
+          {t('navigation.title')}
         </Text>
 
         <Box mt="global_8">
           <Button
             alignItems="center"
-            label={i18n.t('home.navigation.content')}
+            label={t('navigation.content')}
             testID="goto_otherPage"
             onPress={goToOtherPage}
           />

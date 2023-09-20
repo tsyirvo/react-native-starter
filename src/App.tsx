@@ -2,30 +2,32 @@ import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar, StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
-  initialWindowMetrics,
   SafeAreaProvider,
+  initialWindowMetrics,
 } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 
 import Splashscreen from '$components/splashscreen/Splashscreen';
+import { bootstrapSDKs } from '$core/bootstrapSDKs';
 import toastConfig from '$core/toaster/layouts';
 import AppUpdateNeeded from '$pages/AppUpdateNeeded';
 import MaintenanceMode from '$pages/MaintenanceMode';
 import { theme } from '$styles/theme';
 
 import ErrorBoundary from './components/errorBoundary';
-import { initI18n } from './i18n/config';
 import RootStack from './navigation/navigation';
 
 import Sandbox from '$sandbox';
 
-initI18n();
+import './i18n';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
+
+bootstrapSDKs();
 
 const App = () => (
   <ThemeProvider theme={theme}>

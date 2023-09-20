@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Box, Text } from '$components/ui/primitives';
 import useRunOnMount from '$hooks/useRunOnMount';
-import i18n from '$i18n/config';
 
 const MaintenanceMode = () => {
   const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
+
+  const { t } = useTranslation('miscScreens');
 
   useRunOnMount(() => {
     // const isMaintenanceModeEnabled =
@@ -26,13 +28,14 @@ const MaintenanceMode = () => {
       height="100%"
       justifyContent="center"
       px="global_32"
+      testID="maintenanceMode"
       width="100%"
     >
       <Text pb="global_8" variant="large">
-        {i18n.t('maintenanceMode.title')}
+        {t('maintenanceMode.title')}
       </Text>
 
-      <Text textAlign="center">{i18n.t('maintenanceMode.description')}</Text>
+      <Text textAlign="center">{t('maintenanceMode.description')}</Text>
     </Box>
   );
 };
