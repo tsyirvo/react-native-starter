@@ -6,7 +6,7 @@ import { Box, Text } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-const RadiusesSandbox = () => (
+export const RadiusesSandbox = () => (
   <ScrollView>
     <SandBoxItem isSingle>
       {(Object.keys(theme.borderRadii) as BorderRadii[]).map((radius) => (
@@ -19,5 +19,3 @@ const RadiusesSandbox = () => (
     </SandBoxItem>
   </ScrollView>
 );
-
-export default RadiusesSandbox;

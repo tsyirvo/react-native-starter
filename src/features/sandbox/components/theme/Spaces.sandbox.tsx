@@ -7,7 +7,7 @@ import { Box, Text } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-const SpacesSandbox = () => (
+export const SpacesSandbox = () => (
   <ScrollView>
     <SandBoxItem isSingle>
       {(Object.keys(theme.spacing) as Spacing[]).map((space) => (
@@ -20,5 +20,3 @@ const SpacesSandbox = () => (
     </SandBoxItem>
   </ScrollView>
 );
-
-export default SpacesSandbox;

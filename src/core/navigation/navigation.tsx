@@ -10,7 +10,7 @@ import {
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Analytics from '$core/Analytics';
+import { Analytics } from '$core/Analytics';
 import { routingInstrumentation } from '$core/monitoring';
 
 import { RootStackParamList } from './navigation.types';

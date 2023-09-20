@@ -6,7 +6,7 @@ import { Box } from '$shared/ui/primitives';
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
 
-const PrimitivesSandbox = () => {
+export const PrimitivesSandbox = () => {
   const navigation: PrimitivesScreenNavigationProp = useNavigation();
 
   const menuItems = [
@@ -38,5 +38,3 @@ const PrimitivesSandbox = () => {
     </Box>
   );
 };
-
-export default PrimitivesSandbox;

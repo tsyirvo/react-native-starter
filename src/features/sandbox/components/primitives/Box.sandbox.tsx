@@ -4,7 +4,7 @@ import { Box } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-const BoxSandbox = () => (
+export const BoxSandbox = () => (
   <ScrollView>
     <SandBoxItem title="Box with a size, color and radiuses">
       <Box bg="grey" borderRadius="global_8" height={100} width={100} />
@@ -25,5 +25,3 @@ const BoxSandbox = () => (
     </SandBoxItem>
   </ScrollView>
 );
-
-export default BoxSandbox;

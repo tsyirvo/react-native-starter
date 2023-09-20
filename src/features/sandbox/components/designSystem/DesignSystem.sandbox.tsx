@@ -6,7 +6,7 @@ import { Box } from '$shared/ui/primitives';
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
 
-const DesignSystemSandbox = () => {
+export const DesignSystemSandbox = () => {
   const navigation: DesignSystemScreenNavigationProp = useNavigation();
 
   const menuItems = [
@@ -26,5 +26,3 @@ const DesignSystemSandbox = () => {
     </Box>
   );
 };
-
-export default DesignSystemSandbox;

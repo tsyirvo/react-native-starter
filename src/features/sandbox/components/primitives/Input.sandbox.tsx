@@ -4,7 +4,7 @@ import { Input } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-const InputSandbox = () => (
+export const InputSandbox = () => (
   <ScrollView>
     <SandBoxItem title="Input with a label">
       <Input label="Some label" placeholder="Type here" />
@@ -23,5 +23,3 @@ const InputSandbox = () => (
     </SandBoxItem>
   </ScrollView>
 );
-
-export default InputSandbox;

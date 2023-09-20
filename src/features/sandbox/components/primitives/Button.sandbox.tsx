@@ -4,7 +4,7 @@ import { Button } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-const ButtonSandbox = () => (
+export const ButtonSandbox = () => (
   <ScrollView>
     <SandBoxItem title="Button with a text content">
       <Button
@@ -15,5 +15,3 @@ const ButtonSandbox = () => (
     </SandBoxItem>
   </ScrollView>
 );
-
-export default ButtonSandbox;

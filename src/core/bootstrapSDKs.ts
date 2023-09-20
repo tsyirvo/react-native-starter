@@ -1,7 +1,7 @@
 import { FeatureFlags } from '$core/featureFlags';
 import { Logger } from '$core/logger';
 
-import Analytics from './Analytics';
+import { Analytics } from './Analytics';
 import { initDateLocale } from './date';
 import { getSupportedDateLocale } from './i18n';
 import { ErrorMonitoring } from './monitoring';

@@ -7,7 +7,7 @@ import { Components } from './components/Components';
 import { Core } from './components/Core';
 import { Flows } from './components/Flows';
 
-const Menu = () => (
+export const Menu = () => (
   <SafeView edges={['bottom']}>
     <ScrollView>
       <Box p="global_24">
@@ -20,5 +20,3 @@ const Menu = () => (
     </ScrollView>
   </SafeView>
 );
-
-export default Menu;

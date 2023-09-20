@@ -4,7 +4,7 @@ import { FallbackLoader } from '$shared/ui/FallbackLoader';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-const FallbackLoaderSandbox = () => (
+export const FallbackLoaderSandbox = () => (
   <ScrollView>
     <SandBoxItem title="FallbackLoader default props">
       <FallbackLoader />
@@ -19,5 +19,3 @@ const FallbackLoaderSandbox = () => (
     </SandBoxItem>
   </ScrollView>
 );
-
-export default FallbackLoaderSandbox;

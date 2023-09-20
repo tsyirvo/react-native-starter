@@ -48,4 +48,4 @@ const App = () => (
   </ThemeProvider>
 );
 
-export default App;
+export { App as RootApp };

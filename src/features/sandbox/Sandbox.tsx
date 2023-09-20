@@ -1,9 +1,8 @@
 import { registerDevMenuItems } from 'expo-dev-menu';
-import { ReactElement, Suspense, useState } from 'react';
+import { ReactElement, useState } from 'react';
 
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
-import { FallbackLoader } from '$shared/ui/FallbackLoader';
 
 import { DebugStack } from './navigation/DebugStack';
 
@@ -33,9 +32,5 @@ export const Sandbox = ({ children }: SandboxProps) => {
     return children;
   }
 
-  return (
-    <Suspense fallback={<FallbackLoader />}>
-      <DebugStack />
-    </Suspense>
-  );
+  return <DebugStack />;
 };

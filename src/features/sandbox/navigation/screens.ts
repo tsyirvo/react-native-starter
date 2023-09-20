@@ -1,50 +1,24 @@
-import { lazy } from 'react';
-
 // Global
-export const Menu = lazy(async () => import('../components/menu/Menu'));
+export { Menu } from '../components/menu/Menu';
 
 /* ***** *****  Core  ***** ***** */
 
 // Theme
-export const ThemeSandbox = lazy(
-  async () => import('../components/theme/Theme.sandbox'),
-);
-export const Spaces = lazy(
-  async () => import('../components/theme/Spaces.sandbox'),
-);
-export const Colors = lazy(
-  async () => import('../components/theme/Colors.sandbox'),
-);
-export const FontSizes = lazy(
-  async () => import('../components/theme/FontSizes.sandbox'),
-);
-export const Radiuses = lazy(
-  async () => import('../components/theme/Radiuses.sandbox'),
-);
+export { ColorsSandbox } from '../components/theme/Colors.sandbox';
+export { FontSizesSandbox } from '../components/theme/FontSizes.sandbox';
+export { RadiusesSandbox } from '../components/theme/Radiuses.sandbox';
+export { SpacesSandbox } from '../components/theme/Spaces.sandbox';
+export { ThemeSandbox } from '../components/theme/Theme.sandbox';
 
 /* ***** *****  Components  ***** ***** */
 
 // Primitives
-export const PrimitivesSandbox = lazy(
-  async () => import('../components/primitives/Primitives.sandbox'),
-);
-export const Box = lazy(
-  async () => import('../components/primitives/Box.sandbox'),
-);
-export const Text = lazy(
-  async () => import('../components/primitives/Text.sandbox'),
-);
-export const Button = lazy(
-  async () => import('../components/primitives/Button.sandbox'),
-);
-export const Input = lazy(
-  async () => import('../components/primitives/Input.sandbox'),
-);
+export { BoxSandbox } from '../components/primitives/Box.sandbox';
+export { ButtonSandbox } from '../components/primitives/Button.sandbox';
+export { InputSandbox } from '../components/primitives/Input.sandbox';
+export { PrimitivesSandbox } from '../components/primitives/Primitives.sandbox';
+export { TextSandbox } from '../components/primitives/Text.sandbox';
 
 // Design System
-export const DesignSystemSandbox = lazy(
-  async () => import('../components/designSystem/DesignSystem.sandbox'),
-);
-export const FallbackLoader = lazy(
-  async () => import('../components/designSystem/FallbackLoader.sandbox'),
-);
+export { DesignSystemSandbox } from '../components/designSystem/DesignSystem.sandbox';
+export { FallbackLoaderSandbox } from '../components/designSystem/FallbackLoader.sandbox';

@@ -6,7 +6,7 @@ import { Box, Text } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-const ColorsSandbox = () => (
+export const ColorsSandbox = () => (
   <ScrollView>
     <SandBoxItem isSingle>
       {(Object.keys(theme.colors) as Colors[]).map((color) => (
@@ -19,5 +19,3 @@ const ColorsSandbox = () => (
     </SandBoxItem>
   </ScrollView>
 );
-
-export default ColorsSandbox;

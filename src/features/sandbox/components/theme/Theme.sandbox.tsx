@@ -6,7 +6,7 @@ import { Box } from '$shared/ui/primitives';
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
 
-const ThemeSandbox = () => {
+export const ThemeSandbox = () => {
   const navigation: ThemeScreenNavigationProp = useNavigation();
 
   const menuItems = [
@@ -38,5 +38,3 @@ const ThemeSandbox = () => {
     </Box>
   );
 };
-
-export default ThemeSandbox;

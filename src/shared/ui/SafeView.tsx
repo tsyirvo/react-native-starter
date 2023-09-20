@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const SafeView = ({ children, edges = ['top'] }: SafeViewProps) => (
+export const SafeView = ({ children, edges = [] }: SafeViewProps) => (
   <SafeAreaView edges={edges} style={styles.container}>
     {children}
   </SafeAreaView>
