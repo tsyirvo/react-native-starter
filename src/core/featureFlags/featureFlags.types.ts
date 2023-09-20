@@ -1,5 +1,5 @@
-import defaultConfig from './config';
+export type FlagsmithValue<T = string | number | boolean | null> = T;
 
-export type { FirebaseOptions } from 'firebase/app';
+export type FlagOptions = 'my-custom-flag';
 
-export type FeatureFlagsType = keyof typeof defaultConfig;
+export type TraitOptions = 'trait-1' | 'trait-2' | 'trait-3';

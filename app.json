@@ -42,15 +42,7 @@
         "projectId": "",
         "sentryDsn": "",
         "mixpanelToken": "",
-        "firebaseConfig": {
-          "apiKey": "",
-          "authDomain": "",
-          "projectId": "",
-          "storageBucket": "",
-          "messagingSenderId": "",
-          "appId": "",
-          "measurementId": ""
-        }
+        "flagsmithKey": ""
       }
     }
   }

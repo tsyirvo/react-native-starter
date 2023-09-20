@@ -14,7 +14,7 @@ module.exports = {
         isTest: true,
         sentryDsn: undefined,
         mixpanelToken: undefined,
-        firebaseConfig: undefined,
+        flagsmithKey: undefined,
       },
     },
   },

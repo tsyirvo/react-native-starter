@@ -1,97 +1,132 @@
-import { initializeApp } from 'firebase/app';
-import {
-  getRemoteConfig,
-  getValue,
-  fetchAndActivate,
-  fetchConfig,
-  getAll,
-  getBoolean,
-  getString,
-  getNumber,
-} from 'firebase/remote-config';
+import flagsmith from 'flagsmith';
 
 import { config } from '$core/constants';
 import Logger from '$core/logger';
 import { errors } from '$core/monitoring/constants';
 
-import defaultConfig from './config';
-import type { FeatureFlagsType } from './featureFlags.types';
+import { defaultFlags } from './defaultFlags';
+import {
+  FlagOptions,
+  FlagsmithValue,
+  TraitOptions,
+} from './featureFlags.types';
 
-const app = initializeApp(config.firebaseConfig);
-const remoteConfig = getRemoteConfig(app);
+const MILLISECONDS_IN_A_DAY = 86400000;
+
+const cacheOptions = {
+  skipAPI: true,
+  ttl: MILLISECONDS_IN_A_DAY,
+};
+
+const options = {
+  environmentID: config.flagsmithKey,
+  cacheFlags: true,
+  cacheOptions,
+  defaultFlags,
+  // TODO: add proper user identity and traits
+  identity: 'user-123',
+  traits: {
+    'trait-1': 'value-1',
+    'trait-2': 2,
+    'trait-3': true,
+  },
+};
 
 class FeatureFlagsClass {
-  /* ***** *****  Setup  ***** ***** */
+  /* ***** *****  init  ***** ***** */
 
   async init() {
     try {
-      this.setDefault();
-      await this.fetchAndActivateConfig();
-
-      if (config.isDebug) {
-        await this.forceFetch();
-      }
+      await flagsmith.init(options);
     } catch (error) {
       Logger.error({
         error,
-        type: errors.sdk,
-        message: 'Failed to initialize FeatureFlags',
+        type: errors.flagsmith,
+        message: 'Error during init',
       });
     }
   }
 
-  setDefault() {
-    remoteConfig.defaultConfig = defaultConfig;
-  }
+  /* ***** *****  session  ***** ***** */
 
-  async fetchAndActivateConfig() {
+  async identify(userId: string, traits?: Record<string, FlagsmithValue>) {
     try {
-      await fetchAndActivate(remoteConfig);
+      await flagsmith.identify(userId, traits);
     } catch (error) {
       Logger.error({
         error,
-        type: errors.sdk,
-        message: 'Failed to fetch remoteConfig',
+        type: errors.flagsmith,
+        message: 'Error while loging out',
       });
     }
   }
 
-  async forceFetch() {
-    await fetchConfig(remoteConfig);
-  }
-
-  async checkFetchStatus() {
-    const fetchStatus = remoteConfig.lastFetchStatus;
-
-    if (fetchStatus !== 'success') {
-      await this.forceFetch();
+  async logout() {
+    try {
+      await flagsmith.logout();
+    } catch (error) {
+      Logger.error({
+        error,
+        type: errors.flagsmith,
+        message: 'Error while loging out',
+      });
     }
-
-    return fetchStatus;
   }
 
-  /* ***** *****  Reading values  ***** ***** */
+  /* ***** *****  Flags  ***** ***** */
 
-  getStringValue(key: FeatureFlagsType) {
-    return getString(remoteConfig, key);
+  isFlagEnabled(flagKey: FlagOptions) {
+    return flagsmith.hasFeature(flagKey);
   }
 
-  getNumberValue(key: FeatureFlagsType) {
-    return getNumber(remoteConfig, key);
+  getFlagValue(flagKey: FlagOptions) {
+    return flagsmith.getValue(flagKey);
   }
 
-  getBooleanValue(key: FeatureFlagsType) {
-    return getBoolean(remoteConfig, key);
+  async refetchFlags() {
+    try {
+      await flagsmith.getFlags();
+    } catch (error) {
+      Logger.error({
+        error,
+        type: errors.flagsmith,
+        message: 'Error while refetching the flags',
+      });
+    }
   }
 
-  getAllValues() {
-    return getAll(remoteConfig);
+  /* ***** *****  Traits  ***** ***** */
+
+  getUserTrait(traitName: TraitOptions) {
+    return flagsmith.getTrait(traitName);
   }
 
-  getValueSource(key: FeatureFlagsType) {
-    const flag = getValue(remoteConfig, key);
+  getAllUserTraits() {
+    return flagsmith.getAllTraits();
+  }
 
-    return flag.getSource();
+  async setUserTrait(traitName: TraitOptions, traitValue: FlagsmithValue) {
+    try {
+      await flagsmith.setTrait(traitName, traitValue);
+    } catch (error) {
+      Logger.error({
+        error,
+        type: errors.flagsmith,
+        message: 'Error while setting a trait',
+      });
+    }
+  }
+
+  async setUserTraits(traits: Record<TraitOptions, FlagsmithValue>) {
+    try {
+      await flagsmith.setTraits(traits);
+    } catch (error) {
+      Logger.error({
+        error,
+        type: errors.flagsmith,
+        message: 'Error while setting multiple traits',
+      });
+    }
   }
 }
 
