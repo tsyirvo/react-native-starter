@@ -1,3 +1,5 @@
+import type { SeverityLevel } from '@sentry/types';
+
 /* ***** *****  Toast Message  ***** ***** */
 
 export type UserMessageType = { title: string; message: string };
@@ -18,11 +20,12 @@ export type NetworkErrorType = {
 /* ***** *****  Error  ***** ***** */
 
 export type BaseErrorType = {
-  type: string;
   message: string;
 };
 
 export type ErrorType = BaseErrorType & {
   error: unknown;
   userMessage?: UserMessageType;
+  level?: SeverityLevel;
+  transactionName?: string;
 };

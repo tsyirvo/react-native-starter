@@ -18,6 +18,4 @@ class PerformanceMonitoringClass {
   }
 }
 
-const PerformanceMonitoring = new PerformanceMonitoringClass();
-
-export default PerformanceMonitoring;
+export const PerformanceMonitoring = new PerformanceMonitoringClass();

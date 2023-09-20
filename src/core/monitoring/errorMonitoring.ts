@@ -4,11 +4,11 @@ import * as Sentry from 'sentry-expo';
 
 import { config } from '$core/constants';
 
-import { errors, tags } from './constants';
+import { tags } from './constants';
 
 import type { Primitives } from '$types';
 
-const prodSampleRate = 0.05;
+const prodSampleRate = 0.5;
 const fullSampleRate = 1;
 
 export const routingInstrumentation =
@@ -23,7 +23,7 @@ class ErrorMonitoringClass {
     const isEnabled = config.env !== 'development';
 
     if (!config.sentryDsn) {
-      const errorMessage = `[${errors.sdk}]: Failed to initialize Sentry - No DSN found`;
+      const errorMessage = 'Failed to initialize Sentry - No DSN found';
 
       console.log(errorMessage);
 
@@ -41,13 +41,30 @@ class ErrorMonitoringClass {
           routingInstrumentation,
         }),
       ],
+      denyUrls: [/mixpanel.com/i, /flagsmith.com/i],
+      beforeBreadcrumb(breadcrumb) {
+        if (typeof breadcrumb.data?.url === 'string') {
+          if (
+            breadcrumb.data.url.match(/mixpanel.com/i) ??
+            breadcrumb.data.url.match(/flagsmith.com/i)
+          ) {
+            return null;
+          }
+        }
+
+        if (breadcrumb.category === 'console') {
+          return null;
+        }
+
+        return breadcrumb;
+      },
     });
 
     if (typeof config.runtimeVersion === 'string') {
       this.tag('runtimeVersion', config.runtimeVersion);
     }
 
-    this.tag('currentVersion', config.version);
+    this.tag('version', config.version);
   }
 
   /* ***** *****  User related  ***** ***** */
@@ -91,6 +108,4 @@ class ErrorMonitoringClass {
   }
 }
 
-const ErrorMonitoring = new ErrorMonitoringClass();
-
-export default ErrorMonitoring;
+export const ErrorMonitoring = new ErrorMonitoringClass();

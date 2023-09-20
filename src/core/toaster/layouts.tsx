@@ -8,7 +8,7 @@ import {
   InfoToast,
 } from 'react-native-toast-message';
 
-import { colors, textVariants, spacing } from '$styles';
+import { colors, textVariants, spacing } from '$core/theme';
 
 const styles = StyleSheet.create({
   // Global styles
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const toastConfig = {
+export const toastConfig = {
   success: (props: BaseToastProps) => (
     <BaseToast
       {...props}
@@ -71,5 +71,3 @@ const toastConfig = {
     />
   ),
 };
-
-export default toastConfig;

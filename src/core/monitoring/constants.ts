@@ -27,13 +27,6 @@ export const tags = {
   locale: 'Locale',
   env: 'Environment',
   runtimeVersion: 'RuntimeVersion',
-  currentVersion: 'CurrentVersion',
+  version: 'Version',
   updatedVersion: 'UpdatedVersion',
-};
-
-/* ***** *****  Errors  ***** ***** */
-
-export const errors = {
-  sdk: 'sdk',
-  flagsmith: 'flagsmith',
 };
