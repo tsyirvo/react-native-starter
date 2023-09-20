@@ -4216,13 +4216,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/i18n-js@npm:3.8.5":
-  version: 3.8.5
-  resolution: "@types/i18n-js@npm:3.8.5"
-  checksum: 10ccc0f2e9a799c78e3f00017b38f09be68940e1f8f6a048f04b4b4d2f3dfc97e878826d7f1565f360b498205691cd67bb4dff51bdd5fc3cc1a3c17993bf6007
-  languageName: node
-  linkType: hard
-
 "@types/imagemin-mozjpeg@npm:8.0.1":
   version: 8.0.1
   resolution: "@types/imagemin-mozjpeg@npm:8.0.1"
@@ -15372,7 +15365,6 @@ __metadata:
     "@testing-library/jest-native": 5.4.3
     "@testing-library/react-native": 12.3.0
     "@types/fs-extra": 11.0.1
-    "@types/i18n-js": 3.8.5
     "@types/imagemin": 8.0.0
     "@types/imagemin-mozjpeg": 8.0.1
     "@types/jest": 29.5.4
