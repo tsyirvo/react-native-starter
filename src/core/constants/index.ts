@@ -1,4 +1,4 @@
-export { default as config } from './config';
-export * from './dimensions';
-export * from './platform';
-export { default as storageKeys } from './storage';
+export { config } from './config';
+export { deviceHeight, deviceWidth } from './dimensions';
+export { isAndroid, isIOS } from './platform';
+export { storageKeys } from './storage';

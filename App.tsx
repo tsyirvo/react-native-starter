@@ -1,17 +1,13 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import 'react-native-gesture-handler';
 
-import Analytics from '$core/analytics';
-// import FeatureFlags from '$core/featureFlags';
-import { ErrorMonitoring } from '$core/monitoring';
+import { bootstrapSDKs } from '$core/bootstrapSDKs';
 
-import Root from './src/App';
+import { RootApp } from './src/App';
 
-ErrorMonitoring.init();
-Analytics.init();
-// FeatureFlags.init();
+import './src/core/i18n';
 
-const App = () => <Root />;
+bootstrapSDKs();
 
-export default App;
+const App = () => <RootApp />;
+
+export { App };

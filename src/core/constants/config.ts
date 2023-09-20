@@ -12,7 +12,7 @@ const sentryDsn = Env.SENTRY_DSN;
 const mixpanelToken = Env.MIXPANEL_TOKEN;
 const flagsmithKey = Env.FLAGSMITH_KEY;
 
-const config = {
+export const config = {
   defaultLocale: 'en',
   supportedLocales: ['en', 'fr'],
   // Config
@@ -25,5 +25,3 @@ const config = {
   mixpanelToken,
   flagsmithKey,
 };
-
-export default config;

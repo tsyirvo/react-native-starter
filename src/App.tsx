@@ -7,27 +7,20 @@ import {
 } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 
-import Splashscreen from '$components/splashscreen/Splashscreen';
-import { bootstrapSDKs } from '$core/bootstrapSDKs';
-import toastConfig from '$core/toaster/layouts';
-import AppUpdateNeeded from '$pages/AppUpdateNeeded';
-import MaintenanceMode from '$pages/MaintenanceMode';
-import { theme } from '$styles/theme';
-
-import ErrorBoundary from './components/errorBoundary';
-import RootStack from './navigation/navigation';
-
-import Sandbox from '$sandbox';
-
-import './i18n';
+import { RootStack } from '$core/navigation';
+import { theme } from '$core/theme';
+import { toastConfig } from '$core/toaster';
+import { Sandbox } from '$features/sandbox';
+import { AppUpdateNeeded } from '$shared/components/AppUpdateNeeded';
+import { ErrorBoundary } from '$shared/components/ErrorBoundary';
+import { MaintenanceMode } from '$shared/components/MaintenanceMode';
+import { Splashscreen } from '$shared/components/splashscreen';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
-
-bootstrapSDKs();
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -55,4 +48,4 @@ const App = () => (
   </ThemeProvider>
 );
 
-export default App;
+export { App as RootApp };

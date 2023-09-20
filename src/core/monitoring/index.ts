@@ -1,2 +1,3 @@
-export { default as ErrorMonitoring } from './errorMonitoring';
-export { default as PerformanceMonitoring } from './performanceMonitoring';
+export { ErrorMonitoring, routingInstrumentation } from './errorMonitoring';
+export { PerformanceMonitoring } from './performanceMonitoring';
+export * from './constants';

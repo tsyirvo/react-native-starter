@@ -1,0 +1,1 @@
+export { Splashscreen } from './Splashscreen';
