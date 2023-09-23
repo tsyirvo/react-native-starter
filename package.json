@@ -66,7 +66,9 @@
     "//// MISC ////": "",
     "perf:bundle": "npx react-native-bundle-visualizer",
     "prepare": "husky install",
-    "postinstall": "patch-package"
+    "postinstall": "husky install && patch-package",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "0.2.9",
@@ -146,6 +148,7 @@
     "jest-expo": "^49.0.0",
     "lint-staged": "14.0.1",
     "patch-package": "8.0.0",
+    "pinst": "^3.0.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "3.0.3",
     "sharp": "0.31.1",
