@@ -59,4 +59,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       projectId: Env.EAS_PROJECT_ID,
     },
   },
+  hooks: {
+    postPublish: [
+      {
+        file: 'sentry-expo/upload-sourcemaps',
+        config: {
+          organization: Env.SENTRY_ORG,
+          project: Env.SENTRY_PROJECT,
+          authToken: Env.SENTRY_AUTH_TOKEN,
+          setCommits: true,
+        },
+      },
+    ],
+  },
 });
