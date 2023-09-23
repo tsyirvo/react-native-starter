@@ -1,23 +1,20 @@
 /* eslint-disable */
 
 const template = (variables, { tpl }) => {
-  const componentProps = `${variables.componentName}Props`;
-  const componentInterface = `\ntype ${componentProps} = SvgProps & {
-    color?: string;
-  }`;
+  const trimmedComponentName = variables.componentName.replace('Svg', '');
 
   return tpl`
-/* eslint-disable react/jsx-props-no-spreading */
-
 ${variables.imports};
 
-${componentInterface}
+${variables.interfaces};
 
-const ${variables.componentName} = ({ color, ...props }: ${componentProps}) => (
-  ${variables.jsx}
-);
- 
-${variables.exports};
+/* eslint-disable react/jsx-props-no-spreading */
+
+function ${trimmedComponentName}(${variables.props}) {  
+  return ${variables.jsx};
+}
+
+export { ${trimmedComponentName} };
 `;
 };
 
