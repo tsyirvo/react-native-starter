@@ -4,7 +4,7 @@ import type { SvgProps } from 'react-native-svg';
 /* eslint-disable react/jsx-props-no-spreading */
 const Code = (props: SvgProps) => {
   return (
-    <Svg height={21} width={21} {...props}>
+    <Svg viewBox="0 0 21 21" {...props}>
       <G
         fill="none"
         fillRule="evenodd"

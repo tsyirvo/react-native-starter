@@ -1,6 +1,9 @@
 module.exports = {
   plugins: [
     {
+      name: 'removeDimensions',
+    },
+    {
       name: 'removeXMLNS',
     },
     {
