@@ -45,6 +45,9 @@ const buildTime = z.object({
   EAS_PROJECT_ID: z.string(),
 
   // ADD BUILD TIME ENV VARS HERE
+  SENTRY_ORG: z.string(),
+  SENTRY_PROJECT: z.string(),
+  SENTRY_AUTH_TOKEN: z.string(),
 });
 
 // Environment variables config
@@ -67,6 +70,9 @@ const _buildTimeEnv = {
   EAS_PROJECT_ID: process.env.EAS_PROJECT_ID,
 
   // ADD ENV VARS HERE TOO
+  SENTRY_ORG: process.env.SENTRY_ORG,
+  SENTRY_PROJECT: process.env.SENTRY_PROJECT,
+  SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
 };
 
 const _env = {
