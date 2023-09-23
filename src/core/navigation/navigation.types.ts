@@ -14,7 +14,7 @@ export type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'HomeScreen'
 >;
-export type OtherPageScreenNavigationProp = NativeStackNavigationProp<
+export type OtherScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'OtherScreen'
 >;

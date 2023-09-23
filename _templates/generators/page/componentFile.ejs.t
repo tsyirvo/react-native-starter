@@ -1,20 +1,18 @@
 ---
-to: src/pages/<%= h.changeCase.pascalCase(componentName) %>.tsx
+to: src/screens/<%= h.changeCase.pascalCase(componentName) %>.tsx
 ---
-import { Box, Text } from '$components/ui/primitives';
-import SafeView from '$components/ui/SafeView';
-import { <%= h.changeCase.pascalCase(componentName) %>ScreenNavigationProp } from '$navigation/navigation.types';
+import { Box, Text } from '$shared/ui/primitives';
+import { Screen } from '$shared/ui/Screen';
 
 type <%= h.changeCase.pascalCase(componentName) %>Props = {
-  navigation: <%= h.changeCase.pascalCase(componentName) %>ScreenNavigationProp;
+  someProp?: string;
 };
 
-const <%= h.changeCase.pascalCase(componentName) %> = ({ navigation }: <%= h.changeCase.pascalCase(componentName) %>Props) => (
-  <SafeView edges={['bottom']}>
+export const <%= h.changeCase.pascalCase(componentName) %> = ({ someProp }: <%= h.changeCase.pascalCase(componentName) %>Props) => (
+  <Screen>
     <Box flex={1}>
-      <Text variant="large"><%= h.changeCase.pascalCase(componentName) %> page</Text>
+      <Text variant="large"><%= h.changeCase.pascalCase(componentName) %> screen</Text>
     </Box>
-  </SafeView>
+  </Screen>
 );
 
-export default <%= h.changeCase.pascalCase(componentName) %>;

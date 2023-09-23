@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { OtherPageScreenNavigationProp } from '$core/navigation/navigation.types';
+import { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
 import { fireEvent, render, navigationProps } from '$core/testing';
 
 import { OtherScreen } from '../OtherScreen';
@@ -8,7 +8,7 @@ import { OtherScreen } from '../OtherScreen';
 describe('OtherPage component', () => {
   // Setup
   const props = {
-    navigation: navigationProps as unknown as OtherPageScreenNavigationProp,
+    navigation: navigationProps as unknown as OtherScreenNavigationProp,
   };
 
   it('should render correctly', () => {

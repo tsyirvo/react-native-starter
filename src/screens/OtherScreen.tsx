@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
-import { OtherPageScreenNavigationProp } from '$core/navigation/navigation.types';
+import { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
 import { Box, Button, Text } from '$shared/ui/primitives';
 import { Screen } from '$shared/ui/Screen';
 
 type OtherScreenProps = {
-  navigation: OtherPageScreenNavigationProp;
+  navigation: OtherScreenNavigationProp;
 };
 
 export const OtherScreen = ({ navigation }: OtherScreenProps) => {

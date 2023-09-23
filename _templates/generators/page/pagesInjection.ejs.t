@@ -1,6 +1,6 @@
 ---
 inject: true
 before: inject pages before this
-to: src/navigation/pages.ts
+to: src/core/navigation/screens.ts
 ---
-import <%= h.changeCase.pascalCase(componentName) %> from '$pages/<%= h.changeCase.pascalCase(componentName) %>';
+import { <%= h.changeCase.pascalCase(componentName) %> } from '$screens/<%= h.changeCase.pascalCase(componentName) %>';
