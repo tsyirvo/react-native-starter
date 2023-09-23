@@ -1,25 +1,16 @@
 ---
-to: src/pages/__tests__/<%= h.changeCase.pascalCase(componentName) %>.test.tsx
+to: src/screens/__tests__/<%= h.changeCase.pascalCase(componentName) %>.test.tsx
 ---
-/* eslint-disable react/jsx-props-no-spreading */
+import { render } from '$core/testing';
 
-import { <%= h.changeCase.pascalCase(componentName) %>ScreenNavigationProp } from '$navigation/navigation.types';
-import navigationProps from '$tests/defaultNavigationProp';
-import { render } from '$tests/utils';
+import { <%= h.changeCase.pascalCase(componentName) %> } from '../<%= h.changeCase.pascalCase(componentName) %>';
 
-import <%= h.changeCase.pascalCase(componentName) %> from '../<%= h.changeCase.pascalCase(componentName) %>';
-
-describe('<%= h.changeCase.pascalCase(componentName) %> page', () => {
-  // Setup
-  const props = {
-    navigation: navigationProps as unknown as <%= h.changeCase.pascalCase(componentName) %>ScreenNavigationProp,
-  };
-
+describe('<%= h.changeCase.pascalCase(componentName) %> screen', () => {
   it('should render correctly', () => {
     // Given
-    const { getByText } = render(<<%= h.changeCase.pascalCase(componentName) %> {...props} />);
+    const { getByText } = render(<<%= h.changeCase.pascalCase(componentName) %> />);
 
     // Then
-    expect(getByText('<%= h.changeCase.pascalCase(componentName) %> page')).toBeDefined();
+    expect(getByText('<%= h.changeCase.pascalCase(componentName) %> screen')).toBeDefined();
   });
 });
