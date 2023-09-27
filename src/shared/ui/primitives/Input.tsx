@@ -33,6 +33,7 @@ const useStyles = makeAppStyles(({ colors }) => ({
 export const Input = forwardRef<TextInput, InputProps>(
   ({ label, error, isEditable = true, ...props }, ref) => {
     const styles = useStyles();
+
     const errorStyles = error ? styles.errorState : styles.defaultState;
 
     return (
