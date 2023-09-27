@@ -27,19 +27,19 @@ export type DebugStackParamList = {
 /* ***** *****  Pages navigation type  ***** ***** */
 
 export type MenuScreenNavigationProp = NativeStackNavigationProp<
-DebugStackParamList,
-'Menu'
+  DebugStackParamList,
+  'Menu'
 >;
 export type ThemeScreenNavigationProp = NativeStackNavigationProp<
-DebugStackParamList,
-'Theme'
+  DebugStackParamList,
+  'Theme'
 >;
 export type PrimitivesScreenNavigationProp = NativeStackNavigationProp<
-DebugStackParamList,
-'Primitives'
+  DebugStackParamList,
+  'Primitives'
 >;
 export type DesignSystemScreenNavigationProp = NativeStackNavigationProp<
-DebugStackParamList,
-'DesignSystem'
+  DebugStackParamList,
+  'DesignSystem'
 >;
 // inject page types before this

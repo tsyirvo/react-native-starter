@@ -22,6 +22,8 @@ export const useAppState = (callback: () => void) => {
   useEffect(() => {
     const listener = AppState.addEventListener('change', handleAppStateChange);
 
-    return () => { listener.remove(); };
+    return () => {
+      listener.remove();
+    };
   }, [appState, handleAppStateChange]);
 };

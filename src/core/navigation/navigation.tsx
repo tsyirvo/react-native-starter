@@ -3,11 +3,8 @@ import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
-import type {
-  NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import {
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
+import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 

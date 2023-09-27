@@ -7,13 +7,15 @@ import { Text } from '$shared/ui/primitives';
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
 export function FontSizesSandbox() {
-  return <ScrollView>
-    <SandBoxItem isSingle>
-      {(Object.keys(fontSizes) as FontSizes[]).map((size) => (
-        <Text key={size} mb="global_24" variant={size}>
-          {`This is a ${size} text`}
-        </Text>
-      ))}
-    </SandBoxItem>
-         </ScrollView>;
+  return (
+    <ScrollView>
+      <SandBoxItem isSingle>
+        {(Object.keys(fontSizes) as FontSizes[]).map((size) => (
+          <Text key={size} mb="global_24" variant={size}>
+            {`This is a ${size} text`}
+          </Text>
+        ))}
+      </SandBoxItem>
+    </ScrollView>
+  );
 }

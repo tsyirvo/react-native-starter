@@ -12,19 +12,27 @@ export function ThemeSandbox() {
   const menuItems = [
     {
       label: 'Spaces',
-      onPress: () => { navigation.navigate('Spaces'); },
+      onPress: () => {
+        navigation.navigate('Spaces');
+      },
     },
     {
       label: 'Colors',
-      onPress: () => { navigation.navigate('Colors'); },
+      onPress: () => {
+        navigation.navigate('Colors');
+      },
     },
     {
       label: 'Font Sizes',
-      onPress: () => { navigation.navigate('FontSizes'); },
+      onPress: () => {
+        navigation.navigate('FontSizes');
+      },
     },
     {
       label: 'Radiuses',
-      onPress: () => { navigation.navigate('Radiuses'); },
+      onPress: () => {
+        navigation.navigate('Radiuses');
+      },
     },
   ];
 

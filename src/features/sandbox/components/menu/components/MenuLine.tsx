@@ -10,11 +10,13 @@ type MenuLineProps = {
 };
 
 export function MenuLine({ label, onPress }: MenuLineProps) {
-  return <Box pb="global_8">
-    <Pressable onPress={onPress}>
-      <Text mb="global_8">{label}</Text>
-    </Pressable>
+  return (
+    <Box pb="global_8">
+      <Pressable onPress={onPress}>
+        <Text mb="global_8">{label}</Text>
+      </Pressable>
 
-    <Separator color="grey" />
-         </Box>;
+      <Separator color="grey" />
+    </Box>
+  );
 }

@@ -7,7 +7,7 @@ import fs from 'fs';
 import fsExtra from 'fs-extra';
 import ora from 'ora';
 
-export const TMP_DIR = `${(process ).cwd()}/tmp`;
+export const TMP_DIR = `${process.cwd()}/tmp`;
 
 /* ***** *****  Misc. utilities  ***** ***** */
 
@@ -18,20 +18,24 @@ type Print = {
 
 export const print = ({ message, type }: Print) => {
   switch (type) {
-    case 'error':
-      { console.log(chalk.red.white.bgRed(message));
+    case 'error': {
+      console.log(chalk.red.white.bgRed(message));
 
- return; }
-    case 'warning':
-      { console.log(chalk.white.bgYellow(message));
+      return;
+    }
+    case 'warning': {
+      console.log(chalk.white.bgYellow(message));
 
- return; }
-    case 'success':
-      { console.log(chalk.white.bgGreen(message));
+      return;
+    }
+    case 'success': {
+      console.log(chalk.white.bgGreen(message));
 
- return; }
-    default:
-      { console.log(chalk.blue(message));  }
+      return;
+    }
+    default: {
+      console.log(chalk.blue(message));
+    }
   }
 };
 

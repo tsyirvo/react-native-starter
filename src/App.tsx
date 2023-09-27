@@ -23,29 +23,31 @@ const styles = StyleSheet.create({
 });
 
 function App() {
-  return <ThemeProvider theme={theme}>
-    <StatusBar barStyle="light-content" />
+  return (
+    <ThemeProvider theme={theme}>
+      <StatusBar barStyle="light-content" />
 
-    <GestureHandlerRootView style={styles.container}>
-      <Splashscreen>
-        <ErrorBoundary>
-          <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-            <Sandbox>
-              <>
-                <RootStack />
+      <GestureHandlerRootView style={styles.container}>
+        <Splashscreen>
+          <ErrorBoundary>
+            <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+              <Sandbox>
+                <>
+                  <RootStack />
 
-                <Toast config={toastConfig} />
+                  <Toast config={toastConfig} />
 
-                <AppUpdateNeeded />
+                  <AppUpdateNeeded />
 
-                <MaintenanceMode />
-              </>
-            </Sandbox>
-          </SafeAreaProvider>
-        </ErrorBoundary>
-      </Splashscreen>
-    </GestureHandlerRootView>
-         </ThemeProvider>;
+                  <MaintenanceMode />
+                </>
+              </Sandbox>
+            </SafeAreaProvider>
+          </ErrorBoundary>
+        </Splashscreen>
+      </GestureHandlerRootView>
+    </ThemeProvider>
+  );
 }
 
 export { App as RootApp };

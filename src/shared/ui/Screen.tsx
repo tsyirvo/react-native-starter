@@ -11,7 +11,9 @@ type ScreenProps = {
 };
 
 export function Screen({ children, edges = [] }: ScreenProps) {
-  return <SafeView edges={edges}>
-    <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
-         </SafeView>;
+  return (
+    <SafeView edges={edges}>
+      <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
+    </SafeView>
+  );
 }

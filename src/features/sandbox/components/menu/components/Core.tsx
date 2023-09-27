@@ -11,7 +11,9 @@ export function Core() {
   const menuItems = [
     {
       label: 'Theme',
-      onPress: () => { navigation.navigate('Theme'); },
+      onPress: () => {
+        navigation.navigate('Theme');
+      },
     },
   ];
 

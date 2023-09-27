@@ -8,11 +8,13 @@ type MenuCategoryProps = {
 };
 
 export function MenuCategory({ category, children }: MenuCategoryProps) {
-  return <Box pb="global_24">
-    <Text pb="global_8" variant="large">
-      {category}
-    </Text>
+  return (
+    <Box pb="global_24">
+      <Text pb="global_8" variant="large">
+        {category}
+      </Text>
 
-    {children}
-         </Box>;
+      {children}
+    </Box>
+  );
 }

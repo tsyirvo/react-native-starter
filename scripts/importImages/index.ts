@@ -1,7 +1,7 @@
 import { generateImages } from './generateImages';
 import { createTmpImageFolders, deleteTmpImageFolders, print } from './utils';
 
-const nodeProcess = process ;
+const nodeProcess = process;
 
 const NO_ARGS = 0;
 
@@ -26,9 +26,8 @@ const main = async () => {
 };
 
 main().catch(() => {
- print({
+  print({
     message: 'An error happened while importing the images',
     type: 'error',
-  }); 
-},
-);
+  });
+});

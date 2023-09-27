@@ -8,15 +8,17 @@ import { Core } from './components/Core';
 import { Flows } from './components/Flows';
 
 export function Menu() {
-  return <SafeView edges={['bottom']}>
-    <ScrollView>
-      <Box p="global_24">
-        <Core />
+  return (
+    <SafeView edges={['bottom']}>
+      <ScrollView>
+        <Box p="global_24">
+          <Core />
 
-        <Components />
+          <Components />
 
-        <Flows />
-      </Box>
-    </ScrollView>
-         </SafeView>;
+          <Flows />
+        </Box>
+      </ScrollView>
+    </SafeView>
+  );
 }

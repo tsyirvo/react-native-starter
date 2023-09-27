@@ -18,7 +18,9 @@ export function Sandbox({ children }: SandboxProps) {
     const devMenuItems = [
       {
         name: 'Toggle the Sandbox',
-        callback: () => { setIsShown((prevState) => !prevState); },
+        callback: () => {
+          setIsShown((prevState) => !prevState);
+        },
       },
     ];
 

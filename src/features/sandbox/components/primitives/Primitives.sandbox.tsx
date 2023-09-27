@@ -12,19 +12,27 @@ export function PrimitivesSandbox() {
   const menuItems = [
     {
       label: 'Box',
-      onPress: () => { navigation.navigate('Box'); },
+      onPress: () => {
+        navigation.navigate('Box');
+      },
     },
     {
       label: 'Text',
-      onPress: () => { navigation.navigate('Text'); },
+      onPress: () => {
+        navigation.navigate('Text');
+      },
     },
     {
       label: 'Button',
-      onPress: () => { navigation.navigate('Button'); },
+      onPress: () => {
+        navigation.navigate('Button');
+      },
     },
     {
       label: 'Input',
-      onPress: () => { navigation.navigate('Input'); },
+      onPress: () => {
+        navigation.navigate('Input');
+      },
     },
   ];
 

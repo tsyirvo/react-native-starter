@@ -12,7 +12,9 @@ export function DesignSystemSandbox() {
   const menuItems = [
     {
       label: 'Fallback Loader',
-      onPress: () => { navigation.navigate('FallbackLoader'); },
+      onPress: () => {
+        navigation.navigate('FallbackLoader');
+      },
     },
   ];
 

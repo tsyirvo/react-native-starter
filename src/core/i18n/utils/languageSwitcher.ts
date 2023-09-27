@@ -11,7 +11,7 @@ export const changeLanguage = async (language: SupportedLanguages) => {
         text1: t('changeLocale.failure', { ns: 'settings' }),
       });
 
- return;
+      return;
     }
 
     Toaster.show({

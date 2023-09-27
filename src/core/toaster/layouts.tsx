@@ -1,13 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { StyleSheet } from 'react-native';
-import type {
-  BaseToastProps } from 'react-native-toast-message';
-import {
-  BaseToast,
-  ErrorToast,
-  InfoToast,
-} from 'react-native-toast-message';
+import type { BaseToastProps } from 'react-native-toast-message';
+import { BaseToast, ErrorToast, InfoToast } from 'react-native-toast-message';
 
 import { colors, textVariants, spacing } from '$core/theme';
 

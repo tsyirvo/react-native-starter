@@ -11,11 +11,15 @@ export function Components() {
   const menuItems = [
     {
       label: 'Primitives',
-      onPress: () => { navigation.navigate('Primitives'); },
+      onPress: () => {
+        navigation.navigate('Primitives');
+      },
     },
     {
       label: 'Design System',
-      onPress: () => { navigation.navigate('DesignSystem'); },
+      onPress: () => {
+        navigation.navigate('DesignSystem');
+      },
     },
   ];
 

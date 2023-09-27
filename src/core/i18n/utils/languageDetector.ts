@@ -7,7 +7,9 @@ import { AppStorage } from '$core/storage';
 const getSelectedLocale = () =>
   AppStorage.getString(storageKeys.appStorage.locale);
 
-const setPhonePrimaryLocale = (locale: string) => { AppStorage.set(storageKeys.appStorage.locale, locale); };
+const setPhonePrimaryLocale = (locale: string) => {
+  AppStorage.set(storageKeys.appStorage.locale, locale);
+};
 
 const detectPhonePrimaryLocale = () => {
   const locales = Localization.getLocales();

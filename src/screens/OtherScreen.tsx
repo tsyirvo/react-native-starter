@@ -11,7 +11,9 @@ type OtherScreenProps = {
 export function OtherScreen({ navigation }: OtherScreenProps) {
   const { t } = useTranslation('otherScreen');
 
-  const goBack = () => { navigation.goBack(); };
+  const goBack = () => {
+    navigation.goBack();
+  };
 
   return (
     <Screen>
