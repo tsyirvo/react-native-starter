@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { StyleSheet } from 'react-native';
+import type {
+  BaseToastProps } from 'react-native-toast-message';
 import {
   BaseToast,
-  BaseToastProps,
   ErrorToast,
   InfoToast,
 } from 'react-native-toast-message';

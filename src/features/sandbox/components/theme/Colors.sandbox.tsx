@@ -6,8 +6,8 @@ import { Box, Text } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export const ColorsSandbox = () => (
-  <ScrollView>
+export function ColorsSandbox() {
+  return <ScrollView>
     <SandBoxItem isSingle>
       {(Object.keys(theme.colors) as Colors[]).map((color) => (
         <Box key={color} alignItems="center" mb="global_24">
@@ -17,5 +17,5 @@ export const ColorsSandbox = () => (
         </Box>
       ))}
     </SandBoxItem>
-  </ScrollView>
-);
+         </ScrollView>;
+}

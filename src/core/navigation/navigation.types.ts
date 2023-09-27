@@ -1,4 +1,4 @@
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 /* ***** *****  Stack router types  ***** ***** */
 
@@ -11,11 +11,11 @@ export type RootStackParamList = {
 /* ***** *****  Pages navigation type  ***** ***** */
 
 export type HomeScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'HomeScreen'
+RootStackParamList,
+'HomeScreen'
 >;
 export type OtherScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'OtherScreen'
+RootStackParamList,
+'OtherScreen'
 >;
 // inject page types before this

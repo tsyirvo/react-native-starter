@@ -8,6 +8,8 @@ import './src/core/i18n';
 
 bootstrapSDKs();
 
-const App = () => <RootApp />;
+function App() {
+  return <RootApp />;
+}
 
 export { App };

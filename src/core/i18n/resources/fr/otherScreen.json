@@ -1,7 +1,7 @@
 {
   "navigation": {
+    "backCta": "Retour en arrière",
     "tabBar": "Une autre page",
-    "title": "Une autre page",
-    "backCta": "Retour en arrière"
+    "title": "Une autre page"
   }
 }

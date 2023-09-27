@@ -1,13 +1,15 @@
-import { Component, ErrorInfo, ReactElement } from 'react';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import type { ErrorInfo, ReactElement } from 'react';
+import { Component } from 'react';
+import type { WithTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 import { ErrorMonitoring } from '$core/monitoring';
 import { Box, Button, Text } from '$shared/ui/primitives';
 import { SafeView } from '$shared/ui/SafeView';
 
-type ErrorBoundaryProps = {
+interface ErrorBoundaryProps extends WithTranslation {
   children: ReactElement;
-} & WithTranslation;
+}
 
 type ErrorBoundaryState = {
   hasError: boolean;
@@ -26,8 +28,6 @@ class ErrorBoundaryComponent extends Component<
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log('Send error for reporting', errorInfo);
-
     ErrorMonitoring.breadcrumbs({
       type: 'error',
       level: 'error',

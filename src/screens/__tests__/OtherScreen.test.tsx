@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
+import type { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
 import { fireEvent, render, navigationProps } from '$core/testing';
 
 import { OtherScreen } from '../OtherScreen';

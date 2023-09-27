@@ -1,9 +1,8 @@
-import { Image as ExpoImage, ImageProps } from 'expo-image';
+import type { ImageProps } from 'expo-image';
+import { Image as ExpoImage } from 'expo-image';
 import React from 'react';
 
-// eslint-disable-next-line react/jsx-props-no-spreading
-export const Image = (props: ImageProps) => <ExpoImage {...props} />;
-
-export const preloadImages = (sources: string[]) => {
-  ExpoImage.prefetch(sources);
-};
+export function Image(props: ImageProps) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <ExpoImage {...props} />;
+}

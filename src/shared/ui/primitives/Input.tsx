@@ -1,18 +1,19 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { forwardRef } from 'react';
-import { TextInput, TextInputProps } from 'react-native';
+import { TextInput } from 'react-native';
+import type { TextInputProps } from 'react-native';
 
 import { makeAppStyles, theme, fontSizes } from '$core/theme';
 
 import { Box } from './Box';
 import { Text } from './Text';
 
-type Props = TextInputProps & {
+interface InputProps extends TextInputProps {
   label?: string;
   error?: string;
   isEditable?: boolean;
-};
+}
 
 const useStyles = makeAppStyles(({ colors }) => ({
   input: {
@@ -29,7 +30,7 @@ const useStyles = makeAppStyles(({ colors }) => ({
   },
 }));
 
-export const Input = forwardRef<TextInput, Props>(
+export const Input = forwardRef<TextInput, InputProps>(
   ({ label, error, isEditable = true, ...props }, ref) => {
     const styles = useStyles();
 
@@ -37,11 +38,11 @@ export const Input = forwardRef<TextInput, Props>(
 
     return (
       <Box width="100%">
-        {label && (
+        {label ? (
           <Text color="black" mb="global_8" testID="inputID-label">
             {label}
           </Text>
-        )}
+        ) : null}
 
         <TextInput
           ref={ref}
@@ -65,3 +66,5 @@ export const Input = forwardRef<TextInput, Props>(
     );
   },
 );
+
+Input.displayName = 'Input';

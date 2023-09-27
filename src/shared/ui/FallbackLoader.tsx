@@ -14,16 +14,18 @@ const SMALL_SIZE = 20;
 const LARGE_SIZE = 36;
 const DEFAULT_DELAY = 500;
 
-export const FallbackLoader = ({
+export function FallbackLoader({
   delay = DEFAULT_DELAY,
   size = 'large',
-}: FallbackLoaderProps) => {
+}: FallbackLoaderProps) {
   const [isShowingLoading, setIsShowingLoading] = useState(false);
 
   const minHeight = size === 'large' ? LARGE_SIZE : SMALL_SIZE;
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsShowingLoading(true), delay);
+    const timeout = setTimeout(() => {
+      setIsShowingLoading(true);
+    }, delay);
 
     return () => {
       clearTimeout(timeout);
@@ -34,4 +36,4 @@ export const FallbackLoader = ({
     return <ActivityIndicator color={colors.black} size={size} />;
 
   return <Box height={minHeight} />;
-};
+}

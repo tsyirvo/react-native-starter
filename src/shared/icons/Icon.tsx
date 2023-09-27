@@ -9,7 +9,8 @@ type IconProps = {
   color?: string;
 };
 
-export const Icon = ({ name, color }: IconProps) =>
-  React.createElement(AllIcons[name], {
+export function Icon({ name, color }: IconProps) {
+  return React.createElement(AllIcons[name], {
     color,
   });
+}

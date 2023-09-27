@@ -1,8 +1,6 @@
 import { StyleSheet } from 'react-native';
-import {
-  NativeSafeAreaViewProps,
-  SafeAreaView,
-} from 'react-native-safe-area-context';
+import type { NativeSafeAreaViewProps } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type SafeViewProps = NativeSafeAreaViewProps;
 
@@ -12,8 +10,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export const SafeView = ({ children, edges = [] }: SafeViewProps) => (
-  <SafeAreaView edges={edges} style={styles.container}>
-    {children}
-  </SafeAreaView>
-);
+export function SafeView({ children, edges = [] }: SafeViewProps) {
+  return (
+    <SafeAreaView edges={edges} style={styles.container}>
+      {children}
+    </SafeAreaView>
+  );
+}

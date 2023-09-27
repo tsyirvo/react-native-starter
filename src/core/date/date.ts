@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import dayjsLocalizedFormat from 'dayjs/plugin/localizedFormat';
 import dayjsUtc from 'dayjs/plugin/utc';
 
-import { DateFormats } from './date.types';
+import type { DateFormats } from './date.types';
 
 import 'dayjs/locale/fr';
 import 'dayjs/locale/en';

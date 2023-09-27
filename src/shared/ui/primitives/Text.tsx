@@ -1,11 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { createText } from '@shopify/restyle';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import type { Theme } from '$core/theme';
 
-type TextProps = React.ComponentPropsWithRef<typeof PrimitiveText>;
+interface TextProps extends React.ComponentPropsWithRef<typeof PrimitiveText> {
+  variant?: 'small' | 'regular' | 'medium' | 'large' | 'xLarge';
+}
 
 const PrimitiveText = createText<Theme>();
 
@@ -14,3 +16,5 @@ export const Text = forwardRef(
     <PrimitiveText ref={ref} variant={variant} {...rest} />
   ),
 );
+
+Text.displayName = 'Text';

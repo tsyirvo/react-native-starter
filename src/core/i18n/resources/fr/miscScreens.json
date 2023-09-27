@@ -1,20 +1,20 @@
 {
-  "errorBoundary": {
-    "title": "Erreur",
-    "description": "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
-    "cta": "Relancer l'app"
-  },
   "appUpdate": {
-    "title": "Votre app est trop vieille",
-    "description": "Merci de la mettre à jour pour utiliser les dernières fonctionnalités"
-  },
-  "maintenanceMode": {
-    "title": "L'app est en maintenance",
-    "description": "Elle sera de nouveau fonctionnelle au plus vite"
+    "description": "Merci de la mettre à jour pour utiliser les dernières fonctionnalités",
+    "title": "Votre app est trop vieille"
   },
   "codepush": {
-    "title": "Mise à jour requise",
+    "cta": "Installer maintenant",
     "description": "Une mise à jour de l'application est requise pour fonctionner.",
-    "cta": "Installer maintenant"
+    "title": "Mise à jour requise"
+  },
+  "errorBoundary": {
+    "cta": "Relancer l'app",
+    "description": "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
+    "title": "Erreur"
+  },
+  "maintenanceMode": {
+    "description": "Elle sera de nouveau fonctionnelle au plus vite",
+    "title": "L'app est en maintenance"
   }
 }

@@ -4,8 +4,8 @@ import { Text } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export const TextSandbox = () => (
-  <ScrollView>
+export function TextSandbox() {
+  return <ScrollView>
     <SandBoxItem title="Text without any props">
       <Text>Default styles</Text>
     </SandBoxItem>
@@ -25,5 +25,5 @@ export const TextSandbox = () => (
         Custom position
       </Text>
     </SandBoxItem>
-  </ScrollView>
-);
+         </ScrollView>;
+}

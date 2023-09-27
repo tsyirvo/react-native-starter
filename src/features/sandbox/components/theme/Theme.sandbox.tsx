@@ -1,30 +1,30 @@
 import { useNavigation } from '@react-navigation/native';
 
-import { ThemeScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
+import type { ThemeScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
 import { Box } from '$shared/ui/primitives';
 
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
 
-export const ThemeSandbox = () => {
+export function ThemeSandbox() {
   const navigation: ThemeScreenNavigationProp = useNavigation();
 
   const menuItems = [
     {
       label: 'Spaces',
-      onPress: () => navigation.navigate('Spaces'),
+      onPress: () => { navigation.navigate('Spaces'); },
     },
     {
       label: 'Colors',
-      onPress: () => navigation.navigate('Colors'),
+      onPress: () => { navigation.navigate('Colors'); },
     },
     {
       label: 'Font Sizes',
-      onPress: () => navigation.navigate('FontSizes'),
+      onPress: () => { navigation.navigate('FontSizes'); },
     },
     {
       label: 'Radiuses',
-      onPress: () => navigation.navigate('Radiuses'),
+      onPress: () => { navigation.navigate('Radiuses'); },
     },
   ];
 
@@ -37,4 +37,4 @@ export const ThemeSandbox = () => {
       </MenuCategory>
     </Box>
   );
-};
+}

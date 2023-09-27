@@ -4,7 +4,7 @@ import { config } from '$core/constants';
 import { Logger } from '$core/logger';
 
 import { defaultFlags } from './defaultFlags';
-import {
+import type {
   FlagOptions,
   FlagsmithValue,
   TraitOptions,

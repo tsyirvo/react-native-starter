@@ -1,5 +1,6 @@
 import { registerDevMenuItems } from 'expo-dev-menu';
-import { ReactElement, useState } from 'react';
+import type { ReactElement } from 'react';
+import { useState } from 'react';
 
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
@@ -10,14 +11,14 @@ type SandboxProps = {
   children: ReactElement;
 };
 
-export const Sandbox = ({ children }: SandboxProps) => {
+export function Sandbox({ children }: SandboxProps) {
   const [isShown, setIsShown] = useState(false);
 
   useRunOnMount(() => {
     const devMenuItems = [
       {
         name: 'Toggle the Sandbox',
-        callback: () => setIsShown((prevState) => !prevState),
+        callback: () => { setIsShown((prevState) => !prevState); },
       },
     ];
 
@@ -33,4 +34,4 @@ export const Sandbox = ({ children }: SandboxProps) => {
   }
 
   return <DebugStack />;
-};
+}

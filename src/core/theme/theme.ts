@@ -1,5 +1,5 @@
 import { createTheme, useTheme } from '@shopify/restyle';
-import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
 import { colors } from './colors';
 import { textVariants } from './fonts';
@@ -14,7 +14,7 @@ export const theme = createTheme({
   spacing,
   borderRadii,
   textVariants,
-  breakpoints: {},
+  breakpoints: undefined,
   buttonVariants,
 });
 
@@ -24,11 +24,11 @@ export const useAppTheme = () => useTheme<Theme>();
 
 export const makeAppStyles =
   <T extends NamedStyles<T>>(styles: (appTheme: Theme) => T) =>
-  () => {
-    const restyleTheme = useAppTheme();
+    () => {
+      const restyleTheme = useAppTheme();
 
-    return styles(restyleTheme);
-  };
+      return styles(restyleTheme);
+    };
 
 /* ***** *****  Types  ***** ***** */
 

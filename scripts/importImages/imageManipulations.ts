@@ -5,7 +5,7 @@ import imageminPngquant from 'imagemin-pngquant';
 import type { Sharp } from 'sharp';
 import sharp from 'sharp';
 
-import ImageMetadata from './imageMetadata';
+import { ImageMetadata } from './imageMetadata';
 import { print, showSpinner, TMP_DIR } from './utils';
 
 /* ***** *****  Compress the generated images  ***** ***** */
@@ -23,7 +23,7 @@ const compressImage = async ({
   });
 
 const compressAllResolutions = async () => {
-  const finishSpinner = showSpinner(`Compressing the images`);
+  const finishSpinner = showSpinner('Compressing the images');
 
   const { image1xName, image2xName, image3xName } =
     ImageMetadata.getImageMetadata();
@@ -76,7 +76,7 @@ const generateAllResolutions = async ({
   width: number;
 }) => {
   const finishSpinner = showSpinner(
-    `Creating the different images resolutions`,
+    'Creating the different images resolutions',
   );
 
   const { image1xName, image2xName, image3xName } =
@@ -110,7 +110,7 @@ const generateAllResolutions = async ({
   finishSpinner('Created the images resolutions successfully');
 };
 
-const createImageResolutions = async (imagePath: string) => {
+export const createImageResolutions = async (imagePath: string) => {
   const image = sharp(imagePath);
   const { width } = await image.metadata();
 
@@ -126,5 +126,3 @@ const createImageResolutions = async (imagePath: string) => {
   await generateAllResolutions({ image, width });
   await compressAllResolutions();
 };
-
-export default createImageResolutions;

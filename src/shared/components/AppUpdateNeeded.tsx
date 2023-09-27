@@ -6,7 +6,7 @@ import { config } from '$core/constants';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
 import { Box, Text } from '$shared/ui/primitives';
 
-export const AppUpdateNeeded = () => {
+export function AppUpdateNeeded() {
   const [isAppUnsupported, setIsAppUnsupported] = useState(false);
 
   const { t } = useTranslation('miscScreens');
@@ -51,4 +51,4 @@ export const AppUpdateNeeded = () => {
       <Text textAlign="center">{t('appUpdate.description')}</Text>
     </Box>
   );
-};
+}

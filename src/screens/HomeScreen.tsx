@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { HomeScreenNavigationProp } from '$core/navigation/navigation.types';
+import type { HomeScreenNavigationProp } from '$core/navigation/navigation.types';
 import { Header, Informations, Version } from '$features/home';
 import { Box, Button, Text } from '$shared/ui/primitives';
 import { Screen } from '$shared/ui/Screen';
@@ -9,10 +9,12 @@ type HomeScreenProps = {
   navigation: HomeScreenNavigationProp;
 };
 
-export const HomeScreen = ({ navigation }: HomeScreenProps) => {
+export function HomeScreen({ navigation }: HomeScreenProps) {
   const { t } = useTranslation('homeScreen');
 
-  const goToOtherScreen = () => navigation.navigate('OtherScreen');
+  const goToOtherScreen = () => {
+    navigation.navigate('OtherScreen');
+  };
 
   return (
     <Screen>
@@ -38,4 +40,4 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
       </Box>
     </Screen>
   );
-};
+}

@@ -1,13 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { DebugStackParamList } from './DebugStack.types';
+import type { DebugStackParamList } from './DebugStack.types';
 import * as screens from './screens';
 
 const Stack = createNativeStackNavigator<DebugStackParamList>();
 
-export const DebugStack = () => (
-  <NavigationContainer>
+export function DebugStack() {
+  return <NavigationContainer>
     <Stack.Navigator
       initialRouteName="Menu"
       screenOptions={{ gestureEnabled: true }}
@@ -58,5 +58,5 @@ export const DebugStack = () => (
         name="FallbackLoader"
       />
     </Stack.Navigator>
-  </NavigationContainer>
-);
+         </NavigationContainer>;
+}

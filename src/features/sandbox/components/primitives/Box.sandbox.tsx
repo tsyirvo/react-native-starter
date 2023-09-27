@@ -4,8 +4,8 @@ import { Box } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export const BoxSandbox = () => (
-  <ScrollView>
+export function BoxSandbox() {
+  return <ScrollView>
     <SandBoxItem title="Box with a size, color and radiuses">
       <Box bg="grey" borderRadius="global_8" height={100} width={100} />
     </SandBoxItem>
@@ -23,5 +23,5 @@ export const BoxSandbox = () => (
     <SandBoxItem title="Box with position props and odd size">
       <Box bg="grey" height={50} left={50} mb="global_32" width={100} />
     </SandBoxItem>
-  </ScrollView>
-);
+         </ScrollView>;
+}

@@ -23,9 +23,9 @@ export type BaseErrorType = {
   message: string;
 };
 
-export type ErrorType = BaseErrorType & {
+export interface ErrorType extends BaseErrorType {
   error: unknown;
   userMessage?: UserMessageType;
   level?: SeverityLevel;
   transactionName?: string;
-};
+}

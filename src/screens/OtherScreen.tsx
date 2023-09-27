@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
+import type { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
 import { Box, Button, Text } from '$shared/ui/primitives';
 import { Screen } from '$shared/ui/Screen';
 
@@ -8,10 +8,10 @@ type OtherScreenProps = {
   navigation: OtherScreenNavigationProp;
 };
 
-export const OtherScreen = ({ navigation }: OtherScreenProps) => {
+export function OtherScreen({ navigation }: OtherScreenProps) {
   const { t } = useTranslation('otherScreen');
 
-  const goBack = () => navigation.goBack();
+  const goBack = () => { navigation.goBack(); };
 
   return (
     <Screen>
@@ -31,4 +31,4 @@ export const OtherScreen = ({ navigation }: OtherScreenProps) => {
       </Box>
     </Screen>
   );
-};
+}

@@ -7,8 +7,8 @@ import { Box, Text } from '$shared/ui/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export const SpacesSandbox = () => (
-  <ScrollView>
+export function SpacesSandbox() {
+  return <ScrollView>
     <SandBoxItem isSingle>
       {(Object.keys(theme.spacing) as Spacing[]).map((space) => (
         <Fragment key={space}>
@@ -18,5 +18,5 @@ export const SpacesSandbox = () => (
         </Fragment>
       ))}
     </SandBoxItem>
-  </ScrollView>
-);
+         </ScrollView>;
+}

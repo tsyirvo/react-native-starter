@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = () => (
-  <ThemeProvider theme={theme}>
+function App() {
+  return <ThemeProvider theme={theme}>
     <StatusBar barStyle="light-content" />
 
     <GestureHandlerRootView style={styles.container}>
@@ -45,7 +45,7 @@ const App = () => (
         </ErrorBoundary>
       </Splashscreen>
     </GestureHandlerRootView>
-  </ThemeProvider>
-);
+         </ThemeProvider>;
+}
 
 export { App as RootApp };

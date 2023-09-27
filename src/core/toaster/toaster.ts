@@ -1,8 +1,9 @@
-import Toast, { ToastShowParams } from 'react-native-toast-message';
+import Toast from 'react-native-toast-message';
+import type { ToastShowParams } from 'react-native-toast-message';
 
-type ToasterType = {
+interface ToasterType extends ToastShowParams {
   type?: 'success' | 'error' | 'info';
-} & ToastShowParams;
+}
 
 class ToasterClass {
   show(showParams: ToasterType) {
