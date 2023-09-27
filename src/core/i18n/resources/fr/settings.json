@@ -1,6 +1,6 @@
 {
   "changeLocale": {
-    "success": "La langue a bien été changée",
-    "failure": "La langue n'a pas pu être changée"
+    "failure": "La langue n'a pas pu être changée",
+    "success": "La langue a bien été changée"
   }
 }

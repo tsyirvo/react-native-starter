@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Edge } from 'react-native-safe-area-context';
+import type { Edge } from 'react-native-safe-area-context';
 
 import { SafeView } from './SafeView';
 
@@ -9,8 +10,10 @@ type ScreenProps = {
   children: ReactNode;
 };
 
-export const Screen = ({ children, edges = [] }: ScreenProps) => (
-  <SafeView edges={edges}>
-    <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
-  </SafeView>
-);
+export function Screen({ children, edges = [] }: ScreenProps) {
+  return (
+    <SafeView edges={edges}>
+      <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
+    </SafeView>
+  );
+}

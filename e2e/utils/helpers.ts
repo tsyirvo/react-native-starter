@@ -1,7 +1,9 @@
 import { isAndroidTest, packagerUrl, START_DELAY } from './constants';
 
 const sleep = async (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
+  new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 
 export const startApp = async (config?: Detox.DeviceLaunchAppConfig) => {
   await device.launchApp({

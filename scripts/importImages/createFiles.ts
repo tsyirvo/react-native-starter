@@ -1,8 +1,7 @@
-import ImageMetadata from './imageMetadata';
+import { ImageMetadata } from './imageMetadata';
 import { copyFile, print, showSpinner, TMP_DIR } from './utils';
 
-const getAssetPath = () =>
-  `${(process as NodeJS.Process).cwd()}/src/assets/images/`;
+const getAssetPath = () => `${process.cwd()}/src/assets/images/`;
 
 const moveAllAssets = async () => {
   try {
@@ -29,12 +28,10 @@ const moveAllAssets = async () => {
   }
 };
 
-const createFiles = async () => {
-  const finishSpinner = showSpinner(`Moving the assets`);
+export const createFiles = async () => {
+  const finishSpinner = showSpinner('Moving the assets');
 
   await moveAllAssets();
 
   finishSpinner('Moved the assets successfully');
 };
-
-export default createFiles;

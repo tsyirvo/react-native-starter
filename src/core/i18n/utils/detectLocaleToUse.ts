@@ -36,7 +36,7 @@ export const getSupportedDateLocale = () => {
     },
   );
   const dateLocaleToSet =
-    isSupportedLocale !== NOT_FOUND_INDEX ? languageTag : null;
+    isSupportedLocale === NOT_FOUND_INDEX ? null : languageTag;
 
   return dateLocaleToSet ?? config.defaultLocale;
 };

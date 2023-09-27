@@ -1,11 +1,13 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-nodejs-modules */
 /* eslint-disable import/no-extraneous-dependencies */
+
 import chalk from 'chalk';
 import fs from 'fs';
 import fsExtra from 'fs-extra';
 import ora from 'ora';
 
-export const TMP_DIR = `${(process as NodeJS.Process).cwd()}/tmp`;
+export const TMP_DIR = `${process.cwd()}/tmp`;
 
 /* ***** *****  Misc. utilities  ***** ***** */
 
@@ -16,14 +18,24 @@ type Print = {
 
 export const print = ({ message, type }: Print) => {
   switch (type) {
-    case 'error':
-      return console.log(chalk.red.white.bgRed(message));
-    case 'warning':
-      return console.log(chalk.white.bgYellow(message));
-    case 'success':
-      return console.log(chalk.white.bgGreen(message));
-    default:
-      return console.log(chalk.blue(message));
+    case 'error': {
+      console.log(chalk.red.white.bgRed(message));
+
+      return;
+    }
+    case 'warning': {
+      console.log(chalk.white.bgYellow(message));
+
+      return;
+    }
+    case 'success': {
+      console.log(chalk.white.bgGreen(message));
+
+      return;
+    }
+    default: {
+      console.log(chalk.blue(message));
+    }
   }
 };
 
@@ -67,7 +79,7 @@ const createUniqueTmpFolder = (variant: string) => {
 };
 
 export const createTmpImageFolders = () => {
-  const finishSpinner = showSpinner(`Creating the different tmp folders`);
+  const finishSpinner = showSpinner('Creating the different tmp folders');
 
   createUniqueTmpFolder('1x');
   createUniqueTmpFolder('2x');
@@ -77,7 +89,7 @@ export const createTmpImageFolders = () => {
 };
 
 export const deleteTmpImageFolders = () => {
-  const finishSpinner = showSpinner(`Deleting the different tmp folders`);
+  const finishSpinner = showSpinner('Deleting the different tmp folders');
 
   fs.rm(TMP_DIR, { recursive: true }, (err) => {
     if (err) {

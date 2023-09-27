@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable import/no-extraneous-dependencies */
 
-import { ExpoConfig, ConfigContext } from '@expo/config';
+import type { ExpoConfig, ConfigContext } from '@expo/config';
 
 import { ClientEnv, Env } from './env';
 
@@ -20,6 +20,7 @@ const plugins: ExpoConfig['plugins'] = [
   ],
 ];
 
+// eslint-disable-next-line import/no-default-export
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: Env.APP_NAME,

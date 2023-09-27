@@ -1,14 +1,15 @@
 import * as Localization from 'expo-localization';
-import { LanguageDetectorModule } from 'i18next';
+import type { LanguageDetectorModule } from 'i18next';
 
 import { config, storageKeys } from '$core/constants';
-import AppStorage from '$core/storage';
+import { AppStorage } from '$core/storage';
 
 const getSelectedLocale = () =>
   AppStorage.getString(storageKeys.appStorage.locale);
 
-const setPhonePrimaryLocale = (locale: string) =>
+const setPhonePrimaryLocale = (locale: string) => {
   AppStorage.set(storageKeys.appStorage.locale, locale);
+};
 
 const detectPhonePrimaryLocale = () => {
   const locales = Localization.getLocales();

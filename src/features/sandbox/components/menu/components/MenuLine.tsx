@@ -9,12 +9,14 @@ type MenuLineProps = {
   onPress: () => void;
 };
 
-export const MenuLine = ({ label, onPress }: MenuLineProps) => (
-  <Box pb="global_8">
-    <Pressable onPress={onPress}>
-      <Text mb="global_8">{label}</Text>
-    </Pressable>
+export function MenuLine({ label, onPress }: MenuLineProps) {
+  return (
+    <Box pb="global_8">
+      <Pressable onPress={onPress}>
+        <Text mb="global_8">{label}</Text>
+      </Pressable>
 
-    <Separator color="grey" />
-  </Box>
-);
+      <Separator color="grey" />
+    </Box>
+  );
+}

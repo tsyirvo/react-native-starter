@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -22,6 +23,7 @@ const PACKAGE = 'com.tsyirvo.rnstarter';
 const EXPO_ACCOUNT_OWNER = 'tsyirvo';
 
 const withEnvSuffix = (name) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return APP_ENV === 'production' ? name : `${name}.${APP_ENV}`;
 };
 
@@ -84,6 +86,7 @@ const merged = buildTime.merge(client);
 const parsed = merged.safeParse(_env);
 
 if (!parsed.success) {
+  // eslint-disable-next-line no-console
   console.error(
     '❌ Invalid environment variables:',
     parsed.error.flatten().fieldErrors,

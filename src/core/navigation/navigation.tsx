@@ -3,17 +3,15 @@ import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
-import {
-  NativeStackNavigationOptions,
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
+import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Analytics } from '$core/Analytics';
 import { routingInstrumentation } from '$core/monitoring';
 
-import { RootStackParamList } from './navigation.types';
+import type { RootStackParamList } from './navigation.types';
 import { screens } from './screens';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -25,7 +23,7 @@ const screenOptions: NativeStackNavigationOptions = {
   headerShown: false,
 };
 
-export const RootStack = () => {
+export function RootStack() {
   const routeNameRef = useRef<string>();
   const navigationRef = useNavigationContainerRef();
 
@@ -77,4 +75,4 @@ export const RootStack = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}

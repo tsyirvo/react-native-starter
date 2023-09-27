@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { AppState, AppStateStatus } from 'react-native';
+import type { AppStateStatus } from 'react-native';
+import { AppState } from 'react-native';
 
 export const useAppState = (callback: () => void) => {
   const [appState, setAppState] = useState(AppState.currentState);
@@ -21,6 +22,8 @@ export const useAppState = (callback: () => void) => {
   useEffect(() => {
     const listener = AppState.addEventListener('change', handleAppStateChange);
 
-    return () => listener.remove();
+    return () => {
+      listener.remove();
+    };
   }, [appState, handleAppStateChange]);
 };

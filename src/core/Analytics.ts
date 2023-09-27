@@ -1,4 +1,5 @@
-import { Mixpanel, MixpanelProperties } from 'mixpanel-react-native';
+import type { MixpanelProperties } from 'mixpanel-react-native';
+import { Mixpanel } from 'mixpanel-react-native';
 
 import { config } from '$core/constants';
 import { Logger } from '$core/logger';

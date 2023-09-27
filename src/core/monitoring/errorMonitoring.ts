@@ -4,7 +4,7 @@ import * as Sentry from 'sentry-expo';
 
 import { config } from '$core/constants';
 
-import { tags } from './constants';
+import type { tags } from './constants';
 
 import type { Primitives } from '$types';
 
@@ -23,9 +23,8 @@ class ErrorMonitoringClass {
     const isEnabled = config.env !== 'development';
 
     if (!config.sentryDsn) {
-      const errorMessage = 'Failed to initialize Sentry - No DSN found';
-
-      console.log(errorMessage);
+      // eslint-disable-next-line no-console
+      console.log('Failed to initialize Sentry - No DSN found');
 
       return;
     }

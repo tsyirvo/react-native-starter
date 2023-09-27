@@ -1,17 +1,19 @@
 import { useNavigation } from '@react-navigation/native';
 
-import { MenuScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
+import type { MenuScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
 
 import { MenuCategory } from './MenuCategory';
 import { MenuLine } from './MenuLine';
 
-export const Core = () => {
+export function Core() {
   const navigation: MenuScreenNavigationProp = useNavigation();
 
   const menuItems = [
     {
       label: 'Theme',
-      onPress: () => navigation.navigate('Theme'),
+      onPress: () => {
+        navigation.navigate('Theme');
+      },
     },
   ];
 
@@ -22,4 +24,4 @@ export const Core = () => {
       ))}
     </MenuCategory>
   );
-};
+}

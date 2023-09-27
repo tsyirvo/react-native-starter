@@ -3,7 +3,7 @@ import React from 'react';
 import { config } from '$core/constants';
 import { Box, Text } from '$shared/ui/primitives';
 
-export const Version = () => {
+export function Version() {
   if (!config.version || !config.buildNumber) {
     return null;
   }
@@ -19,4 +19,4 @@ export const Version = () => {
       )}
     </Box>
   );
-};
+}

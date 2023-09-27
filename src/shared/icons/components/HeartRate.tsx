@@ -2,7 +2,7 @@ import Svg, { Path } from 'react-native-svg';
 import type { SvgProps } from 'react-native-svg';
 
 /* eslint-disable react/jsx-props-no-spreading */
-const HeartRate = (props: SvgProps) => {
+function HeartRate(props: SvgProps) {
   return (
     <Svg viewBox="0 0 21 21" {...props}>
       <Path
@@ -14,6 +14,6 @@ const HeartRate = (props: SvgProps) => {
       />
     </Svg>
   );
-};
+}
 
 export { HeartRate };

@@ -1,20 +1,20 @@
 {
-  "errorBoundary": {
-    "title": "Error",
-    "description": "An unknown error occured. If the error persist, contact an administrator.",
-    "cta": "Relaunch the app"
-  },
   "appUpdate": {
-    "title": "Your app is outdated",
-    "description": "Please go update the application to access the latest features"
-  },
-  "maintenanceMode": {
-    "title": "The app is in maintenance",
-    "description": "It will be available online as soon as possible"
+    "description": "Please go update the application to access the latest features",
+    "title": "Your app is outdated"
   },
   "codepush": {
-    "title": "Update is required",
+    "cta": "Install now",
     "description": "An app update is mandatory to be able to use the application.",
-    "cta": "Install now"
+    "title": "Update is required"
+  },
+  "errorBoundary": {
+    "cta": "Relaunch the app",
+    "description": "An unknown error occured. If the error persist, contact an administrator.",
+    "title": "Error"
+  },
+  "maintenanceMode": {
+    "description": "It will be available online as soon as possible",
+    "title": "The app is in maintenance"
   }
 }

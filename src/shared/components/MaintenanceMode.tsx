@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
 import { Box, Text } from '$shared/ui/primitives';
 
-export const MaintenanceMode = () => {
+export function MaintenanceMode() {
   const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
 
   const { t } = useTranslation('miscScreens');
@@ -38,4 +38,4 @@ export const MaintenanceMode = () => {
       <Text textAlign="center">{t('maintenanceMode.description')}</Text>
     </Box>
   );
-};
+}

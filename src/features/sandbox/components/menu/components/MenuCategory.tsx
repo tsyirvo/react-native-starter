@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Box, Text } from '$shared/ui/primitives';
 
@@ -7,12 +7,14 @@ type MenuCategoryProps = {
   children: ReactNode;
 };
 
-export const MenuCategory = ({ category, children }: MenuCategoryProps) => (
-  <Box pb="global_24">
-    <Text pb="global_8" variant="large">
-      {category}
-    </Text>
+export function MenuCategory({ category, children }: MenuCategoryProps) {
+  return (
+    <Box pb="global_24">
+      <Text pb="global_8" variant="large">
+        {category}
+      </Text>
 
-    {children}
-  </Box>
-);
+      {children}
+    </Box>
+  );
+}

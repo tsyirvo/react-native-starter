@@ -1,7 +1,7 @@
 {
   "navigation": {
+    "backCta": "Back",
     "tabBar": "Another page",
-    "title": "Another page",
-    "backCta": "Back"
+    "title": "Another page"
   }
 }

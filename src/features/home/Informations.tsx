@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { isIOS } from '$core/constants';
 import { Text } from '$shared/ui/primitives';
 
-export const Informations = () => {
+export function Informations() {
   const { t } = useTranslation('homeScreen');
 
   return (
@@ -31,4 +31,4 @@ export const Informations = () => {
       <Text>{t('formatting.content')}</Text>
     </>
   );
-};
+}

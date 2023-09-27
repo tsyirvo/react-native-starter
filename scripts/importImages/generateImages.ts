@@ -4,9 +4,9 @@ import fs from 'fs';
 import isImage from 'is-image';
 import util from 'util';
 
-import createFiles from './createFiles';
-import createImageResolutions from './imageManipulations';
-import ImageMetadata from './imageMetadata';
+import { createFiles } from './createFiles';
+import { createImageResolutions } from './imageManipulations';
+import { ImageMetadata } from './imageMetadata';
 import { print } from './utils';
 
 const readDirAsync = util.promisify(fs.readdir);
@@ -14,8 +14,8 @@ const readDirAsync = util.promisify(fs.readdir);
 const checkFolderContent = async (folderPath: string) => {
   const files = await readDirAsync(folderPath);
 
-  for (let file of files) {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  for (const file of files) {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define, no-await-in-loop
     await generateImages(`${folderPath}/${file}`);
   }
 };
@@ -32,7 +32,7 @@ const checkFileType = (path: string) => {
   return 'unsupported';
 };
 
-const generateImages = async (path: string) => {
+export const generateImages = async (path: string) => {
   try {
     const fileType = checkFileType(path);
 
@@ -59,5 +59,3 @@ const generateImages = async (path: string) => {
     print({ message: 'Could not find the file type', type: 'error' });
   }
 };
-
-export default generateImages;

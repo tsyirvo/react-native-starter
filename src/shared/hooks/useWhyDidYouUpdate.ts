@@ -26,6 +26,8 @@ type ChangeObj = Record<
   }
 >;
 
+const NO_OBJECTS = 0;
+
 export const useWhyDidYouUpdate = (
   name: string,
   props: Record<string, unknown>,
@@ -60,10 +62,11 @@ export const useWhyDidYouUpdate = (
       }
     });
 
-    if (Object.keys(changesObj).length) {
+    if (Object.keys(changesObj).length > NO_OBJECTS) {
       if (onChangeFound) {
         onChangeFound({ changesObj });
       } else {
+        // eslint-disable-next-line no-console
         console.log('[why-did-you-update]', name, {
           props: { from: latestProps.current, to: props },
         });

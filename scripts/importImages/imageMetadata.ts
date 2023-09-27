@@ -35,7 +35,7 @@ const formatMetadata = () => {
   };
 };
 
-const ImageMetadata = {
+export const ImageMetadata = {
   setImagePath(imagePath: string) {
     extractImageData(imagePath);
   },
@@ -46,5 +46,3 @@ const ImageMetadata = {
     currentImageMetadata = emptyMetadataValues;
   },
 };
-
-export default ImageMetadata;
