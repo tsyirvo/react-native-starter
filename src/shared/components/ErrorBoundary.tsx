@@ -4,8 +4,10 @@ import type { WithTranslation } from 'react-i18next';
 import { withTranslation } from 'react-i18next';
 
 import { ErrorMonitoring } from '$core/monitoring';
-import { Box, Button, Text } from '$shared/ui/primitives';
-import { SafeView } from '$shared/ui/SafeView';
+import { Box, Text } from '$shared/uiKit/primitives';
+import { SafeView } from '$shared/uiKit/SafeView';
+
+import { Button } from '../uiKit/button';
 
 interface ErrorBoundaryProps extends WithTranslation {
   children: ReactElement;
@@ -59,7 +61,7 @@ class ErrorBoundaryComponent extends Component<
             justifyContent="center"
             width="80%"
           >
-            <Text mb="global_8" variant="large">
+            <Text mb="spacing_8" variant="large">
               {t('errorBoundary.title', { ns: 'miscScreens' })}
             </Text>
 
@@ -67,12 +69,10 @@ class ErrorBoundaryComponent extends Component<
               {t('errorBoundary.description', { ns: 'miscScreens' })}
             </Text>
 
-            <Box mt="global_32">
-              <Button
-                alignItems="center"
-                label={t('errorBoundary.cta', { ns: 'miscScreens' })}
-                onPress={this.handleApplicationReset}
-              />
+            <Box mt="spacing_32">
+              <Button.Text onPress={this.handleApplicationReset}>
+                {t('errorBoundary.cta', { ns: 'miscScreens' })}
+              </Button.Text>
             </Box>
           </Box>
         </SafeView>

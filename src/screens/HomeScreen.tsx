@@ -2,8 +2,9 @@ import { useTranslation } from 'react-i18next';
 
 import type { HomeScreenNavigationProp } from '$core/navigation/navigation.types';
 import { Header, Informations, Version } from '$features/home';
-import { Box, Button, Text } from '$shared/ui/primitives';
-import { Screen } from '$shared/ui/Screen';
+import { Button } from '$shared/uiKit/button';
+import { Box, Text } from '$shared/uiKit/primitives';
+import { Screen } from '$shared/uiKit/Screen';
 
 type HomeScreenProps = {
   navigation: HomeScreenNavigationProp;
@@ -20,18 +21,15 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
     <Screen>
       <Header />
 
-      <Box pb="global_32" px="global_24">
-        <Text mt="global_32" variant="large">
+      <Box pb="spacing_32" px="spacing_24">
+        <Text mt="spacing_32" variant="large">
           {t('navigation.title')}
         </Text>
 
-        <Box mt="global_8">
-          <Button
-            alignItems="center"
-            label={t('navigation.content')}
-            testID="goto_otherScreen"
-            onPress={goToOtherScreen}
-          />
+        <Box mt="spacing_8">
+          <Button.Text testID="goto_otherScreen" onPress={goToOtherScreen}>
+            {t('navigation.content')}
+          </Button.Text>
         </Box>
 
         <Informations />

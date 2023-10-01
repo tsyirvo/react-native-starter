@@ -10,5 +10,7 @@ export type { BorderRadii } from './radius';
 export { spacing } from './spacing';
 export type { Spacing } from './spacing';
 
+export type { ButtonVariants } from './variants';
+
 export { theme, useAppTheme, makeAppStyles } from './theme';
 export type { Theme } from './theme';

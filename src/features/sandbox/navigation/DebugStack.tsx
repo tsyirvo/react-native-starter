@@ -54,10 +54,7 @@ export function DebugStack() {
           name="DesignSystem"
         />
 
-        <Stack.Screen
-          component={screens.FallbackLoaderSandbox}
-          name="FallbackLoader"
-        />
+        <Stack.Screen component={screens.LoaderSandbox} name="Loader" />
       </Stack.Navigator>
     </NavigationContainer>
   );

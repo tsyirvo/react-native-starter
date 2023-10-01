@@ -2,7 +2,7 @@
 
 import { ImageBackground, StyleSheet } from 'react-native';
 
-import { Box, Text } from '$shared/ui/primitives';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 const styles = StyleSheet.create({
   image: {
@@ -21,7 +21,7 @@ export function Header() {
         alignItems="center"
         flex={1}
         justifyContent="flex-end"
-        mb="global_24"
+        mb="spacing_24"
       >
         <Text color="white" testID="home_title" variant="large">
           React Native Starter

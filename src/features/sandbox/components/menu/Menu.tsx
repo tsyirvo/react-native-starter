@@ -1,7 +1,7 @@
 import { ScrollView } from 'react-native';
 
-import { Box } from '$shared/ui/primitives';
-import { SafeView } from '$shared/ui/SafeView';
+import { Box } from '$shared/uiKit/primitives';
+import { SafeView } from '$shared/uiKit/SafeView';
 
 import { Components } from './components/Components';
 import { Core } from './components/Core';
@@ -11,7 +11,7 @@ export function Menu() {
   return (
     <SafeView edges={['bottom']}>
       <ScrollView>
-        <Box p="global_24">
+        <Box p="spacing_24">
           <Core />
 
           <Components />

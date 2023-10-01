@@ -1,6 +1,6 @@
 import { Pressable } from 'react-native';
 
-import { Box, Text } from '$shared/ui/primitives';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 import { Separator } from './Separator';
 
@@ -11,12 +11,12 @@ type MenuLineProps = {
 
 export function MenuLine({ label, onPress }: MenuLineProps) {
   return (
-    <Box pb="global_8">
+    <Box pb="spacing_8">
       <Pressable onPress={onPress}>
-        <Text mb="global_8">{label}</Text>
+        <Text mb="spacing_8">{label}</Text>
       </Pressable>
 
-      <Separator color="grey" />
+      <Separator color="secondary_100" />
     </Box>
   );
 }

@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 
 import { isIOS } from '$core/constants';
-import { Text } from '$shared/ui/primitives';
+import { Text } from '$shared/uiKit/primitives';
 
 export function Informations() {
   const { t } = useTranslation('homeScreen');
 
   return (
     <>
-      <Text mb="global_8" mt="global_24" variant="large">
+      <Text mb="spacing_8" mt="spacing_24" variant="large">
         {t('sandbox.title')}
       </Text>
 
@@ -18,13 +18,13 @@ export function Informations() {
         })}
       </Text>
 
-      <Text mb="global_8" mt="global_24" variant="large">
+      <Text mb="spacing_8" mt="spacing_24" variant="large">
         {t('tests.title')}
       </Text>
 
       <Text>{t('tests.content')}</Text>
 
-      <Text mb="global_8" mt="global_24" variant="large">
+      <Text mb="spacing_8" mt="spacing_24" variant="large">
         {t('formatting.title')}
       </Text>
 

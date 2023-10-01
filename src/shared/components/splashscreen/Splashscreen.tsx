@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import React from 'react';
 
-import { Box } from '$shared/ui/primitives';
+import { Box } from '$shared/uiKit/primitives';
 
 import { useLoadAssets } from './hooks/useLoadAssets';
 

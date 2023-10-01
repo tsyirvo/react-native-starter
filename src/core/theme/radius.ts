@@ -1,7 +1,7 @@
 const globalRadius = {
-  global_4: 4,
-  global_8: 8,
-  global_16: 16,
+  radius_4: 4,
+  radius_8: 8,
+  radius_16: 16,
 };
 
 const iosRadius = {};

@@ -6,8 +6,7 @@ import type { TextInputProps } from 'react-native';
 
 import { makeAppStyles, theme, fontSizes } from '$core/theme';
 
-import { Box } from './Box';
-import { Text } from './Text';
+import { Box, Text } from '../primitives';
 
 interface InputProps extends TextInputProps {
   label?: string;
@@ -23,7 +22,7 @@ const useStyles = makeAppStyles(({ colors }) => ({
     paddingBottom: 5,
   },
   defaultState: {
-    borderBottomColor: colors.grey,
+    borderBottomColor: colors.secondary_80,
   },
   errorState: {
     borderBottomColor: colors.red,
@@ -39,7 +38,7 @@ export const Input = forwardRef<TextInput, InputProps>(
     return (
       <Box width="100%">
         {label ? (
-          <Text color="black" mb="global_8" testID="inputID-label">
+          <Text color="black" mb="spacing_8" testID="inputID-label">
             {label}
           </Text>
         ) : null}
@@ -47,7 +46,7 @@ export const Input = forwardRef<TextInput, InputProps>(
         <TextInput
           ref={ref}
           editable={isEditable}
-          placeholderTextColor={theme.colors.grey}
+          placeholderTextColor={theme.colors.secondary_100}
           style={[styles.input, errorStyles]}
           testID="inputID"
           underlineColorAndroid="transparent"

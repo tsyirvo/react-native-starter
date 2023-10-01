@@ -1,9 +1,9 @@
 const globalSpacing = {
   zero: 0,
-  global_8: 8,
-  global_16: 16,
-  global_24: 24,
-  global_32: 32,
+  spacing_8: 8,
+  spacing_16: 16,
+  spacing_24: 24,
+  spacing_32: 32,
 };
 
 const iosSpacing = {};

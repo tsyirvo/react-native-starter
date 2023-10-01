@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Box, Text } from '$shared/ui/primitives';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 import { CenteredContent } from './CenteredContent';
 import { Separator } from './Separator';
@@ -13,12 +13,12 @@ type SandBoxItemProps = {
 
 export function SandBoxItem({ title, isSingle, children }: SandBoxItemProps) {
   return (
-    <Box pt="global_8" px="global_24">
+    <Box pt="spacing_8" px="spacing_24">
       {!!title && <Text>{title}</Text>}
 
-      <CenteredContent py="global_24">{children}</CenteredContent>
+      <CenteredContent py="spacing_24">{children}</CenteredContent>
 
-      {!isSingle && <Separator color="grey" />}
+      {!isSingle && <Separator color="secondary_100" />}
     </Box>
   );
 }

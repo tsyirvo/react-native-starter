@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
-import { Box, Text } from '$shared/ui/primitives';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 export function MaintenanceMode() {
   const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
@@ -27,11 +27,11 @@ export function MaintenanceMode() {
       alignItems="center"
       height="100%"
       justifyContent="center"
-      px="global_32"
+      px="spacing_32"
       testID="maintenanceMode"
       width="100%"
     >
-      <Text pb="global_8" variant="large">
+      <Text pb="spacing_8" variant="large">
         {t('maintenanceMode.title')}
       </Text>
 
