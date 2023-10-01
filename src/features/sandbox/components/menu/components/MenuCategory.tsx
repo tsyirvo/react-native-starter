@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Box, Text } from '$shared/ui/primitives';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 type MenuCategoryProps = {
   category: string;
@@ -9,8 +9,8 @@ type MenuCategoryProps = {
 
 export function MenuCategory({ category, children }: MenuCategoryProps) {
   return (
-    <Box pb="global_24">
-      <Text pb="global_8" variant="large">
+    <Box pb="spacing_24">
+      <Text pb="spacing_8" variant="large">
         {category}
       </Text>
 

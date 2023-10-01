@@ -20,7 +20,7 @@ export type DebugStackParamList = {
   Input: undefined;
 
   DesignSystem: undefined;
-  FallbackLoader: undefined;
+  Loader: undefined;
   // inject stack types before this
 };
 

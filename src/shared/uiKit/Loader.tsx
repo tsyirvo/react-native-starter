@@ -5,7 +5,7 @@ import { colors } from '$core/theme';
 
 import { Box } from './primitives';
 
-type FallbackLoaderProps = {
+type LoaderProps = {
   delay?: number;
   size?: 'large' | 'small';
 };
@@ -14,10 +14,7 @@ const SMALL_SIZE = 20;
 const LARGE_SIZE = 36;
 const DEFAULT_DELAY = 500;
 
-export function FallbackLoader({
-  delay = DEFAULT_DELAY,
-  size = 'large',
-}: FallbackLoaderProps) {
+export function Loader({ delay = DEFAULT_DELAY, size = 'large' }: LoaderProps) {
   const [isShowingLoading, setIsShowingLoading] = useState(false);
 
   const minHeight = size === 'large' ? LARGE_SIZE : SMALL_SIZE;

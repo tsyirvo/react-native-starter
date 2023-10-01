@@ -4,7 +4,7 @@ import semverGte from 'semver/functions/gte';
 
 import { config } from '$core/constants';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
-import { Box, Text } from '$shared/ui/primitives';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 export function AppUpdateNeeded() {
   const [isAppUnsupported, setIsAppUnsupported] = useState(false);
@@ -40,11 +40,11 @@ export function AppUpdateNeeded() {
       alignItems="center"
       height="100%"
       justifyContent="center"
-      px="global_32"
+      px="spacing_32"
       testID="appUpdateNeeded"
       width="100%"
     >
-      <Text pb="global_8" variant="large">
+      <Text pb="spacing_8" variant="large">
         {t('appUpdate.title')}
       </Text>
 

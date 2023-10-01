@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
 import type { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
-import { Box, Button, Text } from '$shared/ui/primitives';
-import { Screen } from '$shared/ui/Screen';
+import { Button } from '$shared/uiKit/button';
+import { Box, Text } from '$shared/uiKit/primitives';
+import { Screen } from '$shared/uiKit/Screen';
 
 type OtherScreenProps = {
   navigation: OtherScreenNavigationProp;
@@ -17,18 +18,15 @@ export function OtherScreen({ navigation }: OtherScreenProps) {
 
   return (
     <Screen>
-      <Box alignItems="center" justifyContent="center" mt="global_16">
+      <Box alignItems="center" justifyContent="center" mt="spacing_16">
         <Text testID="otherPage_title" variant="large">
           {t('navigation.title')}
         </Text>
 
-        <Box mt="global_24">
-          <Button
-            alignItems="center"
-            label={t('navigation.backCta')}
-            testID="back_button"
-            onPress={goBack}
-          />
+        <Box mt="spacing_24">
+          <Button.Text testID="back_button" onPress={goBack}>
+            {t('navigation.backCta')}
+          </Button.Text>
         </Box>
       </Box>
     </Screen>

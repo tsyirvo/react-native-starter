@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 
 import type { ThemeScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
-import { Box } from '$shared/ui/primitives';
+import { Box } from '$shared/uiKit/primitives';
 
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
@@ -37,7 +37,7 @@ export function ThemeSandbox() {
   ];
 
   return (
-    <Box p="global_24">
+    <Box p="spacing_24">
       <MenuCategory category="Theme">
         {menuItems.map(({ label, onPress }) => (
           <MenuLine key={label} label={label} onPress={onPress} />

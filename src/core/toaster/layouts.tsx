@@ -11,10 +11,10 @@ const styles = StyleSheet.create({
   wrapper: {
     height: 'auto',
     width: '90%',
-    paddingVertical: spacing.global_8,
+    paddingVertical: spacing.spacing_8,
   },
   container: {
-    paddingHorizontal: spacing.global_16,
+    paddingHorizontal: spacing.spacing_16,
   },
   text1: {
     ...textVariants.medium,
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     borderLeftColor: colors.red,
   },
   info: {
-    borderLeftColor: colors.blue,
+    borderLeftColor: colors.yellow,
   },
 });
 

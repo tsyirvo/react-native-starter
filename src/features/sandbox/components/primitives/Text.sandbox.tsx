@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native';
 
-import { Text } from '$shared/ui/primitives';
+import { Text } from '$shared/uiKit/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
@@ -16,13 +16,13 @@ export function TextSandbox() {
       </SandBoxItem>
 
       <SandBoxItem title="Text with custom styles">
-        <Text color="blue" textAlign="center">
+        <Text color="primary_100" textAlign="center">
           Custom styles
         </Text>
       </SandBoxItem>
 
       <SandBoxItem title="Text with custom positionning">
-        <Text mt="global_32" pl="global_24" py="global_8">
+        <Text mt="spacing_32" pl="spacing_24" py="spacing_8">
           Custom position
         </Text>
       </SandBoxItem>

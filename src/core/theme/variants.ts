@@ -2,14 +2,16 @@
 
 export const buttonVariants = {
   defaults: {
-    paddingHorizontal: 'global_16',
-    paddingVertical: 'global_8',
-    borderRadius: 'global_16',
+    paddingHorizontal: 'spacing_16',
+    paddingVertical: 'spacing_8',
+    borderRadius: 'radius_16',
   },
   base: {
-    backgroundColor: 'grey',
+    backgroundColor: 'secondary_80',
   },
-  baseDisabled: {
-    backgroundColor: 'grey',
+  otherVariant: {
+    backgroundColor: 'primary_60',
   },
 };
+
+export type ButtonVariants = keyof typeof buttonVariants;

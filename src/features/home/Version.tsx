@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { config } from '$core/constants';
-import { Box, Text } from '$shared/ui/primitives';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 export function Version() {
   if (!config.version || !config.buildNumber) {
@@ -9,7 +9,7 @@ export function Version() {
   }
 
   return (
-    <Box alignItems="flex-end" pt="global_32">
+    <Box alignItems="flex-end" pt="spacing_32">
       <Text variant="small">
         {`Version: v${config.version}:${config.buildNumber}`}
       </Text>
