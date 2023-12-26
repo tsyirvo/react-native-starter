@@ -75,7 +75,9 @@ export function AppUpdateNeeded() {
         {t('appUpdate.description')}
       </Text>
 
-      <Button.Text onPress={onPress}>Update</Button.Text>
+      <Button.Text onPress={onPress}>
+        {t('updateAvailable.banner.updateCta', { ns: 'settings' })}
+      </Button.Text>
     </Box>
   );
 }
