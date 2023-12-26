@@ -10,6 +10,7 @@ export function MaintenanceMode() {
   const { t } = useTranslation('miscScreens');
 
   useRunOnMount(() => {
+    // TODO(prod): Save correct value to feature flag
     // const isMaintenanceModeEnabled =
     //   FeatureFlags.getFlagValue('isMaintenanceMode');
 

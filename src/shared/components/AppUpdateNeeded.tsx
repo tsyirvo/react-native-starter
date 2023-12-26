@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Linking } from 'react-native';
 import semverGte from 'semver/functions/gte';
 
-import { config } from '$core/constants';
+import { config, isIOS } from '$core/constants';
+import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
+import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 
 export function AppUpdateNeeded() {
@@ -12,6 +15,7 @@ export function AppUpdateNeeded() {
   const { t } = useTranslation('miscScreens');
 
   useRunOnMount(() => {
+    // TODO(prod): Save correct value to feature flag
     // const lastSupportedVersion: string = FeatureFlags.getFlagValue(
     //   'lastSupportedAppVersion',
     // );
@@ -21,7 +25,7 @@ export function AppUpdateNeeded() {
     //   return;
     // }
 
-    const lastSupportedVersion = '1.0.0';
+    const lastSupportedVersion = '2.0.0';
 
     if (typeof config.version === 'string') {
       const isSupported =
@@ -30,6 +34,25 @@ export function AppUpdateNeeded() {
       setIsAppUnsupported(!isSupported);
     }
   });
+
+  const onPress = async () => {
+    try {
+      // TODO(prod): Replace with real iTunes item ID
+      const itunesItemId = '';
+
+      await Linking.openURL(
+        isIOS
+          ? `https://apps.apple.com/app/apple-store/id${itunesItemId}`
+          : `market://details?id=${config.androidPackageName}&showAllReviews=true`,
+      );
+    } catch (error) {
+      Logger.error({
+        error,
+        message: 'Failed to open app store',
+        level: 'warning',
+      });
+    }
+  };
 
   if (!isAppUnsupported) {
     return null;
@@ -48,7 +71,11 @@ export function AppUpdateNeeded() {
         {t('appUpdate.title')}
       </Text>
 
-      <Text textAlign="center">{t('appUpdate.description')}</Text>
+      <Text mb="spacing_16" textAlign="center">
+        {t('appUpdate.description')}
+      </Text>
+
+      <Button.Text onPress={onPress}>Update</Button.Text>
     </Box>
   );
 }
