@@ -182,7 +182,8 @@
       "@testing-library/jest-native/extend-expect"
     ],
     "setupFiles": [
-      "./node_modules/react-native-gesture-handler/jestSetup.js"
+      "./node_modules/react-native-gesture-handler/jestSetup.js",
+      "./src/core/testing/setup.ts"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",

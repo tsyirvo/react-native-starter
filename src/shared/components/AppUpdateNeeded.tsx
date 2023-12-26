@@ -25,7 +25,7 @@ export function AppUpdateNeeded() {
     //   return;
     // }
 
-    const lastSupportedVersion = '2.0.0';
+    const lastSupportedVersion = '1.0.0';
 
     if (typeof config.version === 'string') {
       const isSupported =
