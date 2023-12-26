@@ -12,8 +12,14 @@ describe('Button component', () => {
   const onPress = jest.fn();
   const props = { iconName, onPress };
 
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
+
+    jest.useRealTimers();
   });
 
   it('should render correctly with a text and icon', () => {
