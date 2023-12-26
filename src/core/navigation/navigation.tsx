@@ -1,4 +1,3 @@
-import { useFlipper } from '@react-navigation/devtools';
 import {
   NavigationContainer,
   useNavigationContainerRef,
@@ -28,8 +27,6 @@ export function RootStack() {
   const navigationRef = useNavigationContainerRef();
 
   const { t } = useTranslation('otherScreen');
-
-  useFlipper(navigationRef);
 
   const onNavigationReady = () => {
     routeNameRef.current = navigationRef.getCurrentRoute()?.name;
