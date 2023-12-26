@@ -15,6 +15,9 @@ const plugins: ExpoConfig['plugins'] = [
     {
       ios: {
         flipper: isDevelopmentEnv,
+        infoPlist: {
+          LSApplicationQueriesSchemes: ['itms-apps'],
+        },
       },
     },
   ],

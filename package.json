@@ -98,6 +98,7 @@
     "react-dom": "18.2.0",
     "react-i18next": "14.0.0",
     "react-native": "0.72.6",
+    "react-native-device-info": "10.12.0",
     "react-native-flipper": "0.212.0",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-keyboard-aware-scroll-view": "0.9.5",
@@ -109,6 +110,7 @@
     "react-native-toast-message": "2.2.0",
     "semver": "7.5.4",
     "sentry-expo": "~7.1.0",
+    "sp-react-native-in-app-updates": "1.3.1",
     "zod": "3.22.4"
   },
   "devDependencies": {
@@ -180,7 +182,8 @@
       "@testing-library/jest-native/extend-expect"
     ],
     "setupFiles": [
-      "./node_modules/react-native-gesture-handler/jestSetup.js"
+      "./node_modules/react-native-gesture-handler/jestSetup.js",
+      "./src/core/testing/setup.ts"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",

@@ -2,5 +2,17 @@
   "changeLocale": {
     "failure": "The language could not be changed",
     "success": "The language has been changed"
+  },
+  "updateAvailable": {
+    "nativePrompt": {
+      "title": "Update available",
+      "message": "A new version is available. Do you want to update now?",
+      "updateCta": "Update"
+    },
+    "banner": {
+      "compareVersions": "Version {{storeVersion}} of the app is now available. You are currently on version {{currentVersion}}.",
+      "defaultTitle": "A new version of the app is available.",
+      "updateCta": "Update now"
+    }
   }
 }

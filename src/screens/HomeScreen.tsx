@@ -33,9 +33,9 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
         </Box>
 
         <Informations />
-
-        <Version />
       </Box>
+
+      <Version />
     </Screen>
   );
 }

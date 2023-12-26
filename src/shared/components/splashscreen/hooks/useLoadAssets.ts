@@ -6,6 +6,7 @@ import { useCallback } from 'react';
 
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
+import { checkForOtaUpdate } from '$shared/utils/checkForAppUpdates';
 
 export const useLoadAssets = () => {
   const [areFontsLoaded] = useFonts({
@@ -29,6 +30,7 @@ export const useLoadAssets = () => {
   const onLayoutRootView = useCallback(() => {
     (async () => {
       if (areFontsLoaded) {
+        await checkForOtaUpdate();
         await SplashScreen.hideAsync();
       }
     })().catch((error) => {
