@@ -10,9 +10,9 @@ type SplashscreenProps = {
 };
 
 export function Splashscreen({ children }: SplashscreenProps) {
-  const { areFontsLoaded, onLayoutRootView } = useLoadAssets();
+  const { areAssetsLoaded, onLayoutRootView } = useLoadAssets();
 
-  if (!areFontsLoaded) {
+  if (!areAssetsLoaded) {
     return null;
   }
 
