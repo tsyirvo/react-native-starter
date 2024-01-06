@@ -22,7 +22,7 @@ const options = {
   cacheFlags: true,
   cacheOptions,
   defaultFlags,
-  // TODO: add proper user identity and traits
+  // TODO(prod): add proper user identity and traits
   identity: 'user-123',
   traits: {
     'trait-1': 'value-1',

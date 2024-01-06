@@ -5,8 +5,14 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 
 import { Logger } from '$core/logger';
-import { useRunOnMount } from '$shared/hooks/useRunOnMount';
 import { checkForOtaUpdate } from '$shared/utils/checkForAppUpdates';
+
+SplashScreen.preventAutoHideAsync().catch((error) => {
+  Logger.error({
+    message: 'Failed to persist the SplashScreen',
+    error,
+  });
+});
 
 export const useLoadAssets = () => {
   const [areFontsLoaded] = useFonts({
@@ -14,17 +20,6 @@ export const useLoadAssets = () => {
     'WorkSans-Regular': require('../../../../../assets/fonts/WorkSans-Regular.ttf'),
     'WorkSans-Medium': require('../../../../../assets/fonts/WorkSans-Medium.ttf'),
     'WorkSans-Bold': require('../../../../../assets/fonts/WorkSans-Bold.ttf'),
-  });
-
-  useRunOnMount(() => {
-    (async () => {
-      await SplashScreen.preventAutoHideAsync();
-    })().catch((error) => {
-      Logger.error({
-        message: 'Failed to persist the SplashScreen',
-        error,
-      });
-    });
   });
 
   const onLayoutRootView = useCallback(() => {
@@ -42,7 +37,7 @@ export const useLoadAssets = () => {
   }, [areFontsLoaded]);
 
   return {
-    areFontsLoaded,
+    areAssetsLoaded: areFontsLoaded,
     onLayoutRootView,
   };
 };

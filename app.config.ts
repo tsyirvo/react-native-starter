@@ -21,6 +21,18 @@ const plugins: ExpoConfig['plugins'] = [
       },
     },
   ],
+  // TODO: Once on Expo SDK 50, update to load the fonts from the native side
+  // [
+  //   'expo-font',
+  //   {
+  //     fonts: [
+  //       './assets/fonts/WorkSans-Light.ttf',
+  //       './assets/fonts/WorkSans-Regular.ttf',
+  //       './assets/fonts/WorkSans-Medium.ttf',
+  //       './assets/fonts/WorkSans-Bold.ttf',
+  //     ],
+  //   },
+  // ],
 ];
 
 // eslint-disable-next-line import/no-default-export
@@ -44,7 +56,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   updates: {
     fallbackToCacheTimeout: 0,
   },
-  assetBundlePatterns: ['**/*'],
+  assetBundlePatterns: ['./src/assets/images/*'],
   ios: {
     supportsTablet: false,
     bundleIdentifier: Env.BUNDLE_ID,
