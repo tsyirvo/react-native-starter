@@ -9105,6 +9105,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-network@npm:~5.4.0":
+  version: 5.4.0
+  resolution: "expo-network@npm:5.4.0"
+  peerDependencies:
+    expo: "*"
+  checksum: beab3cce8c8bdfc83914747a83bfe51560cbb5d3ac94deec0f4c9dbee031f5c61a2c655869e7d93f9c60ad6bb63cd2faef9a9369d27e1c4e3dc705b8be037f3b
+  languageName: node
+  linkType: hard
+
 "expo-splash-screen@npm:~0.20.5":
   version: 0.20.5
   resolution: "expo-splash-screen@npm:0.20.5"
@@ -16303,6 +16312,7 @@ __metadata:
     expo-font: ~11.4.0
     expo-image: ~1.3.5
     expo-localization: ~14.3.0
+    expo-network: ~5.4.0
     expo-splash-screen: ~0.20.5
     expo-status-bar: ~1.6.0
     expo-updates: ~0.18.18

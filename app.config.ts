@@ -35,7 +35,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   jsEngine: 'hermes',
   orientation: 'portrait',
   icon: './assets/icon.png',
-  userInterfaceStyle: 'light',
+  userInterfaceStyle: 'dark',
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
@@ -70,7 +70,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         config: {
           organization: Env.SENTRY_ORG,
           project: Env.SENTRY_PROJECT,
-          authToken: Env.SENTRY_AUTH_TOKEN,
           setCommits: true,
         },
       },
