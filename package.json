@@ -135,6 +135,7 @@
     "@types/react-navigation": "3.4.0",
     "@types/semver": "7.5.6",
     "@types/sharp": "0.31.0",
+    "app-icon-badge": "0.0.15",
     "babel-plugin-root-import": "6.6.0",
     "babel-plugin-transform-remove-console": "6.9.4",
     "cross-env": "7.0.3",
