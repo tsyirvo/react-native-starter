@@ -1,0 +1,6 @@
+{
+  "networkStateCheck": {
+    "message": "Vérifiez la connexion internet. L'app peut ne pas fonctionner correctement sans connexion internet.",
+    "title": "Pas de connexion internet"
+  }
+}

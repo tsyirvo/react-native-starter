@@ -1,8 +1,10 @@
+import appConfigEN from './en/appConfig.json';
 import commonEN from './en/common.json';
 import homeScreenEN from './en/homeScreen.json';
 import miscScreensEN from './en/miscScreens.json';
 import otherScreenEN from './en/otherScreen.json';
 import settingsEN from './en/settings.json';
+import appConfigFR from './fr/appConfig.json';
 import commonFR from './fr/common.json';
 import homeScreenFR from './fr/homeScreen.json';
 import miscScreensFR from './fr/miscScreens.json';
@@ -16,6 +18,7 @@ export const resources = {
     otherScreen: otherScreenFR,
     miscScreens: miscScreensFR,
     settings: settingsFR,
+    appConfig: appConfigFR,
   },
   en: {
     common: commonEN,
@@ -23,5 +26,6 @@ export const resources = {
     otherScreen: otherScreenEN,
     miscScreens: miscScreensEN,
     settings: settingsEN,
+    appConfig: appConfigEN,
   },
 };

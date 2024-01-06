@@ -70,9 +70,9 @@ class LoggerClass {
     this.dev(message);
   }
 
-  dev(message: string) {
+  dev(...data: unknown[]) {
     // eslint-disable-next-line no-console
-    console.log(message);
+    console.log(...data);
   }
 }
 

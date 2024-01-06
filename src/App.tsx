@@ -7,6 +7,7 @@ import {
 } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 
+import { bootstrapSDKs } from '$core/bootstrapSDKs';
 import { RootStack } from '$core/navigation';
 import { theme } from '$core/theme';
 import { toastConfig } from '$core/toaster';
@@ -15,6 +16,11 @@ import { AppUpdateNeeded } from '$shared/components/AppUpdateNeeded';
 import { ErrorBoundary } from '$shared/components/ErrorBoundary';
 import { MaintenanceMode } from '$shared/components/MaintenanceMode';
 import { Splashscreen } from '$shared/components/splashscreen';
+import { useCheckNetworkStateOnMount } from '$shared/hooks/useCheckNetworkStateOnMount';
+
+import './core/i18n';
+
+bootstrapSDKs();
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +29,8 @@ const styles = StyleSheet.create({
 });
 
 function App() {
+  useCheckNetworkStateOnMount();
+
   return (
     <ThemeProvider theme={theme}>
       <StatusBar barStyle="light-content" />
