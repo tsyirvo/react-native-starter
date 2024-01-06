@@ -21,6 +21,27 @@ const plugins: ExpoConfig['plugins'] = [
       },
     },
   ],
+  [
+    'app-icon-badge',
+    {
+      enabled: !isProductionEnv,
+      badges: [
+        {
+          text: Env.APP_ENV,
+          type: 'banner',
+          position: 'bottom',
+          color: 'black',
+          background: '#FFFFFF',
+        },
+        {
+          text: `V${Env.VERSION.toString()}`,
+          type: 'ribbon',
+          color: 'black',
+          background: '#FFFFFF',
+        },
+      ],
+    },
+  ],
   // TODO: Once on Expo SDK 50, update to load the fonts from the native side
   // [
   //   'expo-font',
@@ -51,7 +72,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#000',
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -64,7 +85,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#000',
     },
     package: Env.PACKAGE,
   },
