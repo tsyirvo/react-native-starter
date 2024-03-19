@@ -1,4 +1,4 @@
-import { registerDevMenuItems } from 'expo-dev-menu';
+import * as DevClient from 'expo-dev-client';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 
@@ -25,7 +25,7 @@ export function Sandbox({ children }: SandboxProps) {
     ];
 
     (async () => {
-      await registerDevMenuItems(devMenuItems);
+      await DevClient.DevMenu.registerDevMenuItems(devMenuItems);
     })().catch(() => {
       Logger.dev('Failed to register the Sandbox in the Dev Menu');
     });

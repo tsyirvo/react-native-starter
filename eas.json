@@ -17,9 +17,6 @@
       "env": {
         "APP_ENV": "development",
         "EXPO_NO_DOTENV": "1"
-      },
-      "cache": {
-        "key": "eas-1"
       }
     },
     "test:debug": {
@@ -44,11 +41,7 @@
       },
       "env": {
         "APP_ENV": "staging",
-        "EXPO_NO_DOTENV": "1",
-        "FLIPPER_DISABLE": "1"
-      },
-      "cache": {
-        "key": "eas-1"
+        "EXPO_NO_DOTENV": "1"
       }
     },
     "production": {
@@ -56,12 +49,8 @@
       "distribution": "store",
       "autoIncrement": true,
       "env": {
-        "EXPO_NO_DOTENV": "1",
         "APP_ENV": "production",
-        "FLIPPER_DISABLE": "1"
-      },
-      "cache": {
-        "key": "eas-1"
+        "EXPO_NO_DOTENV": "1"
       }
     }
   },

@@ -5,16 +5,21 @@ import type { ExpoConfig, ConfigContext } from '@expo/config';
 
 import { ClientEnv, Env } from './env';
 
-const isDevelopmentEnv = Env.APP_ENV === 'development';
 const isProductionEnv = Env.APP_ENV === 'production';
 
 const plugins: ExpoConfig['plugins'] = [
-  'sentry-expo',
+  [
+    '@sentry/react-native/expo',
+    {
+      organization: Env.SENTRY_ORG,
+      project: Env.SENTRY_PROJECT,
+    },
+  ],
+  'expo-localization',
   [
     'expo-build-properties',
     {
       ios: {
-        flipper: isDevelopmentEnv,
         infoPlist: {
           LSApplicationQueriesSchemes: ['itms-apps'],
         },
@@ -42,18 +47,17 @@ const plugins: ExpoConfig['plugins'] = [
       ],
     },
   ],
-  // TODO: Once on Expo SDK 50, update to load the fonts from the native side
-  // [
-  //   'expo-font',
-  //   {
-  //     fonts: [
-  //       './assets/fonts/WorkSans-Light.ttf',
-  //       './assets/fonts/WorkSans-Regular.ttf',
-  //       './assets/fonts/WorkSans-Medium.ttf',
-  //       './assets/fonts/WorkSans-Bold.ttf',
-  //     ],
-  //   },
-  // ],
+  [
+    'expo-font',
+    {
+      fonts: [
+        './assets/fonts/WorkSans-Light.ttf',
+        './assets/fonts/WorkSans-Regular.ttf',
+        './assets/fonts/WorkSans-Medium.ttf',
+        './assets/fonts/WorkSans-Bold.ttf',
+      ],
+    },
+  ],
 ];
 
 // eslint-disable-next-line import/no-default-export
@@ -89,23 +93,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     package: Env.PACKAGE,
   },
-  plugins: isProductionEnv ? plugins : [...plugins, '@config-plugins/detox'],
+  plugins,
   extra: {
     ...ClientEnv,
     eas: {
       projectId: Env.EAS_PROJECT_ID,
     },
-  },
-  hooks: {
-    postPublish: [
-      {
-        file: 'sentry-expo/upload-sourcemaps',
-        config: {
-          organization: Env.SENTRY_ORG,
-          project: Env.SENTRY_PROJECT,
-          setCommits: true,
-        },
-      },
-    ],
   },
 });

@@ -10,11 +10,7 @@ type SplashscreenProps = {
 };
 
 export function Splashscreen({ children }: SplashscreenProps) {
-  const { areAssetsLoaded, onLayoutRootView } = useLoadAssets();
-
-  if (!areAssetsLoaded) {
-    return null;
-  }
+  const { onLayoutRootView } = useLoadAssets();
 
   return (
     <Box flex={1} onLayout={onLayoutRootView}>
