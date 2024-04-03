@@ -1,6 +1,6 @@
 import type { VariantProps } from '@shopify/restyle';
 import { createRestyleComponent, createVariant } from '@shopify/restyle';
-import React from 'react';
+import type React from 'react';
 import { Pressable } from 'react-native';
 
 import { HIT_SLOP } from '$core/constants/styling';

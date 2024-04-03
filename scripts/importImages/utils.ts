@@ -7,7 +7,9 @@ import fs from 'fs';
 import fsExtra from 'fs-extra';
 import ora from 'ora';
 
-export const TMP_DIR = `${process.cwd()}/tmp`;
+export const nodeProcess = process as unknown as NodeJS.Process;
+
+export const TMP_DIR = `${nodeProcess.cwd()}/tmp`;
 
 /* ***** *****  Misc. utilities  ***** ***** */
 

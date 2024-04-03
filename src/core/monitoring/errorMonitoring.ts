@@ -1,6 +1,6 @@
 import type { Event, Scope, User } from '@sentry/react-native';
+import * as Sentry from '@sentry/react-native';
 import type { Breadcrumb, CaptureContext, SeverityLevel } from '@sentry/types';
-import * as Sentry from 'sentry-expo';
 
 import { config } from '$core/constants';
 
@@ -12,7 +12,7 @@ const prodSampleRate = 0.5;
 const fullSampleRate = 1;
 
 export const routingInstrumentation =
-  new Sentry.Native.ReactNavigationInstrumentation();
+  new Sentry.ReactNavigationInstrumentation();
 
 class ErrorMonitoringClass {
   /* ***** *****  Setup  ***** ***** */
@@ -31,12 +31,12 @@ class ErrorMonitoringClass {
 
     Sentry.init({
       dsn: config.sentryDsn,
+      debug: config.env === 'development',
       tracesSampleRate: sampleRate,
       enabled: isEnabled,
-      enableInExpoDevelopment: false,
       environment: config.env,
       integrations: [
-        new Sentry.Native.ReactNativeTracing({
+        new Sentry.ReactNativeTracing({
           routingInstrumentation,
         }),
       ],
@@ -69,41 +69,41 @@ class ErrorMonitoringClass {
   /* ***** *****  User related  ***** ***** */
 
   setUser(user: User) {
-    Sentry.Native.setUser(user);
+    Sentry.setUser(user);
   }
 
   clearUser() {
-    Sentry.Native.configureScope((scope) => scope.setUser(null));
+    Sentry.configureScope((scope) => scope.setUser(null));
   }
 
   /* ***** *****  Monitoring  ***** ***** */
 
   event(event: Event) {
-    Sentry.Native.captureEvent(event);
+    Sentry.captureEvent(event);
   }
 
   exception(exception: unknown) {
-    Sentry.Native.captureException(exception);
+    Sentry.captureException(exception);
   }
 
   message(message: string, context?: CaptureContext | SeverityLevel) {
-    Sentry.Native.captureMessage(message, context);
+    Sentry.captureMessage(message, context);
   }
 
   tag(key: keyof typeof tags, value: Primitives) {
-    Sentry.Native.setTag(key, value);
+    Sentry.setTag(key, value);
   }
 
   context(name: string, context: Record<string, unknown> | null) {
-    Sentry.Native.setContext(name, context);
+    Sentry.setContext(name, context);
   }
 
   breadcrumbs(breadcrumb: Breadcrumb) {
-    Sentry.Native.addBreadcrumb(breadcrumb);
+    Sentry.addBreadcrumb(breadcrumb);
   }
 
   scope(callback: (scope: Scope) => void) {
-    Sentry.Native.withScope(callback);
+    Sentry.withScope(callback);
   }
 }
 

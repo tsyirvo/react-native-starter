@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import React from 'react';
 
 import { Box } from '$shared/uiKit/primitives';
 
@@ -10,11 +9,7 @@ type SplashscreenProps = {
 };
 
 export function Splashscreen({ children }: SplashscreenProps) {
-  const { areAssetsLoaded, onLayoutRootView } = useLoadAssets();
-
-  if (!areAssetsLoaded) {
-    return null;
-  }
+  const { onLayoutRootView } = useLoadAssets();
 
   return (
     <Box flex={1} onLayout={onLayoutRootView}>

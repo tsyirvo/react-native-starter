@@ -1,7 +1,10 @@
 import { generateImages } from './generateImages';
-import { createTmpImageFolders, deleteTmpImageFolders, print } from './utils';
-
-const nodeProcess = process;
+import {
+  createTmpImageFolders,
+  deleteTmpImageFolders,
+  nodeProcess,
+  print,
+} from './utils';
 
 const NO_ARGS = 0;
 
