@@ -7,7 +7,10 @@ import fs from 'fs';
 import fsExtra from 'fs-extra';
 import ora from 'ora';
 
-export const TMP_DIR = `${process.cwd()}/tmp`;
+// @ts-expect-error: ignore the error for now
+export const nodeProcess: NodeJS.Process = process;
+
+export const TMP_DIR = `${nodeProcess.cwd()}/tmp`;
 
 /* ***** *****  Misc. utilities  ***** ***** */
 

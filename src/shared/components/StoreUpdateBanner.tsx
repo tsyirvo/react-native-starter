@@ -31,7 +31,7 @@ export function StoreUpdateBanner() {
       .then((status) => {
         setUpdateStatus(status);
       })
-      .catch((error: Error) => {
+      .catch((error: unknown) => {
         Logger.error({
           error,
           level: 'warning',

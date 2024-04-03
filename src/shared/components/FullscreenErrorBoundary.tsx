@@ -1,5 +1,4 @@
 import * as Updates from 'expo-updates';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ErrorMonitoring } from '$core/monitoring';
@@ -11,7 +10,7 @@ function FullscreenErrorBoundary() {
   const { t } = useTranslation('miscScreens');
 
   const reloadApp = async () =>
-    Updates.reloadAsync().catch((error) => {
+    Updates.reloadAsync().catch((error: unknown) => {
       ErrorMonitoring.exception(error);
     });
 

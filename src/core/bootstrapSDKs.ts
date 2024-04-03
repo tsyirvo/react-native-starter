@@ -7,7 +7,7 @@ import { getSupportedDateLocale } from './i18n';
 import { ErrorMonitoring } from './monitoring';
 
 const initFeatureFlags = () => {
-  FeatureFlags.init().catch((error: Error) => {
+  FeatureFlags.init().catch((error: unknown) => {
     Logger.error({
       error,
       message: 'Failed to initialize Flagsmith',
@@ -16,7 +16,7 @@ const initFeatureFlags = () => {
 };
 
 const initAnalytics = () => {
-  Analytics.init().catch((error: Error) => {
+  Analytics.init().catch((error: unknown) => {
     Logger.error({
       error,
       message: 'Failed to initialize MixPanel',

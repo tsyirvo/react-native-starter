@@ -6,7 +6,7 @@ import { useCallback } from 'react';
 import { Logger } from '$core/logger';
 import { checkForOtaUpdate } from '$shared/utils/checkForAppUpdates';
 
-SplashScreen.preventAutoHideAsync().catch((error) => {
+SplashScreen.preventAutoHideAsync().catch((error: unknown) => {
   Logger.error({
     message: 'Failed to persist the SplashScreen',
     error,
@@ -18,7 +18,7 @@ export const useLoadAssets = () => {
     (async () => {
       await checkForOtaUpdate();
       await SplashScreen.hideAsync();
-    })().catch((error) => {
+    })().catch((error: unknown) => {
       Logger.error({
         message: 'Failed to hide the SplashScreen',
         error,

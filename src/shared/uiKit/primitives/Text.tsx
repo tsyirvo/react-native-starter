@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { createText } from '@shopify/restyle';
-import React from 'react';
+import type React from 'react';
 
 import type { FontSizes, Theme } from '$core/theme';
 
