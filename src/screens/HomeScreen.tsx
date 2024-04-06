@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import type { HomeScreenNavigationProp } from '$core/navigation/navigation.types';
-import { Header, Informations, Version } from '$features/home';
+import { Header, Informations, Version } from '$features/home/components';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 import { Screen } from '$shared/uiKit/Screen';

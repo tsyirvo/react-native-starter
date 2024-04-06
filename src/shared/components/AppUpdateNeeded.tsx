@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
 import semverGte from 'semver/functions/gte';
 
-import { config, isIOS } from '$core/constants';
+import { config, IS_IOS } from '$core/constants';
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
 import { Button } from '$shared/uiKit/button';
@@ -41,7 +41,7 @@ export const AppUpdateNeeded = () => {
       const itunesItemId = '';
 
       await Linking.openURL(
-        isIOS
+        IS_IOS
           ? `https://apps.apple.com/app/apple-store/id${itunesItemId}`
           : `market://details?id=${config.androidPackageName}&showAllReviews=true`,
       );

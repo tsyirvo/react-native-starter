@@ -1,4 +1,9 @@
 export { config } from './config';
-export { deviceHeight, deviceWidth } from './dimensions';
-export { isAndroid, isIOS } from './platform';
+export {
+  DEVICE_WIDTH,
+  DEVICE_HEIGHT,
+  SCREEN_WIDTH,
+  SCREEN_HEIGHT,
+} from './dimensions';
+export { IS_ANDROID, IS_IOS } from './platform';
 export { storageKeys } from './storage';

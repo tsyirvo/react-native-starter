@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { isIOS } from '$core/constants';
+import { IS_IOS } from '$core/constants';
 import { Text } from '$shared/uiKit/primitives';
 
 export const Informations = () => {
@@ -14,7 +14,7 @@ export const Informations = () => {
 
       <Text>
         {t('sandbox.content', {
-          command: isIOS ? 'Cmd+R' : 'Cmd+M',
+          command: IS_IOS ? 'Cmd+R' : 'Cmd+M',
         })}
       </Text>
 

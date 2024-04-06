@@ -3,7 +3,7 @@ import * as Updates from 'expo-updates';
 import type { StartUpdateOptions } from 'sp-react-native-in-app-updates';
 import SpInAppUpdates, { IAUUpdateKind } from 'sp-react-native-in-app-updates';
 
-import { config, isAndroid } from '$core/constants';
+import { config, IS_ANDROID } from '$core/constants';
 import { Logger } from '$core/logger';
 
 import { sleep } from './sleep';
@@ -38,7 +38,7 @@ export const checkForNativeUpdate = async (
   const { shouldUpdate, storeVersion } = await inAppUpdates.checkNeedsUpdate();
 
   if (shouldUpdate) {
-    if (isAndroid) {
+    if (IS_ANDROID) {
       updateOptions = {
         ...updateOptionsOverwrites,
         updateType: IAUUpdateKind.FLEXIBLE,

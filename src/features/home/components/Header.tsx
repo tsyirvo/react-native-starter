@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { ImageBackground, StyleSheet } from 'react-native';
 
 import { Box, Text } from '$shared/uiKit/primitives';
+
+import headerAsset from '../../../assets/images/header.jpeg';
 
 const styles = StyleSheet.create({
   image: {
@@ -13,10 +13,7 @@ const styles = StyleSheet.create({
 
 export const Header = () => {
   return (
-    <ImageBackground
-      source={require('../../assets/images/header.jpeg')}
-      style={styles.image}
-    >
+    <ImageBackground source={headerAsset} style={styles.image}>
       <Box
         alignItems="center"
         flex={1}

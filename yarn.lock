@@ -9258,9 +9258,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-tsyirvo-react-native@file:../eslint-config-tsyirvo-react-native::locator=rn-starter%40workspace%3A.":
+"eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#develop":
   version: 1.5.0
-  resolution: "eslint-config-tsyirvo-react-native@file:../eslint-config-tsyirvo-react-native#../eslint-config-tsyirvo-react-native::hash=509dfb&locator=rn-starter%40workspace%3A."
+  resolution: "eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#commit=ff2da44c5fc861f18aac9dd9051ee7abb2c74fce"
   dependencies:
     "@typescript-eslint/eslint-plugin": 7.5.0
     "@typescript-eslint/parser": 7.5.0
@@ -9280,7 +9280,7 @@ __metadata:
   peerDependencies:
     eslint: 8.57.0
     typescript: 5.3.0
-  checksum: eb9702250e98a491b7f89d354152463641ffb9d7c7adb00242504337275ec8486792f238d7e344b6157021df3a3fc66738817c521f3a58bf3a3f4e4aefa338ff
+  checksum: 48e889052e53fa6eee2bd76bc5cf407bd7d97e81e75b7498b7d8ca5a8b6d55f0fe860f4a9f11989a891f6d8bdeb3f4db253de5421a71451d6dd469a2c2ab842c
   languageName: node
   linkType: hard
 
@@ -9868,33 +9868,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-dev-client@npm:~3.3.10":
-  version: 3.3.10
-  resolution: "expo-dev-client@npm:3.3.10"
+"expo-dev-client@npm:~3.3.11":
+  version: 3.3.11
+  resolution: "expo-dev-client@npm:3.3.11"
   dependencies:
-    expo-dev-launcher: 3.6.8
-    expo-dev-menu: 4.5.7
+    expo-dev-launcher: 3.6.9
+    expo-dev-menu: 4.5.8
     expo-dev-menu-interface: 1.7.2
     expo-manifests: ~0.13.0
     expo-updates-interface: ~0.15.1
   peerDependencies:
     expo: "*"
-  checksum: b42dbceb8ecaed0bcc5398ad8b1ee6fb7beb09e80bf6e39a1e2b4b057c4a0444071aa5587dcd94c2a8b935f0de2baa9e8be9191d2bbc406a8e545576aac56484
+  checksum: 1b949922f32ffb9085dee06bc9c5613c1fb27e2a3dadfd06581aa5b52ced82e7c0366a2bf656e9373866f33bd9f9e62a7e5473fb2bed455067fea393e6a9e97e
   languageName: node
   linkType: hard
 
-"expo-dev-launcher@npm:3.6.8":
-  version: 3.6.8
-  resolution: "expo-dev-launcher@npm:3.6.8"
+"expo-dev-launcher@npm:3.6.9":
+  version: 3.6.9
+  resolution: "expo-dev-launcher@npm:3.6.9"
   dependencies:
     ajv: 8.11.0
-    expo-dev-menu: 4.5.7
+    expo-dev-menu: 4.5.8
     expo-manifests: ~0.13.0
     resolve-from: ^5.0.0
     semver: ^7.5.3
   peerDependencies:
     expo: "*"
-  checksum: 04e6a8708bbbdc5b0cf7983b0ab31f420b6fa0e88816646c1c7a1abec159902f02dab6c83d7fbb7e548403915c21e33eec1a472a9b75599961b6328d1f4479d1
+  checksum: fd4e9417a0dd950834cbcbfc018102281b052cfbff38c76570c3be56c8fbfc36ebb072cfe8568e57ae3b8f72c21311d430197f52d76db6225142da8ce5532825
   languageName: node
   linkType: hard
 
@@ -9907,15 +9907,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-dev-menu@npm:4.5.7":
-  version: 4.5.7
-  resolution: "expo-dev-menu@npm:4.5.7"
+"expo-dev-menu@npm:4.5.8":
+  version: 4.5.8
+  resolution: "expo-dev-menu@npm:4.5.8"
   dependencies:
     expo-dev-menu-interface: 1.7.2
     semver: ^7.5.3
   peerDependencies:
     expo: "*"
-  checksum: 3ab80c571baceca3f751f9624dd43eeab3815f8c3b9daa32b9a9923ac2f357a9ecf5887527147d4a3667748176fde8e5b88ebe525f7ed36004b60cb765d80c74
+  checksum: 528b6486ad2c0d2a3bdb2956569d56b6b8cff6ec574d5f3f38bcfeb2e045d57f1b8a461302efdb5de25fec7b9cfb3e0eed3d5280e73b0d761ae4b6d2990c8de2
   languageName: node
   linkType: hard
 
@@ -10098,9 +10098,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:50.0.13":
-  version: 50.0.13
-  resolution: "expo@npm:50.0.13"
+"expo@npm:~50.0.14":
+  version: 50.0.14
+  resolution: "expo@npm:50.0.14"
   dependencies:
     "@babel/runtime": ^7.20.0
     "@expo/cli": 0.17.8
@@ -10119,7 +10119,7 @@ __metadata:
     whatwg-url-without-unicode: 8.0.0-3
   bin:
     expo: bin/cli
-  checksum: f298b8027c25993edfe5b17777589470053d0701630d74dac9c125daf4c617e69201017735c0bb5dcfe0cca8d19b9f4d98062095b2cff13a57dde21b75e070f3
+  checksum: 6295f2a4db54ad86d350920c879144fd8191b33449f4da9aa4abd08fb7e46476eb280ca75228d10f0c0a701c44ccec8d437913619ccf7ca5715b047eb5988dc2
   languageName: node
   linkType: hard
 
@@ -16696,9 +16696,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:0.73.5":
-  version: 0.73.5
-  resolution: "react-native@npm:0.73.5"
+"react-native@npm:0.73.6":
+  version: 0.73.6
+  resolution: "react-native@npm:0.73.6"
   dependencies:
     "@jest/create-cache-key-function": ^29.6.3
     "@react-native-community/cli": 12.3.6
@@ -16742,7 +16742,7 @@ __metadata:
     react: 18.2.0
   bin:
     react-native: cli.js
-  checksum: 107037a28b37e5d8883e8d7553d48e15d802ecf2b3ecee834f79c5dd653761ac23506a08c3a48f357bf872fb0857078ae31d226623a8742e530b065fed5d9d47
+  checksum: 20e71c902f165c15add9f841bbc555c7b8495235122ccc42f5f1c5c0189c453651a450e59b6541188d8edb829a2aac524a1762501fb6ecebc4c89e9aa6667682
   languageName: node
   linkType: hard
 
@@ -17345,13 +17345,13 @@ __metadata:
     detox: 19.12.6
     dotenv: 16.4.5
     eslint: 8.57.0
-    eslint-config-tsyirvo-react-native: ../eslint-config-tsyirvo-react-native
-    expo: 50.0.13
+    eslint-config-tsyirvo-react-native: "https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#develop"
+    expo: ~50.0.14
     expo-application: ~5.8.3
     expo-asset: ~9.0.2
     expo-build-properties: ~0.11.1
     expo-constants: ~15.4.5
-    expo-dev-client: ~3.3.10
+    expo-dev-client: ~3.3.11
     expo-device: ~5.9.3
     expo-font: ~11.10.3
     expo-image: ~1.10.6
@@ -17381,7 +17381,7 @@ __metadata:
     react-dom: 18.2.0
     react-error-boundary: 4.0.13
     react-i18next: 14.1.0
-    react-native: 0.73.5
+    react-native: 0.73.6
     react-native-device-info: 10.13.1
     react-native-gesture-handler: ~2.14.0
     react-native-keyboard-aware-scroll-view: 0.9.5
