@@ -9,7 +9,7 @@ type OtherScreenProps = {
   navigation: OtherScreenNavigationProp;
 };
 
-export function OtherScreen({ navigation }: OtherScreenProps) {
+export const OtherScreen = ({ navigation }: OtherScreenProps) => {
   const { t } = useTranslation('otherScreen');
 
   const goBack = () => {
@@ -31,4 +31,4 @@ export function OtherScreen({ navigation }: OtherScreenProps) {
       </Box>
     </Screen>
   );
-}
+};

@@ -4,7 +4,7 @@ import { config } from '$core/constants';
 import { StoreUpdateBanner } from '$shared/components/StoreUpdateBanner';
 import { Box, Text } from '$shared/uiKit/primitives';
 
-export function Version() {
+export const Version = () => {
   const insets = useSafeAreaInsets();
 
   if (!config.version) {
@@ -35,4 +35,4 @@ export function Version() {
       </Box>
     </Box>
   );
-}
+};

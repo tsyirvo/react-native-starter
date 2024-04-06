@@ -4,7 +4,7 @@ import { Box } from '$shared/uiKit/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export function BoxSandbox() {
+export const BoxSandbox = () => {
   return (
     <ScrollView>
       <SandBoxItem title="Box with a size, color and radiuses">
@@ -37,4 +37,4 @@ export function BoxSandbox() {
       </SandBoxItem>
     </ScrollView>
   );
-}
+};

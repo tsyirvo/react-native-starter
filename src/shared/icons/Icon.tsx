@@ -12,11 +12,11 @@ type IconProps = {
   height?: number;
 };
 
-export function Icon({ testID, name, color, width, height }: IconProps) {
+export const Icon = ({ testID, name, color, width, height }: IconProps) => {
   return React.createElement(AllIcons[name], {
     testID,
     color,
     width,
     height,
   });
-}
+};

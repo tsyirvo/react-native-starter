@@ -1,7 +1,7 @@
 import { Loader } from '$shared/uiKit/Loader';
 import { Box, Text } from '$shared/uiKit/primitives';
 
-import type { ButtonProps, ButtonSize } from '../Button.types';
+import type { ButtonProps, ButtonSize } from '../types/buttonTypes';
 
 interface InnerTextProps extends Pick<ButtonProps, 'isDisabled' | 'isLoading'> {
   size?: ButtonSize;
@@ -12,7 +12,12 @@ const DISABLED_OPACITY = 0.5;
 const REGULAR_OPACITY = 1;
 const MIN_HEIGHT = 24;
 
-function InnerText({ size, isDisabled, isLoading, children }: InnerTextProps) {
+const InnerText = ({
+  size,
+  isDisabled,
+  isLoading,
+  children,
+}: InnerTextProps) => {
   const isRegularSize = size === 'regular';
   const textVariant = isRegularSize ? 'regular' : 'small';
 
@@ -41,6 +46,6 @@ function InnerText({ size, isDisabled, isLoading, children }: InnerTextProps) {
       </Text>
     </Box>
   );
-}
+};
 
 export { InnerText };

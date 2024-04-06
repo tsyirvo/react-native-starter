@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 
-import type { MenuScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
+import type { MenuScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes';
 
 import { MenuCategory } from './MenuCategory';
 import { MenuLine } from './MenuLine';
 
-export function Components() {
+export const Components = () => {
   const navigation: MenuScreenNavigationProp = useNavigation();
 
   const menuItems = [
@@ -30,4 +30,4 @@ export function Components() {
       ))}
     </MenuCategory>
   );
-}
+};

@@ -8,7 +8,7 @@ type SplashscreenProps = {
   children: ReactNode;
 };
 
-export function Splashscreen({ children }: SplashscreenProps) {
+export const Splashscreen = ({ children }: SplashscreenProps) => {
   const { onLayoutRootView } = useLoadAssets();
 
   return (
@@ -16,4 +16,4 @@ export function Splashscreen({ children }: SplashscreenProps) {
       {children}
     </Box>
   );
-}
+};

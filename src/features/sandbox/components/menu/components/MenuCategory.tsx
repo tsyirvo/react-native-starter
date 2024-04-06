@@ -7,7 +7,7 @@ type MenuCategoryProps = {
   children: ReactNode;
 };
 
-export function MenuCategory({ category, children }: MenuCategoryProps) {
+export const MenuCategory = ({ category, children }: MenuCategoryProps) => {
   return (
     <Box pb="spacing_24">
       <Text pb="spacing_8" variant="large">
@@ -17,4 +17,4 @@ export function MenuCategory({ category, children }: MenuCategoryProps) {
       {children}
     </Box>
   );
-}
+};

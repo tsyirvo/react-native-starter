@@ -21,7 +21,7 @@
   "license": "ISC",
   "engines": {
     "yarn": ">=3",
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "start:dev": "cross-env EXPO_NO_DOTENV=1 expo start --dev-client",
@@ -76,12 +76,12 @@
     "@sentry/react-native": "5.19.1",
     "@shopify/restyle": "2.4.2",
     "dayjs": "1.11.10",
-    "expo": "50.0.13",
+    "expo": "~50.0.14",
     "expo-application": "~5.8.3",
     "expo-asset": "~9.0.2",
     "expo-build-properties": "~0.11.1",
     "expo-constants": "~15.4.5",
-    "expo-dev-client": "~3.3.10",
+    "expo-dev-client": "~3.3.11",
     "expo-device": "~5.9.3",
     "expo-font": "~11.10.3",
     "expo-image": "~1.10.6",
@@ -98,7 +98,7 @@
     "react-dom": "18.2.0",
     "react-error-boundary": "4.0.13",
     "react-i18next": "14.1.0",
-    "react-native": "0.73.5",
+    "react-native": "0.73.6",
     "react-native-device-info": "10.13.1",
     "react-native-gesture-handler": "~2.14.0",
     "react-native-keyboard-aware-scroll-view": "0.9.5",
@@ -139,7 +139,7 @@
     "detox": "19.12.6",
     "dotenv": "16.4.5",
     "eslint": "8.57.0",
-    "eslint-config-tsyirvo-react-native": "1.6.0",
+    "eslint-config-tsyirvo-react-native": "https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#develop",
     "fs-extra": "11.2.0",
     "husky": "9.0.11",
     "imagemin": "7.0.1",

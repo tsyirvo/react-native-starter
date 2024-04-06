@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { KeyboardEvent } from 'react-native';
 import { Keyboard } from 'react-native';
 
-import { isIOS } from '$core/constants';
+import { IS_IOS } from '$core/constants';
 
 type UseKeyboardArguments = {
   onKeyboardShow?: (e?: KeyboardEvent) => void;
@@ -40,11 +40,11 @@ export const useKeyboard = (props?: UseKeyboardArguments) => {
 
   useEffect(() => {
     const showListener = Keyboard.addListener(
-      isIOS ? 'keyboardWillShow' : 'keyboardDidShow',
+      IS_IOS ? 'keyboardWillShow' : 'keyboardDidShow',
       showKeyboard,
     );
     const hideListener = Keyboard.addListener(
-      isIOS ? 'keyboardWillHide' : 'keyboardDidHide',
+      IS_IOS ? 'keyboardWillHide' : 'keyboardDidHide',
       hideKeyboard,
     );
 

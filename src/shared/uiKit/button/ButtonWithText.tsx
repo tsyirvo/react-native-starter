@@ -1,15 +1,15 @@
 import { usePress } from '$shared/hooks/usePress';
 
 import { BaseButton } from './BaseButton';
-import type { ButtonProps, ButtonSize } from './Button.types';
 import { InnerText } from './components/InnerText';
+import type { ButtonProps, ButtonSize } from './types/buttonTypes';
 
 interface ButtonWithTextProps extends ButtonProps {
   children: string;
   size?: ButtonSize;
 }
 
-function ButtonWithText({
+const ButtonWithText = ({
   onPress,
   variant = 'base',
   testID,
@@ -17,7 +17,7 @@ function ButtonWithText({
   isLoading = false,
   size = 'regular',
   children,
-}: ButtonWithTextProps) {
+}: ButtonWithTextProps) => {
   const [handlePress, isResolving] = usePress({ onPress });
 
   const isButtonDisabled = isDisabled || isLoading || isResolving;
@@ -39,6 +39,6 @@ function ButtonWithText({
       </InnerText>
     </BaseButton>
   );
-}
+};
 
 export { ButtonWithText };

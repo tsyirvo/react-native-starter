@@ -9,7 +9,7 @@ type MenuLineProps = {
   onPress: () => void;
 };
 
-export function MenuLine({ label, onPress }: MenuLineProps) {
+export const MenuLine = ({ label, onPress }: MenuLineProps) => {
   return (
     <Box pb="spacing_8">
       <Pressable onPress={onPress}>
@@ -19,4 +19,4 @@ export function MenuLine({ label, onPress }: MenuLineProps) {
       <Separator color="secondary_100" />
     </Box>
   );
-}
+};

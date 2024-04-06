@@ -2,5 +2,7 @@ import { Platform } from 'react-native';
 
 /* ***** *****  OS  ***** ***** */
 
-export const isAndroid = Platform.OS === 'android';
-export const isIOS = Platform.OS === 'ios';
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const IS_ANDROID = Platform.OS === 'android';
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const IS_IOS = Platform.OS === 'ios';

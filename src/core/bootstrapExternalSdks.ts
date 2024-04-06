@@ -1,7 +1,7 @@
 import { FeatureFlags } from '$core/featureFlags';
 import { Logger } from '$core/logger';
 
-import { Analytics } from './Analytics';
+import { Analytics } from './analytics';
 import { initDateLocale } from './date';
 import { getSupportedDateLocale } from './i18n';
 import { ErrorMonitoring } from './monitoring';
@@ -30,7 +30,7 @@ const initDateLib = () => {
   initDateLocale(localeToUse);
 };
 
-export const bootstrapSDKs = () => {
+export const bootstrapExternalSdks = () => {
   initFeatureFlags();
   initAnalytics();
 

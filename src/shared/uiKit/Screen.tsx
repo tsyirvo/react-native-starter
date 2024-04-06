@@ -9,10 +9,10 @@ type ScreenProps = {
   children: ReactNode;
 };
 
-export function Screen({ children, edges = [] }: ScreenProps) {
+export const Screen = ({ children, edges = [] }: ScreenProps) => {
   return (
     <SafeView edges={edges}>
       <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
     </SafeView>
   );
-}
+};

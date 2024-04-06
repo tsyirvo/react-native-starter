@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { isIOS } from '$core/constants';
+import { IS_IOS } from '$core/constants';
 import { Text } from '$shared/uiKit/primitives';
 
-export function Informations() {
+export const Informations = () => {
   const { t } = useTranslation('homeScreen');
 
   return (
@@ -14,7 +14,7 @@ export function Informations() {
 
       <Text>
         {t('sandbox.content', {
-          command: isIOS ? 'Cmd+R' : 'Cmd+M',
+          command: IS_IOS ? 'Cmd+R' : 'Cmd+M',
         })}
       </Text>
 
@@ -31,4 +31,4 @@ export function Informations() {
       <Text>{t('formatting.content')}</Text>
     </>
   );
-}
+};

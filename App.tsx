@@ -3,9 +3,7 @@ import * as Sentry from '@sentry/react-native';
 
 import { RootApp } from './src/App';
 
-function App() {
-  return <RootApp />;
-}
+const App = () => <RootApp />;
 
 const AppWithSentry = Sentry.wrap(App);
 

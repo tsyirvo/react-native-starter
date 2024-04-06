@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 
-import type { ThemeScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
+import type { ThemeScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes';
 import { Box } from '$shared/uiKit/primitives';
 
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
 
-export function ThemeSandbox() {
+export const ThemeSandbox = () => {
   const navigation: ThemeScreenNavigationProp = useNavigation();
 
   const menuItems = [
@@ -45,4 +45,4 @@ export function ThemeSandbox() {
       </MenuCategory>
     </Box>
   );
-}
+};

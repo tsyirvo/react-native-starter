@@ -12,7 +12,7 @@ interface TextProps extends React.ComponentPropsWithRef<typeof PrimitiveText> {
 
 const PrimitiveText = createText<Theme>();
 
-export function Text({ variant = 'regular', testID, ...rest }: TextProps) {
+export const Text = ({ variant = 'regular', testID, ...rest }: TextProps) => {
   const accessibilityLabel =
     typeof rest.children === 'string' ? rest.children : undefined;
 
@@ -25,4 +25,4 @@ export function Text({ variant = 'regular', testID, ...rest }: TextProps) {
       {...rest}
     />
   );
-}
+};

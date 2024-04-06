@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 
-import type { DesignSystemScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
+import type { DesignSystemScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes';
 import { Box } from '$shared/uiKit/primitives';
 
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
 
-export function DesignSystemSandbox() {
+export const DesignSystemSandbox = () => {
   const navigation: DesignSystemScreenNavigationProp = useNavigation();
 
   const menuItems = [
@@ -39,4 +39,4 @@ export function DesignSystemSandbox() {
       </MenuCategory>
     </Box>
   );
-}
+};

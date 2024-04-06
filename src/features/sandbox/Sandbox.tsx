@@ -5,13 +5,13 @@ import { useState } from 'react';
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
 
-import { DebugStack } from './navigation/DebugStack';
+import DebugStack from './navigation/DebugStack';
 
 type SandboxProps = {
   children: ReactElement;
 };
 
-export function Sandbox({ children }: SandboxProps) {
+export const Sandbox = ({ children }: SandboxProps) => {
   const [isShown, setIsShown] = useState(false);
 
   useRunOnMount(() => {
@@ -36,4 +36,4 @@ export function Sandbox({ children }: SandboxProps) {
   }
 
   return <DebugStack />;
-}
+};

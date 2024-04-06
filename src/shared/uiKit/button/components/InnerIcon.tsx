@@ -11,12 +11,12 @@ type InnerIconProps = {
   isLoading?: boolean;
 };
 
-function InnerIcon({
+const InnerIcon = ({
   iconName,
   width = DEFAULT_ICON_SIZE,
   height = DEFAULT_ICON_SIZE,
   isLoading,
-}: InnerIconProps) {
+}: InnerIconProps) => {
   if (isLoading) {
     return null;
   }
@@ -29,6 +29,6 @@ function InnerIcon({
       width={width}
     />
   );
-}
+};
 
 export { InnerIcon };
