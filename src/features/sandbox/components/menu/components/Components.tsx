@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 
-import type { MenuScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes.ts';
+import type { MenuScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes';
 
 import { MenuCategory } from './MenuCategory';
 import { MenuLine } from './MenuLine';

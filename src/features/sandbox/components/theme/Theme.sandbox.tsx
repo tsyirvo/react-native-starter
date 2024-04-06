@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 
-import type { ThemeScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes.ts';
+import type { ThemeScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes';
 import { Box } from '$shared/uiKit/primitives';
 
 import { MenuCategory } from '../menu/components/MenuCategory';
