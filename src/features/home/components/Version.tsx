@@ -1,3 +1,5 @@
+import * as Updates from 'expo-updates';
+import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { config } from '$core/constants';
@@ -6,6 +8,12 @@ import { Box, Text } from '$shared/uiKit/primitives';
 
 export const Version = () => {
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation('appConfig');
+
+  const { currentlyRunning } = Updates.useUpdates();
+
+  const isRunningBuiltInCode =
+    currentlyRunning.isEmbeddedLaunch || config.isDebug;
 
   if (!config.version) {
     return null;
@@ -31,6 +39,10 @@ export const Version = () => {
 
         {typeof config.runtimeVersion === 'string' && (
           <Text variant="small">{`Runtime: v${config.runtimeVersion}`}</Text>
+        )}
+
+        {!isRunningBuiltInCode && (
+          <Text variant="small">{t('updateCheck.isEmbeddedLaunch')}</Text>
         )}
       </Box>
     </Box>

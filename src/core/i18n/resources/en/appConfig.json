@@ -2,5 +2,8 @@
   "networkStateCheck": {
     "message": "Please check your internet connection. The app might not work properly without it.",
     "title": "No internet connection"
+  },
+  "updateCheck": {
+    "isEmbeddedLaunch": "The app is running from an OTA update"
   }
 }
