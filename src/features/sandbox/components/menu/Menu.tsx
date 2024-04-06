@@ -7,7 +7,7 @@ import { Components } from './components/Components';
 import { Core } from './components/Core';
 import { Flows } from './components/Flows';
 
-export function Menu() {
+export const Menu = () => {
   return (
     <SafeView edges={['bottom']}>
       <ScrollView>
@@ -21,4 +21,4 @@ export function Menu() {
       </ScrollView>
     </SafeView>
   );
-}
+};

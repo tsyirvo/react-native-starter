@@ -14,7 +14,7 @@ type UpdateStatus = {
   currentVersion: string | null;
 };
 
-export function StoreUpdateBanner() {
+export const StoreUpdateBanner = () => {
   const [updateStatus, setUpdateStatus] = useState<UpdateStatus>();
 
   const { t } = useTranslation('settings');
@@ -60,4 +60,4 @@ export function StoreUpdateBanner() {
       </Box>
     </Box>
   );
-}
+};

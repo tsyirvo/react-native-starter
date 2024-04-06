@@ -1,12 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 
-import type { PrimitivesScreenNavigationProp } from '$features/sandbox/navigation/DebugStack.types';
+import type { PrimitivesScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes.ts';
 import { Box } from '$shared/uiKit/primitives';
 
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
 
-export function PrimitivesSandbox() {
+export const PrimitivesSandbox = () => {
   const navigation: PrimitivesScreenNavigationProp = useNavigation();
 
   const menuItems = [
@@ -33,4 +33,4 @@ export function PrimitivesSandbox() {
       </MenuCategory>
     </Box>
   );
-}
+};

@@ -14,7 +14,10 @@ const SMALL_SIZE = 20;
 const LARGE_SIZE = 36;
 const DEFAULT_DELAY = 500;
 
-export function Loader({ delay = DEFAULT_DELAY, size = 'large' }: LoaderProps) {
+export const Loader = ({
+  delay = DEFAULT_DELAY,
+  size = 'large',
+}: LoaderProps) => {
   const [isShowingLoading, setIsShowingLoading] = useState(false);
 
   const minHeight = size === 'large' ? LARGE_SIZE : SMALL_SIZE;
@@ -33,4 +36,4 @@ export function Loader({ delay = DEFAULT_DELAY, size = 'large' }: LoaderProps) {
     return <ActivityIndicator color={colors.black} size={size} />;
 
   return <Box height={minHeight} />;
-}
+};

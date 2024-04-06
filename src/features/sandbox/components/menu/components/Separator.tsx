@@ -11,10 +11,10 @@ interface SeparatorProps extends BoxProps {
 
 const DEFAULT_HEIGHT = 2;
 
-export function Separator({
+export const Separator = ({
   height = DEFAULT_HEIGHT,
   color = 'black',
   ...rest
-}: SeparatorProps) {
+}: SeparatorProps) => {
   return <Box bg={color} height={height} width="100%" {...rest} />;
-}
+};

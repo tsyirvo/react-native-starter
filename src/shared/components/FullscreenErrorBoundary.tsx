@@ -6,7 +6,7 @@ import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 import { SafeView } from '$shared/uiKit/SafeView';
 
-function FullscreenErrorBoundary() {
+const FullscreenErrorBoundary = () => {
   const { t } = useTranslation('miscScreens');
 
   const reloadApp = async () =>
@@ -39,6 +39,6 @@ function FullscreenErrorBoundary() {
       </Box>
     </SafeView>
   );
-}
+};
 
 export { FullscreenErrorBoundary };

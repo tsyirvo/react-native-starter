@@ -9,7 +9,7 @@ import { useRunOnMount } from '$shared/hooks/useRunOnMount';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 
-export function AppUpdateNeeded() {
+export const AppUpdateNeeded = () => {
   const [isAppUnsupported, setIsAppUnsupported] = useState(false);
 
   const { t } = useTranslation('miscScreens');
@@ -80,4 +80,4 @@ export function AppUpdateNeeded() {
       </Button.Text>
     </Box>
   );
-}
+};

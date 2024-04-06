@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable filename-rules/match */
 
 import { ThemeProvider } from '@shopify/restyle';
 import type { RenderAPI } from '@testing-library/react-native';

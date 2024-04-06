@@ -2,7 +2,7 @@ import Svg, { G, Path } from 'react-native-svg';
 import type { SvgProps } from 'react-native-svg';
 
 /* eslint-disable react/jsx-props-no-spreading */
-function Code(props: SvgProps) {
+const Code = (props: SvgProps) => {
   return (
     <Svg viewBox="0 0 21 21" {...props}>
       <G
@@ -16,6 +16,6 @@ function Code(props: SvgProps) {
       </G>
     </Svg>
   );
-}
+};
 
 export { Code };

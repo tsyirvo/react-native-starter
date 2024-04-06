@@ -21,7 +21,7 @@
   "license": "ISC",
   "engines": {
     "yarn": ">=3",
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "start:dev": "cross-env EXPO_NO_DOTENV=1 expo start --dev-client",
@@ -139,7 +139,7 @@
     "detox": "19.12.6",
     "dotenv": "16.4.5",
     "eslint": "8.57.0",
-    "eslint-config-tsyirvo-react-native": "1.6.0",
+    "eslint-config-tsyirvo-react-native": "../eslint-config-tsyirvo-react-native",
     "fs-extra": "11.2.0",
     "husky": "9.0.11",
     "imagemin": "7.0.1",

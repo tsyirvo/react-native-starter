@@ -4,7 +4,7 @@ import { Input } from '$shared/uiKit/input';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export function InputSandbox() {
+export const InputSandbox = () => {
   return (
     <ScrollView>
       <SandBoxItem title="Input with a label">
@@ -24,4 +24,4 @@ export function InputSandbox() {
       </SandBoxItem>
     </ScrollView>
   );
-}
+};

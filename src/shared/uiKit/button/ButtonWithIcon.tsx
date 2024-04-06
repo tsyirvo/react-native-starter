@@ -4,9 +4,9 @@ import { Box } from '$shared/uiKit/primitives';
 import type * as AllIcons from '../../icons/components';
 
 import { BaseButton } from './BaseButton';
-import type { ButtonProps } from './Button.types';
 import { InnerIcon } from './components/InnerIcon';
 import { InnerText } from './components/InnerText';
+import type { ButtonProps } from './types/buttonTypes';
 
 const DEFAULT_ICON_SIZE = 24;
 
@@ -17,7 +17,7 @@ interface ButtonWithIconProps extends ButtonProps {
   height?: number;
 }
 
-function ButtonWithIcon({
+const ButtonWithIcon = ({
   onPress,
   variant = 'base',
   testID,
@@ -27,7 +27,7 @@ function ButtonWithIcon({
   width = DEFAULT_ICON_SIZE,
   height = DEFAULT_ICON_SIZE,
   children,
-}: ButtonWithIconProps) {
+}: ButtonWithIconProps) => {
   const [handlePress, isResolving] = usePress({ onPress });
 
   const isButtonDisabled = isDisabled || isLoading || isResolving;
@@ -60,6 +60,6 @@ function ButtonWithIcon({
       </Box>
     </BaseButton>
   );
-}
+};
 
 export { ButtonWithIcon };

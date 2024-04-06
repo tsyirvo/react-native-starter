@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export function Header() {
+export const Header = () => {
   return (
     <ImageBackground
       source={require('../../assets/images/header.jpeg')}
@@ -29,4 +29,4 @@ export function Header() {
       </Box>
     </ImageBackground>
   );
-}
+};

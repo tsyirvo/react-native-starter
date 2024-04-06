@@ -5,10 +5,13 @@ import type { BoxProps } from '$shared/uiKit/primitives/Box';
 
 type CenteredContentProps = BoxProps;
 
-export function CenteredContent({ children, ...props }: CenteredContentProps) {
+export const CenteredContent = ({
+  children,
+  ...props
+}: CenteredContentProps) => {
   return (
     <Box alignItems="center" justifyContent="center" {...props}>
       {children}
     </Box>
   );
-}
+};

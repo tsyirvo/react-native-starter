@@ -7,7 +7,7 @@ import { HIT_SLOP } from '$core/constants/styling';
 import type { Theme } from '$core/theme';
 import type { Box } from '$shared/uiKit/primitives';
 
-import type { ButtonProps } from './Button.types';
+import type { ButtonProps } from './types/buttonTypes';
 
 interface BaseButtonProps extends ButtonProps {
   children: React.ReactElement;
@@ -22,14 +22,14 @@ const PrimitiveButton = createRestyleComponent<
   Theme
 >([ButtonVariant]);
 
-function BaseButton({
+const BaseButton = ({
   onPress,
   variant = 'base',
   testID,
   isLoading = false,
   children,
   isDisabled,
-}: BaseButtonProps) {
+}: BaseButtonProps) => {
   return (
     <Pressable
       accessibilityLabel={typeof children === 'string' ? children : undefined}
@@ -43,6 +43,6 @@ function BaseButton({
       <PrimitiveButton variant={variant}>{children}</PrimitiveButton>
     </Pressable>
   );
-}
+};
 
 export { BaseButton };

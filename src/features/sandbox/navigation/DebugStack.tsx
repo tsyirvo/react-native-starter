@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import type { DebugStackParamList } from './DebugStack.types';
 import * as screens from './screens';
+import type { DebugStackParamList } from './types/debugStackTypes';
 
 const Stack = createNativeStackNavigator<DebugStackParamList>();
 
-export function DebugStack() {
+const DebugStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -58,4 +58,6 @@ export function DebugStack() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
+
+export default DebugStack;

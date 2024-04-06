@@ -11,7 +11,11 @@ type SandBoxItemProps = {
   children: ReactNode;
 };
 
-export function SandBoxItem({ title, isSingle, children }: SandBoxItemProps) {
+export const SandBoxItem = ({
+  title,
+  isSingle,
+  children,
+}: SandBoxItemProps) => {
   return (
     <Box pt="spacing_8" px="spacing_24">
       {!!title && <Text>{title}</Text>}
@@ -21,4 +25,4 @@ export function SandBoxItem({ title, isSingle, children }: SandBoxItemProps) {
       {!isSingle && <Separator color="secondary_100" />}
     </Box>
   );
-}
+};

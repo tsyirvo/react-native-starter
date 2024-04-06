@@ -9258,15 +9258,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-tsyirvo-react-native@npm:1.6.0":
-  version: 1.6.0
-  resolution: "eslint-config-tsyirvo-react-native@npm:1.6.0"
+"eslint-config-tsyirvo-react-native@file:../eslint-config-tsyirvo-react-native::locator=rn-starter%40workspace%3A.":
+  version: 1.5.0
+  resolution: "eslint-config-tsyirvo-react-native@file:../eslint-config-tsyirvo-react-native#../eslint-config-tsyirvo-react-native::hash=509dfb&locator=rn-starter%40workspace%3A."
   dependencies:
     "@typescript-eslint/eslint-plugin": 7.5.0
     "@typescript-eslint/parser": 7.5.0
     eslint-config-airbnb-typescript: 18.0.0
     eslint-config-prettier: 9.1.0
     eslint-import-resolver-babel-plugin-root-import: 1.1.1
+    eslint-plugin-filename-rules: ^1.3.1
     eslint-plugin-i18n-json: 4.0.0
     eslint-plugin-import: 2.29.1
     eslint-plugin-jest: 27.9.0
@@ -9279,7 +9280,7 @@ __metadata:
   peerDependencies:
     eslint: 8.57.0
     typescript: 5.3.0
-  checksum: 7e50dee2f646d9183ecf52f4435489aef6514b497f71b5d6b16138c2878eb67bc8ee8bd0110bb672c53305b3c87126c9ab59e41aaabbeef411040b8cf485c449
+  checksum: eb9702250e98a491b7f89d354152463641ffb9d7c7adb00242504337275ec8486792f238d7e344b6157021df3a3fc66738817c521f3a58bf3a3f4e4aefa338ff
   languageName: node
   linkType: hard
 
@@ -9327,6 +9328,13 @@ __metadata:
     eslint:
       optional: true
   checksum: 3cecd99b6baf45ffc269167da0f95dcb75e5aa67b93d73a3bab63e2a7eedd9cdd6f188eed048e2f57c1b77db82c9cbf2adac20b512fa70e597d863dd3720170d
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-filename-rules@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "eslint-plugin-filename-rules@npm:1.3.1"
+  checksum: 4b380a3757ac8c397d1e347a15afab3ef76ef5b861155e4adeb59101740e43915018b4339505d74977761d7df646f3b9fc5001e131c3597754c3e7b59c1434dc
   languageName: node
   linkType: hard
 
@@ -17337,7 +17345,7 @@ __metadata:
     detox: 19.12.6
     dotenv: 16.4.5
     eslint: 8.57.0
-    eslint-config-tsyirvo-react-native: 1.6.0
+    eslint-config-tsyirvo-react-native: ../eslint-config-tsyirvo-react-native
     expo: 50.0.13
     expo-application: ~5.8.3
     expo-asset: ~9.0.2

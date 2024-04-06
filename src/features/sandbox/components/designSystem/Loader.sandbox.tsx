@@ -4,7 +4,7 @@ import { Loader } from '$shared/uiKit/Loader';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export function LoaderSandbox() {
+export const LoaderSandbox = () => {
   return (
     <ScrollView>
       <SandBoxItem title="Loader default props">
@@ -20,4 +20,4 @@ export function LoaderSandbox() {
       </SandBoxItem>
     </ScrollView>
   );
-}
+};

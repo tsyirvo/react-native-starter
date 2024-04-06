@@ -4,7 +4,7 @@ import { Button } from '$shared/uiKit/button';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export function ButtonSandbox() {
+export const ButtonSandbox = () => {
   return (
     <ScrollView>
       <SandBoxItem title="Button with a text content">
@@ -19,4 +19,4 @@ export function ButtonSandbox() {
       </SandBoxItem>
     </ScrollView>
   );
-}
+};

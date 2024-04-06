@@ -6,7 +6,7 @@ import { Text } from '$shared/uiKit/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export function FontSizesSandbox() {
+export const FontSizesSandbox = () => {
   return (
     <ScrollView>
       <SandBoxItem isSingle>
@@ -18,4 +18,4 @@ export function FontSizesSandbox() {
       </SandBoxItem>
     </ScrollView>
   );
-}
+};

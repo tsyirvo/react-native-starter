@@ -10,7 +10,7 @@ type HomeScreenProps = {
   navigation: HomeScreenNavigationProp;
 };
 
-export function HomeScreen({ navigation }: HomeScreenProps) {
+export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   const { t } = useTranslation('homeScreen');
 
   const goToOtherScreen = () => {
@@ -38,4 +38,4 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
       <Version />
     </Screen>
   );
-}
+};

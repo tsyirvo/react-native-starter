@@ -9,7 +9,7 @@ import {
 } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 
-import { bootstrapSDKs } from '$core/bootstrapSDKs';
+import { bootstrapExternalSdks } from '$core/bootstrapExternalSdks';
 import { ErrorMonitoring } from '$core/monitoring';
 import { RootStack } from '$core/navigation';
 import { theme } from '$core/theme';
@@ -23,7 +23,7 @@ import { useCheckNetworkStateOnMount } from '$shared/hooks/useCheckNetworkStateO
 
 import './core/i18n';
 
-bootstrapSDKs();
+bootstrapExternalSdks();
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function App() {
+const App = () => {
   useCheckNetworkStateOnMount();
 
   const onGlobalError = (error: Error, errorInfo: ErrorInfo) => {
@@ -74,6 +74,6 @@ function App() {
       </GestureHandlerRootView>
     </ThemeProvider>
   );
-}
+};
 
 export { App as RootApp };

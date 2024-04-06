@@ -7,7 +7,7 @@ import { Box, Text } from '$shared/uiKit/primitives';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
-export function SpacesSandbox() {
+export const SpacesSandbox = () => {
   return (
     <ScrollView>
       <SandBoxItem isSingle>
@@ -26,4 +26,4 @@ export function SpacesSandbox() {
       </SandBoxItem>
     </ScrollView>
   );
-}
+};
