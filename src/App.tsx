@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@shopify/restyle';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import type { ErrorInfo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { StatusBar, StyleSheet } from 'react-native';
@@ -9,6 +10,7 @@ import {
 } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 
+import { persistOptions, queryClient } from '$core/api/queryClient';
 import { bootstrapExternalSdks } from '$core/bootstrapExternalSdks';
 import { ErrorMonitoring } from '$core/monitoring';
 import { RootStack } from '$core/navigation';
@@ -51,26 +53,31 @@ const App = () => {
       <StatusBar barStyle="light-content" />
 
       <GestureHandlerRootView style={styles.container}>
-        <ErrorBoundary
-          FallbackComponent={FullscreenErrorBoundary}
-          onError={onGlobalError}
+        <PersistQueryClientProvider
+          client={queryClient}
+          persistOptions={persistOptions}
         >
-          <Splashscreen>
-            <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-              <Sandbox>
-                <>
-                  <RootStack />
+          <ErrorBoundary
+            FallbackComponent={FullscreenErrorBoundary}
+            onError={onGlobalError}
+          >
+            <Splashscreen>
+              <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+                <Sandbox>
+                  <>
+                    <RootStack />
 
-                  <Toast config={toastConfig} />
+                    <Toast config={toastConfig} />
 
-                  <AppUpdateNeeded />
+                    <AppUpdateNeeded />
 
-                  <MaintenanceMode />
-                </>
-              </Sandbox>
-            </SafeAreaProvider>
-          </Splashscreen>
-        </ErrorBoundary>
+                    <MaintenanceMode />
+                  </>
+                </Sandbox>
+              </SafeAreaProvider>
+            </Splashscreen>
+          </ErrorBoundary>
+        </PersistQueryClientProvider>
       </GestureHandlerRootView>
     </ThemeProvider>
   );

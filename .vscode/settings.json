@@ -19,5 +19,7 @@
     "json"
   ],
   "doppler.autocomplete.enable": true,
-  "doppler.hover.enable": true
+  "doppler.hover.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

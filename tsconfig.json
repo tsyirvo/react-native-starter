@@ -5,7 +5,13 @@
     "paths": {
       "$*": ["src/*"],
       "*": ["*", "*.ios.tsx", "*.android.tsx"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "@0no-co/graphqlsp",
+        "schema": "./src/generated/graphql.schema.json"
+      }
+    ]
   },
   "ts-node": {
     "compilerOptions": {

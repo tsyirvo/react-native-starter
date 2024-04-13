@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import type { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
+import { BlogPost } from '$features/blogPost';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 import { Screen } from '$shared/uiKit/Screen';
@@ -27,6 +28,10 @@ export const OtherScreen = ({ navigation }: OtherScreenProps) => {
           <Button.Text testID="back_button" onPress={goBack}>
             {t('navigation.backCta')}
           </Button.Text>
+        </Box>
+
+        <Box pt="spacing_24">
+          <BlogPost />
         </Box>
       </Box>
     </Screen>
