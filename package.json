@@ -56,6 +56,7 @@
     "prettify": "yarn prettier --write './**/*.{js,ts,tsx}'",
     "pretty:check": "yarn prettier --check './**/*.{js,ts,tsx}'",
     "//// UTILITIES ////": "",
+    "codegen": "graphql-codegen --config codegen.ts",
     "image:add": "ts-node -T ./scripts/importImages/index.ts",
     "generate:page": "npx hygen generators page && yarn lint && yarn prettify",
     "generate:icons": "svgr --config-file src/shared/icons/svgs/config/svgrConfig.js --svgo-config src/shared/icons/svgs/config/svgoConfig.js --index-template src/shared/icons/svgs/config/index-template.js --template src/shared/icons/svgs/config/icon-template.js --out-dir src/shared/icons/components -- src/shared/icons/svgs && eslint './src/shared/icons/components/**/*.{ts,tsx}' --ext .ts,.tsx --fix --quiet && prettier --write './src/shared/icons/components/**/*.{ts,tsx}'",
@@ -67,8 +68,7 @@
     "prepare": "husky",
     "postinstall": "husky && patch-package",
     "prepack": "pinst --disable",
-    "postpack": "pinst --enable",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "postpack": "pinst --enable"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "0.3.0",
