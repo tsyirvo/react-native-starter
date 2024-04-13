@@ -5,6 +5,9 @@ module.exports = {
     ios: {
       buildNumber: 1,
     },
+    android: {
+      versionCode: 1,
+    },
     extra: {
       eas: {
         projectId: '',

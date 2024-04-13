@@ -43,7 +43,7 @@ export const AppUpdateNeeded = () => {
       await Linking.openURL(
         IS_IOS
           ? `https://apps.apple.com/app/apple-store/id${itunesItemId}`
-          : `market://details?id=${config.androidPackageName}&showAllReviews=true`,
+          : `market://details?id=${config.bundleId}&showAllReviews=true`,
       );
     } catch (error) {
       Logger.error({

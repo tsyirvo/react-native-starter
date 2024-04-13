@@ -31,11 +31,11 @@ export const Version = () => {
       </Box>
 
       <Box alignItems="flex-end" pt="spacing_32" px="spacing_24">
-        <Text variant="small">
+        {/* <Text variant="small">
           {`Version: v${config.version}${
             config.buildNumber ? `:${config.buildNumber}` : ''
           }`}
-        </Text>
+        </Text> */}
 
         {typeof config.runtimeVersion === 'string' && (
           <Text variant="small">{`Runtime: v${config.runtimeVersion}`}</Text>
