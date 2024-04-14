@@ -6,4 +6,7 @@ export const storageKeys = {
   queryStorage: {
     id: 'query-storage',
   },
+  storeStorage: {
+    id: 'store-storage',
+  },
 };
