@@ -17,9 +17,7 @@ class StorageClass {
   getItem = (key: string) => {
     const value = this._storage.getString(key);
 
-    if (!value) return null;
-
-    return value;
+    return value ?? null;
   };
 
   removeItem = (key: string) => {

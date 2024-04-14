@@ -58,6 +58,7 @@ const plugins: ExpoConfig['plugins'] = [
       ],
     },
   ],
+  'expo-secure-store',
 ];
 
 // eslint-disable-next-line import/no-default-export
@@ -85,6 +86,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: Env.BUNDLE_ID,
+    config: {
+      usesNonExemptEncryption: false,
+    },
   },
   android: {
     adaptiveIcon: {

@@ -10,24 +10,18 @@ class StorageClass {
     this._storage = new MMKV(config);
   }
 
-  setItem = async (key: string, value: string) => {
+  setItem = (key: string, value: string) => {
     this._storage.set(key, value);
-
-    return Promise.resolve();
   };
 
-  getItem = async (key: string) => {
+  getItem = (key: string) => {
     const value = this._storage.getString(key);
 
-    if (!value) return Promise.resolve(null);
-
-    return Promise.resolve(value);
+    return value ?? null;
   };
 
-  removeItem = async (key: string) => {
+  removeItem = (key: string) => {
     this._storage.delete(key);
-
-    return Promise.resolve();
   };
 }
 

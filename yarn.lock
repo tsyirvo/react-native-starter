@@ -11365,6 +11365,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-secure-store@npm:~12.8.1":
+  version: 12.8.1
+  resolution: "expo-secure-store@npm:12.8.1"
+  peerDependencies:
+    expo: "*"
+  checksum: 739540167e66f70c1f2d1053251a19ff753ba9cc435b9184f0b63f22fab408d96428a3fef8e276f9f12d1b2fc61435a181f59117a19fc5f4bfd6da0487652b64
+  languageName: node
+  linkType: hard
+
 "expo-splash-screen@npm:~0.26.4":
   version: 0.26.4
   resolution: "expo-splash-screen@npm:0.26.4"
@@ -15133,6 +15142,13 @@ __metadata:
   version: 3.1.0
   resolution: "junk@npm:3.1.0"
   checksum: 6c4d68e8f8bc25b546baed802cd0e7be6a971e92f1e885c92cbfe98946d5690b961a32f8e7909e77765d3204c3e556d13c17f73e31697ffae1db07a58b9e68c0
+  languageName: node
+  linkType: hard
+
+"jwt-decode@npm:4.0.0":
+  version: 4.0.0
+  resolution: "jwt-decode@npm:4.0.0"
+  checksum: 390e2edcb31a92e86c8cbdd1edeea4c0d62acd371f8a8f0a8878e499390c0ecf4c658b365c4e941e4ef37d0170e4ca650aaa49f99a45c0b9695a235b210154b0
   languageName: node
   linkType: hard
 
@@ -19180,6 +19196,7 @@ __metadata:
     expo-image: ~1.10.6
     expo-localization: ~14.8.3
     expo-network: ~5.8.0
+    expo-secure-store: ~12.8.1
     expo-splash-screen: ~0.26.4
     expo-status-bar: ~1.11.1
     expo-updates: ~0.24.12
@@ -19196,6 +19213,7 @@ __metadata:
     is-image: 4.0.0
     jest: 29.7.0
     jest-expo: 50.0.4
+    jwt-decode: 4.0.0
     lint-staged: 15.2.2
     lodash: 4.17.21
     mixpanel-react-native: 2.4.0
