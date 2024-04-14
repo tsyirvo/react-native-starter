@@ -1,18 +1,18 @@
 {
   "formatting": {
-    "content": "Le code est vérifié avec ESLint, Prettier and TypeScript",
-    "title": "Formatage & type checking"
+    "content": "The code is checked with ESLint, Prettier and TypeScript",
+    "title": "Formatting & type checking"
   },
   "navigation": {
-    "content": "Touchez pour naviguer",
-    "title": "Naviguer vers une autre page"
+    "content": "Press to navigate",
+    "title": "Navigate to another page"
   },
   "sandbox": {
-    "content": "Accéder à la Sandbox depuis le menu de dev avec {{command}}",
+    "content": "Access the Sandbox form the Dev Menu with {{command}}",
     "title": "Sandbox"
   },
   "tests": {
-    "content": "Vous pouvez faire tourner les tests avec Jest ou Detox",
+    "content": "You can run tests with Jest or Detox",
     "title": "Tests"
   }
 }

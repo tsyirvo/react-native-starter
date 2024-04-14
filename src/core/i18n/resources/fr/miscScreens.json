@@ -3,6 +3,9 @@
     "description": "Merci de la mettre à jour pour utiliser les dernières fonctionnalités",
     "title": "Votre app est trop vieille"
   },
+  "blogPost": {
+    "title": "Article récupéré avec GraphQL"
+  },
   "codepush": {
     "cta": "Installer maintenant",
     "description": "Une mise à jour de l'application est requise pour fonctionner.",

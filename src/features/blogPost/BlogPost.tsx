@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { graphql } from '$gql/generated';
 import { useGetPostQuery } from '$gql/generated/hooks';
@@ -8,13 +9,14 @@ import { Text } from '$shared/uiKit/primitives';
 import { BlogPostUser } from './components/BlogPostUser';
 
 export const BlogPost = () => {
+  const { t } = useTranslation('miscScreens');
   const { data, isLoading } = useGetPostQuery();
 
   if (isLoading) return <Loader />;
 
   return (
     <>
-      <Text variant="large">Blog post fetch with GraphQL</Text>
+      <Text variant="large">{t('blogPost.title')}</Text>
 
       <Text pt="spacing_8">{data?.post?.title}</Text>
 

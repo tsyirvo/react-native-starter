@@ -3,6 +3,9 @@
     "description": "Please go update the application to access the latest features",
     "title": "Your app is outdated"
   },
+  "blogPost": {
+    "title": "Blog post fetched with GraphQL"
+  },
   "codepush": {
     "cta": "Install now",
     "description": "An app update is mandatory to be able to use the application.",
