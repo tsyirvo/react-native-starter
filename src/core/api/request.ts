@@ -9,6 +9,7 @@ import memoize from 'lodash/memoize';
 import { config } from '$core/constants';
 import { getCurrentLocale } from '$core/i18n/utils/getCurrentLocale';
 
+import { getAuthorizationHeader } from './token';
 import { getAppIdentifier } from './utils/request.utils';
 
 const getClientEndpoint = (env: string) =>
@@ -34,6 +35,10 @@ export const request =
     if (options) client.setHeaders(options);
     client.setHeader('app-id', getAppIdentifier());
     client.setHeader('app-version', config.version);
+
+    const authHeader = await getAuthorizationHeader();
+
+    client.setHeader('authorization', authHeader);
 
     return client.request(query, variables);
   };
