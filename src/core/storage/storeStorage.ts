@@ -10,27 +10,23 @@ class StorageClass {
     this._storage = new MMKV(config);
   }
 
-  setItem = async (key: string, value: string) => {
+  setItem = (key: string, value: string) => {
     this._storage.set(key, value);
-
-    return Promise.resolve();
   };
 
-  getItem = async (key: string) => {
+  getItem = (key: string) => {
     const value = this._storage.getString(key);
 
-    if (!value) return Promise.resolve(null);
+    if (!value) return null;
 
-    return Promise.resolve(value);
+    return value;
   };
 
-  removeItem = async (key: string) => {
+  removeItem = (key: string) => {
     this._storage.delete(key);
-
-    return Promise.resolve();
   };
 }
 
-export const QueryClientStorage = new StorageClass({
-  id: storageKeys.queryStorage.id,
+export const StoreStorage = new StorageClass({
+  id: storageKeys.storeStorage.id,
 });

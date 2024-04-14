@@ -98,6 +98,7 @@
     "graphql": "16.8.1",
     "graphql-request": "6.1.0",
     "i18next": "23.10.1",
+    "immer": "10.0.4",
     "lodash": "4.17.21",
     "mixpanel-react-native": "2.4.0",
     "react": "18.2.0",
@@ -116,7 +117,8 @@
     "react-native-toast-message": "2.2.0",
     "semver": "7.6.0",
     "sp-react-native-in-app-updates": "1.4.0",
-    "zod": "3.22.4"
+    "zod": "3.22.4",
+    "zustand": "4.5.2"
   },
   "devDependencies": {
     "@0no-co/graphqlsp": "1.9.1",
