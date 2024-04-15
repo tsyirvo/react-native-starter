@@ -11853,13 +11853,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flagsmith@npm:3.23.2":
-  version: 3.23.2
-  resolution: "flagsmith@npm:3.23.2"
-  checksum: c6e82465c6872ce7327157319fb1aa62cce39be6718bad428a6544af41d15c933fb5eef5ba32a60323c9483e5c4fbef713a423d7ad934997555f7c9b1b8b2064
-  languageName: node
-  linkType: hard
-
 "flat-cache@npm:^3.0.4":
   version: 3.0.4
   resolution: "flat-cache@npm:3.0.4"
@@ -18375,6 +18368,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-flagsmith@npm:4.0.0":
+  version: 4.0.0
+  resolution: "react-native-flagsmith@npm:4.0.0"
+  peerDependencies:
+    react-native: ">=0.20.0"
+  checksum: f9ab0d9cb13e195c1d41b437f7268145fa2711e8ab345876e3fe81687bc49d5a2cd5d3093c0818473adeed7e927bdbf25e6d09d085ee7b6e6ff764ad94d4e7f4
+  languageName: node
+  linkType: hard
+
 "react-native-gesture-handler@npm:~2.14.0":
   version: 2.14.1
   resolution: "react-native-gesture-handler@npm:2.14.1"
@@ -19209,7 +19211,6 @@ __metadata:
     expo-splash-screen: ~0.26.4
     expo-status-bar: ~1.11.1
     expo-updates: ~0.24.12
-    flagsmith: 3.23.2
     fs-extra: 11.2.0
     graphql: 16.8.1
     graphql-request: 6.1.0
@@ -19237,6 +19238,7 @@ __metadata:
     react-i18next: 14.1.0
     react-native: 0.73.6
     react-native-device-info: 10.13.1
+    react-native-flagsmith: 4.0.0
     react-native-gesture-handler: ~2.14.0
     react-native-keyboard-controller: 1.11.6
     react-native-mmkv: 2.11.0

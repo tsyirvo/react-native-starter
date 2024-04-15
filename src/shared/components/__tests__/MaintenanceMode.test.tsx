@@ -1,4 +1,3 @@
-import { FeatureFlags } from '$core/featureFlags';
 import { render } from '$core/testing';
 
 import { MaintenanceMode } from '../MaintenanceMode';
@@ -9,9 +8,6 @@ describe('MaintenanceMode component', () => {
   });
 
   it('should render nothing by default', () => {
-    // Mocks
-    jest.spyOn(FeatureFlags, 'getFlagValue').mockReturnValue(false);
-
     // Given
     const { queryByTestId } = render(<MaintenanceMode />);
 
