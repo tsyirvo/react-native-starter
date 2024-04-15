@@ -16,7 +16,7 @@ describe('OtherPage component', () => {
     const { getByTestId } = render(<OtherScreen {...props} />);
 
     // Then
-    expect(getByTestId('otherPage_title')).toBeDefined();
+    expect(getByTestId('apiExample_title')).toBeDefined();
   });
 
   it('should trigger the goBack method when the button is pressed', () => {
@@ -24,9 +24,9 @@ describe('OtherPage component', () => {
     const { getByTestId } = render(<OtherScreen {...props} />);
 
     // When
-    fireEvent.press(getByTestId('back_button'));
+    fireEvent.press(getByTestId('apiExample_navigate_button'));
 
     // Then
-    expect(props.navigation.goBack).toHaveBeenCalled();
+    expect(props.navigation.navigate).toHaveBeenCalled();
   });
 });

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { ScrollView } from 'react-native';
 import type { Edge } from 'react-native-safe-area-context';
 
 import { SafeView } from './SafeView';
@@ -7,12 +7,17 @@ import { SafeView } from './SafeView';
 type ScreenProps = {
   edges?: Edge[];
   children: ReactNode;
+  isScrollable?: boolean;
 };
 
-export const Screen = ({ children, edges = [] }: ScreenProps) => {
+export const Screen = ({
+  children,
+  edges = [],
+  isScrollable = true,
+}: ScreenProps) => {
   return (
     <SafeView edges={edges}>
-      <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
+      {isScrollable ? <ScrollView>{children}</ScrollView> : children}
     </SafeView>
   );
 };

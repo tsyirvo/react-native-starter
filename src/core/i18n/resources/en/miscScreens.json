@@ -11,6 +11,34 @@
     "description": "An app update is mandatory to be able to use the application.",
     "title": "Update is required"
   },
+  "dummyForm": {
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email",
+        "validation": {
+          "email": "Please enter a valid email"
+        }
+      },
+      "firstName": {
+        "label": "First name",
+        "placeholder": "John",
+        "validation": {
+          "maxLength": "First name must be at most 20 characters long",
+          "minLength": "First name must be at least 2 characters long"
+        }
+      },
+      "lastName": {
+        "label": "Last name",
+        "placeholder": "Doe",
+        "validation": {
+          "maxLength": "Last name must be at most 30 characters long",
+          "minLength": "Last name must be at least 2 characters long"
+        }
+      }
+    },
+    "screenTitle": "Dummy form"
+  },
   "errorBoundary": {
     "cta": "Relaunch the app",
     "description": "An unknown error occured. If the error persist, contact an administrator.",

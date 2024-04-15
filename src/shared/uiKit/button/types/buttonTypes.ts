@@ -6,7 +6,7 @@ export interface ButtonProps extends VariantProps<Theme, 'buttonVariants'> {
   testID?: string;
   onPress:
     | ((arg: unknown) => Promise<unknown>)
-    | ((arg: unknown) => void)
+    | ((arg?: unknown) => void)
     | undefined;
   isDisabled?: boolean;
   isLoading?: boolean;

@@ -4,6 +4,7 @@ import type { ErrorInfo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { StatusBar, StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -63,17 +64,19 @@ const App = () => {
           >
             <Splashscreen>
               <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-                <Sandbox>
-                  <>
-                    <RootStack />
+                <KeyboardProvider>
+                  <Sandbox>
+                    <>
+                      <RootStack />
 
-                    <Toast config={toastConfig} />
+                      <Toast config={toastConfig} />
 
-                    <AppUpdateNeeded />
+                      <AppUpdateNeeded />
 
-                    <MaintenanceMode />
-                  </>
-                </Sandbox>
+                      <MaintenanceMode />
+                    </>
+                  </Sandbox>
+                </KeyboardProvider>
               </SafeAreaProvider>
             </Splashscreen>
           </ErrorBoundary>
