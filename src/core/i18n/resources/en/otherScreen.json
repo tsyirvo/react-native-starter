@@ -1,7 +1,13 @@
 {
+  "form": {
+    "cta": "Navigate",
+    "title": "Form example"
+  },
+  "graphql": {
+    "cta": "Navigate",
+    "title": "API call example"
+  },
   "navigation": {
-    "backCta": "Back",
-    "tabBar": "Another page",
-    "title": "Another page"
+    "title": "Other screen"
   }
 }

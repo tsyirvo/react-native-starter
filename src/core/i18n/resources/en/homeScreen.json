@@ -5,6 +5,7 @@
   },
   "navigation": {
     "content": "Press to navigate",
+    "screenTitle": "Home",
     "title": "Navigate to another page"
   },
   "sandbox": {

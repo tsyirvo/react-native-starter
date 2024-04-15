@@ -15,13 +15,6 @@ import { screens } from './screens';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const navigatorScreenOptions: NativeStackNavigationOptions = {
-  gestureEnabled: true,
-};
-const screenOptions: NativeStackNavigationOptions = {
-  headerShown: false,
-};
-
 export const RootStack = () => {
   const routeNameRef = useRef<string>();
   const navigationRef = useNavigationContainerRef();
@@ -58,7 +51,10 @@ export const RootStack = () => {
         <Stack.Screen
           component={screens.HomeScreen}
           name="HomeScreen"
-          options={screenOptions}
+          options={{
+            ...screenOptions,
+            title: t('navigation.screenTitle', { ns: 'homeScreen' }),
+          }}
         />
 
         <Stack.Screen
@@ -68,8 +64,19 @@ export const RootStack = () => {
           options={{ title: t('navigation.title') }}
         />
 
+        <Stack.Screen component={screens.BlogPost} name="BlogPost" />
+
+        <Stack.Screen component={screens.DummyForm} name="DummyForm" />
+
         {/* inject screens before this */}
       </Stack.Navigator>
     </NavigationContainer>
   );
+};
+
+const navigatorScreenOptions: NativeStackNavigationOptions = {
+  gestureEnabled: true,
+};
+const screenOptions: NativeStackNavigationOptions = {
+  headerShown: false,
 };

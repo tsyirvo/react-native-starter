@@ -1,7 +1,13 @@
 {
+  "form": {
+    "cta": "Naviguer",
+    "title": "Formulaire"
+  },
+  "graphql": {
+    "cta": "Naviguer",
+    "title": "Example d'appel API"
+  },
   "navigation": {
-    "backCta": "Retour en arrière",
-    "tabBar": "Une autre page",
-    "title": "Une autre page"
+    "title": "Autre écran"
   }
 }

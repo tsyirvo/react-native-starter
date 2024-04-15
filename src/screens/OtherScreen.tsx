@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
 import type { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
-import { BlogPost } from '$features/blogPost';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 import { Screen } from '$shared/uiKit/Screen';
@@ -13,25 +12,37 @@ type OtherScreenProps = {
 export const OtherScreen = ({ navigation }: OtherScreenProps) => {
   const { t } = useTranslation('otherScreen');
 
-  const goBack = () => {
-    navigation.goBack();
+  const goToBlogPost = () => {
+    navigation.navigate('BlogPost');
+  };
+
+  const goToDummyForm = () => {
+    navigation.navigate('DummyForm');
   };
 
   return (
     <Screen>
-      <Box alignItems="center" justifyContent="center" mt="spacing_16">
+      <Box borderBottomColor="black" borderBottomWidth={1} p="spacing_16">
         <Text testID="otherPage_title" variant="large">
-          {t('navigation.title')}
+          {t('graphql.title')}
         </Text>
 
-        <Box mt="spacing_24">
-          <Button.Text testID="back_button" onPress={goBack}>
-            {t('navigation.backCta')}
+        <Box alignItems="flex-start" mt="spacing_8">
+          <Button.Text testID="back_button" onPress={goToBlogPost}>
+            {t('graphql.cta')}
           </Button.Text>
         </Box>
+      </Box>
 
-        <Box pt="spacing_24">
-          <BlogPost />
+      <Box pt="spacing_16" px="spacing_16">
+        <Text testID="otherPage_title" variant="large">
+          {t('form.title')}
+        </Text>
+
+        <Box alignItems="flex-start" mt="spacing_8">
+          <Button.Text testID="back_button" onPress={goToDummyForm}>
+            {t('form.cta')}
+          </Button.Text>
         </Box>
       </Box>
     </Screen>
