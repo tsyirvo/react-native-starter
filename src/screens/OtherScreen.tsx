@@ -23,26 +23,25 @@ export const OtherScreen = ({ navigation }: OtherScreenProps) => {
   return (
     <Screen>
       <Box borderBottomColor="black" borderBottomWidth={1} p="spacing_16">
-        <Text testID="otherPage_title" variant="large">
+        <Text testID="apiExample_title" variant="large">
           {t('graphql.title')}
         </Text>
 
         <Box alignItems="flex-start" mt="spacing_8">
-          <Button.Text testID="back_button" onPress={goToBlogPost}>
+          <Button.Text
+            testID="apiExample_navigate_button"
+            onPress={goToBlogPost}
+          >
             {t('graphql.cta')}
           </Button.Text>
         </Box>
       </Box>
 
       <Box pt="spacing_16" px="spacing_16">
-        <Text testID="otherPage_title" variant="large">
-          {t('form.title')}
-        </Text>
+        <Text variant="large">{t('form.title')}</Text>
 
         <Box alignItems="flex-start" mt="spacing_8">
-          <Button.Text testID="back_button" onPress={goToDummyForm}>
-            {t('form.cta')}
-          </Button.Text>
+          <Button.Text onPress={goToDummyForm}>{t('form.cta')}</Button.Text>
         </Box>
       </Box>
     </Screen>

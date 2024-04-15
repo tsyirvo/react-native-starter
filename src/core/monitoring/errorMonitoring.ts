@@ -31,7 +31,7 @@ class ErrorMonitoringClass {
 
     Sentry.init({
       dsn: config.sentryDsn,
-      debug: config.env === 'development',
+      debug: false,
       tracesSampleRate: sampleRate,
       enabled: isEnabled,
       environment: config.env,

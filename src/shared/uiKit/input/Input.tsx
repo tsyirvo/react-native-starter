@@ -8,26 +8,11 @@ import { makeAppStyles, theme, fontSizes } from '$core/theme';
 
 import { Box, Text } from '../primitives';
 
-interface InputProps extends TextInputProps {
+export interface InputProps extends TextInputProps {
   label?: string;
   error?: string;
   isEditable?: boolean;
 }
-
-const useStyles = makeAppStyles(({ colors }) => ({
-  input: {
-    fontSize: fontSizes.regular,
-    borderBottomWidth: 1,
-    padding: 0,
-    paddingBottom: 5,
-  },
-  defaultState: {
-    borderBottomColor: colors.secondary_80,
-  },
-  errorState: {
-    borderBottomColor: colors.red,
-  },
-}));
 
 export const Input = forwardRef<TextInput, InputProps>(
   ({ label, error, isEditable = true, ...props }, ref) => {
@@ -50,8 +35,8 @@ export const Input = forwardRef<TextInput, InputProps>(
           style={[styles.input, errorStyles]}
           testID="inputID"
           underlineColorAndroid="transparent"
-          {...props}
           onChangeText={props.onChangeText}
+          {...props}
         />
 
         {!!error && (
@@ -65,5 +50,20 @@ export const Input = forwardRef<TextInput, InputProps>(
     );
   },
 );
+
+const useStyles = makeAppStyles(({ colors }) => ({
+  input: {
+    fontSize: fontSizes.regular,
+    borderBottomWidth: 1,
+    padding: 0,
+    paddingBottom: 5,
+  },
+  defaultState: {
+    borderBottomColor: colors.secondary_80,
+  },
+  errorState: {
+    borderBottomColor: colors.red,
+  },
+}));
 
 Input.displayName = 'Input';

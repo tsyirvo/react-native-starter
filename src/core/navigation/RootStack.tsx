@@ -66,7 +66,11 @@ export const RootStack = () => {
 
         <Stack.Screen component={screens.BlogPost} name="BlogPost" />
 
-        <Stack.Screen component={screens.DummyForm} name="DummyForm" />
+        <Stack.Screen
+          component={screens.DummyForm}
+          name="DummyForm"
+          options={{ title: t('dummyForm.screenTitle', { ns: 'miscScreens' }) }}
+        />
 
         {/* inject screens before this */}
       </Stack.Navigator>

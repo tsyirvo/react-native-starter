@@ -11,6 +11,34 @@
     "description": "Une mise à jour de l'application est requise pour fonctionner.",
     "title": "Mise à jour requise"
   },
+  "dummyForm": {
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Saisir un email",
+        "validation": {
+          "email": "Il faut un email valide"
+        }
+      },
+      "firstName": {
+        "label": "Prénom",
+        "placeholder": "Martin",
+        "validation": {
+          "maxLength": "Le prénom doit faire au plus 20 caractères",
+          "minLength": "Le prénom doit faire au moins 2 caractères"
+        }
+      },
+      "lastName": {
+        "label": "Nom",
+        "placeholder": "Dupont",
+        "validation": {
+          "maxLength": "Le nom doit faire au plus 30 caractères",
+          "minLength": "Le nom doit faire au moins 2 caractères"
+        }
+      }
+    },
+    "screenTitle": "Dummy form"
+  },
   "errorBoundary": {
     "cta": "Relancer l'app",
     "description": "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
