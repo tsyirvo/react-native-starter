@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useRunOnMount } from '$shared/hooks/useRunOnMount';
 import { Box, Text } from '$shared/uiKit/primitives';
 
 export const MaintenanceMode = () => {
-  const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
-
   const { t } = useTranslation('miscScreens');
 
-  useRunOnMount(() => {
-    // TODO(prod): Save correct value to feature flag
-    // const isMaintenanceModeEnabled =
-    //   FeatureFlags.getFlagValue('isMaintenanceMode');
+  // TODO(prod): Save correct value to feature flag
+  const isMaintenanceModeEnabled = false;
+  // const isMaintenanceModeEnabled = useIsFeatureFlagEnabled('is-maintenance-mode')
 
-    const isMaintenanceModeEnabled = false;
-
-    setIsMaintenanceMode(isMaintenanceModeEnabled);
-  });
-
-  if (!isMaintenanceMode) {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (!isMaintenanceModeEnabled) {
     return null;
   }
 

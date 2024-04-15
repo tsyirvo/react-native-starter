@@ -13,6 +13,7 @@ import Toast from 'react-native-toast-message';
 
 import { persistOptions, queryClient } from '$core/api/queryClient';
 import { bootstrapExternalSdks } from '$core/bootstrapExternalSdks';
+import { FeatureFlagsProvider } from '$core/featureFlags';
 import { ErrorMonitoring } from '$core/monitoring';
 import { RootStack } from '$core/navigation';
 import { theme } from '$core/theme';
@@ -66,15 +67,17 @@ const App = () => {
               <SafeAreaProvider initialMetrics={initialWindowMetrics}>
                 <KeyboardProvider>
                   <Sandbox>
-                    <>
-                      <RootStack />
+                    <FeatureFlagsProvider>
+                      <>
+                        <RootStack />
 
-                      <Toast config={toastConfig} />
+                        <Toast config={toastConfig} />
 
-                      <AppUpdateNeeded />
+                        <AppUpdateNeeded />
 
-                      <MaintenanceMode />
-                    </>
+                        <MaintenanceMode />
+                      </>
+                    </FeatureFlagsProvider>
                   </Sandbox>
                 </KeyboardProvider>
               </SafeAreaProvider>

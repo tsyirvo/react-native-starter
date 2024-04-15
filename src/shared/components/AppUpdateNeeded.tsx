@@ -14,10 +14,12 @@ export const AppUpdateNeeded = () => {
 
   const { t } = useTranslation('miscScreens');
 
+  // const flagsmith = useFlagsmith();
+
   useRunOnMount(() => {
     // TODO(prod): Save correct value to feature flag
-    // const lastSupportedVersion: string = FeatureFlags.getFlagValue(
-    //   'lastSupportedAppVersion',
+    // const lastSupportedVersion = flagsmith.getValue(
+    //   'last-supported-app-version',
     // );
 
     // if (!lastSupportedVersion) {

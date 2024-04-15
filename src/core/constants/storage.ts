@@ -9,4 +9,7 @@ export const storageKeys = {
   storeStorage: {
     id: 'store-storage',
   },
+  featureFlagStorage: {
+    id: 'feature-flag-storage',
+  },
 };
