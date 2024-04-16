@@ -20,6 +20,7 @@ const apiURL = Env.API_URL;
 const sentryDsn = Env.SENTRY_DSN;
 const mixpanelToken = Env.MIXPANEL_TOKEN;
 const flagsmithKey = Env.FLAGSMITH_KEY;
+const oneSignalAppId = Env.ONE_SIGNAL_APP_ID;
 
 export const config = {
   defaultLocale: 'en',
@@ -36,4 +37,5 @@ export const config = {
   sentryDsn,
   mixpanelToken,
   flagsmithKey,
+  oneSignalAppId,
 };

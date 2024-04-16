@@ -4,6 +4,7 @@ import { Analytics } from './analytics';
 import { initDateLocale } from './date';
 import { getSupportedDateLocale } from './i18n';
 import { ErrorMonitoring } from './monitoring';
+import { Notifications } from './notifications';
 
 const initAnalytics = () => {
   Analytics.init().catch((error: unknown) => {
@@ -14,6 +15,10 @@ const initAnalytics = () => {
   });
 };
 
+const initNotifications = () => {
+  Notifications.init();
+};
+
 const initDateLib = () => {
   const localeToUse = getSupportedDateLocale();
 
@@ -21,9 +26,8 @@ const initDateLib = () => {
 };
 
 export const bootstrapExternalSdks = () => {
-  initAnalytics();
-
   ErrorMonitoring.init();
-
+  initAnalytics();
+  initNotifications();
   initDateLib();
 };

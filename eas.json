@@ -19,6 +19,12 @@
         "EXPO_NO_DOTENV": "1"
       }
     },
+    "development-device": {
+      "extends": "development",
+      "ios": {
+        "simulator": false
+      }
+    },
     "test:debug": {
       "extends": "development",
       "android": {
