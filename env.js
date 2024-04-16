@@ -41,6 +41,7 @@ const client = z.object({
   FLAGSMITH_KEY: z.string(),
   MIXPANEL_TOKEN: z.string(),
   SENTRY_DSN: z.string(),
+  ONE_SIGNAL_APP_ID: z.string(),
 });
 
 const buildTime = z.object({
@@ -51,6 +52,7 @@ const buildTime = z.object({
   SENTRY_ORG: z.string(),
   SENTRY_PROJECT: z.string(),
   SENTRY_AUTH_TOKEN: z.string(),
+  EXPO_APPLE_TEAM_ID: z.string(),
 });
 
 // Environment variables config
@@ -67,6 +69,7 @@ const _clientEnv = {
   FLAGSMITH_KEY: process.env.FLAGSMITH_KEY,
   MIXPANEL_TOKEN: process.env.MIXPANEL_TOKEN,
   SENTRY_DSN: process.env.SENTRY_DSN,
+  ONE_SIGNAL_APP_ID: process.env.ONE_SIGNAL_APP_ID,
 };
 
 const _buildTimeEnv = {
@@ -77,6 +80,7 @@ const _buildTimeEnv = {
   SENTRY_ORG: process.env.SENTRY_ORG,
   SENTRY_PROJECT: process.env.SENTRY_PROJECT,
   SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
+  EXPO_APPLE_TEAM_ID: process.env.EXPO_APPLE_TEAM_ID,
 };
 
 const _env = {

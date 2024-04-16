@@ -2,6 +2,7 @@ import * as Localization from 'expo-localization';
 import type { LanguageDetectorModule } from 'i18next';
 
 import { config, storageKeys } from '$core/constants';
+import { Notifications } from '$core/notifications';
 import { AppStorage } from '$core/storage';
 
 const getSelectedLocale = () =>
@@ -24,14 +25,19 @@ const detectLanguageToUse = () => {
   const currentlySelectedLocale = getSelectedLocale();
 
   if (currentlySelectedLocale) {
+    Notifications.setUserLanguage(currentlySelectedLocale);
+
     return currentlySelectedLocale;
   }
 
   const phonePrimaryLocale = detectPhonePrimaryLocale();
 
-  setPhonePrimaryLocale(phonePrimaryLocale ?? config.defaultLocale);
+  const selectedLanguage = phonePrimaryLocale ?? config.defaultLocale;
 
-  return phonePrimaryLocale;
+  Notifications.setUserLanguage(selectedLanguage);
+  setPhonePrimaryLocale(selectedLanguage);
+
+  return selectedLanguage;
 };
 
 export const languageDetector: LanguageDetectorModule = {

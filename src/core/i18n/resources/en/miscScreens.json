@@ -47,5 +47,9 @@
   "maintenanceMode": {
     "description": "It will be available online as soon as possible",
     "title": "The app is in maintenance"
+  },
+  "notifications": {
+    "cta": "Request",
+    "title": "Request Notification permission"
   }
 }

@@ -3083,6 +3083,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expo/image-utils@npm:^0.3.22":
+  version: 0.3.23
+  resolution: "@expo/image-utils@npm:0.3.23"
+  dependencies:
+    "@expo/spawn-async": 1.5.0
+    chalk: ^4.0.0
+    fs-extra: 9.0.0
+    getenv: ^1.0.0
+    jimp-compact: 0.16.1
+    mime: ^2.4.4
+    node-fetch: ^2.6.0
+    parse-png: ^2.1.0
+    resolve-from: ^5.0.0
+    semver: 7.3.2
+    tempy: 0.3.0
+  checksum: 74057f8f963243a68bbc930406200cf203fe433d009dc937d0270b75bcfc77d3ac2cbbfcbf1e80d62682907bb6f371dd13b993c4930c01fcd8157dccd2aa6408
+  languageName: node
+  linkType: hard
+
 "@expo/image-utils@npm:^0.4.0":
   version: 0.4.1
   resolution: "@expo/image-utils@npm:0.4.1"
@@ -11201,6 +11220,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-constants@npm:~15.4.3":
+  version: 15.4.6
+  resolution: "expo-constants@npm:15.4.6"
+  dependencies:
+    "@expo/config": ~8.5.0
+  peerDependencies:
+    expo: "*"
+  checksum: 415fbaf8e942e7587aa58b88d8c4118d66b067e473335b0838bd96e582d6e85564c474831397049833ba3036b2726427cdfd6f18670b1d62c8cae9d7b836bd14
+  languageName: node
+  linkType: hard
+
 "expo-dev-client@npm:~3.3.11":
   version: 3.3.11
   resolution: "expo-dev-client@npm:3.3.11"
@@ -11314,6 +11344,16 @@ __metadata:
   peerDependencies:
     expo: "*"
   checksum: d06b2e6b6e6b49d901546a93c6c39b8562ce313a7585cb118e67b8deca109d06abdf66e508d2a4be83528bee2e52762632b9e792031f39fed8e81ab2900fc8be
+  languageName: node
+  linkType: hard
+
+"expo-linking@npm:~6.2.2":
+  version: 6.2.2
+  resolution: "expo-linking@npm:6.2.2"
+  dependencies:
+    expo-constants: ~15.4.3
+    invariant: ^2.2.4
+  checksum: 7deaedc2d410a020f23c2a70f8d7ed5334dfb10ff36259d2042fa5eabe6278065956012f4b7cdfe1fb1b5aea1f5f30cded381d338687eef9e6445bd557c7a112
   languageName: node
   linkType: hard
 
@@ -13299,7 +13339,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"invariant@npm:^2.2.4":
+"invariant@npm:^2.2.2, invariant@npm:^2.2.4":
   version: 2.2.4
   resolution: "invariant@npm:2.2.4"
   dependencies:
@@ -16208,7 +16248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime@npm:^2.4.1":
+"mime@npm:^2.4.1, mime@npm:^2.4.4":
   version: 2.6.0
   resolution: "mime@npm:2.6.0"
   bin:
@@ -17032,6 +17072,15 @@ __metadata:
   dependencies:
     wrappy: "npm:1"
   checksum: cd0a88501333edd640d95f0d2700fbde6bff20b3d4d9bdc521bdd31af0656b5706570d6c6afe532045a20bb8dc0849f8332d6f2a416e0ba6d3d3b98806c7db68
+  languageName: node
+  linkType: hard
+
+"onesignal-expo-plugin@npm:2.0.2":
+  version: 2.0.2
+  resolution: "onesignal-expo-plugin@npm:2.0.2"
+  dependencies:
+    "@expo/image-utils": ^0.3.22
+  checksum: 4c136a5473fdde065cd43a4d4dc13a425368996fee6b545218083bc5d1f551d4242e82cf376fdaaea00a4f3b22ce989789e7097b43bb3e22f1e7a4fa398b5cd4
   languageName: node
   linkType: hard
 
@@ -18414,6 +18463,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-onesignal@npm:5.1.1":
+  version: 5.1.1
+  resolution: "react-native-onesignal@npm:5.1.1"
+  dependencies:
+    invariant: ^2.2.2
+  checksum: 1c71d9cccf15fd24e5ebc11145d70771d97086c45e28e083a0d95fb1ef36177af25ab10abd2bd892eab37cd4623e9ea241b55ab2f2405e6b6ddcbe0cd0ecddd2
+  languageName: node
+  linkType: hard
+
 "react-native-reanimated@npm:~3.6.2":
   version: 3.6.3
   resolution: "react-native-reanimated@npm:3.6.3"
@@ -19205,6 +19263,7 @@ __metadata:
     expo-device: ~5.9.3
     expo-font: ~11.10.3
     expo-image: ~1.10.6
+    expo-linking: ~6.2.2
     expo-localization: ~14.8.3
     expo-network: ~5.8.0
     expo-secure-store: ~12.8.1
@@ -19227,6 +19286,7 @@ __metadata:
     lint-staged: 15.2.2
     lodash: 4.17.21
     mixpanel-react-native: 2.4.0
+    onesignal-expo-plugin: 2.0.2
     patch-package: 8.0.0
     pinst: 3.0.0
     postinstall-postinstall: 2.1.0
@@ -19242,6 +19302,7 @@ __metadata:
     react-native-gesture-handler: ~2.14.0
     react-native-keyboard-controller: 1.11.6
     react-native-mmkv: 2.11.0
+    react-native-onesignal: 5.1.1
     react-native-reanimated: ~3.6.2
     react-native-safe-area-context: 4.8.2
     react-native-screens: ~3.29.0

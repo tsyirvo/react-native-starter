@@ -47,5 +47,9 @@
   "maintenanceMode": {
     "description": "Elle sera de nouveau fonctionnelle au plus vite",
     "title": "L'app est en maintenance"
+  },
+  "notifications": {
+    "cta": "Demander",
+    "title": "Demander les permissions de Notification"
   }
 }

@@ -6,6 +6,7 @@ import type { ExpoConfig, ConfigContext } from '@expo/config';
 import { ClientEnv, Env } from './env';
 
 const isProductionEnv = Env.APP_ENV === 'production';
+const isDevelopmentEnv = Env.APP_ENV === 'development';
 
 const plugins: ExpoConfig['plugins'] = [
   [
@@ -59,6 +60,13 @@ const plugins: ExpoConfig['plugins'] = [
     },
   ],
   'expo-secure-store',
+  [
+    'onesignal-expo-plugin',
+    {
+      mode: isDevelopmentEnv ? 'development' : 'production',
+      devTeam: Env.EXPO_APPLE_TEAM_ID,
+    },
+  ],
 ];
 
 // eslint-disable-next-line import/no-default-export
