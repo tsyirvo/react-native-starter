@@ -18,6 +18,7 @@ module.exports = {
         sentryDsn: undefined,
         mixpanelToken: undefined,
         flagsmithKey: undefined,
+        oneSignalAppId: undefined,
       },
     },
   },
