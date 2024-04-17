@@ -100,6 +100,7 @@
     "expo-secure-store": "~12.8.1",
     "expo-splash-screen": "~0.26.4",
     "expo-status-bar": "~1.11.1",
+    "expo-store-review": "~6.8.3",
     "expo-updates": "~0.24.12",
     "graphql": "16.8.1",
     "graphql-request": "6.1.0",

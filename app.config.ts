@@ -94,6 +94,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: Env.BUNDLE_ID,
+    // TODO(prod): Add correct app store URL
+    appStoreUrl: `https://apps.apple.com/app/XXX/${Env.ITUNES_ITEM_ID}`,
     config: {
       usesNonExemptEncryption: false,
     },
@@ -104,6 +106,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: '#000',
     },
     package: Env.PACKAGE,
+    playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
   },
   plugins,
   extra: {
