@@ -7,6 +7,7 @@ import { useAppStateTracking } from './hooks/useAppStateTracking';
 import { useNavigationState } from './hooks/useNavigationState';
 import { screens } from './screens';
 import type { RootStackParamList } from './types/navigation.types';
+import { deepLinks } from './utils/deepLinks';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,6 +22,7 @@ export const RootStack = () => {
   return (
     <NavigationContainer
       ref={navigationRef}
+      linking={deepLinks}
       onReady={onNavigationReady}
       onStateChange={onStateChange}
     >
