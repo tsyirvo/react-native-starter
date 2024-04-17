@@ -75,6 +75,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   name: Env.APP_NAME,
   description: `${Env.APP_NAME} Mobile App`,
   owner: Env.EXPO_ACCOUNT_OWNER,
+  scheme: 'rn-starter',
   slug: 'rn-starter',
   version: Env.VERSION.toString(),
   runtimeVersion: '1.0.0',
