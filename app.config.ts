@@ -64,7 +64,6 @@ const plugins: ExpoConfig['plugins'] = [
     'onesignal-expo-plugin',
     {
       mode: isDevelopmentEnv ? 'development' : 'production',
-      devTeam: Env.EXPO_APPLE_TEAM_ID,
     },
   ],
 ];
