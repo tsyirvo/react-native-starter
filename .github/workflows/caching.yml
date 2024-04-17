@@ -1,8 +1,10 @@
 name: Cache Yarn dependencies
+
 on:
   push:
     branches:
       - develop
+  pull_request:
     paths:
       - '.github/workflows/caching.yml'
 
@@ -34,7 +36,7 @@ jobs:
 
       - name: Get Yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
       - name: Lookup cache
         id: cache
@@ -67,7 +69,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
       - name: Save cache
         id: cache

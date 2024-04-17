@@ -9,39 +9,8 @@ on:
       - '.github/workflows/quality.yml'
 
 jobs:
-  set-pr-data:
-    name: Check the PR state then set required outputs
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ github.token }}
-    outputs:
-      base_ref: ${{ steps.setting.outputs.base_ref }}
-      head_ref: ${{ steps.setting.outputs.head_ref }}
-      pr_number: ${{ steps.setting.outputs.pr_number }}
-      is_draft: ${{ steps.setting.outputs.is_draft }}
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Checking the PR state
-        id: pr
-        run: |
-          echo "state=$(gh pr view --json state | jq -r '.state')" >> $GITHUB_OUTPUT
-
-      - name: Setting outputs
-        if: steps.pr.outputs.state == 'OPEN'
-        id: setting
-        run: |
-          echo "base_ref=$(gh pr view --json baseRefName | jq -r '.baseRefName')" >> $GITHUB_OUTPUT
-          echo "head_ref=$(gh pr view --json headRefName | jq -r '.headRefName')" >> $GITHUB_OUTPUT
-          echo "pr_number=$(gh pr view --json number | jq -r '.number')" >> $GITHUB_OUTPUT
-          echo "is_draft=$(gh pr view --json isDraft | jq -r '.isDraft')" >> $GITHUB_OUTPUT
-
   quality:
-    needs: set-pr-data
     runs-on: ubuntu-latest
-    if: |
-      needs.set-pr-data.outputs.is_draft == 'false'
 
     steps:
       - name: Checkout repo
@@ -54,7 +23,7 @@ jobs:
 
       - name: Get Yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
       - name: Restore cache
         uses: actions/cache/restore@v3
