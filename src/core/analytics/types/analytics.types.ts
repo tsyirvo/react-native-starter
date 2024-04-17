@@ -10,10 +10,12 @@ export type AnalyticsValidPropertyType =
 export type SupportedPropertyNames = 'session-count' | 'language';
 
 export type SupportedEventNames =
+  // App lifecycle
   | 'app-start'
-  | 'XXX-screen-viewed'
-  | 'user-logged-in'
-  | 'user-logged-out';
+  | 'app-put-in-background'
+  | 'app-put-in-foreground'
+  // Navigation
+  | 'XXX-screen-viewed';
 
 export type SupportedProductIds =
   | 'monthly-subscription'

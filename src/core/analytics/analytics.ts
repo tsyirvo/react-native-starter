@@ -30,7 +30,6 @@ class AnalyticsClass {
     try {
       await init(config.amplitudeApiKey, undefined, {
         appVersion: config.version,
-        serverZone: 'EU',
       }).promise;
 
       this.trackEvent('app-start');

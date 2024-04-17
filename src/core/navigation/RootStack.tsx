@@ -1,45 +1,22 @@
-import {
-  NavigationContainer,
-  useNavigationContainerRef,
-} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Analytics } from '$core/analytics';
-import { routingInstrumentation } from '$core/monitoring';
-
+import { useAppStateTracking } from './hooks/useAppStateTracking';
+import { useNavigationState } from './hooks/useNavigationState';
 import { screens } from './screens';
 import type { RootStackParamList } from './types/navigation.types';
-import { convertStringToKebabCase } from './utils/navigation.utils';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootStack = () => {
-  const routeNameRef = useRef<string>();
-  const navigationRef = useNavigationContainerRef();
-
   const { t } = useTranslation('otherScreen');
 
-  const onNavigationReady = () => {
-    routeNameRef.current = navigationRef.getCurrentRoute()?.name;
+  const { navigationRef, onNavigationReady, onStateChange } =
+    useNavigationState();
 
-    routingInstrumentation.registerNavigationContainer(navigationRef);
-  };
-
-  const onStateChange = () => {
-    const previousRouteName = routeNameRef.current;
-    const currentRouteName = navigationRef.getCurrentRoute()?.name;
-
-    if (currentRouteName && previousRouteName !== currentRouteName) {
-      routeNameRef.current = currentRouteName;
-
-      Analytics.trackEvent(
-        `${convertStringToKebabCase(currentRouteName)}-viewed` as 'XXX-screen-viewed',
-      );
-    }
-  };
+  useAppStateTracking();
 
   return (
     <NavigationContainer
@@ -70,6 +47,7 @@ export const RootStack = () => {
         <Stack.Screen
           component={screens.BlogPostScreen}
           name="BlogPostScreen"
+          options={{ title: t('blogPost.screenTitle', { ns: 'miscScreens' }) }}
         />
 
         <Stack.Screen

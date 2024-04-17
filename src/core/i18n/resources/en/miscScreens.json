@@ -4,6 +4,7 @@
     "title": "Your app is outdated"
   },
   "blogPost": {
+    "screenTitle": "Blog post",
     "title": "Blog post fetched with GraphQL"
   },
   "codepush": {
