@@ -18,7 +18,7 @@ const iosBundleIdentifier = Constants.expoConfig?.ios?.bundleIdentifier ?? '';
 const androidPackageName = Constants.expoConfig?.android?.package ?? '';
 const apiURL = Env.API_URL;
 const sentryDsn = Env.SENTRY_DSN;
-const mixpanelToken = Env.MIXPANEL_TOKEN;
+const amplitudeApiKey = Env.AMPLITUDE_API_KEY;
 const flagsmithKey = Env.FLAGSMITH_KEY;
 const oneSignalAppId = Env.ONE_SIGNAL_APP_ID;
 
@@ -35,7 +35,7 @@ export const config = {
   apiURL,
   // SDKs
   sentryDsn,
-  mixpanelToken,
+  amplitudeApiKey,
   flagsmithKey,
   oneSignalAppId,
 };

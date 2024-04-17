@@ -4,6 +4,7 @@
     "title": "Votre app est trop vieille"
   },
   "blogPost": {
+    "screenTitle": "Article de blog",
     "title": "Article récupéré avec GraphQL"
   },
   "codepush": {

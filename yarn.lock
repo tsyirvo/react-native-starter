@@ -49,6 +49,66 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@amplitude/analytics-client-common@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@amplitude/analytics-client-common@npm:1.2.2"
+  dependencies:
+    "@amplitude/analytics-connector": ^1.5.0
+    "@amplitude/analytics-core": ^1.2.5
+    "@amplitude/analytics-types": ^1.3.4
+    tslib: ^2.4.1
+  checksum: 1168346064d98fe754a4383d0995f7b78d234cf435a21638b80d3bce196f79fe25ab41c6033ca95f52b18e7f31181209509ed76529c296134120d8490d015d6f
+  languageName: node
+  linkType: hard
+
+"@amplitude/analytics-connector@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@amplitude/analytics-connector@npm:1.5.0"
+  checksum: 157115b642e8b254a88184fe3294150321fdd482388f262bdc08f9ab0c68b01b5f10d2e35a924edb8a8380f0944f8b1363133c2a3f42b59e33da319bfe21c8fa
+  languageName: node
+  linkType: hard
+
+"@amplitude/analytics-core@npm:^1.2.5":
+  version: 1.2.5
+  resolution: "@amplitude/analytics-core@npm:1.2.5"
+  dependencies:
+    "@amplitude/analytics-types": ^1.3.4
+    tslib: ^2.4.1
+  checksum: e0ad121360d21acb811aa7b8728479cbe177948dbfa875b6234b127d3a25fa67bdcc96c42ae20ce20adef34de49ea1db743e47ff1ecefe50273e6a3db8d12dbd
+  languageName: node
+  linkType: hard
+
+"@amplitude/analytics-react-native@npm:1.4.7":
+  version: 1.4.7
+  resolution: "@amplitude/analytics-react-native@npm:1.4.7"
+  dependencies:
+    "@amplitude/analytics-client-common": ^1.2.2
+    "@amplitude/analytics-core": ^1.2.5
+    "@amplitude/analytics-types": ^1.3.4
+    "@amplitude/ua-parser-js": ^0.7.31
+    "@react-native-async-storage/async-storage": ^1.17.11
+    tslib: ^2.4.1
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 78e5f159cb4b1e3c7d1724cb69b24fa85a29b6bb6a0df80dd25a7d0cec94ac6708e4107f1af5bd797582daf0aa721ad1a396e8929cac2d4241c8b3abd1258090
+  languageName: node
+  linkType: hard
+
+"@amplitude/analytics-types@npm:^1.3.4":
+  version: 1.3.4
+  resolution: "@amplitude/analytics-types@npm:1.3.4"
+  checksum: 664ea9ab68f834680d9b91d7b867798e5823ee8977ee9d4d351977c023d9e3507d73bcdc601d1aa332b62052c97fe45cef06a4d225753dd215eab6e6b8776eb2
+  languageName: node
+  linkType: hard
+
+"@amplitude/ua-parser-js@npm:^0.7.31":
+  version: 0.7.33
+  resolution: "@amplitude/ua-parser-js@npm:0.7.33"
+  checksum: b08ce4cd4e96fed9eebffadb4060d24751cea80caf4265e6b829b7cfdb6561431386015674b3ac330a8987b990e2ca70725d4298eb1438beccb85264848b0b34
+  languageName: node
+  linkType: hard
+
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
@@ -5145,6 +5205,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-async-storage/async-storage@npm:1.21.0":
+  version: 1.21.0
+  resolution: "@react-native-async-storage/async-storage@npm:1.21.0"
+  dependencies:
+    merge-options: ^3.0.4
+  peerDependencies:
+    react-native: ^0.0.0-0 || >=0.60 <1.0
+  checksum: 969cdeb444a037087b1897553082e148e25c8331055dd0dc142f76deeb4aadd9ed5ec26926ae990b3e9ff088396e74ab557148a2dd2a7db86058051b774f2619
+  languageName: node
+  linkType: hard
+
+"@react-native-async-storage/async-storage@npm:^1.17.11":
+  version: 1.23.1
+  resolution: "@react-native-async-storage/async-storage@npm:1.23.1"
+  dependencies:
+    merge-options: ^3.0.4
+  peerDependencies:
+    react-native: ^0.0.0-0 || >=0.60 <1.0
+  checksum: 7096546ed4a5faf1f6e0425e2e15713575f1a7493a04524da386ff35c3844b57b8fd20544fad4157b4a61e048b10235f2f06124f262da5b327edc74fbc31e02b
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-clean@npm:12.3.6":
   version: 12.3.6
   resolution: "@react-native-community/cli-clean@npm:12.3.6"
@@ -9234,11 +9316,11 @@ __metadata:
   linkType: hard
 
 "core-js-compat@npm:^3.34.0":
-  version: 3.36.1
-  resolution: "core-js-compat@npm:3.36.1"
+  version: 3.37.0
+  resolution: "core-js-compat@npm:3.37.0"
   dependencies:
     browserslist: ^4.23.0
-  checksum: c9109bd599a97b5d20f25fc8b8339b8c7f3fca5f9a1bebd397805383ff7699e117786c7ffe0f7a95058a6fa5e0e1435d4c10e5cda6ad86ce1957986bb6580562
+  checksum: cab5078e98625f889fd9bbbb19e84cb408f31c87e68302d380db0d26ae8e35c1b38cde084358ff345d4aa461af5f3c60d8a913a5b30bff3a83b4b7859374db36
   languageName: node
   linkType: hard
 
@@ -10612,7 +10694,7 @@ __metadata:
 
 "eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#develop":
   version: 1.5.0
-  resolution: "eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#commit=ff2da44c5fc861f18aac9dd9051ee7abb2c74fce"
+  resolution: "eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#commit=7e1feab507e9a0a86189b3c222f2e5a573b08705"
   dependencies:
     "@typescript-eslint/eslint-plugin": 7.5.0
     "@typescript-eslint/parser": 7.5.0
@@ -10632,7 +10714,7 @@ __metadata:
   peerDependencies:
     eslint: 8.57.0
     typescript: 5.3.0
-  checksum: 48e889052e53fa6eee2bd76bc5cf407bd7d97e81e75b7498b7d8ca5a8b6d55f0fe860f4a9f11989a891f6d8bdeb3f4db253de5421a71451d6dd469a2c2ab842c
+  checksum: ec13628967c39ecc4fba2b462c53d93ac7053d05453818f71001199fe635a3936ce9265a1f28e7a0b0d644880b4a3f699745b9b7b5068fbf46737963e0f08f20
   languageName: node
   linkType: hard
 
@@ -15969,6 +16051,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"merge-options@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "merge-options@npm:3.0.4"
+  dependencies:
+    is-plain-obj: ^2.1.0
+  checksum: d86ddb3dd6e85d558dbf25dc944f3527b6bacb944db3fdda6e84a3f59c4e4b85231095f58b835758b9a57708342dee0f8de0dffa352974a48221487fe9f4584f
+  languageName: node
+  linkType: hard
+
 "merge-stream@npm:^2.0.0":
   version: 2.0.0
   resolution: "merge-stream@npm:2.0.0"
@@ -16452,13 +16543,6 @@ __metadata:
     minipass: "npm:^3.0.0"
     yallist: "npm:^4.0.0"
   checksum: f1fdeac0b07cf8f30fcf12f4b586795b97be856edea22b5e9072707be51fc95d41487faec3f265b42973a304fe3a64acd91a44a3826a963e37b37bafde0212c3
-  languageName: node
-  linkType: hard
-
-"mixpanel-react-native@npm:2.4.0":
-  version: 2.4.0
-  resolution: "mixpanel-react-native@npm:2.4.0"
-  checksum: 9976e3d03d0fcad0d30da1dcef261c01d91adaa689c936c45f3ad881f5bcfae1f2916482128f980fd073cdc71bb6b1f632792971673f63173d565c1329ea7e30
   languageName: node
   linkType: hard
 
@@ -19211,6 +19295,7 @@ __metadata:
   resolution: "rn-starter@workspace:."
   dependencies:
     "@0no-co/graphqlsp": 1.9.1
+    "@amplitude/analytics-react-native": 1.4.7
     "@babel/core": 7.23.0
     "@babel/plugin-proposal-nullish-coalescing-operator": 7.18.6
     "@babel/plugin-proposal-optional-chaining": 7.21.0
@@ -19224,6 +19309,7 @@ __metadata:
     "@graphql-codegen/typescript-operations": 4.2.0
     "@graphql-codegen/typescript-react-query": 6.1.0
     "@hookform/resolvers": 3.3.4
+    "@react-native-async-storage/async-storage": 1.21.0
     "@react-native-masked-view/masked-view": 0.3.0
     "@react-navigation/native": 6.1.17
     "@react-navigation/native-stack": 6.9.26
@@ -19285,7 +19371,6 @@ __metadata:
     jwt-decode: 4.0.0
     lint-staged: 15.2.2
     lodash: 4.17.21
-    mixpanel-react-native: 2.4.0
     onesignal-expo-plugin: 2.0.2
     patch-package: 8.0.0
     pinst: 3.0.0
@@ -21159,7 +21244,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.3.1, tslib@npm:^2.5.0, tslib@npm:^2.6.1, tslib@npm:^2.6.2, tslib@npm:~2.6.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.3.1, tslib@npm:^2.4.1, tslib@npm:^2.5.0, tslib@npm:^2.6.1, tslib@npm:^2.6.2, tslib@npm:~2.6.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad

@@ -73,7 +73,9 @@
     "postpack": "pinst --enable"
   },
   "dependencies": {
+    "@amplitude/analytics-react-native": "1.4.7",
     "@hookform/resolvers": "3.3.4",
+    "@react-native-async-storage/async-storage": "1.21.0",
     "@react-native-masked-view/masked-view": "0.3.0",
     "@react-navigation/native": "6.1.17",
     "@react-navigation/native-stack": "6.9.26",
@@ -105,7 +107,6 @@
     "immer": "10.0.4",
     "jwt-decode": "4.0.0",
     "lodash": "4.17.21",
-    "mixpanel-react-native": "2.4.0",
     "onesignal-expo-plugin": "2.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
