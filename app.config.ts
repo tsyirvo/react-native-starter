@@ -78,7 +78,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: 'rn-starter',
   slug: 'rn-starter',
   version: Env.VERSION.toString(),
-  runtimeVersion: '1.0.0',
+  runtimeVersion: {
+    policy: 'fingerprintExperimental',
+  },
   jsEngine: 'hermes',
   orientation: 'portrait',
   icon: './assets/icon.png',

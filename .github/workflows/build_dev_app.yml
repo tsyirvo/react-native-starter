@@ -1,0 +1,78 @@
+name: Build the app for development
+
+# on: workflow_dispatch
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/build_dev_app.yml'
+
+jobs:
+  build_dev_app:
+    name: Build the app for development
+    runs-on: ubuntu-latest
+    concurrency: continuous-deploy-fingerprint-${{ github.run_id }}
+    permissions:
+      contents: read # Allow checkout
+      pull-requests: write # Allow comments on PRs
+    environment: development
+    env:
+      AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_API_KEY }}
+      API_URL: ${{ secrets.API_URL }}
+      APP_NAME: ${{ secrets.APP_NAME }}
+      EAS_PROJECT_ID: ${{ secrets.EAS_PROJECT_ID }}
+      EXPO_APPLE_TEAM_ID: ${{ secrets.EXPO_APPLE_TEAM_ID }}
+      FLAGSMITH_KEY: ${{ secrets.FLAGSMITH_KEY }}
+      ITUNES_ITEM_ID: ${{ secrets.ITUNES_ITEM_ID }}
+      ONE_SIGNAL_APP_ID: ${{ secrets.ONE_SIGNAL_APP_ID }}
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ secrets.SENTRY_DSN }}
+
+    steps:
+      - name: Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Get Yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - name: Restore cache
+        uses: actions/cache/restore@v3
+        with:
+          path: |
+            node_modules
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ hashFiles('**/yarn.lock') }}-${{ runner.os }}
+          restore-keys: ${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        shell: bash
+        run: yarn install --immutable --frozen-lockfile
+
+      - name: EAS Build
+        run: eas build --platform all --non-interactive --profile development --no-wait
+
+      # - name: Build the app or launch an EAS update
+      #   uses: expo/expo-github-action/continuous-deploy-fingerprint@main
+      #   with:
+      #     profile: development
+      #     branch: development
