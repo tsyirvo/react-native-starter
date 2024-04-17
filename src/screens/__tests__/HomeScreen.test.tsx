@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import type { HomeScreenNavigationProp } from '$core/navigation/navigation.types';
+import type { HomeScreenNavigationProp } from '$core/navigation/types/navigation.types';
 import { render, fireEvent, navigationProps } from '$core/testing';
 
 import { HomeScreen } from '../HomeScreen';

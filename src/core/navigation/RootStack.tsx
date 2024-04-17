@@ -10,8 +10,9 @@ import { useTranslation } from 'react-i18next';
 import { Analytics } from '$core/analytics';
 import { routingInstrumentation } from '$core/monitoring';
 
-import type { RootStackParamList } from './navigation.types';
 import { screens } from './screens';
+import type { RootStackParamList } from './types/navigation.types';
+import { convertStringToKebabCase } from './utils/navigation.utils';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -34,7 +35,9 @@ export const RootStack = () => {
     if (currentRouteName && previousRouteName !== currentRouteName) {
       routeNameRef.current = currentRouteName;
 
-      Analytics.track(`${currentRouteName}_viewed`);
+      Analytics.trackEvent(
+        `${convertStringToKebabCase(currentRouteName)}-viewed` as 'XXX-screen-viewed',
+      );
     }
   };
 
@@ -64,11 +67,14 @@ export const RootStack = () => {
           options={{ title: t('navigation.title') }}
         />
 
-        <Stack.Screen component={screens.BlogPost} name="BlogPost" />
+        <Stack.Screen
+          component={screens.BlogPostScreen}
+          name="BlogPostScreen"
+        />
 
         <Stack.Screen
-          component={screens.DummyForm}
-          name="DummyForm"
+          component={screens.DummyFormScreen}
+          name="DummyFormScreen"
           options={{ title: t('dummyForm.screenTitle', { ns: 'miscScreens' }) }}
         />
 

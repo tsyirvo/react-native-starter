@@ -5,8 +5,8 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 export type RootStackParamList = {
   HomeScreen: undefined;
   OtherScreen: { someProps: string } | undefined;
-  BlogPost: undefined;
-  DummyForm: undefined;
+  BlogPostScreen: undefined;
+  DummyFormScreen: undefined;
   // inject stack types before this
 };
 
@@ -22,10 +22,10 @@ export type OtherScreenNavigationProp = NativeStackNavigationProp<
 >;
 export type BlogPostScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'BlogPost'
+  'BlogPostScreen'
 >;
 export type DummyFormScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'DummyForm'
+  'DummyFormScreen'
 >;
 // inject page types before this

@@ -39,7 +39,7 @@ const client = z.object({
   // ADD CLIENT ENV VARS HERE
   API_URL: z.string(),
   FLAGSMITH_KEY: z.string(),
-  MIXPANEL_TOKEN: z.string(),
+  AMPLITUDE_API_KEY: z.string(),
   SENTRY_DSN: z.string(),
   ONE_SIGNAL_APP_ID: z.string(),
 });
@@ -67,7 +67,7 @@ const _clientEnv = {
   APP_NAME: process.env.APP_NAME,
   API_URL: process.env.API_URL,
   FLAGSMITH_KEY: process.env.FLAGSMITH_KEY,
-  MIXPANEL_TOKEN: process.env.MIXPANEL_TOKEN,
+  AMPLITUDE_API_KEY: process.env.AMPLITUDE_API_KEY,
   SENTRY_DSN: process.env.SENTRY_DSN,
   ONE_SIGNAL_APP_ID: process.env.ONE_SIGNAL_APP_ID,
 };

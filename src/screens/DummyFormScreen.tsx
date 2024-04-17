@@ -4,7 +4,7 @@ import { DummyForm as DummyFormComponent } from '$features/dummyForm';
 import { Box } from '$shared/uiKit/primitives';
 import { Screen } from '$shared/uiKit/Screen';
 
-export const DummyForm = () => {
+export const DummyFormScreen = () => {
   return (
     <Screen isScrollable={false}>
       <KeyboardAwareScrollView bottomOffset={50}>

@@ -1,5 +1,5 @@
-import { BlogPost } from '$screens/BlogPost';
-import { DummyForm } from '$screens/DummyForm';
+import { BlogPostScreen } from '$screens/BlogPostScreen';
+import { DummyFormScreen } from '$screens/DummyFormScreen';
 import { HomeScreen } from '$screens/HomeScreen';
 import { OtherScreen } from '$screens/OtherScreen';
 // inject pages before this
@@ -7,7 +7,7 @@ import { OtherScreen } from '$screens/OtherScreen';
 export const screens = {
   HomeScreen,
   OtherScreen,
-  BlogPost,
-  DummyForm,
+  BlogPostScreen,
+  DummyFormScreen,
   // inject exports before this
 };

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import type { OtherScreenNavigationProp } from '$core/navigation/navigation.types';
+import type { OtherScreenNavigationProp } from '$core/navigation/types/navigation.types';
 import { Notifications } from '$features/notifications';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
@@ -14,11 +14,11 @@ export const OtherScreen = ({ navigation }: OtherScreenProps) => {
   const { t } = useTranslation('otherScreen');
 
   const goToBlogPost = () => {
-    navigation.navigate('BlogPost');
+    navigation.navigate('BlogPostScreen');
   };
 
   const goToDummyForm = () => {
-    navigation.navigate('DummyForm');
+    navigation.navigate('DummyFormScreen');
   };
 
   return (
