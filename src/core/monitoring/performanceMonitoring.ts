@@ -1,20 +1,16 @@
-import type { ReactNavigationTransactionContext } from '@sentry/react-native';
 import * as Sentry from '@sentry/react-native';
-import type { Span } from '@sentry/types';
+import type { StartSpanOptions, Span } from '@sentry/types';
 
 class PerformanceMonitoringClass {
-  startTransaction(context: ReactNavigationTransactionContext) {
-    Sentry.startTransaction(context);
+  startTransaction<T>(
+    context: StartSpanOptions,
+    callback: (span: Span | undefined) => T,
+  ) {
+    Sentry.startSpan(context, callback);
   }
 
-  setScope(transaction: Span) {
-    Sentry.getCurrentHub().configureScope((scope) =>
-      scope.setSpan(transaction),
-    );
-  }
-
-  getTransaction() {
-    return Sentry.getCurrentHub().getScope().getTransaction();
+  startIndependentTransaction(context: StartSpanOptions) {
+    Sentry.startInactiveSpan(context);
   }
 }
 
