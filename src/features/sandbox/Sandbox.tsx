@@ -1,11 +1,12 @@
 import * as DevClient from 'expo-dev-client';
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
+import { Loader } from '$shared/uiKit/Loader';
 
-import DebugStack from './navigation/DebugStack';
+import { SuspendedDebugStack } from './navigation';
 
 type SandboxProps = {
   children: ReactElement;
@@ -35,5 +36,9 @@ export const Sandbox = ({ children }: SandboxProps) => {
     return children;
   }
 
-  return <DebugStack />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <SuspendedDebugStack />
+    </Suspense>
+  );
 };
