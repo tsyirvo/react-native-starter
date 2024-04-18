@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 
 import type { PrimitivesScreenNavigationProp } from '$features/sandbox/navigation/types/debugStackTypes';
-import { Box } from '$shared/uiKit/primitives';
+import { Screen } from '$shared/uiKit/Screen';
 
 import { MenuCategory } from '../menu/components/MenuCategory';
 import { MenuLine } from '../menu/components/MenuLine';
@@ -25,12 +25,12 @@ export const PrimitivesSandbox = () => {
   ];
 
   return (
-    <Box p="spacing_24">
+    <Screen>
       <MenuCategory category="Primitives">
         {menuItems.map(({ label, onPress }) => (
           <MenuLine key={label} label={label} onPress={onPress} />
         ))}
       </MenuCategory>
-    </Box>
+    </Screen>
   );
 };

@@ -1,5 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
+import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { colors } from '$core/theme';
 
 import * as screens from './screens';
 import type { DebugStackParamList } from './types/debugStackTypes';
@@ -11,7 +14,7 @@ const DebugStack = () => {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Menu"
-        screenOptions={{ gestureEnabled: true }}
+        screenOptions={navigatorScreenOptions}
       >
         <Stack.Screen
           component={screens.Menu}
@@ -43,10 +46,6 @@ const DebugStack = () => {
 
         <Stack.Screen component={screens.TextSandbox} name="Text" />
 
-        <Stack.Screen component={screens.ButtonSandbox} name="Button" />
-
-        <Stack.Screen component={screens.InputSandbox} name="Input" />
-
         {/* Design System */}
 
         <Stack.Screen
@@ -55,9 +54,21 @@ const DebugStack = () => {
         />
 
         <Stack.Screen component={screens.LoaderSandbox} name="Loader" />
+
+        <Stack.Screen component={screens.ButtonSandbox} name="Button" />
+
+        <Stack.Screen component={screens.InputSandbox} name="Input" />
       </Stack.Navigator>
     </NavigationContainer>
   );
+};
+
+const navigatorScreenOptions: NativeStackNavigationOptions = {
+  gestureEnabled: true,
+  headerTintColor: colors.clear,
+  headerStyle: {
+    backgroundColor: colors.duller,
+  },
 };
 
 export default DebugStack;

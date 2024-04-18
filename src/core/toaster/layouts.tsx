@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
   },
   // Scoped styles
   success: {
-    borderLeftColor: colors.green,
+    borderLeftColor: colors.positive,
   },
   error: {
-    borderLeftColor: colors.red,
+    borderLeftColor: colors.negative,
   },
   info: {
-    borderLeftColor: colors.yellow,
+    borderLeftColor: colors.neutral,
   },
 });
 

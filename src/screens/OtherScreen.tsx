@@ -23,7 +23,7 @@ export const OtherScreen = ({ navigation }: OtherScreenProps) => {
 
   return (
     <Screen>
-      <Box borderBottomColor="black" borderBottomWidth={1} p="spacing_16">
+      <Box borderBottomColor="bg_focus" borderBottomWidth={1} pb="spacing_16">
         <Text testID="apiExample_title" variant="large">
           {t('graphql.title')}
         </Text>
@@ -38,7 +38,7 @@ export const OtherScreen = ({ navigation }: OtherScreenProps) => {
         </Box>
       </Box>
 
-      <Box borderBottomColor="black" borderBottomWidth={1} p="spacing_16">
+      <Box borderBottomColor="bg_focus" borderBottomWidth={1} py="spacing_16">
         <Text variant="large">{t('form.title')}</Text>
 
         <Box alignItems="flex-start" mt="spacing_8">
@@ -46,7 +46,7 @@ export const OtherScreen = ({ navigation }: OtherScreenProps) => {
         </Box>
       </Box>
 
-      <Box borderBottomColor="black" borderBottomWidth={1} p="spacing_16">
+      <Box borderBottomColor="bg_focus" borderBottomWidth={1} py="spacing_16">
         <Notifications />
       </Box>
     </Screen>

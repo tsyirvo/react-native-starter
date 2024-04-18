@@ -1,12 +1,11 @@
-import { ScrollView } from 'react-native';
-
 import { Text } from '$shared/uiKit/primitives';
+import { Screen } from '$shared/uiKit/Screen';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
 export const TextSandbox = () => {
   return (
-    <ScrollView>
+    <Screen>
       <SandBoxItem title="Text without any props">
         <Text>Default styles</Text>
       </SandBoxItem>
@@ -16,7 +15,7 @@ export const TextSandbox = () => {
       </SandBoxItem>
 
       <SandBoxItem title="Text with custom styles">
-        <Text color="primary_100" textAlign="center">
+        <Text color="positive" textAlign="center">
           Custom styles
         </Text>
       </SandBoxItem>
@@ -26,6 +25,6 @@ export const TextSandbox = () => {
           Custom position
         </Text>
       </SandBoxItem>
-    </ScrollView>
+    </Screen>
   );
 };
