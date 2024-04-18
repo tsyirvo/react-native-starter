@@ -1,12 +1,11 @@
-import { ScrollView } from 'react-native';
-
 import { Loader } from '$shared/uiKit/Loader';
+import { Screen } from '$shared/uiKit/Screen';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
 export const LoaderSandbox = () => {
   return (
-    <ScrollView>
+    <Screen>
       <SandBoxItem title="Loader default props">
         <Loader />
       </SandBoxItem>
@@ -18,6 +17,6 @@ export const LoaderSandbox = () => {
       <SandBoxItem title="Loader with a 3sec delay">
         <Loader delay={3000} />
       </SandBoxItem>
-    </ScrollView>
+    </Screen>
   );
 };

@@ -33,7 +33,7 @@ export const Loader = ({
   }, [delay]);
 
   if (isShowingLoading)
-    return <ActivityIndicator color={colors.black} size={size} />;
+    return <ActivityIndicator color={colors.dull} size={size} />;
 
   return <Box height={minHeight} />;
 };

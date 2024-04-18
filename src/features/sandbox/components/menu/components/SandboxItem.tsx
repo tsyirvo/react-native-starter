@@ -17,12 +17,12 @@ export const SandBoxItem = ({
   children,
 }: SandBoxItemProps) => {
   return (
-    <Box pt="spacing_8" px="spacing_24">
+    <Box pt="spacing_8" px="spacing_8">
       {!!title && <Text>{title}</Text>}
 
       <CenteredContent py="spacing_24">{children}</CenteredContent>
 
-      {!isSingle && <Separator color="secondary_100" />}
+      {!isSingle && <Separator color="bg_focus" />}
     </Box>
   );
 };

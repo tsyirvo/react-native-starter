@@ -16,7 +16,7 @@ export const MenuLine = ({ label, onPress }: MenuLineProps) => {
         <Text mb="spacing_8">{label}</Text>
       </Pressable>
 
-      <Separator color="secondary_100" />
+      <Separator color="bg_focus" />
     </Box>
   );
 };

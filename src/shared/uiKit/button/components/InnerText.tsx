@@ -36,7 +36,7 @@ const InnerText = ({
       testID="buttonInnerText"
     >
       <Text
-        color="black"
+        color="clear"
         numberOfLines={1}
         opacity={isDisabled ? DISABLED_OPACITY : REGULAR_OPACITY}
         textAlign={isRegularSize ? 'center' : 'left'}

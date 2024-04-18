@@ -7,10 +7,10 @@ export const buttonVariants = {
     borderRadius: 'radius_16',
   },
   base: {
-    backgroundColor: 'secondary_80',
+    backgroundColor: 'bg_focus',
   },
   otherVariant: {
-    backgroundColor: 'primary_60',
+    backgroundColor: 'dull',
   },
 };
 

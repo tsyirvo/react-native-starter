@@ -1,14 +1,13 @@
-import { ScrollView } from 'react-native';
-
-import { theme } from '$core/theme';
 import type { Colors } from '$core/theme';
+import { theme } from '$core/theme';
 import { Box, Text } from '$shared/uiKit/primitives';
+import { Screen } from '$shared/uiKit/Screen';
 
 import { SandBoxItem } from '../menu/components/SandboxItem';
 
 export const ColorsSandbox = () => {
   return (
-    <ScrollView>
+    <Screen>
       <SandBoxItem isSingle>
         {(Object.keys(theme.colors) as Colors[]).map((color) => (
           <Box key={color} alignItems="center" mb="spacing_24">
@@ -23,6 +22,6 @@ export const ColorsSandbox = () => {
           </Box>
         ))}
       </SandBoxItem>
-    </ScrollView>
+    </Screen>
   );
 };

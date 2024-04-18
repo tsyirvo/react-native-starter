@@ -32,7 +32,7 @@ export const DummyFormExample = () => {
 
   return (
     <>
-      <Box pb="spacing_16" pt="spacing_32">
+      <Box pb="spacing_16">
         <Controller
           control={control}
           name="email"

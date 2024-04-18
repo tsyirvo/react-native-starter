@@ -3,6 +3,8 @@ import type { NativeStackNavigationOptions } from '@react-navigation/native-stac
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 
+import { colors } from '$core/theme';
+
 import { useAppStateTracking } from './hooks/useAppStateTracking';
 import { useNavigationState } from './hooks/useNavigationState';
 import { screens } from './screens';
@@ -49,13 +51,17 @@ export const RootStack = () => {
         <Stack.Screen
           component={screens.BlogPostScreen}
           name="BlogPostScreen"
-          options={{ title: t('blogPost.screenTitle', { ns: 'miscScreens' }) }}
+          options={{
+            title: t('blogPost.screenTitle', { ns: 'miscScreens' }),
+          }}
         />
 
         <Stack.Screen
           component={screens.DummyFormScreen}
           name="DummyFormScreen"
-          options={{ title: t('dummyForm.screenTitle', { ns: 'miscScreens' }) }}
+          options={{
+            title: t('dummyForm.screenTitle', { ns: 'miscScreens' }),
+          }}
         />
 
         {/* inject screens before this */}
@@ -66,6 +72,10 @@ export const RootStack = () => {
 
 const navigatorScreenOptions: NativeStackNavigationOptions = {
   gestureEnabled: true,
+  headerTintColor: colors.clear,
+  headerStyle: {
+    backgroundColor: colors.duller,
+  },
 };
 const screenOptions: NativeStackNavigationOptions = {
   headerShown: false,

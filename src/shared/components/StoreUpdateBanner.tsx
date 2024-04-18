@@ -43,7 +43,7 @@ export const StoreUpdateBanner = () => {
   if (!updateStatus?.shouldUpdate) return null;
 
   return (
-    <Box bg="yellow" borderRadius="radius_8" px="spacing_16" py="spacing_8">
+    <Box bg="neutral" borderRadius="radius_8" px="spacing_16" py="spacing_8">
       <Text textAlign="center">
         {updateStatus.storeVersion
           ? t('updateAvailable.banner.compareVersions', {

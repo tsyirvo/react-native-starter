@@ -18,10 +18,10 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   };
 
   return (
-    <Screen>
+    <Screen p="zero">
       <Header />
 
-      <Box pb="spacing_32" px="spacing_24">
+      <Box pb="spacing_32" px="spacing_16">
         <Text mt="spacing_32" variant="large">
           {t('navigation.title')}
         </Text>

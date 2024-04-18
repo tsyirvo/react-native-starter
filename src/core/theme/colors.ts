@@ -1,31 +1,37 @@
 const primaryColors = {
-  primary_100: '#0A6EBD',
-  primary_80: '#5A96E3',
-  primary_60: '#A1C2F1',
+  primary_clear: '#0085ff',
+  primary_dull: '#69b4ff',
+  primary_visible: '#e0ffff',
 };
 
-const secondaryColors = {
-  secondary_100: '#DAC0A3',
-  secondary_80: '#EADBC8',
-  secondary_60: '#F8F0E5',
+const accentColors = {
+  accent_clear: '#006fff',
+  accent_dull: '#e1ffff',
+};
+
+const backgroundColors = {
+  bg: '#1E1E1E',
+  bg_focus: '#2d2d2d',
 };
 
 const semanticColors = {
-  green: '#2a9d8f',
-  yellow: '#e9c46a',
-  red: '#ef233c',
+  positive: '#2a9d8f',
+  neutral: '#e9c46a',
+  negative: '#ef233c',
 };
 
 const generalColors = {
-  black: '#000',
-  white: '#fff',
+  clear: '#FFFFFF',
+  dull: '#9e9e9e',
+  duller: '#454545',
 };
 
 export const colors = {
   ...generalColors,
   ...semanticColors,
+  ...backgroundColors,
   ...primaryColors,
-  ...secondaryColors,
+  ...accentColors,
 };
 
 export type Colors = keyof typeof colors;
