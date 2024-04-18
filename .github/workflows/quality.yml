@@ -2,11 +2,7 @@ name: Quality
 
 on:
   pull_request:
-    branches:
-      - develop
-    paths:
-      - '*'
-      - '.github/workflows/quality.yml'
+    types: [opened, reopened, synchronize]
 
 jobs:
   quality:
