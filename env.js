@@ -27,6 +27,9 @@ const withEnvSuffix = (name) => {
   return APP_ENV === 'production' ? name : `${name}.${APP_ENV}`;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+const envVariableSuffix = `_${APP_ENV.toUpperCase()}`;
+
 // Environment variables validation schemas
 
 const client = z.object({
@@ -65,13 +68,13 @@ const _clientEnv = {
   VERSION: packageJSON.version,
 
   // ADD ENV VARS HERE TOO
-  APP_NAME: process.env.APP_NAME,
-  API_URL: process.env.API_URL,
+  APP_NAME: process.env[`APP_NAME${envVariableSuffix}`],
+  API_URL: process.env[`API_URL${envVariableSuffix}`],
   ITUNES_ITEM_ID: process.env.ITUNES_ITEM_ID,
-  FLAGSMITH_KEY: process.env.FLAGSMITH_KEY,
-  AMPLITUDE_API_KEY: process.env.AMPLITUDE_API_KEY,
+  FLAGSMITH_KEY: process.env[`FLAGSMITH_KEY${envVariableSuffix}`],
+  AMPLITUDE_API_KEY: process.env[`AMPLITUDE_API_KEY${envVariableSuffix}`],
   SENTRY_DSN: process.env.SENTRY_DSN,
-  ONE_SIGNAL_APP_ID: process.env.ONE_SIGNAL_APP_ID,
+  ONE_SIGNAL_APP_ID: process.env[`ONE_SIGNAL_APP_ID${envVariableSuffix}`],
 };
 
 const _buildTimeEnv = {
