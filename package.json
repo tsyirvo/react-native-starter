@@ -60,7 +60,7 @@
     "//// UTILITIES ////": "",
     "codegen": "graphql-codegen --config codegen.ts",
     "image:add": "ts-node -T ./scripts/importImages/index.ts",
-    "generate:page": "npx hygen generators page && yarn lint && yarn prettify",
+    "generate:screens": "npx hygen generators page && yarn lint && yarn prettify",
     "generate:icons": "svgr --config-file src/shared/icons/svgs/config/svgrConfig.js --svgo-config src/shared/icons/svgs/config/svgoConfig.js --index-template src/shared/icons/svgs/config/index-template.js --template src/shared/icons/svgs/config/icon-template.js --out-dir src/shared/icons/components -- src/shared/icons/svgs && eslint './src/shared/icons/components/**/*.{ts,tsx}' --ext .ts,.tsx --fix --quiet && prettier --write './src/shared/icons/components/**/*.{ts,tsx}'",
     "//// VERSIONNING ////": "",
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
