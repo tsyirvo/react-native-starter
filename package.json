@@ -40,6 +40,7 @@
     "test": "jest --coverage=false",
     "test:staged": "jest -o --passWithNoTests --runInBand --coverage=false",
     "test:coverage": "jest",
+    "test:e2e": "maestro test ./e2e",
     "//// QUALITY ////": "",
     "lint": "eslint ./ --ext .js,.ts,.tsx,.json --fix --ignore-path .gitignore",
     "prettify": "yarn prettier --write './**/*.{js,ts,tsx}'",

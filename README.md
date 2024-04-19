@@ -157,11 +157,12 @@ There are basic tests with [Jest](https://jestjs.io/) and [Testing Library](http
 yarn test
 ```
 
-For E2E tests, you can use [Detox](https://github.com/wix/Detox) for both OS:
+For E2E tests, you can use [Maestro](https://maestro.mobile.dev/) for both OS.
+
+First install Maestro on your machine, build the development app onto a simulator then run
 
 ```
-e2e:build:[ios|android]:debug
-e2e:test:[ios|android]:debug
+yarn test:e2e
 ```
 
 ## Formatting and type checking
