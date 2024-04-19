@@ -1,8 +1,12 @@
+import * as FeatureFlags from '$core/featureFlags/hooks/useIsFeatureFlagEnabled';
 import { render } from '$core/testing';
 
 import { MaintenanceMode } from '../MaintenanceMode';
 
 describe('MaintenanceMode component', () => {
+  // Mocks
+  jest.spyOn(FeatureFlags, 'useIsFeatureFlagEnabled').mockReturnValue(false);
+
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -15,14 +19,14 @@ describe('MaintenanceMode component', () => {
     expect(queryByTestId('maintenanceMode-screen')).toBeNull();
   });
 
-  // it('should render the maintenance mode when the flag is true', () => {
-  //   // Mocks
-  //   jest.spyOn(FeatureFlags, 'getBooleanValue').mockReturnValue(true);
+  it('should render the maintenance mode when the flag is true', () => {
+    // Mocks
+    jest.spyOn(FeatureFlags, 'useIsFeatureFlagEnabled').mockReturnValue(true);
 
-  //   // Given
-  //   const { getByText } = render(<MaintenanceMode />);
+    // Given
+    const { getByTestId } = render(<MaintenanceMode />);
 
-  //   // Then
-  //   expect(getByText(pageTitle)).toBeDefined();
-  // });
+    // Then
+    expect(getByTestId('maintenanceMode-screen')).toBeDefined();
+  });
 });

@@ -1,16 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useIsFeatureFlagEnabled } from '$core/featureFlags';
 import { Box, Text } from '$shared/uiKit/primitives';
 
 export const MaintenanceMode = () => {
   const { t } = useTranslation('miscScreens');
 
-  // TODO(prod): Save correct value to feature flag
-  const isMaintenanceModeEnabled = false;
-  // const isMaintenanceModeEnabled = useIsFeatureFlagEnabled('is-maintenance-mode')
+  const isMaintenanceModeEnabled = useIsFeatureFlagEnabled(
+    'is-maintenance-mode',
+  );
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!isMaintenanceModeEnabled) {
     return null;
   }
