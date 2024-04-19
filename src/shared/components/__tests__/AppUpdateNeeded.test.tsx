@@ -1,17 +1,22 @@
+import { Linking } from 'react-native';
+
 import { config } from '$core/constants/config';
-import { render } from '$core/testing';
+import * as FeatureFlags from '$core/featureFlags/hooks/useGetFlagValueSync';
+import { fireEvent, render, waitFor } from '$core/testing';
 
 import { AppUpdateNeeded } from '../AppUpdateNeeded';
 
 describe('AppUpdateNeeded component', () => {
+  // Mocks
+  jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
+    getFlagValueSync: () => '',
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   it('should render nothing if the flag is empty', () => {
-    // Mocks
-    config.version = '1.0.0';
-
     // Given
     const { queryByTestId } = render(<AppUpdateNeeded />);
 
@@ -20,8 +25,9 @@ describe('AppUpdateNeeded component', () => {
   });
 
   it('should render nothing if the versions are equal', () => {
-    // Mocks
-    config.version = '1.0.0';
+    jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
+      getFlagValueSync: () => '2.0.0',
+    });
 
     // Given
     const { queryByTestId } = render(<AppUpdateNeeded />);
@@ -32,7 +38,11 @@ describe('AppUpdateNeeded component', () => {
 
   it('should render nothing if the flagged version is supported', () => {
     // Mocks
-    config.version = '1.2.0';
+    jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
+      getFlagValueSync: () => '2.0.0',
+    });
+
+    config.version = '3.0.0';
 
     // Given
     const { queryByTestId } = render(<AppUpdateNeeded />);
@@ -41,15 +51,40 @@ describe('AppUpdateNeeded component', () => {
     expect(queryByTestId('appUpdateNeeded-screen')).toBeNull();
   });
 
-  // it('should render the update screen when the flagged version is unsupported', () => {
-  //   // Mocks
-  //   config.version = '1.2.0';
-  //   jest.spyOn(FeatureFlags, 'getStringValue').mockReturnValue('1.4.0');
+  it('should render the update screen when the flagged version is unsupported', () => {
+    // Mocks
+    jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
+      getFlagValueSync: () => '3.0.0',
+    });
 
-  //   // Given
-  //   const { getByText } = render(<AppUpdateNeeded />);
+    config.version = '2.0.0';
 
-  //   // Then
-  //   expect(getByText(pageTitle)).toBeDefined();
-  // });
+    // Given
+    const { getByTestId } = render(<AppUpdateNeeded />);
+
+    // Then
+    expect(getByTestId('appUpdateNeeded-screen')).toBeDefined();
+  });
+
+  it('should open the stores to allow users to udpdate', async () => {
+    // Mocks
+    jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
+      getFlagValueSync: () => '3.0.0',
+    });
+
+    const openURL = jest.fn();
+
+    jest.spyOn(Linking, 'openURL').mockImplementation(openURL);
+
+    // Given
+    const { getByTestId } = render(<AppUpdateNeeded />);
+
+    // When
+    fireEvent.press(getByTestId('appUpdateNeeded-cta'));
+
+    // Then
+    await waitFor(() => {
+      expect(openURL).toHaveBeenCalled();
+    });
+  });
 });

@@ -18,7 +18,6 @@ const cacheOptions = {
 
 const options: Parameters<IFlagsmith['init']>[0] = {
   environmentID: config.flagsmithKey,
-
   cacheFlags: true,
   AsyncStorage: FeatureFlagStorage,
   cacheOptions,

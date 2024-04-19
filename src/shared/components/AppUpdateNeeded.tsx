@@ -4,6 +4,7 @@ import { Linking } from 'react-native';
 import semverGte from 'semver/functions/gte';
 
 import { config, IS_IOS } from '$core/constants';
+import { useGetFlagValueSync } from '$core/featureFlags/hooks/useGetFlagValueSync';
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks/useRunOnMount';
 import { Button } from '$shared/uiKit/button';
@@ -14,20 +15,15 @@ export const AppUpdateNeeded = () => {
 
   const { t } = useTranslation('miscScreens');
 
-  // const flagsmith = useFlagsmith();
+  const { getFlagValueSync } = useGetFlagValueSync();
 
   useRunOnMount(() => {
-    // TODO(prod): Save correct value to feature flag
-    // const lastSupportedVersion = flagsmith.getValue(
-    //   'last-supported-app-version',
-    // );
+    const lastSupportedVersion = getFlagValueSync('last-supported-app-version');
 
-    // if (!lastSupportedVersion) {
-    //   // We can't get last supported version, so leave the app running
-    //   return;
-    // }
-
-    const lastSupportedVersion = '1.0.0';
+    if (!lastSupportedVersion || typeof lastSupportedVersion !== 'string') {
+      // We can't get last supported version, so leave the app running
+      return;
+    }
 
     if (typeof config.version === 'string') {
       const isSupported =
@@ -77,7 +73,7 @@ export const AppUpdateNeeded = () => {
         {t('appUpdate.description')}
       </Text>
 
-      <Button.Text onPress={onPress}>
+      <Button.Text testID="appUpdateNeeded-cta" onPress={onPress}>
         {t('updateAvailable.banner.updateCta', { ns: 'settings' })}
       </Button.Text>
     </Box>

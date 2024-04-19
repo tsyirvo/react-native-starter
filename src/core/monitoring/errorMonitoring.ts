@@ -40,12 +40,19 @@ class ErrorMonitoringClass {
           routingInstrumentation,
         }),
       ],
-      denyUrls: [/mixpanel.com/i, /flagsmith.com/i],
+      denyUrls: [
+        /mixpanel.com/i,
+        /flagsmith.com/i,
+        /onesignal.com/i,
+        /apple.com/i,
+      ],
       beforeBreadcrumb(breadcrumb) {
         if (typeof breadcrumb.data?.url === 'string') {
           if (
             breadcrumb.data.url.match(/mixpanel.com/i) ??
-            breadcrumb.data.url.match(/flagsmith.com/i)
+            breadcrumb.data.url.match(/flagsmith.com/i) ??
+            breadcrumb.data.url.match(/onesignal.com/i) ??
+            breadcrumb.data.url.match(/apple.com/i)
           ) {
             return null;
           }
