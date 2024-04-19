@@ -25,7 +25,7 @@ const InnerIcon = ({
     <Icon
       height={height}
       name={iconName}
-      testID="buttonInnerIcon"
+      testID="button-innerIcon"
       width={width}
     />
   );

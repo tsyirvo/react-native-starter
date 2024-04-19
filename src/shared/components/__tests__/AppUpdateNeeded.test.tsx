@@ -16,7 +16,7 @@ describe('AppUpdateNeeded component', () => {
     const { queryByTestId } = render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByTestId('appUpdateNeeded')).toBeNull();
+    expect(queryByTestId('appUpdateNeeded-screen')).toBeNull();
   });
 
   it('should render nothing if the versions are equal', () => {
@@ -27,7 +27,7 @@ describe('AppUpdateNeeded component', () => {
     const { queryByTestId } = render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByTestId('appUpdateNeeded')).toBeNull();
+    expect(queryByTestId('appUpdateNeeded-screen')).toBeNull();
   });
 
   it('should render nothing if the flagged version is supported', () => {
@@ -38,7 +38,7 @@ describe('AppUpdateNeeded component', () => {
     const { queryByTestId } = render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByTestId('appUpdateNeeded')).toBeNull();
+    expect(queryByTestId('appUpdateNeeded-screen')).toBeNull();
   });
 
   // it('should render the update screen when the flagged version is unsupported', () => {

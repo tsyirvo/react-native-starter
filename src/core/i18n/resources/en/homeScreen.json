@@ -13,7 +13,7 @@
     "title": "Sandbox"
   },
   "tests": {
-    "content": "You can run tests with Jest or Detox",
+    "content": "You can run tests with Jest or Maestro",
     "title": "Tests"
   }
 }

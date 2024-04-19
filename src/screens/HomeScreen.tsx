@@ -27,7 +27,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
         </Text>
 
         <Box mt="spacing_8">
-          <Button.Text testID="goto_otherScreen" onPress={goToOtherScreen}>
+          <Button.Text testID="home-navigateCta" onPress={goToOtherScreen}>
             {t('navigation.content')}
           </Button.Text>
         </Box>

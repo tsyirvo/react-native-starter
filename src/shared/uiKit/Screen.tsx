@@ -13,6 +13,7 @@ type ScreenProps = {
   isScrollable?: boolean;
   bg?: Colors;
   p?: Spacing;
+  testID?: string;
 };
 
 export const Screen = ({
@@ -21,10 +22,11 @@ export const Screen = ({
   isScrollable = true,
   bg = 'bg',
   p = 'spacing_16',
+  testID,
 }: ScreenProps) => {
   return (
     <SafeView edges={edges}>
-      <Box bg={bg} flex={1} p={p}>
+      <Box bg={bg} flex={1} p={p} testID={testID}>
         {isScrollable ? <ScrollView>{children}</ScrollView> : children}
       </Box>
     </SafeView>

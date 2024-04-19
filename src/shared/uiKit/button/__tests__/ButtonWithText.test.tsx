@@ -64,8 +64,8 @@ describe('Button component', () => {
     );
 
     // Then
-    expect(getByTestId('buttonInnerLoader')).toBeDefined();
-    expect(queryByTestId('buttonInnerText')).toBeNull();
+    expect(getByTestId('button-innerText-loader')).toBeDefined();
+    expect(queryByTestId('button-innerText-text')).toBeNull();
   });
 
   it('should not call the onPress method when loading', () => {

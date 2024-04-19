@@ -21,7 +21,7 @@ export const MaintenanceMode = () => {
       height="100%"
       justifyContent="center"
       px="spacing_32"
-      testID="maintenanceMode"
+      testID="maintenanceMode-screen"
       width="100%"
     >
       <Text pb="spacing_8" variant="large">

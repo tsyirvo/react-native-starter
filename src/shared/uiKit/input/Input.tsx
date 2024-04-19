@@ -39,7 +39,7 @@ export const Input = forwardRef<TextInput, InputProps>(
     return (
       <Box width="100%">
         {label ? (
-          <Text color="clear" mb="spacing_8" testID="inputID-label">
+          <Text color="clear" mb="spacing_8" testID="input-label">
             {label}
           </Text>
         ) : null}
@@ -49,7 +49,6 @@ export const Input = forwardRef<TextInput, InputProps>(
           editable={isEditable}
           placeholderTextColor={theme.colors.dull}
           style={[styles.input, getBorderBottomColor()]}
-          testID="inputID"
           underlineColorAndroid="transparent"
           onChangeText={props.onChangeText}
           {...props}
@@ -58,7 +57,7 @@ export const Input = forwardRef<TextInput, InputProps>(
         />
 
         {!!error && (
-          <Box alignItems="center" flexDirection="row" testID="inputID-error">
+          <Box alignItems="center" flexDirection="row" testID="input-errorText">
             <Text color="negative" variant="small">
               {error}
             </Text>

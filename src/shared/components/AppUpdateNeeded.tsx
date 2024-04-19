@@ -66,7 +66,7 @@ export const AppUpdateNeeded = () => {
       height="100%"
       justifyContent="center"
       px="spacing_32"
-      testID="appUpdateNeeded"
+      testID="appUpdateNeeded-screen"
       width="100%"
     >
       <Text pb="spacing_8" variant="large">

@@ -1,0 +1,17 @@
+appId: com.tsyirvo.rnstarter.development
+---
+- launchApp
+- tapOn:
+    id: 'home-navigateCta'
+- assertVisible:
+    id: 'otherScreen-screen'
+- tapOn:
+    id: 'otherScreen-dummyForm-navigateCta'
+- tapOn:
+    id: 'dummyForm-input-email'
+- inputText: 'tsyirvo@mail.com'
+- hideKeyboard
+- tapOn:
+    id: 'dummyForm-submitCta'
+- assertVisible:
+    id: 'input-errorText'

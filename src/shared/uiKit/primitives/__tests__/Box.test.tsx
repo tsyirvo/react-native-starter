@@ -5,9 +5,9 @@ import { Box } from '../Box';
 describe('Box component', () => {
   it('should render correctly', () => {
     // Given
-    const { getByTestId } = render(<Box testID="boxID" />);
+    const { getByTestId } = render(<Box testID="box-id" />);
 
     // Then
-    expect(getByTestId('boxID')).toBeDefined();
+    expect(getByTestId('box-id')).toBeDefined();
   });
 });
