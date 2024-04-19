@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/tsyirvo/react-native-starter/compare/v2.0.0...v2.1.0) (2024-04-19)
+
+
+### Features
+
+* add post merge hook ([#353](https://github.com/tsyirvo/react-native-starter/issues/353)) ([a8d57e2](https://github.com/tsyirvo/react-native-starter/commit/a8d57e23e750bbbbf1a3a2fcfa81bad2fde52484))
+* add util to request store review ([#379](https://github.com/tsyirvo/react-native-starter/issues/379)) ([e66a117](https://github.com/tsyirvo/react-native-starter/commit/e66a1170d2adb84ace8435cfa26fc3af4ca63295))
+* bump most of the dependencies ([#350](https://github.com/tsyirvo/react-native-starter/issues/350)) ([ee95c24](https://github.com/tsyirvo/react-native-starter/commit/ee95c2430773456689b3ae492a8e6fed2787390d))
+* check network state on mount ([#362](https://github.com/tsyirvo/react-native-starter/issues/362)) ([32f146f](https://github.com/tsyirvo/react-native-starter/commit/32f146f13e365ac015f5bb38f5fa53e34ecbee86))
+* configure sentry to upload sourcemaps ([#356](https://github.com/tsyirvo/react-native-starter/issues/356)) ([e8aabed](https://github.com/tsyirvo/react-native-starter/commit/e8aabed5884b7ea2b6fb826dfb1cc69f721e3d41))
+* indicate if app is running from an OTA update ([#370](https://github.com/tsyirvo/react-native-starter/issues/370)) ([916f164](https://github.com/tsyirvo/react-native-starter/commit/916f164cbc4bedfbd862113434fb85696cdf65fb))
+* integrate app icon and splash for each env ([#366](https://github.com/tsyirvo/react-native-starter/issues/366)) ([79aefce](https://github.com/tsyirvo/react-native-starter/commit/79aefce3d996baa079bc9b3a8e87c40f24b02526))
+* lazy load the sandbox ([#384](https://github.com/tsyirvo/react-native-starter/issues/384)) ([576d101](https://github.com/tsyirvo/react-native-starter/commit/576d101fb893cb54b9187acb61be059bf290170d))
+* migrate from MixPanel to Amplitude ([#378](https://github.com/tsyirvo/react-native-starter/issues/378)) ([47700a5](https://github.com/tsyirvo/react-native-starter/commit/47700a55122cdb4b9e83cc598c30fd8bbd3438bd))
+* misc screens UI and logic updates ([#361](https://github.com/tsyirvo/react-native-starter/issues/361)) ([b544f7d](https://github.com/tsyirvo/react-native-starter/commit/b544f7db6c3b72d4625f67c0d214ab9fc68eb8f0))
+* plug misc screens to the flags ([#390](https://github.com/tsyirvo/react-native-starter/issues/390)) ([e2bbba8](https://github.com/tsyirvo/react-native-starter/commit/e2bbba87a8569521398814505e0b4ced0ad742ce))
+* prepare the config to load fonts on the native with Expo SDK 50 ([#364](https://github.com/tsyirvo/react-native-starter/issues/364)) ([11ec1ad](https://github.com/tsyirvo/react-native-starter/commit/11ec1ad49607ff881b43562e93c93dac8691f24a))
+* set up a cache based on the default branch ([#381](https://github.com/tsyirvo/react-native-starter/issues/381)) ([0e9bb98](https://github.com/tsyirvo/react-native-starter/commit/0e9bb9868633a20ce73a65a10140a14aaa5a5238))
+* setup a basic graphQL config ([#371](https://github.com/tsyirvo/react-native-starter/issues/371)) ([9b617ea](https://github.com/tsyirvo/react-native-starter/commit/9b617eacb159207f33cc6d8e3f69ae38b94003aa))
+* setup a basic handling of JWT tokens ([#374](https://github.com/tsyirvo/react-native-starter/issues/374)) ([57fcadb](https://github.com/tsyirvo/react-native-starter/commit/57fcadb639716f1333d2462305730aff89738cde))
+* setup a more fine grained error boundary logic ([#363](https://github.com/tsyirvo/react-native-starter/issues/363)) ([990c42f](https://github.com/tsyirvo/react-native-starter/commit/990c42fc3b4d8a42d01c666bff7ee480c9dd24ea))
+* setup a store managed with zustand ([#372](https://github.com/tsyirvo/react-native-starter/issues/372)) ([8eb3491](https://github.com/tsyirvo/react-native-starter/commit/8eb3491ed935e62ca879f55610a5a91923ba5900))
+* setup builds in the CI ([#382](https://github.com/tsyirvo/react-native-starter/issues/382)) ([bb3efc7](https://github.com/tsyirvo/react-native-starter/commit/bb3efc747e32e7aacf2a0ead48f561df29754c16))
+* setup deeplinks ([#380](https://github.com/tsyirvo/react-native-starter/issues/380)) ([68b1ddf](https://github.com/tsyirvo/react-native-starter/commit/68b1ddfa03b669bdd7dc10078b872c3fefcb367e))
+* setup notifications ([#377](https://github.com/tsyirvo/react-native-starter/issues/377)) ([416d75b](https://github.com/tsyirvo/react-native-starter/commit/416d75b7245e89dcc1daee3cb237abc624051f4c))
+* setup tooling to handle forms ([#375](https://github.com/tsyirvo/react-native-starter/issues/375)) ([bd27e31](https://github.com/tsyirvo/react-native-starter/commit/bd27e31d6ccab9c47f183a56358cb20bb3908eb4))
+
+
+### Bug Fixes
+
+* update some mixed up translation keys ([#373](https://github.com/tsyirvo/react-native-starter/issues/373)) ([ae6b2e9](https://github.com/tsyirvo/react-native-starter/commit/ae6b2e97ee7ae2daedf08b803c939e3fa96b8914))
+
 ## [2.0.0](https://github.com/tsyirvo/react-native-starter/compare/v1.3.0...v2.0.0) (2022-10-21)
 
 
