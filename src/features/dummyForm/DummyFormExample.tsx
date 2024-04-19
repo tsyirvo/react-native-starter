@@ -46,6 +46,7 @@ export const DummyFormExample = () => {
               label={t('dummyForm.form.email.label')}
               placeholder={t('dummyForm.form.email.placeholder')}
               returnKeyType="next"
+              testID="dummyForm-input-email"
               value={value}
               onBlur={onBlur}
               onChangeText={onChange}
@@ -102,6 +103,7 @@ export const DummyFormExample = () => {
       </Box>
 
       <Button.Text
+        testID="dummyForm-submitCta"
         onPress={handleSubmit(onSubmit) as (arg: unknown) => Promise<unknown>}
       >
         Submit

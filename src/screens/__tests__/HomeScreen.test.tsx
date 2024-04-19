@@ -24,7 +24,7 @@ describe('Home component', () => {
     const { getByTestId } = render(<HomeScreen {...props} />);
 
     // When
-    fireEvent.press(getByTestId('goto_otherScreen'));
+    fireEvent.press(getByTestId('home-navigateCta'));
 
     // Then
     expect(props.navigation.navigate).toHaveBeenCalled();

@@ -25,20 +25,6 @@
         "simulator": false
       }
     },
-    "test:debug": {
-      "extends": "development",
-      "android": {
-        "gradleCommand": ":app:assembleDebug :app:assembleAndroidTest -DtestBuildType=debug"
-      }
-    },
-    "test:release": {
-      "extends": "development",
-      "developmentClient": false,
-      "distribution": "internal",
-      "android": {
-        "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release"
-      }
-    },
     "staging": {
       "channel": "staging",
       "distribution": "internal",

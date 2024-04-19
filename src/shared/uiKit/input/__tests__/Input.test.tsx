@@ -7,7 +7,7 @@ import { Input } from '../Input';
 describe('Input component', () => {
   // Given
   const onChangeText = jest.fn();
-  const props = { onChangeText };
+  const props = { onChangeText, testID: 'input-id' };
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -18,7 +18,7 @@ describe('Input component', () => {
     const { getByTestId } = render(<Input {...props} />);
 
     // Then
-    expect(getByTestId('inputID')).toBeDefined();
+    expect(getByTestId('input-id')).toBeDefined();
   });
 
   it('should call the onChangeText method when typing', () => {
@@ -26,7 +26,7 @@ describe('Input component', () => {
     const { getByTestId } = render(<Input {...props} />);
 
     // When
-    fireEvent.changeText(getByTestId('inputID'), 'data');
+    fireEvent.changeText(getByTestId('input-id'), 'data');
 
     // Then
     expect(onChangeText).toHaveBeenCalled();
@@ -37,7 +37,7 @@ describe('Input component', () => {
     const { queryByTestId } = render(<Input {...props} />);
 
     // Then
-    expect(queryByTestId('inputID-error')).toBeNull();
+    expect(queryByTestId('input-errorText')).toBeNull();
   });
 
   it('should show error when defined', () => {
@@ -45,7 +45,7 @@ describe('Input component', () => {
     const { getByTestId } = render(<Input {...props} error="Some error" />);
 
     // Then
-    expect(getByTestId('inputID-error')).toBeDefined();
+    expect(getByTestId('input-errorText')).toBeDefined();
   });
 
   it('should not show a label if not provided', () => {
@@ -53,7 +53,7 @@ describe('Input component', () => {
     const { queryByTestId } = render(<Input {...props} />);
 
     // Then
-    expect(queryByTestId('inputID-label')).toBeNull();
+    expect(queryByTestId('input-label')).toBeNull();
   });
 
   it('should show a label when defined', () => {
@@ -61,6 +61,6 @@ describe('Input component', () => {
     const { getByTestId } = render(<Input {...props} label="Some label" />);
 
     // Then
-    expect(getByTestId('inputID-label')).toBeDefined();
+    expect(getByTestId('input-label')).toBeDefined();
   });
 });

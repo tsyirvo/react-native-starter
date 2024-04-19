@@ -23,7 +23,7 @@ const InnerText = ({
 
   if (isLoading) {
     return (
-      <Box minHeight={MIN_HEIGHT} testID="buttonInnerLoader">
+      <Box minHeight={MIN_HEIGHT} testID="button-innerText-loader">
         <Loader delay={0} size="small" />
       </Box>
     );
@@ -33,7 +33,7 @@ const InnerText = ({
     <Box
       justifyContent="center"
       minHeight={MIN_HEIGHT}
-      testID="buttonInnerText"
+      testID="button-innerText-text"
     >
       <Text
         color="clear"
