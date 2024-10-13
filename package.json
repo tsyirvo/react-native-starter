@@ -151,7 +151,7 @@
     "babel-plugin-transform-remove-console": "6.9.4",
     "cross-env": "7.0.3",
     "dotenv": "16.4.5",
-    "eslint": "8.57.0",
+    "eslint": "8.57.1",
     "eslint-config-tsyirvo-react-native": "https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#develop",
     "fs-extra": "11.2.0",
     "husky": "9.1.6",

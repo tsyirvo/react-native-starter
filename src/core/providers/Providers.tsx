@@ -21,7 +21,7 @@ import { FullscreenErrorBoundary } from '$shared/components/FullscreenErrorBound
 import { Splashscreen } from '$shared/components/splashscreen';
 
 type ProvidersProps = {
-  children: JSX.Element;
+  children: React.JSX.Element;
 };
 
 export const Providers = ({ children }: ProvidersProps) => {

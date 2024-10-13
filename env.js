@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
