@@ -16,6 +16,7 @@ const cacheOptions = {
   ttl: FIFTEEN_MINUTES_IN_MS,
 };
 
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 const options: Parameters<IFlagsmith['init']>[0] = {
   environmentID: config.flagsmithKey,
   cacheFlags: true,
