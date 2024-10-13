@@ -3,13 +3,12 @@ import type { LanguageDetectorModule } from 'i18next';
 
 import { Analytics } from '$core/analytics';
 import { config, storageKeys } from '$core/constants';
-import { Notifications } from '$core/notifications';
 import { AppStorage } from '$core/storage';
 
-const getSelectedLocale = () =>
+export const getSavedAppLocale = () =>
   AppStorage.getString(storageKeys.appStorage.locale);
 
-const setPhonePrimaryLocale = (locale: string) => {
+export const setSavedAppLocale = (locale: string) => {
   AppStorage.set(storageKeys.appStorage.locale, locale);
 };
 
@@ -23,10 +22,9 @@ const detectPhonePrimaryLocale = () => {
 };
 
 const detectLanguageToUse = () => {
-  const currentlySelectedLocale = getSelectedLocale();
+  const currentlySelectedLocale = getSavedAppLocale();
 
   if (currentlySelectedLocale) {
-    Notifications.setUserLanguage(currentlySelectedLocale);
     Analytics.setUserProperty('language', currentlySelectedLocale);
 
     return currentlySelectedLocale;
@@ -36,9 +34,8 @@ const detectLanguageToUse = () => {
 
   const selectedLanguage = phonePrimaryLocale ?? config.defaultLocale;
 
-  Notifications.setUserLanguage(selectedLanguage);
   Analytics.setUserProperty('language', selectedLanguage);
-  setPhonePrimaryLocale(selectedLanguage);
+  setSavedAppLocale(selectedLanguage);
 
   return selectedLanguage;
 };

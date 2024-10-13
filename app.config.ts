@@ -59,6 +59,7 @@ const plugins: ExpoConfig['plugins'] = [
       ],
     },
   ],
+  'expo-asset',
   'expo-secure-store',
   [
     'onesignal-expo-plugin',
@@ -77,9 +78,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: 'rn-starter',
   slug: 'rn-starter',
   version: Env.VERSION.toString(),
-  runtimeVersion: {
-    policy: 'fingerprintExperimental',
-  },
+  runtimeVersion: { policy: 'fingerprint' },
   jsEngine: 'hermes',
   orientation: 'portrait',
   icon: './assets/icon.png',
