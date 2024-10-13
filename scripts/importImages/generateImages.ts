@@ -55,7 +55,7 @@ export const generateImages = async (path: string) => {
       default:
         break;
     }
-  } catch (error) {
+  } catch {
     print({ message: 'Could not find the file type', type: 'error' });
   }
 };

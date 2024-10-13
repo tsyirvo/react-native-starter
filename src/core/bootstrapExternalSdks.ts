@@ -3,6 +3,7 @@ import { Logger } from '$core/logger';
 import { Analytics } from './analytics';
 import { initDateLocale } from './date';
 import { getSupportedDateLocale } from './i18n';
+import { getSavedAppLocale } from './i18n/utils/languageDetector';
 import { ErrorMonitoring } from './monitoring';
 import { Notifications } from './notifications';
 
@@ -17,6 +18,10 @@ const initAnalytics = () => {
 
 const initNotifications = () => {
   Notifications.init();
+
+  const locale = getSavedAppLocale();
+
+  if (locale) Notifications.setUserLanguage(locale);
 };
 
 const initDateLib = () => {

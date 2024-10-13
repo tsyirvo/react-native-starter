@@ -43,7 +43,7 @@ const compressAllResolutions = async () => {
         filename: image1xName,
       }),
     ]);
-  } catch (error) {
+  } catch {
     print({
       message: 'Failed to compress the all images resolutions',
       type: 'error',
@@ -100,7 +100,7 @@ const generateAllResolutions = async ({
         outputFile: `${TMP_DIR}/1x/${image1xName}`,
       }),
     ]);
-  } catch (error) {
+  } catch {
     print({
       message: 'Failed to create the all images resolutions',
       type: 'error',

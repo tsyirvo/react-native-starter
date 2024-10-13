@@ -21,6 +21,8 @@ import type {
   SupportedRevenueTypes,
 } from './types/analytics.types';
 
+const ONE = 1;
+
 const identifyObj = new Identify();
 
 class AnalyticsClass {
@@ -33,7 +35,7 @@ class AnalyticsClass {
       }).promise;
 
       this.trackEvent('app-start');
-      this.incrementUserProperty('session-count', 1);
+      this.incrementUserProperty('session-count', ONE);
     } catch (error) {
       Logger.error({
         error,

@@ -4,7 +4,7 @@ import type {
   Variables,
 } from 'graphql-request/build/esm/types';
 import i18next from 'i18next';
-import memoize from 'lodash/memoize';
+import memoize from 'lodash.memoize';
 
 import { config } from '$core/constants';
 import { getCurrentLocale } from '$core/i18n/utils/getCurrentLocale';

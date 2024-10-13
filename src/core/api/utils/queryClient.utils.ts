@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
+
 const ONE_SECOND = 1_000;
 const ONE_MINUTE = ONE_SECOND * 60;
 const MAX_RETRY_DELAY = 30 * ONE_SECOND;

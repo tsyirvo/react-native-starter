@@ -27,6 +27,7 @@ export const DummyFormExample = () => {
 
   const onSubmit: SubmitHandler<DummyFormSchemaType> = (data) => {
     // Do your form submission stuff here
+    // eslint-disable-next-line no-console
     console.log('data', data);
   };
 
