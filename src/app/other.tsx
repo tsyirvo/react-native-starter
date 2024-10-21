@@ -1,28 +1,27 @@
+import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
-import type { OtherScreenNavigationProp } from '$core/navigation/types/navigation.types';
 import { Notifications } from '$features/notifications';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 import { Screen } from '$shared/uiKit/Screen';
 
-type OtherScreenProps = {
-  navigation: OtherScreenNavigationProp;
-};
-
-export const OtherScreen = ({ navigation }: OtherScreenProps) => {
+const OtherScreen = () => {
+  const router = useRouter();
   const { t } = useTranslation('otherScreen');
 
   const goToBlogPost = () => {
-    navigation.navigate('BlogPostScreen');
+    router.push('/blogPost/1');
   };
 
   const goToDummyForm = () => {
-    navigation.navigate('DummyFormScreen');
+    router.push('/dummyForm');
   };
 
   return (
     <Screen testID="otherScreen-screen">
+      <Stack.Screen options={{ title: t('navigation.title') }} />
+
       <Box borderBottomColor="bg_focus" borderBottomWidth={1} pb="spacing_16">
         <Text testID="otherScreen-blogPost-title" variant="large">
           {t('graphql.title')}
@@ -57,3 +56,5 @@ export const OtherScreen = ({ navigation }: OtherScreenProps) => {
     </Screen>
   );
 };
+
+export default OtherScreen;

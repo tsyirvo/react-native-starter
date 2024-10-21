@@ -18,5 +18,12 @@
       "module": "CommonJS"
     }
   },
-  "exclude": ["node_modules", "__mocks__"]
+  "exclude": ["node_modules", "__mocks__"],
+  "include": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ]
 }

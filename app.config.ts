@@ -67,6 +67,7 @@ const plugins: ExpoConfig['plugins'] = [
       mode: isDevelopmentEnv ? 'development' : 'production',
     },
   ],
+  ['expo-router'],
 ];
 
 // eslint-disable-next-line import/no-default-export
@@ -108,6 +109,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     package: Env.PACKAGE,
     playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
+  },
+  experiments: {
+    typedRoutes: true,
   },
   plugins,
   extra: {

@@ -7,10 +7,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
-import {
-  SafeAreaProvider,
-  initialWindowMetrics,
-} from 'react-native-safe-area-context';
 
 import { persistOptions, queryClient } from '$core/api/queryClient';
 import { FeatureFlagsProvider } from '$core/featureFlags';
@@ -75,12 +71,6 @@ const providers = [
   },
   {
     component: Splashscreen,
-  },
-  {
-    component: SafeAreaProvider,
-    props: {
-      initialMetrics: initialWindowMetrics,
-    } as React.ComponentProps<typeof SafeAreaProvider>,
   },
   {
     component: KeyboardProvider,

@@ -11,9 +11,10 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * 3. It does not support dead code elimination, so it will add unused operations.
  *
  * Therefore it is highly recommended to use the babel or swc plugin for production.
+ * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 const documents = {
-  '\n  query getPost {\n    post(id: 1) {\n      id\n      title\n      user {\n        ...UserItem\n      }\n    }\n  }\n':
+  '\n  query getPost($id: ID!) {\n    post(id: $id) {\n      id\n      title\n      user {\n        ...UserItem\n      }\n    }\n  }\n':
     types.GetPostDocument,
   '\n    fragment UserItem on User {\n      id\n      username\n    }\n  ':
     types.UserItemFragmentDoc,
@@ -37,8 +38,8 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: '\n  query getPost {\n    post(id: 1) {\n      id\n      title\n      user {\n        ...UserItem\n      }\n    }\n  }\n',
-): (typeof documents)['\n  query getPost {\n    post(id: 1) {\n      id\n      title\n      user {\n        ...UserItem\n      }\n    }\n  }\n'];
+  source: '\n  query getPost($id: ID!) {\n    post(id: $id) {\n      id\n      title\n      user {\n        ...UserItem\n      }\n    }\n  }\n',
+): (typeof documents)['\n  query getPost($id: ID!) {\n    post(id: $id) {\n      id\n      title\n      user {\n        ...UserItem\n      }\n    }\n  }\n'];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

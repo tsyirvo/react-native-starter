@@ -495,7 +495,9 @@ export type UsersPage = {
   meta?: Maybe<PageMetadata>;
 };
 
-export type GetPostQueryVariables = Exact<Record<string, never>>;
+export type GetPostQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
 
 export type GetPostQuery = {
   __typename?: 'Query';
@@ -524,8 +526,8 @@ export const UserItemFragmentDoc = `
 }
     `;
 export const GetPostDocument = `
-    query getPost {
-  post(id: 1) {
+    query getPost($id: ID!) {
+  post(id: $id) {
     id
     title
     user {
@@ -536,13 +538,13 @@ export const GetPostDocument = `
     ${UserItemFragmentDoc}`;
 
 export const useGetPostQuery = <TData = GetPostQuery, TError = unknown>(
-  variables?: GetPostQueryVariables,
+  variables: GetPostQueryVariables,
   options?: Omit<UseQueryOptions<GetPostQuery, TError, TData>, 'queryKey'> & {
     queryKey?: UseQueryOptions<GetPostQuery, TError, TData>['queryKey'];
   },
 ) => {
   return useQuery<GetPostQuery, TError, TData>({
-    queryKey: variables === undefined ? ['getPost'] : ['getPost', variables],
+    queryKey: ['getPost', variables],
     queryFn: request<GetPostQuery, GetPostQueryVariables>(
       GetPostDocument,
       variables,
@@ -551,11 +553,13 @@ export const useGetPostQuery = <TData = GetPostQuery, TError = unknown>(
   });
 };
 
-useGetPostQuery.getKey = (variables?: GetPostQueryVariables) =>
-  variables === undefined ? ['getPost'] : ['getPost', variables];
+useGetPostQuery.getKey = (variables: GetPostQueryVariables) => [
+  'getPost',
+  variables,
+];
 
 useGetPostQuery.fetcher = (
-  variables?: GetPostQueryVariables,
+  variables: GetPostQueryVariables,
   options?: RequestInit['headers'],
 ) =>
   request<GetPostQuery, GetPostQueryVariables>(
