@@ -1,5 +1,5 @@
-import { useGlobalSearchParams, usePathname } from 'expo-router';
-import { useEffect } from 'react';
+import { usePathname } from 'expo-router';
+import { useCallback, useEffect } from 'react';
 
 import { Analytics } from '$core/analytics';
 
@@ -7,22 +7,23 @@ import { convertStringToKebabCase } from '../utils/navigation.utils';
 
 export const useAppScreenTracking = () => {
   const pathname = usePathname();
-  const params = useGlobalSearchParams();
+
+  const getScreenTrackedEventName = useCallback(() => {
+    if (pathname === '/') {
+      return 'home-screen-viewed' as 'XXX-screen-viewed';
+    } else if (pathname.includes('/blogPost')) {
+      return 'blog-post-screen-viewed' as 'XXX-screen-viewed';
+    }
+    // Add other specific tracking events for screens that need it
+
+    const pathNameWithoutSlash = pathname.replace('/', '').replaceAll('/', '>');
+
+    return `${convertStringToKebabCase(pathNameWithoutSlash)}-screen-viewed` as 'XXX-screen-viewed';
+  }, [pathname]);
 
   useEffect(() => {
-    if (pathname === '/') {
-      Analytics.trackEvent(`home-screen-viewed` as 'XXX-screen-viewed');
-    } else if (pathname.includes('/blogPost')) {
-      Analytics.trackEvent(`blog-post-screen-viewed` as 'XXX-screen-viewed');
-      // Add other specific tracking key for screens that need it
-    } else {
-      const pathNameWithoutSlash = pathname
-        .replace('/', '')
-        .replaceAll('/', '-');
+    const eventName = getScreenTrackedEventName();
 
-      Analytics.trackEvent(
-        `${convertStringToKebabCase(pathNameWithoutSlash)}-screen-viewed` as 'XXX-screen-viewed',
-      );
-    }
-  }, [pathname, params]);
+    Analytics.trackEvent(eventName);
+  }, [getScreenTrackedEventName]);
 };

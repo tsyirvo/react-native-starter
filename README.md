@@ -9,7 +9,6 @@
   - [Environments](#environments)
   - [Internationalization](#internationalization)
   - [Adding images](#adding-images)
-  - [Generate new components](#generate-new-components)
   - [Using the custom Sandbox](#using-the-custom-sandbox)
   - [Tests](#tests)
   - [Formatting and type checking](#formatting-and-type-checking)
@@ -132,16 +131,6 @@ To simplify adding new images to the project and optimizing them, you can run th
 ```
 yarn image:add [path/to/the/image/to/add|path/to/the/folder]
 ```
-
-## Generate new screens
-
-You can automaticaly generated new screens with all the necessary files, tests and injection with this command:
-
-```
-yarn generate:screens
-```
-
-A CLI prompt will ask you all the infos.
 
 ## Using the custom Sandbox
 
