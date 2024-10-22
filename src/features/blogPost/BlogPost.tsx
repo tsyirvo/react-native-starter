@@ -8,9 +8,15 @@ import { Text } from '$shared/uiKit/primitives';
 
 import { BlogPostUser } from './components/BlogPostUser';
 
-export const BlogPost = () => {
+type BlogPostProps = {
+  id: string;
+};
+
+export const BlogPost = ({ id }: BlogPostProps) => {
   const { t } = useTranslation('miscScreens');
-  const { data, isLoading } = useGetPostQuery();
+  const { data, isLoading } = useGetPostQuery({
+    id,
+  });
 
   if (isLoading) return <Loader />;
 
@@ -26,8 +32,8 @@ export const BlogPost = () => {
 };
 
 BlogPost.query = graphql(`
-  query getPost {
-    post(id: 1) {
+  query getPost($id: ID!) {
+    post(id: $id) {
       id
       title
       user {

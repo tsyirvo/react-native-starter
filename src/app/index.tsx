@@ -1,24 +1,28 @@
+import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
-import type { HomeScreenNavigationProp } from '$core/navigation/types/navigation.types';
 import { Header, Informations, Version } from '$features/home/components';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 import { Screen } from '$shared/uiKit/Screen';
 
-type HomeScreenProps = {
-  navigation: HomeScreenNavigationProp;
-};
-
-export const HomeScreen = ({ navigation }: HomeScreenProps) => {
+const HomeScreen = () => {
+  const router = useRouter();
   const { t } = useTranslation('homeScreen');
 
   const goToOtherScreen = () => {
-    navigation.navigate('OtherScreen');
+    router.push('/other');
   };
 
   return (
     <Screen p="zero">
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          title: t('navigation.screenTitle'),
+        }}
+      />
+
       <Header />
 
       <Box pb="spacing_32" px="spacing_16">
@@ -39,3 +43,5 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
     </Screen>
   );
 };
+
+export default HomeScreen;
