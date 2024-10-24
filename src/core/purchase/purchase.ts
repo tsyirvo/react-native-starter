@@ -1,64 +1,64 @@
 import type { LOG_LEVEL, PurchasesPackage } from 'react-native-purchases';
-import Purchases from 'react-native-purchases';
+import RevenueCat from 'react-native-purchases';
 
 import { IS_IOS, config } from '$core/constants';
 import { Logger } from '$core/logger';
 
-import type { SubscriptionEntitlementType } from './subscriptions.types';
+import type { EntitlementsType } from './purchase.types';
 
 const API_KEY = IS_IOS
   ? config.revenueCatAppleApiKey
   : config.revenueCatAndroidApiKey;
 
-class SubscriptionClass {
+class PurchaseClass {
   /* ***** *****  Setup  ***** ***** */
 
   init() {
-    Purchases.configure({ apiKey: API_KEY });
+    RevenueCat.configure({ apiKey: API_KEY });
   }
 
   async setLogLevel(logLevel: LOG_LEVEL) {
-    await Purchases.setLogLevel(logLevel);
+    await RevenueCat.setLogLevel(logLevel);
   }
 
   /* ***** *****  User related  ***** ***** */
 
   async setUser(appUserID: string) {
-    await Purchases.logIn(appUserID);
+    await RevenueCat.logIn(appUserID);
   }
 
   async setAttributes(attributes: Record<string, string | null>) {
-    await Purchases.setAttributes(attributes);
+    await RevenueCat.setAttributes(attributes);
   }
 
   async getUserInformations() {
-    return await Purchases.getCustomerInfo();
+    return await RevenueCat.getCustomerInfo();
   }
 
-  /* ***** *****  Purchases  ***** ***** */
+  /* ***** *****  RevenueCat  ***** ***** */
 
   async getOfferings() {
-    const offerings = await Purchases.getOfferings();
+    const offerings = await RevenueCat.getOfferings();
 
     return offerings.current;
   }
 
   async restorePurchases() {
-    await Purchases.restorePurchases();
+    await RevenueCat.restorePurchases();
   }
 
   async makePurchase({
     purchasedPackage,
-    subscriptionEntitlement,
+    entitlement,
   }: {
     purchasedPackage: PurchasesPackage;
-    subscriptionEntitlement: SubscriptionEntitlementType;
+    entitlement: EntitlementsType;
   }) {
     try {
       const { customerInfo } =
-        await Purchases.purchasePackage(purchasedPackage);
+        await RevenueCat.purchasePackage(purchasedPackage);
 
-      if (customerInfo.entitlements.active[subscriptionEntitlement]) {
+      if (customerInfo.entitlements.active[entitlement]) {
         return { isPurchaseSuccessful: true };
       }
 
@@ -71,4 +71,4 @@ class SubscriptionClass {
   }
 }
 
-export const Subscriptions = new SubscriptionClass();
+export const Purchase = new PurchaseClass();
