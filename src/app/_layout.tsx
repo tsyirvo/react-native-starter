@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react-native';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import Toast from 'react-native-toast-message';
 
 import { bootstrapExternalSdks } from '$core/bootstrapExternalSdks';
@@ -25,7 +25,7 @@ const RootLayout = () => {
 
   return (
     <>
-      <StatusBar barStyle="light-content" />
+      <StatusBar style="light" />
 
       <Providers>
         <>

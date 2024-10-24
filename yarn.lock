@@ -5929,6 +5929,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@revenuecat/purchases-typescript-internal@npm:13.5.1":
+  version: 13.5.1
+  resolution: "@revenuecat/purchases-typescript-internal@npm:13.5.1"
+  checksum: 10c0/1192a5f26511e1c7d3665f9bbd7e22f0019a5236e301ff17792d6ac3cc49b6fb10c456442eeeece107765969b5ef5523a9ccc8e3289e24718bed736212cfbee2
+  languageName: node
+  linkType: hard
+
 "@rnx-kit/chromium-edge-launcher@npm:^1.0.0":
   version: 1.0.0
   resolution: "@rnx-kit/chromium-edge-launcher@npm:1.0.0"
@@ -18910,6 +18917,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-purchases@npm:8.2.4":
+  version: 8.2.4
+  resolution: "react-native-purchases@npm:8.2.4"
+  dependencies:
+    "@revenuecat/purchases-typescript-internal": "npm:13.5.1"
+  peerDependencies:
+    react: ">= 16.6.3"
+    react-native: "*"
+  checksum: 10c0/aa7e5b7fdc443228b661fd62716180050a606c66457564b8ee98a14ee3e5351c9bc1b89840f86962e053b9e6e401700da70d5d425ecfdd24b825af3dbe24d3e8
+  languageName: node
+  linkType: hard
+
 "react-native-reanimated@npm:~3.15.0":
   version: 3.15.5
   resolution: "react-native-reanimated@npm:3.15.5"
@@ -19805,6 +19824,7 @@ __metadata:
     react-native-keyboard-controller: "npm:1.14.1"
     react-native-mmkv: "npm:2.12.2"
     react-native-onesignal: "npm:5.1.1"
+    react-native-purchases: "npm:8.2.4"
     react-native-reanimated: "npm:~3.15.0"
     react-native-safe-area-context: "npm:4.10.5"
     react-native-screens: "npm:3.31.1"
