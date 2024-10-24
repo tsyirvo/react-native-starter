@@ -21,6 +21,8 @@ const sentryDsn = Env.SENTRY_DSN;
 const amplitudeApiKey = Env.AMPLITUDE_API_KEY;
 const flagsmithKey = Env.FLAGSMITH_KEY;
 const oneSignalAppId = Env.ONE_SIGNAL_APP_ID;
+const revenueCatAppleApiKey = Env.REVENUE_CAT_APPLE_API_KEY;
+const revenueCatAndroidApiKey = Env.REVENUE_CAT_ANDROID_API_KEY;
 
 export const config = {
   defaultLocale: 'en',
@@ -38,4 +40,6 @@ export const config = {
   amplitudeApiKey,
   flagsmithKey,
   oneSignalAppId,
+  revenueCatAppleApiKey,
+  revenueCatAndroidApiKey,
 };

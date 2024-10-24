@@ -6,6 +6,7 @@ import { getSupportedDateLocale } from './i18n';
 import { getSavedAppLocale } from './i18n/utils/languageDetector';
 import { ErrorMonitoring } from './monitoring';
 import { Notifications } from './notifications';
+import { Subscriptions } from './subscriptions';
 
 const initAnalytics = () => {
   Analytics.init().catch((error: unknown) => {
@@ -32,6 +33,7 @@ const initDateLib = () => {
 
 export const bootstrapExternalSdks = () => {
   ErrorMonitoring.init();
+  Subscriptions.init();
   initAnalytics();
   initNotifications();
   initDateLib();

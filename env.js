@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-nodejs-modules */
 
 const path = require('path');
@@ -28,9 +26,6 @@ const withEnvSuffix = (name) => {
   return APP_ENV === 'production' ? name : `${name}.${APP_ENV}`;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-const envVariableSuffix = `_${APP_ENV.toUpperCase()}`;
-
 // Environment variables validation schemas
 
 const client = z.object({
@@ -47,6 +42,8 @@ const client = z.object({
   AMPLITUDE_API_KEY: z.string(),
   SENTRY_DSN: z.string(),
   ONE_SIGNAL_APP_ID: z.string(),
+  REVENUE_CAT_APPLE_API_KEY: z.string(),
+  REVENUE_CAT_ANDROID_API_KEY: z.string(),
 });
 
 const buildTime = z.object({
@@ -69,13 +66,15 @@ const _clientEnv = {
   VERSION: packageJSON.version,
 
   // ADD ENV VARS HERE TOO
-  APP_NAME: process.env[`APP_NAME${envVariableSuffix}`],
-  API_URL: process.env[`API_URL${envVariableSuffix}`],
+  APP_NAME: process.env.APP_NAME,
+  API_URL: process.env.API_URL,
   ITUNES_ITEM_ID: process.env.ITUNES_ITEM_ID,
-  FLAGSMITH_KEY: process.env[`FLAGSMITH_KEY${envVariableSuffix}`],
-  AMPLITUDE_API_KEY: process.env[`AMPLITUDE_API_KEY${envVariableSuffix}`],
+  FLAGSMITH_KEY: process.env.FLAGSMITH_KEY,
+  AMPLITUDE_API_KEY: process.env.AMPLITUDE_API_KEY,
   SENTRY_DSN: process.env.SENTRY_DSN,
-  ONE_SIGNAL_APP_ID: process.env[`ONE_SIGNAL_APP_ID${envVariableSuffix}`],
+  ONE_SIGNAL_APP_ID: process.env.ONE_SIGNAL_APP_ID,
+  REVENUE_CAT_APPLE_API_KEY: process.env.REVENUE_CAT_APPLE_API_KEY,
+  REVENUE_CAT_ANDROID_API_KEY: process.env.REVENUE_CAT_ANDROID_API_KEY,
 };
 
 const _buildTimeEnv = {

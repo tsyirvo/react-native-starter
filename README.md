@@ -43,6 +43,7 @@ On the features side, there are already some things to get started quickly with 
 - Feature Flags
 - Error monitoring
 - Analytics
+- In-app purchases
 
 There are a few other things setup which you can discover on your own ;)
 
@@ -76,7 +77,7 @@ The most useful libraries already configured are the following:
 
 [React Native](https://facebook.github.io/react-native/) with [Expo](https://docs.expo.dev/)
 
-[React Navigation](https://reactnavigation.org/) for the routing
+[Expo Router](https://docs.expo.dev/router/introduction/) for the routing
 
 [Sentry](https://sentry.io/welcome/) for crash reporting
 
@@ -94,6 +95,8 @@ The most useful libraries already configured are the following:
 
 [Amplitude](https://amplitude.com/) for analytics
 
+[RevenueCat](https://www.revenuecat.com/) for in-app purchases
+
 A few other interesting things are configured, don't hesitate to look around.
 
 ## Configure the tooling
@@ -109,6 +112,7 @@ The libraries that needs configurations are the ones exposed inside the `.env` f
 - Flagsmith
 - Amplitude
 - One Signal
+- RevenueCat
 
 ## Environments
 
@@ -159,9 +163,9 @@ yarn test:e2e
 The project is using a custom [ESlint](https://eslint.org/) config ([see here](https://github.com/tsyirvo/eslint-config-tsyirvo-react-native)), [Prettier](https://prettier.io/) and [TypeScript](https://www.typescriptlang.org/) for code formating and type checking, you can run the checks with those commands:
 
 ```
+yarn lint:ts
 yarn lint
 yarn prettify
-yarn tsc
 ```
 
 There is a pre-commit git hook that run some of those commands to have a consistent formatting and type checking.
