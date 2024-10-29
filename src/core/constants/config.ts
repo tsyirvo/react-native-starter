@@ -23,6 +23,8 @@ const flagsmithKey = Env.FLAGSMITH_KEY;
 const oneSignalAppId = Env.ONE_SIGNAL_APP_ID;
 const revenueCatAppleApiKey = Env.REVENUE_CAT_APPLE_API_KEY;
 const revenueCatAndroidApiKey = Env.REVENUE_CAT_ANDROID_API_KEY;
+const appsflyerDevKey = Env.APPSFLYER_DEV_KEY;
+const appsflyerAppId = Env.APPSFLYER_APP_ID;
 
 export const config = {
   defaultLocale: 'en',
@@ -42,4 +44,6 @@ export const config = {
   oneSignalAppId,
   revenueCatAppleApiKey,
   revenueCatAndroidApiKey,
+  appsflyerDevKey,
+  appsflyerAppId,
 };

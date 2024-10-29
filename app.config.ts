@@ -67,7 +67,8 @@ const plugins: ExpoConfig['plugins'] = [
       mode: isDevelopmentEnv ? 'development' : 'production',
     },
   ],
-  ['expo-router'],
+  'expo-router',
+  ['react-native-appsflyer', {}],
 ];
 
 // eslint-disable-next-line import/no-default-export
@@ -96,6 +97,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: Env.BUNDLE_ID,
+    // TODO(prod): Add correct associated domain config
+    associatedDomains: ['applinks:rnstarter.onelink.me'],
     // TODO(prod): Add correct app store URL
     appStoreUrl: `https://apps.apple.com/app/XXX/${Env.ITUNES_ITEM_ID}`,
     config: {
@@ -109,6 +112,29 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     package: Env.PACKAGE,
     playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
+    intentFilters: [
+      {
+        action: 'VIEW',
+        data: [
+          {
+            scheme: 'https',
+            // TODO(prod): Add correct associated domain config
+            host: 'rnstarter.onelink.me',
+            pathPrefix: '/XYZ',
+          },
+        ],
+        category: ['BROWSABLE', 'DEFAULT'],
+      },
+      {
+        action: 'VIEW',
+        data: [
+          {
+            scheme: 'rn-starter',
+          },
+        ],
+        category: ['BROWSABLE', 'DEFAULT'],
+      },
+    ],
   },
   experiments: {
     typedRoutes: true,

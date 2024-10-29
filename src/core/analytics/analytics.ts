@@ -1,25 +1,19 @@
 import {
+  Identify,
+  Revenue,
+  setUserId as _setUserId,
+  identify,
   init,
   reset,
-  setUserId as _setUserId,
-  setSessionId,
-  Identify,
-  identify,
-  track,
   revenue,
-  Revenue,
+  setSessionId,
+  track,
 } from '@amplitude/analytics-react-native';
 
 import { config } from '$core/constants';
 import { Logger } from '$core/logger';
 
-import type {
-  AnalyticsValidPropertyType,
-  SupportedEventNames,
-  SupportedProductIds,
-  SupportedPropertyNames,
-  SupportedRevenueTypes,
-} from './types/analytics.types';
+import type { AnalyticsType } from './analytics.types';
 
 const ONE = 1;
 
@@ -65,22 +59,22 @@ class AnalyticsClass {
   /* ***** *****  Properties  ***** ***** */
 
   setUserProperty(
-    propertyName: SupportedPropertyNames,
-    propertyValue: AnalyticsValidPropertyType,
+    propertyName: AnalyticsType.PropertyNames,
+    propertyValue: AnalyticsType.ValidPropertyType,
   ) {
     identifyObj.set(propertyName, propertyValue);
 
     identify(identifyObj);
   }
 
-  unsetUserProperty(propertyName: SupportedPropertyNames) {
+  unsetUserProperty(propertyName: AnalyticsType.PropertyNames) {
     identifyObj.unset(propertyName);
 
     identify(identifyObj);
   }
 
   incrementUserProperty(
-    propertyName: SupportedPropertyNames,
+    propertyName: AnalyticsType.PropertyNames,
     incrementCount: number,
   ) {
     identifyObj.add(propertyName, incrementCount);
@@ -93,9 +87,9 @@ class AnalyticsClass {
     price,
     revenueType,
   }: {
-    productId: SupportedProductIds;
+    productId: AnalyticsType.ProductIds;
     price: number;
-    revenueType: SupportedRevenueTypes;
+    revenueType: AnalyticsType.RevenueTypes;
   }) {
     const event = new Revenue()
       .setProductId(productId)
@@ -108,7 +102,7 @@ class AnalyticsClass {
   /* ***** *****  Events  ***** ***** */
 
   trackEvent(
-    eventName: SupportedEventNames,
+    eventName: AnalyticsType.EventNames,
     properties?: Record<string, unknown>,
   ) {
     track(eventName, properties);

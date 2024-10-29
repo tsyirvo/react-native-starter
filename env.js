@@ -44,6 +44,8 @@ const client = z.object({
   ONE_SIGNAL_APP_ID: z.string(),
   REVENUE_CAT_APPLE_API_KEY: z.string(),
   REVENUE_CAT_ANDROID_API_KEY: z.string(),
+  APPSFLYER_DEV_KEY: z.string(),
+  APPSFLYER_APP_ID: z.string(),
 });
 
 const buildTime = z.object({
@@ -75,6 +77,8 @@ const _clientEnv = {
   ONE_SIGNAL_APP_ID: process.env.ONE_SIGNAL_APP_ID,
   REVENUE_CAT_APPLE_API_KEY: process.env.REVENUE_CAT_APPLE_API_KEY,
   REVENUE_CAT_ANDROID_API_KEY: process.env.REVENUE_CAT_ANDROID_API_KEY,
+  APPSFLYER_DEV_KEY: process.env.APPSFLYER_DEV_KEY,
+  APPSFLYER_APP_ID: process.env.APPSFLYER_APP_ID,
 };
 
 const _buildTimeEnv = {
