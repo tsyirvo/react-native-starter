@@ -44,6 +44,7 @@ On the features side, there are already some things to get started quickly with 
 - Error monitoring
 - Analytics
 - In-app purchases
+- Attribution
 
 There are a few other things setup which you can discover on your own ;)
 
@@ -97,6 +98,8 @@ The most useful libraries already configured are the following:
 
 [RevenueCat](https://www.revenuecat.com/) for in-app purchases
 
+[AppsFlyer](https://www.appsflyer.com/) for attribution
+
 A few other interesting things are configured, don't hesitate to look around.
 
 ## Configure the tooling
@@ -113,6 +116,7 @@ The libraries that needs configurations are the ones exposed inside the `.env` f
 - Amplitude
 - One Signal
 - RevenueCat
+- AppsFlyer
 
 ## Environments
 
