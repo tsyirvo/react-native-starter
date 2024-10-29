@@ -11737,12 +11737,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-modules-core@npm:1.12.25":
-  version: 1.12.25
-  resolution: "expo-modules-core@npm:1.12.25"
+"expo-modules-core@npm:1.12.26":
+  version: 1.12.26
+  resolution: "expo-modules-core@npm:1.12.26"
   dependencies:
     invariant: "npm:^2.2.4"
-  checksum: 10c0/910ab3819920c36c715c546ec954ceea253ddd466534f839537986fecafc82ed74555f8bc0a852a6b5a5b473ce984a2217416830c835ed940fae5e3a8768da72
+  checksum: 10c0/02fd20d52e15cb8c34f0f652512e7fe5ba66fd353a2fbd05888f22bfa4f3de4b699724c37393b415b1336f9ce9691e67342c9fc9ccded4f8806a726b0a711d3c
   languageName: node
   linkType: hard
 
@@ -11879,8 +11879,8 @@ __metadata:
   linkType: hard
 
 "expo@npm:^51.0.37":
-  version: 51.0.37
-  resolution: "expo@npm:51.0.37"
+  version: 51.0.38
+  resolution: "expo@npm:51.0.38"
   dependencies:
     "@babel/runtime": "npm:^7.20.0"
     "@expo/cli": "npm:0.18.30"
@@ -11894,12 +11894,12 @@ __metadata:
     expo-font: "npm:~12.0.10"
     expo-keep-awake: "npm:~13.0.2"
     expo-modules-autolinking: "npm:1.11.3"
-    expo-modules-core: "npm:1.12.25"
+    expo-modules-core: "npm:1.12.26"
     fbemitter: "npm:^3.0.0"
     whatwg-url-without-unicode: "npm:8.0.0-3"
   bin:
     expo: bin/cli
-  checksum: 10c0/d659a46ca8152032ec87c6d11f8caae71b6d672a00fa29bc0e5f97161dc3f1f1240f04a987ffdccf22babcae4c843c33aa1550c8064a7ba195ad1b3ae1066681
+  checksum: 10c0/8dde1cb565823594d663d2a5757d25a7ebf7e4175d2e05a07cd77f33495c058e337c164a7cd693355abae24dbd4f5b20a999f09934f5810aa2e57a33e7c4dec4
   languageName: node
   linkType: hard
 
@@ -18825,6 +18825,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-appsflyer@npm:6.15.1":
+  version: 6.15.1
+  resolution: "react-native-appsflyer@npm:6.15.1"
+  checksum: 10c0/88e55bd8682d71e1655b88cc72e153b449d63a5b5e552ff872add73d7bd1335a72678b9a09700667473ddc293ce88fe456c97e2fc6c108fd70d3ac22e3530c99
+  languageName: node
+  linkType: hard
+
 "react-native-device-info@npm:10.3.0":
   version: 10.3.0
   resolution: "react-native-device-info@npm:10.3.0"
@@ -18974,16 +18981,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-screens@npm:3.31.1":
-  version: 3.31.1
-  resolution: "react-native-screens@npm:3.31.1"
+"react-native-screens@npm:~3.34.0":
+  version: 3.34.1
+  resolution: "react-native-screens@npm:3.34.1"
   dependencies:
     react-freeze: "npm:^1.0.0"
     warn-once: "npm:^0.1.0"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 10c0/899a02751ecbc6231ce3c869268fb510e5b53428c788135ae46f4bbd768efe78bf74f17fec5becc4c4c1e81a5f224a907dc890ba2406181ff9e21830dda95dec
+  checksum: 10c0/ea049a29d2d493256acff1cfecc08cd5f30cf697a69a844ea56f81a7d2bf246574e69e1906f07b3157c46014a3a1ceb9aed786195c385af498cacc771df57e56
   languageName: node
   linkType: hard
 
@@ -19818,6 +19825,7 @@ __metadata:
     react-hook-form: "npm:7.53.0"
     react-i18next: "npm:15.0.3"
     react-native: "npm:~0.75.0"
+    react-native-appsflyer: "npm:6.15.1"
     react-native-device-info: "npm:13.1.0"
     react-native-flagsmith: "npm:5.0.0"
     react-native-gesture-handler: "npm:~2.18.1"
@@ -19827,7 +19835,7 @@ __metadata:
     react-native-purchases: "npm:8.2.4"
     react-native-reanimated: "npm:~3.15.0"
     react-native-safe-area-context: "npm:4.10.5"
-    react-native-screens: "npm:3.31.1"
+    react-native-screens: "npm:~3.34.0"
     react-native-svg: "npm:15.2.0"
     react-native-toast-message: "npm:2.2.1"
     semver: "npm:7.6.3"
