@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Logger } from '$core/logger';
-import { useRunOnMount } from '$shared/hooks/useRunOnMount';
+import { useRunOnMount } from '$shared/hooks';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 import { checkForNativeUpdate } from '$shared/utils/checkForAppUpdates';

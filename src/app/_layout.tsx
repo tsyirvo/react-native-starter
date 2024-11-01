@@ -11,7 +11,7 @@ import { colors } from '$core/theme';
 import { toastConfig } from '$core/toaster';
 import { AppUpdateNeeded } from '$shared/components/AppUpdateNeeded';
 import { MaintenanceMode } from '$shared/components/MaintenanceMode';
-import { useCheckNetworkStateOnMount } from '$shared/hooks/useCheckNetworkStateOnMount';
+import { useCheckNetworkStateOnMount } from '$shared/hooks';
 import 'react-native-gesture-handler';
 
 import '../core/i18n';

@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 import { Suspense, useState } from 'react';
 
 import { Logger } from '$core/logger';
-import { useRunOnMount } from '$shared/hooks/useRunOnMount';
+import { useRunOnMount } from '$shared/hooks';
 import { Loader } from '$shared/uiKit/Loader';
 
 import { SuspendedDebugStack } from './navigation';
