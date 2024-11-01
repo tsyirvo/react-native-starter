@@ -1,4 +1,4 @@
-import { usePress } from '$shared/hooks/usePress';
+import { usePress } from '$shared/hooks';
 import { Box } from '$shared/uiKit/primitives';
 
 import type * as AllIcons from '../../icons/components';

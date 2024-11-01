@@ -63,12 +63,11 @@ const plugins: ExpoConfig['plugins'] = [
   'expo-secure-store',
   [
     'onesignal-expo-plugin',
-    {
-      mode: isDevelopmentEnv ? 'development' : 'production',
-    },
+    { mode: isDevelopmentEnv ? 'development' : 'production' },
   ],
   'expo-router',
   ['react-native-appsflyer', {}],
+  ['react-native-permissions', { iosPermissions: ['Notifications'] }],
 ];
 
 // eslint-disable-next-line import/no-default-export
@@ -80,7 +79,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: 'rn-starter',
   slug: 'rn-starter',
   version: Env.VERSION.toString(),
-  runtimeVersion: { policy: 'fingerprint' },
+  runtimeVersion: { policy: 'appVersion' },
   jsEngine: 'hermes',
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -103,6 +102,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     appStoreUrl: `https://apps.apple.com/app/XXX/${Env.ITUNES_ITEM_ID}`,
     config: {
       usesNonExemptEncryption: false,
+    },
+    infoPlist: {
+      CFBundleAllowMixedLocalizations: true,
     },
   },
   android: {
@@ -135,6 +137,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         category: ['BROWSABLE', 'DEFAULT'],
       },
     ],
+  },
+  locales: {
+    fr: './src/core/i18n/infoPlist/fr.json',
+    en: './src/core/i18n/infoPlist/en.json',
   },
   experiments: {
     typedRoutes: true,

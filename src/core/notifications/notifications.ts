@@ -52,29 +52,6 @@ class NotificationsClass {
     OneSignal.User.pushSubscription.optIn();
   }
 
-  /* ***** *****  Permission  ***** ***** */
-
-  async checkPermissions() {
-    const isPermissionGranted =
-      await OneSignal.Notifications.getPermissionAsync();
-
-    return isPermissionGranted;
-  }
-
-  async canRequestPermission() {
-    const isRequestPossible =
-      await OneSignal.Notifications.canRequestPermission();
-
-    return isRequestPossible;
-  }
-
-  async requestPermissions() {
-    const isPermissionGranted =
-      await OneSignal.Notifications.requestPermission(false);
-
-    return isPermissionGranted;
-  }
-
   /* ***** *****  Listeners  ***** ***** */
 
   watchForNotificationPress() {

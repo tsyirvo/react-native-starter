@@ -1,5 +1,5 @@
 import { Analytics } from '$core/analytics';
-import { useAppState } from '$shared/hooks/useAppState';
+import { useAppState } from '$shared/hooks';
 
 export const useAppStateTracking = () => {
   useAppState({

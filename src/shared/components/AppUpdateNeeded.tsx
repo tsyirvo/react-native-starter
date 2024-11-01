@@ -6,7 +6,7 @@ import semverGte from 'semver/functions/gte';
 import { config, IS_IOS } from '$core/constants';
 import { useGetFlagValueSync } from '$core/featureFlags/hooks/useGetFlagValueSync';
 import { Logger } from '$core/logger';
-import { useRunOnMount } from '$shared/hooks/useRunOnMount';
+import { useRunOnMount } from '$shared/hooks';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 

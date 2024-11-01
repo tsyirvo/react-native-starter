@@ -1,4 +1,4 @@
-import { usePress } from '$shared/hooks/usePress';
+import { usePress } from '$shared/hooks';
 
 import { BaseButton } from './BaseButton';
 import { InnerText } from './components/InnerText';
