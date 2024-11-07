@@ -7,7 +7,7 @@ import { Box, Text } from '$shared/uiKit/primitives';
 import { SafeView } from '$shared/uiKit/SafeView';
 
 const FullscreenErrorBoundary = () => {
-  const { t } = useTranslation('miscScreens');
+  const { t } = useTranslation();
 
   const reloadApp = async () =>
     Updates.reloadAsync().catch((error: unknown) => {
@@ -24,16 +24,16 @@ const FullscreenErrorBoundary = () => {
         width="80%"
       >
         <Text mb="spacing_8" variant="large">
-          {t('errorBoundary.title')}
+          {t('miscScreens.errorBoundary.title')}
         </Text>
 
         <Text textAlign="center" variant="medium">
-          {t('errorBoundary.description')}
+          {t('miscScreens.errorBoundary.description')}
         </Text>
 
         <Box mt="spacing_32">
           <Button.Text onPress={reloadApp}>
-            {t('errorBoundary.cta')}
+            {t('miscScreens.errorBoundary.cta')}
           </Button.Text>
         </Box>
       </Box>

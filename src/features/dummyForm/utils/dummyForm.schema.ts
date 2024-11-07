@@ -8,30 +8,30 @@ const LAST_NAME_MAX_LENGTH = 30;
 
 export const DummyFormSchema = z.object({
   email: z.string().email({
-    message: i18next.t('miscScreens:dummyForm.form.email.validation.email'),
+    message: i18next.t('miscScreens.dummyForm.form.email.validation.email'),
   }),
   firstName: z
     .string()
     .min(FIRST_NAME_MIN_LENGTH, {
       message: i18next.t(
-        'miscScreens:dummyForm.form.firstName.validation.minLength',
+        'miscScreens.dummyForm.form.firstName.validation.minLength',
       ),
     })
     .max(FIRST_NAME_MAX_LENGTH, {
       message: i18next.t(
-        'miscScreens:dummyForm.form.firstName.validation.maxLength',
+        'miscScreens.dummyForm.form.firstName.validation.maxLength',
       ),
     }),
   lastName: z
     .string()
     .min(LAST_NAME_MIN_LENGTH, {
       message: i18next.t(
-        'miscScreens:dummyForm.form.lastName.validation.minLength',
+        'miscScreens.dummyForm.form.lastName.validation.minLength',
       ),
     })
     .max(LAST_NAME_MAX_LENGTH, {
       message: i18next.t(
-        'miscScreens:dummyForm.form.lastName.validation.minLength',
+        'miscScreens.dummyForm.form.lastName.validation.minLength',
       ),
     }),
 });

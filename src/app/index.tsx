@@ -8,7 +8,7 @@ import { Screen } from '$shared/uiKit/Screen';
 
 const HomeScreen = () => {
   const router = useRouter();
-  const { t } = useTranslation('homeScreen');
+  const { t } = useTranslation();
 
   const goToOtherScreen = () => {
     router.push('/other');
@@ -19,7 +19,7 @@ const HomeScreen = () => {
       <Stack.Screen
         options={{
           headerShown: false,
-          title: t('navigation.screenTitle'),
+          title: t('homeScreen.navigation.screenTitle'),
         }}
       />
 
@@ -27,12 +27,12 @@ const HomeScreen = () => {
 
       <Box pb="spacing_32" px="spacing_16">
         <Text mt="spacing_32" variant="large">
-          {t('navigation.title')}
+          {t('homeScreen.navigation.title')}
         </Text>
 
         <Box mt="spacing_8">
           <Button.Text testID="home-navigateCta" onPress={goToOtherScreen}>
-            {t('navigation.content')}
+            {t('homeScreen.navigation.content')}
           </Button.Text>
         </Box>
 

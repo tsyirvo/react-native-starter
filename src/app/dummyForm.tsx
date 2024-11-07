@@ -6,13 +6,13 @@ import { DummyForm as DummyFormComponent } from '$features/dummyForm';
 import { Screen } from '$shared/uiKit/Screen';
 
 const DummyFormScreen = () => {
-  const { t } = useTranslation('miscScreens');
+  const { t } = useTranslation();
 
   return (
     <Screen isScrollable={false}>
       <Stack.Screen
         options={{
-          title: t('dummyForm.screenTitle'),
+          title: t('miscScreens.dummyForm.screenTitle'),
         }}
       />
 

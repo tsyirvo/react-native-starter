@@ -13,7 +13,7 @@ type BlogPostProps = {
 };
 
 export const BlogPost = ({ id }: BlogPostProps) => {
-  const { t } = useTranslation('miscScreens');
+  const { t } = useTranslation();
   const { data, isLoading } = useGetPostQuery({
     id,
   });
@@ -22,7 +22,7 @@ export const BlogPost = ({ id }: BlogPostProps) => {
 
   return (
     <>
-      <Text variant="large">{t('blogPost.title')}</Text>
+      <Text variant="large">{t('miscScreens.blogPost.title')}</Text>
 
       <Text pt="spacing_8">{data?.post?.title}</Text>
 

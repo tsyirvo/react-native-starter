@@ -13,7 +13,7 @@ import { Box, Text } from '$shared/uiKit/primitives';
 export const AppUpdateNeeded = () => {
   const [isAppUnsupported, setIsAppUnsupported] = useState(false);
 
-  const { t } = useTranslation('miscScreens');
+  const { t } = useTranslation();
 
   const { getFlagValueSync } = useGetFlagValueSync();
 
@@ -66,15 +66,15 @@ export const AppUpdateNeeded = () => {
       width="100%"
     >
       <Text pb="spacing_8" variant="large">
-        {t('appUpdate.title')}
+        {t('miscScreens.appUpdate.title')}
       </Text>
 
       <Text mb="spacing_16" textAlign="center">
-        {t('appUpdate.description')}
+        {t('miscScreens.appUpdate.description')}
       </Text>
 
       <Button.Text testID="appUpdateNeeded-cta" onPress={onPress}>
-        {t('updateAvailable.banner.updateCta', { ns: 'settings' })}
+        {t('settings.updateAvailable.banner.updateCta')}
       </Button.Text>
     </Box>
   );
