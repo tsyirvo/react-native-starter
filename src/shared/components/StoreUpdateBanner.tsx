@@ -17,16 +17,14 @@ type UpdateStatus = {
 export const StoreUpdateBanner = () => {
   const [updateStatus, setUpdateStatus] = useState<UpdateStatus>();
 
-  const { t } = useTranslation('settings');
+  const { t } = useTranslation();
 
   useRunOnMount(() => {
     checkForNativeUpdate({
-      title: t('updateAvailable.nativePrompt.title'),
-      message: t('updateAvailable.nativePrompt.message'),
-      buttonUpgradeText: t('updateAvailable.nativePrompt.updateCta'),
-      buttonCancelText: t('cancel', {
-        ns: 'common',
-      }),
+      title: t('settings.updateAvailable.nativePrompt.title'),
+      message: t('settings.updateAvailable.nativePrompt.message'),
+      buttonUpgradeText: t('settings.updateAvailable.nativePrompt.updateCta'),
+      buttonCancelText: t('common.cancel'),
     })
       .then((status) => {
         setUpdateStatus(status);
@@ -46,16 +44,16 @@ export const StoreUpdateBanner = () => {
     <Box bg="neutral" borderRadius="radius_8" px="spacing_16" py="spacing_8">
       <Text textAlign="center">
         {updateStatus.storeVersion
-          ? t('updateAvailable.banner.compareVersions', {
+          ? t('settings.updateAvailable.banner.compareVersions', {
               currentVersion: updateStatus.currentVersion,
               storeVersion: updateStatus.storeVersion,
             })
-          : t('updateAvailable.banner.defaultTitle')}
+          : t('settings.updateAvailable.banner.defaultTitle')}
       </Text>
 
       <Box alignItems="center" pt="spacing_8">
         <Button.Text onPress={updateStatus.startUpdate}>
-          {t('updateAvailable.banner.updateCta')}
+          {t('settings.updateAvailable.banner.updateCta')}
         </Button.Text>
       </Box>
     </Box>

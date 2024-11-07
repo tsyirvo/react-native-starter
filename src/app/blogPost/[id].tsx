@@ -6,13 +6,13 @@ import { Screen } from '$shared/uiKit/Screen';
 
 const BlogPostScreen = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { t } = useTranslation('miscScreens');
+  const { t } = useTranslation();
 
   return (
     <Screen>
       <Stack.Screen
         options={{
-          title: t('blogPost.screenTitle'),
+          title: t('miscScreens.blogPost.screenTitle'),
         }}
       />
 

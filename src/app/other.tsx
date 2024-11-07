@@ -8,7 +8,7 @@ import { Screen } from '$shared/uiKit/Screen';
 
 const OtherScreen = () => {
   const router = useRouter();
-  const { t } = useTranslation('otherScreen');
+  const { t } = useTranslation();
 
   const goToBlogPost = () => {
     router.push('/blogPost/1');
@@ -20,11 +20,11 @@ const OtherScreen = () => {
 
   return (
     <Screen testID="otherScreen-screen">
-      <Stack.Screen options={{ title: t('navigation.title') }} />
+      <Stack.Screen options={{ title: t('otherScreen.navigation.title') }} />
 
       <Box borderBottomColor="bg_focus" borderBottomWidth={1} pb="spacing_16">
         <Text testID="otherScreen-blogPost-title" variant="large">
-          {t('graphql.title')}
+          {t('otherScreen.graphql.title')}
         </Text>
 
         <Box alignItems="flex-start" mt="spacing_8">
@@ -32,20 +32,20 @@ const OtherScreen = () => {
             testID="otherScreen-blogPost-navigateCta"
             onPress={goToBlogPost}
           >
-            {t('graphql.cta')}
+            {t('otherScreen.graphql.cta')}
           </Button.Text>
         </Box>
       </Box>
 
       <Box borderBottomColor="bg_focus" borderBottomWidth={1} py="spacing_16">
-        <Text variant="large">{t('form.title')}</Text>
+        <Text variant="large">{t('otherScreen.form.title')}</Text>
 
         <Box alignItems="flex-start" mt="spacing_8">
           <Button.Text
             testID="otherScreen-dummyForm-navigateCta"
             onPress={goToDummyForm}
           >
-            {t('form.cta')}
+            {t('otherScreen.form.cta')}
           </Button.Text>
         </Box>
       </Box>

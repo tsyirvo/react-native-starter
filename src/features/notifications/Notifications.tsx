@@ -7,7 +7,7 @@ import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 
 export const Notifications = () => {
-  const { t } = useTranslation('miscScreens');
+  const { t } = useTranslation();
 
   const { requestNotificationPermission } = useRequestPermission();
 
@@ -25,10 +25,12 @@ export const Notifications = () => {
 
   return (
     <>
-      <Text variant="large">{t('notifications.title')}</Text>
+      <Text variant="large">{t('miscScreens.notifications.title')}</Text>
 
       <Box alignItems="flex-start" mt="spacing_8">
-        <Button.Text onPress={onPress}>{t('notifications.cta')}</Button.Text>
+        <Button.Text onPress={onPress}>
+          {t('miscScreens.notifications.cta')}
+        </Button.Text>
       </Box>
     </>
   );

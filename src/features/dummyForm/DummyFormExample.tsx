@@ -7,6 +7,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import type { TextInput } from 'react-native';
 
+import { changeLanguage } from '$core/i18n';
 import {
   DummyFormSchema,
   type DummyFormSchemaType,
@@ -19,7 +20,7 @@ export const DummyFormExample = () => {
   const firstNameInputRef = useRef<TextInput>(null);
   const lastNameInputRef = useRef<TextInput>(null);
 
-  const { t } = useTranslation('miscScreens');
+  const { t } = useTranslation();
 
   const { control, handleSubmit } = useForm<DummyFormSchemaType>({
     resolver: zodResolver(DummyFormSchema),
@@ -33,6 +34,13 @@ export const DummyFormExample = () => {
 
   return (
     <>
+      <Button.Text
+        testID="home-formattingCta"
+        onPress={async () => changeLanguage('en')}
+      >
+        Set locale to FR
+      </Button.Text>
+
       <Box pb="spacing_16">
         <Controller
           control={control}
@@ -44,8 +52,8 @@ export const DummyFormExample = () => {
               autoCorrect={false}
               error={fieldState.error?.message}
               keyboardType="email-address"
-              label={t('dummyForm.form.email.label')}
-              placeholder={t('dummyForm.form.email.placeholder')}
+              label={t('miscScreens.dummyForm.form.email.label')}
+              placeholder={t('miscScreens.dummyForm.form.email.placeholder')}
               returnKeyType="next"
               testID="dummyForm-input-email"
               value={value}
@@ -68,10 +76,12 @@ export const DummyFormExample = () => {
               ref={firstNameInputRef}
               autoComplete="name-given"
               error={fieldState.error?.message}
-              label={t('dummyForm.form.firstName.label')}
-              placeholder={t('dummyForm.form.firstName.placeholder')}
+              label={t('miscScreens.dummyForm.form.firstName.label')}
               returnKeyType="next"
               value={value}
+              placeholder={t(
+                'miscScreens.dummyForm.form.firstName.placeholder',
+              )}
               onBlur={onBlur}
               onChangeText={onChange}
               onSubmitEditing={() => {
@@ -91,8 +101,8 @@ export const DummyFormExample = () => {
               ref={lastNameInputRef}
               autoComplete="name-family"
               error={fieldState.error?.message}
-              label={t('dummyForm.form.lastName.label')}
-              placeholder={t('dummyForm.form.lastName.placeholder')}
+              label={t('miscScreens.dummyForm.form.lastName.label')}
+              placeholder={t('miscScreens.dummyForm.form.lastName.placeholder')}
               returnKeyType="done"
               value={value}
               onBlur={onBlur}

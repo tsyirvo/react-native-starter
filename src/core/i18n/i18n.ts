@@ -10,7 +10,7 @@ export const i18n = i18next.use(initReactI18next).use(languageDetector).init({
   fallbackLng: config.defaultLocale,
   supportedLngs: config.supportedLocales,
   nonExplicitSupportedLngs: true,
-  defaultNS: 'common',
+  defaultNS: 'messages',
   resources,
   load: 'languageOnly',
   compatibilityJSON: 'v3',

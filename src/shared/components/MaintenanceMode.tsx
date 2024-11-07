@@ -5,7 +5,7 @@ import { useIsFeatureFlagEnabled } from '$core/featureFlags';
 import { Box, Text } from '$shared/uiKit/primitives';
 
 export const MaintenanceMode = () => {
-  const { t } = useTranslation('miscScreens');
+  const { t } = useTranslation();
 
   const isMaintenanceModeEnabled = useIsFeatureFlagEnabled(
     'is-maintenance-mode',
@@ -25,10 +25,12 @@ export const MaintenanceMode = () => {
       width="100%"
     >
       <Text pb="spacing_8" variant="large">
-        {t('maintenanceMode.title')}
+        {t('miscScreens.maintenanceMode.title')}
       </Text>
 
-      <Text textAlign="center">{t('maintenanceMode.description')}</Text>
+      <Text textAlign="center">
+        {t('miscScreens.maintenanceMode.description')}
+      </Text>
     </Box>
   );
 };

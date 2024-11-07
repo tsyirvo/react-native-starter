@@ -4,31 +4,31 @@ import { IS_IOS } from '$core/constants';
 import { Text } from '$shared/uiKit/primitives';
 
 export const Informations = () => {
-  const { t } = useTranslation('homeScreen');
+  const { t } = useTranslation();
 
   return (
     <>
       <Text mb="spacing_8" mt="spacing_24" variant="large">
-        {t('sandbox.title')}
+        {t('homeScreen.sandbox.title')}
       </Text>
 
       <Text>
-        {t('sandbox.content', {
+        {t('homeScreen.sandbox.content', {
           command: IS_IOS ? 'Cmd+R' : 'Cmd+M',
         })}
       </Text>
 
       <Text mb="spacing_8" mt="spacing_24" variant="large">
-        {t('tests.title')}
+        {t('homeScreen.tests.title')}
       </Text>
 
-      <Text>{t('tests.content')}</Text>
+      <Text>{t('homeScreen.tests.content')}</Text>
 
       <Text mb="spacing_8" mt="spacing_24" variant="large">
-        {t('formatting.title')}
+        {t('homeScreen.formatting.title')}
       </Text>
 
-      <Text>{t('formatting.content')}</Text>
+      <Text>{t('homeScreen.formatting.content')}</Text>
     </>
   );
 };

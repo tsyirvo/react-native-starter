@@ -8,7 +8,7 @@ import { Box, Text } from '$shared/uiKit/primitives';
 
 export const Version = () => {
   const insets = useSafeAreaInsets();
-  const { t } = useTranslation('appConfig');
+  const { t } = useTranslation();
 
   const { currentlyRunning } = Updates.useUpdates();
 
@@ -42,7 +42,9 @@ export const Version = () => {
         )}
 
         {!isRunningBuiltInCode && (
-          <Text variant="small">{t('updateCheck.isEmbeddedLaunch')}</Text>
+          <Text variant="small">
+            {t('homeScreen.updateCheck.isEmbeddedLaunch')}
+          </Text>
         )}
       </Box>
     </Box>
