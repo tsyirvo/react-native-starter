@@ -75,6 +75,7 @@ export const messages = {
           },
         },
       },
+      cta: 'Submit',
       screenTitle: 'Dummy form',
     },
     errorBoundary: {

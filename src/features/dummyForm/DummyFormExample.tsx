@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
@@ -7,7 +5,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import type { TextInput } from 'react-native';
 
-import { changeLanguage } from '$core/i18n';
 import {
   DummyFormSchema,
   type DummyFormSchemaType,
@@ -34,13 +31,6 @@ export const DummyFormExample = () => {
 
   return (
     <>
-      <Button.Text
-        testID="home-formattingCta"
-        onPress={async () => changeLanguage('en')}
-      >
-        Set locale to FR
-      </Button.Text>
-
       <Box pb="spacing_16">
         <Controller
           control={control}
@@ -117,7 +107,7 @@ export const DummyFormExample = () => {
         testID="dummyForm-submitCta"
         onPress={handleSubmit(onSubmit) as (arg: unknown) => Promise<unknown>}
       >
-        Submit
+        {t('miscScreens.dummyForm.cta')}
       </Button.Text>
     </>
   );
