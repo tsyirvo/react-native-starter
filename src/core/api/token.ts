@@ -1,5 +1,4 @@
 import * as SecureStore from 'expo-secure-store';
-import { jwtDecode } from 'jwt-decode';
 
 import { sleep } from '$shared/utils/sleep';
 
@@ -16,19 +15,58 @@ const saveToSecureStore = async (key: SecureStoreKeys, value: string) => {
 const getFromSecureStore = async (key: SecureStoreKeys) => {
   const result = await SecureStore.getItemAsync(key);
 
-  return result ?? null;
+  return result;
+};
+
+const deleteFromSecureStore = async (key: SecureStoreKeys) => {
+  await SecureStore.deleteItemAsync(key);
 };
 
 /* ***** *****  Cached token  ***** ***** */
 
 let cachedAccessToken: string | null = null;
+let cachedRefreshToken: string | null = null;
+
+const setCachedRefreshToken = (refreshToken: string) => {
+  cachedRefreshToken = refreshToken;
+};
+
+const getCachedRefreshToken = () => cachedRefreshToken;
+
+const clearCachedRefreshToken = () => {
+  cachedRefreshToken = null;
+};
 
 const setCachedAccessToken = (accessToken: string) => {
   cachedAccessToken = accessToken;
 };
 
-const getCachedAccessToken = () => {
-  return cachedAccessToken;
+const getCachedAccessToken = () => cachedAccessToken;
+
+const clearCachedAccessToken = () => {
+  cachedAccessToken = null;
+};
+
+/* ***** *****  Token utils  ***** ***** */
+
+export const saveNewAccessToken = async (token: string) => {
+  setCachedAccessToken(token);
+  await saveToSecureStore('jwtToken', token);
+};
+
+export const saveNewRefreshToken = async (token: string) => {
+  setCachedRefreshToken(token);
+  await saveToSecureStore('refreshToken', token);
+};
+
+export const clearTokens = async () => {
+  clearCachedAccessToken();
+  clearCachedRefreshToken();
+
+  await Promise.all([
+    deleteFromSecureStore('jwtToken'),
+    deleteFromSecureStore('refreshToken'),
+  ]);
 };
 
 /* ***** *****  Token auth header  ***** ***** */
@@ -36,50 +74,35 @@ const getCachedAccessToken = () => {
 export const getAuthorizationHeader = async () => {
   const accessToken = getCachedAccessToken();
 
-  if (accessToken) {
-    return `Bearer ${accessToken}`;
-  }
+  if (accessToken) return `Bearer ${accessToken}`;
 
   const currentAccessToken = await getFromSecureStore('jwtToken');
 
-  if (currentAccessToken) {
-    setCachedAccessToken(currentAccessToken);
-  }
+  if (!currentAccessToken) return '';
 
-  return currentAccessToken ? `Bearer ${currentAccessToken}` : '';
+  setCachedAccessToken(currentAccessToken);
+
+  return `Bearer ${currentAccessToken}`;
 };
 
 /* ***** *****  Token handling  ***** ***** */
 
 // TODO(prod): Add actual refresh logic
-const refreshToken = async () => {
+export const refreshToken = async () => {
+  getCachedRefreshToken();
+
   await sleep(ONE_SECOND);
 
-  const newToken = 'newToken';
+  const accessToken = 'newAccessToken';
+  const newRefreshToken = 'newRefreshToken';
 
-  setCachedAccessToken(newToken);
-  await saveToSecureStore('jwtToken', newToken);
+  await Promise.all([
+    saveNewAccessToken(accessToken),
+    saveNewRefreshToken(newRefreshToken),
+  ]);
 
-  return newToken;
-};
-
-export const checkIfTokenExpiredAndRefresh = async () => {
-  const token = await getFromSecureStore('jwtToken');
-
-  if (!token) {
-    return null;
-  }
-
-  const decodedToken = token ? jwtDecode(token) : null;
-  const currentTime = Date.now() / ONE_SECOND; // Convert to seconds
-
-  if (decodedToken?.exp && decodedToken.exp < currentTime) {
-    const refreshedToken = await refreshToken();
-
-    setCachedAccessToken(refreshedToken);
-
-    return refreshedToken;
-  }
-
-  return token;
+  return {
+    accessToken,
+    refreshToken: newRefreshToken,
+  };
 };

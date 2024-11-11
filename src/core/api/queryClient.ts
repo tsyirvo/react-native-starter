@@ -1,13 +1,18 @@
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
-import { QueryCache, QueryClient } from '@tanstack/react-query';
+import {
+  MutationCache,
+  QueryCache,
+  QueryClient,
+  matchQuery,
+} from '@tanstack/react-query';
 import type { PersistQueryClientOptions } from '@tanstack/react-query-persist-client';
 
 import { storageKeys } from '$core/constants';
 import { Logger } from '$core/logger';
 import { QueryClientStorage } from '$core/storage';
 
-import { checkIfTokenExpiredAndRefresh } from './token';
 import { GC_TIME, STALE_TIME, THIRTY_DAYS } from './utils/queryClient.utils';
+import { refreshAccessTokenAndRetry } from './utils/requestFailureQueue';
 
 const asyncStoragePersister = createAsyncStoragePersister({
   key: storageKeys.queryStorage.id,
@@ -20,44 +25,76 @@ export const persistOptions: Omit<PersistQueryClientOptions, 'queryClient'> = {
   maxAge: THIRTY_DAYS,
 };
 
-const MAX_RETRY_COUNT = 3;
-const INTIAL_RETRY_COUNT = 0;
-let retryCount = INTIAL_RETRY_COUNT;
-
 export const queryClient = new QueryClient({
   queryCache: new QueryCache({
-    onError: (_, query) => {
-      // TODO(prod): Only execute this logic on 401 errors
-      if (retryCount < MAX_RETRY_COUNT) {
-        checkIfTokenExpiredAndRefresh()
-          .then(async (jwtToken) => {
-            if (!jwtToken) return null;
+    onError: (error, query) => {
+      // TODO(prod): Properly handle 401 errors based on API response
+      if (error.message === '401 Unauthorized') {
+        refreshAccessTokenAndRetry(query).catch((error: unknown) => {
+          Logger.error({
+            error,
+            message: 'Error while refreshing the access token',
+          });
+        });
+      } else {
+        Logger.error({
+          error,
+          message: 'Error while performing a query',
+        });
+      }
+    },
+  }),
+  mutationCache: new MutationCache({
+    // eslint-disable-next-line max-params
+    onSuccess: (_data, _variables, _context, mutation) => {
+      const queriesToInvalidate = mutation.meta?.invalidates;
 
-            retryCount++;
-
-            return queryClient.refetchQueries({ queryKey: query.queryKey });
+      if (queriesToInvalidate?.length) {
+        queryClient
+          .invalidateQueries({
+            predicate: (query) =>
+              // invalidate all matching tags at once or nothing if no meta is not provided
+              queriesToInvalidate.some((queryKey) =>
+                matchQuery({ queryKey }, query),
+              ),
           })
-          .catch((jwtTokenError: unknown) => {
+          .catch((error: unknown) => {
             Logger.error({
-              error: jwtTokenError,
-              level: 'error',
-              message:
-                'Error while getting token from secure store or refreshing it',
+              error,
+              message: 'Error while invalidating queries after a mutation',
             });
           });
       }
     },
-    onSuccess: () => {
-      retryCount = INTIAL_RETRY_COUNT;
+    // eslint-disable-next-line max-params
+    onError: (error, variables, _, mutation) => {
+      // TODO(prod): Properly handle 401 errors based on API response
+      if (error.message === '401 Unauthorized') {
+        refreshAccessTokenAndRetry(undefined, mutation, variables).catch(
+          (error: unknown) => {
+            Logger.error({
+              error,
+              message: 'Error while refreshing the access token',
+            });
+          },
+        );
+      } else {
+        Logger.error({
+          error,
+          message: 'Error while performing a mutation',
+        });
+      }
     },
   }),
   defaultOptions: {
     queries: {
-      // Disable retry to handle token refresh
       retry: false,
       staleTime: STALE_TIME, // 5 minutes
       gcTime: GC_TIME, // 24 hours
       refetchOnWindowFocus: false,
+    },
+    mutations: {
+      retry: false,
     },
   },
 });
