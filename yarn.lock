@@ -15625,13 +15625,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jwt-decode@npm:4.0.0":
-  version: 4.0.0
-  resolution: "jwt-decode@npm:4.0.0"
-  checksum: 10c0/de75bbf89220746c388cf6a7b71e56080437b77d2edb29bae1c2155048b02c6b8c59a3e5e8d6ccdfd54f0b8bda25226e491a4f1b55ac5f8da04cfbadec4e546c
-  languageName: node
-  linkType: hard
-
 "keyv@npm:3.0.0":
   version: 3.0.0
   resolution: "keyv@npm:3.0.0"
@@ -19852,7 +19845,6 @@ __metadata:
     is-image: "npm:4.0.0"
     jest: "npm:29.7.0"
     jest-expo: "npm:~51.0.4"
-    jwt-decode: "npm:4.0.0"
     lint-staged: "npm:15.2.10"
     lodash.isequal: "npm:4.5.0"
     lodash.isnil: "npm:4.0.0"
