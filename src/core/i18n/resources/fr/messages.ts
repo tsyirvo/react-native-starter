@@ -77,6 +77,7 @@ export const messages: MessagesTypes = {
           },
         },
       },
+      cta: 'Valider',
       screenTitle: 'Dummy form',
     },
     errorBoundary: {
