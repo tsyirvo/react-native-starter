@@ -121,7 +121,6 @@
     "react-native-svg": "15.2.0",
     "react-native-toast-message": "2.2.1",
     "semver": "7.6.3",
-    "sp-react-native-in-app-updates": "1.4.0",
     "zod": "3.23.8",
     "zustand": "4.5.2"
   },
