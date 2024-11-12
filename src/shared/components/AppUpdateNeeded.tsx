@@ -11,7 +11,7 @@ import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
 
 export const AppUpdateNeeded = () => {
-  const [isAppUnsupported, setIsAppUnsupported] = useState(false);
+  const [isAppSupported, setIsAppSupported] = useState(true);
 
   const { t } = useTranslation();
 
@@ -25,12 +25,9 @@ export const AppUpdateNeeded = () => {
       return;
     }
 
-    if (typeof config.version === 'string') {
-      const isSupported =
-        semverGte(config.version, lastSupportedVersion) || false;
+    const isSupported = semverGte(config.version, lastSupportedVersion);
 
-      setIsAppUnsupported(!isSupported);
-    }
+    setIsAppSupported(isSupported);
   });
 
   const onPress = async () => {
@@ -46,19 +43,17 @@ export const AppUpdateNeeded = () => {
     } catch (error) {
       Logger.error({
         error,
-        message: 'Failed to open app store',
-        level: 'warning',
+        message: 'Failed to open app store to update the app',
       });
     }
   };
 
-  if (!isAppUnsupported) {
-    return null;
-  }
+  if (isAppSupported) return null;
 
   return (
     <Box
       alignItems="center"
+      bg="bg"
       height="100%"
       justifyContent="center"
       px="spacing_32"
