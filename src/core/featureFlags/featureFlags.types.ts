@@ -3,7 +3,8 @@ export type FlagsmithValue<T = string | number | boolean | null> = T;
 export type FlagOptions =
   | 'my-custom-flag'
   | 'is-maintenance-mode'
-  | 'last-supported-app-version';
+  | 'last-supported-app-version'
+  | 'latest-released-app-version';
 
 export type TraitOptions =
   | 'user-trait-1'

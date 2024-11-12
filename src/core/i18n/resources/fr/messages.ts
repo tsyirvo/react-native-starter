@@ -41,6 +41,10 @@ export const messages: MessagesTypes = {
         'Merci de la mettre à jour pour utiliser les dernières fonctionnalités',
       title: 'Votre app est trop vieille',
     },
+    newStoreVersion: {
+      title: 'Une mise à jour est disponible sur les stores',
+      cta: 'Mettre à jour maintenant',
+    },
     blogPost: {
       screenTitle: 'Article de blog',
       title: 'Article récupéré avec GraphQL',

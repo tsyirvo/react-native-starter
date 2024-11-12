@@ -7,4 +7,5 @@ export const defaultFlags: Record<
   'my-custom-flag': { enabled: false },
   'is-maintenance-mode': { enabled: false },
   'last-supported-app-version': { enabled: true, value: '2.0.0' },
+  'latest-released-app-version': { enabled: true, value: '2.1.0' },
 };

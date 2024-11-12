@@ -9,17 +9,19 @@ const DummyFormScreen = () => {
   const { t } = useTranslation();
 
   return (
-    <Screen isScrollable={false}>
+    <>
       <Stack.Screen
         options={{
           title: t('miscScreens.dummyForm.screenTitle'),
         }}
       />
 
-      <KeyboardAwareScrollView bottomOffset={50}>
-        <DummyFormComponent />
-      </KeyboardAwareScrollView>
-    </Screen>
+      <Screen isScrollable={false}>
+        <KeyboardAwareScrollView bottomOffset={50}>
+          <DummyFormComponent />
+        </KeyboardAwareScrollView>
+      </Screen>
+    </>
   );
 };
 

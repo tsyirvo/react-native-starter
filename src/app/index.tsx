@@ -15,7 +15,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <Screen p="zero">
+    <>
       <Stack.Screen
         options={{
           headerShown: false,
@@ -23,24 +23,26 @@ const HomeScreen = () => {
         }}
       />
 
-      <Header />
+      <Screen p="zero">
+        <Header />
 
-      <Box pb="spacing_32" px="spacing_16">
-        <Text mt="spacing_32" variant="large">
-          {t('homeScreen.navigation.title')}
-        </Text>
+        <Box pb="spacing_32" px="spacing_16">
+          <Text mt="spacing_32" variant="large">
+            {t('homeScreen.navigation.title')}
+          </Text>
 
-        <Box mt="spacing_8">
-          <Button.Text testID="home-navigateCta" onPress={goToOtherScreen}>
-            {t('homeScreen.navigation.content')}
-          </Button.Text>
+          <Box mt="spacing_8">
+            <Button.Text testID="home-navigateCta" onPress={goToOtherScreen}>
+              {t('homeScreen.navigation.content')}
+            </Button.Text>
+          </Box>
+
+          <Informations />
         </Box>
 
-        <Informations />
-      </Box>
-
-      <Version />
-    </Screen>
+        <Version />
+      </Screen>
+    </>
   );
 };
 

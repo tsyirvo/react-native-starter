@@ -9,15 +9,17 @@ const BlogPostScreen = () => {
   const { t } = useTranslation();
 
   return (
-    <Screen>
+    <>
       <Stack.Screen
         options={{
           title: t('miscScreens.blogPost.screenTitle'),
         }}
       />
 
-      <BlogPostComponent id={id} />
-    </Screen>
+      <Screen>
+        <BlogPostComponent id={id} />
+      </Screen>
+    </>
   );
 };
 

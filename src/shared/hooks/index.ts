@@ -1,5 +1,6 @@
 export { useAppState } from './useAppState';
 export { useCheckNetworkStateOnMount } from './useCheckNetworkStateOnMount';
+export { useIsNewStoreVersionAvailable } from './useIsNewStoreVersionAvailable';
 export { useKeyboard } from './useKeyboard';
 export { usePress } from './usePress';
 export { usePreviousState } from './usePreviousState';

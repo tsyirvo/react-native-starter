@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { ErrorMonitoring } from '$core/monitoring';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
-import { SafeView } from '$shared/uiKit/SafeView';
 
 const FullscreenErrorBoundary = () => {
   const { t } = useTranslation();
@@ -15,29 +14,29 @@ const FullscreenErrorBoundary = () => {
     });
 
   return (
-    <SafeView>
-      <Box
-        alignItems="center"
-        alignSelf="center"
-        flex={1}
-        justifyContent="center"
-        width="80%"
-      >
-        <Text mb="spacing_8" variant="large">
-          {t('miscScreens.errorBoundary.title')}
-        </Text>
+    <Box
+      alignItems="center"
+      alignSelf="center"
+      bg="bg"
+      height="100%"
+      justifyContent="center"
+      px="spacing_24"
+      width="100%"
+    >
+      <Text mb="spacing_8" variant="large">
+        {t('miscScreens.errorBoundary.title')}
+      </Text>
 
-        <Text textAlign="center" variant="medium">
-          {t('miscScreens.errorBoundary.description')}
-        </Text>
+      <Text textAlign="center" variant="medium">
+        {t('miscScreens.errorBoundary.description')}
+      </Text>
 
-        <Box mt="spacing_32">
-          <Button.Text onPress={reloadApp}>
-            {t('miscScreens.errorBoundary.cta')}
-          </Button.Text>
-        </Box>
+      <Box mt="spacing_32">
+        <Button.Text onPress={reloadApp}>
+          {t('miscScreens.errorBoundary.cta')}
+        </Button.Text>
       </Box>
-    </SafeView>
+    </Box>
   );
 };
 

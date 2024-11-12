@@ -11,13 +11,12 @@ export const MaintenanceMode = () => {
     'is-maintenance-mode',
   );
 
-  if (!isMaintenanceModeEnabled) {
-    return null;
-  }
+  if (!isMaintenanceModeEnabled) return null;
 
   return (
     <Box
       alignItems="center"
+      bg="bg"
       height="100%"
       justifyContent="center"
       px="spacing_32"

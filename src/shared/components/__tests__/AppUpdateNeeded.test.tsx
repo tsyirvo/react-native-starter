@@ -12,9 +12,7 @@ describe('AppUpdateNeeded component', () => {
     getFlagValueSync: () => '',
   });
 
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
+  afterEach(() => jest.resetAllMocks);
 
   it('should render nothing if the flag is empty', () => {
     // Given
@@ -25,9 +23,12 @@ describe('AppUpdateNeeded component', () => {
   });
 
   it('should render nothing if the versions are equal', () => {
+    // Mocks
     jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
       getFlagValueSync: () => '2.0.0',
     });
+
+    config.version = '2.0.0';
 
     // Given
     const { queryByTestId } = render(<AppUpdateNeeded />);
@@ -68,6 +69,8 @@ describe('AppUpdateNeeded component', () => {
 
   it('should open the stores to allow users to udpdate', async () => {
     // Mocks
+    config.version = '2.0.0';
+
     jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
       getFlagValueSync: () => '3.0.0',
     });

@@ -39,6 +39,10 @@ export const messages = {
         'Please go update the application to access the latest features',
       title: 'Your app is outdated',
     },
+    newStoreVersion: {
+      title: 'An update is available on the stores',
+      cta: 'Go update now',
+    },
     blogPost: {
       screenTitle: 'Blog post',
       title: 'Blog post fetched with GraphQL',
