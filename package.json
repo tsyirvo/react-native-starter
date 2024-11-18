@@ -38,7 +38,6 @@
     "build:production:android": "cross-env APP_ENV=production eas build --profile production --platform android --local",
     "//// TESTS ////": "",
     "test": "jest --coverage=false",
-    "test:staged": "jest -o --passWithNoTests --runInBand --coverage=false",
     "test:coverage": "jest",
     "test:e2e": "maestro test ./src/e2e",
     "//// QUALITY ////": "",
@@ -54,11 +53,9 @@
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
     "version:tag": "standard-version",
     "//// MISC ////": "",
+    "clean:watchman": "watchman watch-del-all",
     "perf:bundle": "npx react-native-bundle-visualizer",
-    "prepare": "husky",
-    "postinstall": "husky && patch-package",
-    "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@amplitude/analytics-react-native": "1.4.10",
@@ -157,14 +154,13 @@
     "eslint": "8.57.1",
     "eslint-config-tsyirvo-react-native": "https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#develop",
     "fs-extra": "11.2.0",
-    "husky": "9.1.6",
     "imagemin": "7.0.1",
     "imagemin-mozjpeg": "9.0.0",
     "imagemin-pngquant": "9.0.2",
     "is-image": "4.0.0",
     "jest": "29.7.0",
     "jest-expo": "~51.0.4",
-    "lint-staged": "15.2.10",
+    "lefthook": "1.8.4",
     "patch-package": "8.0.0",
     "pinst": "3.0.0",
     "postinstall-postinstall": "2.1.0",
@@ -184,14 +180,6 @@
         "react-native-screens@~3.31.1"
       ]
     }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "bash -c tsc --noEmit",
-      "bash -c yarn lint",
-      "bash -c yarn prettify",
-      "bash -c yarn test"
-    ]
   },
   "jest": {
     "moduleFileExtensions": [
