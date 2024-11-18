@@ -1,0 +1,18 @@
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn lint {staged_files}
+    typescript:
+      run: yarn lint:ts
+    tests:
+      run: yarn test {staged_files} --findRelatedTests --passWithNoTests --coverage=false
+
+commit-msg:
+  commands:
+    'lint commit message':
+      run: yarn run commitlint --edit {1}
+
+post-checkout:
+  scripts: './scripts/post-merge.sh'
