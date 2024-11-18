@@ -3,7 +3,6 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import Toast from 'react-native-toast-message';
 
-import { bootstrapExternalSdks } from '$core/bootstrapExternalSdks';
 import { useAppScreenTracking } from '$core/navigation/hooks/useAppScreenTracking';
 import { useAppStateTracking } from '$core/navigation/hooks/useAppStateTracking';
 import { Providers } from '$core/providers/Providers';
@@ -15,8 +14,6 @@ import { useCheckNetworkStateOnMount } from '$shared/hooks';
 import 'react-native-gesture-handler';
 
 import '../core/i18n';
-
-bootstrapExternalSdks();
 
 const RootLayout = () => {
   useCheckNetworkStateOnMount();

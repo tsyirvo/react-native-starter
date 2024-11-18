@@ -6,3 +6,7 @@ export type Primitives =
   | symbol
   | null
   | undefined;
+
+export type UnionFromArray<T extends readonly string[]> = {
+  [K in T[number]]: K;
+}[T[number]];

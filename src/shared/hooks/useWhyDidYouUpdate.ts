@@ -1,6 +1,8 @@
 import isEqual from 'lodash.isequal';
 import { useEffect, useRef } from 'react';
 
+import { Logger } from '$core/logger';
+
 type Props = {
   onChangeFound?: (data: {
     changesObj: Record<
@@ -66,8 +68,7 @@ export const useWhyDidYouUpdate = (
       if (onChangeFound) {
         onChangeFound({ changesObj });
       } else {
-        // eslint-disable-next-line no-console
-        console.log('[why-did-you-update]', name, {
+        Logger.dev('[why-did-you-update]', name, {
           props: { from: latestProps.current, to: props },
         });
       }

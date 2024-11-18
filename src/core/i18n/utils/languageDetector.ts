@@ -1,24 +1,16 @@
-import * as Localization from 'expo-localization';
 import type { LanguageDetectorModule } from 'i18next';
 
 import { Analytics } from '$core/analytics';
-import { config, storageKeys } from '$core/constants';
+import { storageKeys } from '$core/constants';
 import { AppStorage } from '$core/storage';
+
+import { getSupportedLocale } from './detectLocaleToUse';
 
 export const getSavedAppLocale = () =>
   AppStorage.getString(storageKeys.appStorage.locale);
 
 export const setSavedAppLocale = (locale: string) => {
   AppStorage.set(storageKeys.appStorage.locale, locale);
-};
-
-const detectPhonePrimaryLocale = () => {
-  const locales = Localization.getLocales();
-
-  const primaryLocaleIndex = 0;
-  const primaryLocale = locales[primaryLocaleIndex];
-
-  return primaryLocale?.languageTag;
 };
 
 const detectLanguageToUse = () => {
@@ -30,14 +22,12 @@ const detectLanguageToUse = () => {
     return currentlySelectedLocale;
   }
 
-  const phonePrimaryLocale = detectPhonePrimaryLocale();
+  const localeToUse = getSupportedLocale();
 
-  const selectedLanguage = phonePrimaryLocale ?? config.defaultLocale;
+  Analytics.setUserProperty('language', localeToUse);
+  setSavedAppLocale(localeToUse);
 
-  Analytics.setUserProperty('language', selectedLanguage);
-  setSavedAppLocale(selectedLanguage);
-
-  return selectedLanguage;
+  return localeToUse;
 };
 
 export const languageDetector: LanguageDetectorModule = {

@@ -2,15 +2,18 @@ import * as Localization from 'expo-localization';
 
 import { config } from '$core/constants';
 
-const SELECTED_LOCALIZATION = 0;
-const NOT_FOUND_INDEX = -1;
+const PRIMARY_LOCALIZATION = 0;
+const NOT_FOUND = -1;
+
+const SLICE_START = 0;
+const SLICE_END = 2;
 
 const getDeviceRegion = () => {
   const locales = Localization.getLocales();
   const calendar = Localization.getCalendars();
 
-  const primaryLocale = locales[SELECTED_LOCALIZATION];
-  const primaryCalendar = calendar[SELECTED_LOCALIZATION];
+  const primaryLocale = locales[PRIMARY_LOCALIZATION];
+  const primaryCalendar = calendar[PRIMARY_LOCALIZATION];
 
   const region = primaryLocale?.regionCode;
   const languageTag = primaryLocale?.languageTag;
@@ -23,10 +26,10 @@ const getDeviceRegion = () => {
   };
 };
 
-export const getSupportedDateLocale = () => {
+export const getSupportedLocale = () => {
   const { languageTag } = getDeviceRegion();
 
-  const isSupportedLocale = config.supportedLocales.findIndex(
+  const supportedLocaleIndex = config.supportedLocales.findIndex(
     (supportedLanguage) => {
       if (languageTag.includes(supportedLanguage)) {
         return true;
@@ -35,8 +38,11 @@ export const getSupportedDateLocale = () => {
       return false;
     },
   );
-  const dateLocaleToSet =
-    isSupportedLocale === NOT_FOUND_INDEX ? null : languageTag;
+  const localeToSet = supportedLocaleIndex === NOT_FOUND ? null : languageTag;
 
-  return dateLocaleToSet ?? config.defaultLocale;
+  if (localeToSet) {
+    return localeToSet.slice(SLICE_START, SLICE_END);
+  }
+
+  return config.defaultLocale;
 };

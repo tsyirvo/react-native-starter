@@ -1,50 +1,33 @@
-import { Logger } from '$core/logger';
-
 import { Analytics } from './analytics';
 import { Attribution } from './attribution';
 import { initDateLocale } from './date';
-import { getSupportedDateLocale } from './i18n';
-import { getSavedAppLocale } from './i18n/utils/languageDetector';
+import { getSupportedLocale } from './i18n';
 import { ErrorMonitoring } from './monitoring';
 import { Notifications } from './notifications';
 import { Purchase } from './purchase';
 
-const initAnalyticsAndAttribution = () => {
-  Analytics.init()
-    .then(() => {
-      Attribution.init().catch((error: unknown) => {
-        Logger.error({
-          error,
-          message: 'Failed to initialize AppsFlyer',
-        });
-      });
-    })
-    .catch((error: unknown) => {
-      Logger.error({
-        error,
-        message: 'Failed to initialize Amplitude',
-      });
-    });
-};
-
-const initNotifications = () => {
+const initNotifications = (locale: string) => {
   Notifications.init();
-
-  const locale = getSavedAppLocale();
-
-  if (locale) Notifications.setUserLanguage(locale);
+  Notifications.setUserLanguage(locale);
 };
 
-const initDateLib = () => {
-  const localeToUse = getSupportedDateLocale();
-
-  initDateLocale(localeToUse);
+const initDateLib = (locale: string) => {
+  initDateLocale(locale);
 };
 
-export const bootstrapExternalSdks = () => {
+export const bootstrapExternalSdks = async () => {
+  // Core services to init first in a specific order
   ErrorMonitoring.init();
-  initAnalyticsAndAttribution();
+  await Analytics.init();
+  await Attribution.init();
+
+  // Misc
+  const localeToUse = getSupportedLocale();
+
+  // All other core services
+  initNotifications(localeToUse);
+  initDateLib(localeToUse);
+
+  // Used SDKs
   Purchase.init();
-  initNotifications();
-  initDateLib();
 };
