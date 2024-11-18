@@ -15,4 +15,4 @@ commit-msg:
       run: yarn run commitlint --edit {1}
 
 post-checkout:
-  scripts: './scripts/post-merge.sh'
+  scripts: './scripts/post-checkout.sh'
