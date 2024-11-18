@@ -77,7 +77,7 @@ describe('Button component', () => {
   it('should not call the onPress method when loading', () => {
     // Given
     const { getByTestId } = render(
-      <ButtonWithIcon isLoading testID="button-id" {...props}>
+      <ButtonWithIcon testID="button-id" isLoading {...props}>
         {label}
       </ButtonWithIcon>,
     );

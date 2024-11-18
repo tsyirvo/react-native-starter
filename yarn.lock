@@ -10948,9 +10948,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git":
+"eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#develop":
   version: 1.5.0
-  resolution: "eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#commit=ce9119ee3bb9e13fe0dcdb675f3c2451a10fff96"
+  resolution: "eslint-config-tsyirvo-react-native@https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#commit=cb2c11cb325049892d003851f03b920f4ca818f8"
   dependencies:
     "@stylistic/eslint-plugin": "npm:2.9.0"
     "@typescript-eslint/eslint-plugin": "npm:8.8.1"
@@ -10970,7 +10970,7 @@ __metadata:
   peerDependencies:
     eslint: ^8.57.1
     typescript: ~5.3.3
-  checksum: 10c0/31092ff8c9fcc4e0c18171a8d4210eaadb64a47355eafddcfbefeccf1b6b809a15176c59cde35886fcf06fd4f7dd74a265bbf76534ccbd3bf896eaa233b573db
+  checksum: 10c0/2c2c834bb2ea399cffe3487fb187ceb1ee374ccad5c144645bd082e929a483b6adc983080d3ca6f87ade94aa66a87f984df6fa4d18dba0af18fcb1b6f3de6d1c
   languageName: node
   linkType: hard
 
@@ -19760,7 +19760,7 @@ __metadata:
     dayjs: "npm:1.11.13"
     dotenv: "npm:16.4.5"
     eslint: "npm:8.57.1"
-    eslint-config-tsyirvo-react-native: "https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git"
+    eslint-config-tsyirvo-react-native: "https://github.com/tsyirvo/eslint-config-tsyirvo-react-native.git#develop"
     expo: "npm:^51.0.37"
     expo-application: "npm:~5.9.1"
     expo-asset: "npm:~10.0.10"
