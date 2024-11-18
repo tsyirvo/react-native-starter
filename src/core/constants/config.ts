@@ -27,8 +27,8 @@ const appsflyerDevKey = Env.APPSFLYER_DEV_KEY;
 const appsflyerAppId = Env.APPSFLYER_APP_ID;
 
 export const config = {
-  defaultLocale: 'en',
-  supportedLocales: ['en', 'fr'],
+  defaultLocale: 'en' as const,
+  supportedLocales: ['en', 'fr'] as const,
   // App config
   env,
   isDebug: env === 'development',
