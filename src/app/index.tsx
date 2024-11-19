@@ -1,6 +1,7 @@
 import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
+import { config } from '$core/constants';
 import { Header, Informations, Version } from '$features/home/components';
 import { Button } from '$shared/uiKit/button';
 import { Box, Text } from '$shared/uiKit/primitives';
@@ -46,4 +47,15 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+// eslint-disable-next-line import/no-mutable-exports
+let EntryPoint = HomeScreen;
+
+if (config.isStorybookEnabled) {
+  // eslint-disable-next-line
+  const StorybookUI = require('../../.storybook').default;
+
+  // eslint-disable-next-line
+  EntryPoint = () => <StorybookUI />;
+}
+
+export default EntryPoint;

@@ -20,5 +20,6 @@
   "doppler.autocomplete.enable": true,
   "doppler.hover.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "react-native-storybooks.storyRegex": "**/*.stories.?(ts|tsx|js|jsx)"
 }

@@ -36,6 +36,7 @@ const client = z.object({
   VERSION: z.string(),
 
   // ADD CLIENT ENV VARS HERE
+  STORYBOOK_ENABLED: z.string().optional(),
   API_URL: z.string(),
   ITUNES_ITEM_ID: z.string(),
   FLAGSMITH_KEY: z.string(),
@@ -63,13 +64,14 @@ const buildTime = z.object({
 
 const _clientEnv = {
   APP_ENV,
+  APP_NAME: process.env.APP_NAME,
   BUNDLE_ID: withEnvSuffix(BUNDLE_ID),
   PACKAGE: withEnvSuffix(PACKAGE),
   VERSION: packageJSON.version,
 
   // ADD ENV VARS HERE TOO
-  APP_NAME: process.env.APP_NAME,
   API_URL: process.env.API_URL,
+  STORYBOOK_ENABLED: process.env.STORYBOOK_ENABLED,
   ITUNES_ITEM_ID: process.env.ITUNES_ITEM_ID,
   FLAGSMITH_KEY: process.env.FLAGSMITH_KEY,
   AMPLITUDE_API_KEY: process.env.AMPLITUDE_API_KEY,
