@@ -5966,7 +5966,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/native-stack@npm:6.9.26, @react-navigation/native-stack@npm:~6.9.12":
+"@react-navigation/native-stack@npm:~6.9.12":
   version: 6.9.26
   resolution: "@react-navigation/native-stack@npm:6.9.26"
   dependencies:
@@ -20468,7 +20468,6 @@ __metadata:
     "@react-native-community/slider": "npm:^4.5.5"
     "@react-native-masked-view/masked-view": "npm:0.3.1"
     "@react-navigation/native": "npm:6.1.17"
-    "@react-navigation/native-stack": "npm:6.9.26"
     "@sentry/react-native": "npm:~5.24.3"
     "@shopify/flash-list": "npm:1.6.4"
     "@shopify/restyle": "npm:2.4.4"

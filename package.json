@@ -67,7 +67,6 @@
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-masked-view/masked-view": "0.3.1",
     "@react-navigation/native": "6.1.17",
-    "@react-navigation/native-stack": "6.9.26",
     "@sentry/react-native": "~5.24.3",
     "@shopify/flash-list": "1.6.4",
     "@shopify/restyle": "2.4.4",
