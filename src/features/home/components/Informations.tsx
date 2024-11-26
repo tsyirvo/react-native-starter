@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 
-import { IS_IOS } from '$core/constants';
 import { Text } from '$shared/uiKit/primitives';
 
 export const Informations = () => {
@@ -9,14 +8,10 @@ export const Informations = () => {
   return (
     <>
       <Text mb="spacing_8" mt="spacing_24" variant="large">
-        {t('homeScreen.sandbox.title')}
+        {t('homeScreen.storybook.title')}
       </Text>
 
-      <Text>
-        {t('homeScreen.sandbox.content', {
-          command: IS_IOS ? 'Cmd+R' : 'Cmd+M',
-        })}
-      </Text>
+      <Text>{t('homeScreen.storybook.content')}</Text>
 
       <Text mb="spacing_8" mt="spacing_24" variant="large">
         {t('homeScreen.tests.title')}

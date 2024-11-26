@@ -3,7 +3,6 @@ import * as Sentry from '@sentry/react-native';
 import type { Breadcrumb, CaptureContext, SeverityLevel } from '@sentry/types';
 
 import { config } from '$core/constants';
-import { Logger } from '$core/logger';
 
 import type { tags } from './constants';
 
@@ -24,7 +23,8 @@ class ErrorMonitoringClass {
     const isEnabled = config.env !== 'development';
 
     if (!config.sentryDsn) {
-      Logger.dev('Failed to initialize Sentry - No DSN found');
+      // eslint-disable-next-line no-console
+      console.log('Failed to initialize Sentry - No DSN found');
 
       return;
     }

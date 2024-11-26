@@ -2,7 +2,6 @@ import { Analytics } from './analytics';
 import { Attribution } from './attribution';
 import { initDateLocale } from './date';
 import { getSupportedLocale } from './i18n';
-import { ErrorMonitoring } from './monitoring';
 import { Notifications } from './notifications';
 import { Purchase } from './purchase';
 
@@ -17,7 +16,6 @@ const initDateLib = (locale: string) => {
 
 export const bootstrapExternalSdks = async () => {
   // Core services to init first in a specific order
-  ErrorMonitoring.init();
   await Analytics.init();
   await Attribution.init();
 

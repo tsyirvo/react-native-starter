@@ -3,6 +3,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import Toast from 'react-native-toast-message';
 
+import { ErrorMonitoring } from '$core/monitoring';
 import { useAppScreenTracking } from '$core/navigation/hooks/useAppScreenTracking';
 import { useAppStateTracking } from '$core/navigation/hooks/useAppStateTracking';
 import { Providers } from '$core/providers/Providers';
@@ -14,6 +15,9 @@ import { useCheckNetworkStateOnMount } from '$shared/hooks';
 import 'react-native-gesture-handler';
 
 import '../core/i18n';
+
+// Sentry is initialized here so that it runs before Sentry.wrap()
+ErrorMonitoring.init();
 
 const RootLayout = () => {
   useCheckNetworkStateOnMount();

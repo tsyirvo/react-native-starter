@@ -17,6 +17,7 @@ const runtimeVersion = Constants.expoConfig?.runtimeVersion;
 const iosBundleIdentifier = Constants.expoConfig?.ios?.bundleIdentifier ?? '';
 const androidPackageName = Constants.expoConfig?.android?.package ?? '';
 const apiURL = Env.API_URL;
+const isStorybookEnabled = Env.STORYBOOK_ENABLED === 'true';
 const sentryDsn = Env.SENTRY_DSN;
 const amplitudeApiKey = Env.AMPLITUDE_API_KEY;
 const flagsmithKey = Env.FLAGSMITH_KEY;
@@ -37,6 +38,7 @@ export const config = {
   runtimeVersion,
   bundleId: IS_IOS ? iosBundleIdentifier : androidPackageName,
   apiURL,
+  isStorybookEnabled,
   // SDKs
   sentryDsn,
   amplitudeApiKey,
