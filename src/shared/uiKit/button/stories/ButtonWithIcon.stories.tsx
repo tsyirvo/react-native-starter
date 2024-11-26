@@ -3,27 +3,31 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { CenteredContent } from '$shared/components/storybook/CenteredContent';
 
-import { ButtonWithText } from '../ButtonWithText';
+import { ButtonWithIcon } from '../ButtonWithIcon';
 
 const meta = {
-  title: 'UIKit/Button/WithText',
-  component: ButtonWithText,
+  title: 'UIKit/Button/WithIcon',
+  component: ButtonWithIcon,
   argTypes: {
     variant: {
       control: 'select',
       options: ['base', 'otherVariant'],
     },
-    size: {
+    iconName: {
       control: 'select',
-      options: ['regular', 'small'],
+      options: ['Code', 'Grid', 'HeartRate', 'Laptop'],
     },
+    width: { control: 'number' },
+    height: { control: 'number' },
     onPress: { action: 'onPress' },
     isDisabled: { control: 'boolean' },
     isLoading: { control: 'boolean' },
   },
   args: {
     variant: 'base',
-    size: 'regular',
+    iconName: 'Code',
+    width: 24,
+    height: 24,
     onPress: action('onPress called'),
   },
   decorators: [
@@ -34,13 +38,13 @@ const meta = {
       </CenteredContent>
     ),
   ],
-} satisfies Meta<typeof ButtonWithText>;
+} satisfies Meta<typeof ButtonWithIcon>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const WithText: Story = {
+export const WithIcon: Story = {
   args: {
     children: 'Some CTA',
   },

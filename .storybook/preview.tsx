@@ -6,11 +6,10 @@ const preview: Preview = {
 
   parameters: {
     backgrounds: {
-      default: 'plain',
+      default: 'dark',
       values: [
-        { name: 'plain', value: 'white' },
-        { name: 'warm', value: 'hotpink' },
-        { name: 'cool', value: 'deepskyblue' },
+        { name: 'dark', value: '#1E1E1E' },
+        { name: 'light', value: '#FFFFFF' },
       ],
     },
     actions: { argTypesRegex: '^on[A-Z].*' },

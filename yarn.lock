@@ -3145,7 +3145,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/config-plugins@npm:8.0.10, @expo/config-plugins@npm:~8.0.0-beta.0, @expo/config-plugins@npm:~8.0.8":
+"@expo/config-plugins@npm:8.0.10, @expo/config-plugins@npm:~8.0.8":
   version: 8.0.10
   resolution: "@expo/config-plugins@npm:8.0.10"
   dependencies:
@@ -3378,27 +3378,6 @@ __metadata:
     base64-js: "npm:^1.2.3"
     xmlbuilder: "npm:^14.0.0"
   checksum: 10c0/9985b58ee24fe62d65793d01a4b0c97c7136e9672e8a0450db83e2a41910b60e5da224d25553ff145bb3bc97fa41dbd9aa52a5bd6410a84e147e543be3e1b549
-  languageName: node
-  linkType: hard
-
-"@expo/prebuild-config@npm:7.0.6":
-  version: 7.0.6
-  resolution: "@expo/prebuild-config@npm:7.0.6"
-  dependencies:
-    "@expo/config": "npm:~9.0.0-beta.0"
-    "@expo/config-plugins": "npm:~8.0.0-beta.0"
-    "@expo/config-types": "npm:^51.0.0-unreleased"
-    "@expo/image-utils": "npm:^0.5.0"
-    "@expo/json-file": "npm:^8.3.0"
-    "@react-native/normalize-colors": "npm:0.74.84"
-    debug: "npm:^4.3.1"
-    fs-extra: "npm:^9.0.0"
-    resolve-from: "npm:^5.0.0"
-    semver: "npm:^7.6.0"
-    xml2js: "npm:0.6.0"
-  peerDependencies:
-    expo-modules-autolinking: ">=0.8.1"
-  checksum: 10c0/a76cc895f532640767d3063a2e657469c879c6b3cef1dfb982499fe0b3a40ecad333daf7ff98e98adae8f015ee030eb625634fec046b5c01f0f3a09ce53dd57f
   languageName: node
   linkType: hard
 
@@ -5894,13 +5873,6 @@ __metadata:
   peerDependencies:
     "@babel/core": "*"
   checksum: 10c0/455f21645e0e9a32e4400a423b896b12503a64a6feca7edea2c9d27608963cc4d283c41156a48b31b15d8662f645c9f1d16cdb449a1b1096bdc90985edf17027
-  languageName: node
-  linkType: hard
-
-"@react-native/normalize-colors@npm:0.74.84":
-  version: 0.74.84
-  resolution: "@react-native/normalize-colors@npm:0.74.84"
-  checksum: 10c0/9046b848db5ba0001cb4817faebba18366c5fc7c86a72836685867868e0019d40477d0dd6a7cdddf305a2156b5bda0b569116d2446d873e6e0d79c3c85a6517e
   languageName: node
   linkType: hard
 
@@ -12413,9 +12385,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-router@npm:~3.5.23":
-  version: 3.5.23
-  resolution: "expo-router@npm:3.5.23"
+"expo-router@npm:~3.5.24":
+  version: 3.5.24
+  resolution: "expo-router@npm:3.5.24"
   dependencies:
     "@expo/metro-runtime": "npm:3.2.3"
     "@expo/server": "npm:^0.4.0"
@@ -12423,7 +12395,7 @@ __metadata:
     "@react-navigation/bottom-tabs": "npm:~6.5.7"
     "@react-navigation/native": "npm:~6.1.6"
     "@react-navigation/native-stack": "npm:~6.9.12"
-    expo-splash-screen: "npm:0.27.5"
+    expo-splash-screen: "npm:0.27.7"
     react-native-helmet-async: "npm:2.0.4"
     schema-utils: "npm:^4.0.1"
   peerDependencies:
@@ -12442,7 +12414,7 @@ __metadata:
       optional: true
     react-native-reanimated:
       optional: true
-  checksum: 10c0/b14b3598ed8bcfcb46d356203f5031a6ee7c4d905d951d22ffd45800329a4bbd1e833e50628f65c2c99d85b9aa94aac4625b4cdd272dc10530cc8d6ebc3ebcda
+  checksum: 10c0/867be5197d3950cbd72e043224b2bd372254b440e26f6b73fd55983fd09a480c6bba42d596f7721bbd76c44a9db8117433921966d0277620efd194be0a32feca
   languageName: node
   linkType: hard
 
@@ -12455,14 +12427,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-splash-screen@npm:0.27.5":
-  version: 0.27.5
-  resolution: "expo-splash-screen@npm:0.27.5"
+"expo-splash-screen@npm:0.27.7":
+  version: 0.27.7
+  resolution: "expo-splash-screen@npm:0.27.7"
   dependencies:
-    "@expo/prebuild-config": "npm:7.0.6"
+    "@expo/prebuild-config": "npm:7.0.9"
   peerDependencies:
     expo: "*"
-  checksum: 10c0/25ec881ca5cc15154c56320a094e885c90806faca5bad069550159681296c3d3fa2b405140a843b735bdd9a32628fb6d818dc6f5233f35f0bbb549682b4cc6a6
+  checksum: 10c0/059ab08530f99e3ac124c0c18d6b42dc3333181b27e2d94b3d8ceb8bfa09221ebd1ee3577b98fc78a36a52b8eec36730292e72eb7257eae100d30b4a288480c3
   languageName: node
   linkType: hard
 
@@ -20542,7 +20514,7 @@ __metadata:
     expo-linking: "npm:~6.3.1"
     expo-localization: "npm:~15.0.3"
     expo-network: "npm:~6.0.1"
-    expo-router: "npm:~3.5.23"
+    expo-router: "npm:~3.5.24"
     expo-secure-store: "npm:~13.0.2"
     expo-splash-screen: "npm:~0.27.6"
     expo-status-bar: "npm:~1.12.1"

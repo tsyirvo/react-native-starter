@@ -41,7 +41,14 @@ const ButtonWithIcon = ({
       onPress={handlePress}
     >
       <Box alignItems="center" flexDirection="row">
-        <Box flex={1}>
+        <InnerIcon
+          height={height}
+          iconName={iconName}
+          isLoading={isResolving || isLoading}
+          width={width}
+        />
+
+        <Box pl="spacing_8">
           <InnerText
             isDisabled={isDisabled}
             isLoading={isResolving || isLoading}
@@ -50,13 +57,6 @@ const ButtonWithIcon = ({
             {children}
           </InnerText>
         </Box>
-
-        <InnerIcon
-          height={height}
-          iconName={iconName}
-          isLoading={isResolving || isLoading}
-          width={width}
-        />
       </Box>
     </BaseButton>
   );

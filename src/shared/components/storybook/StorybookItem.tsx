@@ -5,17 +5,17 @@ import { Box, Text } from '$shared/uiKit/primitives';
 import { CenteredContent } from './CenteredContent';
 import { Separator } from './Separator';
 
-type SandBoxItemProps = {
+type StorybookItemProps = {
   title?: string;
   isSingle?: boolean;
   children: ReactNode;
 };
 
-export const SandBoxItem = ({
+export const StorybookItem = ({
   title,
   isSingle,
   children,
-}: SandBoxItemProps) => {
+}: StorybookItemProps) => {
   return (
     <Box pt="spacing_8" px="spacing_8">
       {!!title && <Text>{title}</Text>}

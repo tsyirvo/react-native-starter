@@ -12,7 +12,6 @@ import { persistOptions, queryClient } from '$core/api/queryClient';
 import { FeatureFlagsProvider } from '$core/featureFlags';
 import { ErrorMonitoring } from '$core/monitoring';
 import { theme } from '$core/theme';
-import { Sandbox } from '$features/sandbox';
 import { FullscreenErrorBoundary } from '$shared/components/FullscreenErrorBoundary';
 import { Splashscreen } from '$shared/components/splashscreen';
 
@@ -74,9 +73,6 @@ const providers = [
   },
   {
     component: KeyboardProvider,
-  },
-  {
-    component: Sandbox,
   },
   {
     component: FeatureFlagsProvider,
