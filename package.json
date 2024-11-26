@@ -228,7 +228,7 @@
       "!**/app.config.ts",
       "!**/**.e2e.ts",
       "!src/components/icons/components/**",
-      "!src/sandbox/**",
+      "!**/stories/**",
       "!**/**.types.ts"
     ]
   },

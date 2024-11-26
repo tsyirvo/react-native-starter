@@ -23,9 +23,10 @@ export const messages: MessagesTypes = {
       screenTitle: 'Accueil',
       title: 'Naviguer vers une autre page',
     },
-    sandbox: {
-      content: 'Accéder à la Sandbox depuis le menu de dev avec {{command}}',
-      title: 'Sandbox',
+    storybook: {
+      content:
+        'Accéder au Storybook en lançant le packager avec "yarn start:storybook"',
+      title: 'Storybook',
     },
     tests: {
       content: 'Vous pouvez faire tourner les tests avec Jest ou Maestro',

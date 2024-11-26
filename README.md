@@ -9,7 +9,7 @@
   - [Environments](#environments)
   - [Internationalization](#internationalization)
   - [Adding images](#adding-images)
-  - [Using the custom Sandbox](#using-the-custom-sandbox)
+  - [Using Storybook](#using-storybook)
   - [Tests](#tests)
   - [Formatting and type checking](#formatting-and-type-checking)
   - [Github Actions](#github-actions)
@@ -24,7 +24,7 @@ It's a basic start, but with most of the common dependencies and tools I use so 
 
 Check the [React Native docs](https://reactnative.dev/docs/environment-setup) on how to properly setup your dev environment. It uses Expo with a custom Development Build, so you also need to setup [Expo tooling](https://docs.expo.dev/).
 
-On the Developer Experience side, a test stack is setup (unit, functional and E2E), a CI on _Github Actions_, a custom _Storybook_, _TypeScript_ is also configured with _ESLint_ and _Prettier_. Commits are linted to automate the release workflows and the changelog generation.
+On the Developer Experience side, a test stack is setup (unit, functional and E2E), a CI on _Github Actions_, _Storybook_, _TypeScript_ is also configured with _ESLint_ and _Prettier_. Commits are linted to automate the release workflows and the changelog generation.
 
 There are also some utilities like:
 
@@ -140,11 +140,15 @@ To simplify adding new images to the project and optimizing them, you can run th
 yarn image:add [path/to/the/image/to/add|path/to/the/folder]
 ```
 
-## Using the custom Sandbox
+## Using Storybook
 
-A custom _Sandbox_ is configured with some basic examples and navigation. Once [StoryBook](https://storybook.js.org/) for React Native will support V8, I'll migrate to using that.
+A _Storybook_ is configured with some basic stories.
 
-To access it, you can access the dev menu on the device and select _Toggle Sandbox_ to have it shown in place of the app.
+To access it, you simply have to run the app with the following command:
+
+```
+yarn start:storybook
+```
 
 ## Tests
 
