@@ -68,6 +68,7 @@ const plugins: ExpoConfig['plugins'] = [
   'expo-router',
   ['react-native-appsflyer', {}],
   ['react-native-permissions', { iosPermissions: ['Notifications'] }],
+  './src/core/expoPlugins/withCustomAndroidManifest.js',
 ];
 
 // eslint-disable-next-line import/no-default-export
@@ -105,6 +106,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
+      ITSAppUsesNonExemptEncryption: false,
     },
   },
   android: {
@@ -145,6 +147,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   experiments: {
     typedRoutes: true,
   },
+  newArchEnabled: true,
   plugins,
   extra: {
     ...ClientEnv,

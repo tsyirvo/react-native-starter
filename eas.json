@@ -15,8 +15,7 @@
         "withoutCredentials": true
       },
       "env": {
-        "APP_ENV": "development",
-        "EXPO_NO_DOTENV": "1"
+        "APP_ENV": "development"
       }
     },
     "development-device": {
@@ -32,8 +31,7 @@
         "buildType": "apk"
       },
       "env": {
-        "APP_ENV": "staging",
-        "EXPO_NO_DOTENV": "1"
+        "APP_ENV": "staging"
       }
     },
     "production": {
@@ -41,8 +39,7 @@
       "distribution": "store",
       "autoIncrement": true,
       "env": {
-        "APP_ENV": "production",
-        "EXPO_NO_DOTENV": "1"
+        "APP_ENV": "production"
       }
     }
   },

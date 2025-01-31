@@ -15,4 +15,6 @@ commit-msg:
       run: yarn run commitlint --edit {1}
 
 post-checkout:
-  scripts: './scripts/post-checkout.sh'
+  scripts:
+    'my-script.sh':
+      runner: bash
