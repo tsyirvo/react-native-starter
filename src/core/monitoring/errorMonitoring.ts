@@ -11,8 +11,7 @@ import type { Primitives } from '$types';
 const prodSampleRate = 0.5;
 const fullSampleRate = 1;
 
-export const routingInstrumentation =
-  new Sentry.ReactNavigationInstrumentation();
+export const routingInstrumentation = Sentry.reactNavigationIntegration();
 
 class ErrorMonitoringClass {
   /* ***** *****  Setup  ***** ***** */
@@ -33,13 +32,13 @@ class ErrorMonitoringClass {
       dsn: config.sentryDsn,
       debug: false,
       tracesSampleRate: sampleRate,
+      enableAppStartTracking: true,
+      enableNativeFramesTracking: true,
+      enableStallTracking: true,
+      enableUserInteractionTracing: true,
       enabled: isEnabled,
       environment: config.env,
-      integrations: [
-        new Sentry.ReactNativeTracing({
-          routingInstrumentation,
-        }),
-      ],
+      integrations: [routingInstrumentation],
       denyUrls: [
         /mixpanel.com/i,
         /flagsmith.com/i,
@@ -80,7 +79,7 @@ class ErrorMonitoringClass {
   }
 
   clearUser() {
-    Sentry.configureScope((scope) => scope.setUser(null));
+    Sentry.setUser(null);
   }
 
   /* ***** *****  Monitoring  ***** ***** */
