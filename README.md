@@ -18,7 +18,7 @@
 
 ## Explanations
 
-This starter is the one I used for my personal projects.
+This starter is the one I used for my projects.
 
 It's a basic start, but with most of the common dependencies and tools I use so I can start new projetcts more easily.
 
@@ -28,7 +28,6 @@ On the Developer Experience side, a test stack is setup (unit, functional and E2
 
 There are also some utilities like:
 
-- Creating new screens automatically, injecting the code where needed to expose it on the navigation stack, create types and have a test file
 - A script to compress images and to create the different files for each resolution
 - Converting `.svg` files into React components that can be used easily
 - A pre-commit hook that runs on staged files for code quality checks
@@ -58,7 +57,7 @@ yarn
 
 ## Runing the project
 
-To launch the React Native packager:
+To launch the React Native packager (the [Doppler](https://www.doppler.com/) CLI is needed to inject secrets):
 
 ```
 yarn start:[dev|staging|production]
