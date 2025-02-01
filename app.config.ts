@@ -68,6 +68,14 @@ const plugins: ExpoConfig['plugins'] = [
   'expo-router',
   ['react-native-appsflyer', {}],
   ['react-native-permissions', { iosPermissions: ['Notifications'] }],
+  [
+    'expo-splash-screen',
+    {
+      backgroundColor: '#222222',
+      image: './assets/icon.png',
+      imageWidth: 200,
+    },
+  ],
   './src/core/expoPlugins/withCustomAndroidManifest.js',
 ];
 
@@ -85,11 +93,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'dark',
-  splash: {
-    image: './assets/splash.png',
-    resizeMode: 'contain',
-    backgroundColor: '#000',
-  },
   updates: {
     fallbackToCacheTimeout: 0,
   },

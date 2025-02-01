@@ -25,13 +25,13 @@
     "node": ">=20"
   },
   "scripts": {
-    "start:dev": "APP_ENV=development expo start --dev-client",
+    "start:dev": "APP_ENV=development doppler run -p rn-starter -c dev -- expo start --dev-client",
     "start:staging": "APP_ENV=staging expo start --no-dev --minify",
     "start:production": "APP_ENV=production expo start --no-dev --minify",
     "//// BUILDS ////": "",
-    "build:dev:ios": "eas build --profile development --platform ios --local",
-    "build:dev:android": "eas build --profile development --platform android --local",
-    "build:dev-device:ios": "eas build --profile development-device --platform ios --local",
+    "build:dev:ios": "doppler run -p rn-starter -c dev -- eas build --profile development --platform ios --local",
+    "build:dev:android": "doppler run -p rn-starter -c dev -- eas build --profile development --platform android --local",
+    "build:dev-device:ios": "doppler run -p rn-starter -c dev -- eas build --profile development-device --platform ios --local",
     "build:staging:ios": "APP_ENV=staging eas build --profile staging --platform ios --local",
     "build:staging:android": "APP_ENV=staging eas build --profile staging --platform android --local",
     "build:production:ios": "APP_ENV=production eas build --profile production --platform ios --local",
