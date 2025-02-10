@@ -21,7 +21,8 @@ export namespace AnalyticsType {
     // Attribution
     | 'organic-install'
     | 'non-organic-install'
-    | 'deep-link-opened';
+    | 'deep-link-opened'
+    | 'purchase';
 
   export type ProductIds =
     | 'monthly-subscription'

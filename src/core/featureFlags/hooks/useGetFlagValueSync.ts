@@ -1,12 +1,10 @@
-import { useFlagsmith } from 'react-native-flagsmith/react';
+import { productTrackingClient } from '$core/productTracking';
 
-import type { FlagOptions } from '../featureFlags.types';
+import type { AvailableFeatureFlags } from '../featureFlags.types';
 
 export const useGetFlagValueSync = () => {
-  const flagsmith = useFlagsmith();
-
-  const getFlagValueSync = (flagKey: FlagOptions) => {
-    const value = flagsmith.getValue(flagKey);
+  const getFlagValueSync = (flagKey: AvailableFeatureFlags) => {
+    const value = productTrackingClient.getFeatureFlag(flagKey);
 
     return value;
   };

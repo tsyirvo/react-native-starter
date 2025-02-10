@@ -4,7 +4,7 @@ import { Linking } from 'react-native';
 import semverGte from 'semver/functions/gte';
 
 import { config, IS_IOS } from '$core/constants';
-import { useGetFlagValueSync } from '$core/featureFlags/hooks/useGetFlagValueSync';
+import { useGetFlagValueSync } from '$core/featureFlags';
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks';
 import { Button } from '$shared/uiKit/button';

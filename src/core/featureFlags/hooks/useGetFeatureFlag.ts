@@ -1,9 +1,9 @@
-import { useFlags } from 'react-native-flagsmith/react';
+import { useFeatureFlag } from 'posthog-react-native';
 
-import type { FlagOptions, TraitOptions } from '../featureFlags.types';
+import type { AvailableFeatureFlags } from '../featureFlags.types';
 
-export function useGetFeatureFlag(flagKey: FlagOptions) {
-  const flag = useFlags<FlagOptions, TraitOptions>([flagKey])[flagKey];
+export function useGetFeatureFlag(flagKey: AvailableFeatureFlags) {
+  const flag = useFeatureFlag(flagKey);
 
   return flag;
 }

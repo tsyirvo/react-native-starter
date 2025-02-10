@@ -2,7 +2,7 @@ import { useState } from 'react';
 import semverLt from 'semver/functions/lt';
 
 import { config } from '$core/constants';
-import { useGetFlagValueSync } from '$core/featureFlags/hooks/useGetFlagValueSync';
+import { useGetFlagValueSync } from '$core/featureFlags';
 
 import { useRunOnMount } from './useRunOnMount';
 

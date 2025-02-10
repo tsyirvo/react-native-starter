@@ -9,8 +9,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 import { persistOptions, queryClient } from '$core/api/queryClient';
-import { FeatureFlagsProvider } from '$core/featureFlags';
 import { ErrorMonitoring } from '$core/monitoring';
+import { ProductTrackingProvider } from '$core/productTracking';
 import { theme } from '$core/theme';
 import { FullscreenErrorBoundary } from '$shared/components/FullscreenErrorBoundary';
 import { Splashscreen } from '$shared/components/splashscreen';
@@ -75,6 +75,6 @@ const providers = [
     component: KeyboardProvider,
   },
   {
-    component: FeatureFlagsProvider,
+    component: ProductTrackingProvider,
   },
 ];

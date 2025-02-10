@@ -1,11 +1,11 @@
-import * as FeatureFlags from '$core/featureFlags/hooks/useIsFeatureFlagEnabled';
+import * as FeatureFlags from '$core/featureFlags/hooks/useGetBooleanFeatureFlag';
 import { render } from '$core/testing';
 
 import { MaintenanceMode } from '../MaintenanceMode';
 
 describe('MaintenanceMode component', () => {
   // Mocks
-  jest.spyOn(FeatureFlags, 'useIsFeatureFlagEnabled').mockReturnValue(false);
+  jest.spyOn(FeatureFlags, 'useGetBooleanFeatureFlag').mockReturnValue(false);
 
   afterEach(() => {
     jest.resetAllMocks();
@@ -21,7 +21,7 @@ describe('MaintenanceMode component', () => {
 
   it('should render the maintenance mode when the flag is true', () => {
     // Mocks
-    jest.spyOn(FeatureFlags, 'useIsFeatureFlagEnabled').mockReturnValue(true);
+    jest.spyOn(FeatureFlags, 'useGetBooleanFeatureFlag').mockReturnValue(true);
 
     // Given
     const { getByTestId } = render(<MaintenanceMode />);
