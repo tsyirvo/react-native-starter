@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { fireEvent, render } from '$core/testing';
+import { fireEvent, render, screen } from '$core/testing';
 import type * as AllIcons from '$shared/icons/components';
 
 import { ButtonWithIcon } from '../ButtonWithIcon';
@@ -25,65 +25,63 @@ describe('Button component', () => {
 
   it('should render correctly with a text and icon', () => {
     // Given
-    const { getByText, getByTestId } = render(
-      <ButtonWithIcon {...props}>{label}</ButtonWithIcon>,
-    );
+    render(<ButtonWithIcon {...props}>{label}</ButtonWithIcon>);
 
     // Then
-    expect(getByText(label)).toBeDefined();
-    expect(getByTestId('button-innerIcon')).toBeDefined();
+    expect(screen.getByText(label)).toBeDefined();
+    expect(screen.getByTestId('button-innerIcon')).toBeDefined();
   });
 
   it('should render correctly with a specific icon size', () => {
     // Given
-    const { getByText, getByTestId } = render(
+    render(
       <ButtonWithIcon {...props} height={10} width={10}>
         {label}
       </ButtonWithIcon>,
     );
 
     // Then
-    expect(getByText(label)).toBeDefined();
-    expect(getByTestId('button-innerIcon')).toBeDefined();
+    expect(screen.getByText(label)).toBeDefined();
+    expect(screen.getByTestId('button-innerIcon')).toBeDefined();
   });
 
   it('should render correctly with a custom variant', () => {
     // Given
-    const { getByText, getByTestId } = render(
+    render(
       <ButtonWithIcon variant="otherVariant" {...props}>
         {label}
       </ButtonWithIcon>,
     );
 
     // Then
-    expect(getByText(label)).toBeDefined();
-    expect(getByTestId('button-innerIcon')).toBeDefined();
+    expect(screen.getByText(label)).toBeDefined();
+    expect(screen.getByTestId('button-innerIcon')).toBeDefined();
   });
 
   it('should render correctly when loading', () => {
     // Given
-    const { getByTestId, queryByTestId } = render(
+    render(
       <ButtonWithIcon isLoading {...props}>
         {label}
       </ButtonWithIcon>,
     );
 
     // Then
-    expect(getByTestId('button-innerText-loader')).toBeDefined();
-    expect(queryByTestId('button-innerText-text')).toBeNull();
-    expect(queryByTestId('button-innerIcon')).toBeNull();
+    expect(screen.getByTestId('button-innerText-loader')).toBeDefined();
+    expect(screen.queryByTestId('button-innerText-text')).toBeNull();
+    expect(screen.queryByTestId('button-innerIcon')).toBeNull();
   });
 
   it('should not call the onPress method when loading', () => {
     // Given
-    const { getByTestId } = render(
+    render(
       <ButtonWithIcon testID="button-id" isLoading {...props}>
         {label}
       </ButtonWithIcon>,
     );
 
     // When
-    fireEvent.press(getByTestId('button-id'));
+    fireEvent.press(screen.getByTestId('button-id'));
 
     // Then
     expect(onPress).not.toHaveBeenCalled();
@@ -91,14 +89,14 @@ describe('Button component', () => {
 
   it('should not call the onPress method when disabled', () => {
     // Given
-    const { getByText } = render(
+    render(
       <ButtonWithIcon isDisabled {...props}>
         {label}
       </ButtonWithIcon>,
     );
 
     // When
-    fireEvent.press(getByText(label));
+    fireEvent.press(screen.getByText(label));
 
     // Then
     expect(onPress).not.toHaveBeenCalled();
@@ -106,12 +104,10 @@ describe('Button component', () => {
 
   it('should call the onPress method', () => {
     // Given
-    const { getByText } = render(
-      <ButtonWithIcon {...props}>{label}</ButtonWithIcon>,
-    );
+    render(<ButtonWithIcon {...props}>{label}</ButtonWithIcon>);
 
     // When
-    fireEvent.press(getByText(label));
+    fireEvent.press(screen.getByText(label));
 
     // Then
     expect(onPress).toHaveBeenCalled();
