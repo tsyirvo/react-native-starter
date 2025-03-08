@@ -62,6 +62,9 @@ const providers = [
     >,
   },
   {
+    component: ProductTrackingProvider,
+  },
+  {
     component: ErrorBoundary,
     props: {
       FallbackComponent: FullscreenErrorBoundary,
@@ -73,8 +76,5 @@ const providers = [
   },
   {
     component: KeyboardProvider,
-  },
-  {
-    component: ProductTrackingProvider,
   },
 ];

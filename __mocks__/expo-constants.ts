@@ -16,8 +16,6 @@ module.exports = {
         isDebug: false,
         isTest: true,
         sentryDsn: undefined,
-        mixpanelToken: undefined,
-        flagsmithKey: undefined,
         oneSignalAppId: undefined,
       },
     },

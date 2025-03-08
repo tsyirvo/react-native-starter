@@ -1,10 +1,20 @@
-import type { AvailableFeatureFlags } from './featureFlags.types';
-
-export const defaultFlags: Record<
+import type {
   AvailableFeatureFlags,
-  { id?: number; enabled: boolean; value?: string | number | boolean | null }
+  AvailableRemoteConfig,
+  VersionFlagType,
+} from './featureFlags.types';
+
+export const defaultFeatureFlags: Record<
+  AvailableFeatureFlags,
+  boolean | string
 > = {
-  'is-maintenance-mode': { enabled: false },
-  'last-supported-app-version': { enabled: true, value: '2.0.0' },
-  'latest-released-app-version': { enabled: true, value: '2.1.0' },
+  'is-maintenance-mode': false,
+};
+
+export const defaultRemoteConfig: Record<
+  AvailableRemoteConfig,
+  VersionFlagType
+> = {
+  'last-supported-app-version': { version: '2.0.0' },
+  'latest-released-app-version': { version: '2.1.0' },
 };
