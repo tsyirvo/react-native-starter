@@ -32,19 +32,7 @@ describe('Button component', () => {
   it('should render correctly with a custom variant', () => {
     // Given
     render(
-      <ButtonWithText variant="otherVariant" {...props}>
-        {label}
-      </ButtonWithText>,
-    );
-
-    // Then
-    expect(screen.getByText(label)).toBeDefined();
-  });
-
-  it('should render correctly with a custom size', () => {
-    // Given
-    render(
-      <ButtonWithText size="small" variant="otherVariant" {...props}>
+      <ButtonWithText variant="outline" {...props}>
         {label}
       </ButtonWithText>,
     );
@@ -62,20 +50,19 @@ describe('Button component', () => {
     );
 
     // Then
-    expect(screen.getByTestId('button-innerText-loader')).toBeDefined();
-    expect(screen.queryByTestId('button-innerText-text')).toBeNull();
+    expect(screen.getByTestId('InnerTextLoader')).toBeDefined();
   });
 
   it('should not call the onPress method when loading', () => {
     // Given
     render(
-      <ButtonWithText testID="buttonId" isLoading {...props}>
+      <ButtonWithText isLoading {...props}>
         {label}
       </ButtonWithText>,
     );
 
     // When
-    fireEvent.press(screen.getByTestId('buttonId'));
+    fireEvent.press(screen.getByTestId('ButtonWithText'));
 
     // Then
     expect(onPress).not.toHaveBeenCalled();

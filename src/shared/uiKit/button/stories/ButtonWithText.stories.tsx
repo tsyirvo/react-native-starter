@@ -11,11 +11,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['base', 'otherVariant'],
-    },
-    size: {
-      control: 'select',
-      options: ['regular', 'small'],
+      options: ['base', 'outline'],
     },
     onPress: { action: 'onPress' },
     isDisabled: { control: 'boolean' },
@@ -23,7 +19,9 @@ const meta = {
   },
   args: {
     variant: 'base',
-    size: 'regular',
+    isTextCentered: false,
+    isDisabled: false,
+    isLoading: false,
     onPress: action('onPress called'),
   },
   decorators: [

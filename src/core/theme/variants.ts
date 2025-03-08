@@ -9,8 +9,9 @@ export const buttonVariants = {
   base: {
     backgroundColor: 'bg_focus',
   },
-  otherVariant: {
-    backgroundColor: 'dull',
+  outline: {
+    borderWidth: 2,
+    borderColor: 'dull',
   },
 };
 

@@ -29,7 +29,7 @@ describe('Button component', () => {
 
     // Then
     expect(screen.getByText(label)).toBeDefined();
-    expect(screen.getByTestId('button-innerIcon')).toBeDefined();
+    expect(screen.getByTestId('InnerIcon')).toBeDefined();
   });
 
   it('should render correctly with a specific icon size', () => {
@@ -42,20 +42,20 @@ describe('Button component', () => {
 
     // Then
     expect(screen.getByText(label)).toBeDefined();
-    expect(screen.getByTestId('button-innerIcon')).toBeDefined();
+    expect(screen.getByTestId('InnerIcon')).toBeDefined();
   });
 
   it('should render correctly with a custom variant', () => {
     // Given
     render(
-      <ButtonWithIcon variant="otherVariant" {...props}>
+      <ButtonWithIcon variant="outline" {...props}>
         {label}
       </ButtonWithIcon>,
     );
 
     // Then
     expect(screen.getByText(label)).toBeDefined();
-    expect(screen.getByTestId('button-innerIcon')).toBeDefined();
+    expect(screen.getByTestId('InnerIcon')).toBeDefined();
   });
 
   it('should render correctly when loading', () => {
@@ -67,9 +67,8 @@ describe('Button component', () => {
     );
 
     // Then
-    expect(screen.getByTestId('button-innerText-loader')).toBeDefined();
-    expect(screen.queryByTestId('button-innerText-text')).toBeNull();
-    expect(screen.queryByTestId('button-innerIcon')).toBeNull();
+    expect(screen.getByTestId('InnerTextLoader')).toBeDefined();
+    expect(screen.queryByTestId('InnerIcon')).toBeNull();
   });
 
   it('should not call the onPress method when loading', () => {

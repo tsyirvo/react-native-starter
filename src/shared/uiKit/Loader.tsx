@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 
-import { colors } from '$core/theme';
+import type { Colors } from '$core/theme';
+import { useAppTheme } from '$core/theme';
 
 import { Box } from './primitives';
 
 type LoaderProps = {
   delay?: number;
   size?: 'large' | 'small';
+  color?: Colors;
 };
 
 const SMALL_SIZE = 20;
@@ -17,8 +19,11 @@ const DEFAULT_DELAY = 500;
 export const Loader = ({
   delay = DEFAULT_DELAY,
   size = 'large',
+  color = 'dull',
 }: LoaderProps) => {
   const [isShowingLoading, setIsShowingLoading] = useState(false);
+
+  const { colors } = useAppTheme();
 
   const minHeight = size === 'large' ? LARGE_SIZE : SMALL_SIZE;
 
@@ -33,7 +38,7 @@ export const Loader = ({
   }, [delay]);
 
   if (isShowingLoading)
-    return <ActivityIndicator color={colors.dull} size={size} />;
+    return <ActivityIndicator color={colors[color]} size={size} />;
 
   return <Box height={minHeight} />;
 };

@@ -2,21 +2,22 @@ import { usePress } from '$shared/hooks';
 
 import { BaseButton } from './BaseButton';
 import { InnerText } from './components/InnerText';
-import type { ButtonProps, ButtonSize } from './types/buttonTypes';
+import type { ButtonProps } from './types/buttonTypes';
 
 interface ButtonWithTextProps extends ButtonProps {
   children: string;
-  size?: ButtonSize;
+  isTextCentered?: boolean;
 }
 
-const ButtonWithText = ({
-  onPress,
+export const ButtonWithText = ({
   variant = 'base',
-  testID,
   isDisabled = false,
   isLoading = false,
-  size = 'regular',
+  isTextCentered = false,
+  targetScale,
   children,
+  testID = 'ButtonWithText',
+  onPress,
 }: ButtonWithTextProps) => {
   const [handlePress, isResolving] = usePress({ onPress });
 
@@ -26,19 +27,19 @@ const ButtonWithText = ({
     <BaseButton
       isDisabled={isButtonDisabled}
       isLoading={isLoading || isResolving}
-      testID={testID}
       variant={variant}
+      targetScale={targetScale}
+      testID={testID}
       onPress={handlePress}
     >
       <InnerText
         isDisabled={isDisabled}
         isLoading={isLoading || isResolving}
-        size={size}
+        isTextCentered={isTextCentered}
+        parentVariant={variant}
       >
         {children}
       </InnerText>
     </BaseButton>
   );
 };
-
-export { ButtonWithText };

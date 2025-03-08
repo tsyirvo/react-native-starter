@@ -15,18 +15,21 @@ interface ButtonWithIconProps extends ButtonProps {
   iconName: keyof typeof AllIcons;
   width?: number;
   height?: number;
+  isTextCentered?: boolean;
 }
 
-const ButtonWithIcon = ({
-  onPress,
+export const ButtonWithIcon = ({
+  children,
+  iconName,
   variant = 'base',
-  testID,
   isDisabled = false,
   isLoading = false,
-  iconName,
+  isTextCentered = false,
+  targetScale,
   width = DEFAULT_ICON_SIZE,
   height = DEFAULT_ICON_SIZE,
-  children,
+  testID = 'ButtonWithIcon',
+  onPress,
 }: ButtonWithIconProps) => {
   const [handlePress, isResolving] = usePress({ onPress });
 
@@ -36,11 +39,16 @@ const ButtonWithIcon = ({
     <BaseButton
       isDisabled={isButtonDisabled}
       isLoading={isLoading || isResolving}
-      testID={testID}
       variant={variant}
+      targetScale={targetScale}
+      testID={testID}
       onPress={handlePress}
     >
-      <Box alignItems="center" flexDirection="row">
+      <Box
+        flexDirection="row"
+        alignItems="center"
+        justifyContent={isTextCentered ? 'center' : 'flex-start'}
+      >
         <InnerIcon
           height={height}
           iconName={iconName}
@@ -52,7 +60,7 @@ const ButtonWithIcon = ({
           <InnerText
             isDisabled={isDisabled}
             isLoading={isResolving || isLoading}
-            size="regular"
+            parentVariant={variant}
           >
             {children}
           </InnerText>
@@ -61,5 +69,3 @@ const ButtonWithIcon = ({
     </BaseButton>
   );
 };
-
-export { ButtonWithIcon };
