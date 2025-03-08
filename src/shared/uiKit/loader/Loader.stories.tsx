@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Loader } from '../Loader';
+import { Loader } from './Loader';
 
 const meta = {
   title: 'UIKit/Loader',

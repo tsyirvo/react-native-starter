@@ -4,12 +4,13 @@ import { Linking } from 'react-native';
 import semverGte from 'semver/functions/gte';
 
 import { config, IS_IOS } from '$core/constants';
-import { useGetRemoteConfigSync } from '$core/featureFlags';
-import type { VersionFlagType } from '$core/featureFlags/featureFlags.types';
+import {
+  useGetRemoteConfigSync,
+  type VersionFlagType,
+} from '$core/featureFlags';
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks';
-import { Button } from '$shared/uiKit/button';
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Button, Text } from '$shared/uiKit';
 
 export const AppUpdateNeeded = () => {
   const [isAppSupported, setIsAppSupported] = useState(true);

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { config } from '$core/constants';
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Text } from '$shared/uiKit';
 
 export const Version = () => {
   const insets = useSafeAreaInsets();

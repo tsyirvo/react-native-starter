@@ -1,6 +1,6 @@
 import { ImageBackground, StyleSheet } from 'react-native';
 
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Text } from '$shared/uiKit';
 
 import headerAsset from '../../../assets/images/header.jpeg';
 

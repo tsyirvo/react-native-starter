@@ -3,7 +3,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
 
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Text } from '$shared/uiKit';
 
 import type { BorderRadii } from '../radius';
 import { theme } from '../theme';

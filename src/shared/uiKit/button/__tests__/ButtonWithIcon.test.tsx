@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { fireEvent, render, screen } from '$core/testing';
-import type * as AllIcons from '$shared/icons/components';
+import type { IconName } from '$shared/icons';
 
 import { ButtonWithIcon } from '../ButtonWithIcon';
 
@@ -9,7 +9,7 @@ describe('Button component', () => {
   // Given
   const label = 'Some text';
 
-  const iconName: keyof typeof AllIcons = 'Code';
+  const iconName: IconName = 'Code';
   const onPress = jest.fn();
   const props = { iconName, onPress };
 

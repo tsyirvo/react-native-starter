@@ -3,7 +3,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ScrollView, View } from 'react-native';
 
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Text } from '$shared/uiKit';
 
 import type { Colors as ThemeColors } from '../colors';
 import { theme } from '../theme';

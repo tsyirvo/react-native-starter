@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import type { Colors } from '$core/theme';
-import type { BoxProps } from '$shared/uiKit/primitives/Box';
-import { Box } from '$shared/uiKit/primitives/Box';
+import { Box, type BoxProps } from '$shared/uiKit';
 
 interface SeparatorProps extends BoxProps {
   height?: number;

@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { Box } from '$shared/uiKit/primitives';
-import type { BoxProps } from '$shared/uiKit/primitives/Box';
+import { Box, type BoxProps } from '$shared/uiKit';
 
 type CenteredContentProps = BoxProps;
 

@@ -4,9 +4,7 @@ import { ScrollView } from 'react-native';
 
 import { config } from '$core/constants';
 import { Header, Informations, Version } from '$features/home/components';
-import { Button } from '$shared/uiKit/button';
-import { Box, Text } from '$shared/uiKit/primitives';
-import { Screen } from '$shared/uiKit/Screen';
+import { Box, Button, Screen, Text } from '$shared/uiKit';
 
 const HomeScreen = () => {
   const router = useRouter();

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { ErrorMonitoring } from '$core/monitoring';
 import { Toaster } from '$core/toaster';
-import { sleep } from '$shared/utils/sleep';
+import { sleep } from '$shared/utils';
 
 import { useRunOnMount } from './useRunOnMount';
 

@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
 
 import { StorybookItem } from '$shared/components';
-import { Box, Text as TextPrimitive } from '$shared/uiKit/primitives';
+import { Box, Text as TextPrimitive } from '$shared/uiKit';
 
 const meta = {
   title: 'Primitives/Text',

@@ -1,6 +1,6 @@
 import * as SecureStore from 'expo-secure-store';
 
-import { sleep } from '$shared/utils/sleep';
+import { sleep } from '$shared/utils';
 
 type SecureStoreKeys = 'jwtToken' | 'refreshToken';
 

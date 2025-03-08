@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 
 import { bootstrapExternalSdks } from '$core/bootstrapExternalSdks';
 import { Logger } from '$core/logger';
-import { checkForOtaUpdate } from '$shared/utils/checkForAppUpdates';
+import { checkForOtaUpdate } from '$shared/utils';
 
 SplashScreen.preventAutoHideAsync().catch((error: unknown) => {
   Logger.error({

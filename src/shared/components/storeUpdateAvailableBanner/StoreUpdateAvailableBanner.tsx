@@ -4,8 +4,7 @@ import { Linking } from 'react-native';
 
 import { IS_IOS, config } from '$core/constants';
 import { Logger } from '$core/logger';
-import { Button } from '$shared/uiKit/button';
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Button, Text } from '$shared/uiKit';
 
 export const StoreUpdateAvailableBanner = () => {
   const { t } = useTranslation();

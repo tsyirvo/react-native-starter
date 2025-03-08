@@ -2,8 +2,7 @@ import * as Updates from 'expo-updates';
 import { useTranslation } from 'react-i18next';
 
 import { ErrorMonitoring } from '$core/monitoring';
-import { Button } from '$shared/uiKit/button';
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Button, Text } from '$shared/uiKit';
 
 const FullscreenErrorBoundary = () => {
   const { t } = useTranslation();

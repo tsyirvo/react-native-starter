@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
 
-import { Box } from '$shared/uiKit/primitives';
+import { Box } from '$shared/uiKit';
 
 import { Input } from '../Input';
 

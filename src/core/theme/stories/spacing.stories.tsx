@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Fragment } from 'react';
 import { View } from 'react-native';
 
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Text } from '$shared/uiKit';
 
 import { spacing, type Spacing as ThemeSpacing } from '../spacing';
 import { theme } from '../theme';

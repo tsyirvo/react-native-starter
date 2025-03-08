@@ -3,8 +3,8 @@ import type { Edge } from 'react-native-safe-area-context';
 
 import { makeAppStyles, type Colors, type Spacing } from '$core/theme';
 
-import { Box } from './primitives';
-import { SafeView } from './SafeView';
+import { Box } from '../primitives';
+import { SafeView } from '../safeView';
 
 type ScreenProps = {
   edges?: Edge[];

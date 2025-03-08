@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 
-import type { Colors } from '$core/theme';
-import { useAppTheme } from '$core/theme';
+import { useAppTheme, type Colors } from '$core/theme';
 
-import { Box } from './primitives';
+import { Box } from '../primitives';
 
 type LoaderProps = {
   delay?: number;

@@ -12,8 +12,7 @@ import { persistOptions, queryClient } from '$core/api/queryClient';
 import { ErrorMonitoring } from '$core/monitoring';
 import { ProductTrackingProvider } from '$core/productTracking';
 import { theme } from '$core/theme';
-import { FullscreenErrorBoundary } from '$shared/components/FullscreenErrorBoundary';
-import { Splashscreen } from '$shared/components/splashscreen';
+import { FullscreenErrorBoundary, Splashscreen } from '$shared/components';
 
 type ProvidersProps = {
   children: React.JSX.Element;

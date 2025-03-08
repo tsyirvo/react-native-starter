@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 
 import { DummyForm as DummyFormComponent } from '$features/dummyForm';
-import { Box } from '$shared/uiKit/primitives';
-import { Screen } from '$shared/uiKit/Screen';
+import { Box, Screen } from '$shared/uiKit';
 
 const DummyFormScreen = () => {
   const { t } = useTranslation();

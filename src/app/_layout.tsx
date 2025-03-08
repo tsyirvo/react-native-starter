@@ -11,8 +11,7 @@ import { useAppStateTracking } from '$core/navigation/hooks/useAppStateTracking'
 import { Providers } from '$core/providers/Providers';
 import { colors } from '$core/theme';
 import { toastConfig } from '$core/toaster';
-import { AppUpdateNeeded } from '$shared/components/AppUpdateNeeded';
-import { MaintenanceMode } from '$shared/components/MaintenanceMode';
+import { AppUpdateNeeded, MaintenanceMode } from '$shared/components';
 import { useCheckNetworkStateOnMount } from '$shared/hooks';
 
 import '../core/i18n';
