@@ -2,7 +2,7 @@ import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
-import { config } from '$core/constants';
+import { config } from '$domain/constants';
 import { Header, Informations, Version } from '$features/home/components';
 import { Box, Button, Screen, Text } from '$shared/uiKit';
 

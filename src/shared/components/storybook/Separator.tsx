@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import type { Colors } from '$core/theme';
+import type { Colors } from '$domain/theme';
 import { Box, type BoxProps } from '$shared/uiKit';
 
 interface SeparatorProps extends BoxProps {

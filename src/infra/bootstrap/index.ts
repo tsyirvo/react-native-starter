@@ -1,0 +1,1 @@
+export { bootstrapApp } from './bootstrap';

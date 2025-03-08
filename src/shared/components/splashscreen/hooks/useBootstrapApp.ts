@@ -1,8 +1,8 @@
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 
-import { bootstrapExternalSdks } from '$core/bootstrapExternalSdks';
-import { Logger } from '$core/logger';
+import { bootstrapApp } from '$infra/bootstrap';
+import { Logger } from '$infra/logger';
 import { checkForOtaUpdate } from '$shared/utils';
 
 SplashScreen.preventAutoHideAsync().catch((error: unknown) => {
@@ -20,7 +20,7 @@ SplashScreen.setOptions({
 export const useBootstrapApp = () => {
   const onLayoutRootView = useCallback(() => {
     (async () => {
-      await bootstrapExternalSdks();
+      await bootstrapApp();
       await checkForOtaUpdate();
     })()
       .finally(SplashScreen.hide)

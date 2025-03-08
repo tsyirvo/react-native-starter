@@ -76,7 +76,7 @@ const plugins: ExpoConfig['plugins'] = [
       imageWidth: 200,
     },
   ],
-  './src/core/expoPlugins/withCustomAndroidManifest.js',
+  './src/expoPlugins/withCustomAndroidManifest.js',
 ];
 
 // eslint-disable-next-line import/no-default-export

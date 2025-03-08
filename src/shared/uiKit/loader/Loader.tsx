@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 
-import { useAppTheme, type Colors } from '$core/theme';
+import { useAppTheme, type Colors } from '$domain/theme';
 
 import { Box } from '../primitives';
 

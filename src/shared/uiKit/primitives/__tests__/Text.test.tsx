@@ -1,4 +1,4 @@
-import { render, screen } from '$core/testing';
+import { render, screen } from '$domain/testing';
 
 import { Text } from '../Text';
 

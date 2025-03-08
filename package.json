@@ -202,7 +202,7 @@
     },
     "setupFiles": [
       "./node_modules/react-native-gesture-handler/jestSetup.js",
-      "./src/core/testing/setup.ts"
+      "./src/domain/testing/setup.ts"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",

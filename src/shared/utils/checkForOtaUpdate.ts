@@ -1,7 +1,7 @@
 import * as Updates from 'expo-updates';
 
-import { config } from '$core/constants';
-import { Logger } from '$core/logger';
+import { config } from '$domain/constants';
+import { Logger } from '$infra/logger';
 
 import { sleep } from './sleep';
 

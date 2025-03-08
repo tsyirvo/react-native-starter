@@ -1,9 +1,9 @@
 import { t } from 'i18next';
 import type { Permission } from 'react-native-permissions';
 
-import { Logger } from '$core/logger';
-import { Permissions } from '$core/permissions';
-import { Toaster } from '$core/toaster';
+import { Logger } from '$infra/logger';
+import { Permissions } from '$infra/permissions';
+import { Toaster } from '$infra/toaster';
 
 export const useRequestPermission = () => {
   const requestPermission = async (permission: Permission) => {

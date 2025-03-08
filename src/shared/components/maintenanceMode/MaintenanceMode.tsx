@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { FeatureFlagSplitter } from '$core/featureFlags';
+import { FeatureFlagSplitter } from '$infra/featureFlags';
 import { Box, Text } from '$shared/uiKit';
 
 export const MaintenanceMode = () => {

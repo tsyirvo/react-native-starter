@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
 
-import { IS_IOS, config } from '$core/constants';
-import { Logger } from '$core/logger';
+import { IS_IOS, config } from '$domain/constants';
+import { Logger } from '$infra/logger';
 import { Box, Button, Text } from '$shared/uiKit';
 
 export const StoreUpdateAvailableBanner = () => {

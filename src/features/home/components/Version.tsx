@@ -2,7 +2,7 @@ import * as Updates from 'expo-updates';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { config } from '$core/constants';
+import { config } from '$domain/constants';
 import { Box, Text } from '$shared/uiKit';
 
 export const Version = () => {

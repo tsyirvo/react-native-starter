@@ -1,6 +1,6 @@
 import type { VariantProps } from '@shopify/restyle';
 
-import type { Colors, Theme } from '$core/theme';
+import type { Colors, Theme } from '$domain/theme';
 import { Box, Loader, Text } from '$shared/uiKit';
 
 import type { ButtonProps } from '../types/buttonTypes';

@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
 import semverGte from 'semver/functions/gte';
 
-import { config, IS_IOS } from '$core/constants';
+import { config, IS_IOS } from '$domain/constants';
 import {
   useGetRemoteConfigSync,
   type VersionFlagType,
-} from '$core/featureFlags';
-import { Logger } from '$core/logger';
+} from '$infra/featureFlags';
+import { Logger } from '$infra/logger';
 import { useRunOnMount } from '$shared/hooks';
 import { Box, Button, Text } from '$shared/uiKit';
 

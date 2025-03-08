@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Edge } from 'react-native-safe-area-context';
 
-import { makeAppStyles, type Colors, type Spacing } from '$core/theme';
+import { makeAppStyles, type Colors, type Spacing } from '$domain/theme';
 
 import { Box } from '../primitives';
 import { SafeView } from '../safeView';
