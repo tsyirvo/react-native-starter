@@ -3,11 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
 import { Notifications } from '$features/notifications';
-import { StoreUpdateAvailableBanner } from '$shared/components/StoreUpdateAvailableBanner';
+import { StoreUpdateAvailableBanner } from '$shared/components';
 import { useIsNewStoreVersionAvailable } from '$shared/hooks';
-import { Button } from '$shared/uiKit/button';
-import { Box, Text } from '$shared/uiKit/primitives';
-import { Screen } from '$shared/uiKit/Screen';
+import { Box, Button, Screen, Text } from '$shared/uiKit';
 
 const OtherScreen = () => {
   const router = useRouter();

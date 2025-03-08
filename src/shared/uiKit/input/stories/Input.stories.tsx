@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
 
-import { Box } from '$shared/uiKit/primitives';
+import { Box } from '$shared/uiKit';
 
 import { Input } from '../Input';
 
@@ -16,7 +16,7 @@ const meta = {
   decorators: [
     // eslint-disable-next-line @typescript-eslint/naming-convention
     (Story) => (
-      <Box p="spacing_16">
+      <Box width="100%" p="spacing_16">
         <Story />
       </Box>
     ),

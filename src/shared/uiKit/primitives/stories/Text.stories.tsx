@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
 
 import { StorybookItem } from '$shared/components';
-import { Box, Text as TextPrimitive } from '$shared/uiKit/primitives';
+import { Box, Text as TextPrimitive } from '$shared/uiKit';
 
 const meta = {
   title: 'Primitives/Text',
@@ -26,7 +26,7 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Text with custom positionning">
-        <TextPrimitive mt="spacing_32" pl="spacing_24" py="spacing_8">
+        <TextPrimitive mt="spacing_32" ps="spacing_24" py="spacing_8">
           Custom position
         </TextPrimitive>
       </StorybookItem>

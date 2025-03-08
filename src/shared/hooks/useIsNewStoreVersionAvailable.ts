@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import semverLt from 'semver/functions/lt';
 
-import { config } from '$core/constants';
-import { useGetRemoteConfigSync } from '$core/featureFlags';
-import type { VersionFlagType } from '$core/featureFlags/featureFlags.types';
+import { config } from '$domain/constants';
+import {
+  useGetRemoteConfigSync,
+  type VersionFlagType,
+} from '$infra/featureFlags';
 
 import { useRunOnMount } from './useRunOnMount';
 

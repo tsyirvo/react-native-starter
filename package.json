@@ -39,7 +39,6 @@
     "//// TESTS ////": "",
     "test": "jest --coverage=false",
     "test:coverage": "jest",
-    "test:e2e": "maestro test ./src/e2e",
     "//// QUALITY ////": "",
     "lint:ts": "yarn tsc",
     "lint": "eslint ./ --ext .js,.ts,.tsx,.json --fix --ignore-path .gitignore",
@@ -203,7 +202,7 @@
     },
     "setupFiles": [
       "./node_modules/react-native-gesture-handler/jestSetup.js",
-      "./src/core/testing/setup.ts"
+      "./src/domain/testing/setup.ts"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",

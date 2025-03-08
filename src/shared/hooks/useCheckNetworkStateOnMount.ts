@@ -1,9 +1,9 @@
 import * as Network from 'expo-network';
 import { useTranslation } from 'react-i18next';
 
-import { ErrorMonitoring } from '$core/monitoring';
-import { Toaster } from '$core/toaster';
-import { sleep } from '$shared/utils/sleep';
+import { ErrorMonitoring } from '$infra/monitoring';
+import { Toaster } from '$infra/toaster';
+import { sleep } from '$shared/utils';
 
 import { useRunOnMount } from './useRunOnMount';
 

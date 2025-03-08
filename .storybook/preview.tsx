@@ -1,8 +1,18 @@
+import React from 'react';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import type { Preview } from '@storybook/react';
 
+import { CenteredContent } from '../src/shared/components';
+
 const preview: Preview = {
-  decorators: [withBackgrounds],
+  decorators: [
+    (Story) => (
+      <CenteredContent flex={1}>
+        <Story />
+      </CenteredContent>
+    ),
+    withBackgrounds,
+  ],
 
   parameters: {
     backgrounds: {

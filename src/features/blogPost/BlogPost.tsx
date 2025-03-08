@@ -1,10 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { graphql } from '$gql/generated';
-import { useGetPostQuery } from '$gql/generated/hooks';
-import { Loader } from '$shared/uiKit/Loader';
-import { Text } from '$shared/uiKit/primitives';
+import { graphql } from '$infra/gql/generated';
+import { useGetPostQuery } from '$infra/gql/generated/hooks';
+import { Loader, Text } from '$shared/uiKit';
 
 import { BlogPostUser } from './components/BlogPostUser';
 

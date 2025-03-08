@@ -1,7 +1,6 @@
 import { usePress } from '$shared/hooks';
-import { Box } from '$shared/uiKit/primitives';
-
-import type * as AllIcons from '../../icons/components';
+import type { IconName } from '$shared/icons';
+import { Box } from '$shared/uiKit';
 
 import { BaseButton } from './BaseButton';
 import { InnerIcon } from './components/InnerIcon';
@@ -12,7 +11,7 @@ const DEFAULT_ICON_SIZE = 24;
 
 interface ButtonWithIconProps extends ButtonProps {
   children: string;
-  iconName: keyof typeof AllIcons;
+  iconName: IconName;
   width?: number;
   height?: number;
   isTextCentered?: boolean;

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { KeyboardEvent } from 'react-native';
 import { Keyboard } from 'react-native';
 
-import { IS_IOS } from '$core/constants';
+import { IS_IOS } from '$domain/constants';
 
 type UseKeyboardArguments = {
   onKeyboardShow?: (e?: KeyboardEvent) => void;

@@ -9,9 +9,7 @@ import {
   DummyFormSchema,
   type DummyFormSchemaType,
 } from '$features/dummyForm/utils/dummyForm.schema';
-import { Button } from '$shared/uiKit/button';
-import { Input } from '$shared/uiKit/input';
-import { Box } from '$shared/uiKit/primitives';
+import { Box, Button, Input } from '$shared/uiKit';
 
 export const DummyFormExample = () => {
   const firstNameInputRef = useRef<TextInput>(null);

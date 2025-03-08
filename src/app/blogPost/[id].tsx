@@ -2,7 +2,7 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
 import { BlogPost as BlogPostComponent } from '$features/blogPost';
-import { Screen } from '$shared/uiKit/Screen';
+import { Screen } from '$shared/uiKit';
 
 const BlogPostScreen = () => {
   const { id } = useLocalSearchParams<{ id: string }>();

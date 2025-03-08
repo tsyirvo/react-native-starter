@@ -1,6 +1,6 @@
 import { Image as ExpoImage } from 'expo-image';
 
-import { Logger } from '$core/logger';
+import { Logger } from '$infra/logger';
 
 export const preloadImages = (sources: string[]) => {
   ExpoImage.prefetch(sources).catch((error: unknown) => {

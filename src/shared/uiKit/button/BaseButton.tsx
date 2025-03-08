@@ -10,8 +10,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { HIT_SLOP } from '$core/constants/styling';
-import type { Theme } from '$core/theme';
+import { HIT_SLOP } from '$domain/constants/styling';
+import type { Theme } from '$domain/theme';
 import type { Box } from '$shared/uiKit/primitives';
 
 import type { ButtonProps } from './types/buttonTypes';

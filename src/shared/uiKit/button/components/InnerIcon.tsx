@@ -1,9 +1,8 @@
-import { Icon } from '$shared/icons/Icon';
-
-import type * as AllIcons from '../../../icons/components';
+import type { IconName } from '$shared/icons';
+import { Icon } from '$shared/icons';
 
 type InnerIconProps = {
-  iconName: keyof typeof AllIcons;
+  iconName: IconName;
   width?: number;
   height?: number;
   isLoading?: boolean;

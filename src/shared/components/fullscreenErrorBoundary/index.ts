@@ -1,0 +1,1 @@
+export { FullscreenErrorBoundary } from './FullscreenErrorBoundary';

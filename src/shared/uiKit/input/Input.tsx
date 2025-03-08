@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { TextInput } from 'react-native';
 import type { TextInputProps } from 'react-native';
 
-import { makeAppStyles, theme, fontSizes } from '$core/theme';
+import { makeAppStyles, theme, fontSizes } from '$domain/theme';
 
 import { Box, Text } from '../primitives';
 

@@ -1,6 +1,6 @@
 import type { VariantProps } from '@shopify/restyle';
 
-import type { Theme } from '$core/theme';
+import type { Theme } from '$domain/theme';
 
 export interface ButtonProps extends VariantProps<Theme, 'buttonVariants'> {
   testID?: string;

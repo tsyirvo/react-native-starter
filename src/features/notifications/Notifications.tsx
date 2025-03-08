@@ -1,10 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Logger } from '$core/logger';
+import { Logger } from '$infra/logger';
 import { useRequestPermission } from '$shared/hooks';
-import { Button } from '$shared/uiKit/button';
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Button, Text } from '$shared/uiKit';
 
 export const Notifications = () => {
   const { t } = useTranslation();

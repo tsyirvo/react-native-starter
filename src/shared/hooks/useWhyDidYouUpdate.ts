@@ -1,7 +1,7 @@
 import isEqual from 'lodash.isequal';
 import { useEffect, useRef } from 'react';
 
-import { Logger } from '$core/logger';
+import { Logger } from '$infra/logger';
 
 type Props = {
   onChangeFound?: (data: {

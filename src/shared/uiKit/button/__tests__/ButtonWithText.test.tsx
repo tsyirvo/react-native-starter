@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { fireEvent, render, screen } from '$core/testing';
+import { fireEvent, render, screen } from '$domain/testing';
 
 import { ButtonWithText } from '../ButtonWithText';
 

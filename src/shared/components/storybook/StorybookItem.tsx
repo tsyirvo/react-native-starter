@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Box, Text } from '$shared/uiKit';
 
 import { CenteredContent } from './CenteredContent';
 import { Separator } from './Separator';
