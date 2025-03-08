@@ -1,5 +1,5 @@
 import * as FeatureFlags from '$core/featureFlags/hooks/useGetBooleanFeatureFlag';
-import { render } from '$core/testing';
+import { render, screen } from '$core/testing';
 
 import { MaintenanceMode } from '../MaintenanceMode';
 
@@ -13,10 +13,10 @@ describe('MaintenanceMode component', () => {
 
   it('should render nothing by default', () => {
     // Given
-    const { queryByTestId } = render(<MaintenanceMode />);
+    render(<MaintenanceMode />);
 
     // Then
-    expect(queryByTestId('maintenanceMode-screen')).toBeNull();
+    expect(screen.queryByTestId('maintenanceMode-screen')).toBeNull();
   });
 
   it('should render the maintenance mode when the flag is true', () => {
@@ -24,9 +24,9 @@ describe('MaintenanceMode component', () => {
     jest.spyOn(FeatureFlags, 'useGetBooleanFeatureFlag').mockReturnValue(true);
 
     // Given
-    const { getByTestId } = render(<MaintenanceMode />);
+    render(<MaintenanceMode />);
 
     // Then
-    expect(getByTestId('maintenanceMode-screen')).toBeDefined();
+    expect(screen.getByTestId('maintenanceMode-screen')).toBeDefined();
   });
 });

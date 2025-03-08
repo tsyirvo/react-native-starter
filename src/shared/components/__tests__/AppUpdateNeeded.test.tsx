@@ -2,7 +2,7 @@ import { Linking } from 'react-native';
 
 import { config } from '$core/constants/config';
 import * as FeatureFlags from '$core/featureFlags/hooks/useGetRemoteConfigSync';
-import { fireEvent, render, waitFor } from '$core/testing';
+import { fireEvent, render, screen, waitFor } from '$core/testing';
 
 import { AppUpdateNeeded } from '../AppUpdateNeeded';
 
@@ -16,10 +16,10 @@ describe('AppUpdateNeeded component', () => {
 
   it('should render nothing if the flag is empty', () => {
     // Given
-    const { queryByTestId } = render(<AppUpdateNeeded />);
+    render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByTestId('appUpdateNeeded-screen')).toBeNull();
+    expect(screen.queryByTestId('appUpdateNeeded-screen')).toBeNull();
   });
 
   it('should render nothing if the versions are equal', () => {
@@ -32,10 +32,10 @@ describe('AppUpdateNeeded component', () => {
     config.version = '2.0.0';
 
     // Given
-    const { queryByTestId } = render(<AppUpdateNeeded />);
+    render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByTestId('appUpdateNeeded-screen')).toBeNull();
+    expect(screen.queryByTestId('appUpdateNeeded-screen')).toBeNull();
   });
 
   it('should render nothing if the flagged version is supported', () => {
@@ -48,10 +48,10 @@ describe('AppUpdateNeeded component', () => {
     config.version = '3.0.0';
 
     // Given
-    const { queryByTestId } = render(<AppUpdateNeeded />);
+    render(<AppUpdateNeeded />);
 
     // Then
-    expect(queryByTestId('appUpdateNeeded-screen')).toBeNull();
+    expect(screen.queryByTestId('appUpdateNeeded-screen')).toBeNull();
   });
 
   it('should render the update screen when the flagged version is unsupported', () => {
@@ -64,10 +64,10 @@ describe('AppUpdateNeeded component', () => {
     config.version = '2.0.0';
 
     // Given
-    const { getByTestId } = render(<AppUpdateNeeded />);
+    render(<AppUpdateNeeded />);
 
     // Then
-    expect(getByTestId('appUpdateNeeded-screen')).toBeDefined();
+    expect(screen.getByTestId('appUpdateNeeded-screen')).toBeDefined();
   });
 
   it('should open the stores to allow users to udpdate', async () => {
@@ -84,10 +84,10 @@ describe('AppUpdateNeeded component', () => {
     jest.spyOn(Linking, 'openURL').mockImplementation(openURL);
 
     // Given
-    const { getByTestId } = render(<AppUpdateNeeded />);
+    render(<AppUpdateNeeded />);
 
     // When
-    fireEvent.press(getByTestId('appUpdateNeeded-cta'));
+    fireEvent.press(screen.getByTestId('appUpdateNeeded-cta'));
 
     // Then
     await waitFor(() => {
