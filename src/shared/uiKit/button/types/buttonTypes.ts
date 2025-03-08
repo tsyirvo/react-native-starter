@@ -10,6 +10,5 @@ export interface ButtonProps extends VariantProps<Theme, 'buttonVariants'> {
     | undefined;
   isDisabled?: boolean;
   isLoading?: boolean;
+  targetScale?: number;
 }
-
-export type ButtonSize = 'regular' | 'small';

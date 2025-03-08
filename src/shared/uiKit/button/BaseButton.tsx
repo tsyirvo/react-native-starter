@@ -2,6 +2,13 @@ import type { VariantProps } from '@shopify/restyle';
 import { createRestyleComponent, createVariant } from '@shopify/restyle';
 import type React from 'react';
 import { Pressable } from 'react-native';
+import Animated, {
+  cancelAnimation,
+  useAnimatedStyle,
+  useReducedMotion,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import { HIT_SLOP } from '$core/constants/styling';
 import type { Theme } from '$core/theme';
@@ -22,27 +29,57 @@ const PrimitiveButton = createRestyleComponent<
   Theme
 >([ButtonVariant]);
 
-const BaseButton = ({
-  onPress,
+export const BaseButton = ({
   variant = 'base',
-  testID,
   isLoading = false,
+  isDisabled = false,
+  targetScale = DEFAULT_TARGET_SCALE,
   children,
-  isDisabled,
+  testID = 'BaseButton',
+  onPress,
 }: BaseButtonProps) => {
+  const scale = useSharedValue(REST_TARGET_SCALE);
+
+  const isReducedMotion = useReducedMotion();
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
+  const handlePressIn = () => {
+    cancelAnimation(scale);
+
+    scale.value = withTiming(targetScale, { duration: ANIMATION_DURATION });
+  };
+
+  const handlePressOut = () => {
+    cancelAnimation(scale);
+
+    scale.value = withTiming(REST_TARGET_SCALE, {
+      duration: ANIMATION_DURATION,
+    });
+  };
+
   return (
-    <Pressable
+    <AnimatedPressable
       accessibilityLabel={typeof children === 'string' ? children : undefined}
       accessibilityRole="button"
       accessibilityState={{ busy: isLoading }}
       disabled={isLoading || isDisabled}
       hitSlop={HIT_SLOP}
       testID={testID}
+      style={!isReducedMotion && animatedStyle}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
       onPress={onPress}
     >
       <PrimitiveButton variant={variant}>{children}</PrimitiveButton>
-    </Pressable>
+    </AnimatedPressable>
   );
 };
 
-export { BaseButton };
+const DEFAULT_TARGET_SCALE = 0.98;
+const REST_TARGET_SCALE = 1;
+const ANIMATION_DURATION = 100;
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);

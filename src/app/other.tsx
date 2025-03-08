@@ -41,15 +41,10 @@ const OtherScreen = () => {
               borderBottomWidth={1}
               pb="spacing_16"
             >
-              <Text testID="otherScreen-blogPost-title" variant="large">
-                {t('otherScreen.graphql.title')}
-              </Text>
+              <Text variant="large">{t('otherScreen.graphql.title')}</Text>
 
               <Box alignItems="flex-start" mt="spacing_8">
-                <Button.Text
-                  testID="otherScreen-blogPost-navigateCta"
-                  onPress={goToBlogPost}
-                >
+                <Button.Text onPress={goToBlogPost}>
                   {t('otherScreen.graphql.cta')}
                 </Button.Text>
               </Box>
@@ -63,10 +58,7 @@ const OtherScreen = () => {
               <Text variant="large">{t('otherScreen.form.title')}</Text>
 
               <Box alignItems="flex-start" mt="spacing_8">
-                <Button.Text
-                  testID="otherScreen-dummyForm-navigateCta"
-                  onPress={goToDummyForm}
-                >
+                <Button.Text onPress={goToDummyForm}>
                   {t('otherScreen.form.cta')}
                 </Button.Text>
               </Box>

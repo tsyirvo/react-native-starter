@@ -18,12 +18,7 @@ const HomeScreen = () => {
 
   return (
     <>
-      <Stack.Screen
-        options={{
-          headerShown: false,
-          title: t('homeScreen.navigation.screenTitle'),
-        }}
-      />
+      <Stack.Screen options={screenOptions} />
 
       <Screen>
         <ScrollView>
@@ -35,7 +30,7 @@ const HomeScreen = () => {
             </Text>
 
             <Box mt="spacing_8">
-              <Button.Text testID="home-navigateCta" onPress={goToOtherScreen}>
+              <Button.Text isTextCentered onPress={goToOtherScreen}>
                 {t('homeScreen.navigation.content')}
               </Button.Text>
             </Box>
@@ -48,6 +43,10 @@ const HomeScreen = () => {
       </Screen>
     </>
   );
+};
+
+const screenOptions = {
+  headerShown: false,
 };
 
 // eslint-disable-next-line import/no-mutable-exports
