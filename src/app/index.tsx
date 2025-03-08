@@ -1,5 +1,6 @@
 import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { ScrollView } from 'react-native';
 
 import { config } from '$core/constants';
 import { Header, Informations, Version } from '$features/home/components';
@@ -24,24 +25,26 @@ const HomeScreen = () => {
         }}
       />
 
-      <Screen p="zero">
-        <Header />
+      <Screen>
+        <ScrollView>
+          <Header />
 
-        <Box pb="spacing_32" px="spacing_16">
-          <Text mt="spacing_32" variant="large">
-            {t('homeScreen.navigation.title')}
-          </Text>
+          <Box pb="spacing_32" px="spacing_16">
+            <Text mt="spacing_32" variant="large">
+              {t('homeScreen.navigation.title')}
+            </Text>
 
-          <Box mt="spacing_8">
-            <Button.Text testID="home-navigateCta" onPress={goToOtherScreen}>
-              {t('homeScreen.navigation.content')}
-            </Button.Text>
+            <Box mt="spacing_8">
+              <Button.Text testID="home-navigateCta" onPress={goToOtherScreen}>
+                {t('homeScreen.navigation.content')}
+              </Button.Text>
+            </Box>
+
+            <Informations />
           </Box>
 
-          <Informations />
-        </Box>
-
-        <Version />
+          <Version />
+        </ScrollView>
       </Screen>
     </>
   );

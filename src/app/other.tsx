@@ -1,5 +1,6 @@
 import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { ScrollView } from 'react-native';
 
 import { Notifications } from '$features/notifications';
 import { StoreUpdateAvailableBanner } from '$shared/components/StoreUpdateAvailableBanner';
@@ -27,43 +28,59 @@ const OtherScreen = () => {
       <Stack.Screen options={{ title: t('otherScreen.navigation.title') }} />
 
       <Screen testID="otherScreen-screen">
-        {shouldShowBanner ? (
-          <Box pb="spacing_16">
-            <StoreUpdateAvailableBanner />
-          </Box>
-        ) : null}
+        <ScrollView>
+          <Box px="spacing_16" py="spacing_8">
+            {shouldShowBanner ? (
+              <Box pb="spacing_16">
+                <StoreUpdateAvailableBanner />
+              </Box>
+            ) : null}
 
-        <Box borderBottomColor="bg_focus" borderBottomWidth={1} pb="spacing_16">
-          <Text testID="otherScreen-blogPost-title" variant="large">
-            {t('otherScreen.graphql.title')}
-          </Text>
-
-          <Box alignItems="flex-start" mt="spacing_8">
-            <Button.Text
-              testID="otherScreen-blogPost-navigateCta"
-              onPress={goToBlogPost}
+            <Box
+              borderBottomColor="bg_focus"
+              borderBottomWidth={1}
+              pb="spacing_16"
             >
-              {t('otherScreen.graphql.cta')}
-            </Button.Text>
-          </Box>
-        </Box>
+              <Text testID="otherScreen-blogPost-title" variant="large">
+                {t('otherScreen.graphql.title')}
+              </Text>
 
-        <Box borderBottomColor="bg_focus" borderBottomWidth={1} py="spacing_16">
-          <Text variant="large">{t('otherScreen.form.title')}</Text>
+              <Box alignItems="flex-start" mt="spacing_8">
+                <Button.Text
+                  testID="otherScreen-blogPost-navigateCta"
+                  onPress={goToBlogPost}
+                >
+                  {t('otherScreen.graphql.cta')}
+                </Button.Text>
+              </Box>
+            </Box>
 
-          <Box alignItems="flex-start" mt="spacing_8">
-            <Button.Text
-              testID="otherScreen-dummyForm-navigateCta"
-              onPress={goToDummyForm}
+            <Box
+              borderBottomColor="bg_focus"
+              borderBottomWidth={1}
+              py="spacing_16"
             >
-              {t('otherScreen.form.cta')}
-            </Button.Text>
-          </Box>
-        </Box>
+              <Text variant="large">{t('otherScreen.form.title')}</Text>
 
-        <Box borderBottomColor="bg_focus" borderBottomWidth={1} py="spacing_16">
-          <Notifications />
-        </Box>
+              <Box alignItems="flex-start" mt="spacing_8">
+                <Button.Text
+                  testID="otherScreen-dummyForm-navigateCta"
+                  onPress={goToDummyForm}
+                >
+                  {t('otherScreen.form.cta')}
+                </Button.Text>
+              </Box>
+            </Box>
+
+            <Box
+              borderBottomColor="bg_focus"
+              borderBottomWidth={1}
+              py="spacing_16"
+            >
+              <Notifications />
+            </Box>
+          </Box>
+        </ScrollView>
       </Screen>
     </>
   );

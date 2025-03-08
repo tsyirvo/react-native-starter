@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 
 import { DummyForm as DummyFormComponent } from '$features/dummyForm';
+import { Box } from '$shared/uiKit/primitives';
 import { Screen } from '$shared/uiKit/Screen';
 
 const DummyFormScreen = () => {
@@ -16,9 +17,11 @@ const DummyFormScreen = () => {
         }}
       />
 
-      <Screen isScrollable={false}>
+      <Screen>
         <KeyboardAwareScrollView bottomOffset={50}>
-          <DummyFormComponent />
+          <Box px="spacing_16" py="spacing_8">
+            <DummyFormComponent />
+          </Box>
         </KeyboardAwareScrollView>
       </Screen>
     </>

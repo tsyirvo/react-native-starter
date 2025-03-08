@@ -16,7 +16,7 @@ const BlogPostScreen = () => {
         }}
       />
 
-      <Screen>
+      <Screen px="spacing_16" py="spacing_8">
         <BlogPostComponent id={id} />
       </Screen>
     </>
