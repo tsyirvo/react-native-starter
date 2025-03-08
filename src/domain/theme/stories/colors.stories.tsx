@@ -29,6 +29,14 @@ const meta = {
       </Box>
     </ScrollView>
   ),
+  decorators: [
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    (Story) => (
+      <Box flex={1} width="100%">
+        <Story />
+      </Box>
+    ),
+  ],
 } satisfies Meta<typeof View>;
 
 export default meta;

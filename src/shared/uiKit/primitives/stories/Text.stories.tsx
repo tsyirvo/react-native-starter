@@ -26,7 +26,7 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Text with custom positionning">
-        <TextPrimitive mt="spacing_32" pl="spacing_24" py="spacing_8">
+        <TextPrimitive mt="spacing_32" ps="spacing_24" py="spacing_8">
           Custom position
         </TextPrimitive>
       </StorybookItem>

@@ -19,7 +19,7 @@ const meta = {
           <Text mb="spacing_8">{space}</Text>
 
           <Box
-            bg="bg_focus"
+            bg="clear"
             height={spacing[space]}
             mb="spacing_32"
             width="100%"
@@ -28,6 +28,14 @@ const meta = {
       ))}
     </Box>
   ),
+  decorators: [
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    (Story) => (
+      <Box flex={1} justifyContent="center">
+        <Story />
+      </Box>
+    ),
+  ],
 } satisfies Meta<typeof View>;
 
 export default meta;

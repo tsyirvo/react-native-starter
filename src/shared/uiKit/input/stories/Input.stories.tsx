@@ -16,7 +16,7 @@ const meta = {
   decorators: [
     // eslint-disable-next-line @typescript-eslint/naming-convention
     (Story) => (
-      <Box p="spacing_16">
+      <Box width="100%" p="spacing_16">
         <Story />
       </Box>
     ),

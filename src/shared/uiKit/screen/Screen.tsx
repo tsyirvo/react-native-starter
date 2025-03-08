@@ -21,7 +21,7 @@ export const Screen = ({
   bg = 'bg',
   px = 'zero',
   py = 'zero',
-  testID,
+  testID = 'Screen',
 }: ScreenProps) => {
   const styles = useStyles();
 

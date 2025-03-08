@@ -1,8 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CenteredContent } from '$shared/components/storybook/CenteredContent';
-
 import { ButtonWithText } from '../ButtonWithText';
 
 const meta = {
@@ -24,14 +22,6 @@ const meta = {
     isLoading: false,
     onPress: action('onPress called'),
   },
-  decorators: [
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    (Story) => (
-      <CenteredContent flex={1}>
-        <Story />
-      </CenteredContent>
-    ),
-  ],
 } satisfies Meta<typeof ButtonWithText>;
 
 export default meta;
