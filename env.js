@@ -36,8 +36,8 @@ const client = z.object({
   VERSION: z.string(),
 
   // ADD CLIENT ENV VARS HERE
-  STORYBOOK_ENABLED: z.string().optional(),
   API_URL: z.string(),
+  STORYBOOK_ENABLED: z.string().optional(),
   ITUNES_ITEM_ID: z.string(),
   POSTHOG_API_KEY: z.string(),
   SENTRY_DSN: z.string(),
