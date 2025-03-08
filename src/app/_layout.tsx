@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 import * as Sentry from '@sentry/react-native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -12,7 +14,6 @@ import { toastConfig } from '$core/toaster';
 import { AppUpdateNeeded } from '$shared/components/AppUpdateNeeded';
 import { MaintenanceMode } from '$shared/components/MaintenanceMode';
 import { useCheckNetworkStateOnMount } from '$shared/hooks';
-import 'react-native-gesture-handler';
 
 import '../core/i18n';
 

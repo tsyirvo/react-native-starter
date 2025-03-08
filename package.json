@@ -61,7 +61,6 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@amplitude/analytics-react-native": "1.4.11",
     "@gorhom/bottom-sheet": "5.0.6",
     "@hookform/resolvers": "3.10.0",
     "@react-native-async-storage/async-storage": "1.23.1",
@@ -81,6 +80,7 @@
     "expo-constants": "~17.0.5",
     "expo-dev-client": "~5.0.10",
     "expo-device": "~7.0.2",
+    "expo-file-system": "~18.0.8",
     "expo-font": "~13.0.3",
     "expo-image": "~2.0.4",
     "expo-linking": "~7.0.5",
@@ -100,6 +100,7 @@
     "lodash.isnil": "4.0.0",
     "lodash.memoize": "4.1.2",
     "onesignal-expo-plugin": "2.0.2",
+    "posthog-react-native": "3.6.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-error-boundary": "5.0.0",
@@ -108,7 +109,6 @@
     "react-native": "0.76.6",
     "react-native-appsflyer": "6.15.3",
     "react-native-device-info": "14.0.2",
-    "react-native-flagsmith": "9.0.3",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-keyboard-controller": "1.16.1",
     "react-native-mmkv": "3.2.0",

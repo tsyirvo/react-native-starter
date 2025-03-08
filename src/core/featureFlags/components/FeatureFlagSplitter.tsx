@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
-import type { FlagOptions } from '../featureFlags.types';
-import { useIsFeatureFlagEnabled } from '../hooks/useIsFeatureFlagEnabled';
+import type { BooleanFeatureFlags } from '../featureFlags.types';
+import { useGetBooleanFeatureFlag } from '../hooks/useGetBooleanFeatureFlag';
 
 export const FeatureFlagSplitter = ({
   children = null,
@@ -12,9 +12,9 @@ export const FeatureFlagSplitter = ({
   children?: ReactNode;
   ifOn?: ReactNode;
   ifOff?: ReactNode;
-  flagKey: FlagOptions;
+  flagKey: BooleanFeatureFlags;
 }) => {
-  const isEnabled = useIsFeatureFlagEnabled(flagKey);
+  const isEnabled = useGetBooleanFeatureFlag(flagKey);
 
   if (isEnabled) {
     return children ?? ifOn;

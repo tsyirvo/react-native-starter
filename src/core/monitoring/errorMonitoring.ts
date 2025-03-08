@@ -39,17 +39,10 @@ class ErrorMonitoringClass {
       enabled: isEnabled,
       environment: config.env,
       integrations: [routingInstrumentation],
-      denyUrls: [
-        /mixpanel.com/i,
-        /flagsmith.com/i,
-        /onesignal.com/i,
-        /apple.com/i,
-      ],
+      denyUrls: [/onesignal.com/i, /apple.com/i],
       beforeBreadcrumb(breadcrumb) {
         if (typeof breadcrumb.data?.url === 'string') {
           if (
-            breadcrumb.data.url.match(/mixpanel.com/i) ??
-            breadcrumb.data.url.match(/flagsmith.com/i) ??
             breadcrumb.data.url.match(/onesignal.com/i) ??
             breadcrumb.data.url.match(/apple.com/i)
           ) {

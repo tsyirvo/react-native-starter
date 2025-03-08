@@ -1,15 +1,15 @@
 import { Linking } from 'react-native';
 
 import { config } from '$core/constants/config';
-import * as FeatureFlags from '$core/featureFlags/hooks/useGetFlagValueSync';
+import * as FeatureFlags from '$core/featureFlags/hooks/useGetRemoteConfigSync';
 import { fireEvent, render, waitFor } from '$core/testing';
 
 import { AppUpdateNeeded } from '../AppUpdateNeeded';
 
 describe('AppUpdateNeeded component', () => {
   // Mocks
-  jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
-    getFlagValueSync: () => '',
+  jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
+    getFlagPayloadSync: () => undefined,
   });
 
   afterEach(() => jest.resetAllMocks);
@@ -24,8 +24,9 @@ describe('AppUpdateNeeded component', () => {
 
   it('should render nothing if the versions are equal', () => {
     // Mocks
-    jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
-      getFlagValueSync: () => '2.0.0',
+    jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
+      getFlagPayloadSync: <T = { version: string },>() =>
+        ({ version: '2.0.0' }) as T,
     });
 
     config.version = '2.0.0';
@@ -39,8 +40,9 @@ describe('AppUpdateNeeded component', () => {
 
   it('should render nothing if the flagged version is supported', () => {
     // Mocks
-    jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
-      getFlagValueSync: () => '2.0.0',
+    jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
+      getFlagPayloadSync: <T = { version: string },>() =>
+        ({ version: '2.0.0' }) as T,
     });
 
     config.version = '3.0.0';
@@ -54,8 +56,9 @@ describe('AppUpdateNeeded component', () => {
 
   it('should render the update screen when the flagged version is unsupported', () => {
     // Mocks
-    jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
-      getFlagValueSync: () => '3.0.0',
+    jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
+      getFlagPayloadSync: <T = { version: string },>() =>
+        ({ version: '3.0.0' }) as T,
     });
 
     config.version = '2.0.0';
@@ -71,8 +74,9 @@ describe('AppUpdateNeeded component', () => {
     // Mocks
     config.version = '2.0.0';
 
-    jest.spyOn(FeatureFlags, 'useGetFlagValueSync').mockReturnValue({
-      getFlagValueSync: () => '3.0.0',
+    jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
+      getFlagPayloadSync: <T = { version: string },>() =>
+        ({ version: '3.0.0' }) as T,
     });
 
     const openURL = jest.fn();

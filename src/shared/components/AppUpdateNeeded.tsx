@@ -4,7 +4,8 @@ import { Linking } from 'react-native';
 import semverGte from 'semver/functions/gte';
 
 import { config, IS_IOS } from '$core/constants';
-import { useGetFlagValueSync } from '$core/featureFlags/hooks/useGetFlagValueSync';
+import { useGetRemoteConfigSync } from '$core/featureFlags';
+import type { VersionFlagType } from '$core/featureFlags/featureFlags.types';
 import { Logger } from '$core/logger';
 import { useRunOnMount } from '$shared/hooks';
 import { Button } from '$shared/uiKit/button';
@@ -15,17 +16,20 @@ export const AppUpdateNeeded = () => {
 
   const { t } = useTranslation();
 
-  const { getFlagValueSync } = useGetFlagValueSync();
+  const { getFlagPayloadSync } = useGetRemoteConfigSync();
 
   useRunOnMount(() => {
-    const lastSupportedVersion = getFlagValueSync('last-supported-app-version');
+    const payload = getFlagPayloadSync<VersionFlagType>(
+      'last-supported-app-version',
+    );
 
-    if (!lastSupportedVersion || typeof lastSupportedVersion !== 'string') {
-      // We can't get last supported version, so leave the app running
+    if (!payload) {
       return;
     }
 
-    const isSupported = semverGte(config.version, lastSupportedVersion);
+    const lastSupportedAppVersion = payload.version;
+
+    const isSupported = semverGte(config.version, lastSupportedAppVersion);
 
     setIsAppSupported(isSupported);
   });

@@ -1,59 +1,20 @@
-import {
-  Identify,
-  Revenue,
-  setUserId as _setUserId,
-  identify,
-  init,
-  reset,
-  revenue,
-  setSessionId,
-  track,
-} from '@amplitude/analytics-react-native';
-
-import { config } from '$core/constants';
-import { Logger } from '$core/logger';
+import { productTrackingClient } from '$core/productTracking';
 
 import type { AnalyticsType } from './analytics.types';
 
-const ONE = 1;
-
-const identifyObj = new Identify();
-
 class AnalyticsClass {
-  /* ***** *****  Setup  ***** ***** */
-
-  async init() {
-    try {
-      await init(config.amplitudeApiKey, undefined, {
-        appVersion: config.version,
-      }).promise;
-
-      this.trackEvent('app-start');
-      this.incrementUserProperty('session-count', ONE);
-    } catch (error) {
-      Logger.error({
-        error,
-        message: 'Failed to initialize Amplitude',
-      });
-    }
+  private _getCurrentUserId() {
+    return productTrackingClient.getDistinctId();
   }
-
-  reset() {
-    reset();
-  }
-
   /* ***** *****  User related  ***** ***** */
-
-  setUserId(id: string) {
-    _setUserId(id);
-  }
 
   // TODO(prod): Add user properties
   setUser(user: { id: string }) {
-    _setUserId(user.id);
-    setSessionId(Date.now());
+    productTrackingClient.identify(user.id);
+  }
 
-    identify(identifyObj);
+  reset() {
+    productTrackingClient.reset();
   }
 
   /* ***** *****  Properties  ***** ***** */
@@ -62,41 +23,29 @@ class AnalyticsClass {
     propertyName: AnalyticsType.PropertyNames,
     propertyValue: AnalyticsType.ValidPropertyType,
   ) {
-    identifyObj.set(propertyName, propertyValue);
+    const userId = this._getCurrentUserId();
 
-    identify(identifyObj);
+    productTrackingClient.identify(userId, {
+      [propertyName]: propertyValue,
+    });
   }
 
   unsetUserProperty(propertyName: AnalyticsType.PropertyNames) {
-    identifyObj.unset(propertyName);
+    const userId = this._getCurrentUserId();
 
-    identify(identifyObj);
-  }
-
-  incrementUserProperty(
-    propertyName: AnalyticsType.PropertyNames,
-    incrementCount: number,
-  ) {
-    identifyObj.add(propertyName, incrementCount);
+    productTrackingClient.identify(userId, {
+      [propertyName]: null,
+    });
   }
 
   /* ***** *****  Revenue  ***** ***** */
 
-  trackRevenue({
-    productId,
-    price,
-    revenueType,
-  }: {
+  trackRevenue(revenueData: {
     productId: AnalyticsType.ProductIds;
     price: number;
     revenueType: AnalyticsType.RevenueTypes;
   }) {
-    const event = new Revenue()
-      .setProductId(productId)
-      .setPrice(price)
-      .setRevenueType(revenueType);
-
-    revenue(event);
+    this.trackEvent('purchase', revenueData);
   }
 
   /* ***** *****  Events  ***** ***** */
@@ -105,7 +54,7 @@ class AnalyticsClass {
     eventName: AnalyticsType.EventNames,
     properties?: Record<string, unknown>,
   ) {
-    track(eventName, properties);
+    productTrackingClient.capture(eventName, properties);
   }
 }
 
