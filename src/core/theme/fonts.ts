@@ -14,10 +14,11 @@ export const fontSizes = {
 };
 
 const lineHeight = {
-  small: 17,
-  medium: 24,
-  regular: 33,
-  large: 45,
+  small: 15,
+  regular: 17,
+  medium: 22,
+  large: 29,
+  xLarge: 38,
 };
 
 export const textVariants = {
@@ -29,7 +30,7 @@ export const textVariants = {
   regular: {
     fontFamily: fontFamily.regular,
     fontSize: fontSizes.regular,
-    lineHeight: lineHeight.small,
+    lineHeight: lineHeight.regular,
   },
   medium: {
     fontFamily: fontFamily.regular,
@@ -39,12 +40,12 @@ export const textVariants = {
   large: {
     fontFamily: fontFamily.bold,
     fontSize: fontSizes.large,
-    lineHeight: lineHeight.medium,
+    lineHeight: lineHeight.large,
   },
   xLarge: {
     fontFamily: fontFamily.bold,
     fontSize: fontSizes.xLarge,
-    lineHeight: lineHeight.large,
+    lineHeight: lineHeight.xLarge,
   },
 };
 

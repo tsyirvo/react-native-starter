@@ -1,10 +1,12 @@
-import type { LOG_LEVEL, PurchasesPackage } from 'react-native-purchases';
+import type {
+  CustomerInfo,
+  LOG_LEVEL,
+  PurchasesPackage,
+} from 'react-native-purchases';
 import RevenueCat from 'react-native-purchases';
 
 import { IS_IOS, config } from '$core/constants';
-import { Logger } from '$core/logger';
-
-import type { EntitlementsType } from './purchase.types';
+import { ErrorMonitoring } from '$core/monitoring';
 
 const API_KEY = IS_IOS
   ? config.revenueCatAppleApiKey
@@ -27,8 +29,16 @@ class PurchaseClass {
     await RevenueCat.logIn(appUserID);
   }
 
+  async clearUser() {
+    await RevenueCat.logOut();
+  }
+
   async setAttributes(attributes: Record<string, string | null>) {
     await RevenueCat.setAttributes(attributes);
+  }
+
+  async invalidateUserInformationsCache() {
+    await RevenueCat.invalidateCustomerInfoCache();
   }
 
   async getUserInformations() {
@@ -47,27 +57,18 @@ class PurchaseClass {
     await RevenueCat.restorePurchases();
   }
 
-  async makePurchase({
-    purchasedPackage,
-    entitlement,
-  }: {
-    purchasedPackage: PurchasesPackage;
-    entitlement: EntitlementsType;
-  }) {
+  async makePurchase(purchasedPackage: PurchasesPackage) {
     try {
-      const { customerInfo } =
-        await RevenueCat.purchasePackage(purchasedPackage);
-
-      if (customerInfo.entitlements.active[entitlement]) {
-        return { isPurchaseSuccessful: true };
-      }
-
-      return { isPurchaseSuccessful: false };
+      await RevenueCat.purchasePackage(purchasedPackage);
     } catch (error) {
-      Logger.error({ error, message: 'Failed to purchase package' });
-
-      return { isPurchaseSuccessful: false };
+      ErrorMonitoring.exception(error);
     }
+  }
+
+  /* ***** *****  Listeners  ***** ***** */
+
+  customerListener(callback: (customerInfo: CustomerInfo) => void) {
+    RevenueCat.addCustomerInfoUpdateListener(callback);
   }
 }
 

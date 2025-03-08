@@ -50,12 +50,6 @@ export const messages: MessagesTypes = {
       screenTitle: 'Article de blog',
       title: 'Article récupéré avec GraphQL',
     },
-    codepush: {
-      cta: 'Installer maintenant',
-      description:
-        "Une mise à jour de l'application est requise pour fonctionner.",
-      title: 'Mise à jour requise',
-    },
     dummyForm: {
       form: {
         email: {

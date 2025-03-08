@@ -48,12 +48,6 @@ export const messages = {
       screenTitle: 'Blog post',
       title: 'Blog post fetched with GraphQL',
     },
-    codepush: {
-      cta: 'Install now',
-      description:
-        'An app update is mandatory to be able to use the application.',
-      title: 'Update is required',
-    },
     dummyForm: {
       form: {
         email: {

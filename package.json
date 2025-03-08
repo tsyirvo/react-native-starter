@@ -144,7 +144,6 @@
     "@storybook/react": "8.5.5",
     "@storybook/react-native": "8.5.5",
     "@svgr/cli": "8.1.0",
-    "@testing-library/jest-native": "5.4.3",
     "@testing-library/react-native": "13.2.0",
     "@types/fs-extra": "11.0.4",
     "@types/imagemin": "8.0.0",
@@ -158,7 +157,6 @@
     "@types/semver": "7.5.8",
     "@types/sharp": "0.31.0",
     "app-icon-badge": "0.1.2",
-    "babel-plugin-root-import": "6.6.0",
     "babel-plugin-transform-remove-console": "6.9.4",
     "dotenv": "16.4.7",
     "eslint": "8.57.1",
@@ -200,6 +198,9 @@
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
     ],
+    "moduleNameMapper": {
+      "^\\$(.*)$": "<rootDir>/src/$1"
+    },
     "setupFiles": [
       "./node_modules/react-native-gesture-handler/jestSetup.js",
       "./src/core/testing/setup.ts"
@@ -233,16 +234,6 @@
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all"
-  },
-  "eslintConfig": {
-    "extends": [
-      "tsyirvo-react-native"
-    ],
-    "ignorePatterns": [
-      "src/components/icons/components/",
-      "**/*.json",
-      "!src/core/i18n/resources/**/*.json"
-    ]
   },
   "packageManager": "yarn@4.4.1"
 }

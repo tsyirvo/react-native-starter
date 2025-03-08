@@ -9,19 +9,6 @@ module.exports = function (api) {
         plugins: ['transform-remove-console'],
       },
     },
-    plugins: [
-      [
-        'babel-plugin-root-import',
-        {
-          paths: [
-            {
-              rootPathSuffix: 'src',
-              rootPathPrefix: '$',
-            },
-          ],
-        },
-      ],
-      'react-native-reanimated/plugin',
-    ],
+    plugins: ['react-native-reanimated/plugin'],
   };
 };
