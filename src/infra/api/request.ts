@@ -1,8 +1,4 @@
-import type { GraphQLClient } from 'graphql-request';
-import type {
-  GraphQLClientRequestHeaders,
-  Variables,
-} from 'graphql-request/build/esm/types';
+import type { GraphQLClient, Variables } from 'graphql-request';
 
 import { config } from '$domain/constants';
 
@@ -15,12 +11,13 @@ export const request =
   <TData, TVariables extends Variables>(
     query: string,
     variables?: TVariables,
-    options?: GraphQLClientRequestHeaders,
+    options?: HeadersInit,
   ): (() => Promise<TData>) =>
   async () => {
     client = getQueryClient(config.apiURL);
 
     if (options) client.setHeaders(options);
+
     client.setHeader('app-id', getAppIdentifier());
     client.setHeader('app-version', config.version);
 
