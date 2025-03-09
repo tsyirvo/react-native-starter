@@ -1,5 +1,5 @@
 {
-  "i18n-ally.localesPaths": ["src/core/i18n/resources"],
+  "i18n-ally.localesPaths": ["src/infra/i18n/resources"],
   "i18n-ally.enabledFrameworks": ["react-i18next"],
   "i18n-ally.defaultNamespace": "messages",
   "i18n-ally.enabledParsers": ["ts", "json"],

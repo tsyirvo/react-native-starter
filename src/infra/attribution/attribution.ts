@@ -11,6 +11,8 @@ class AttributionClass {
   /* ***** *****  Setup  ***** ***** */
 
   async init() {
+    if (config.isDebug) return;
+
     try {
       this.listenForDeepLink();
       this.handleInstallAttribution();

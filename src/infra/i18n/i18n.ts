@@ -13,5 +13,4 @@ export const i18n = i18next.use(initReactI18next).use(languageDetector).init({
   defaultNS: 'messages',
   resources,
   load: 'languageOnly',
-  compatibilityJSON: 'v3',
 });

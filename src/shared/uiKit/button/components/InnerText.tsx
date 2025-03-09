@@ -1,8 +1,9 @@
 import type { VariantProps } from '@shopify/restyle';
 
 import type { Colors, Theme } from '$domain/theme';
-import { Box, Loader, Text } from '$shared/uiKit';
 
+import { Loader } from '../../loader';
+import { Box, Text } from '../../primitives';
 import type { ButtonProps } from '../types/buttonTypes';
 
 type ParentVariant = VariantProps<Theme, 'buttonVariants'>['variant'];
