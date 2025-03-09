@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Loader } from './Loader';
+import { Loader as LoaderComponent } from '../Loader';
 
 const meta = {
   title: 'UIKit/Loader',
-  component: Loader,
+  component: LoaderComponent,
   argTypes: {
     delay: { control: 'number' },
     size: { control: 'select', options: ['large', 'small'] },
   },
-} satisfies Meta<typeof Loader>;
+} satisfies Meta<typeof LoaderComponent>;
 
 export default meta;
 
