@@ -1,3 +1,6 @@
+import 'intl-pluralrules';
+import '@formatjs/intl-getcanonicallocales/polyfill';
+
 import * as Sentry from '@sentry/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';

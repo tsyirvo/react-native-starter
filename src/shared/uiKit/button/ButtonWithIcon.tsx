@@ -1,6 +1,7 @@
 import { usePress } from '$shared/hooks';
 import type { IconName } from '$shared/icons';
-import { Box } from '$shared/uiKit';
+
+import { Box } from '../primitives';
 
 import { BaseButton } from './BaseButton';
 import { InnerIcon } from './components/InnerIcon';

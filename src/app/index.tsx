@@ -16,7 +16,12 @@ const HomeScreen = () => {
 
   return (
     <>
-      <Stack.Screen options={screenOptions} />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          title: t('homeScreen.navigation.screenTitle'),
+        }}
+      />
 
       <Screen>
         <ScrollView>
@@ -41,10 +46,6 @@ const HomeScreen = () => {
       </Screen>
     </>
   );
-};
-
-const screenOptions = {
-  headerShown: false,
 };
 
 // eslint-disable-next-line import/no-mutable-exports
