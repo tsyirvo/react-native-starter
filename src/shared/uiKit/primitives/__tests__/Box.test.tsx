@@ -4,10 +4,8 @@ import { Box } from '../Box';
 
 describe('Box component', () => {
   it('should render correctly', () => {
-    // Given
-    render(<Box testID="box-id" />);
+    render(<Box testID="boxId" />);
 
-    // Then
-    expect(screen.getByTestId('box-id')).toBeDefined();
+    expect(screen.getByTestId('boxId')).toBeDefined();
   });
 });

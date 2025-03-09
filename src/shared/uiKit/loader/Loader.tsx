@@ -9,6 +9,7 @@ type LoaderProps = {
   delay?: number;
   size?: 'large' | 'small';
   color?: Colors;
+  testID?: string;
 };
 
 const SMALL_SIZE = 20;
@@ -19,6 +20,7 @@ export const Loader = ({
   delay = DEFAULT_DELAY,
   size = 'large',
   color = 'dull',
+  testID = 'Loader',
 }: LoaderProps) => {
   const [isShowingLoading, setIsShowingLoading] = useState(false);
 
@@ -37,7 +39,13 @@ export const Loader = ({
   }, [delay]);
 
   if (isShowingLoading)
-    return <ActivityIndicator color={colors[color]} size={size} />;
+    return (
+      <ActivityIndicator
+        testID={`${testID}ActivityIndicator`}
+        color={colors[color]}
+        size={size}
+      />
+    );
 
-  return <Box height={minHeight} />;
+  return <Box testID={testID} height={minHeight} />;
 };

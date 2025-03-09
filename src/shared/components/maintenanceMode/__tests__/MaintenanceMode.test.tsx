@@ -4,7 +4,6 @@ import * as FeatureFlags from '$infra/featureFlags/hooks/useGetBooleanFeatureFla
 import { MaintenanceMode } from '../MaintenanceMode';
 
 describe('MaintenanceMode component', () => {
-  // Mocks
   jest.spyOn(FeatureFlags, 'useGetBooleanFeatureFlag').mockReturnValue(false);
 
   afterEach(() => {
@@ -12,21 +11,16 @@ describe('MaintenanceMode component', () => {
   });
 
   it('should render nothing by default', () => {
-    // Given
     render(<MaintenanceMode />);
 
-    // Then
     expect(screen.queryByTestId('maintenanceMode-screen')).toBeNull();
   });
 
   it('should render the maintenance mode when the flag is true', () => {
-    // Mocks
     jest.spyOn(FeatureFlags, 'useGetBooleanFeatureFlag').mockReturnValue(true);
 
-    // Given
     render(<MaintenanceMode />);
 
-    // Then
     expect(screen.getByTestId('maintenanceMode-screen')).toBeDefined();
   });
 });
