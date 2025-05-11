@@ -1,17 +1,23 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
+
 import type { Event, Scope, User } from '@sentry/react-native';
 import * as Sentry from '@sentry/react-native';
 import type { Breadcrumb, CaptureContext, SeverityLevel } from '@sentry/types';
+import * as Application from 'expo-application';
+import Constants from 'expo-constants';
+import * as Device from 'expo-device';
+import * as Updates from 'expo-updates';
 
 import { config } from '$domain/constants';
-
-import type { tags } from './constants';
 
 import type { Primitives } from '$types';
 
 const prodSampleRate = 0.5;
 const fullSampleRate = 1;
 
-export const routingInstrumentation = Sentry.reactNavigationIntegration();
+export const routingInstrumentation = Sentry.reactNavigationIntegration({
+  enableTimeToInitialDisplay: true,
+});
 
 class ErrorMonitoringClass {
   /* ***** *****  Setup  ***** ***** */
@@ -58,11 +64,22 @@ class ErrorMonitoringClass {
       },
     });
 
-    if (typeof config.runtimeVersion === 'string') {
-      this.tag('runtimeVersion', config.runtimeVersion);
-    }
+    this.setSessionTags();
+  }
 
-    this.tag('version', config.version);
+  setSessionTags() {
+    Sentry.setExtras({
+      manifest: Updates.manifest,
+      deviceYearClass: Device.deviceYearClass,
+      linkingUri: Constants.linkingUri,
+    });
+
+    Sentry.setTag('expoChannel', Updates.channel);
+    Sentry.setTag('appVersion', Application.nativeApplicationVersion);
+    Sentry.setTag('deviceId', Constants.sessionId);
+    Sentry.setTag('executionEnvironment', Constants.executionEnvironment);
+    Sentry.setTag('expoGoVersion', Constants.expoVersion);
+    Sentry.setTag('expoRuntimeVersion', Constants.expoRuntimeVersion);
   }
 
   /* ***** *****  User related  ***** ***** */
@@ -89,7 +106,7 @@ class ErrorMonitoringClass {
     Sentry.captureMessage(message, context);
   }
 
-  tag(key: keyof typeof tags, value: Primitives) {
+  tag(key: string, value: Primitives) {
     Sentry.setTag(key, value);
   }
 

@@ -20,13 +20,3 @@ export const breadcrumbsCategory = {
   navigation: 'navigation',
   auth: 'auth',
 };
-
-/* ***** *****  Tags  ***** ***** */
-
-export const tags = {
-  locale: 'Locale',
-  env: 'Environment',
-  runtimeVersion: 'RuntimeVersion',
-  version: 'Version',
-  updatedVersion: 'UpdatedVersion',
-};

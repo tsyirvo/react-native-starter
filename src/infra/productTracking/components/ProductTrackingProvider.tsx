@@ -1,3 +1,4 @@
+import type { PostHogAutocaptureOptions } from 'posthog-react-native';
 import { PostHogProvider } from 'posthog-react-native';
 import type { ReactElement } from 'react';
 
@@ -11,8 +12,17 @@ export const ProductTrackingProvider = ({
   children,
 }: ProductTrackingProviderProps) => {
   return (
-    <PostHogProvider client={productTrackingClient} autocapture>
+    <PostHogProvider
+      client={productTrackingClient}
+      autocapture={autocaptureOptions}
+    >
       {children}
     </PostHogProvider>
   );
+};
+
+const autocaptureOptions: PostHogAutocaptureOptions = {
+  captureTouches: true,
+  captureLifecycleEvents: true,
+  captureScreens: false,
 };

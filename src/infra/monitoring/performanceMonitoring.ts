@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
+
 import * as Sentry from '@sentry/react-native';
 import type { StartSpanOptions, Span } from '@sentry/types';
 

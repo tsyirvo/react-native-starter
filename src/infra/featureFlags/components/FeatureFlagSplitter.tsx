@@ -13,7 +13,7 @@ export const FeatureFlagSplitter = ({
   ifOn?: ReactNode;
   ifOff?: ReactNode;
   flagKey: BooleanFeatureFlags;
-}) => {
+}): ReactNode => {
   const isEnabled = useGetBooleanFeatureFlag(flagKey);
 
   if (isEnabled) {

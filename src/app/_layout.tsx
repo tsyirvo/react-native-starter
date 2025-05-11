@@ -1,12 +1,12 @@
-import 'intl-pluralrules';
 import '@formatjs/intl-getcanonicallocales/polyfill';
+import 'intl-pluralrules';
 
 import * as Sentry from '@sentry/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import type { ErrorInfo } from 'react';
+import { type ErrorInfo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
@@ -27,7 +27,10 @@ import {
   MaintenanceMode,
   Splashscreen,
 } from '$shared/components';
-import { useCheckNetworkStateOnMount } from '$shared/hooks';
+import {
+  useCheckNetworkStateOnMount,
+  useRoutingInstrumentation,
+} from '$shared/hooks';
 
 import '../infra/i18n';
 
@@ -49,6 +52,7 @@ const onGlobalError = (error: Error, errorInfo: ErrorInfo) => {
 const RootLayout = () => {
   const styles = useStyles();
 
+  useRoutingInstrumentation();
   useCheckNetworkStateOnMount();
   useAppStateTracking();
   useAppScreenTracking();
