@@ -1,4 +1,4 @@
-import type { SeverityLevel } from '@sentry/types';
+import type { SeverityLevel } from '@sentry/core';
 
 /* ***** *****  Toast Message  ***** ***** */
 

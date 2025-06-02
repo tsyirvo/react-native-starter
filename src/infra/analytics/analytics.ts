@@ -52,7 +52,7 @@ class AnalyticsClass {
 
   trackEvent(
     eventName: AnalyticsType.EventNames,
-    properties?: Record<string, unknown>,
+    properties?: Record<string, AnalyticsType.JsonType>,
   ) {
     productTrackingClient.capture(eventName, properties);
   }

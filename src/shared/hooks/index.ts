@@ -5,5 +5,6 @@ export { useKeyboard } from './useKeyboard';
 export { usePress } from './usePress';
 export { usePreviousState } from './usePreviousState';
 export { useRequestPermission } from './useRequestPermission';
+export { useRoutingInstrumentation } from './useRoutingInstrumentation';
 export { useRunOnMount } from './useRunOnMount';
 export { useWhyDidYouUpdate } from './useWhyDidYouUpdate';

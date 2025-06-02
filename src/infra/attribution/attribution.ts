@@ -39,7 +39,7 @@ class AttributionClass {
       if (res.deepLinkStatus !== 'NOT_FOUND') {
         const DLValue = res.data.deep_link_value;
         const mediaSrc = res.data.media_source;
-        const deepLinkSub1 = res.data.deep_link_sub1;
+        const deepLinkSub1 = res.data.deep_link_sub1 ?? 'unknown';
 
         Analytics.trackEvent('deep-link-opened', {
           DLValue,

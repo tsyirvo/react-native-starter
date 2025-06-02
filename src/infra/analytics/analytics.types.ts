@@ -33,4 +33,14 @@ export namespace AnalyticsType {
     | 'yearly-subscription-50-off';
 
   export type RevenueTypes = 'purchase';
+
+  export type JsonType =
+    | string
+    | number
+    | boolean
+    | null
+    | {
+        [key: string]: JsonType;
+      }
+    | JsonType[];
 }

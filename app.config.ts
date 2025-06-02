@@ -89,7 +89,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   slug: 'rn-starter',
   version: Env.VERSION.toString(),
   runtimeVersion: { policy: 'appVersion' },
-  jsEngine: 'hermes',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'dark',
@@ -108,8 +107,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       usesNonExemptEncryption: false,
     },
     infoPlist: {
+      UIBackgroundModes: ['remote-notification'],
       CFBundleAllowMixedLocalizations: true,
       ITSAppUsesNonExemptEncryption: false,
+    },
+    entitlements: {
+      'aps-environment': isDevelopmentEnv ? 'development' : 'production',
+      'com.apple.security.application-groups': [
+        'group.${ios.bundleIdentifier}.onesignal',
+      ],
     },
   },
   android: {
@@ -117,6 +123,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#000',
     },
+    edgeToEdgeEnabled: true,
     package: Env.PACKAGE,
     playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
     intentFilters: [
