@@ -1,5 +1,3 @@
-/* eslint-disable filename-rules/match */
-
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
 

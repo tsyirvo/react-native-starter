@@ -1,5 +1,4 @@
 module.exports = function (api) {
-  // eslint-disable-next-line
   api.cache(true);
 
   return {

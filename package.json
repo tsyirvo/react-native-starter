@@ -41,7 +41,7 @@
     "test:coverage": "jest",
     "//// QUALITY ////": "",
     "lint:ts": "yarn tsc",
-    "lint": "eslint ./ --ext .js,.ts,.tsx,.json --fix --ignore-path .gitignore",
+    "lint": "eslint ./ --ext .js,.ts,.tsx,.json --fix",
     "prettify": "yarn prettier --write './**/*.{js,ts,tsx}' '!.storybook/storybook.requires.ts'",
     "pretty:check": "yarn prettier --check './**/*.{js,ts,tsx}' '!.storybook/storybook.requires.ts'",
     "//// UTILITIES ////": "",
@@ -158,8 +158,8 @@
     "app-icon-badge": "0.1.2",
     "babel-plugin-transform-remove-console": "6.9.4",
     "dotenv": "16.5.0",
-    "eslint": "8.57.1",
-    "eslint-config-tsyirvo-react-native": "1.8.0",
+    "eslint": "9.28.0",
+    "eslint-config-tsyirvo-react-native": "2.1.0",
     "fs-extra": "11.3.0",
     "imagemin": "7.0.1",
     "imagemin-mozjpeg": "9.0.0",
@@ -177,7 +177,7 @@
     "storybook": "8.6.4",
     "ts-jest": "29.2.6",
     "ts-node": "10.9.2",
-    "typescript": "5.5.4"
+    "typescript": "5.8.3"
   },
   "expo": {
     "doctor": {

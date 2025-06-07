@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 import { IS_IOS } from './platform';
 
 //@ts-expect-error // We know we're passing the correct environment variables to `extra` in `app.config.ts`
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+
 const Env: typeof import('../../../env.js').ClientEnv =
   Constants.expoConfig?.extra ?? {};
 

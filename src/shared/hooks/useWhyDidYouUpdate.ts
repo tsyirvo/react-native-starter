@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 
 import { Logger } from '$infra/logger';
 
-type Props = {
+interface Props {
   onChangeFound?: (data: {
     changesObj: Record<
       string,
@@ -16,7 +16,7 @@ type Props = {
     >;
   }) => void;
   onNoChangeFound?: () => void;
-};
+}
 
 type ChangeObj = Record<
   string,

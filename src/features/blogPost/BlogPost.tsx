@@ -7,9 +7,9 @@ import { Loader, Text } from '$shared/uiKit';
 
 import { BlogPostUser } from './components/BlogPostUser';
 
-type BlogPostProps = {
+interface BlogPostProps {
   id: string;
-};
+}
 
 export const BlogPost = ({ id }: BlogPostProps) => {
   const { t } = useTranslation();

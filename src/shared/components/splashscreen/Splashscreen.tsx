@@ -4,9 +4,9 @@ import { Box } from '$shared/uiKit';
 
 import { useBootstrapApp } from './hooks/useBootstrapApp';
 
-type SplashscreenProps = {
+interface SplashscreenProps {
   children: ReactNode;
-};
+}
 
 export const Splashscreen = ({ children }: SplashscreenProps) => {
   const { onLayoutRootView } = useBootstrapApp();

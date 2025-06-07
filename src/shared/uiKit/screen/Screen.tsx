@@ -6,14 +6,14 @@ import { makeAppStyles, type Colors, type Spacing } from '$domain/theme';
 import { Box } from '../primitives';
 import { SafeView } from '../safeView';
 
-type ScreenProps = {
+interface ScreenProps {
   edges?: Edge[];
   children: ReactNode;
   bg?: Colors;
   px?: Spacing;
   py?: Spacing;
   testID?: string;
-};
+}
 
 export const Screen = ({
   children,

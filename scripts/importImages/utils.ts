@@ -13,10 +13,10 @@ export const TMP_DIR = `${nodeProcess.cwd()}/tmp`;
 
 /* ***** *****  Misc. utilities  ***** ***** */
 
-type Print = {
+interface Print {
   message: string;
   type?: 'error' | 'warning' | 'success';
-};
+}
 
 export const print = ({ message, type }: Print) => {
   switch (type) {

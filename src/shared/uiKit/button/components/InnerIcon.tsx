@@ -1,13 +1,13 @@
 import type { IconName } from '$shared/icons';
 import { Icon } from '$shared/icons';
 
-type InnerIconProps = {
+interface InnerIconProps {
   iconName: IconName;
   width?: number;
   height?: number;
   isLoading?: boolean;
   testID?: string;
-};
+}
 
 export const InnerIcon = ({
   iconName,

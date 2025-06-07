@@ -1,5 +1,3 @@
-/* eslint-disable filename-rules/match */
-
 import { ThemeProvider } from '@shopify/restyle';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { RenderAPI } from '@testing-library/react-native';

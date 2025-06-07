@@ -12,116 +12,117 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
-export type MakeEmpty<T extends Record<string, unknown>, K extends keyof T> = {
-  [_ in K]?: never;
-};
+export type MakeEmpty<
+  T extends Record<string, unknown>,
+  K extends keyof T,
+> = Partial<Record<K, never>>;
 export type Incremental<T> =
   | T
   | {
       [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
     };
 /** All built-in and custom scalars, mapped to their actual values */
-export type Scalars = {
+export interface Scalars {
   ID: { input: string; output: string };
   String: { input: string; output: string };
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
-};
+}
 
-export type Address = {
+export interface Address {
   __typename?: 'Address';
   city?: Maybe<Scalars['String']['output']>;
   geo?: Maybe<Geo>;
   street?: Maybe<Scalars['String']['output']>;
   suite?: Maybe<Scalars['String']['output']>;
   zipcode?: Maybe<Scalars['String']['output']>;
-};
+}
 
-export type AddressInput = {
+export interface AddressInput {
   city?: InputMaybe<Scalars['String']['input']>;
   geo?: InputMaybe<GeoInput>;
   street?: InputMaybe<Scalars['String']['input']>;
   suite?: InputMaybe<Scalars['String']['input']>;
   zipcode?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type Album = {
+export interface Album {
   __typename?: 'Album';
   id?: Maybe<Scalars['ID']['output']>;
   photos?: Maybe<PhotosPage>;
   title?: Maybe<Scalars['String']['output']>;
   user?: Maybe<User>;
-};
+}
 
-export type AlbumPhotosArgs = {
+export interface AlbumPhotosArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type AlbumsPage = {
+export interface AlbumsPage {
   __typename?: 'AlbumsPage';
   data?: Maybe<Maybe<Album>[]>;
   links?: Maybe<PaginationLinks>;
   meta?: Maybe<PageMetadata>;
-};
+}
 
-export type Comment = {
+export interface Comment {
   __typename?: 'Comment';
   body?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['ID']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   post?: Maybe<Post>;
-};
+}
 
-export type CommentsPage = {
+export interface CommentsPage {
   __typename?: 'CommentsPage';
   data?: Maybe<Maybe<Comment>[]>;
   links?: Maybe<PaginationLinks>;
   meta?: Maybe<PageMetadata>;
-};
+}
 
-export type Company = {
+export interface Company {
   __typename?: 'Company';
   bs?: Maybe<Scalars['String']['output']>;
   catchPhrase?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
-};
+}
 
-export type CompanyInput = {
+export interface CompanyInput {
   bs?: InputMaybe<Scalars['String']['input']>;
   catchPhrase?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type CreateAlbumInput = {
+export interface CreateAlbumInput {
   title: Scalars['String']['input'];
   userId: Scalars['ID']['input'];
-};
+}
 
-export type CreateCommentInput = {
+export interface CreateCommentInput {
   body: Scalars['String']['input'];
   email: Scalars['String']['input'];
   name: Scalars['String']['input'];
-};
+}
 
-export type CreatePhotoInput = {
+export interface CreatePhotoInput {
   thumbnailUrl: Scalars['String']['input'];
   title: Scalars['String']['input'];
   url: Scalars['String']['input'];
-};
+}
 
-export type CreatePostInput = {
+export interface CreatePostInput {
   body: Scalars['String']['input'];
   title: Scalars['String']['input'];
-};
+}
 
-export type CreateTodoInput = {
+export interface CreateTodoInput {
   completed: Scalars['Boolean']['input'];
   title: Scalars['String']['input'];
-};
+}
 
-export type CreateUserInput = {
+export interface CreateUserInput {
   address?: InputMaybe<AddressInput>;
   company?: InputMaybe<CompanyInput>;
   email: Scalars['String']['input'];
@@ -129,20 +130,20 @@ export type CreateUserInput = {
   phone?: InputMaybe<Scalars['String']['input']>;
   username: Scalars['String']['input'];
   website?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type Geo = {
+export interface Geo {
   __typename?: 'Geo';
   lat?: Maybe<Scalars['Float']['output']>;
   lng?: Maybe<Scalars['Float']['output']>;
-};
+}
 
-export type GeoInput = {
+export interface GeoInput {
   lat?: InputMaybe<Scalars['Float']['input']>;
   lng?: InputMaybe<Scalars['Float']['input']>;
-};
+}
 
-export type Mutation = {
+export interface Mutation {
   __typename?: 'Mutation';
   _?: Maybe<Scalars['Int']['output']>;
   createAlbum?: Maybe<Album>;
@@ -163,85 +164,85 @@ export type Mutation = {
   updatePost?: Maybe<Post>;
   updateTodo?: Maybe<Todo>;
   updateUser?: Maybe<User>;
-};
+}
 
-export type MutationCreateAlbumArgs = {
+export interface MutationCreateAlbumArgs {
   input: CreateAlbumInput;
-};
+}
 
-export type MutationCreateCommentArgs = {
+export interface MutationCreateCommentArgs {
   input: CreateCommentInput;
-};
+}
 
-export type MutationCreatePhotoArgs = {
+export interface MutationCreatePhotoArgs {
   input: CreatePhotoInput;
-};
+}
 
-export type MutationCreatePostArgs = {
+export interface MutationCreatePostArgs {
   input: CreatePostInput;
-};
+}
 
-export type MutationCreateTodoArgs = {
+export interface MutationCreateTodoArgs {
   input: CreateTodoInput;
-};
+}
 
-export type MutationCreateUserArgs = {
+export interface MutationCreateUserArgs {
   input: CreateUserInput;
-};
+}
 
-export type MutationDeleteAlbumArgs = {
+export interface MutationDeleteAlbumArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type MutationDeleteCommentArgs = {
+export interface MutationDeleteCommentArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type MutationDeletePhotoArgs = {
+export interface MutationDeletePhotoArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type MutationDeletePostArgs = {
+export interface MutationDeletePostArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type MutationDeleteTodoArgs = {
+export interface MutationDeleteTodoArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type MutationDeleteUserArgs = {
+export interface MutationDeleteUserArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type MutationUpdateAlbumArgs = {
+export interface MutationUpdateAlbumArgs {
   id: Scalars['ID']['input'];
   input: UpdateAlbumInput;
-};
+}
 
-export type MutationUpdateCommentArgs = {
+export interface MutationUpdateCommentArgs {
   id: Scalars['ID']['input'];
   input: UpdateCommentInput;
-};
+}
 
-export type MutationUpdatePhotoArgs = {
+export interface MutationUpdatePhotoArgs {
   id: Scalars['ID']['input'];
   input: UpdatePhotoInput;
-};
+}
 
-export type MutationUpdatePostArgs = {
+export interface MutationUpdatePostArgs {
   id: Scalars['ID']['input'];
   input: UpdatePostInput;
-};
+}
 
-export type MutationUpdateTodoArgs = {
+export interface MutationUpdateTodoArgs {
   id: Scalars['ID']['input'];
   input: UpdateTodoInput;
-};
+}
 
-export type MutationUpdateUserArgs = {
+export interface MutationUpdateUserArgs {
   id: Scalars['ID']['input'];
   input: UpdateUserInput;
-};
+}
 
 export enum OperatorKindEnum {
   Gte = 'GTE',
@@ -250,81 +251,81 @@ export enum OperatorKindEnum {
   Ne = 'NE',
 }
 
-export type OperatorOptions = {
+export interface OperatorOptions {
   field?: InputMaybe<Scalars['String']['input']>;
   kind?: InputMaybe<OperatorKindEnum>;
   value?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type PageLimitPair = {
+export interface PageLimitPair {
   __typename?: 'PageLimitPair';
   limit?: Maybe<Scalars['Int']['output']>;
   page?: Maybe<Scalars['Int']['output']>;
-};
+}
 
-export type PageMetadata = {
+export interface PageMetadata {
   __typename?: 'PageMetadata';
   totalCount?: Maybe<Scalars['Int']['output']>;
-};
+}
 
-export type PageQueryOptions = {
+export interface PageQueryOptions {
   operators?: InputMaybe<InputMaybe<OperatorOptions>[]>;
   paginate?: InputMaybe<PaginateOptions>;
   search?: InputMaybe<SearchOptions>;
   slice?: InputMaybe<SliceOptions>;
   sort?: InputMaybe<InputMaybe<SortOptions>[]>;
-};
+}
 
-export type PaginateOptions = {
+export interface PaginateOptions {
   limit?: InputMaybe<Scalars['Int']['input']>;
   page?: InputMaybe<Scalars['Int']['input']>;
-};
+}
 
-export type PaginationLinks = {
+export interface PaginationLinks {
   __typename?: 'PaginationLinks';
   first?: Maybe<PageLimitPair>;
   last?: Maybe<PageLimitPair>;
   next?: Maybe<PageLimitPair>;
   prev?: Maybe<PageLimitPair>;
-};
+}
 
-export type Photo = {
+export interface Photo {
   __typename?: 'Photo';
   album?: Maybe<Album>;
   id?: Maybe<Scalars['ID']['output']>;
   thumbnailUrl?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   url?: Maybe<Scalars['String']['output']>;
-};
+}
 
-export type PhotosPage = {
+export interface PhotosPage {
   __typename?: 'PhotosPage';
   data?: Maybe<Maybe<Photo>[]>;
   links?: Maybe<PaginationLinks>;
   meta?: Maybe<PageMetadata>;
-};
+}
 
-export type Post = {
+export interface Post {
   __typename?: 'Post';
   body?: Maybe<Scalars['String']['output']>;
   comments?: Maybe<CommentsPage>;
   id?: Maybe<Scalars['ID']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   user?: Maybe<User>;
-};
+}
 
-export type PostCommentsArgs = {
+export interface PostCommentsArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type PostsPage = {
+export interface PostsPage {
   __typename?: 'PostsPage';
   data?: Maybe<Maybe<Post>[]>;
   links?: Maybe<PaginationLinks>;
   meta?: Maybe<PageMetadata>;
-};
+}
 
-export type Query = {
+export interface Query {
   __typename?: 'Query';
   _?: Maybe<Scalars['Int']['output']>;
   album?: Maybe<Album>;
@@ -339,119 +340,119 @@ export type Query = {
   todos?: Maybe<TodosPage>;
   user?: Maybe<User>;
   users?: Maybe<UsersPage>;
-};
+}
 
-export type QueryAlbumArgs = {
+export interface QueryAlbumArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type QueryAlbumsArgs = {
+export interface QueryAlbumsArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type QueryCommentArgs = {
+export interface QueryCommentArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type QueryCommentsArgs = {
+export interface QueryCommentsArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type QueryPhotoArgs = {
+export interface QueryPhotoArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type QueryPhotosArgs = {
+export interface QueryPhotosArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type QueryPostArgs = {
+export interface QueryPostArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type QueryPostsArgs = {
+export interface QueryPostsArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type QueryTodoArgs = {
+export interface QueryTodoArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type QueryTodosArgs = {
+export interface QueryTodosArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type QueryUserArgs = {
+export interface QueryUserArgs {
   id: Scalars['ID']['input'];
-};
+}
 
-export type QueryUsersArgs = {
+export interface QueryUsersArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type SearchOptions = {
+export interface SearchOptions {
   q?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type SliceOptions = {
+export interface SliceOptions {
   end?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   start?: InputMaybe<Scalars['Int']['input']>;
-};
+}
 
-export type SortOptions = {
+export interface SortOptions {
   field?: InputMaybe<Scalars['String']['input']>;
   order?: InputMaybe<SortOrderEnum>;
-};
+}
 
 export enum SortOrderEnum {
   Asc = 'ASC',
   Desc = 'DESC',
 }
 
-export type Todo = {
+export interface Todo {
   __typename?: 'Todo';
   completed?: Maybe<Scalars['Boolean']['output']>;
   id?: Maybe<Scalars['ID']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   user?: Maybe<User>;
-};
+}
 
-export type TodosPage = {
+export interface TodosPage {
   __typename?: 'TodosPage';
   data?: Maybe<Maybe<Todo>[]>;
   links?: Maybe<PaginationLinks>;
   meta?: Maybe<PageMetadata>;
-};
+}
 
-export type UpdateAlbumInput = {
+export interface UpdateAlbumInput {
   title?: InputMaybe<Scalars['String']['input']>;
   userId?: InputMaybe<Scalars['ID']['input']>;
-};
+}
 
-export type UpdateCommentInput = {
+export interface UpdateCommentInput {
   body?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type UpdatePhotoInput = {
+export interface UpdatePhotoInput {
   thumbnailUrl?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type UpdatePostInput = {
+export interface UpdatePostInput {
   body?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type UpdateTodoInput = {
+export interface UpdateTodoInput {
   completed?: InputMaybe<Scalars['Boolean']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type UpdateUserInput = {
+export interface UpdateUserInput {
   address?: InputMaybe<AddressInput>;
   company?: InputMaybe<CompanyInput>;
   email?: InputMaybe<Scalars['String']['input']>;
@@ -459,9 +460,9 @@ export type UpdateUserInput = {
   phone?: InputMaybe<Scalars['String']['input']>;
   username?: InputMaybe<Scalars['String']['input']>;
   website?: InputMaybe<Scalars['String']['input']>;
-};
+}
 
-export type User = {
+export interface User {
   __typename?: 'User';
   address?: Maybe<Address>;
   albums?: Maybe<AlbumsPage>;
@@ -474,32 +475,32 @@ export type User = {
   todos?: Maybe<TodosPage>;
   username?: Maybe<Scalars['String']['output']>;
   website?: Maybe<Scalars['String']['output']>;
-};
+}
 
-export type UserAlbumsArgs = {
+export interface UserAlbumsArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type UserPostsArgs = {
+export interface UserPostsArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type UserTodosArgs = {
+export interface UserTodosArgs {
   options?: InputMaybe<PageQueryOptions>;
-};
+}
 
-export type UsersPage = {
+export interface UsersPage {
   __typename?: 'UsersPage';
   data?: Maybe<Maybe<User>[]>;
   links?: Maybe<PaginationLinks>;
   meta?: Maybe<PageMetadata>;
-};
+}
 
 export type GetPostQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
-export type GetPostQuery = {
+export interface GetPostQuery {
   __typename?: 'Query';
   post?: {
     __typename?: 'Post';
@@ -511,13 +512,13 @@ export type GetPostQuery = {
       username?: string | null;
     } | null;
   } | null;
-};
+}
 
-export type UserItemFragment = {
+export interface UserItemFragment {
   __typename?: 'User';
   id?: string | null;
   username?: string | null;
-};
+}
 
 export const UserItemFragmentDoc = `
     fragment UserItem on User {
