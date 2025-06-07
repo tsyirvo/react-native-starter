@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable import/no-nodejs-modules */
 
 const path = require('path');
 const z = require('zod');

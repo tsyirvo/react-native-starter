@@ -4,9 +4,9 @@ import type { ReactElement } from 'react';
 
 import { productTrackingClient } from '../productTracking';
 
-type ProductTrackingProviderProps = {
+interface ProductTrackingProviderProps {
   children: ReactElement;
-};
+}
 
 export const ProductTrackingProvider = ({
   children,

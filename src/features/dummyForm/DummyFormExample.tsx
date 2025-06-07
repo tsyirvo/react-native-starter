@@ -95,7 +95,7 @@ export const DummyFormExample = () => {
               value={value}
               onBlur={onBlur}
               onChangeText={onChange}
-              onSubmitEditing={handleSubmit(onSubmit)}
+              onSubmitEditing={() => handleSubmit(onSubmit)}
             />
           )}
         />

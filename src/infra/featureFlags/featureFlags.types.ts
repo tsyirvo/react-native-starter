@@ -9,6 +9,6 @@ export type BooleanFeatureFlags = Extract<
   'is-maintenance-mode'
 >;
 
-export type VersionFlagType = {
+export interface VersionFlagType {
   version: string;
-};
+}

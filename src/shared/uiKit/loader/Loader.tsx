@@ -5,12 +5,12 @@ import { useAppTheme, type Colors } from '$domain/theme';
 
 import { Box } from '../primitives';
 
-type LoaderProps = {
+interface LoaderProps {
   delay?: number;
   size?: 'large' | 'small';
   color?: Colors;
   testID?: string;
-};
+}
 
 const SMALL_SIZE = 20;
 const LARGE_SIZE = 36;

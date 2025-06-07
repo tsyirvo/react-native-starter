@@ -48,7 +48,7 @@ class AttributionClass {
         });
 
         // TODO(prod): Handle deep links
-        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
+
         Logger.dev(JSON.stringify(res.data, null, 2));
       }
     });

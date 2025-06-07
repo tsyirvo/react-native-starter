@@ -4,13 +4,13 @@ import * as AllIcons from './components';
 
 type Name = keyof typeof AllIcons;
 
-type IconProps = {
+interface IconProps {
   testID?: string;
   name: Name;
   color?: string;
   width?: number;
   height?: number;
-};
+}
 
 export const Icon = ({ testID, name, color, width, height }: IconProps) => {
   return React.createElement(AllIcons[name], {

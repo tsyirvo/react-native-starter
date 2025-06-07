@@ -5,11 +5,11 @@ import { Box, Text } from '$shared/uiKit';
 import { CenteredContent } from './CenteredContent';
 import { Separator } from './Separator';
 
-type StorybookItemProps = {
+interface StorybookItemProps {
   title?: string;
   isSingle?: boolean;
   children: ReactNode;
-};
+}
 
 export const StorybookItem = ({
   title,

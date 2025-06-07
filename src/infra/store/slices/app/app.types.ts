@@ -1,11 +1,11 @@
 type AppTheme = 'dark' | 'light';
 
-export type AppState = {
+export interface AppState {
   appTheme: AppTheme;
-};
+}
 
-type AppActions = {
+interface AppActions {
   setAppTheme: (appTheme: AppTheme) => void;
-};
+}
 
 export type AppSlice = AppState & AppActions;

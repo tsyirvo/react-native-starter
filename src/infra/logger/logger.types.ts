@@ -2,11 +2,14 @@ import type { SeverityLevel } from '@sentry/core';
 
 /* ***** *****  Toast Message  ***** ***** */
 
-export type UserMessageType = { title: string; message: string };
+export interface UserMessageType {
+  title: string;
+  message: string;
+}
 
 /* ***** *****  Network  ***** ***** */
 
-export type NetworkErrorType = {
+export interface NetworkErrorType {
   description?: string;
   requestData: {
     request: string;
@@ -15,13 +18,13 @@ export type NetworkErrorType = {
     reason?: string;
   };
   userMessage?: UserMessageType;
-};
+}
 
 /* ***** *****  Error  ***** ***** */
 
-export type BaseErrorType = {
+export interface BaseErrorType {
   message: string;
-};
+}
 
 export interface ErrorType extends BaseErrorType {
   error: unknown;

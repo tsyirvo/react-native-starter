@@ -1,4 +1,3 @@
-/* eslint-disable filename-rules/match */
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { StyleSheet } from 'react-native';

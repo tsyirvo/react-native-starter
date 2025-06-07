@@ -49,8 +49,8 @@ class ErrorMonitoringClass {
       beforeBreadcrumb(breadcrumb) {
         if (typeof breadcrumb.data?.url === 'string') {
           if (
-            breadcrumb.data.url.match(/onesignal.com/i) ??
-            breadcrumb.data.url.match(/apple.com/i)
+            /onesignal.com/i.exec(breadcrumb.data.url) ??
+            /apple.com/i.exec(breadcrumb.data.url)
           ) {
             return null;
           }

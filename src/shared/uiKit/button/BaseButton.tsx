@@ -1,7 +1,7 @@
 import type { VariantProps } from '@shopify/restyle';
 import { createRestyleComponent, createVariant } from '@shopify/restyle';
 import type React from 'react';
-import { Pressable } from 'react-native';
+import { GestureResponderEvent, Pressable } from 'react-native';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
@@ -71,7 +71,7 @@ export const BaseButton = ({
       style={!isReducedMotion && animatedStyle}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      onPress={onPress}
+      onPress={onPress as (event: GestureResponderEvent) => void}
     >
       <PrimitiveButton variant={variant}>{children}</PrimitiveButton>
     </AnimatedPressable>

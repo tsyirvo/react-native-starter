@@ -4,10 +4,10 @@ import { Keyboard } from 'react-native';
 
 import { IS_IOS } from '$domain/constants';
 
-type UseKeyboardArguments = {
+interface UseKeyboardArguments {
   onKeyboardShow?: (e?: KeyboardEvent) => void;
   onKeyboardHide?: (e?: KeyboardEvent) => void;
-};
+}
 
 const initialHeight = 0;
 

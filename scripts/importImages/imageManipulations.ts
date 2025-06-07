@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import imagemin from 'imagemin';
 import imageminMozjpeg from 'imagemin-mozjpeg';
 import imageminPngquant from 'imagemin-pngquant';
