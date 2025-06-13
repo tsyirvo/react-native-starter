@@ -99,9 +99,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     associatedDomains: ['applinks:rnstarter.onelink.me'],
     // TODO(prod): Add correct app store URL
     appStoreUrl: `https://apps.apple.com/app/XXX/${Env.ITUNES_ITEM_ID}`,
-    config: {
-      usesNonExemptEncryption: false,
-    },
     infoPlist: {
       UIBackgroundModes: ['remote-notification'],
       CFBundleAllowMixedLocalizations: true,
@@ -113,11 +110,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         'group.${ios.bundleIdentifier}.onesignal',
       ],
     },
+    icon: {
+      dark: 'assets/icon.png',
+      light: 'assets/icon.png',
+      tinted: 'assets/icon.png',
+    },
   },
   android: {
+    icon: './assets/icon.png',
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#000',
+      foregroundImage: './assets/icon.png',
+      monochromeImage: './assets/icon.png',
+      backgroundColor: '#222222',
     },
     edgeToEdgeEnabled: true,
     package: Env.PACKAGE,
