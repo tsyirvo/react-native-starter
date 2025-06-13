@@ -11,7 +11,7 @@ const meta = {
     <BoxPrimitive p="spacing_16">
       <StorybookItem title="Box with a size, color and radiuses">
         <BoxPrimitive
-          bg="bg_focus"
+          bg="bg_muted"
           borderRadius="radius_8"
           height={100}
           width={100}
@@ -20,7 +20,7 @@ const meta = {
 
       <StorybookItem title="Box with border props and full width">
         <BoxPrimitive
-          bg="bg_focus"
+          bg="bg_muted"
           borderBottomColor="positive"
           borderBottomWidth={4}
           height={50}
@@ -30,7 +30,7 @@ const meta = {
 
       <StorybookItem title="Box with position props and odd size">
         <BoxPrimitive
-          bg="bg_focus"
+          bg="bg_muted"
           height={50}
           left={50}
           mb="spacing_32"

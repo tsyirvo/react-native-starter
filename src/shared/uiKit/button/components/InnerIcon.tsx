@@ -1,26 +1,36 @@
+import { useAppTheme } from '$domain/theme';
 import type { IconName } from '$shared/icons';
 import { Icon } from '$shared/icons';
 
+import { ParentVariant } from '../types/buttonTypes';
+import { getIconSize, getTextColor } from '../utils';
+
 interface InnerIconProps {
+  parentVariant: ParentVariant;
   iconName: IconName;
-  width?: number;
-  height?: number;
   isLoading?: boolean;
   testID?: string;
 }
 
 export const InnerIcon = ({
+  parentVariant,
   iconName,
-  width = DEFAULT_ICON_SIZE,
-  height = DEFAULT_ICON_SIZE,
   isLoading = false,
   testID = 'InnerIcon',
 }: InnerIconProps) => {
-  if (isLoading) {
-    return null;
-  }
+  const { colors } = useAppTheme();
 
-  return <Icon height={height} name={iconName} testID={testID} width={width} />;
+  if (isLoading) return null;
+
+  const iconSize = getIconSize(parentVariant);
+
+  return (
+    <Icon
+      name={iconName}
+      height={iconSize}
+      width={iconSize}
+      color={colors[getTextColor(parentVariant)]}
+      testID={testID}
+    />
+  );
 };
-
-const DEFAULT_ICON_SIZE = 24;

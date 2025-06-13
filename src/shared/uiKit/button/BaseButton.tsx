@@ -30,7 +30,7 @@ const PrimitiveButton = createRestyleComponent<
 >([ButtonVariant]);
 
 export const BaseButton = ({
-  variant = 'base',
+  variant = 'primary',
   isLoading = false,
   isDisabled = false,
   targetScale = DEFAULT_TARGET_SCALE,
@@ -41,6 +41,8 @@ export const BaseButton = ({
   const scale = useSharedValue(REST_TARGET_SCALE);
 
   const isReducedMotion = useReducedMotion();
+
+  const isVisuallyDisabled = isDisabled && !isLoading;
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
@@ -68,7 +70,12 @@ export const BaseButton = ({
       disabled={isLoading || isDisabled}
       hitSlop={HIT_SLOP}
       testID={testID}
-      style={!isReducedMotion && animatedStyle}
+      style={[
+        !isReducedMotion && animatedStyle,
+        {
+          opacity: isVisuallyDisabled ? DISABLED_OPACITY : REGULAR_OPACITY,
+        },
+      ]}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       onPress={onPress as (event: GestureResponderEvent) => void}
@@ -81,5 +88,8 @@ export const BaseButton = ({
 const DEFAULT_TARGET_SCALE = 0.98;
 const REST_TARGET_SCALE = 1;
 const ANIMATION_DURATION = 100;
+
+const DISABLED_OPACITY = 0.5;
+const REGULAR_OPACITY = 1;
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);

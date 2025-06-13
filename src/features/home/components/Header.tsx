@@ -20,7 +20,7 @@ export const Header = () => {
         justifyContent="flex-end"
         mb="spacing_24"
       >
-        <Text color="primary_clear" variant="large">
+        <Text color="core_primary" variant="large">
           React Native Starter
         </Text>
       </Box>

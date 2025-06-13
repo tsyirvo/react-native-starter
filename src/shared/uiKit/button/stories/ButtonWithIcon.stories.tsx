@@ -9,23 +9,26 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['base', 'outline'],
+      options: [
+        'primary',
+        'primary_compact',
+        'outline',
+        'outline_compact',
+        'text',
+        'text_compact',
+      ],
     },
     iconName: {
       control: 'select',
       options: ['Code', 'Grid', 'HeartRate', 'Laptop'],
     },
-    width: { control: 'number' },
-    height: { control: 'number' },
     onPress: { action: 'onPress' },
     isDisabled: { control: 'boolean' },
     isLoading: { control: 'boolean' },
   },
   args: {
-    variant: 'base',
+    variant: 'primary',
     iconName: 'Code',
-    width: 24,
-    height: 24,
     onPress: action('onPress called'),
   },
 } satisfies Meta<typeof ButtonWithIcon>;

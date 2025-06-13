@@ -98,7 +98,7 @@ const globalScreenOptions = {
   gestureEnabled: true,
   headerTintColor: colors.clear,
   headerStyle: {
-    backgroundColor: colors.duller,
+    backgroundColor: colors.dark,
   },
 };
 

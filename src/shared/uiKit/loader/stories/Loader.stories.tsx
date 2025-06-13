@@ -9,6 +9,9 @@ const meta = {
     delay: { control: 'number' },
     size: { control: 'select', options: ['large', 'small'] },
   },
+  args: {
+    size: 'large',
+  },
 } satisfies Meta<typeof LoaderComponent>;
 
 export default meta;

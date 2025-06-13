@@ -33,7 +33,7 @@ const HomeScreen = () => {
             </Text>
 
             <Box mt="spacing_8">
-              <Button.Text isTextCentered onPress={goToOtherScreen}>
+              <Button.Text onPress={goToOtherScreen}>
                 {t('homeScreen.navigation.content')}
               </Button.Text>
             </Box>
