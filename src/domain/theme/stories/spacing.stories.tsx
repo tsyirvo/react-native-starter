@@ -17,7 +17,7 @@ const meta = {
           <Text mb="spacing_8">{space}</Text>
 
           <Box
-            bg="clear"
+            bg="bg_muted"
             height={spacing[space]}
             mb="spacing_32"
             width="100%"

@@ -17,10 +17,12 @@ const meta = {
             <Text pb="spacing_8">{color}</Text>
 
             <Box
-              aspectRatio={1}
               bg={color}
+              borderWidth={1}
+              borderColor="border_default"
               borderRadius="radius_8"
               width={100}
+              aspectRatio={1}
             />
           </Box>
         ))}
