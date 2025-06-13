@@ -15,7 +15,7 @@ const PrimitiveText = createText<Theme>();
 
 export const Text = ({
   variant = 'regular',
-  color = 'clear',
+  color = 'content_primary',
   testID,
   ...rest
 }: TextProps) => {

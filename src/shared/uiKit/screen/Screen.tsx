@@ -18,7 +18,7 @@ interface ScreenProps {
 export const Screen = ({
   children,
   edges = [],
-  bg = 'bg',
+  bg = 'bg_base',
   px = 'zero',
   py = 'zero',
   testID = 'Screen',

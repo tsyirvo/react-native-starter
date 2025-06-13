@@ -29,7 +29,7 @@ export const StoreUpdateAvailableBanner = () => {
 
   return (
     <Box
-      bg="duller"
+      bg="bg_base"
       borderRadius="radius_8"
       flexDirection="row"
       flexWrap="wrap"

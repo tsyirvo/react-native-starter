@@ -58,7 +58,7 @@ export const AppUpdateNeeded = () => {
   return (
     <Box
       alignItems="center"
-      bg="bg"
+      bg="bg_base"
       height="100%"
       justifyContent="center"
       px="spacing_32"

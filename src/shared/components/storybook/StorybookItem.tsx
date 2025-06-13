@@ -22,7 +22,7 @@ export const StorybookItem = ({
 
       <CenteredContent py="spacing_24">{children}</CenteredContent>
 
-      {!isSingle && <Separator color="bg_focus" />}
+      {!isSingle && <Separator color="bg_muted" />}
     </Box>
   );
 };

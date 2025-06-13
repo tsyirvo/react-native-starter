@@ -47,7 +47,7 @@ export const Input = forwardRef<TextInput, InputProps>(
         <TextInput
           ref={ref}
           editable={isEditable}
-          placeholderTextColor={theme.colors.dull}
+          placeholderTextColor={theme.colors.content_secondary}
           style={[styles.input, getBorderBottomColor()]}
           underlineColorAndroid="transparent"
           onChangeText={props.onChangeText}
@@ -77,10 +77,10 @@ const useStyles = makeAppStyles(({ colors }) => ({
     paddingBottom: 5,
   },
   defaultState: {
-    borderBottomColor: colors.dull,
+    borderBottomColor: colors.border_default,
   },
   focusedState: {
-    borderBottomColor: colors.primary_clear,
+    borderBottomColor: colors.core_primary,
   },
   errorState: {
     borderBottomColor: colors.negative,

@@ -35,7 +35,7 @@ const OtherScreen = () => {
             ) : null}
 
             <Box
-              borderBottomColor="bg_focus"
+              borderBottomColor="bg_muted"
               borderBottomWidth={1}
               pb="spacing_16"
             >
@@ -49,7 +49,7 @@ const OtherScreen = () => {
             </Box>
 
             <Box
-              borderBottomColor="bg_focus"
+              borderBottomColor="bg_muted"
               borderBottomWidth={1}
               py="spacing_16"
             >
@@ -63,7 +63,7 @@ const OtherScreen = () => {
             </Box>
 
             <Box
-              borderBottomColor="bg_focus"
+              borderBottomColor="bg_muted"
               borderBottomWidth={1}
               py="spacing_16"
             >

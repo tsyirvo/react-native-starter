@@ -16,7 +16,7 @@ const FullscreenErrorBoundary = () => {
     <Box
       alignItems="center"
       alignSelf="center"
-      bg="bg"
+      bg="bg_base"
       height="100%"
       justifyContent="center"
       px="spacing_24"
