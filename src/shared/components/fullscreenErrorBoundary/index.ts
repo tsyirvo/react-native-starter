@@ -1,1 +1,1 @@
-export { FullscreenErrorBoundary } from './FullscreenErrorBoundary';
+export * from './FullscreenErrorBoundary';

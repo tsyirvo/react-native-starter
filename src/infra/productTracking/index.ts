@@ -1,2 +1,2 @@
-export { ProductTrackingProvider } from './components/ProductTrackingProvider';
-export { productTrackingClient } from './productTracking';
+export * from './components';
+export * from './productTracking';

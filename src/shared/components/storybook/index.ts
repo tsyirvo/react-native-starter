@@ -1,2 +1,2 @@
-export { CenteredContent } from './CenteredContent';
-export { StorybookItem } from './StorybookItem';
+export * from './CenteredContent';
+export * from './StorybookItem';

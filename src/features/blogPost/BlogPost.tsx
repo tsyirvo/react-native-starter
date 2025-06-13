@@ -5,7 +5,7 @@ import { graphql } from '$infra/gql/generated';
 import { useGetPostQuery } from '$infra/gql/generated/hooks';
 import { Loader, Text } from '$shared/uiKit';
 
-import { BlogPostUser } from './components/BlogPostUser';
+import { BlogPostUser } from './components';
 
 interface BlogPostProps {
   id: string;
@@ -13,6 +13,7 @@ interface BlogPostProps {
 
 export const BlogPost = ({ id }: BlogPostProps) => {
   const { t } = useTranslation();
+
   const { data, isLoading } = useGetPostQuery({
     id,
   });

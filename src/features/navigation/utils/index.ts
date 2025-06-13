@@ -1,1 +1,1 @@
-export { convertStringToKebabCase } from './navigation.utils';
+export * from './navigation.utils';

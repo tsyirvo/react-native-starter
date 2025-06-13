@@ -1,2 +1,2 @@
-export { useAppScreenTracking } from './useAppScreenTracking';
-export { useAppStateTracking } from './useAppStateTracking';
+export * from './useAppScreenTracking';
+export * from './useAppStateTracking';
