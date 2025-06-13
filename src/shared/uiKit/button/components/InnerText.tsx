@@ -1,32 +1,29 @@
-import type { VariantProps } from '@shopify/restyle';
-
-import type { Colors, Theme } from '$domain/theme';
-
 import { Loader } from '../../loader';
 import { Box, Text } from '../../primitives';
-import type { ButtonProps } from '../types/buttonTypes';
+import type { ButtonProps, ParentVariant } from '../types/buttonTypes';
+import {
+  getLoaderColor,
+  getTextColor,
+  getTextOpacity,
+  getTextVariant,
+} from '../utils';
 
-type ParentVariant = VariantProps<Theme, 'buttonVariants'>['variant'];
-
-interface InnerTextProps extends Pick<ButtonProps, 'isDisabled' | 'isLoading'> {
+interface InnerTextProps extends Pick<ButtonProps, 'isLoading'> {
   parentVariant: ParentVariant;
   children: string;
-  isTextCentered?: boolean;
   testID?: string;
 }
 
 export const InnerText = ({
   parentVariant,
-  isDisabled = false,
   isLoading = false,
-  isTextCentered = false,
   children,
   testID = 'InnerText',
 }: InnerTextProps) => {
   return (
     <Box
       justifyContent="center"
-      alignItems={isTextCentered ? 'center' : 'flex-start'}
+      alignItems="center"
       minHeight={MIN_HEIGHT}
       testID={testID}
     >
@@ -41,15 +38,19 @@ export const InnerText = ({
           justifyContent="center"
           testID={`${testID}Loader`}
         >
-          <Loader delay={0} size="small" color="clear" />
+          <Loader
+            delay={0}
+            size="small"
+            color={getLoaderColor(parentVariant)}
+          />
         </Box>
       ) : null}
 
       <Text
+        variant={getTextVariant(parentVariant)}
         color={getTextColor(parentVariant)}
+        opacity={getTextOpacity(isLoading)}
         numberOfLines={1}
-        opacity={getTextOpacity({ isDisabled, isLoading })}
-        variant="regular"
       >
         {children}
       </Text>
@@ -57,36 +58,4 @@ export const InnerText = ({
   );
 };
 
-const LOADING_OPACITY = 0;
-const DISABLED_OPACITY = 0.5;
-const REGULAR_OPACITY = 1;
 const MIN_HEIGHT = 24;
-
-const getTextOpacity = ({
-  isDisabled,
-  isLoading,
-}: {
-  isDisabled: boolean;
-  isLoading: boolean;
-}) => {
-  if (isLoading) {
-    return LOADING_OPACITY;
-  }
-
-  if (isDisabled) {
-    return DISABLED_OPACITY;
-  }
-
-  return REGULAR_OPACITY;
-};
-
-const getTextColor = (variant: ParentVariant): Colors => {
-  switch (variant) {
-    case 'base':
-      return 'clear';
-    case 'outline':
-      return 'clear';
-    default:
-      return 'clear';
-  }
-};

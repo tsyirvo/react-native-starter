@@ -6,14 +6,13 @@ import type { ButtonProps } from './types/buttonTypes';
 
 interface ButtonWithTextProps extends ButtonProps {
   children: string;
-  isTextCentered?: boolean;
+  targetScale?: number;
 }
 
 export const ButtonWithText = ({
-  variant = 'base',
+  variant = 'primary',
   isDisabled = false,
   isLoading = false,
-  isTextCentered = false,
   targetScale,
   children,
   testID = 'ButtonWithText',
@@ -25,19 +24,14 @@ export const ButtonWithText = ({
 
   return (
     <BaseButton
+      variant={variant}
       isDisabled={isButtonDisabled}
       isLoading={isLoading || isResolving}
-      variant={variant}
       targetScale={targetScale}
       testID={testID}
       onPress={handlePress}
     >
-      <InnerText
-        isDisabled={isDisabled}
-        isLoading={isLoading || isResolving}
-        isTextCentered={isTextCentered}
-        parentVariant={variant}
-      >
+      <InnerText parentVariant={variant} isLoading={isLoading || isResolving}>
         {children}
       </InnerText>
     </BaseButton>

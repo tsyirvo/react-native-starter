@@ -9,15 +9,21 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['base', 'outline'],
+      options: [
+        'primary',
+        'primary_compact',
+        'outline',
+        'outline_compact',
+        'text',
+        'text_compact',
+      ],
     },
     onPress: { action: 'onPress' },
     isDisabled: { control: 'boolean' },
     isLoading: { control: 'boolean' },
   },
   args: {
-    variant: 'base',
-    isTextCentered: false,
+    variant: 'primary',
     isDisabled: false,
     isLoading: false,
     onPress: action('onPress called'),

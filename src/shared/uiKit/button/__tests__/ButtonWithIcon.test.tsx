@@ -27,17 +27,6 @@ describe('Button component', () => {
     expect(screen.getByTestId('InnerIcon')).toBeDefined();
   });
 
-  it('should render correctly with a specific icon size', () => {
-    render(
-      <ButtonWithIcon {...props} height={10} width={10}>
-        {label}
-      </ButtonWithIcon>,
-    );
-
-    expect(screen.getByText(label)).toBeDefined();
-    expect(screen.getByTestId('InnerIcon')).toBeDefined();
-  });
-
   it('should render correctly with a custom variant', () => {
     render(
       <ButtonWithIcon variant="outline" {...props}>

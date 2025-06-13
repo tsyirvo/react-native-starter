@@ -12,3 +12,5 @@ export interface ButtonProps extends VariantProps<Theme, 'buttonVariants'> {
   isLoading?: boolean;
   targetScale?: number;
 }
+
+export type ParentVariant = VariantProps<Theme, 'buttonVariants'>['variant'];
