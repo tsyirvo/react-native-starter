@@ -5,13 +5,11 @@ import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import type { TextInput } from 'react-native';
 
-import {
-  DummyFormSchema,
-  type DummyFormSchemaType,
-} from '$features/dummyForm/utils/dummyForm.schema';
 import { Box, Button, Input } from '$shared/uiKit';
 
-export const DummyFormExample = () => {
+import { DummyFormSchema, DummyFormSchemaType } from './utils';
+
+export const DummyForm = () => {
   const firstNameInputRef = useRef<TextInput>(null);
   const lastNameInputRef = useRef<TextInput>(null);
 

@@ -1,2 +1,2 @@
-export { Toaster } from './toaster';
-export { toastConfig } from './layouts';
+export * from './layouts';
+export * from './toaster';

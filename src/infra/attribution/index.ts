@@ -1,1 +1,1 @@
-export { Attribution } from './attribution';
+export * from './attribution';

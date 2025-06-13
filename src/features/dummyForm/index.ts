@@ -1,1 +1,1 @@
-export { DummyFormExample as DummyForm } from './DummyFormExample';
+export * from './DummyForm';

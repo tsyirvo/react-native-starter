@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
 import { config } from '$domain/constants';
-import { Header, Informations, Version } from '$features/home/components';
+import { Header, Informations, Version } from '$features/home';
 import { Box, Button, Screen, Text } from '$shared/uiKit';
 
 const HomeScreen = () => {

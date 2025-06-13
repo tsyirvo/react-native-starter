@@ -1,2 +1,2 @@
-export { Purchase } from './purchase';
+export * from './purchase';
 export type { EntitlementsType } from './purchase.types';

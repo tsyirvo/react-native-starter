@@ -1,1 +1,1 @@
-export { Analytics } from './analytics';
+export * from './analytics';

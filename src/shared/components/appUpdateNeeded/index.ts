@@ -1,1 +1,1 @@
-export { AppUpdateNeeded } from './AppUpdateNeeded';
+export * from './AppUpdateNeeded';

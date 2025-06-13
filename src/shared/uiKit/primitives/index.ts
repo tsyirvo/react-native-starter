@@ -1,2 +1,2 @@
-export { Box, AnimatedBox, type BoxProps } from './Box';
-export { Text } from './Text';
+export * from './Box';
+export * from './Text';
