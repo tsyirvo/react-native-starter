@@ -1,6 +1,7 @@
 import '@formatjs/intl-getcanonicallocales/polyfill';
 import 'intl-pluralrules';
 
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Sentry from '@sentry/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
@@ -73,17 +74,19 @@ const RootLayout = () => {
                 onError={onGlobalError}
               >
                 <Splashscreen>
-                  <KeyboardProvider>
-                    <>
-                      <Stack screenOptions={globalScreenOptions} />
+                  <BottomSheetModalProvider>
+                    <KeyboardProvider>
+                      <>
+                        <Stack screenOptions={globalScreenOptions} />
 
-                      <Toast config={toastConfig} />
+                        <Toast config={toastConfig} />
 
-                      <AppUpdateNeeded />
+                        <AppUpdateNeeded />
 
-                      <MaintenanceMode />
-                    </>
-                  </KeyboardProvider>
+                        <MaintenanceMode />
+                      </>
+                    </KeyboardProvider>
+                  </BottomSheetModalProvider>
                 </Splashscreen>
               </ErrorBoundary>
             </ThemeProvider>
