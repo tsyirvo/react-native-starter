@@ -19,7 +19,7 @@ const FeaturesScreen = () => {
 
   return (
     <>
-      <Stack.Screen options={{ title: 'Features' }} />
+      <Stack.Screen options={{ title: t('tabs.features') }} />
 
       <Screen edges={['top']} testID="otherScreen-screen">
         <ScrollView>

@@ -2,10 +2,11 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
 import { BlogPost as BlogPostComponent } from '$features/blogPost';
+import { BlogPostScreenParams } from '$features/navigation';
 import { Screen } from '$shared/uiKit';
 
 const BlogPostScreen = () => {
-  const { blogPostId } = useLocalSearchParams<{ blogPostId: string }>();
+  const { blogPostId } = useLocalSearchParams<BlogPostScreenParams>();
   const { t } = useTranslation();
 
   return (
