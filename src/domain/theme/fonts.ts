@@ -1,4 +1,4 @@
-const fontFamily = {
+export const fontFamily = {
   light: 'WorkSans-Light',
   regular: 'WorkSans-Regular',
   medium: 'WorkSans-Medium',

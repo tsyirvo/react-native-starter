@@ -1,89 +1,126 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
 import { forwardRef } from 'react';
-import { TextInput } from 'react-native';
 import type { TextInputProps } from 'react-native';
+import { TextInput } from 'react-native';
 
-import { makeAppStyles, theme, fontSizes } from '$domain/theme';
+import { DEFAULT_ICON_SIZE } from '$domain/constants/styling';
+import {
+  fontFamily,
+  fontSizes,
+  makeAppStyles,
+  useAppTheme,
+} from '$domain/theme';
+import { Icon, IconName } from '$shared/icons';
 
 import { Box, Text } from '../primitives';
 
-import { useInputFocusState } from './hooks/useInputFocusState';
+import { InputLabel } from './components/InputLabel';
+import { useInputFocusState, useInputStyling } from './hooks';
 
 export interface InputProps extends TextInputProps {
   label?: string;
+  helperText?: string;
   error?: string;
-  isEditable?: boolean;
+  isDisabled?: boolean;
+  isOptional?: boolean;
+  leftOrnamentIcon?: IconName;
+  leftOrnamentIconColor?: string;
+  testID?: string;
 }
 
 export const Input = forwardRef<TextInput, InputProps>(
-  ({ label, error, isEditable = true, ...props }, ref) => {
+  (
+    {
+      label,
+      helperText,
+      error,
+      isDisabled = false,
+      isOptional = false,
+      leftOrnamentIcon,
+      leftOrnamentIconColor,
+      testID = 'Input',
+      onFocus: onFocusProp,
+      onBlur: onBlurProp,
+      ...props
+    },
+    ref,
+  ) => {
+    const { colors } = useAppTheme();
     const styles = useStyles();
+
     const { isFocused, onBlur, onFocus } = useInputFocusState({
-      onFocus: props.onFocus,
-      onBlur: props.onBlur,
+      onFocus: onFocusProp,
+      onBlur: onBlurProp,
+    });
+    const { getLineBorderColor, getInputBgColor } = useInputStyling({
+      isFocused,
+      isDisabled,
+      error,
     });
 
-    const getBorderBottomColor = () => {
-      if (isFocused) {
-        return styles.focusedState;
-      }
-
-      if (error) {
-        return styles.errorState;
-      }
-
-      return styles.defaultState;
-    };
-
     return (
-      <Box width="100%">
-        {label ? (
-          <Text color="clear" mb="spacing_8" testID="input-label">
-            {label}
-          </Text>
-        ) : null}
+      <Box width="100%" gap="spacing_8" testID={testID}>
+        <InputLabel label={label} isOptional={isOptional} />
 
-        <TextInput
-          ref={ref}
-          editable={isEditable}
-          placeholderTextColor={theme.colors.content_secondary}
-          style={[styles.input, getBorderBottomColor()]}
-          underlineColorAndroid="transparent"
-          onChangeText={props.onChangeText}
-          {...props}
-          onBlur={onBlur}
-          onFocus={onFocus}
-        />
+        <Box
+          flexDirection="row"
+          px="spacing_12"
+          gap="spacing_8"
+          borderWidth={1}
+          borderRadius="radius_8"
+          style={[getLineBorderColor(), getInputBgColor()]}
+        >
+          {!!leftOrnamentIcon && (
+            <Box alignItems="center" justifyContent="center">
+              <Icon
+                name={leftOrnamentIcon}
+                color={leftOrnamentIconColor}
+                width={DEFAULT_ICON_SIZE}
+                height={DEFAULT_ICON_SIZE}
+              />
+            </Box>
+          )}
 
-        {!!error && (
-          <Box alignItems="center" flexDirection="row" testID="input-errorText">
-            <Text color="negative" variant="small">
+          <TextInput
+            ref={ref}
+            editable={!isDisabled}
+            placeholderTextColor={colors.content_tertiary}
+            style={[styles.input, getInputBgColor()]}
+            underlineColorAndroid="transparent"
+            onChangeText={props.onChangeText}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...props}
+          />
+        </Box>
+
+        <Box gap="spacing_4">
+          {!!helperText && (
+            <Text color="content_secondary" testID={`${testID}HelperText`}>
+              {helperText}
+            </Text>
+          )}
+
+          {!!error && (
+            <Text color="negative" testID={`${testID}ErrorText`}>
               {error}
             </Text>
-          </Box>
-        )}
+          )}
+        </Box>
       </Box>
     );
   },
 );
 
-const useStyles = makeAppStyles(({ colors }) => ({
+const useStyles = makeAppStyles(({ colors, spacing, borderRadii }) => ({
   input: {
     fontSize: fontSizes.regular,
-    color: colors.clear,
-    borderBottomWidth: 1,
-    padding: 0,
-    paddingBottom: 5,
-  },
-  defaultState: {
-    borderBottomColor: colors.border_default,
-  },
-  focusedState: {
-    borderBottomColor: colors.core_primary,
-  },
-  errorState: {
-    borderBottomColor: colors.negative,
+    fontFamily: fontFamily.regular,
+    backgroundColor: colors.bg_base,
+    color: colors.content_primary,
+    padding: spacing.zero,
+    paddingVertical: spacing.spacing_8,
+    borderRadius: borderRadii.radius_8,
   },
 }));
 
