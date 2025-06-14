@@ -17,10 +17,6 @@ const OtherScreen = () => {
     router.push('/blogPost/1');
   };
 
-  const goToDummyForm = () => {
-    router.push('/dummyForm');
-  };
-
   return (
     <>
       <Stack.Screen options={{ title: t('otherScreen.navigation.title') }} />
@@ -44,20 +40,6 @@ const OtherScreen = () => {
               <Box alignItems="flex-start" mt="spacing_8">
                 <Button.Text onPress={goToBlogPost}>
                   {t('otherScreen.graphql.cta')}
-                </Button.Text>
-              </Box>
-            </Box>
-
-            <Box
-              borderBottomColor="bg_muted"
-              borderBottomWidth={1}
-              py="spacing_16"
-            >
-              <Text variant="large">{t('otherScreen.form.title')}</Text>
-
-              <Box alignItems="flex-start" mt="spacing_8">
-                <Button.Text onPress={goToDummyForm}>
-                  {t('otherScreen.form.cta')}
                 </Button.Text>
               </Box>
             </Box>
