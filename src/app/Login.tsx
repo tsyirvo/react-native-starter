@@ -34,6 +34,7 @@ const Login = () => {
         options={{
           headerShown: false,
           title: t('loginScreen.title'),
+          animation: 'fade',
         }}
       />
 

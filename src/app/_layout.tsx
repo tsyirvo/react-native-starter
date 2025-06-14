@@ -5,12 +5,13 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Sentry from '@sentry/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
-import { Slot } from 'expo-router';
+import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type ErrorInfo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { StackAnimationTypes } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
 
 import { makeAppStyles, theme } from '$domain/theme';
@@ -77,7 +78,7 @@ const RootLayout = () => {
                   <BottomSheetModalProvider>
                     <KeyboardProvider>
                       <>
-                        <Slot />
+                        <Stack screenOptions={screenOptions} />
 
                         <Toast config={toastConfig} />
 
@@ -95,6 +96,11 @@ const RootLayout = () => {
       </GestureHandlerRootView>
     </>
   );
+};
+
+const screenOptions = {
+  headerShown: false,
+  animation: 'fade' as StackAnimationTypes,
 };
 
 const useStyles = makeAppStyles(() => ({
