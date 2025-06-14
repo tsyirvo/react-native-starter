@@ -5,7 +5,7 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Sentry from '@sentry/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
-import { Stack } from 'expo-router';
+import { Slot } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type ErrorInfo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -13,7 +13,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import Toast from 'react-native-toast-message';
 
-import { colors, makeAppStyles, theme } from '$domain/theme';
+import { makeAppStyles, theme } from '$domain/theme';
 import {
   useAppScreenTracking,
   useAppStateTracking,
@@ -60,7 +60,7 @@ const RootLayout = () => {
 
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar style="auto" />
 
       <GestureHandlerRootView style={styles.wrapper}>
         <PersistQueryClientProvider
@@ -77,7 +77,7 @@ const RootLayout = () => {
                   <BottomSheetModalProvider>
                     <KeyboardProvider>
                       <>
-                        <Stack screenOptions={globalScreenOptions} />
+                        <Slot />
 
                         <Toast config={toastConfig} />
 
@@ -95,14 +95,6 @@ const RootLayout = () => {
       </GestureHandlerRootView>
     </>
   );
-};
-
-const globalScreenOptions = {
-  gestureEnabled: true,
-  headerTintColor: colors.clear,
-  headerStyle: {
-    backgroundColor: colors.dark,
-  },
 };
 
 const useStyles = makeAppStyles(() => ({

@@ -7,21 +7,21 @@ import { StoreUpdateAvailableBanner } from '$shared/components';
 import { useIsNewStoreVersionAvailable } from '$shared/hooks';
 import { Box, Button, Screen, Text } from '$shared/uiKit';
 
-const OtherScreen = () => {
+const FeaturesScreen = () => {
   const router = useRouter();
   const { t } = useTranslation();
 
   const { shouldShowBanner } = useIsNewStoreVersionAvailable();
 
   const goToBlogPost = () => {
-    router.push('/blogPost/1');
+    router.push('/features/(blogPost)/1');
   };
 
   return (
     <>
-      <Stack.Screen options={{ title: t('otherScreen.navigation.title') }} />
+      <Stack.Screen options={{ title: 'Features' }} />
 
-      <Screen testID="otherScreen-screen">
+      <Screen edges={['top']} testID="otherScreen-screen">
         <ScrollView>
           <Box px="spacing_16" py="spacing_8">
             {shouldShowBanner ? (
@@ -58,4 +58,4 @@ const OtherScreen = () => {
   );
 };
 
-export default OtherScreen;
+export default FeaturesScreen;

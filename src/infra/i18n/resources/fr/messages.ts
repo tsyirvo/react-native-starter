@@ -6,6 +6,11 @@ export const messages: MessagesTypes = {
     cancel: 'Annuler',
     next: 'Suivant',
   },
+  tabs: {
+    home: 'Accueil',
+    features: 'Fonctionnalités',
+    profile: 'Profil',
+  },
   appConfig: {
     networkStateCheck: {
       message:
@@ -46,39 +51,6 @@ export const messages: MessagesTypes = {
       title: 'Une mise à jour est disponible sur les stores',
       cta: 'Mettre à jour maintenant',
     },
-    blogPost: {
-      screenTitle: 'Article de blog',
-      title: 'Article récupéré avec GraphQL',
-    },
-    dummyForm: {
-      form: {
-        email: {
-          label: 'Email',
-          placeholder: 'Saisir un email',
-          validation: {
-            email: 'Il faut un email valide',
-          },
-        },
-        firstName: {
-          label: 'Prénom',
-          placeholder: 'Martin',
-          validation: {
-            maxLength: 'Le prénom doit faire au plus 20 caractères',
-            minLength: 'Le prénom doit faire au moins 2 caractères',
-          },
-        },
-        lastName: {
-          label: 'Nom',
-          placeholder: 'Dupont',
-          validation: {
-            maxLength: 'Le nom doit faire au plus 30 caractères',
-            minLength: 'Le nom doit faire au moins 2 caractères',
-          },
-        },
-      },
-      cta: 'Valider',
-      screenTitle: 'Dummy form',
-    },
     errorBoundary: {
       cta: "Relancer l'app",
       description:
@@ -98,9 +70,6 @@ export const messages: MessagesTypes = {
     graphql: {
       cta: 'Naviguer',
       title: "Example d'appel API",
-    },
-    navigation: {
-      title: 'Autre écran',
     },
   },
   settings: {
@@ -153,5 +122,13 @@ export const messages: MessagesTypes = {
   },
   loginScreen: {
     title: 'Connexion',
+  },
+  blogPostScreen: {
+    title: 'Article de blog',
+    description: 'Article récupéré avec GraphQL',
+  },
+  profileScreen: {
+    title: 'Profil',
+    logout: 'Se déconnecter',
   },
 };
