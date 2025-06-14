@@ -93,10 +93,6 @@ export const messages = {
     },
   },
   otherScreen: {
-    form: {
-      cta: 'Navigate',
-      title: 'Form example',
-    },
     graphql: {
       cta: 'Navigate',
       title: 'API call example',
@@ -130,6 +126,30 @@ export const messages = {
   },
   forms: {
     optional: 'Optional',
+  },
+  loginForm: {
+    emailField: {
+      label: 'Email',
+      placeholder: 'test@example.com',
+      validation: {
+        required: 'Email is required',
+        invalid: 'Please enter a valid email',
+        minLength: 'Email must be at least 2 characters long',
+        maxLength: 'Email must be at most 255 characters long',
+      },
+    },
+    passwordField: {
+      label: 'Password',
+      placeholder: 'Enter your password',
+      validation: {
+        minLength: 'Password must be at least 6 characters long',
+        maxLength: 'Password must be at most 255 characters long',
+      },
+    },
+    submitButton: 'Login',
+  },
+  loginScreen: {
+    title: 'Login',
   },
 };
 
