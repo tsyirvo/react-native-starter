@@ -95,10 +95,6 @@ export const messages: MessagesTypes = {
     },
   },
   otherScreen: {
-    form: {
-      cta: 'Naviguer',
-      title: 'Formulaire',
-    },
     graphql: {
       cta: 'Naviguer',
       title: "Example d'appel API",
@@ -133,5 +129,29 @@ export const messages: MessagesTypes = {
   },
   forms: {
     optional: 'Optionnel',
+  },
+  loginForm: {
+    emailField: {
+      label: 'Email',
+      placeholder: 'test@example.com',
+      validation: {
+        required: "L'email est requis",
+        invalid: 'Email invalide',
+        minLength: "L'email doit faire au moins 2 caractères",
+        maxLength: "L'email doit faire au plus 255 caractères",
+      },
+    },
+    passwordField: {
+      label: 'Mot de passe',
+      placeholder: 'Entrer votre mot de passe',
+      validation: {
+        minLength: 'Le mot de passe doit faire au moins 6 caractères',
+        maxLength: 'Le mot de passe doit faire au plus 255 caractères',
+      },
+    },
+    submitButton: 'Se connecter',
+  },
+  loginScreen: {
+    title: 'Connexion',
   },
 };

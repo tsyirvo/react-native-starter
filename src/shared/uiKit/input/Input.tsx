@@ -114,6 +114,7 @@ export const Input = forwardRef<TextInput, InputProps>(
 
 const useStyles = makeAppStyles(({ colors, spacing, borderRadii }) => ({
   input: {
+    flex: 1,
     fontSize: fontSizes.regular,
     fontFamily: fontFamily.regular,
     backgroundColor: colors.bg_base,
