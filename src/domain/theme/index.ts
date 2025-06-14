@@ -1,7 +1,7 @@
 export { colors } from './colors';
 export type { Colors } from './colors';
 
-export { textVariants, fontSizes } from './fonts';
+export { textVariants, fontSizes, fontFamily } from './fonts';
 export type { FontSizes } from './fonts';
 
 export { borderRadii } from './radius';

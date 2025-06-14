@@ -128,6 +128,9 @@ export const messages = {
       },
     },
   },
+  forms: {
+    optional: 'Optional',
+  },
 };
 
 export type MessagesTypes = typeof messages;

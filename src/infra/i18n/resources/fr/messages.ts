@@ -131,4 +131,7 @@ export const messages: MessagesTypes = {
       },
     },
   },
+  forms: {
+    optional: 'Optionnel',
+  },
 };

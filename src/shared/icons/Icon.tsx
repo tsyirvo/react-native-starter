@@ -5,18 +5,24 @@ import * as AllIcons from './components';
 type Name = keyof typeof AllIcons;
 
 interface IconProps {
-  testID?: string;
   name: Name;
   color?: string;
   width?: number;
   height?: number;
+  testID?: string;
 }
 
-export const Icon = ({ testID, name, color, width, height }: IconProps) => {
+export const Icon = ({
+  name,
+  color,
+  width,
+  height,
+  testID = 'Icon',
+}: IconProps) => {
   return React.createElement(AllIcons[name], {
-    testID,
     color,
     width,
     height,
+    testID,
   });
 };

@@ -11,7 +11,7 @@ const meta = {
   argTypes: {
     label: { control: 'text' },
     error: { control: 'text' },
-    isEditable: { control: 'boolean' },
+    isDisabled: { control: 'boolean' },
   },
   decorators: [
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -45,13 +45,37 @@ export const WithError: Story = {
 
 export const WithoutLabel: Story = {
   args: {
-    value: 'Some value',
+    ...sharedArgs,
+    label: undefined,
   },
 };
 
 export const NotEditable: Story = {
   args: {
     ...sharedArgs,
-    isEditable: false,
+    isDisabled: true,
+  },
+};
+
+export const WithHelperText: Story = {
+  args: {
+    ...sharedArgs,
+    helperText: 'Some helper text',
+  },
+};
+
+export const WithHelperTextAndError: Story = {
+  args: {
+    ...sharedArgs,
+    helperText: 'Some helper text',
+    error: 'Some error',
+  },
+};
+
+export const WithOrnamentIcon: Story = {
+  args: {
+    ...sharedArgs,
+    leftOrnamentIcon: 'Code',
+    leftOrnamentIconColor: '#0C0D0F',
   },
 };
