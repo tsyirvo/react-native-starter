@@ -68,9 +68,14 @@ const plugins: ExpoConfig['plugins'] = [
   [
     'expo-splash-screen',
     {
-      backgroundColor: '#222222',
-      image: './assets/icon.png',
+      backgroundColor: '#FFFFFF',
+      image: './assets/icons/splash-icon-dark.png',
       imageWidth: 200,
+      resizeMode: 'contain',
+      dark: {
+        backgroundColor: '#0C0D0F',
+        image: './assets/icons/splash-icon-light.png',
+      },
     },
   ],
   './src/expoPlugins/withCustomAndroidManifest.js',
@@ -86,7 +91,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   version: Env.VERSION.toString(),
   runtimeVersion: { policy: 'appVersion' },
   orientation: 'portrait',
-  icon: './assets/icon.png',
+  icon: './assets/icons/default.png',
   userInterfaceStyle: 'dark',
   updates: {
     fallbackToCacheTimeout: 0,
@@ -111,17 +116,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       ],
     },
     icon: {
-      dark: 'assets/icon.png',
-      light: 'assets/icon.png',
-      tinted: 'assets/icon.png',
+      dark: 'assets/icons/ios-dark.png',
+      light: 'assets/icons/ios-light.png',
+      tinted: 'assets/icons/ios-tinted.png',
     },
   },
   android: {
-    icon: './assets/icon.png',
+    icon: './assets/icons/default.png',
     adaptiveIcon: {
-      foregroundImage: './assets/icon.png',
-      monochromeImage: './assets/icon.png',
-      backgroundColor: '#222222',
+      foregroundImage: './assets/icons/adaptive-icon.png',
+      monochromeImage: './assets/icons/adaptive-icon.png',
+      backgroundColor: '#0C0D0F',
     },
     edgeToEdgeEnabled: true,
     package: Env.PACKAGE,
