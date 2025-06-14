@@ -4,6 +4,11 @@ export const messages = {
     cancel: 'Cancel',
     next: 'Next',
   },
+  tabs: {
+    home: 'Home',
+    features: 'Features',
+    profile: 'Profile',
+  },
   appConfig: {
     networkStateCheck: {
       message:
@@ -44,39 +49,6 @@ export const messages = {
       title: 'An update is available on the stores',
       cta: 'Go update now',
     },
-    blogPost: {
-      screenTitle: 'Blog post',
-      title: 'Blog post fetched with GraphQL',
-    },
-    dummyForm: {
-      form: {
-        email: {
-          label: 'Email',
-          placeholder: 'Enter your email',
-          validation: {
-            email: 'Please enter a valid email',
-          },
-        },
-        firstName: {
-          label: 'First name',
-          placeholder: 'John',
-          validation: {
-            maxLength: 'First name must be at most 20 characters long',
-            minLength: 'First name must be at least 2 characters long',
-          },
-        },
-        lastName: {
-          label: 'Last name',
-          placeholder: 'Doe',
-          validation: {
-            maxLength: 'Last name must be at most 30 characters long',
-            minLength: 'Last name must be at least 2 characters long',
-          },
-        },
-      },
-      cta: 'Submit',
-      screenTitle: 'Dummy form',
-    },
     errorBoundary: {
       cta: 'Relaunch the app',
       description:
@@ -96,9 +68,6 @@ export const messages = {
     graphql: {
       cta: 'Navigate',
       title: 'API call example',
-    },
-    navigation: {
-      title: 'Other screen',
     },
   },
   settings: {
@@ -150,6 +119,14 @@ export const messages = {
   },
   loginScreen: {
     title: 'Login',
+  },
+  blogPostScreen: {
+    title: 'Blog post',
+    description: 'Blog post fetched with GraphQL',
+  },
+  profileScreen: {
+    title: 'Profile',
+    logout: 'Logout',
   },
 };
 

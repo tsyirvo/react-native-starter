@@ -22,7 +22,7 @@ export const BlogPost = ({ id }: BlogPostProps) => {
 
   return (
     <>
-      <Text variant="large">{t('miscScreens.blogPost.title')}</Text>
+      <Text variant="large">{t('blogPostScreen.description')}</Text>
 
       <Text pt="spacing_8">{data?.post?.title}</Text>
 

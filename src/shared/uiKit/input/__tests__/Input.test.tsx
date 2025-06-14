@@ -67,7 +67,7 @@ describe('Input component', () => {
   });
 
   it('should show an icon when defined', () => {
-    render(<Input {...props} leftOrnamentIcon="Code" />);
+    render(<Input {...props} leftOrnamentIcon="Envelope" />);
 
     expect(screen.getByTestId('Icon')).toBeDefined();
   });

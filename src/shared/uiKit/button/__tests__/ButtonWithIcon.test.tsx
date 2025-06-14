@@ -6,7 +6,7 @@ import { ButtonWithIcon } from '../ButtonWithIcon';
 describe('Button component', () => {
   const label = 'Some text';
 
-  const iconName: IconName = 'Code';
+  const iconName: IconName = 'Home';
   const onPress = jest.fn();
   const props = { iconName, onPress };
 

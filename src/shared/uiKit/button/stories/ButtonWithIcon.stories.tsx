@@ -20,7 +20,7 @@ const meta = {
     },
     iconName: {
       control: 'select',
-      options: ['Code', 'Grid', 'HeartRate', 'Laptop'],
+      options: ['Home', 'Apps', 'Envelope', 'Key', 'User'],
     },
     onPress: { action: 'onPress' },
     isDisabled: { control: 'boolean' },
@@ -28,7 +28,7 @@ const meta = {
   },
   args: {
     variant: 'primary',
-    iconName: 'Code',
+    iconName: 'Home',
     onPress: action('onPress called'),
   },
 } satisfies Meta<typeof ButtonWithIcon>;

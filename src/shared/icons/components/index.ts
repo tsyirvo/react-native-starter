@@ -1,8 +1,6 @@
-export { ChevronDown } from './ChevronDown';
-export { ChevronLeft } from './ChevronLeft';
-export { ChevronRight } from './ChevronRight';
-export { ChevronUp } from './ChevronUp';
-export { Code } from './Code';
-export { Grid } from './Grid';
-export { HeartRate } from './HeartRate';
-export { Laptop } from './Laptop';
+export { Apps } from './Apps';
+export { Envelope } from './Envelope';
+export { Home } from './Home';
+export { Key } from './Key';
+export { LeftArrow } from './LeftArrow';
+export { User } from './User';
