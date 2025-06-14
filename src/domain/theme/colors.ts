@@ -28,9 +28,11 @@ const borderColors = {
 
 const generalColors = {
   clear: '#FFFFFF',
+  clear_80: 'rgba(255, 255, 255, 0.8)',
   clear_50: 'rgba(255, 255, 255, 0.5)',
   clear_20: 'rgba(255, 255, 255, 0.2)',
   dark: '#1C202A',
+  dark_80: 'rgba(28, 32, 42, 0.8)',
   dark_50: 'rgba(28, 32, 42, 0.5)',
   dark_20: 'rgba(28, 32, 42, 0.2)',
 };
