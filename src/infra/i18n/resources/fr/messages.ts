@@ -121,7 +121,7 @@ export const messages: MessagesTypes = {
     submitButton: 'Se connecter',
   },
   loginScreen: {
-    title: 'Connexion',
+    title: 'React Native Template',
   },
   blogPostScreen: {
     title: 'Article de blog',

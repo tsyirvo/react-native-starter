@@ -23,6 +23,5 @@ export const ProductTrackingProvider = ({
 
 const autocaptureOptions: PostHogAutocaptureOptions = {
   captureTouches: true,
-  captureLifecycleEvents: true,
   captureScreens: false,
 };
