@@ -118,7 +118,7 @@ export const messages = {
     submitButton: 'Login',
   },
   loginScreen: {
-    title: 'Login',
+    title: 'React Native Template',
   },
   blogPostScreen: {
     title: 'Blog post',
