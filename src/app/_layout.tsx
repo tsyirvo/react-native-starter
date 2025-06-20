@@ -14,6 +14,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { StackAnimationTypes } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
 
+import { AuthContextProvider } from '$domain/contexts';
 import { makeAppStyles, theme } from '$domain/theme';
 import {
   useAppScreenTracking,
@@ -77,15 +78,17 @@ const RootLayout = () => {
                 <Splashscreen>
                   <BottomSheetModalProvider>
                     <KeyboardProvider>
-                      <>
-                        <Stack screenOptions={screenOptions} />
+                      <AuthContextProvider>
+                        <>
+                          <Stack screenOptions={screenOptions} />
 
-                        <Toast config={toastConfig} />
+                          <Toast config={toastConfig} />
 
-                        <AppUpdateNeeded />
+                          <AppUpdateNeeded />
 
-                        <MaintenanceMode />
-                      </>
+                          <MaintenanceMode />
+                        </>
+                      </AuthContextProvider>
                     </KeyboardProvider>
                   </BottomSheetModalProvider>
                 </Splashscreen>

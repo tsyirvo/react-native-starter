@@ -7,6 +7,7 @@ import type { AppSlice, AppState } from './app.types';
 
 const initialAppState: AppState = {
   appTheme: 'dark',
+  isBootstrappingAuthentication: true,
 };
 
 export const createAppSlice: StateCreator<
@@ -16,13 +17,19 @@ export const createAppSlice: StateCreator<
   AppSlice
 > = (set) => {
   sliceResetFns.add(() => {
-    set(initialAppState);
+    set({
+      ...initialAppState,
+      isBootstrappingAuthentication: false,
+    });
   });
 
   return {
     ...initialAppState,
     setAppTheme: (appTheme) => {
       set({ appTheme });
+    },
+    setIsBootstrappingAuthentication: (isBootstrappingAuthentication) => {
+      set({ isBootstrappingAuthentication });
     },
   };
 };

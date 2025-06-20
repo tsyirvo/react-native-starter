@@ -3,7 +3,7 @@ import type { Mutation, Query } from '@tanstack/react-query';
 import { Logger } from '$infra/logger';
 
 import {
-  clearTokens,
+  clearAccessAndRefreshTokens,
   refreshToken as requestNewAccessToken,
   saveNewAccessToken,
   saveNewRefreshToken,
@@ -65,7 +65,7 @@ export const refreshAccessTokenAndRetry = async (
       processFailedQueue();
     }
   } catch {
-    clearTokens().catch((error: unknown) => {
+    clearAccessAndRefreshTokens().catch((error: unknown) => {
       Logger.error({
         error,
         message: 'Error while clearing the tokens',

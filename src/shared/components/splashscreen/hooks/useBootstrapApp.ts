@@ -1,8 +1,10 @@
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { bootstrapApp } from '$infra/bootstrap';
 import { Logger } from '$infra/logger';
+import { useAppStore } from '$infra/store';
+import { useGetSessionState } from '$shared/hooks';
 import { checkForOtaUpdate } from '$shared/utils';
 
 SplashScreen.preventAutoHideAsync().catch((error: unknown) => {
@@ -18,7 +20,15 @@ SplashScreen.setOptions({
 });
 
 export const useBootstrapApp = () => {
-  const [isAppReady, setIsAppReady] = useState(false);
+  const [isBootstrappingInfra, setIsBootstrappingInfra] = useState(true);
+
+  const isBootstrappingAuthentication = useAppStore(
+    (state) => state.isBootstrappingAuthentication,
+  );
+
+  const isAppReady = !isBootstrappingInfra && !isBootstrappingAuthentication;
+
+  useGetSessionState();
 
   const onLayoutRootView = useCallback(() => {
     (async () => {
@@ -26,16 +36,20 @@ export const useBootstrapApp = () => {
       await checkForOtaUpdate();
 
       // TODO(prod): add necessary bootstrap logic here
-      setIsAppReady(true);
-    })()
-      .finally(SplashScreen.hide)
-      .catch((error: unknown) => {
-        Logger.error({
-          message: 'Failed to bootstrap app SDKs or check for OTA update',
-          error,
-        });
+      setIsBootstrappingInfra(false);
+    })().catch((error: unknown) => {
+      Logger.error({
+        message: 'Failed to bootstrap app SDKs or check for OTA update',
+        error,
       });
+    });
   }, []);
+
+  useEffect(() => {
+    if (isAppReady) {
+      SplashScreen.hide();
+    }
+  }, [isAppReady]);
 
   return {
     isAppReady,
