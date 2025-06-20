@@ -38,6 +38,7 @@
     "build:production:android": "APP_ENV=production eas build --profile production --platform android --local",
     "//// TESTS ////": "",
     "test": "jest --coverage=false",
+    "test:e2e": "doppler run -p rn-starter -c dev -- maestro test ./e2e/authNavigation.yaml",
     "test:coverage": "jest",
     "//// QUALITY ////": "",
     "lint:ts": "yarn tsc",
