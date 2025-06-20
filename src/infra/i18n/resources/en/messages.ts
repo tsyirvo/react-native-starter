@@ -45,18 +45,30 @@ export const messages = {
     title: 'The app is in maintenance',
   },
   homeScreen: {
+    whatIsInside: "What's inside ?",
+    motivation: {
+      content:
+        'The goal of the starter kit is to provide a foundation for building React Native applications. It is not meant to provide tons of features, UI components, or other libraries, but to include the recurrent tools and libraries I use in most of the projects I work on.',
+      title: 'Motivation',
+    },
     formatting: {
-      content: 'The code is checked with ESLint, Prettier and TypeScript',
+      content: 'The code is fully checked with ESLint, Prettier and TypeScript',
       title: 'Formatting & type checking',
     },
     storybook: {
       content:
-        'Access Storybook by running the packager with "yarn start:storybook"',
+        'Access a Storybook example exposing the most used components; you only need to run the packager with "yarn start:storybook"',
       title: 'Storybook',
     },
     tests: {
-      content: 'You can run tests with Jest or Maestro',
+      content:
+        'A test stack is set up with unit tests, integration tests and E2E tests with Jest, React Native Testing Library and Maestro',
       title: 'Tests',
+    },
+    tools: {
+      content:
+        'The app is already configured with some tools like: analytics, crash reporting, error tracking, in-app purchases, notifications, feature flags, etc.\nThere are also pre-configured utilities like: date formatting, i18n, store rating prompt, form validation, keyboard handling, etc.',
+      title: 'Tools',
     },
     updateCheck: {
       isEmbeddedLaunch: 'The app is running from an OTA update',
@@ -101,9 +113,11 @@ export const messages = {
     notificationsPermission: {
       title: 'Request Notification permission',
       cta: 'Request',
+      success: 'The permission has been granted',
+      alreadyGranted: 'The permission has already been granted',
     },
     blogPost: {
-      title: "Example d'appel API",
+      title: 'Example GraphQL API call',
       cta: 'Naviguer',
     },
   },

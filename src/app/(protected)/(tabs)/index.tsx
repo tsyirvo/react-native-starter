@@ -17,7 +17,7 @@ const HomeTabScreen = () => {
         <ScrollView>
           <Header />
 
-          <Box pb="spacing_32" px="spacing_16">
+          <Box pb="spacing_32" pt="spacing_24" px="spacing_16">
             <Informations />
           </Box>
 
