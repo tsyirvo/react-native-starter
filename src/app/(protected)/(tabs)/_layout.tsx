@@ -11,10 +11,15 @@ import {
 
 const TabLayout = () => {
   const isUserLoggedIn = useAppStore((state) => state.isUserLoggedIn);
+  const isBootstrappingApplication = useAppStore(
+    (state) => state.isBootstrappingApplication,
+  );
 
   const { t } = useTranslation();
 
   const { colors } = useAppTheme();
+
+  if (isBootstrappingApplication) return null;
 
   if (!isUserLoggedIn) {
     return <Redirect href="/Login" />;

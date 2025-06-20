@@ -59,7 +59,7 @@ export const saveNewRefreshToken = async (token: string) => {
   await saveToSecureStore('refreshToken', token);
 };
 
-export const clearTokens = async () => {
+export const clearAccessAndRefreshTokens = async () => {
   clearCachedAccessToken();
   clearCachedRefreshToken();
 

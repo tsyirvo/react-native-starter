@@ -1,3 +1,4 @@
+import { User } from '$domain/entities';
 import { productTrackingClient } from '$infra/productTracking';
 
 import type { AnalyticsType } from './analytics.types';
@@ -9,8 +10,10 @@ class AnalyticsClass {
   /* ***** *****  User related  ***** ***** */
 
   // TODO(prod): Add user properties
-  setUser(user: { id: string }) {
-    productTrackingClient.identify(user.id);
+  setUser(user: User) {
+    productTrackingClient.identify(user.id, {
+      email: user.email,
+    });
   }
 
   reset() {

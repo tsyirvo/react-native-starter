@@ -5,16 +5,17 @@ import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 
 import logoDark from '$assets/images/logo-dark.png';
+import { useAuthContext } from '$domain/contexts';
+import { UserLogin } from '$domain/entities';
 import { makeAppStyles } from '$domain/theme';
 import { LoginForm } from '$features/loginForm';
-import { useAppStore } from '$infra/store';
 import { Box, Image, Screen, Text } from '$shared/uiKit';
 
 const Login = () => {
-  const setIsUserLoggedIn = useAppStore((state) => state.setIsUserLoggedIn);
-
   const router = useRouter();
   const { t } = useTranslation();
+
+  const { signIn } = useAuthContext();
 
   const styles = useStyles();
 
@@ -22,8 +23,8 @@ const Login = () => {
     Keyboard.dismiss();
   };
 
-  const onFormSuccess = () => {
-    setIsUserLoggedIn(true);
+  const onFormSuccess = async (data: UserLogin) => {
+    await signIn(data);
 
     router.replace('/');
   };

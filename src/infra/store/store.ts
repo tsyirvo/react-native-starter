@@ -1,20 +1,16 @@
 import { create } from 'zustand';
 import type { PersistOptions } from 'zustand/middleware';
-import { createJSONStorage, persist } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
-
-import { storageKeys } from '$domain/constants';
-import { StoreStorage } from '$infra/storage';
 
 import { createAppSlice } from './slices/app';
 import { createSessionSlice } from './slices/session';
 import type { StoreState } from './types/store.types';
+import { generatePersistOptions } from './utils';
 
-const persistOptions: PersistOptions<StoreState> = {
-  name: storageKeys.storeStorage.id,
-  version: 0,
-  storage: createJSONStorage(() => StoreStorage),
-};
+const persistOptions: PersistOptions<StoreState> = generatePersistOptions({
+  doNotPersist: ['isBootstrappingApplication', 'isUserLoggedIn'],
+});
 
 export const useAppStore = create<
   StoreState,
@@ -30,3 +26,7 @@ export const useAppStore = create<
     ),
   ),
 );
+
+export const clearPersistedAppStore = () => {
+  useAppStore.persist.clearStorage();
+};

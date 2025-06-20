@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-deprecated */
 
-import type { Event, Scope, User } from '@sentry/react-native';
+import type { Event, Scope } from '@sentry/react-native';
 import * as Sentry from '@sentry/react-native';
 import type { Breadcrumb, CaptureContext, SeverityLevel } from '@sentry/types';
 import * as Application from 'expo-application';
@@ -9,6 +9,7 @@ import * as Device from 'expo-device';
 import * as Updates from 'expo-updates';
 
 import { config } from '$domain/constants';
+import { User } from '$domain/entities';
 
 import type { Primitives } from '$types';
 
@@ -85,7 +86,10 @@ class ErrorMonitoringClass {
   /* ***** *****  User related  ***** ***** */
 
   setUser(user: User) {
-    Sentry.setUser(user);
+    Sentry.setUser({
+      id: user.id,
+      email: user.email,
+    });
   }
 
   clearUser() {
