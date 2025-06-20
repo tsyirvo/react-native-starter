@@ -2,16 +2,16 @@ import { Stack } from 'expo-router';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useAppStore } from '$infra/store';
+import { useAuthContext } from '$domain/contexts';
 import { Box, Button, Screen, Text } from '$shared/uiKit';
 
 const ProfileScreen = () => {
-  const setIsUserLoggedIn = useAppStore((state) => state.setIsUserLoggedIn);
-
   const { t } = useTranslation();
 
-  const onLogout = () => {
-    setIsUserLoggedIn(false);
+  const { signOut } = useAuthContext();
+
+  const onLogout = async () => {
+    await signOut();
   };
 
   return (

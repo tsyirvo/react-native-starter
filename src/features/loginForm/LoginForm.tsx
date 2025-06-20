@@ -4,6 +4,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { InteractionManager, type TextInput } from 'react-native';
 
+import { UserLogin } from '$domain/entities';
 import { Logger } from '$infra/logger';
 import { Box, Button } from '$shared/uiKit';
 import { Input } from '$shared/uiKit/input';
@@ -12,7 +13,7 @@ import { LoginFormData, loginFormSchema } from './utils';
 
 interface LoginFormProps {
   testID?: string;
-  onFormSuccess: (data: LoginFormData) => void;
+  onFormSuccess: (data: UserLogin) => Promise<void>;
 }
 
 export const LoginForm = ({
@@ -39,7 +40,7 @@ export const LoginForm = ({
   const isValid = Object.keys(errors).length === 0;
 
   const onSubmit = (data: LoginFormData) => {
-    onFormSuccess(data);
+    return onFormSuccess(data);
   };
 
   const handleFormSubmit = async () => {
