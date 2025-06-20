@@ -47,18 +47,30 @@ export const messages: MessagesTypes = {
     title: "L'app est en maintenance",
   },
   homeScreen: {
+    whatIsInside: "Qu'est-ce qui est fourni ?",
+    motivation: {
+      content:
+        "Le but de ce starter kit est de fournir une base pour créer des applications React Native. Il n'est pas conçu pour fournir des tonnes de fonctionnalités, composants UI, ou autres librairies, mais d'inclure les outils et librairies que j'utilise dans la plupart des projets sur lesquels je travaille.",
+      title: 'Explications',
+    },
     formatting: {
-      content: 'Le code est vérifié avec ESLint, Prettier and TypeScript',
+      content: 'Le code est vérifié avec ESLint, Prettier et TypeScript',
       title: 'Formatage & type checking',
     },
     storybook: {
       content:
-        'Accéder au Storybook en lançant le packager avec "yarn start:storybook"',
+        "Accéder à un Storybook d'exemple exposant les composants les plus utilisés; il suffit de lancer le packager avec 'yarn start:storybook'",
       title: 'Storybook',
     },
     tests: {
-      content: 'Vous pouvez faire tourner les tests avec Jest ou Maestro',
+      content:
+        "Une stack de test est mise en place avec des tests unitaires, des tests d'intégration et des tests E2E avec Jest, React Native Testing Library et Maestro",
       title: 'Tests',
+    },
+    tools: {
+      content:
+        "L'app est déjà configurée avec certains outils comme: des analytics, du crash reporting, du tracking d'erreurs, les achats in-app, les notifications, des feature flags, etc.\nIl y a aussi des utilitaires préconfigurés comme: formatage des dates, i18n, une logique de notation sur l'appstore, la validation des formulaires, la gestion du clavier, etc.",
+      title: 'Outils',
     },
     updateCheck: {
       isEmbeddedLaunch: "L'app tourne depuis une MAJ OTA",
@@ -103,9 +115,11 @@ export const messages: MessagesTypes = {
     notificationsPermission: {
       title: 'Demander les permissions de Notification',
       cta: 'Demander',
+      success: 'La permission a bien été accordée',
+      alreadyGranted: 'La permission a déjà été accordée',
     },
     blogPost: {
-      title: "Example d'appel API",
+      title: "Exemple d'appel API GraphQL",
       cta: 'Naviguer',
     },
   },

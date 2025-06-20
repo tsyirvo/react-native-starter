@@ -6,6 +6,20 @@ import { Permissions } from '$infra/permissions';
 import { Toaster } from '$infra/toaster';
 
 export const useRequestPermission = () => {
+  const permissionGrantedToast = () => {
+    Toaster.show({
+      type: 'success',
+      text1: t('featuresScreen.notificationsPermission.success'),
+    });
+  };
+
+  const permissionAlreadyGrantedToast = () => {
+    Toaster.show({
+      type: 'success',
+      text1: t('featuresScreen.notificationsPermission.alreadyGranted'),
+    });
+  };
+
   const requestPermission = async (permission: Permission) => {
     const {
       isAvailable,
@@ -28,6 +42,7 @@ export const useRequestPermission = () => {
 
       if (isGranted) {
         Logger.dev('Permission granted');
+        permissionGrantedToast();
 
         return;
       }
@@ -43,6 +58,7 @@ export const useRequestPermission = () => {
 
     if (isInitiallyGranted) {
       Logger.dev('Notifications granted');
+      permissionAlreadyGrantedToast();
 
       return;
     }
@@ -76,6 +92,7 @@ export const useRequestPermission = () => {
 
       if (isGranted) {
         Logger.dev('Notifications granted');
+        permissionGrantedToast();
 
         return;
       }
@@ -91,6 +108,7 @@ export const useRequestPermission = () => {
 
     if (isInitiallyGranted) {
       Logger.dev('Notifications granted');
+      permissionAlreadyGrantedToast();
 
       return;
     }

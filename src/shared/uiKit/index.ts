@@ -6,3 +6,4 @@ export * from './loader';
 export * from './primitives';
 export * from './safeView';
 export * from './screen';
+export * from './separator';
