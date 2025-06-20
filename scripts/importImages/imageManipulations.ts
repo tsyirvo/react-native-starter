@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import imagemin from 'imagemin';
 import imageminMozjpeg from 'imagemin-mozjpeg';
 import imageminPngquant from 'imagemin-pngquant';
@@ -43,7 +42,7 @@ const compressAllResolutions = async () => {
         filename: image1xName,
       }),
     ]);
-  } catch (error) {
+  } catch {
     print({
       message: 'Failed to compress the all images resolutions',
       type: 'error',
@@ -100,7 +99,7 @@ const generateAllResolutions = async ({
         outputFile: `${TMP_DIR}/1x/${image1xName}`,
       }),
     ]);
-  } catch (error) {
+  } catch {
     print({
       message: 'Failed to create the all images resolutions',
       type: 'error',

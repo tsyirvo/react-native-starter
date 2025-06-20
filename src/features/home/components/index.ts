@@ -1,3 +1,3 @@
-export { Header } from './Header';
-export { Version } from './Version';
-export { Informations } from './Informations';
+export * from './Header';
+export * from './Informations';
+export * from './Version';

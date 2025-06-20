@@ -1,17 +1,12 @@
-import { ImageBackground, StyleSheet } from 'react-native';
+import { ImageBackground } from 'react-native';
 
-import { Box, Text } from '$shared/uiKit/primitives';
-
-import headerAsset from '../../../assets/images/header.jpeg';
-
-const styles = StyleSheet.create({
-  image: {
-    width: '100%',
-    height: 350,
-  },
-});
+import headerAsset from '$assets/images/header.jpeg';
+import { makeAppStyles } from '$domain/theme';
+import { Box, Text } from '$shared/uiKit';
 
 export const Header = () => {
+  const styles = useStyles();
+
   return (
     <ImageBackground source={headerAsset} style={styles.image}>
       <Box
@@ -20,10 +15,17 @@ export const Header = () => {
         justifyContent="flex-end"
         mb="spacing_24"
       >
-        <Text color="primary_clear" variant="large">
-          React Native Starter
+        <Text color="core_primary" variant="large">
+          React Native Template
         </Text>
       </Box>
     </ImageBackground>
   );
 };
+
+const useStyles = makeAppStyles(() => ({
+  image: {
+    width: '100%',
+    height: 350,
+  },
+}));

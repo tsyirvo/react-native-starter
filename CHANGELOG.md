@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/tsyirvo/react-native-starter/compare/v2.1.0...v2.2.0) (2025-06-20)
+
+
+### Features
+
+* add a default bottom sheet component ([#425](https://github.com/tsyirvo/react-native-starter/issues/425)) ([7c41485](https://github.com/tsyirvo/react-native-starter/commit/7c414856c939233425f32c64c62a7a2873850129))
+* add new app icons with color scheme handling ([#426](https://github.com/tsyirvo/react-native-starter/issues/426)) ([c7e5592](https://github.com/tsyirvo/react-native-starter/commit/c7e559249934d98a95e98b5ba026f445b6c13f26))
+* add simple Maestro test as example ([#434](https://github.com/tsyirvo/react-native-starter/issues/434)) ([58f6a1d](https://github.com/tsyirvo/react-native-starter/commit/58f6a1d826510ab037e1b428b223b62977235e81))
+* implement a basic auth context and related logic ([#431](https://github.com/tsyirvo/react-native-starter/issues/431)) ([b1bdeb8](https://github.com/tsyirvo/react-native-starter/commit/b1bdeb89571d94357d7229cafc340b7be7f6d909))
+* integrate a dummy login screen ([#427](https://github.com/tsyirvo/react-native-starter/issues/427)) ([c3e07fc](https://github.com/tsyirvo/react-native-starter/commit/c3e07fc0d82f8b2b40426211e2ca3a45c4d9331d))
+* migrate i18n to V4 file format ([#414](https://github.com/tsyirvo/react-native-starter/issues/414)) ([572bb20](https://github.com/tsyirvo/react-native-starter/commit/572bb20597e6d6ee78d9fbc2629653e80a465d30))
+* migrate to ESLint V9 ([#419](https://github.com/tsyirvo/react-native-starter/issues/419)) ([1a8080a](https://github.com/tsyirvo/react-native-starter/commit/1a8080a8ff163d69c69b78e0c5f3a5b2848a4b29))
+* migrate to expo-router ([#392](https://github.com/tsyirvo/react-native-starter/issues/392)) ([e3cb893](https://github.com/tsyirvo/react-native-starter/commit/e3cb89364688f5d852552c0eb40fde042b55bd31))
+* remove husky and lint-staged in favor of lefthook ([#404](https://github.com/tsyirvo/react-native-starter/issues/404)) ([821027f](https://github.com/tsyirvo/react-native-starter/commit/821027f65a2b1dc46e7e840d74f83420421b3400))
+* rework app bootstrap and locale initialization ([#403](https://github.com/tsyirvo/react-native-starter/issues/403)) ([8a8ac1b](https://github.com/tsyirvo/react-native-starter/commit/8a8ac1b9ef3650adac9789c41eccd191664c8945))
+* setup AppsFlyer SDK ([#394](https://github.com/tsyirvo/react-native-starter/issues/394)) ([5d95523](https://github.com/tsyirvo/react-native-starter/commit/5d9552387716c6c49ceef6b011db44728aeb525e))
+* setup generic permission requesting logic ([#395](https://github.com/tsyirvo/react-native-starter/issues/395)) ([4f4450d](https://github.com/tsyirvo/react-native-starter/commit/4f4450dda88a1d84afa8795133b9cc43403b6da1))
+* setup RevenueCat SDK ([#393](https://github.com/tsyirvo/react-native-starter/issues/393)) ([633717a](https://github.com/tsyirvo/react-native-starter/commit/633717a1ab39da919ac07f50157186e3b0d0e571))
+* setup router with auth flow and tabs with nested routes ([#428](https://github.com/tsyirvo/react-native-starter/issues/428)) ([d65ec30](https://github.com/tsyirvo/react-native-starter/commit/d65ec302e9f375018a4c642ac86f80d991532942))
+* setup Storybook 8 ([#405](https://github.com/tsyirvo/react-native-starter/issues/405)) ([7412ab7](https://github.com/tsyirvo/react-native-starter/commit/7412ab7e7728061d1f35dc2d5a10ae238b86668c))
+* simplify i18n setup and add more type safety ([#396](https://github.com/tsyirvo/react-native-starter/issues/396)) ([11dc68e](https://github.com/tsyirvo/react-native-starter/commit/11dc68e3ac7f7d127df9073507ad3171b444e809))
+* tweak the home screen to provide more context about the starter motivations ([#433](https://github.com/tsyirvo/react-native-starter/issues/433)) ([2ddbf9c](https://github.com/tsyirvo/react-native-starter/commit/2ddbf9caf5e55daf962099e11ff3caba50babea9))
+* update app icon config ([#420](https://github.com/tsyirvo/react-native-starter/issues/420)) ([c87e667](https://github.com/tsyirvo/react-native-starter/commit/c87e66729051cb1bad29bcfbe14428ac9c7f499e))
+* update design tokens and related UI elements ([#423](https://github.com/tsyirvo/react-native-starter/issues/423)) ([fc32a71](https://github.com/tsyirvo/react-native-starter/commit/fc32a71bbb236db0a2fb1a30349ee050c083d4e9))
+* update the input component UI ([#424](https://github.com/tsyirvo/react-native-starter/issues/424)) ([322f468](https://github.com/tsyirvo/react-native-starter/commit/322f468ef1269387ce08ea26e774f2a166096346))
+* update to Expo SDK 53 and bump all dependencies ([#418](https://github.com/tsyirvo/react-native-starter/issues/418)) ([e9ffdbf](https://github.com/tsyirvo/react-native-starter/commit/e9ffdbf3b818651bd8f0db8be4faea1a63618053))
+* update tooling screens and add store update banner ([#401](https://github.com/tsyirvo/react-native-starter/issues/401)) ([fc2653a](https://github.com/tsyirvo/react-native-starter/commit/fc2653aa6f7cf967cca3a7e797472a17ccd6f665))
+
+
+### Bug Fixes
+
+* handle wrong path on feature flag logic ([#417](https://github.com/tsyirvo/react-native-starter/issues/417)) ([d860c33](https://github.com/tsyirvo/react-native-starter/commit/d860c3395f1ef0e04b1097feb4675e4ea763de3d))
+
 ## [2.1.0](https://github.com/tsyirvo/react-native-starter/compare/v2.0.0...v2.1.0) (2024-04-19)
 
 

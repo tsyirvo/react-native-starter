@@ -1,0 +1,14 @@
+appId: com.tsyirvo.rnstarter.development
+---
+- launchApp
+- assertVisible:
+    id: 'LoginForm'
+- tapOn:
+    id: 'LoginFormEmailInput'
+- inputRandomEmail
+- tapOn:
+    id: 'LoginFormPasswordInput'
+- inputRandomText
+- hideKeyboard
+- tapOn:
+    id: 'LoginFormSubmitButton'

@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable import/no-extraneous-dependencies */
-
 import type { ExpoConfig, ConfigContext } from '@expo/config';
 
 import { ClientEnv, Env } from './env';
@@ -59,16 +56,31 @@ const plugins: ExpoConfig['plugins'] = [
       ],
     },
   ],
+  'expo-asset',
   'expo-secure-store',
   [
     'onesignal-expo-plugin',
+    { mode: isDevelopmentEnv ? 'development' : 'production' },
+  ],
+  'expo-router',
+  ['react-native-appsflyer', {}],
+  ['react-native-permissions', { iosPermissions: ['Notifications'] }],
+  [
+    'expo-splash-screen',
     {
-      mode: isDevelopmentEnv ? 'development' : 'production',
+      backgroundColor: '#FFFFFF',
+      image: './assets/icons/splash-icon-dark.png',
+      imageWidth: 200,
+      resizeMode: 'contain',
+      dark: {
+        backgroundColor: '#0C0D0F',
+        image: './assets/icons/splash-icon-light.png',
+      },
     },
   ],
+  './src/expoPlugins/withCustomAndroidManifest.js',
 ];
 
-// eslint-disable-next-line import/no-default-export
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: Env.APP_NAME,
@@ -77,18 +89,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: 'rn-starter',
   slug: 'rn-starter',
   version: Env.VERSION.toString(),
-  runtimeVersion: {
-    policy: 'fingerprintExperimental',
-  },
-  jsEngine: 'hermes',
+  runtimeVersion: { policy: 'appVersion' },
   orientation: 'portrait',
-  icon: './assets/icon.png',
+  icon: './assets/icons/default.png',
   userInterfaceStyle: 'dark',
-  splash: {
-    image: './assets/splash.png',
-    resizeMode: 'contain',
-    backgroundColor: '#000',
-  },
   updates: {
     fallbackToCacheTimeout: 0,
   },
@@ -96,20 +100,69 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: Env.BUNDLE_ID,
+    // TODO(prod): Add correct associated domain config
+    associatedDomains: ['applinks:rnstarter.onelink.me'],
     // TODO(prod): Add correct app store URL
     appStoreUrl: `https://apps.apple.com/app/XXX/${Env.ITUNES_ITEM_ID}`,
-    config: {
-      usesNonExemptEncryption: false,
+    infoPlist: {
+      UIBackgroundModes: ['remote-notification'],
+      CFBundleAllowMixedLocalizations: true,
+      ITSAppUsesNonExemptEncryption: false,
+    },
+    entitlements: {
+      'aps-environment': isDevelopmentEnv ? 'development' : 'production',
+      'com.apple.security.application-groups': [
+        'group.${ios.bundleIdentifier}.onesignal',
+      ],
+    },
+    icon: {
+      dark: 'assets/icons/ios-dark.png',
+      light: 'assets/icons/ios-light.png',
+      tinted: 'assets/icons/ios-tinted.png',
     },
   },
   android: {
+    icon: './assets/icons/default.png',
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#000',
+      foregroundImage: './assets/icons/adaptive-icon.png',
+      monochromeImage: './assets/icons/adaptive-icon.png',
+      backgroundColor: '#0C0D0F',
     },
+    edgeToEdgeEnabled: true,
     package: Env.PACKAGE,
     playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
+    intentFilters: [
+      {
+        action: 'VIEW',
+        data: [
+          {
+            scheme: 'https',
+            // TODO(prod): Add correct associated domain config
+            host: 'rnstarter.onelink.me',
+            pathPrefix: '/XYZ',
+          },
+        ],
+        category: ['BROWSABLE', 'DEFAULT'],
+      },
+      {
+        action: 'VIEW',
+        data: [
+          {
+            scheme: 'rn-starter',
+          },
+        ],
+        category: ['BROWSABLE', 'DEFAULT'],
+      },
+    ],
   },
+  locales: {
+    fr: './src/core/i18n/infoPlist/fr.json',
+    en: './src/core/i18n/infoPlist/en.json',
+  },
+  experiments: {
+    typedRoutes: true,
+  },
+  newArchEnabled: true,
   plugins,
   extra: {
     ...ClientEnv,

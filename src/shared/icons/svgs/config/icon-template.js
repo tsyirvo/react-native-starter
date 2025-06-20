@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const template = (variables, { tpl }) => {
   const trimmedComponentName = variables.componentName.replace('Svg', '');
 

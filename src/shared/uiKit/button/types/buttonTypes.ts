@@ -1,6 +1,6 @@
 import type { VariantProps } from '@shopify/restyle';
 
-import type { Theme } from '$core/theme';
+import type { Theme } from '$domain/theme';
 
 export interface ButtonProps extends VariantProps<Theme, 'buttonVariants'> {
   testID?: string;
@@ -10,6 +10,7 @@ export interface ButtonProps extends VariantProps<Theme, 'buttonVariants'> {
     | undefined;
   isDisabled?: boolean;
   isLoading?: boolean;
+  targetScale?: number;
 }
 
-export type ButtonSize = 'regular' | 'small';
+export type ParentVariant = VariantProps<Theme, 'buttonVariants'>['variant'];

@@ -1,7 +1,7 @@
-import isNil from 'lodash/isNil';
+import isNil from 'lodash.isnil';
 import { useState } from 'react';
 
-import { isPromise } from '$shared/utils/isPromise';
+import { isPromise } from '$shared/utils';
 
 export const usePress = <T>({
   isDisabled,

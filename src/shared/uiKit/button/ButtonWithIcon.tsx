@@ -1,32 +1,27 @@
-import { usePress } from '$shared/hooks/usePress';
-import { Box } from '$shared/uiKit/primitives';
+import { usePress } from '$shared/hooks';
+import type { IconName } from '$shared/icons';
 
-import type * as AllIcons from '../../icons/components';
+import { Box } from '../primitives';
 
 import { BaseButton } from './BaseButton';
 import { InnerIcon } from './components/InnerIcon';
 import { InnerText } from './components/InnerText';
 import type { ButtonProps } from './types/buttonTypes';
 
-const DEFAULT_ICON_SIZE = 24;
-
 interface ButtonWithIconProps extends ButtonProps {
   children: string;
-  iconName: keyof typeof AllIcons;
-  width?: number;
-  height?: number;
+  iconName: IconName;
 }
 
-const ButtonWithIcon = ({
-  onPress,
-  variant = 'base',
-  testID,
+export const ButtonWithIcon = ({
+  variant = 'primary',
+  iconName,
   isDisabled = false,
   isLoading = false,
-  iconName,
-  width = DEFAULT_ICON_SIZE,
-  height = DEFAULT_ICON_SIZE,
+  targetScale,
   children,
+  testID = 'ButtonWithIcon',
+  onPress,
 }: ButtonWithIconProps) => {
   const [handlePress, isResolving] = usePress({ onPress });
 
@@ -34,32 +29,29 @@ const ButtonWithIcon = ({
 
   return (
     <BaseButton
+      variant={variant}
       isDisabled={isButtonDisabled}
       isLoading={isLoading || isResolving}
+      targetScale={targetScale}
       testID={testID}
-      variant={variant}
       onPress={handlePress}
     >
-      <Box alignItems="center" flexDirection="row">
-        <Box flex={1}>
-          <InnerText
-            isDisabled={isDisabled}
-            isLoading={isResolving || isLoading}
-            size="regular"
-          >
-            {children}
-          </InnerText>
-        </Box>
-
+      <Box
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center"
+        gap="spacing_8"
+      >
         <InnerIcon
-          height={height}
+          parentVariant={variant}
           iconName={iconName}
           isLoading={isResolving || isLoading}
-          width={width}
         />
+
+        <InnerText parentVariant={variant} isLoading={isResolving || isLoading}>
+          {children}
+        </InnerText>
       </Box>
     </BaseButton>
   );
 };
-
-export { ButtonWithIcon };

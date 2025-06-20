@@ -23,7 +23,7 @@ const moveAllAssets = async () => {
         destination: `${destinationPath}/${image1xName}`,
       }),
     ]);
-  } catch (error) {
+  } catch {
     print({ message: 'Failed to move the assets', type: 'error' });
   }
 };

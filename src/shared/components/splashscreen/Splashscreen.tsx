@@ -1,19 +1,19 @@
-import type { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
-import { Box } from '$shared/uiKit/primitives';
+import { Box } from '$shared/uiKit';
 
-import { useLoadAssets } from './hooks/useLoadAssets';
+import { useBootstrapApp } from './hooks/useBootstrapApp';
 
-type SplashscreenProps = {
+interface SplashscreenProps {
   children: ReactNode;
-};
+}
 
 export const Splashscreen = ({ children }: SplashscreenProps) => {
-  const { onLayoutRootView } = useLoadAssets();
+  const { isAppReady, onLayoutRootView } = useBootstrapApp();
 
   return (
     <Box flex={1} onLayout={onLayoutRootView}>
-      {children}
+      {isAppReady ? children : null}
     </Box>
   );
 };

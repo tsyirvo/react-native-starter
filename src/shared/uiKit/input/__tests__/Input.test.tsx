@@ -1,66 +1,74 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
-import { render, fireEvent } from '$core/testing';
+import { fireEvent, render, screen } from '$domain/testing';
 
 import { Input } from '../Input';
 
 describe('Input component', () => {
-  // Given
   const onChangeText = jest.fn();
-  const props = { onChangeText, testID: 'input-id' };
+  const props = { onChangeText };
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('should render correctly', () => {
-    // Given
-    const { getByTestId } = render(<Input {...props} />);
+    render(<Input {...props} />);
 
-    // Then
-    expect(getByTestId('input-id')).toBeDefined();
+    expect(screen.getByTestId('Input')).toBeDefined();
   });
 
   it('should call the onChangeText method when typing', () => {
-    // Given
-    const { getByTestId } = render(<Input {...props} />);
+    render(<Input {...props} />);
 
-    // When
-    fireEvent.changeText(getByTestId('input-id'), 'data');
+    fireEvent.changeText(screen.getByTestId('Input'), 'data');
 
-    // Then
     expect(onChangeText).toHaveBeenCalled();
   });
 
   it('should not show error by default', () => {
-    // Given
-    const { queryByTestId } = render(<Input {...props} />);
+    render(<Input {...props} />);
 
-    // Then
-    expect(queryByTestId('input-errorText')).toBeNull();
+    expect(screen.queryByTestId('InputErrorText')).toBeNull();
   });
 
   it('should show error when defined', () => {
-    // Given
-    const { getByTestId } = render(<Input {...props} error="Some error" />);
+    render(<Input {...props} error="Some error" />);
 
-    // Then
-    expect(getByTestId('input-errorText')).toBeDefined();
+    expect(screen.getByTestId('InputErrorText')).toBeDefined();
+  });
+
+  it('should not show helper text by default', () => {
+    render(<Input {...props} />);
+
+    expect(screen.queryByTestId('InputHelperText')).toBeNull();
+  });
+
+  it('should show helper text when defined', () => {
+    render(<Input {...props} helperText="Some helper text" />);
+
+    expect(screen.getByTestId('InputHelperText')).toBeDefined();
   });
 
   it('should not show a label if not provided', () => {
-    // Given
-    const { queryByTestId } = render(<Input {...props} />);
+    render(<Input {...props} />);
 
-    // Then
-    expect(queryByTestId('input-label')).toBeNull();
+    expect(screen.queryByTestId('InputLabel')).toBeNull();
   });
 
   it('should show a label when defined', () => {
-    // Given
-    const { getByTestId } = render(<Input {...props} label="Some label" />);
+    render(<Input {...props} label="Some label" />);
 
-    // Then
-    expect(getByTestId('input-label')).toBeDefined();
+    expect(screen.getByTestId('InputLabel')).toBeDefined();
+  });
+
+  it('should not show an icon if not provided', () => {
+    render(<Input {...props} />);
+
+    expect(screen.queryByTestId('Icon')).toBeNull();
+  });
+
+  it('should show an icon when defined', () => {
+    render(<Input {...props} leftOrnamentIcon="Envelope" />);
+
+    expect(screen.getByTestId('Icon')).toBeDefined();
   });
 });

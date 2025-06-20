@@ -1,16 +1,16 @@
 import * as Network from 'expo-network';
 import { useTranslation } from 'react-i18next';
 
-import { ErrorMonitoring } from '$core/monitoring';
-import { Toaster } from '$core/toaster';
-import { sleep } from '$shared/utils/sleep';
+import { ErrorMonitoring } from '$infra/monitoring';
+import { Toaster } from '$infra/toaster';
+import { sleep } from '$shared/utils';
 
 import { useRunOnMount } from './useRunOnMount';
 
 const ONE_SECOND = 1000;
 
 export const useCheckNetworkStateOnMount = () => {
-  const { t } = useTranslation('appConfig');
+  const { t } = useTranslation();
 
   const checkNetworkState = async () => {
     await sleep(ONE_SECOND);
@@ -19,8 +19,8 @@ export const useCheckNetworkStateOnMount = () => {
     if (!isInternetReachable) {
       Toaster.show({
         type: 'info',
-        text1: t('networkStateCheck.title'),
-        text2: t('networkStateCheck.message'),
+        text1: t('appConfig.networkStateCheck.title'),
+        text2: t('appConfig.networkStateCheck.message'),
       });
     }
   };

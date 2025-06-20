@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-nodejs-modules */
 
 const path = require('path');
 const z = require('zod');
 
 const packageJSON = require('./package.json');
 
-const APP_ENV = process.env.APP_ENV ?? 'development';
+const APP_ENV = process.env.APP_ENV ?? 'production';
 const envPath = path.resolve(__dirname, `.env.${APP_ENV}`);
 
 require('dotenv').config({
@@ -27,9 +24,6 @@ const withEnvSuffix = (name) => {
   return APP_ENV === 'production' ? name : `${name}.${APP_ENV}`;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-const envVariableSuffix = `_${APP_ENV.toUpperCase()}`;
-
 // Environment variables validation schemas
 
 const client = z.object({
@@ -41,11 +35,15 @@ const client = z.object({
 
   // ADD CLIENT ENV VARS HERE
   API_URL: z.string(),
+  STORYBOOK_ENABLED: z.string().optional(),
   ITUNES_ITEM_ID: z.string(),
-  FLAGSMITH_KEY: z.string(),
-  AMPLITUDE_API_KEY: z.string(),
+  POSTHOG_API_KEY: z.string(),
   SENTRY_DSN: z.string(),
   ONE_SIGNAL_APP_ID: z.string(),
+  REVENUE_CAT_APPLE_API_KEY: z.string(),
+  REVENUE_CAT_ANDROID_API_KEY: z.string(),
+  APPSFLYER_DEV_KEY: z.string(),
+  APPSFLYER_APP_ID: z.string(),
 });
 
 const buildTime = z.object({
@@ -63,18 +61,22 @@ const buildTime = z.object({
 
 const _clientEnv = {
   APP_ENV,
+  APP_NAME: process.env.APP_NAME,
   BUNDLE_ID: withEnvSuffix(BUNDLE_ID),
   PACKAGE: withEnvSuffix(PACKAGE),
   VERSION: packageJSON.version,
 
   // ADD ENV VARS HERE TOO
-  APP_NAME: process.env[`APP_NAME${envVariableSuffix}`],
-  API_URL: process.env[`API_URL${envVariableSuffix}`],
+  API_URL: process.env.API_URL,
+  STORYBOOK_ENABLED: process.env.STORYBOOK_ENABLED,
   ITUNES_ITEM_ID: process.env.ITUNES_ITEM_ID,
-  FLAGSMITH_KEY: process.env[`FLAGSMITH_KEY${envVariableSuffix}`],
-  AMPLITUDE_API_KEY: process.env[`AMPLITUDE_API_KEY${envVariableSuffix}`],
+  POSTHOG_API_KEY: process.env.POSTHOG_API_KEY,
   SENTRY_DSN: process.env.SENTRY_DSN,
-  ONE_SIGNAL_APP_ID: process.env[`ONE_SIGNAL_APP_ID${envVariableSuffix}`],
+  ONE_SIGNAL_APP_ID: process.env.ONE_SIGNAL_APP_ID,
+  REVENUE_CAT_APPLE_API_KEY: process.env.REVENUE_CAT_APPLE_API_KEY,
+  REVENUE_CAT_ANDROID_API_KEY: process.env.REVENUE_CAT_ANDROID_API_KEY,
+  APPSFLYER_DEV_KEY: process.env.APPSFLYER_DEV_KEY,
+  APPSFLYER_APP_ID: process.env.APPSFLYER_APP_ID,
 };
 
 const _buildTimeEnv = {

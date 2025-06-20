@@ -1,1 +1,1 @@
-export { Splashscreen } from './Splashscreen';
+export * from './Splashscreen';

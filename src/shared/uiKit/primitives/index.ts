@@ -1,2 +1,2 @@
-export { Box, AnimatedBox } from './Box';
-export { Text } from './Text';
+export * from './Box';
+export * from './Text';

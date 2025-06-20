@@ -1,6 +1,6 @@
-import { graphql } from '$gql/generated';
-import type { UserItemFragment } from '$gql/generated/hooks';
-import { Box, Text } from '$shared/uiKit/primitives';
+import { graphql } from '$infra/gql/generated';
+import type { UserItemFragment } from '$infra/gql/generated/graphql';
+import { Box, Text } from '$shared/uiKit';
 
 export const BlogPostUser = ({ user }: { user?: UserItemFragment | null }) => {
   return (

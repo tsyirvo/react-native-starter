@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/no-nodejs-modules */
 import fs from 'fs';
 import isImage from 'is-image';
@@ -15,7 +14,7 @@ const checkFolderContent = async (folderPath: string) => {
   const files = await readDirAsync(folderPath);
 
   for (const file of files) {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define, no-await-in-loop
+    // eslint-disable-next-line no-await-in-loop
     await generateImages(`${folderPath}/${file}`);
   }
 };
@@ -55,7 +54,7 @@ export const generateImages = async (path: string) => {
       default:
         break;
     }
-  } catch (error) {
+  } catch {
     print({ message: 'Could not find the file type', type: 'error' });
   }
 };

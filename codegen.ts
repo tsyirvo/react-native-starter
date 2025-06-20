@@ -5,7 +5,7 @@ const config: CodegenConfig = {
   schema: 'https://graphqlzero.almansi.me/api',
   documents: 'src/**/*.tsx',
   generates: {
-    // 'src/gql/generated/types.ts': {
+    // 'src/infra/gql/generated/types.ts': {
     //   plugins: ['typescript'],
     //   config: {
     //     enumsAsTypes: true,
@@ -18,10 +18,10 @@ const config: CodegenConfig = {
     //     },
     //   },
     // },
-    'src/gql/generated/': {
+    'src/infra/gql/generated/': {
       preset: 'client',
     },
-    'src/gql/generated/hooks.ts': {
+    'src/infra/gql/generated/hooks.ts': {
       plugins: [
         'typescript',
         'typescript-operations',
@@ -31,16 +31,17 @@ const config: CodegenConfig = {
         reactQueryVersion: 5,
         exposeQueryKeys: true,
         exposeFetcher: true,
-        fetcher: '../../core/api/request#request',
+        fetcher: '../../api/request#request',
       },
     },
-    'src/gql/graphql.schema.json': {
+    'src/infra/gql/graphql.schema.json': {
       plugins: ['introspection'],
     },
   },
   hooks: {
     afterAllFileWrite: [
-      "eslint ./src/gql --ext .ts,.json --fix && yarn prettier --write './src/gql/**/*.ts'",
+      'eslint ./src/infra/gql/generated --ext .ts,.json --fix',
+      "yarn prettier --write './src/infra/gql/**/*.ts'",
     ],
   },
 };

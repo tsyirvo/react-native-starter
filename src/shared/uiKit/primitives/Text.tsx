@@ -3,7 +3,7 @@
 import { createText } from '@shopify/restyle';
 import type React from 'react';
 
-import type { Colors, FontSizes, Theme } from '$core/theme';
+import type { Colors, FontSizes, Theme } from '$domain/theme';
 
 interface TextProps extends React.ComponentPropsWithRef<typeof PrimitiveText> {
   testID?: string;
@@ -15,7 +15,7 @@ const PrimitiveText = createText<Theme>();
 
 export const Text = ({
   variant = 'regular',
-  color = 'clear',
+  color = 'content_primary',
   testID,
   ...rest
 }: TextProps) => {

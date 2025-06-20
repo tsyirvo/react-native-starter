@@ -9,8 +9,7 @@
   - [Environments](#environments)
   - [Internationalization](#internationalization)
   - [Adding images](#adding-images)
-  - [Generate new components](#generate-new-components)
-  - [Using the custom Sandbox](#using-the-custom-sandbox)
+  - [Using Storybook](#using-storybook)
   - [Tests](#tests)
   - [Formatting and type checking](#formatting-and-type-checking)
   - [Github Actions](#github-actions)
@@ -19,17 +18,20 @@
 
 ## Explanations
 
-This starter is the one I used for my personal projects.
+This starter is the one I use for my personal projects and some of my client work.
 
-It's a basic start, but with most of the common dependencies and tools I use so I can start new projetcts more easily.
+It's a basic start, but with most of the common dependencies and tools I usually setup in new projects, so that I can bootstrap a new one more easily.
+
+The goal is not to provide a ton of UI elements, tools and so on, but rather the most frequent tools/libraries that I end up using. In most starter kit I found, there are too many things already builtin that end up unused so this one is a lighter version focused on providing the essentials, mostly on the tooling side rather than on UI elements.
 
 Check the [React Native docs](https://reactnative.dev/docs/environment-setup) on how to properly setup your dev environment. It uses Expo with a custom Development Build, so you also need to setup [Expo tooling](https://docs.expo.dev/).
 
-On the Developer Experience side, a test stack is setup (unit, functional and E2E), a CI on _Github Actions_, a custom _Storybook_, _TypeScript_ is also configured with _ESLint_ and _Prettier_. Commits are linted to automate the release workflows and the changelog generation.
+## What's included
+
+On the Developer Experience side, a test stack is setup (unit, functional and E2E), a CI on _Github Actions_, a _Storybook_, _TypeScript_ is also configured with _ESLint_ and _Prettier_. Commits are linted to automate the release workflows and the changelog generation.
 
 There are also some utilities like:
 
-- Creating new screens automatically, injecting the code where needed to expose it on the navigation stack, create types and have a test file
 - A script to compress images and to create the different files for each resolution
 - Converting `.svg` files into React components that can be used easily
 - A pre-commit hook that runs on staged files for code quality checks
@@ -40,10 +42,13 @@ On the features side, there are already some things to get started quickly with 
 - A GraphQL client with TanStack Query and CodeGen
 - Form validation with Keyboard handling
 - Notifications
-- App Store rating
+- App Store rating prompt
 - Feature Flags
 - Error monitoring
 - Analytics
+- In-app purchases
+- Attribution
+- Dates manipulation
 
 There are a few other things setup which you can discover on your own ;)
 
@@ -56,6 +61,8 @@ yarn
 ```
 
 ## Runing the project
+
+Since a few SDKs are provided, secrets are required to use the app. You can have a look at the provided `.env` files to see what's needed. I personnaly use [Doppler](https://www.doppler.com/) CLI to manage secrets. This tools injects secrets in the environment when running commands and is actually used in the scripts exposed inside the `package.json` so you need to have it installed.
 
 To launch the React Native packager:
 
@@ -77,7 +84,7 @@ The most useful libraries already configured are the following:
 
 [React Native](https://facebook.github.io/react-native/) with [Expo](https://docs.expo.dev/)
 
-[React Navigation](https://reactnavigation.org/) for the routing
+[Expo Router](https://docs.expo.dev/router/introduction/) for the routing
 
 [Sentry](https://sentry.io/welcome/) for crash reporting
 
@@ -89,11 +96,13 @@ The most useful libraries already configured are the following:
 
 [One Signal](https://onesignal.com/) for notifications
 
-[Flagsmith](https://www.flagsmith.com/) for feature flags
+[PostHog](https://www.flagsmith.com/) for analytics and feature flags
 
 [Zustand](https://zustand-demo.pmnd.rs/) for a global store
 
-[Amplitude](https://amplitude.com/) for analytics
+[RevenueCat](https://www.revenuecat.com/) for in-app purchases
+
+[AppsFlyer](https://www.appsflyer.com/) for attribution
 
 A few other interesting things are configured, don't hesitate to look around.
 
@@ -107,9 +116,10 @@ The libraries that needs configurations are the ones exposed inside the `.env` f
 
 - Expo
 - Sentry
-- Flagsmith
-- Amplitude
+- PostHog
 - One Signal
+- RevenueCat
+- AppsFlyer
 
 ## Environments
 
@@ -117,11 +127,13 @@ The starter is configured with three distinct environments by default, Developme
 
 This is easier to work with on a real app, and allows you to have different enviroment variables easily, among other things.
 
-Each environement variables are exposed through the `.env.[development|staging|production]` files at the root. I personnaly use [Doppler](https://www.doppler.com/) to manage secrets and inject them in the project.
+Each environement variables are exposed through the `.env.[development|staging|production]` files at the root. As explained above, I personnaly use [Doppler](https://www.doppler.com/) to manage secrets and inject them when running commands.
 
 ## Internationalization
 
-All the translations are managed on separate `.json` files located in the `src/core/i18n/resources/` folder.
+All the translations are managed on separate files located in the `src/infra/i18n/resources/` folder.
+
+The default locale is English and other locales (French being already provided) are linted against the English file. Meaning that all keys in the English translation files need to be defined in the other files. This prevents having an app with missing translations on some locales.
 
 Refer to the documentation of [i18next](https://www.i18next.com/) for explanations on how to use it.
 
@@ -133,21 +145,17 @@ To simplify adding new images to the project and optimizing them, you can run th
 yarn image:add [path/to/the/image/to/add|path/to/the/folder]
 ```
 
-## Generate new screens
+This CLI tool compresses the images and creates different variants (@3x, @2x and the regular size) that are loaded by React Native depending on the device resolution.
 
-You can automaticaly generated new screens with all the necessary files, tests and injection with this command:
+## Using Storybook
+
+A _Storybook_ is configured with some basic stories.
+
+To access it, you simply have to run the app with the following command:
 
 ```
-yarn generate:screens
+yarn start:storybook
 ```
-
-A CLI prompt will ask you all the infos.
-
-## Using the custom Sandbox
-
-A custom _Sandbox_ is configured with some basic examples and navigation. Once [StoryBook](https://storybook.js.org/) for React Native will support V8, I'll migrate to using that.
-
-To access it, you can access the dev menu on the device and select _Toggle Sandbox_ to have it shown in place of the app.
 
 ## Tests
 
@@ -170,9 +178,9 @@ yarn test:e2e
 The project is using a custom [ESlint](https://eslint.org/) config ([see here](https://github.com/tsyirvo/eslint-config-tsyirvo-react-native)), [Prettier](https://prettier.io/) and [TypeScript](https://www.typescriptlang.org/) for code formating and type checking, you can run the checks with those commands:
 
 ```
+yarn lint:ts
 yarn lint
 yarn prettify
-yarn tsc
 ```
 
 There is a pre-commit git hook that run some of those commands to have a consistent formatting and type checking.

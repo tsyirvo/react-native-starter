@@ -1,22 +1,28 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { graphql } from '$gql/generated';
-import { useGetPostQuery } from '$gql/generated/hooks';
-import { Loader } from '$shared/uiKit/Loader';
-import { Text } from '$shared/uiKit/primitives';
+import { graphql } from '$infra/gql/generated';
+import { useGetPostQuery } from '$infra/gql/generated/hooks';
+import { Loader, Text } from '$shared/uiKit';
 
-import { BlogPostUser } from './components/BlogPostUser';
+import { BlogPostUser } from './components';
 
-export const BlogPost = () => {
-  const { t } = useTranslation('miscScreens');
-  const { data, isLoading } = useGetPostQuery();
+interface BlogPostProps {
+  id: string;
+}
+
+export const BlogPost = ({ id }: BlogPostProps) => {
+  const { t } = useTranslation();
+
+  const { data, isLoading } = useGetPostQuery({
+    id,
+  });
 
   if (isLoading) return <Loader />;
 
   return (
     <>
-      <Text variant="large">{t('blogPost.title')}</Text>
+      <Text variant="large">{t('blogPostScreen.description')}</Text>
 
       <Text pt="spacing_8">{data?.post?.title}</Text>
 
@@ -26,8 +32,8 @@ export const BlogPost = () => {
 };
 
 BlogPost.query = graphql(`
-  query getPost {
-    post(id: 1) {
+  query getPost($id: ID!) {
+    post(id: $id) {
       id
       title
       user {

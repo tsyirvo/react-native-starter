@@ -1,13 +1,11 @@
-import { render } from '$core/testing';
+import { render, screen } from '$domain/testing';
 
 import { Box } from '../Box';
 
 describe('Box component', () => {
   it('should render correctly', () => {
-    // Given
-    const { getByTestId } = render(<Box testID="box-id" />);
+    render(<Box testID="boxId" />);
 
-    // Then
-    expect(getByTestId('box-id')).toBeDefined();
+    expect(screen.getByTestId('boxId')).toBeDefined();
   });
 });

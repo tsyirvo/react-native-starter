@@ -1,10 +1,9 @@
 {
-  "i18n-ally.localesPaths": ["src/core/i18n/resources"],
+  "i18n-ally.localesPaths": ["src/infra/i18n/resources"],
   "i18n-ally.enabledFrameworks": ["react-i18next"],
-  "i18n-ally.namespace": true,
-  "i18n-ally.sortKeys": true,
-  "i18n-ally.defaultNamespace": "common",
-  "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
+  "i18n-ally.defaultNamespace": "messages",
+  "i18n-ally.enabledParsers": ["ts", "json"],
+  "i18n-ally.pathMatcher": "{locale}/messages.ts",
   "i18n-ally.keystyle": "nested",
   "i18n-ally.sourceLanguage": "en",
   "search.exclude": {
@@ -21,5 +20,6 @@
   "doppler.autocomplete.enable": true,
   "doppler.hover.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "search-node-modules.path": "./node_modules"
 }
