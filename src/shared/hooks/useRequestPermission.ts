@@ -17,7 +17,7 @@ export const useRequestPermission = () => {
       Logger.dev('Permission is not available');
       Toaster.show({
         type: 'error',
-        text1: t('settings.permissions.notAvailable'),
+        text1: t('appConfig.permissions.notAvailable'),
       });
 
       return;
@@ -35,7 +35,7 @@ export const useRequestPermission = () => {
       Logger.dev('Permission refused');
       Toaster.show({
         type: 'error',
-        text1: t('settings.permissions.notGranted'),
+        text1: t('appConfig.permissions.notGranted'),
       });
 
       return;
@@ -50,7 +50,7 @@ export const useRequestPermission = () => {
     Logger.dev('Notifications not granted');
     Toaster.show({
       type: 'error',
-      text1: t('settings.permissions.notGranted'),
+      text1: t('appConfig.permissions.notGranted'),
     });
   };
 
@@ -65,7 +65,7 @@ export const useRequestPermission = () => {
       Logger.dev('Notifications are not available');
       Toaster.show({
         type: 'error',
-        text1: t('settings.permissions.notAvailable'),
+        text1: t('appConfig.permissions.notAvailable'),
       });
 
       return;
@@ -83,7 +83,7 @@ export const useRequestPermission = () => {
       Logger.dev('Notifications refused');
       Toaster.show({
         type: 'error',
-        text1: t('settings.permissions.notGranted'),
+        text1: t('appConfig.permissions.notGranted'),
       });
 
       return;
@@ -98,7 +98,7 @@ export const useRequestPermission = () => {
     Logger.dev('Notifications not granted');
     Toaster.show({
       type: 'error',
-      text1: t('settings.permissions.notGranted'),
+      text1: t('appConfig.permissions.notGranted'),
     });
   };
 

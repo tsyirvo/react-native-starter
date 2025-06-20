@@ -35,11 +35,11 @@ const FeaturesScreen = () => {
               borderBottomWidth={1}
               pb="spacing_16"
             >
-              <Text variant="large">{t('otherScreen.graphql.title')}</Text>
+              <Text variant="large">{t('featuresScreen.blogPost.title')}</Text>
 
               <Box alignItems="flex-start" mt="spacing_8">
                 <Button.Text onPress={goToBlogPost}>
-                  {t('otherScreen.graphql.cta')}
+                  {t('featuresScreen.blogPost.cta')}
                 </Button.Text>
               </Box>
             </Box>

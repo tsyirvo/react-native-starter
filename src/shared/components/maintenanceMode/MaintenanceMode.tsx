@@ -4,7 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { FeatureFlagSplitter } from '$infra/featureFlags';
 import { Box, Text } from '$shared/uiKit';
 
-export const MaintenanceMode = () => {
+interface MaintenanceModeProps {
+  testID?: string;
+}
+
+export const MaintenanceMode = ({
+  testID = 'MaintenanceMode',
+}: MaintenanceModeProps) => {
   const { t } = useTranslation();
 
   return (
@@ -15,16 +21,14 @@ export const MaintenanceMode = () => {
         height="100%"
         justifyContent="center"
         px="spacing_32"
-        testID="maintenanceMode-screen"
+        testID={testID}
         width="100%"
       >
         <Text pb="spacing_8" variant="large">
-          {t('miscScreens.maintenanceMode.title')}
+          {t('maintenanceMode.title')}
         </Text>
 
-        <Text textAlign="center">
-          {t('miscScreens.maintenanceMode.description')}
-        </Text>
+        <Text textAlign="center">{t('maintenanceMode.description')}</Text>
       </Box>
     </FeatureFlagSplitter>
   );

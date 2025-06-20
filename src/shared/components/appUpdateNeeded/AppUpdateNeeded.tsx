@@ -66,15 +66,15 @@ export const AppUpdateNeeded = () => {
       width="100%"
     >
       <Text pb="spacing_8" variant="large">
-        {t('miscScreens.appUpdate.title')}
+        {t('appUpdateNedeed.title')}
       </Text>
 
       <Text mb="spacing_16" textAlign="center">
-        {t('miscScreens.appUpdate.description')}
+        {t('appUpdateNedeed.description')}
       </Text>
 
       <Button.Text testID="appUpdateNeeded-cta" onPress={onPress}>
-        {t('settings.updateAvailable.banner.updateCta')}
+        {t('appUpdateNedeed.cta')}
       </Button.Text>
     </Box>
   );
