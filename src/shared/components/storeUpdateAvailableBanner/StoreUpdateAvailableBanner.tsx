@@ -36,10 +36,10 @@ export const StoreUpdateAvailableBanner = () => {
       gap="spacing_8"
       p="spacing_16"
     >
-      <Text>{t('miscScreens.newStoreVersion.title')}</Text>
+      <Text>{t('newStoreVersionAvailable.title')}</Text>
 
       <Button.Text onPress={onPress}>
-        {t('miscScreens.newStoreVersion.cta')}
+        {t('newStoreVersionAvailable.cta')}
       </Button.Text>
     </Box>
   );

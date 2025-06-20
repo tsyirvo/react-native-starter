@@ -13,7 +13,7 @@ describe('MaintenanceMode component', () => {
   it('should render nothing by default', () => {
     render(<MaintenanceMode />);
 
-    expect(screen.queryByTestId('maintenanceMode-screen')).toBeNull();
+    expect(screen.queryByTestId('MaintenanceMode')).toBeNull();
   });
 
   it('should render the maintenance mode when the flag is true', () => {
@@ -21,6 +21,6 @@ describe('MaintenanceMode component', () => {
 
     render(<MaintenanceMode />);
 
-    expect(screen.getByTestId('maintenanceMode-screen')).toBeDefined();
+    expect(screen.getByTestId('MaintenanceMode')).toBeDefined();
   });
 });

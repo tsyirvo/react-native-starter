@@ -15,16 +15,39 @@ export const messages = {
         'Please check your internet connection. The app might not work properly without it.',
       title: 'No internet connection',
     },
+    permissions: {
+      notAvailable: 'This permission is not available on this device',
+      notGranted: 'You rejected this permission request',
+    },
+    changeLocale: {
+      failure: 'The language could not be changed',
+      success: 'The language has been changed',
+    },
+  },
+  appUpdateNedeed: {
+    title: 'Your app is outdated',
+    description:
+      'Please go update the application to access the latest features',
+    cta: 'Update now',
+  },
+  newStoreVersionAvailable: {
+    title: 'An update is available on the stores',
+    cta: 'Go update now',
+  },
+  errorBoundary: {
+    cta: 'Relaunch the app',
+    description:
+      'An unknown error occured. If the error persist, contact an administrator.',
+    title: 'Error',
+  },
+  maintenanceMode: {
+    description: 'It will be available online as soon as possible',
+    title: 'The app is in maintenance',
   },
   homeScreen: {
     formatting: {
       content: 'The code is checked with ESLint, Prettier and TypeScript',
       title: 'Formatting & type checking',
-    },
-    navigation: {
-      content: 'Press to navigate',
-      screenTitle: 'Home',
-      title: 'Navigate to another page',
     },
     storybook: {
       content:
@@ -37,60 +60,6 @@ export const messages = {
     },
     updateCheck: {
       isEmbeddedLaunch: 'The app is running from an OTA update',
-    },
-  },
-  miscScreens: {
-    appUpdate: {
-      description:
-        'Please go update the application to access the latest features',
-      title: 'Your app is outdated',
-    },
-    newStoreVersion: {
-      title: 'An update is available on the stores',
-      cta: 'Go update now',
-    },
-    errorBoundary: {
-      cta: 'Relaunch the app',
-      description:
-        'An unknown error occured. If the error persist, contact an administrator.',
-      title: 'Error',
-    },
-    maintenanceMode: {
-      description: 'It will be available online as soon as possible',
-      title: 'The app is in maintenance',
-    },
-    notifications: {
-      cta: 'Request',
-      title: 'Request Notification permission',
-    },
-  },
-  otherScreen: {
-    graphql: {
-      cta: 'Navigate',
-      title: 'API call example',
-    },
-  },
-  settings: {
-    changeLocale: {
-      failure: 'The language could not be changed',
-      success: 'The language has been changed',
-    },
-    permissions: {
-      notAvailable: 'This permission is not available on this device',
-      notGranted: 'You rejected this permission request',
-    },
-    updateAvailable: {
-      banner: {
-        compareVersions:
-          'Version {{storeVersion}} of the app is now available. You are currently on version {{currentVersion}}.',
-        defaultTitle: 'A new version of the app is available.',
-        updateCta: 'Update now',
-      },
-      nativePrompt: {
-        message: 'A new version is available. Do you want to update now?',
-        title: 'Update available',
-        updateCta: 'Update',
-      },
     },
   },
   forms: {
@@ -127,6 +96,16 @@ export const messages = {
   profileScreen: {
     title: 'Profile',
     logout: 'Logout',
+  },
+  featuresScreen: {
+    notificationsPermission: {
+      title: 'Request Notification permission',
+      cta: 'Request',
+    },
+    blogPost: {
+      title: "Example d'appel API",
+      cta: 'Naviguer',
+    },
   },
 };
 

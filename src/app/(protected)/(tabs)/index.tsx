@@ -11,9 +11,7 @@ const HomeTabScreen = () => {
 
   return (
     <>
-      <Stack.Screen
-        options={{ title: t('homeScreen.navigation.screenTitle') }}
-      />
+      <Stack.Screen options={{ title: t('tabs.home') }} />
 
       <Screen>
         <ScrollView>

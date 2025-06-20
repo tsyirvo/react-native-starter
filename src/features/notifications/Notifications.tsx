@@ -24,11 +24,13 @@ export const Notifications = () => {
 
   return (
     <>
-      <Text variant="large">{t('miscScreens.notifications.title')}</Text>
+      <Text variant="large">
+        {t('featuresScreen.notificationsPermission.title')}
+      </Text>
 
       <Box alignItems="flex-start" mt="spacing_8">
         <Button.Text onPress={onPress}>
-          {t('miscScreens.notifications.cta')}
+          {t('featuresScreen.notificationsPermission.cta')}
         </Button.Text>
       </Box>
     </>

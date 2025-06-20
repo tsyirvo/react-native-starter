@@ -17,16 +17,39 @@ export const messages: MessagesTypes = {
         "Vérifiez la connexion internet. L'app peut ne pas fonctionner correctement sans connexion internet.",
       title: 'Pas de connexion internet',
     },
+    permissions: {
+      notAvailable: "Cette permission n'est pas disponible sur cet appareil",
+      notGranted: 'Vous avez refusé cette demande de permission',
+    },
+    changeLocale: {
+      failure: "La langue n'a pas pu être changée",
+      success: 'La langue a bien été changée',
+    },
+  },
+  appUpdateNedeed: {
+    title: 'Votre app est trop vieille',
+    description:
+      'Merci de la mettre à jour pour utiliser les dernières fonctionnalités',
+    cta: 'Mettre à jour',
+  },
+  newStoreVersionAvailable: {
+    title: 'Une mise à jour est disponible sur les stores',
+    cta: 'Mettre à jour maintenant',
+  },
+  errorBoundary: {
+    cta: "Relancer l'app",
+    description:
+      "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
+    title: 'Erreur',
+  },
+  maintenanceMode: {
+    description: 'Elle sera de nouveau fonctionnelle au plus vite',
+    title: "L'app est en maintenance",
   },
   homeScreen: {
     formatting: {
       content: 'Le code est vérifié avec ESLint, Prettier and TypeScript',
       title: 'Formatage & type checking',
-    },
-    navigation: {
-      content: 'Touchez pour naviguer',
-      screenTitle: 'Accueil',
-      title: 'Naviguer vers une autre page',
     },
     storybook: {
       content:
@@ -39,61 +62,6 @@ export const messages: MessagesTypes = {
     },
     updateCheck: {
       isEmbeddedLaunch: "L'app tourne depuis une MAJ OTA",
-    },
-  },
-  miscScreens: {
-    appUpdate: {
-      description:
-        'Merci de la mettre à jour pour utiliser les dernières fonctionnalités',
-      title: 'Votre app est trop vieille',
-    },
-    newStoreVersion: {
-      title: 'Une mise à jour est disponible sur les stores',
-      cta: 'Mettre à jour maintenant',
-    },
-    errorBoundary: {
-      cta: "Relancer l'app",
-      description:
-        "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
-      title: 'Erreur',
-    },
-    maintenanceMode: {
-      description: 'Elle sera de nouveau fonctionnelle au plus vite',
-      title: "L'app est en maintenance",
-    },
-    notifications: {
-      cta: 'Demander',
-      title: 'Demander les permissions de Notification',
-    },
-  },
-  otherScreen: {
-    graphql: {
-      cta: 'Naviguer',
-      title: "Example d'appel API",
-    },
-  },
-  settings: {
-    changeLocale: {
-      failure: "La langue n'a pas pu être changée",
-      success: 'La langue a bien été changée',
-    },
-    permissions: {
-      notAvailable: "Cette permission n'est pas disponible sur cet appareil",
-      notGranted: 'Vous avez refusé cette demande de permission',
-    },
-    updateAvailable: {
-      banner: {
-        compareVersions:
-          "La version {{storeVersion}} de l'app est maintenant disponible. Vous êtes actuellement sur la version {{currentVersion}}.",
-        defaultTitle: "Une nouvelle version de l'app est disponible.",
-        updateCta: 'Mettre à jour',
-      },
-      nativePrompt: {
-        message:
-          'Une nouvelle version est disponible. Voulez-vous mettre à jour maintenant?',
-        title: 'Mise à jour disponible',
-        updateCta: 'Mettre à jour',
-      },
     },
   },
   forms: {
@@ -130,5 +98,15 @@ export const messages: MessagesTypes = {
   profileScreen: {
     title: 'Profil',
     logout: 'Se déconnecter',
+  },
+  featuresScreen: {
+    notificationsPermission: {
+      title: 'Demander les permissions de Notification',
+      cta: 'Demander',
+    },
+    blogPost: {
+      title: "Example d'appel API",
+      cta: 'Naviguer',
+    },
   },
 };

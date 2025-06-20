@@ -16,7 +16,7 @@ export const changeLanguage = async (language: SupportedLanguages) => {
   await i18next.changeLanguage(language, (error, t) => {
     if (error) {
       Toaster.show({
-        text1: t('settings.changeLocale.failure'),
+        text1: t('appConfig.changeLocale.failure'),
       });
 
       return;
@@ -28,7 +28,7 @@ export const changeLanguage = async (language: SupportedLanguages) => {
     initDateLocale(language);
 
     Toaster.show({
-      text1: t('settings.changeLocale.success'),
+      text1: t('appConfig.changeLocale.success'),
     });
   });
 };
