@@ -8,9 +8,14 @@ import { Icon } from '$shared/icons';
 interface TabBarIconProps {
   iconName: IconName;
   isFocused: boolean;
+  testID?: string;
 }
 
-export const TabBarIcon = ({ iconName, isFocused }: TabBarIconProps) => {
+export const TabBarIcon = ({
+  iconName,
+  isFocused,
+  testID = 'TabBarIcon',
+}: TabBarIconProps) => {
   const { colors } = useAppTheme();
 
   return (
@@ -19,6 +24,7 @@ export const TabBarIcon = ({ iconName, isFocused }: TabBarIconProps) => {
       width={DEFAULT_ICON_SIZE}
       height={DEFAULT_ICON_SIZE}
       color={isFocused ? colors.core_primary : colors.content_secondary}
+      testID={testID}
     />
   );
 };

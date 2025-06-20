@@ -5,13 +5,13 @@ interface TabBarIconType {
 }
 
 export const renderHomeIcon = ({ focused }: TabBarIconType) => (
-  <TabBarIcon iconName="Home" isFocused={focused} />
+  <TabBarIcon testID="HomeIcon" iconName="Home" isFocused={focused} />
 );
 
 export const renderFeaturesIcon = ({ focused }: TabBarIconType) => (
-  <TabBarIcon iconName="Apps" isFocused={focused} />
+  <TabBarIcon testID="FeaturesIcon" iconName="Apps" isFocused={focused} />
 );
 
 export const renderProfileIcon = ({ focused }: TabBarIconType) => (
-  <TabBarIcon iconName="User" isFocused={focused} />
+  <TabBarIcon testID="ProfileIcon" iconName="User" isFocused={focused} />
 );

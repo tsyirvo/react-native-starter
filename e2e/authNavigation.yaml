@@ -1,0 +1,13 @@
+appId: com.tsyirvo.rnstarter.development
+onFlowStart:
+  - runFlow: authenticateUser.yaml
+---
+- assertVisible: 'React Native Template'
+- tapOn:
+    id: 'ProfileIcon'
+- assertVisible:
+    id: 'ProfileScreen'
+- tapOn:
+    id: 'ProfileLogoutButton'
+- assertVisible:
+    id: 'LoginForm'

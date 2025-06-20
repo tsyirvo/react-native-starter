@@ -22,13 +22,13 @@ const ProfileScreen = () => {
         }}
       />
 
-      <Screen edges={['top']} px="spacing_16">
+      <Screen edges={['top']} px="spacing_16" testID="ProfileScreen">
         <Box pt="spacing_8" gap="spacing_16">
           <Text variant="large" textAlign="center">
             {t('profileScreen.title')}
           </Text>
 
-          <Button.Text onPress={onLogout}>
+          <Button.Text testID="ProfileLogoutButton" onPress={onLogout}>
             {t('profileScreen.logout')}
           </Button.Text>
         </Box>

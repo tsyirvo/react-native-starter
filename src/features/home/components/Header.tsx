@@ -16,7 +16,7 @@ export const Header = () => {
         mb="spacing_24"
       >
         <Text color="core_primary" variant="large">
-          React Native Starter
+          React Native Template
         </Text>
       </Box>
     </ImageBackground>

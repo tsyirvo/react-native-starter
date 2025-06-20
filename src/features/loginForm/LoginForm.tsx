@@ -54,7 +54,7 @@ export const LoginForm = ({
   };
 
   return (
-    <Box>
+    <Box testID={testID}>
       <Box py="spacing_24" gap="spacing_16">
         <Controller
           control={control}
