@@ -9,7 +9,7 @@ import type { StoreState } from './types/store.types';
 import { generatePersistOptions } from './utils';
 
 const persistOptions: PersistOptions<StoreState> = generatePersistOptions({
-  doNotPersist: ['isBootstrappingAuthentication', 'isUserLoggedIn'],
+  doNotPersist: ['isBootstrappingApplication', 'isUserLoggedIn'],
 });
 
 export const useAppStore = create<

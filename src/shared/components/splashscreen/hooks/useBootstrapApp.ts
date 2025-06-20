@@ -22,11 +22,11 @@ SplashScreen.setOptions({
 export const useBootstrapApp = () => {
   const [isBootstrappingInfra, setIsBootstrappingInfra] = useState(true);
 
-  const isBootstrappingAuthentication = useAppStore(
-    (state) => state.isBootstrappingAuthentication,
+  const isBootstrappingApplication = useAppStore(
+    (state) => state.isBootstrappingApplication,
   );
 
-  const isAppReady = !isBootstrappingInfra && !isBootstrappingAuthentication;
+  const isAppReady = !isBootstrappingInfra && !isBootstrappingApplication;
 
   useGetSessionState();
 

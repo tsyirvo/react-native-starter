@@ -2,14 +2,12 @@ type AppTheme = 'dark' | 'light';
 
 export interface AppState {
   appTheme: AppTheme;
-  isBootstrappingAuthentication: boolean;
+  isBootstrappingApplication: boolean;
 }
 
 interface AppActions {
   setAppTheme: (appTheme: AppTheme) => void;
-  setIsBootstrappingAuthentication: (
-    isBootstrappingAuthentication: boolean,
-  ) => void;
+  setIsBootstrappingApplication: (isBootstrappingApplication: boolean) => void;
 }
 
 export type AppSlice = AppState & AppActions;

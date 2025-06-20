@@ -7,8 +7,8 @@ import { useAppStore } from '$infra/store';
 export const useGetSessionState = () => {
   const [isSessionReady, setIsSessionReady] = useState(false);
 
-  const setIsBootstrappingAuthentication = useAppStore(
-    (state) => state.setIsBootstrappingAuthentication,
+  const setIsBootstrappingApplication = useAppStore(
+    (state) => state.setIsBootstrappingApplication,
   );
 
   const { isFetched, isError, error, failureCount } = useGetUserSession();
@@ -30,7 +30,7 @@ export const useGetSessionState = () => {
     if (isFetched) {
       // TODO(prod): Implement logic to set isUserLoggedIn
 
-      setIsBootstrappingAuthentication(false);
+      setIsBootstrappingApplication(false);
       setIsSessionReady(true);
     }
   }, [
@@ -39,6 +39,6 @@ export const useGetSessionState = () => {
     isError,
     error,
     failureCount,
-    setIsBootstrappingAuthentication,
+    setIsBootstrappingApplication,
   ]);
 };
