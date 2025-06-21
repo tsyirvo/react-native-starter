@@ -1,6 +1,7 @@
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 
+import { config } from '$domain/constants';
 import { bootstrapApp } from '$infra/bootstrap';
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
@@ -32,11 +33,16 @@ export const useBootstrapApp = () => {
 
   const onLayoutRootView = useCallback(() => {
     (async () => {
+      if (config.isStorybookEnabled) {
+        setIsBootstrappingInfra(false);
+
+        return;
+      }
+
       await bootstrapApp();
       await checkForOtaUpdate();
 
       // TODO(prod): add necessary bootstrap logic here
-      setIsBootstrappingInfra(false);
     })().catch((error: unknown) => {
       Logger.error({
         message: 'Failed to bootstrap app SDKs or check for OTA update',

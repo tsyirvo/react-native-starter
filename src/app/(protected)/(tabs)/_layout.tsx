@@ -1,6 +1,7 @@
 import { Redirect, Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
+import { config } from '$domain/constants';
 import { useAppTheme } from '$domain/theme';
 import { useAppStore } from '$infra/store';
 import {
@@ -64,4 +65,15 @@ const globalScreenOptions = {
   headerShown: false,
 };
 
-export default TabLayout;
+// eslint-disable-next-line import/no-mutable-exports
+let EntryPoint = TabLayout;
+
+if (config.isStorybookEnabled) {
+  // eslint-disable-next-line
+  const StorybookUI = require('../../../../.rnstorybook').default;
+
+  // eslint-disable-next-line
+  EntryPoint = () => <StorybookUI />;
+}
+
+export default EntryPoint;

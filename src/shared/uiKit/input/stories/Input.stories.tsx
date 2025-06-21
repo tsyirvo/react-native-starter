@@ -3,11 +3,11 @@ import type { ComponentProps } from 'react';
 
 import { Box } from '$shared/uiKit';
 
-import { Input } from '../Input';
+import { Input as InputComponent } from '../Input';
 
 const meta = {
   title: 'UIKit/Input',
-  component: Input,
+  component: InputComponent,
   argTypes: {
     label: { control: 'text' },
     error: { control: 'text' },
@@ -21,16 +21,18 @@ const meta = {
       </Box>
     ),
   ],
-} satisfies Meta<typeof Input>;
+} satisfies Meta<typeof InputComponent>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const sharedArgs: ComponentProps<typeof Input> = {
+const sharedArgs: ComponentProps<typeof InputComponent> = {
   label: 'Some label',
   placeholder: 'Type here',
 };
+
+export const Input: Story = {};
 
 export const WithLabel: Story = {
   args: sharedArgs,

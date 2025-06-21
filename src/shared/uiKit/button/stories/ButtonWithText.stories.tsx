@@ -1,11 +1,12 @@
-import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import { ComponentProps } from 'react';
+import { action } from 'storybook/actions';
 
-import { ButtonWithText } from '../ButtonWithText';
+import { ButtonWithText as ButtonWithTextComponent } from '../ButtonWithText';
 
 const meta = {
-  title: 'UIKit/Button/WithText',
-  component: ButtonWithText,
+  title: 'UIKit/Button/Regular',
+  component: ButtonWithTextComponent,
   argTypes: {
     variant: {
       control: 'select',
@@ -26,16 +27,39 @@ const meta = {
     variant: 'primary',
     isDisabled: false,
     isLoading: false,
-    onPress: action('onPress called'),
   },
-} satisfies Meta<typeof ButtonWithText>;
+} satisfies Meta<typeof ButtonWithTextComponent>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const WithText: Story = {
+const sharedArgs: ComponentProps<typeof ButtonWithTextComponent> = {
+  children: 'Some CTA',
+  onPress: action('onPress called'),
+};
+
+export const BasicButton: Story = {
+  args: sharedArgs,
+};
+
+export const ButtonWithVariant: Story = {
   args: {
-    children: 'Some CTA',
+    ...sharedArgs,
+    variant: 'outline',
+  },
+};
+
+export const ButtonLoading: Story = {
+  args: {
+    ...sharedArgs,
+    isLoading: true,
+  },
+};
+
+export const ButtonDisabled: Story = {
+  args: {
+    ...sharedArgs,
+    isDisabled: true,
   },
 };

@@ -11,8 +11,4 @@ const config = getSentryExpoConfig(__dirname);
 module.exports = withStorybook(config, {
   enabled: process.env.STORYBOOK_ENABLED === 'true',
   onDisabledRemoveStorybook: true,
-  websockets: {
-    port: 7007,
-    host: 'localhost',
-  },
 });

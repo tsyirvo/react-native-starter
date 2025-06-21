@@ -1,6 +1,11 @@
+import { composeStories } from '@storybook/react';
+
 import { fireEvent, render, screen } from '$domain/testing';
 
-import { Input } from '../Input';
+import * as Inputs from '../stories/Input.stories';
+
+const { Input, WithError, WithHelperText, WithLabel, WithOrnamentIcon } =
+  composeStories(Inputs);
 
 describe('Input component', () => {
   const onChangeText = jest.fn();
@@ -31,7 +36,7 @@ describe('Input component', () => {
   });
 
   it('should show error when defined', () => {
-    render(<Input {...props} error="Some error" />);
+    render(<WithError {...props} />);
 
     expect(screen.getByTestId('InputErrorText')).toBeDefined();
   });
@@ -43,7 +48,7 @@ describe('Input component', () => {
   });
 
   it('should show helper text when defined', () => {
-    render(<Input {...props} helperText="Some helper text" />);
+    render(<WithHelperText {...props} />);
 
     expect(screen.getByTestId('InputHelperText')).toBeDefined();
   });
@@ -55,7 +60,7 @@ describe('Input component', () => {
   });
 
   it('should show a label when defined', () => {
-    render(<Input {...props} label="Some label" />);
+    render(<WithLabel {...props} />);
 
     expect(screen.getByTestId('InputLabel')).toBeDefined();
   });
@@ -67,7 +72,7 @@ describe('Input component', () => {
   });
 
   it('should show an icon when defined', () => {
-    render(<Input {...props} leftOrnamentIcon="Envelope" />);
+    render(<WithOrnamentIcon {...props} />);
 
     expect(screen.getByTestId('Icon')).toBeDefined();
   });

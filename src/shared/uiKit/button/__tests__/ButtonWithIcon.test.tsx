@@ -1,7 +1,12 @@
+import { composeStories } from '@storybook/react';
+
 import { fireEvent, render, screen } from '$domain/testing';
 import type { IconName } from '$shared/icons';
 
-import { ButtonWithIcon } from '../ButtonWithIcon';
+import * as ButtonsWithIcon from '../stories/ButtonWithIcon.stories';
+
+const { BasicButton, ButtonWithVariant, ButtonLoading, ButtonDisabled } =
+  composeStories(ButtonsWithIcon);
 
 describe('Button component', () => {
   const label = 'Some text';
@@ -21,52 +26,36 @@ describe('Button component', () => {
   });
 
   it('should render correctly with a text and icon', () => {
-    render(<ButtonWithIcon {...props}>{label}</ButtonWithIcon>);
+    render(<BasicButton {...props}>{label}</BasicButton>);
 
     expect(screen.getByText(label)).toBeDefined();
     expect(screen.getByTestId('InnerIcon')).toBeDefined();
   });
 
   it('should render correctly with a custom variant', () => {
-    render(
-      <ButtonWithIcon variant="outline" {...props}>
-        {label}
-      </ButtonWithIcon>,
-    );
+    render(<ButtonWithVariant {...props}>{label}</ButtonWithVariant>);
 
     expect(screen.getByText(label)).toBeDefined();
     expect(screen.getByTestId('InnerIcon')).toBeDefined();
   });
 
   it('should render correctly when loading', () => {
-    render(
-      <ButtonWithIcon isLoading {...props}>
-        {label}
-      </ButtonWithIcon>,
-    );
+    render(<ButtonLoading {...props}>{label}</ButtonLoading>);
 
     expect(screen.getByTestId('InnerTextLoader')).toBeDefined();
     expect(screen.queryByTestId('InnerIcon')).toBeNull();
   });
 
   it('should not call the onPress method when loading', () => {
-    render(
-      <ButtonWithIcon testID="button-id" isLoading {...props}>
-        {label}
-      </ButtonWithIcon>,
-    );
+    render(<ButtonLoading {...props}>{label}</ButtonLoading>);
 
-    fireEvent.press(screen.getByTestId('button-id'));
+    fireEvent.press(screen.getByTestId('ButtonWithIcon'));
 
     expect(onPress).not.toHaveBeenCalled();
   });
 
   it('should not call the onPress method when disabled', () => {
-    render(
-      <ButtonWithIcon isDisabled {...props}>
-        {label}
-      </ButtonWithIcon>,
-    );
+    render(<ButtonDisabled {...props}>{label}</ButtonDisabled>);
 
     fireEvent.press(screen.getByText(label));
 
@@ -74,7 +63,7 @@ describe('Button component', () => {
   });
 
   it('should call the onPress method', () => {
-    render(<ButtonWithIcon {...props}>{label}</ButtonWithIcon>);
+    render(<BasicButton {...props}>{label}</BasicButton>);
 
     fireEvent.press(screen.getByText(label));
 
