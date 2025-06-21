@@ -1,6 +1,7 @@
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 
+import { config } from '$domain/constants';
 import { bootstrapApp } from '$infra/bootstrap';
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
@@ -32,6 +33,12 @@ export const useBootstrapApp = () => {
 
   const onLayoutRootView = useCallback(() => {
     (async () => {
+      if (config.isStorybookEnabled) {
+        setIsBootstrappingInfra(false);
+
+        return;
+      }
+
       await bootstrapApp();
       await checkForOtaUpdate();
 

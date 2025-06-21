@@ -15,7 +15,7 @@ export default [
       'src/components/icons/components/**',
       '!src/core/i18n/resources/**/*.json',
       '**/*.json',
-      '.storybook/*',
+      '.rnstorybook/*',
       '*.app',
       '*.ipa',
       '*.apk',

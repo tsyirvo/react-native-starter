@@ -1,6 +1,11 @@
+import { composeStories } from '@storybook/react';
+
 import { fireEvent, render, screen } from '$domain/testing';
 
-import { ButtonWithText } from '../ButtonWithText';
+import * as ButtonsWithText from '../stories/ButtonWithText.stories';
+
+const { BasicButton, ButtonWithVariant, ButtonLoading, ButtonDisabled } =
+  composeStories(ButtonsWithText);
 
 describe('Button component', () => {
   const label = 'Some text';
@@ -19,37 +24,25 @@ describe('Button component', () => {
   });
 
   it('should render correctly with a text', () => {
-    render(<ButtonWithText {...props}>{label}</ButtonWithText>);
+    render(<BasicButton {...props}>{label}</BasicButton>);
 
     expect(screen.getByText(label)).toBeDefined();
   });
 
   it('should render correctly with a custom variant', () => {
-    render(
-      <ButtonWithText variant="outline" {...props}>
-        {label}
-      </ButtonWithText>,
-    );
+    render(<ButtonWithVariant {...props}>{label}</ButtonWithVariant>);
 
     expect(screen.getByText(label)).toBeDefined();
   });
 
   it('should render correctly when loading', () => {
-    render(
-      <ButtonWithText isLoading {...props}>
-        {label}
-      </ButtonWithText>,
-    );
+    render(<ButtonLoading {...props}>{label}</ButtonLoading>);
 
     expect(screen.getByTestId('InnerTextLoader')).toBeDefined();
   });
 
   it('should not call the onPress method when loading', () => {
-    render(
-      <ButtonWithText isLoading {...props}>
-        {label}
-      </ButtonWithText>,
-    );
+    render(<ButtonLoading {...props}>{label}</ButtonLoading>);
 
     fireEvent.press(screen.getByTestId('ButtonWithText'));
 
@@ -57,11 +50,7 @@ describe('Button component', () => {
   });
 
   it('should not call the onPress method when disabled', () => {
-    render(
-      <ButtonWithText isDisabled {...props}>
-        {label}
-      </ButtonWithText>,
-    );
+    render(<ButtonDisabled {...props}>{label}</ButtonDisabled>);
 
     fireEvent.press(screen.getByText(label));
 
@@ -69,7 +58,7 @@ describe('Button component', () => {
   });
 
   it('should call the onPress method', () => {
-    render(<ButtonWithText {...props}>{label}</ButtonWithText>);
+    render(<BasicButton {...props}>{label}</BasicButton>);
 
     fireEvent.press(screen.getByText(label));
 
