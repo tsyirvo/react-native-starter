@@ -43,6 +43,7 @@ export const useBootstrapApp = () => {
       await checkForOtaUpdate();
 
       // TODO(prod): add necessary bootstrap logic here
+      setIsBootstrappingInfra(false);
     })().catch((error: unknown) => {
       Logger.error({
         message: 'Failed to bootstrap app SDKs or check for OTA update',

@@ -22,7 +22,7 @@
   "license": "ISC",
   "engines": {
     "yarn": ">=4",
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "start:dev": "APP_ENV=development doppler run -p rn-starter -c dev -- expo start --dev-client",

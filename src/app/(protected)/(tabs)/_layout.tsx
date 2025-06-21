@@ -65,15 +65,16 @@ const globalScreenOptions = {
   headerShown: false,
 };
 
-// eslint-disable-next-line import/no-mutable-exports
-let EntryPoint = TabLayout;
+// eslint-disable-next-line react/no-multi-comp
+const ConditionalTabLayout = () => {
+  if (config.isStorybookEnabled) {
+    // eslint-disable-next-line
+    const StorybookUI = require('../../../../.rnstorybook').default;
 
-if (config.isStorybookEnabled) {
-  // eslint-disable-next-line
-  const StorybookUI = require('../../../../.rnstorybook').default;
+    return <StorybookUI />;
+  }
 
-  // eslint-disable-next-line
-  EntryPoint = () => <StorybookUI />;
-}
+  return <TabLayout />;
+};
 
-export default EntryPoint;
+export default ConditionalTabLayout;
