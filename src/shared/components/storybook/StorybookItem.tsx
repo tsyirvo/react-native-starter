@@ -1,9 +1,7 @@
 import type { ReactNode } from 'react';
 
-import { Box, Text } from '$shared/uiKit';
-
-import { CenteredContent } from './CenteredContent';
-import { Separator } from './Separator';
+import { Box, Separator, Text } from '$shared/uiKit';
+import { CenteredContent } from '$shared/uiKit/layout';
 
 interface StorybookItemProps {
   title?: string;

@@ -2,9 +2,7 @@ import type { ReactNode } from 'react';
 import type { Edge } from 'react-native-safe-area-context';
 
 import { makeAppStyles, type Colors, type Spacing } from '$domain/theme';
-
-import { Box } from '../primitives';
-import { SafeView } from '../safeView';
+import { Box, SafeView } from '$shared/uiKit';
 
 interface ScreenProps {
   edges?: Edge[];
