@@ -84,8 +84,6 @@ export const messages = {
       validation: {
         required: 'Email is required',
         invalid: 'Please enter a valid email',
-        minLength: 'Email must be at least 2 characters long',
-        maxLength: 'Email must be at most 255 characters long',
       },
     },
     passwordField: {

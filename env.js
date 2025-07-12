@@ -95,14 +95,14 @@ const _env = {
   ..._buildTimeEnv,
 };
 
-const merged = buildTime.merge(client);
+const merged = buildTime.extend(client.shape);
 const parsed = merged.safeParse(_env);
 
 if (!parsed.success) {
   // eslint-disable-next-line no-console
   console.error(
     '❌ Invalid environment variables:',
-    parsed.error.flatten().fieldErrors,
+    z.treeifyError(parsed.error),
 
     `\n❌ Missing variables in .env.${APP_ENV} file, Make sure all required variables are defined in the .env.${APP_ENV} file.`,
     `\n💡 Tip: If you recently updated the .env.${APP_ENV} file and the error still persists, try restarting the server with the -cc flag to clear the cache.`,

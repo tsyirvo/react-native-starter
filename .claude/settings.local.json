@@ -16,7 +16,10 @@
       "Bash(yarn info:*)",
       "Bash(grep:*)",
       "Bash(yarn start:dev:*)",
-      "Bash(yarn why:*)"
+      "Bash(yarn why:*)",
+      "Bash(yarn lint:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs"
     ],
     "deny": []
   }
