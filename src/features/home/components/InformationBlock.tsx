@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Box, Text } from '$shared/uiKit';
 
 interface InformationBlockProps {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { DEFAULT_ICON_SIZE } from '$domain/constants/styling';
 import { useAppTheme } from '$domain/theme';
 import type { IconName } from '$shared/icons';

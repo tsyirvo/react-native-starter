@@ -1,5 +1,4 @@
 import { useRouter } from 'expo-router';
-import React from 'react';
 import { Pressable } from 'react-native';
 
 import { DEFAULT_ICON_SIZE, HIT_SLOP } from '$domain/constants/styling';

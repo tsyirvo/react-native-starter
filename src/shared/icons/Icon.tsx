@@ -1,5 +1,3 @@
-import React from 'react';
-
 import * as AllIcons from './components';
 
 type Name = keyof typeof AllIcons;
@@ -19,10 +17,14 @@ export const Icon = ({
   height,
   testID = 'Icon',
 }: IconProps) => {
-  return React.createElement(AllIcons[name], {
-    color,
-    width,
-    height,
-    testID,
-  });
+  const IconComponent = AllIcons[name];
+
+  return (
+    <IconComponent
+      color={color}
+      width={width}
+      height={height}
+      testID={testID}
+    />
+  );
 };

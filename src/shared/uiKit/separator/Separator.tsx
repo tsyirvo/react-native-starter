@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Colors } from '$domain/theme';
 
 import { Box } from '../primitives';
