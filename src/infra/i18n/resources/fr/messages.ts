@@ -86,8 +86,6 @@ export const messages: MessagesTypes = {
       validation: {
         required: "L'email est requis",
         invalid: 'Email invalide',
-        minLength: "L'email doit faire au moins 2 caractères",
-        maxLength: "L'email doit faire au plus 255 caractères",
       },
     },
     passwordField: {
