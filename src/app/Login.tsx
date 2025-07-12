@@ -1,5 +1,4 @@
 import { Stack, useRouter } from 'expo-router';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';

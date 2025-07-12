@@ -2,10 +2,7 @@
   "permissions": {
     "allow": [
       "Bash(mkdir:*)",
-      "Bash(find:*)",
       "Bash(mv:*)",
-      "Bash(grep:*)",
-      "Bash(yarn:*)",
       "Bash(ls:*)",
       "Bash(cp:*)",
       "Write",
@@ -13,7 +10,13 @@
       "Bash(chmod:*)",
       "Bash(touch:*)",
       "Bash(tree:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(yarn list:*)",
+      "Bash(yarn info:*)",
+      "Bash(grep:*)",
+      "Bash(yarn start:dev:*)",
+      "Bash(yarn why:*)"
     ],
     "deny": []
   }
