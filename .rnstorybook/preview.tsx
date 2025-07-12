@@ -1,8 +1,8 @@
-import React from 'react';
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import type { Preview } from '@storybook/react';
+import React from 'react';
 
-import { CenteredContent } from '../src/shared/components';
+import { CenteredContent } from '../src/shared/uiKit/layout';
 
 const preview: Preview = {
   decorators: [

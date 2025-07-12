@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
 import { Notifications } from '$features/notifications';
-import { StoreUpdateAvailableBanner } from '$shared/components';
+import { StoreUpdateAvailableBanner, Screen } from '$shared/components';
 import { useIsNewStoreVersionAvailable } from '$shared/hooks';
-import { Box, Button, Screen, Text } from '$shared/uiKit';
+import { Box, Button, Text } from '$shared/uiKit';
 
 const FeaturesScreen = () => {
   const router = useRouter();

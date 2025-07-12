@@ -3,7 +3,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useAuthContext } from '$domain/contexts';
-import { Box, Button, Screen, Text } from '$shared/uiKit';
+import { Screen } from '$shared/components';
+import { Box, Button, Text } from '$shared/uiKit';
 
 const ProfileScreen = () => {
   const { t } = useTranslation();

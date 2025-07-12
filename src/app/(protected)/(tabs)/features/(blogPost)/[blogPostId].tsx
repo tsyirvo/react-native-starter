@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { BlogPost as BlogPostComponent } from '$features/blogPost';
 import { BlogPostScreenParams } from '$features/navigation';
-import { Screen } from '$shared/uiKit';
+import { Screen } from '$shared/components';
 
 const BlogPostScreen = () => {
   const { blogPostId } = useLocalSearchParams<BlogPostScreenParams>();

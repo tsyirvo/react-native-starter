@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
 import { Header, Informations, Version } from '$features/home';
-import { Box, Screen } from '$shared/uiKit';
+import { Screen } from '$shared/components';
+import { Box } from '$shared/uiKit';
 
 const HomeTabScreen = () => {
   const { t } = useTranslation();

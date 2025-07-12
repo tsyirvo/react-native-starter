@@ -9,7 +9,8 @@ import { useAuthContext } from '$domain/contexts';
 import { UserLogin } from '$domain/entities';
 import { makeAppStyles } from '$domain/theme';
 import { LoginForm } from '$features/loginForm';
-import { Box, Image, Screen, Text } from '$shared/uiKit';
+import { Screen } from '$shared/components';
+import { Box, Image, Text } from '$shared/uiKit';
 
 const Login = () => {
   const router = useRouter();
