@@ -21147,6 +21147,7 @@ __metadata:
     storybook: "npm:9.1.10"
     ts-jest: "npm:29.4.5"
     ts-node: "npm:10.9.2"
+    tsc-files: "npm:1.1.4"
     typescript: "npm:~5.9.2"
     zod: "npm:4.1.12"
     zustand: "npm:5.0.8"
@@ -23009,6 +23010,17 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 10c0/5f29938489f96982a25ba650b64218e83a3357d76f7bede80195c65ab44ad279c8357264639b7abdd5d7e75fc269a83daa0e9c62fd8637a3def67254ecc9ddc2
+  languageName: node
+  linkType: hard
+
+"tsc-files@npm:1.1.4":
+  version: 1.1.4
+  resolution: "tsc-files@npm:1.1.4"
+  peerDependencies:
+    typescript: ">=3"
+  bin:
+    tsc-files: cli.js
+  checksum: 10c0/f7bc34c736e58dbd50c8f5fcd075704ad7f48efa670aaf388b7bee3386b8a2e6bef17cab5e6f8ff95bff7c2e1fa3baecb498576333b649c4258a9779dda3e708
   languageName: node
   linkType: hard
 

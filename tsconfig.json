@@ -2,6 +2,9 @@
   "extends": "eslint-config-tsyirvo-react-native/tsconfig.base.json",
   "compilerOptions": {
     "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ESNext",
     "baseUrl": ".",
     "paths": {
       "$*": ["src/*"],
@@ -13,11 +16,6 @@
         "schema": "./src/generated/graphql.schema.json"
       }
     ]
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
   },
   "exclude": ["node_modules", "__mocks__"],
   "include": [
