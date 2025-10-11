@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   expoConfig: {
     version: '2.0.0',
     runtimeVersion: '1.0.0',

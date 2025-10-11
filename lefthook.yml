@@ -3,7 +3,7 @@ pre-commit:
   commands:
     eslint:
       glob: '*.{js,ts,jsx,tsx}'
-      run: yarn lint {staged_files}
+      run: yarn lint {staged_files} --no-warn-ignored
     typescript:
       run: yarn lint:ts
     tests:

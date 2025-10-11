@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   jsxRuntime: 'automatic',
   native: true,
   typescript: true,

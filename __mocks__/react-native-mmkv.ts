@@ -11,6 +11,4 @@ const mmkvMock = (() => {
   return { MMKV };
 })();
 
-module.exports = {
-  MMKV: jest.fn().mockImplementation(() => mmkvMock),
-};
+export const MMKV = jest.fn().mockImplementation(() => mmkvMock);

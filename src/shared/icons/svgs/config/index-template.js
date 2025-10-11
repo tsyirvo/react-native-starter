@@ -1,8 +1,8 @@
 /* eslint-disable */
 
-const path = require('path');
+import path from 'path';
 
-function defaultIndexTemplate(filePaths) {
+export default function defaultIndexTemplate(filePaths) {
   const exportEntries = filePaths.map(({ path: filePath, originalPath }) => {
     const basename = path.basename(filePath, path.extname(filePath));
     const exportName = /^\d/.test(basename) ? `Svg${basename}` : basename;
@@ -12,5 +12,3 @@ function defaultIndexTemplate(filePaths) {
 
   return exportEntries.join('\n');
 }
-
-module.exports = defaultIndexTemplate;

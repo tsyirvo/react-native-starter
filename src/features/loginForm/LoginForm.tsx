@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { InteractionManager, type TextInput } from 'react-native';
+import { type TextInput } from 'react-native';
 
 import { UserLogin } from '$domain/entities';
 import { Logger } from '$infra/logger';
@@ -48,7 +48,7 @@ export const LoginForm = ({
   };
 
   const focusPasswordInput = () => {
-    InteractionManager.runAfterInteractions(() => {
+    requestIdleCallback(() => {
       passwordInputRef.current?.focus();
     });
   };

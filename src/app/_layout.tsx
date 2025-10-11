@@ -7,7 +7,7 @@ import { ThemeProvider } from '@shopify/restyle';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { type ErrorInfo } from 'react';
+import { StrictMode, type ErrorInfo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
@@ -61,7 +61,7 @@ const RootLayout = () => {
   useAppScreenTracking();
 
   return (
-    <>
+    <StrictMode>
       <StatusBar style="auto" />
 
       <GestureHandlerRootView style={styles.wrapper}>
@@ -97,7 +97,7 @@ const RootLayout = () => {
           </ProductTrackingProvider>
         </PersistQueryClientProvider>
       </GestureHandlerRootView>
-    </>
+    </StrictMode>
   );
 };
 

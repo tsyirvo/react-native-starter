@@ -1,18 +1,20 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 
-const path = require('path');
-const z = require('zod');
+import path from 'path';
+import { fileURLToPath } from 'url';
+import z from 'zod';
+import dotenv from 'dotenv';
 
-const packageJSON = require('./package.json');
+import packageJSON from './package.json' with { type: 'json' };
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const APP_ENV = process.env.APP_ENV ?? 'production';
 const envPath = path.resolve(__dirname, `.env.${APP_ENV}`);
 
-require('dotenv').config({
-  path: envPath,
-});
+dotenv.config({ path: envPath });
 
 // Default values
 const BUNDLE_ID = 'com.tsyirvo.rnstarter';
@@ -116,8 +118,4 @@ if (!parsed.success) {
 const Env = parsed.data;
 const ClientEnv = client.parse(_clientEnv);
 
-module.exports = {
-  Env,
-  ClientEnv,
-  withEnvSuffix,
-};
+export { Env, ClientEnv, withEnvSuffix };

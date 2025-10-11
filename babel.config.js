@@ -1,4 +1,4 @@
-module.exports = function (api) {
+export default function (api) {
   api.cache(true);
 
   return {
@@ -8,6 +8,6 @@ module.exports = function (api) {
         plugins: ['transform-remove-console'],
       },
     },
-    plugins: ['react-native-reanimated/plugin'],
+    plugins: ['react-native-worklets/plugin'],
   };
-};
+}

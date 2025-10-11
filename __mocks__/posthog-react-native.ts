@@ -8,6 +8,6 @@ const mockPostHog = jest.fn().mockImplementation(() => ({
   getFeatureFlagPayload: jest.fn(),
 }));
 
-module.exports = mockPostHog;
-module.exports.useFeatureFlag = jest.fn();
-module.exports.useFeatureFlagWithPayload = jest.fn();
+export default mockPostHog;
+export const useFeatureFlag = jest.fn();
+export const useFeatureFlagWithPayload = jest.fn();
