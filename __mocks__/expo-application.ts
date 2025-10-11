@@ -1,3 +1,3 @@
-module.exports = {
+export default {
   nativeApplicationVersion: '1.0.0',
 };

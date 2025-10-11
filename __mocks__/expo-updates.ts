@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   checkForUpdateAsync: jest.fn(),
   fetchUpdateAsync: jest.fn(),
   reloadAsync: jest.fn(),

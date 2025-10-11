@@ -26,6 +26,7 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "eslint.config.mjs"
+    "eslint.config.mjs",
+    "metro.config.cjs"
   ]
 }

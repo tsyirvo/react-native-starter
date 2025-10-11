@@ -39,7 +39,7 @@ export const useBootstrapApp = () => {
         return;
       }
 
-      await bootstrapApp();
+      bootstrapApp();
       await checkForOtaUpdate();
 
       // TODO(prod): add necessary bootstrap logic here

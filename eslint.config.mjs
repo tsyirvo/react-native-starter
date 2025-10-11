@@ -9,12 +9,9 @@ const __dirname = path.dirname(__filename);
 export default [
   {
     ignores: [
-      '**/__mocks__/**',
       'metro.config.cjs',
       'babel.config.js',
       'src/shared/icons/svgs/config/icon-template.js',
-      'src/components/icons/components/**',
-      '!src/core/i18n/resources/**/*.json',
       '**/*.json',
       '.rnstorybook/*',
       '*.app',

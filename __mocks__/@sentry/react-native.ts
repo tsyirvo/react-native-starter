@@ -1,14 +1,12 @@
-module.exports = {
-  reactNavigationIntegration: jest.fn(),
-  init: jest.fn(),
-  setTag: jest.fn(),
-  setExtra: jest.fn(),
-  setUser: jest.fn(),
-  setContext: jest.fn(),
-  captureException: jest.fn(),
-  captureEvent: jest.fn(),
-  addBreadcrumb: jest.fn(),
-  withScope: jest.fn(),
-  startSpan: jest.fn(),
-  startInactiveSpan: jest.fn(),
-};
+export const reactNavigationIntegration = jest.fn();
+export const init = jest.fn();
+export const setTag = jest.fn();
+export const setExtra = jest.fn();
+export const setUser = jest.fn();
+export const setContext = jest.fn();
+export const captureException = jest.fn();
+export const captureEvent = jest.fn();
+export const addBreadcrumb = jest.fn();
+export const withScope = jest.fn();
+export const startSpan = jest.fn();
+export const startInactiveSpan = jest.fn();

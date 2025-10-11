@@ -7,7 +7,6 @@ export function useGetRemoteConfig(flagKey: AvailableRemoteConfig) {
   const flag = useFeatureFlagWithPayload(flagKey);
 
   if (flag[FLAG_VALUE_INDEX] !== undefined) {
-     
     return flag[FLAG_VALUE_INDEX];
   }
 

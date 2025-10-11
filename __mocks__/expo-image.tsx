@@ -1,12 +1,9 @@
-import React from 'react';
 import { View } from 'react-native';
 
 // Mock the Image component from expo-image
-const Image = (props) => {
+const Image = (props: any) => {
   return <View {...props} />;
 };
 
-module.exports = {
-  Image,
-  prefetch: jest.fn(),
-};
+export { Image };
+export const prefetch = jest.fn();
