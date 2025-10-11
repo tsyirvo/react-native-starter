@@ -1,4 +1,4 @@
-import type { ExpoConfig, ConfigContext } from '@expo/config';
+import type { ConfigContext, ExpoConfig } from '@expo/config';
 
 import { ClientEnv, Env } from './env';
 
@@ -63,7 +63,6 @@ const plugins: ExpoConfig['plugins'] = [
     { mode: isDevelopmentEnv ? 'development' : 'production' },
   ],
   'expo-router',
-  ['react-native-appsflyer', {}],
   ['react-native-permissions', { iosPermissions: ['Notifications'] }],
   [
     'expo-splash-screen',
@@ -78,7 +77,6 @@ const plugins: ExpoConfig['plugins'] = [
       },
     },
   ],
-  './src/expoPlugins/withCustomAndroidManifest.js',
 ];
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
@@ -129,6 +127,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: '#0C0D0F',
     },
     edgeToEdgeEnabled: true,
+    predictiveBackGestureEnabled: true,
     package: Env.PACKAGE,
     playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
     intentFilters: [
@@ -155,12 +154,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
   },
+  buildCacheProvider: 'eas',
   locales: {
-    fr: './src/core/i18n/infoPlist/fr.json',
-    en: './src/core/i18n/infoPlist/en.json',
+    fr: './src/infra/i18n/nativeFiles/fr.json',
+    en: './src/infra/i18n/nativeFiles/en.json',
   },
   experiments: {
     typedRoutes: true,
+    reactCompiler: true,
   },
   newArchEnabled: true,
   plugins,

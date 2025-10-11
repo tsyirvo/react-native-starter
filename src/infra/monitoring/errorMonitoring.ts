@@ -43,6 +43,7 @@ class ErrorMonitoringClass {
       enableNativeFramesTracking: true,
       enableStallTracking: true,
       enableUserInteractionTracing: true,
+      enableAutoSessionTracking: true,
       enabled: isEnabled,
       environment: config.env,
       integrations: [routingInstrumentation],

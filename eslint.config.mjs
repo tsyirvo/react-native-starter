@@ -1,6 +1,7 @@
 import tsyirvoReactNative from 'eslint-config-tsyirvo-react-native';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import reactCompiler from 'eslint-plugin-react-compiler';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,7 +10,7 @@ export default [
   {
     ignores: [
       '**/__mocks__/**',
-      'metro.config.js',
+      'metro.config.cjs',
       'babel.config.js',
       'src/shared/icons/svgs/config/icon-template.js',
       'src/components/icons/components/**',
@@ -21,10 +22,12 @@ export default [
       '*.apk',
       '*.aab',
       '.yarn/*',
+      'dist/*',
     ],
   },
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   ...tsyirvoReactNative,
+  reactCompiler.configs.recommended,
   {
     languageOptions: {
       ecmaVersion: 2022,

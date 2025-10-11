@@ -1,4 +1,3 @@
-import { Attribution } from '../attribution';
 import { initDateLocale } from '../date';
 import { getSupportedLocale } from '../i18n';
 import { Notifications } from '../notifications';
@@ -13,10 +12,7 @@ const initDateLib = (locale: string) => {
   initDateLocale(locale);
 };
 
-export const bootstrapApp = async () => {
-  // Core services to init first in a specific order
-  await Attribution.init();
-
+export const bootstrapApp = () => {
   // Misc
   const localeToUse = getSupportedLocale();
 

@@ -1,32 +1,24 @@
 import { useState } from 'react';
-import type {
-  NativeSyntheticEvent,
-  TextInputFocusEventData,
-} from 'react-native';
+import type { BlurEvent, FocusEvent } from 'react-native';
 
-type OnFocusState = (
-  event: NativeSyntheticEvent<TextInputFocusEventData>,
-) => void;
+interface UseInputFocusProps {
+  onBlur?: (event: BlurEvent) => void;
+  onFocus?: (event: FocusEvent) => void;
+}
 
-export const useInputFocusState = ({
-  onFocus,
-  onBlur,
-}: {
-  onBlur?: OnFocusState;
-  onFocus?: OnFocusState;
-}) => {
+export const useInputFocusState = ({ onFocus, onBlur }: UseInputFocusProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleFocus = (args: NativeSyntheticEvent<TextInputFocusEventData>) => {
+  const handleFocus = (event: FocusEvent) => {
     setIsFocused(true);
 
-    onFocus?.(args);
+    onFocus?.(event);
   };
 
-  const handleBlur = (args: NativeSyntheticEvent<TextInputFocusEventData>) => {
+  const handleBlur = (event: BlurEvent) => {
     setIsFocused(false);
 
-    onBlur?.(args);
+    onBlur?.(event);
   };
 
   return {
