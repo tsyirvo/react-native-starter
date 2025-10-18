@@ -37,7 +37,7 @@ const plugins: ExpoConfig['plugins'] = [
           background: '#FFFFFF',
         },
         {
-          text: `V${Env.VERSION.toString()}`,
+          text: `V${Env.VERSION}`,
           type: 'ribbon',
           color: 'black',
           background: '#FFFFFF',
@@ -86,7 +86,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   owner: Env.EXPO_ACCOUNT_OWNER,
   scheme: 'rn-starter',
   slug: 'rn-starter',
-  version: Env.VERSION.toString(),
+  version: Env.VERSION,
   runtimeVersion: { policy: 'appVersion' },
   orientation: 'portrait',
   icon: './assets/icons/default.png',

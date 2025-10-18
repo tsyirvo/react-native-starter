@@ -23,7 +23,7 @@
   "license": "ISC",
   "engines": {
     "yarn": ">=4",
-    "node": ">=22"
+    "node": ">=22.14"
   },
   "scripts": {
     "start:dev": "APP_ENV=development doppler run -p rn-starter -c dev -- expo start --dev-client",
@@ -43,7 +43,7 @@
     "test:coverage": "jest",
     "//// QUALITY ////": "",
     "lint:ts": "yarn tsc",
-    "lint": "eslint --cache ./ --ext .js,.ts,.tsx,.json --fix",
+    "lint": "eslint --concurrency=auto --cache ./ --ext .js,.ts,.tsx,.json --fix",
     "prettify": "yarn prettier --cache --write './**/*.{js,ts,tsx}' '!.rnstorybook/storybook.requires.ts'",
     "pretty:check": "yarn prettier --cache --check './**/*.{js,ts,tsx}' '!.rnstorybook/storybook.requires.ts'",
     "//// UTILITIES ////": "",
@@ -160,9 +160,8 @@
     "app-icon-badge": "0.1.2",
     "babel-plugin-transform-remove-console": "6.9.4",
     "dotenv": "17.2.3",
-    "eslint": "9.28.0",
-    "eslint-config-tsyirvo-react-native": "2.1.0",
-    "eslint-plugin-react-compiler": "19.1.0-rc.2",
+    "eslint": "9.38.0",
+    "eslint-config-tsyirvo-react-native": "2.2.0",
     "fs-extra": "11.3.2",
     "imagemin": "7.0.1",
     "imagemin-mozjpeg": "9.0.0",

@@ -31,6 +31,7 @@ export const useGetSessionState = () => {
       // TODO(prod): Implement logic to set isUserLoggedIn
 
       setIsBootstrappingApplication(false);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsSessionReady(true);
     }
   }, [

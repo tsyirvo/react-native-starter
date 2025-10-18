@@ -1,7 +1,7 @@
 /* eslint-disable import/no-nodejs-modules */
-import fs from 'fs';
 import isImage from 'is-image';
-import util from 'util';
+import fs from 'node:fs';
+import util from 'node:util';
 
 import { createFiles } from './createFiles';
 import { createImageResolutions } from './imageManipulations';
@@ -20,10 +20,8 @@ const checkFolderContent = async (folderPath: string) => {
 };
 
 const checkFileType = (path: string) => {
-  if (fs.lstatSync(path).isFile()) {
-    if (isImage(path)) {
-      return 'image';
-    }
+  if (fs.lstatSync(path).isFile() && isImage(path)) {
+    return 'image';
   }
 
   if (fs.lstatSync(path).isDirectory()) return 'folder';
@@ -36,7 +34,7 @@ export const generateImages = async (path: string) => {
     const fileType = checkFileType(path);
 
     switch (fileType) {
-      case 'image':
+      case 'image': {
         print({ message: 'New image found' });
 
         ImageMetadata.setImagePath(path);
@@ -46,13 +44,16 @@ export const generateImages = async (path: string) => {
 
         ImageMetadata.clear();
         break;
-      case 'folder':
+      }
+      case 'folder': {
         print({ message: 'New folder found' });
 
         await checkFolderContent(path);
         break;
-      default:
+      }
+      default: {
         break;
+      }
     }
   } catch {
     print({ message: 'Could not find the file type', type: 'error' });

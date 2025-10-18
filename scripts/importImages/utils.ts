@@ -3,8 +3,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import chalk from 'chalk';
-import fs from 'fs';
 import fsExtra from 'fs-extra';
+import fs from 'node:fs';
 import ora from 'ora';
 
 export const nodeProcess = process as unknown as NodeJS.Process;
@@ -70,8 +70,8 @@ export const copyFile = async ({
 /* ***** *****  Temporary folder management  ***** ***** */
 
 const createUniqueTmpFolder = (variant: string) => {
-  fs.mkdir(`${TMP_DIR}/${variant}`, { recursive: true }, (err) => {
-    if (err) {
+  fs.mkdir(`${TMP_DIR}/${variant}`, { recursive: true }, (error) => {
+    if (error) {
       print({
         message: `Failed to create the ${variant} temporary folder`,
         type: 'error',
@@ -93,8 +93,8 @@ export const createTmpImageFolders = () => {
 export const deleteTmpImageFolders = () => {
   const finishSpinner = showSpinner('Deleting the different tmp folders');
 
-  fs.rm(TMP_DIR, { recursive: true }, (err) => {
-    if (err) {
+  fs.rm(TMP_DIR, { recursive: true }, (error) => {
+    if (error) {
       print({
         message: 'Failed to delete the temporary folders',
         type: 'error',

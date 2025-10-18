@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-
 import path from 'path';
 import { fileURLToPath } from 'url';
 import z from 'zod';
@@ -22,7 +19,6 @@ const PACKAGE = 'com.tsyirvo.rnstarter';
 const EXPO_ACCOUNT_OWNER = 'tsyirvo';
 
 const withEnvSuffix = (name) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return APP_ENV === 'production' ? name : `${name}.${APP_ENV}`;
 };
 
