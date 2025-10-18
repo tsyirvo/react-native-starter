@@ -67,7 +67,7 @@ class LoggerClass {
     });
 
     this.showToast(userMessage);
-    this.dev(message);
+    this.dev(message, { error });
   }
 
   dev(...data: unknown[]) {

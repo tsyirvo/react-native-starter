@@ -6,7 +6,7 @@ pre-commit:
       run: yarn lint {staged_files} --no-warn-ignored
     typescript:
       glob: '*.{ts,tsx}'
-      run: tsc-files {staged_files}
+      run: npx tsc-files {staged_files} src/types/react-query.d.ts src/types/declaration.d.ts
     tests:
       run: yarn test {staged_files} --findRelatedTests --passWithNoTests --coverage=false
 
