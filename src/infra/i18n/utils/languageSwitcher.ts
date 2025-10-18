@@ -23,9 +23,11 @@ export const changeLanguage = async (language: SupportedLanguages) => {
     }
 
     setSavedAppLocale(language);
+
+    initDateLocale(language);
+
     Notifications.setUserLanguage(language);
     Analytics.setUserProperty('language', language);
-    initDateLocale(language);
 
     Toaster.show({
       text1: t('appConfig.changeLocale.success'),
