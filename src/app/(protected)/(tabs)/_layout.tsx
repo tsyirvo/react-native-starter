@@ -1,9 +1,8 @@
-import { Redirect, Tabs } from 'expo-router';
+import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
 import { config } from '$domain/constants';
 import { useAppTheme } from '$domain/theme';
-import { useAppStore } from '$infra/store';
 import {
   renderFeaturesIcon,
   renderHomeIcon,
@@ -11,20 +10,9 @@ import {
 } from '$shared/components';
 
 const TabLayout = () => {
-  const isUserLoggedIn = useAppStore((state) => state.isUserLoggedIn);
-  const isBootstrappingApplication = useAppStore(
-    (state) => state.isBootstrappingApplication,
-  );
-
   const { t } = useTranslation();
 
   const { colors } = useAppTheme();
-
-  if (isBootstrappingApplication) return null;
-
-  if (!isUserLoggedIn) {
-    return <Redirect href="/Login" />;
-  }
 
   return (
     <Tabs

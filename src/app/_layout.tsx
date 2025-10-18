@@ -23,6 +23,7 @@ import {
 import { persistOptions, queryClient } from '$infra/api/queryClient';
 import { ErrorMonitoring } from '$infra/monitoring';
 import { ProductTrackingProvider } from '$infra/productTracking';
+import { useAppStore } from '$infra/store';
 import { toastConfig } from '$infra/toaster';
 import {
   AppUpdateNeeded,
@@ -53,6 +54,11 @@ const onGlobalError = (error: Error, errorInfo: ErrorInfo) => {
 };
 
 const RootLayout = () => {
+  const isUserLoggedIn = useAppStore((state) => state.isUserLoggedIn);
+  const isBootstrappingApplication = useAppStore(
+    (state) => state.isBootstrappingApplication,
+  );
+
   const styles = useStyles();
 
   useRoutingInstrumentation();
@@ -80,7 +86,19 @@ const RootLayout = () => {
                     <KeyboardProvider>
                       <AuthContextProvider>
                         <>
-                          <Stack screenOptions={screenOptions} />
+                          <Stack screenOptions={screenOptions}>
+                            <Stack.Protected
+                              guard={!isBootstrappingApplication}
+                            >
+                              <Stack.Protected guard={!isUserLoggedIn}>
+                                <Stack.Screen name="Login" />
+                              </Stack.Protected>
+
+                              <Stack.Protected guard={isUserLoggedIn}>
+                                <Stack.Screen name="(protected)/(tabs)" />
+                              </Stack.Protected>
+                            </Stack.Protected>
+                          </Stack>
 
                           <Toast config={toastConfig} />
 
