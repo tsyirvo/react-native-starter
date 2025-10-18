@@ -1,4 +1,5 @@
-import { initDateLocale } from '../date';
+import { Analytics } from '$infra/analytics';
+
 import { getSupportedLocale } from '../i18n';
 import { Notifications } from '../notifications';
 import { Purchase } from '../purchase';
@@ -8,8 +9,8 @@ const initNotifications = (locale: string) => {
   Notifications.setUserLanguage(locale);
 };
 
-const initDateLib = (locale: string) => {
-  initDateLocale(locale);
+const initAnalytics = (locale: string) => {
+  Analytics.setUserProperty('language', locale);
 };
 
 export const bootstrapApp = () => {
@@ -18,7 +19,7 @@ export const bootstrapApp = () => {
 
   // All other core services
   initNotifications(localeToUse);
-  initDateLib(localeToUse);
+  initAnalytics(localeToUse);
 
   // Used SDKs
   Purchase.init();
