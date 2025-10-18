@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/immutability */
+
 import type { VariantProps } from '@shopify/restyle';
 import { createRestyleComponent, createVariant } from '@shopify/restyle';
 import type React from 'react';

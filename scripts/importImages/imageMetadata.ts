@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-nodejs-modules
-import path from 'path';
+import path from 'node:path';
 
 const emptyMetadataValues = {
   imageName: '',
