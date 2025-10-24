@@ -1,25 +1,25 @@
-import { Stack } from 'expo-router';
+import { Stack as RouterStack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
 import { Header, Informations, Version } from '$features/home';
 import { Screen } from '$shared/components';
-import { Box } from '$shared/uiKit';
+import { Stack } from '$shared/uiKit';
 
 const HomeTabScreen = () => {
   const { t } = useTranslation();
 
   return (
     <>
-      <Stack.Screen options={{ title: t('tabs.home') }} />
+      <RouterStack.Screen options={{ title: t('tabs.home') }} />
 
       <Screen>
         <ScrollView>
           <Header />
 
-          <Box pb="spacing_32" pt="spacing_24" px="spacing_16">
+          <Stack pb="spacing_32" pt="spacing_24" px="spacing_16">
             <Informations />
-          </Box>
+          </Stack>
 
           <Version />
         </ScrollView>

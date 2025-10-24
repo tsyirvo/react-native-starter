@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { Box, Text } from '$shared/uiKit';
+import { Stack, Text } from '$shared/uiKit';
 
 import type { BorderRadii } from '../radius';
 import { theme } from '../theme';
@@ -10,24 +11,17 @@ const meta = {
   title: 'Theme/Radiuses',
   component: View,
   render: () => (
-    <Box p="spacing_16">
+    <Stack p="spacing_16">
       {(Object.keys(theme.borderRadii) as BorderRadii[]).map((radius) => (
-        <Box key={radius} alignItems="center" mb="spacing_24">
-          <Box mb="spacing_8">
+        <Stack key={radius} align="center" mb="spacing_24">
+          <Stack mb="spacing_8">
             <Text>{radius}</Text>
-          </Box>
+          </Stack>
 
-          <Box
-            bg="bg_muted"
-            borderWidth={1}
-            borderColor="border_default"
-            borderRadius={radius}
-            height={100}
-            width={100}
-          />
-        </Box>
+          <View style={[styles.radiusBox, styles.radiusBorder(radius)]} />
+        </Stack>
       ))}
-    </Box>
+    </Stack>
   ),
 } satisfies Meta<typeof View>;
 
@@ -36,3 +30,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Radiuses: Story = {};
+
+const styles = StyleSheet.create((theme) => ({
+  radiusBox: {
+    backgroundColor: theme.colors.bg_muted,
+    borderWidth: 1,
+    borderColor: theme.colors.border_default,
+    height: 100,
+    width: 100,
+  },
+  radiusBorder: (radius: BorderRadii) => ({
+    borderRadius: theme.borderRadii[radius],
+  }),
+}));

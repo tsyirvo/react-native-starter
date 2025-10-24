@@ -62,7 +62,6 @@ export const BottomSheet = ({
       {isScrollable ? (
         <BottomSheetScrollView style={styles.scrollViewStyle}>
           <Box
-            flex={1}
             px={disableHorizontalPadding ? undefined : 'spacing_16'}
             pt={disableTopPadding ? undefined : 'spacing_24'}
           >
@@ -71,7 +70,6 @@ export const BottomSheet = ({
         </BottomSheetScrollView>
       ) : (
         <Box
-          flex={1}
           px={disableHorizontalPadding ? undefined : 'spacing_16'}
           pt={disableTopPadding ? undefined : 'spacing_24'}
           style={{ marginBottom: bottomInset }}

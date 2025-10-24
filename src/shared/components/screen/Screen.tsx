@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import type { Edge } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native-unistyles';
 
+import type { ThemeColors } from '$domain/newTheme/unistyles';
 import { makeAppStyles, type Colors, type Spacing } from '$domain/theme';
 import { Box, SafeView } from '$shared/uiKit';
 
@@ -21,18 +23,24 @@ export const Screen = ({
   py = 'zero',
   testID = 'Screen',
 }: ScreenProps) => {
-  const styles = useStyles();
+  const wrapperStyles = useWrapperStyles();
 
   return (
-    <Box bg={bg} flex={1} py={py} px={px} testID={testID}>
-      <SafeView edges={edges} style={styles.wrapper}>
+    <Box py={py} px={px} testID={testID} style={styles.container(bg)}>
+      <SafeView edges={edges} style={wrapperStyles.wrapper}>
         {children}
       </SafeView>
     </Box>
   );
 };
 
-const useStyles = makeAppStyles(() => ({
+const styles = StyleSheet.create((theme) => ({
+  container: (bg: ThemeColors) => ({
+    backgroundColor: theme.colors[bg],
+  }),
+}));
+
+const useWrapperStyles = makeAppStyles(() => ({
   wrapper: {
     flex: 1,
   },

@@ -11,7 +11,7 @@ import {
 } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { useRunOnMount } from '$shared/hooks';
-import { Box, Button, Text } from '$shared/uiKit';
+import { Button, Box, Stack, Text } from '$shared/uiKit';
 
 export const AppUpdateNeeded = () => {
   const [isAppSupported, setIsAppSupported] = useState(true);
@@ -58,23 +58,21 @@ export const AppUpdateNeeded = () => {
 
   return (
     <Box
-      alignItems="center"
-      bg="bg_base"
-      height="100%"
-      justifyContent="center"
+      align="center"
+      justify="center"
       px="spacing_32"
       testID="appUpdateNeeded-screen"
-      width="100%"
+      style={styles.container}
     >
-      <Box pb="spacing_8">
+      <Stack pb="spacing_8">
         <Text variant="large">{t('appUpdateNedeed.title')}</Text>
-      </Box>
+      </Stack>
 
-      <Box mb="spacing_16">
+      <Stack mb="spacing_16">
         <Text style={styles.centeredText}>
           {t('appUpdateNedeed.description')}
         </Text>
-      </Box>
+      </Stack>
 
       <Button.Text testID="appUpdateNeeded-cta" onPress={onPress}>
         {t('appUpdateNedeed.cta')}
@@ -83,8 +81,13 @@ export const AppUpdateNeeded = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    backgroundColor: theme.colors.bg_base,
+    width: '100%',
+    height: '100%',
+  },
   centeredText: {
     textAlign: 'center',
   },
-});
+}));

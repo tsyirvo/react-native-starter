@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { Box, Text } from '$shared/uiKit/primitives';
+import { Row, Text } from '$shared/uiKit/primitives';
 
 interface InputLabelProps {
   label?: string;
@@ -18,12 +18,12 @@ export const InputLabel = ({
   if (!label) return null;
 
   return (
-    <Box flexDirection="row" gap="spacing_4" testID={testID}>
+    <Row gap="spacing_4" testID={testID}>
       <Text color="content_primary">{label}</Text>
 
       {isOptional ? (
         <Text color="content_tertiary">({t('forms.optional')})</Text>
       ) : null}
-    </Box>
+    </Row>
   );
 };

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
 
-import { Box, Text } from '$shared/uiKit';
+import { Stack, Text } from '$shared/uiKit';
 
 import type { FontSizes as ThemeFontSizes } from '../fonts';
 import { fontSizes } from '../fonts';
@@ -10,13 +10,13 @@ const meta = {
   title: 'Theme/FontSizes',
   component: View,
   render: () => (
-    <Box p="spacing_16">
+    <Stack p="spacing_16">
       {(Object.keys(fontSizes) as ThemeFontSizes[]).map((size) => (
-        <Box key={size} mb="spacing_24">
+        <Stack key={size} mb="spacing_24">
           <Text variant={size}>{`This is a ${size} text`}</Text>
-        </Box>
+        </Stack>
       ))}
-    </Box>
+    </Stack>
   ),
 } satisfies Meta<typeof View>;
 

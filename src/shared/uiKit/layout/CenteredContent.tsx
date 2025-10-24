@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { Box, type BoxProps } from '../primitives';
+import type { BoxProps } from '../primitives';
+import { Box } from '../primitives';
 
 type CenteredContentProps = BoxProps;
 
@@ -9,7 +10,7 @@ export const CenteredContent = ({
   ...props
 }: CenteredContentProps) => {
   return (
-    <Box alignItems="center" justifyContent="center" {...props}>
+    <Box align="center" justify="center" {...props}>
       {children}
     </Box>
   );

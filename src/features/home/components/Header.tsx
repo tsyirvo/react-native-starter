@@ -9,12 +9,7 @@ export const Header = () => {
 
   return (
     <ImageBackground source={headerAsset} style={styles.image}>
-      <Box
-        alignItems="center"
-        flex={1}
-        justifyContent="flex-end"
-        mb="spacing_24"
-      >
+      <Box align="center" justify="flex-end" mb="spacing_24">
         <Text color="core_primary" variant="large">
           React Native Template
         </Text>

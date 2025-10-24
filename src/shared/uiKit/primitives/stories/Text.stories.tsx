@@ -5,13 +5,13 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { StorybookItem } from '$shared/components';
-import { Box, Text as TextPrimitive } from '$shared/uiKit';
+import { Stack, Text as TextPrimitive } from '$shared/uiKit';
 
 const meta = {
   title: 'Primitives/Text',
   component: View,
   render: () => (
-    <Box p="spacing_16">
+    <Stack p="spacing_16">
       <StorybookItem title="Text without any props">
         <TextPrimitive>Default styles</TextPrimitive>
       </StorybookItem>
@@ -27,11 +27,11 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Text with custom positionning">
-        <Box mt="spacing_32" ps="spacing_24" py="spacing_8">
+        <Stack mt="spacing_32" px="spacing_24" py="spacing_8">
           <TextPrimitive>Custom position</TextPrimitive>
-        </Box>
+        </Stack>
       </StorybookItem>
-    </Box>
+    </Stack>
   ),
 } satisfies Meta<typeof View>;
 

@@ -9,7 +9,7 @@ import { useAuthContext } from '$domain/contexts';
 import { UserLogin } from '$domain/entities';
 import { LoginForm } from '$features/loginForm';
 import { Screen } from '$shared/components';
-import { Box, Flex, Image, Text } from '$shared/uiKit';
+import { Box, Image, Stack, Text } from '$shared/uiKit';
 
 const Login = () => {
   const router = useRouter();
@@ -41,22 +41,21 @@ const Login = () => {
         <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
           <TouchableWithoutFeedback onPress={dismissKeyboard}>
             <Box flex={1} pt="spacing_32" gap="spacing_16">
-              <Flex align="center">
+              <Stack align="center">
                 <Image source={logoDark} style={styles.logo} />
-              </Flex>
+              </Stack>
 
-              <Box
-                bg="bg_muted"
+              <Stack
                 p="spacing_16"
-                borderRadius="radius_24"
                 gap="spacing_24"
+                style={styles.formContainer}
               >
                 <Text variant="large" style={styles.centeredText}>
                   {t('loginScreen.title')}
                 </Text>
 
                 <LoginForm onFormSuccess={onFormSuccess} />
-              </Box>
+              </Stack>
             </Box>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
@@ -67,7 +66,7 @@ const Login = () => {
 
 const LOGO_SIZE = 150;
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
   wrapper: {
     flex: 1,
   },
@@ -75,9 +74,13 @@ const styles = StyleSheet.create({
     width: LOGO_SIZE,
     height: LOGO_SIZE,
   },
+  formContainer: {
+    backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_24,
+  },
   centeredText: {
     textAlign: 'center',
   },
-});
+}));
 
 export default Login;

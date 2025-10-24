@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 import { useAppTheme, type Colors } from '$domain/theme';
-
-import { Box } from '../primitives';
 
 interface LoaderProps {
   delay?: number;
@@ -47,5 +45,5 @@ export const Loader = ({
       />
     );
 
-  return <Box testID={testID} height={minHeight} />;
+  return <View testID={testID} style={{ height: minHeight }} />;
 };

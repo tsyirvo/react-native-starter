@@ -11,9 +11,5 @@ interface SplashscreenProps {
 export const Splashscreen = ({ children }: SplashscreenProps) => {
   const { isAppReady, onLayoutRootView } = useBootstrapApp();
 
-  return (
-    <Box flex={1} onLayout={onLayoutRootView}>
-      {isAppReady ? children : null}
-    </Box>
-  );
+  return <Box onLayout={onLayoutRootView}>{isAppReady ? children : null}</Box>;
 };

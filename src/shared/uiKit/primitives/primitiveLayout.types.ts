@@ -22,6 +22,7 @@ export interface SpacingProps {
 
 export interface AlignmentProps {
   align?: FlexAlignType;
+  self?: FlexAlignType;
   justify?:
     | 'flex-start'
     | 'center'

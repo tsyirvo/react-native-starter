@@ -33,6 +33,9 @@ export const Stack = ({
 const styles = StyleSheet.create((theme) => ({
   stack: (props: LayoutStyleProps) => ({
     flexDirection: 'column',
+    alignItems: props.align,
+    justifyContent: props.justify,
+    alignSelf: props.self,
     gap: props.gap ? theme.spacing[props.gap] : undefined,
     padding: props.p ? theme.spacing[props.p] : undefined,
     paddingHorizontal: props.px ? theme.spacing[props.px] : undefined,
@@ -44,7 +47,5 @@ const styles = StyleSheet.create((theme) => ({
     marginVertical: props.my ? theme.spacing[props.my] : undefined,
     marginTop: props.mt ? theme.spacing[props.mt] : undefined,
     marginBottom: props.mb ? theme.spacing[props.mb] : undefined,
-    alignItems: props.align,
-    justifyContent: props.justify,
   }),
 }));

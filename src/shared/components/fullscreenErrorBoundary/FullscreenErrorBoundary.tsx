@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { ErrorMonitoring } from '$infra/monitoring';
-import { Box, Button, Text } from '$shared/uiKit';
+import { Button, Box, Stack, Text } from '$shared/uiKit';
 
 export const FullscreenErrorBoundary = () => {
   const { t } = useTranslation();
@@ -15,31 +15,34 @@ export const FullscreenErrorBoundary = () => {
 
   return (
     <Box
-      alignItems="center"
-      alignSelf="center"
-      bg="bg_base"
-      height="100%"
-      justifyContent="center"
+      align="center"
+      self="center"
+      justify="center"
       px="spacing_24"
-      width="100%"
+      style={styles.container}
     >
-      <Box mb="spacing_8">
+      <Stack mb="spacing_8">
         <Text variant="large">{t('errorBoundary.title')}</Text>
-      </Box>
+      </Stack>
 
       <Text style={styles.centeredText} variant="medium">
         {t('errorBoundary.description')}
       </Text>
 
-      <Box mt="spacing_32">
+      <Stack mt="spacing_32">
         <Button.Text onPress={reloadApp}>{t('errorBoundary.cta')}</Button.Text>
-      </Box>
+      </Stack>
     </Box>
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    backgroundColor: theme.colors.bg_base,
+    width: '100%',
+    height: '100%',
+  },
   centeredText: {
     textAlign: 'center',
   },
-});
+}));

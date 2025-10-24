@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { config } from '$domain/constants';
-import { Box, Text } from '$shared/uiKit';
+import { Stack, Text } from '$shared/uiKit';
 
 export const Version = () => {
   const insets = useSafeAreaInsets();
@@ -19,13 +19,13 @@ export const Version = () => {
   }
 
   return (
-    <Box
+    <Stack
       pb="spacing_8"
       style={{
         marginBottom: insets.bottom,
       }}
     >
-      <Box alignItems="flex-end" pt="spacing_32" px="spacing_24">
+      <Stack align="flex-end" pt="spacing_32" px="spacing_24">
         <Text variant="small">
           {`Version: v${config.version}${
             config.buildNumber ? `:${config.buildNumber}` : ''
@@ -41,7 +41,7 @@ export const Version = () => {
             {t('homeScreen.updateCheck.isEmbeddedLaunch')}
           </Text>
         )}
-      </Box>
-    </Box>
+      </Stack>
+    </Stack>
   );
 };

@@ -1,10 +1,10 @@
-import { Stack } from 'expo-router';
+import { Stack as RouterStack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { useAuthContext } from '$domain/contexts';
 import { Screen } from '$shared/components';
-import { Box, Button, Text } from '$shared/uiKit';
+import { Button, Stack, Text } from '$shared/uiKit';
 
 const ProfileScreen = () => {
   const { t } = useTranslation();
@@ -17,14 +17,14 @@ const ProfileScreen = () => {
 
   return (
     <>
-      <Stack.Screen
+      <RouterStack.Screen
         options={{
           title: t('profileScreen.title'),
         }}
       />
 
       <Screen edges={['top']} px="spacing_16" testID="ProfileScreen">
-        <Box pt="spacing_8" gap="spacing_16">
+        <Stack pt="spacing_8" gap="spacing_16">
           <Text variant="large" style={styles.centeredText}>
             {t('profileScreen.title')}
           </Text>
@@ -32,7 +32,7 @@ const ProfileScreen = () => {
           <Button.Text testID="ProfileLogoutButton" onPress={onLogout}>
             {t('profileScreen.logout')}
           </Button.Text>
-        </Box>
+        </Stack>
       </Screen>
     </>
   );

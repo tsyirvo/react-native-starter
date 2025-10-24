@@ -1,6 +1,6 @@
 import { RefObject } from 'react';
 import type { TextInputProps } from 'react-native';
-import { TextInput } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 import { DEFAULT_ICON_SIZE } from '$domain/constants/styling';
 import {
@@ -11,7 +11,7 @@ import {
 } from '$domain/theme';
 import { Icon, IconName } from '$shared/icons';
 
-import { Box, Text } from '../primitives';
+import { Row, Stack, Text } from '../primitives';
 
 import { InputLabel } from './components/InputLabel';
 import { useInputFocusState, useInputStyling } from './hooks';
@@ -56,26 +56,23 @@ export const Input = ({
   });
 
   return (
-    <Box width="100%" gap="spacing_8" testID={testID}>
+    <Stack gap="spacing_8" testID={testID} style={styles.container}>
       <InputLabel label={label} isOptional={isOptional} />
 
-      <Box
-        flexDirection="row"
+      <Row
         px="spacing_12"
         gap="spacing_8"
-        borderWidth={1}
-        borderRadius="radius_8"
-        style={[getLineBorderColor(), getInputBgColor()]}
+        style={[styles.inputContainer, getLineBorderColor(), getInputBgColor()]}
       >
         {!!leftOrnamentIcon && (
-          <Box alignItems="center" justifyContent="center">
+          <View style={styles.iconContainer}>
             <Icon
               name={leftOrnamentIcon}
               color={leftOrnamentIconColor}
               width={DEFAULT_ICON_SIZE}
               height={DEFAULT_ICON_SIZE}
             />
-          </Box>
+          </View>
         )}
 
         <TextInput
@@ -90,9 +87,9 @@ export const Input = ({
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...props}
         />
-      </Box>
+      </Row>
 
-      <Box gap="spacing_4">
+      <Stack gap="spacing_4">
         {!!helperText && (
           <Text color="content_secondary" testID={`${testID}HelperText`}>
             {helperText}
@@ -104,12 +101,23 @@ export const Input = ({
             {error}
           </Text>
         )}
-      </Box>
-    </Box>
+      </Stack>
+    </Stack>
   );
 };
 
 const useStyles = makeAppStyles(({ colors, spacing, borderRadii }) => ({
+  container: {
+    width: '100%',
+  },
+  inputContainer: {
+    borderWidth: 1,
+    borderRadius: borderRadii.radius_8,
+  },
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   input: {
     flex: 1,
     fontSize: fontSizes.regular,
