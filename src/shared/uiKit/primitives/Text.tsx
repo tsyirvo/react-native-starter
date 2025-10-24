@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { Text as RNText, type TextProps as RNTextProps } from 'react-native';
+import type { TextProps as RNTextProps, TextStyle } from 'react-native';
+import { Text as RNText } from 'react-native';
 import { StyleSheet, type UnistylesVariants } from 'react-native-unistyles';
 
 import type { ThemeColors } from '$domain/newTheme/unistyles';
@@ -10,6 +11,7 @@ import type { ThemeColors } from '$domain/newTheme/unistyles';
 interface TextProps extends RNTextProps, UnistylesVariants<typeof styles> {
   testID?: string;
   color?: ThemeColors;
+  textAlign?: TextStyle['textAlign'];
 }
 
 /* ***** *****  Component  ***** ***** */
@@ -17,6 +19,7 @@ interface TextProps extends RNTextProps, UnistylesVariants<typeof styles> {
 export const Text = ({
   variant = 'regular',
   color = 'content_primary',
+  textAlign,
   testID,
   style,
   ...rest
@@ -31,7 +34,7 @@ export const Text = ({
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="text"
       testID={testID}
-      style={[styles.text({ color }), style]}
+      style={[styles.text({ color }), textAlign && { textAlign }, style]}
       {...rest}
     />
   );

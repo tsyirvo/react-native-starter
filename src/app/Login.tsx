@@ -50,7 +50,7 @@ const Login = () => {
                 gap="spacing_24"
                 style={styles.formContainer}
               >
-                <Text variant="large" style={styles.centeredText}>
+                <Text variant="large" textAlign="center">
                   {t('loginScreen.title')}
                 </Text>
 
@@ -77,9 +77,6 @@ const styles = StyleSheet.create((theme) => ({
   formContainer: {
     backgroundColor: theme.colors.bg_muted,
     borderRadius: theme.borderRadii.radius_24,
-  },
-  centeredText: {
-    textAlign: 'center',
   },
 }));
 

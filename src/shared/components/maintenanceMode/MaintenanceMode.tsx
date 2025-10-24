@@ -26,9 +26,7 @@ export const MaintenanceMode = ({
           <Text variant="large">{t('maintenanceMode.title')}</Text>
         </Stack>
 
-        <Text style={styles.centeredText}>
-          {t('maintenanceMode.description')}
-        </Text>
+        <Text textAlign="center">{t('maintenanceMode.description')}</Text>
       </Box>
     </FeatureFlagSplitter>
   );
@@ -39,8 +37,5 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: theme.colors.bg_base,
     width: '100%',
     height: '100%',
-  },
-  centeredText: {
-    textAlign: 'center',
   },
 }));

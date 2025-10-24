@@ -69,9 +69,7 @@ export const AppUpdateNeeded = () => {
       </Stack>
 
       <Stack mb="spacing_16">
-        <Text style={styles.centeredText}>
-          {t('appUpdateNedeed.description')}
-        </Text>
+        <Text textAlign="center">{t('appUpdateNedeed.description')}</Text>
       </Stack>
 
       <Button.Text testID="appUpdateNeeded-cta" onPress={onPress}>
@@ -86,8 +84,5 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: theme.colors.bg_base,
     width: '100%',
     height: '100%',
-  },
-  centeredText: {
-    textAlign: 'center',
   },
 }));

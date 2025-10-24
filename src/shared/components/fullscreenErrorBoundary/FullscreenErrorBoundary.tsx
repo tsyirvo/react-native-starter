@@ -25,7 +25,7 @@ export const FullscreenErrorBoundary = () => {
         <Text variant="large">{t('errorBoundary.title')}</Text>
       </Stack>
 
-      <Text style={styles.centeredText} variant="medium">
+      <Text textAlign="center" variant="medium">
         {t('errorBoundary.description')}
       </Text>
 
@@ -41,8 +41,5 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: theme.colors.bg_base,
     width: '100%',
     height: '100%',
-  },
-  centeredText: {
-    textAlign: 'center',
   },
 }));
