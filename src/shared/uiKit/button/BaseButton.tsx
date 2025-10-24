@@ -13,9 +13,8 @@ import type { UnistylesThemes } from 'react-native-unistyles';
 import { useUnistyles } from 'react-native-unistyles';
 
 import { HIT_SLOP } from '$domain/constants/styling';
-import type { ButtonVariant } from '$domain/newTheme/unistyles';
-import { buttonVariants } from '$domain/newTheme/unistyles';
 
+import { buttonVariants, type ButtonVariant } from './buttonVariants';
 import type { ButtonProps } from './types/buttonTypes';
 
 interface BaseButtonProps extends ButtonProps {

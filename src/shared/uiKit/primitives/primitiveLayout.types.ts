@@ -1,6 +1,6 @@
 import type { FlexAlignType } from 'react-native';
 
-import type { ThemeSpacing } from '$domain/newTheme/unistyles';
+import type { ThemeSpacing } from '$domain/theme';
 
 /* ***** *****  Shared Spacing Props  ***** ***** */
 

@@ -2,7 +2,9 @@ import {
   COMPACT_ICON_SIZE,
   DEFAULT_ICON_SIZE,
 } from '$domain/constants/styling';
-import { ButtonVariant, ThemeColors } from '$domain/newTheme/unistyles';
+import type { ThemeColors } from '$domain/theme';
+
+import type { ButtonVariant } from '../buttonVariants';
 
 const LOADING_OPACITY = 0;
 const REGULAR_OPACITY = 1;

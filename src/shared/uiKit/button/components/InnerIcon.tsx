@@ -1,9 +1,9 @@
 import { useUnistyles } from 'react-native-unistyles';
 
-import { ButtonVariant } from '$domain/newTheme/unistyles';
 import type { IconName } from '$shared/icons';
 import { Icon } from '$shared/icons';
 
+import type { ButtonVariant } from '../buttonVariants';
 import { getIconSize, getTextColor } from '../utils';
 
 interface InnerIconProps {

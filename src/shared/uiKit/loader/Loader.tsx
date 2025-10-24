@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useUnistyles } from 'react-native-unistyles';
 
-import { ThemeColors } from '$domain/newTheme/unistyles';
+import { ThemeColors } from '$domain/theme';
 
 interface LoaderProps {
   delay?: number;

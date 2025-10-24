@@ -1,4 +1,4 @@
-import type { ButtonVariant } from '$domain/newTheme/unistyles';
+import type { ButtonVariant } from '../buttonVariants';
 
 export interface ButtonProps {
   variant?: ButtonVariant;

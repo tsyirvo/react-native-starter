@@ -4,7 +4,7 @@ import type { TextProps as RNTextProps, TextStyle } from 'react-native';
 import { Text as RNText } from 'react-native';
 import { StyleSheet, type UnistylesVariants } from 'react-native-unistyles';
 
-import type { ThemeColors } from '$domain/newTheme/unistyles';
+import type { ThemeColors } from '$domain/theme';
 
 /* ***** *****  Types  ***** ***** */
 
