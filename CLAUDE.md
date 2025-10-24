@@ -43,7 +43,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Theming System
 
 - Uses Unistyles for consistent theming
-- Theme file in `src/domain/theme/`
+- Theme file in `src/domain/theme/unistyles.ts`
 
 ### State Management
 
