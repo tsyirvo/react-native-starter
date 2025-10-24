@@ -8,6 +8,9 @@ export default function (api) {
         plugins: ['transform-remove-console'],
       },
     },
-    plugins: ['react-native-worklets/plugin'],
+    plugins: [
+      'react-native-worklets/plugin',
+      ['react-native-unistyles/plugin', { root: 'src' }],
+    ],
   };
 }

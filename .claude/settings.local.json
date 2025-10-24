@@ -20,7 +20,8 @@
       "Bash(yarn lint:*)",
       "mcp__context7__resolve-library-id",
       "mcp__context7__get-library-docs",
-      "Bash(npx tsc-files)"
+      "Bash(npx tsc-files)",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": []
   }

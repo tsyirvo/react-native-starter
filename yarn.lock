@@ -20130,6 +20130,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-edge-to-edge@npm:1.7.0":
+  version: 1.7.0
+  resolution: "react-native-edge-to-edge@npm:1.7.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/809dcf1c68f79cff788963ec7691b37024986e82470be5047bfbe42929fc2c7d45db23eab816321e776f0bb3a8295f7efa526377bce6a559c10681cd409d597d
+  languageName: node
+  linkType: hard
+
 "react-native-gesture-handler@npm:~2.28.0":
   version: 2.28.0
   resolution: "react-native-gesture-handler@npm:2.28.0"
@@ -20196,6 +20206,16 @@ __metadata:
     "@react-native-community/datetimepicker": ">=6.7.0"
     react-native: ">=0.65.0"
   checksum: 10c0/2217780609af89f1863971dafcdb9deca33663d863ffd65ef43a4b91357a5b623f91ed4f7730231d29e85ac6e5e9d84c11d4c024a791eea70b2df2c423f30610
+  languageName: node
+  linkType: hard
+
+"react-native-nitro-modules@npm:0.30.0":
+  version: 0.30.0
+  resolution: "react-native-nitro-modules@npm:0.30.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/880f9ca2e71fac3ebbe038aab9f50ee62879583f8f92b4d31adee6e401d60c23e9023f4144ae041ec1e04028fc41a74783f0db02d1d82758ba653efbfbfd8650
   languageName: node
   linkType: hard
 
@@ -20311,6 +20331,23 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/10c7cad8ce287786c555c032f03040ecbaeaa920f44b08161364408ccd18bd0fc3a3e6622f80724ad2c0c7366f667e0d946317045aec08d934ca73358811f782
+  languageName: node
+  linkType: hard
+
+"react-native-unistyles@npm:3.0.15":
+  version: 3.0.15
+  resolution: "react-native-unistyles@npm:3.0.15"
+  peerDependencies:
+    "@react-native/normalize-colors": "*"
+    react: "*"
+    react-native: ">=0.76.0"
+    react-native-edge-to-edge: "*"
+    react-native-nitro-modules: "*"
+    react-native-reanimated: "*"
+  peerDependenciesMeta:
+    react-native-reanimated:
+      optional: true
+  checksum: 10c0/ff8bb6c95f8e335c8865c46347029c3d9659111d885ff420ae63f90cd7486f0a725826ed414cdf0936d89f9440c54d98b484f53f570500bc398ad99283a67900
   languageName: node
   linkType: hard
 
@@ -21147,9 +21184,11 @@ __metadata:
     react-i18next: "npm:16.0.0"
     react-native: "npm:0.81.4"
     react-native-device-info: "npm:14.0.4"
+    react-native-edge-to-edge: "npm:1.7.0"
     react-native-gesture-handler: "npm:~2.28.0"
     react-native-keyboard-controller: "npm:1.18.5"
     react-native-mmkv: "npm:3.3.3"
+    react-native-nitro-modules: "npm:0.30.0"
     react-native-onesignal: "npm:5.2.13"
     react-native-permissions: "npm:5.4.2"
     react-native-purchases: "npm:9.5.4"
@@ -21158,6 +21197,7 @@ __metadata:
     react-native-screens: "npm:~4.16.0"
     react-native-svg: "npm:15.12.1"
     react-native-toast-message: "npm:2.3.3"
+    react-native-unistyles: "npm:3.0.15"
     react-native-worklets: "npm:0.5.1"
     semver: "npm:7.7.2"
     sharp: "npm:0.31.1"

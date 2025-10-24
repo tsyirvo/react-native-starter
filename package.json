@@ -5,7 +5,7 @@
   "author": "Gabriel Hofman <gabriel.hofman.00@gmail.com>",
   "description": "Default starter with basic builtins and configs used in my React Native projects",
   "type": "module",
-  "main": "expo-router/entry",
+  "main": "index.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/tsyirvo/react-native-starter.git"
@@ -111,9 +111,11 @@
     "react-i18next": "16.0.0",
     "react-native": "0.81.4",
     "react-native-device-info": "14.0.4",
+    "react-native-edge-to-edge": "1.7.0",
     "react-native-gesture-handler": "~2.28.0",
     "react-native-keyboard-controller": "1.18.5",
     "react-native-mmkv": "3.3.3",
+    "react-native-nitro-modules": "0.30.0",
     "react-native-onesignal": "5.2.13",
     "react-native-permissions": "5.4.2",
     "react-native-purchases": "9.5.4",
@@ -122,6 +124,7 @@
     "react-native-screens": "~4.16.0",
     "react-native-svg": "15.12.1",
     "react-native-toast-message": "2.3.3",
+    "react-native-unistyles": "3.0.15",
     "react-native-worklets": "0.5.1",
     "semver": "7.7.2",
     "zod": "4.1.12",
