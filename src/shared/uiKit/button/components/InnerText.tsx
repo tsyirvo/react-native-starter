@@ -1,9 +1,11 @@
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
+import { ButtonVariant } from '$domain/newTheme/unistyles';
+
 import { Loader } from '../../loader';
 import { Text } from '../../primitives';
-import type { ButtonProps, ParentVariant } from '../types/buttonTypes';
+import type { ButtonProps } from '../types/buttonTypes';
 import {
   getLoaderColor,
   getTextColor,
@@ -12,7 +14,7 @@ import {
 } from '../utils';
 
 interface InnerTextProps extends Pick<ButtonProps, 'isLoading'> {
-  parentVariant: ParentVariant;
+  parentVariant: ButtonVariant;
   children: string;
   testID?: string;
 }

@@ -9,8 +9,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-
-import { makeAppStyles, useAppTheme } from '$domain/theme';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 export const AnimatedBottomSheetBackdrop = ({
   animatedIndex,
@@ -18,8 +17,7 @@ export const AnimatedBottomSheetBackdrop = ({
 }: BottomSheetBackdropProps) => {
   const { dismiss } = useBottomSheetModal();
 
-  const { colors } = useAppTheme();
-  const styles = useStyles();
+  const { theme } = useUnistyles();
 
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: interpolate(
@@ -35,11 +33,11 @@ export const AnimatedBottomSheetBackdrop = ({
       style,
       styles.wrapper,
       {
-        backgroundColor: colors.dark_80,
+        backgroundColor: theme.colors.dark_80,
       },
       containerAnimatedStyle,
     ],
-    [containerAnimatedStyle, style, styles.wrapper, colors],
+    [containerAnimatedStyle, style, theme.colors.dark_80],
   );
 
   return (
@@ -49,7 +47,7 @@ export const AnimatedBottomSheetBackdrop = ({
   );
 };
 
-const useStyles = makeAppStyles(() => ({
+const styles = StyleSheet.create({
   wrapper: {
     width: '100%',
     height: '100%',
@@ -59,4 +57,4 @@ const useStyles = makeAppStyles(() => ({
     right: 0,
     bottom: 0,
   },
-}));
+});

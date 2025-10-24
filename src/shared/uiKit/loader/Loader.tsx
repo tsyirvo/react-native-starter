@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
+import { useUnistyles } from 'react-native-unistyles';
 
-import { useAppTheme, type Colors } from '$domain/theme';
+import { ThemeColors } from '$domain/newTheme/unistyles';
 
 interface LoaderProps {
   delay?: number;
   size?: 'large' | 'small';
-  color?: Colors;
+  color?: ThemeColors;
   testID?: string;
 }
 
@@ -22,7 +23,7 @@ export const Loader = ({
 }: LoaderProps) => {
   const [isShowingLoading, setIsShowingLoading] = useState(false);
 
-  const { colors } = useAppTheme();
+  const { theme } = useUnistyles();
 
   const minHeight = size === 'large' ? LARGE_SIZE : SMALL_SIZE;
 
@@ -40,7 +41,7 @@ export const Loader = ({
     return (
       <ActivityIndicator
         testID={`${testID}ActivityIndicator`}
-        color={colors[color]}
+        color={theme.colors[color]}
         size={size}
       />
     );

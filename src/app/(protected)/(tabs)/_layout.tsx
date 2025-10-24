@@ -1,8 +1,8 @@
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { useUnistyles } from 'react-native-unistyles';
 
 import { config } from '$domain/constants';
-import { useAppTheme } from '$domain/theme';
 import {
   renderFeaturesIcon,
   renderHomeIcon,
@@ -12,16 +12,16 @@ import {
 const TabLayout = () => {
   const { t } = useTranslation();
 
-  const { colors } = useAppTheme();
+  const { theme } = useUnistyles();
 
   return (
     <Tabs
       screenOptions={{
         ...globalScreenOptions,
-        tabBarActiveTintColor: colors.core_primary,
-        tabBarInactiveTintColor: colors.content_secondary,
+        tabBarActiveTintColor: theme.colors.core_primary,
+        tabBarInactiveTintColor: theme.colors.content_secondary,
         tabBarStyle: {
-          backgroundColor: colors.bg_base,
+          backgroundColor: theme.colors.bg_base,
         },
       }}
       backBehavior="order"
@@ -38,8 +38,8 @@ const TabLayout = () => {
         options={{
           tabBarBadge: 2,
           tabBarBadgeStyle: {
-            backgroundColor: colors.border_default,
-            color: colors.core_primary,
+            backgroundColor: theme.colors.border_default,
+            color: theme.colors.core_primary,
           },
           tabBarIcon: renderProfileIcon,
         }}

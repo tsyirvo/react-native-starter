@@ -2,9 +2,7 @@ import {
   COMPACT_ICON_SIZE,
   DEFAULT_ICON_SIZE,
 } from '$domain/constants/styling';
-import { Colors } from '$domain/theme';
-
-import { ParentVariant } from '../types/buttonTypes';
+import { ButtonVariant, ThemeColors } from '$domain/newTheme/unistyles';
 
 const LOADING_OPACITY = 0;
 const REGULAR_OPACITY = 1;
@@ -13,7 +11,7 @@ export const getTextOpacity = (isLoading?: boolean) => {
   return isLoading ? LOADING_OPACITY : REGULAR_OPACITY;
 };
 
-export const getTextColor = (variant: ParentVariant): Colors => {
+export const getTextColor = (variant: ButtonVariant): ThemeColors => {
   switch (variant) {
     case 'outline':
     case 'text':
@@ -27,7 +25,7 @@ export const getTextColor = (variant: ParentVariant): Colors => {
   }
 };
 
-export const getTextVariant = (variant: ParentVariant) => {
+export const getTextVariant = (variant: ButtonVariant) => {
   switch (variant) {
     case 'primary_compact':
     case 'outline_compact':
@@ -38,7 +36,7 @@ export const getTextVariant = (variant: ParentVariant) => {
   }
 };
 
-export const getLoaderColor = (variant: ParentVariant): Colors => {
+export const getLoaderColor = (variant: ButtonVariant): ThemeColors => {
   switch (variant) {
     case 'outline':
     case 'outline_compact':
@@ -50,7 +48,7 @@ export const getLoaderColor = (variant: ParentVariant): Colors => {
   }
 };
 
-export const getIconSize = (variant: ParentVariant) => {
+export const getIconSize = (variant: ButtonVariant) => {
   switch (variant) {
     case 'primary_compact':
     case 'outline_compact':

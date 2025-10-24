@@ -1,4 +1,4 @@
-import { makeAppStyles } from '$domain/theme';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 interface UseInputStylingProps {
   isFocused: boolean;
@@ -11,7 +11,7 @@ export const useInputStyling = ({
   isDisabled,
   error,
 }: UseInputStylingProps) => {
-  const styles = useStyles();
+  const { theme } = useUnistyles();
 
   const getLineBorderColor = () => {
     if (isFocused) return styles.focusedState;
@@ -22,28 +22,28 @@ export const useInputStyling = ({
   };
 
   const getInputBgColor = () => {
-    if (isDisabled) return styles.disabledBg;
+    if (isDisabled) return styles.disabledBg(theme.colors.bg_muted);
 
-    return styles.defaultBg;
+    return styles.defaultBg(theme.colors.bg_base);
   };
 
   return { getLineBorderColor, getInputBgColor };
 };
 
-const useStyles = makeAppStyles(({ colors }) => ({
+const styles = StyleSheet.create((theme) => ({
   defaultState: {
-    borderColor: colors.border_default,
+    borderColor: theme.colors.border_default,
   },
   focusedState: {
-    borderColor: colors.border_focus,
+    borderColor: theme.colors.border_focus,
   },
   errorState: {
-    borderColor: colors.negative,
+    borderColor: theme.colors.negative,
   },
-  defaultBg: {
-    backgroundColor: colors.bg_base,
-  },
-  disabledBg: {
-    backgroundColor: colors.bg_muted,
-  },
+  defaultBg: (color: string) => ({
+    backgroundColor: color,
+  }),
+  disabledBg: (color: string) => ({
+    backgroundColor: color,
+  }),
 }));

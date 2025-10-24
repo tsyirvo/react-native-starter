@@ -1,5 +1,6 @@
+import { useUnistyles } from 'react-native-unistyles';
+
 import { DEFAULT_ICON_SIZE } from '$domain/constants/styling';
-import { useAppTheme } from '$domain/theme';
 import type { IconName } from '$shared/icons';
 import { Icon } from '$shared/icons';
 
@@ -14,14 +15,16 @@ export const TabBarIcon = ({
   isFocused,
   testID = 'TabBarIcon',
 }: TabBarIconProps) => {
-  const { colors } = useAppTheme();
+  const { theme } = useUnistyles();
 
   return (
     <Icon
       name={iconName}
       width={DEFAULT_ICON_SIZE}
       height={DEFAULT_ICON_SIZE}
-      color={isFocused ? colors.core_primary : colors.content_secondary}
+      color={
+        isFocused ? theme.colors.core_primary : theme.colors.content_secondary
+      }
       testID={testID}
     />
   );

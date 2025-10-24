@@ -56,6 +56,48 @@ const sharedGeneralColors = {
 
 const sharedGap = (v: number) => v * 4;
 
+/* ***** *****  Button Variants  ***** ***** */
+
+const MIN_BUTTON_WIDTH = 100;
+
+export const buttonVariants = {
+  primary: {
+    minWidth: MIN_BUTTON_WIDTH,
+    paddingHorizontal: sharedSpacing.spacing_16,
+    paddingVertical: sharedSpacing.spacing_8,
+    borderRadius: sharedBorderRadii.radius_16,
+  },
+  primary_compact: {
+    paddingHorizontal: sharedSpacing.spacing_12,
+    paddingVertical: sharedSpacing.spacing_4,
+    borderRadius: sharedBorderRadii.radius_48,
+  },
+  outline: {
+    minWidth: MIN_BUTTON_WIDTH,
+    paddingHorizontal: sharedSpacing.spacing_16,
+    paddingVertical: sharedSpacing.spacing_8,
+    borderRadius: sharedBorderRadii.radius_16,
+    borderWidth: 1,
+  },
+  outline_compact: {
+    paddingHorizontal: sharedSpacing.spacing_12,
+    paddingVertical: sharedSpacing.spacing_4,
+    borderRadius: sharedBorderRadii.radius_48,
+    borderWidth: 1,
+  },
+  text: {
+    paddingHorizontal: sharedSpacing.spacing_16,
+    paddingVertical: sharedSpacing.spacing_8,
+    borderRadius: sharedBorderRadii.radius_16,
+  },
+  text_compact: {
+    paddingHorizontal: sharedSpacing.spacing_8,
+    paddingVertical: sharedSpacing.spacing_4,
+  },
+} as const;
+
+export type ButtonVariant = keyof typeof buttonVariants;
+
 /* ***** *****  Light Theme  ***** ***** */
 
 const lightTheme = {

@@ -1,14 +1,9 @@
 import { RefObject } from 'react';
 import type { TextInputProps } from 'react-native';
 import { TextInput, View } from 'react-native';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { DEFAULT_ICON_SIZE } from '$domain/constants/styling';
-import {
-  fontFamily,
-  fontSizes,
-  makeAppStyles,
-  useAppTheme,
-} from '$domain/theme';
 import { Icon, IconName } from '$shared/icons';
 
 import { Row, Stack, Text } from '../primitives';
@@ -42,8 +37,7 @@ export const Input = ({
   onBlur: onBlurProp,
   ...props
 }: InputProps) => {
-  const { colors } = useAppTheme();
-  const styles = useStyles();
+  const { theme } = useUnistyles();
 
   const { isFocused, onBlur, onFocus } = useInputFocusState({
     onFocus: onFocusProp,
@@ -78,7 +72,7 @@ export const Input = ({
         <TextInput
           ref={ref}
           editable={!isDisabled}
-          placeholderTextColor={colors.content_tertiary}
+          placeholderTextColor={theme.colors.content_tertiary}
           style={[styles.input, getInputBgColor()]}
           underlineColorAndroid="transparent"
           onChangeText={props.onChangeText}
@@ -106,13 +100,13 @@ export const Input = ({
   );
 };
 
-const useStyles = makeAppStyles(({ colors, spacing, borderRadii }) => ({
+const styles = StyleSheet.create((theme) => ({
   container: {
     width: '100%',
   },
   inputContainer: {
     borderWidth: 1,
-    borderRadius: borderRadii.radius_8,
+    borderRadius: theme.borderRadii.radius_8,
   },
   iconContainer: {
     alignItems: 'center',
@@ -120,13 +114,13 @@ const useStyles = makeAppStyles(({ colors, spacing, borderRadii }) => ({
   },
   input: {
     flex: 1,
-    fontSize: fontSizes.regular,
-    fontFamily: fontFamily.regular,
-    backgroundColor: colors.bg_base,
-    color: colors.content_primary,
-    padding: spacing.zero,
-    paddingVertical: spacing.spacing_8,
-    borderRadius: borderRadii.radius_8,
+    fontSize: theme.fontSizes.regular,
+    fontFamily: theme.fontFamily.regular,
+    backgroundColor: theme.colors.bg_base,
+    color: theme.colors.content_primary,
+    padding: theme.spacing.zero,
+    paddingVertical: theme.spacing.spacing_8,
+    borderRadius: theme.borderRadii.radius_8,
   },
 }));
 
