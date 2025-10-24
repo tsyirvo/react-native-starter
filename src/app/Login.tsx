@@ -1,23 +1,21 @@
-import { Stack, useRouter } from 'expo-router';
+import { Stack as RouterStack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { StyleSheet } from 'react-native-unistyles';
 
 import logoDark from '$assets/images/logo-dark.png';
 import { useAuthContext } from '$domain/contexts';
 import { UserLogin } from '$domain/entities';
-import { makeAppStyles } from '$domain/theme';
 import { LoginForm } from '$features/loginForm';
 import { Screen } from '$shared/components';
-import { Box, Image, Text } from '$shared/uiKit';
+import { Box, Image, Stack, Text } from '$shared/uiKit';
 
 const Login = () => {
   const router = useRouter();
   const { t } = useTranslation();
 
   const { signIn } = useAuthContext();
-
-  const styles = useStyles();
 
   const dismissKeyboard = () => {
     Keyboard.dismiss();
@@ -31,7 +29,7 @@ const Login = () => {
 
   return (
     <>
-      <Stack.Screen
+      <RouterStack.Screen
         options={{
           headerShown: false,
           title: t('loginScreen.title'),
@@ -43,22 +41,21 @@ const Login = () => {
         <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
           <TouchableWithoutFeedback onPress={dismissKeyboard}>
             <Box flex={1} pt="spacing_32" gap="spacing_16">
-              <Box alignItems="center">
+              <Stack align="center">
                 <Image source={logoDark} style={styles.logo} />
-              </Box>
+              </Stack>
 
-              <Box
-                bg="bg_muted"
+              <Stack
                 p="spacing_16"
-                borderRadius="radius_24"
                 gap="spacing_24"
+                style={styles.formContainer}
               >
                 <Text variant="large" textAlign="center">
                   {t('loginScreen.title')}
                 </Text>
 
                 <LoginForm onFormSuccess={onFormSuccess} />
-              </Box>
+              </Stack>
             </Box>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
@@ -69,13 +66,17 @@ const Login = () => {
 
 const LOGO_SIZE = 150;
 
-const useStyles = makeAppStyles(() => ({
+const styles = StyleSheet.create((theme) => ({
   wrapper: {
     flex: 1,
   },
   logo: {
     width: LOGO_SIZE,
     height: LOGO_SIZE,
+  },
+  formContainer: {
+    backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_24,
   },
 }));
 

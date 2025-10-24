@@ -1,6 +1,10 @@
+import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
+
 import { Loader } from '../../loader';
-import { Box, Text } from '../../primitives';
-import type { ButtonProps, ParentVariant } from '../types/buttonTypes';
+import { Text } from '../../primitives';
+import type { ButtonVariant } from '../buttonVariants';
+import type { ButtonProps } from '../types/buttonTypes';
 import {
   getLoaderColor,
   getTextColor,
@@ -9,7 +13,7 @@ import {
 } from '../utils';
 
 interface InnerTextProps extends Pick<ButtonProps, 'isLoading'> {
-  parentVariant: ParentVariant;
+  parentVariant: ButtonVariant;
   children: string;
   testID?: string;
 }
@@ -20,42 +24,47 @@ export const InnerText = ({
   children,
   testID = 'InnerText',
 }: InnerTextProps) => {
+  const textOpacity = getTextOpacity(isLoading);
+
   return (
-    <Box
-      justifyContent="center"
-      alignItems="center"
-      minHeight={MIN_HEIGHT}
-      testID={testID}
-    >
+    <View style={styles.container} testID={testID}>
       {isLoading ? (
-        <Box
-          position="absolute"
-          top={0}
-          right={0}
-          bottom={0}
-          left={0}
-          alignItems="center"
-          justifyContent="center"
-          testID={`${testID}Loader`}
-        >
+        <View style={styles.loaderContainer} testID={`${testID}Loader`}>
           <Loader
             delay={0}
             size="small"
             color={getLoaderColor(parentVariant)}
           />
-        </Box>
+        </View>
       ) : null}
 
       <Text
         variant={getTextVariant(parentVariant)}
         color={getTextColor(parentVariant)}
-        opacity={getTextOpacity(isLoading)}
+        style={{ opacity: textOpacity }}
         numberOfLines={1}
       >
         {children}
       </Text>
-    </Box>
+    </View>
   );
 };
 
 const MIN_HEIGHT = 24;
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: MIN_HEIGHT,
+  },
+  loaderContainer: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

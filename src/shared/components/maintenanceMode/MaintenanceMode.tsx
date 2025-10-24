@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { FeatureFlagSplitter } from '$infra/featureFlags';
-import { Box, Text } from '$shared/uiKit';
+import { Box, Stack, Text } from '$shared/uiKit';
 
 interface MaintenanceModeProps {
   testID?: string;
@@ -15,20 +16,26 @@ export const MaintenanceMode = ({
   return (
     <FeatureFlagSplitter flagKey="is-maintenance-mode">
       <Box
-        alignItems="center"
-        bg="bg_base"
-        height="100%"
-        justifyContent="center"
+        align="center"
+        justify="center"
         px="spacing_32"
         testID={testID}
-        width="100%"
+        style={styles.container}
       >
-        <Text pb="spacing_8" variant="large">
-          {t('maintenanceMode.title')}
-        </Text>
+        <Stack pb="spacing_8">
+          <Text variant="large">{t('maintenanceMode.title')}</Text>
+        </Stack>
 
         <Text textAlign="center">{t('maintenanceMode.description')}</Text>
       </Box>
     </FeatureFlagSplitter>
   );
 };
+
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    backgroundColor: theme.colors.bg_base,
+    width: '100%',
+    height: '100%',
+  },
+}));

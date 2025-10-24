@@ -1,12 +1,12 @@
 import { graphql } from '$infra/gql/generated';
 import type { UserItemFragment } from '$infra/gql/generated/graphql';
-import { Box, Text } from '$shared/uiKit';
+import { Stack, Text } from '$shared/uiKit';
 
 export const BlogPostUser = ({ user }: { user?: UserItemFragment | null }) => {
   return (
-    <Box alignItems="flex-end">
+    <Stack align="flex-end">
       <Text variant="medium">{user?.username}</Text>
-    </Box>
+    </Stack>
   );
 };
 

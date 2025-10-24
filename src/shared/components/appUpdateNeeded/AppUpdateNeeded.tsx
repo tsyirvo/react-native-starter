@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import semverGte from 'semver/functions/gte';
 
 import { config, IS_IOS } from '$domain/constants';
@@ -10,7 +11,7 @@ import {
 } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { useRunOnMount } from '$shared/hooks';
-import { Box, Button, Text } from '$shared/uiKit';
+import { Button, Box, Stack, Text } from '$shared/uiKit';
 
 export const AppUpdateNeeded = () => {
   const [isAppSupported, setIsAppSupported] = useState(true);
@@ -57,21 +58,19 @@ export const AppUpdateNeeded = () => {
 
   return (
     <Box
-      alignItems="center"
-      bg="bg_base"
-      height="100%"
-      justifyContent="center"
+      align="center"
+      justify="center"
       px="spacing_32"
       testID="appUpdateNeeded-screen"
-      width="100%"
+      style={styles.container}
     >
-      <Text pb="spacing_8" variant="large">
-        {t('appUpdateNedeed.title')}
-      </Text>
+      <Stack pb="spacing_8">
+        <Text variant="large">{t('appUpdateNedeed.title')}</Text>
+      </Stack>
 
-      <Text mb="spacing_16" textAlign="center">
-        {t('appUpdateNedeed.description')}
-      </Text>
+      <Stack mb="spacing_16">
+        <Text textAlign="center">{t('appUpdateNedeed.description')}</Text>
+      </Stack>
 
       <Button.Text testID="appUpdateNeeded-cta" onPress={onPress}>
         {t('appUpdateNedeed.cta')}
@@ -79,3 +78,11 @@ export const AppUpdateNeeded = () => {
     </Box>
   );
 };
+
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    backgroundColor: theme.colors.bg_base,
+    width: '100%',
+    height: '100%',
+  },
+}));

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { graphql } from '$infra/gql/generated';
 import { useGetPostQuery } from '$infra/gql/generated/hooks';
-import { Loader, Text } from '$shared/uiKit';
+import { Loader, Stack, Text } from '$shared/uiKit';
 
 import { BlogPostUser } from './components';
 
@@ -23,7 +23,9 @@ export const BlogPost = ({ id }: BlogPostProps) => {
     <>
       <Text variant="large">{t('blogPostScreen.description')}</Text>
 
-      <Text pt="spacing_8">{data?.post?.title}</Text>
+      <Stack pt="spacing_8">
+        <Text>{data?.post?.title}</Text>
+      </Stack>
 
       <BlogPostUser user={data?.post?.user} />
     </>

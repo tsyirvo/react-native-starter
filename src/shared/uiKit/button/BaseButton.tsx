@@ -1,9 +1,7 @@
 /* eslint-disable react-hooks/immutability */
 
-import type { VariantProps } from '@shopify/restyle';
-import { createRestyleComponent, createVariant } from '@shopify/restyle';
 import type React from 'react';
-import { GestureResponderEvent, Pressable } from 'react-native';
+import { GestureResponderEvent, Pressable, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
@@ -11,25 +9,17 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import type { UnistylesThemes } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 
 import { HIT_SLOP } from '$domain/constants/styling';
-import type { Theme } from '$domain/theme';
-import type { Box } from '$shared/uiKit/primitives';
 
+import { buttonVariants, type ButtonVariant } from './buttonVariants';
 import type { ButtonProps } from './types/buttonTypes';
 
 interface BaseButtonProps extends ButtonProps {
   children: React.ReactElement;
 }
-
-const ButtonVariant = createVariant({
-  themeKey: 'buttonVariants',
-});
-
-const PrimitiveButton = createRestyleComponent<
-  VariantProps<Theme, 'buttonVariants'> & React.ComponentProps<typeof Box>,
-  Theme
->([ButtonVariant]);
 
 export const BaseButton = ({
   variant = 'primary',
@@ -41,6 +31,8 @@ export const BaseButton = ({
   onPress,
 }: BaseButtonProps) => {
   const scale = useSharedValue(REST_TARGET_SCALE);
+
+  const { theme } = useUnistyles();
 
   const isReducedMotion = useReducedMotion();
 
@@ -64,6 +56,8 @@ export const BaseButton = ({
     });
   };
 
+  const buttonStyle = getButtonStyle(variant, theme.colors);
+
   return (
     <AnimatedPressable
       accessibilityLabel={typeof children === 'string' ? children : undefined}
@@ -82,7 +76,7 @@ export const BaseButton = ({
       onPressOut={handlePressOut}
       onPress={onPress as (event: GestureResponderEvent) => void}
     >
-      <PrimitiveButton variant={variant}>{children}</PrimitiveButton>
+      <View style={[buttonVariants[variant], buttonStyle]}>{children}</View>
     </AnimatedPressable>
   );
 };
@@ -95,3 +89,24 @@ const DISABLED_OPACITY = 0.5;
 const REGULAR_OPACITY = 1;
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+const getButtonStyle = (
+  variant: ButtonVariant,
+  colors:
+    | UnistylesThemes['light']['colors']
+    | UnistylesThemes['dark']['colors'],
+) => {
+  switch (variant) {
+    case 'primary':
+    case 'primary_compact':
+      return { backgroundColor: colors.core_primary };
+    case 'outline':
+    case 'outline_compact':
+      return { borderColor: colors.border_default };
+    case 'text':
+    case 'text_compact':
+      return { backgroundColor: colors.bg_base };
+    default:
+      return {};
+  }
+};

@@ -1,13 +1,13 @@
 import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { useUnistyles } from 'react-native-unistyles';
 
-import { useAppTheme } from '$domain/theme';
 import { HeaderBackground, HeaderLeft } from '$shared/components';
 
 const FeaturesLayout = () => {
   const { t } = useTranslation();
 
-  const { colors } = useAppTheme();
+  const { theme } = useUnistyles();
 
   return (
     <Stack screenOptions={globalScreenOptions}>
@@ -20,7 +20,7 @@ const FeaturesLayout = () => {
         name="(blogPost)/[blogPostId]"
         options={{
           title: t('blogPostScreen.title'),
-          headerTintColor: colors.content_primary,
+          headerTintColor: theme.colors.content_primary,
           headerBackground: HeaderBackground,
           headerLeft: HeaderLeft,
         }}

@@ -1,6 +1,7 @@
 import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Notifications } from '$features/notifications';
 import { StoreUpdateAvailableBanner, Screen } from '$shared/components';
@@ -30,27 +31,19 @@ const FeaturesScreen = () => {
               </Box>
             ) : null}
 
-            <Box
-              borderBottomColor="bg_muted"
-              borderBottomWidth={1}
-              pb="spacing_16"
-            >
+            <View style={styles.section}>
               <Text variant="large">{t('featuresScreen.blogPost.title')}</Text>
 
-              <Box alignItems="flex-start" mt="spacing_8">
+              <Box self="flex-start" mt="spacing_8">
                 <Button.Text onPress={goToBlogPost}>
                   {t('featuresScreen.blogPost.cta')}
                 </Button.Text>
               </Box>
-            </Box>
+            </View>
 
-            <Box
-              borderBottomColor="bg_muted"
-              borderBottomWidth={1}
-              py="spacing_16"
-            >
+            <View style={styles.sectionWithTopPadding}>
               <Notifications />
-            </Box>
+            </View>
           </Box>
         </ScrollView>
       </Screen>
@@ -59,3 +52,16 @@ const FeaturesScreen = () => {
 };
 
 export default FeaturesScreen;
+
+const styles = StyleSheet.create((theme) => ({
+  section: {
+    borderBottomColor: theme.colors.bg_muted,
+    borderBottomWidth: 1,
+    paddingBottom: theme.spacing.spacing_16,
+  },
+  sectionWithTopPadding: {
+    borderBottomColor: theme.colors.bg_muted,
+    borderBottomWidth: 1,
+    paddingVertical: theme.spacing.spacing_16,
+  },
+}));

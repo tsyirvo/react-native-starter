@@ -6,9 +6,9 @@ import {
 import { RefObject } from 'react';
 import { SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { DEVICE_HEIGHT } from '$domain/constants';
-import { makeAppStyles, useAppTheme } from '$domain/theme';
 
 import { Box } from '../primitives';
 
@@ -41,11 +41,10 @@ export const BottomSheet = ({
 }: BottomSheetProps) => {
   const { bottom: bottomInset, top: topInset } = useSafeAreaInsets();
 
-  const { spacing } = useAppTheme();
-  const styles = useStyles();
+  const { theme } = useUnistyles();
 
   const snapPointsToUse = snapPoints ?? [
-    DEVICE_HEIGHT - topInset - spacing.spacing_32,
+    DEVICE_HEIGHT - topInset - theme.spacing.spacing_32,
   ];
 
   return (
@@ -62,7 +61,6 @@ export const BottomSheet = ({
       {isScrollable ? (
         <BottomSheetScrollView style={styles.scrollViewStyle}>
           <Box
-            flex={1}
             px={disableHorizontalPadding ? undefined : 'spacing_16'}
             pt={disableTopPadding ? undefined : 'spacing_24'}
           >
@@ -71,7 +69,6 @@ export const BottomSheet = ({
         </BottomSheetScrollView>
       ) : (
         <Box
-          flex={1}
           px={disableHorizontalPadding ? undefined : 'spacing_16'}
           pt={disableTopPadding ? undefined : 'spacing_24'}
           style={{ marginBottom: bottomInset }}
@@ -93,15 +90,15 @@ const renderDefaultBackdrop = ({
   />
 );
 
-const useStyles = makeAppStyles(({ colors, spacing }) => ({
+const styles = StyleSheet.create((theme) => ({
   modalStyle: {
-    backgroundColor: colors.bg_base,
+    backgroundColor: theme.colors.bg_base,
   },
   handleStyle: {
-    backgroundColor: colors.border_default,
+    backgroundColor: theme.colors.border_default,
     width: 50,
   },
   scrollViewStyle: {
-    marginBottom: spacing.spacing_24,
+    marginBottom: theme.spacing.spacing_24,
   },
 }));

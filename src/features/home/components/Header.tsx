@@ -1,20 +1,13 @@
 import { ImageBackground } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import headerAsset from '$assets/images/header.jpeg';
-import { makeAppStyles } from '$domain/theme';
 import { Box, Text } from '$shared/uiKit';
 
 export const Header = () => {
-  const styles = useStyles();
-
   return (
     <ImageBackground source={headerAsset} style={styles.image}>
-      <Box
-        alignItems="center"
-        flex={1}
-        justifyContent="flex-end"
-        mb="spacing_24"
-      >
+      <Box align="center" justify="flex-end" mb="spacing_24">
         <Text color="core_primary" variant="large">
           React Native Template
         </Text>
@@ -23,9 +16,9 @@ export const Header = () => {
   );
 };
 
-const useStyles = makeAppStyles(() => ({
+const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 350,
   },
-}));
+});

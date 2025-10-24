@@ -1,39 +1,41 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { StyleSheet } from 'react-native';
 import type { BaseToastProps } from 'react-native-toast-message';
 import { BaseToast, ErrorToast, InfoToast } from 'react-native-toast-message';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { colors, textVariants, spacing } from '$domain/theme';
-
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
   // Global styles
   wrapper: {
     height: 'auto',
     width: '90%',
-    paddingVertical: spacing.spacing_8,
+    paddingVertical: theme.spacing.spacing_8,
   },
   container: {
-    paddingHorizontal: spacing.spacing_16,
+    paddingHorizontal: theme.spacing.spacing_16,
   },
   text1: {
-    ...textVariants.medium,
+    fontFamily: theme.fontFamily.regular,
+    fontSize: theme.fontSizes.medium,
+    lineHeight: theme.lineHeight.medium,
     fontWeight: '600',
   },
   text2: {
-    ...textVariants.regular,
+    fontFamily: theme.fontFamily.regular,
+    fontSize: theme.fontSizes.regular,
+    lineHeight: theme.lineHeight.regular,
   },
   // Scoped styles
   success: {
-    borderLeftColor: colors.positive,
+    borderLeftColor: theme.colors.positive,
   },
   error: {
-    borderLeftColor: colors.negative,
+    borderLeftColor: theme.colors.negative,
   },
   info: {
-    borderLeftColor: colors.neutral,
+    borderLeftColor: theme.colors.neutral,
   },
-});
+}));
 
 export const toastConfig = {
   success: (props: BaseToastProps) => (

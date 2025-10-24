@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Box } from '$shared/uiKit';
 
@@ -16,7 +17,7 @@ const meta = {
   decorators: [
     // eslint-disable-next-line @typescript-eslint/naming-convention
     (Story) => (
-      <Box width="100%" p="spacing_16">
+      <Box p="spacing_16" style={styles.wrapper}>
         <Story />
       </Box>
     ),
@@ -81,3 +82,9 @@ export const WithOrnamentIcon: Story = {
     leftOrnamentIconColor: '#0C0D0F',
   },
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    width: '100%',
+  },
+});

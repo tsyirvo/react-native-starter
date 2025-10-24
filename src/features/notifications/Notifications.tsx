@@ -27,7 +27,7 @@ export const Notifications = () => {
         {t('featuresScreen.notificationsPermission.title')}
       </Text>
 
-      <Box alignItems="flex-start" mt="spacing_8">
+      <Box self="flex-start" mt="spacing_8">
         <Button.Text onPress={onPress}>
           {t('featuresScreen.notificationsPermission.cta')}
         </Button.Text>

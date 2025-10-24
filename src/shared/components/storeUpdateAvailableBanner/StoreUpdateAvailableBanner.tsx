@@ -1,9 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { IS_IOS, config } from '$domain/constants';
 import { Logger } from '$infra/logger';
-import { Box, Button, Text } from '$shared/uiKit';
+import { Stack, Button, Text } from '$shared/uiKit';
 
 export const StoreUpdateAvailableBanner = () => {
   const { t } = useTranslation();
@@ -27,19 +28,19 @@ export const StoreUpdateAvailableBanner = () => {
   };
 
   return (
-    <Box
-      bg="bg_base"
-      borderRadius="radius_8"
-      flexDirection="row"
-      flexWrap="wrap"
-      gap="spacing_8"
-      p="spacing_16"
-    >
+    <Stack gap="spacing_8" p="spacing_16" style={styles.container}>
       <Text>{t('newStoreVersionAvailable.title')}</Text>
 
       <Button.Text onPress={onPress}>
         {t('newStoreVersionAvailable.cta')}
       </Button.Text>
-    </Box>
+    </Stack>
   );
 };
+
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    backgroundColor: theme.colors.bg_base,
+    borderRadius: theme.borderRadii.radius_8,
+  },
+}));

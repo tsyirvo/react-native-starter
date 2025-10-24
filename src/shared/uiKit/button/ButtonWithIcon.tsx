@@ -1,7 +1,7 @@
 import { usePress } from '$shared/hooks';
 import type { IconName } from '$shared/icons';
 
-import { Box } from '../primitives';
+import { Row } from '../primitives';
 
 import { BaseButton } from './BaseButton';
 import { InnerIcon } from './components/InnerIcon';
@@ -36,12 +36,7 @@ export const ButtonWithIcon = ({
       testID={testID}
       onPress={handlePress}
     >
-      <Box
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        gap="spacing_8"
-      >
+      <Row align="center" justify="center" gap="spacing_8">
         <InnerIcon
           parentVariant={variant}
           iconName={iconName}
@@ -51,7 +46,7 @@ export const ButtonWithIcon = ({
         <InnerText parentVariant={variant} isLoading={isResolving || isLoading}>
           {children}
         </InnerText>
-      </Box>
+      </Row>
     </BaseButton>
   );
 };

@@ -3,7 +3,6 @@ import 'intl-pluralrules';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Sentry from '@sentry/react-native';
-import { ThemeProvider } from '@shopify/restyle';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -15,7 +14,6 @@ import { StackAnimationTypes } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
 
 import { AuthContextProvider } from '$domain/contexts';
-import { makeAppStyles, theme } from '$domain/theme';
 import {
   useAppScreenTracking,
   useAppStateTracking,
@@ -59,8 +57,6 @@ const RootLayout = () => {
     (state) => state.isBootstrappingApplication,
   );
 
-  const styles = useStyles();
-
   useRoutingInstrumentation();
   useCheckNetworkStateOnMount();
   useAppStateTracking();
@@ -76,42 +72,38 @@ const RootLayout = () => {
           persistOptions={persistOptions}
         >
           <ProductTrackingProvider>
-            <ThemeProvider theme={theme}>
-              <ErrorBoundary
-                FallbackComponent={FullscreenErrorBoundary}
-                onError={onGlobalError}
-              >
-                <Splashscreen>
-                  <BottomSheetModalProvider>
-                    <KeyboardProvider>
-                      <AuthContextProvider>
-                        <>
-                          <Stack screenOptions={screenOptions}>
-                            <Stack.Protected
-                              guard={!isBootstrappingApplication}
-                            >
-                              <Stack.Protected guard={!isUserLoggedIn}>
-                                <Stack.Screen name="Login" />
-                              </Stack.Protected>
-
-                              <Stack.Protected guard={isUserLoggedIn}>
-                                <Stack.Screen name="(protected)/(tabs)" />
-                              </Stack.Protected>
+            <ErrorBoundary
+              FallbackComponent={FullscreenErrorBoundary}
+              onError={onGlobalError}
+            >
+              <Splashscreen>
+                <BottomSheetModalProvider>
+                  <KeyboardProvider>
+                    <AuthContextProvider>
+                      <>
+                        <Stack screenOptions={screenOptions}>
+                          <Stack.Protected guard={!isBootstrappingApplication}>
+                            <Stack.Protected guard={!isUserLoggedIn}>
+                              <Stack.Screen name="Login" />
                             </Stack.Protected>
-                          </Stack>
 
-                          <Toast config={toastConfig} />
+                            <Stack.Protected guard={isUserLoggedIn}>
+                              <Stack.Screen name="(protected)/(tabs)" />
+                            </Stack.Protected>
+                          </Stack.Protected>
+                        </Stack>
 
-                          <AppUpdateNeeded />
+                        <Toast config={toastConfig} />
 
-                          <MaintenanceMode />
-                        </>
-                      </AuthContextProvider>
-                    </KeyboardProvider>
-                  </BottomSheetModalProvider>
-                </Splashscreen>
-              </ErrorBoundary>
-            </ThemeProvider>
+                        <AppUpdateNeeded />
+
+                        <MaintenanceMode />
+                      </>
+                    </AuthContextProvider>
+                  </KeyboardProvider>
+                </BottomSheetModalProvider>
+              </Splashscreen>
+            </ErrorBoundary>
           </ProductTrackingProvider>
         </PersistQueryClientProvider>
       </GestureHandlerRootView>
@@ -124,11 +116,11 @@ const screenOptions = {
   animation: 'fade' as StackAnimationTypes,
 };
 
-const useStyles = makeAppStyles(() => ({
+const styles = {
   wrapper: {
     flex: 1,
   },
-}));
+};
 
 const RootLayoutWithSentry = Sentry.wrap(RootLayout);
 

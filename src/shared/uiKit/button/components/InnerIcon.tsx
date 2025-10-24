@@ -1,12 +1,13 @@
-import { useAppTheme } from '$domain/theme';
+import { useUnistyles } from 'react-native-unistyles';
+
 import type { IconName } from '$shared/icons';
 import { Icon } from '$shared/icons';
 
-import { ParentVariant } from '../types/buttonTypes';
+import type { ButtonVariant } from '../buttonVariants';
 import { getIconSize, getTextColor } from '../utils';
 
 interface InnerIconProps {
-  parentVariant: ParentVariant;
+  parentVariant: ButtonVariant;
   iconName: IconName;
   isLoading?: boolean;
   testID?: string;
@@ -18,7 +19,7 @@ export const InnerIcon = ({
   isLoading = false,
   testID = 'InnerIcon',
 }: InnerIconProps) => {
-  const { colors } = useAppTheme();
+  const { theme } = useUnistyles();
 
   if (isLoading) return null;
 
@@ -29,7 +30,7 @@ export const InnerIcon = ({
       name={iconName}
       height={iconSize}
       width={iconSize}
-      color={colors[getTextColor(parentVariant)]}
+      color={theme.colors[getTextColor(parentVariant)]}
       testID={testID}
     />
   );

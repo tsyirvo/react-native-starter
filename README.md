@@ -88,7 +88,7 @@ The most useful libraries already configured are the following:
 
 [Sentry](https://sentry.io/welcome/) for crash reporting
 
-[Restyle](https://github.com/Shopify/restyle/) for the styling
+[Unistyles](https://www.unistyl.es/) for the styling
 
 [i18next](https://www.i18next.com/) for the internationalization
 
@@ -101,8 +101,6 @@ The most useful libraries already configured are the following:
 [Zustand](https://zustand-demo.pmnd.rs/) for a global store
 
 [RevenueCat](https://www.revenuecat.com/) for in-app purchases
-
-[AppsFlyer](https://www.appsflyer.com/) for attribution
 
 A few other interesting things are configured, don't hesitate to look around.
 
@@ -119,7 +117,6 @@ The libraries that needs configurations are the ones exposed inside the `.env` f
 - PostHog
 - One Signal
 - RevenueCat
-- AppsFlyer
 
 ## Environments
 

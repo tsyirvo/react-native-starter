@@ -6,37 +6,21 @@ import type { LayoutStyleProps } from './primitiveLayout.types';
 
 /* ***** *****  Types  ***** ***** */
 
-type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
-type FlexWrap = 'wrap' | 'nowrap' | 'wrap-reverse';
-
-interface BoxStyleProps extends LayoutStyleProps {
-  flex?: number;
-  direction?: FlexDirection;
-  wrap?: FlexWrap;
-}
-
-export interface BoxProps
-  extends Omit<
-      ViewProps,
-      keyof Omit<BoxStyleProps, 'flex' | 'direction' | 'wrap'>
-    >,
-    LayoutStyleProps {
-  flex?: number;
-  direction?: FlexDirection;
-  wrap?: FlexWrap;
-}
+interface StackProps
+  extends Omit<ViewProps, keyof LayoutStyleProps>,
+    LayoutStyleProps {}
 
 /* ***** *****  Component  ***** ***** */
 
-export const Box = ({
+export const Stack = ({
   style,
   children,
   testID,
   onLayout,
-  ...stylingProps
-}: BoxProps) => (
+  ...layoutProps
+}: StackProps) => (
   <View
-    style={[styles.box(stylingProps), style]}
+    style={[styles.stack(layoutProps), style]}
     testID={testID}
     onLayout={onLayout}
   >
@@ -47,10 +31,8 @@ export const Box = ({
 /* ***** *****  Styles  ***** ***** */
 
 const styles = StyleSheet.create((theme) => ({
-  box: (props: BoxStyleProps) => ({
-    flex: props.flex ?? 1,
-    flexDirection: props.direction,
-    flexWrap: props.wrap,
+  stack: (props: LayoutStyleProps) => ({
+    flexDirection: 'column',
     alignItems: props.align,
     justifyContent: props.justify,
     alignSelf: props.self,

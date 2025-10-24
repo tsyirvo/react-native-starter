@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { Box, Separator, Text } from '$shared/uiKit';
+import { Separator, Stack, Text } from '$shared/uiKit';
 
 import { InformationBlock } from './InformationBlock';
 
@@ -14,12 +14,12 @@ export const Informations = () => {
         content={t('homeScreen.motivation.content')}
       />
 
-      <Box gap="spacing_8" pt="spacing_24" pb="spacing_12">
+      <Stack gap="spacing_8" pt="spacing_24" pb="spacing_12">
         <Separator />
         <Text variant="xLarge">{t('homeScreen.whatIsInside')}</Text>
-      </Box>
+      </Stack>
 
-      <Box gap="spacing_24">
+      <Stack gap="spacing_24">
         <InformationBlock
           title={t('homeScreen.formatting.title')}
           content={t('homeScreen.formatting.content')}
@@ -36,7 +36,7 @@ export const Informations = () => {
           title={t('homeScreen.tools.title')}
           content={t('homeScreen.tools.content')}
         />
-      </Box>
+      </Stack>
     </>
   );
 };

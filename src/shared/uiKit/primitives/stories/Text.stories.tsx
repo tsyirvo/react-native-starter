@@ -2,15 +2,16 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { StorybookItem } from '$shared/components';
-import { Box, Text as TextPrimitive } from '$shared/uiKit';
+import { Stack, Text as TextPrimitive } from '$shared/uiKit';
 
 const meta = {
   title: 'Primitives/Text',
   component: View,
   render: () => (
-    <Box p="spacing_16">
+    <Stack p="spacing_16">
       <StorybookItem title="Text without any props">
         <TextPrimitive>Default styles</TextPrimitive>
       </StorybookItem>
@@ -20,17 +21,17 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Text with custom styles">
-        <TextPrimitive color="positive" textAlign="center">
+        <TextPrimitive color="positive" style={styles.centeredText}>
           Custom styles
         </TextPrimitive>
       </StorybookItem>
 
       <StorybookItem title="Text with custom positionning">
-        <TextPrimitive mt="spacing_32" ps="spacing_24" py="spacing_8">
-          Custom position
-        </TextPrimitive>
+        <Stack mt="spacing_32" px="spacing_24" py="spacing_8">
+          <TextPrimitive>Custom position</TextPrimitive>
+        </Stack>
       </StorybookItem>
-    </Box>
+    </Stack>
   ),
 } satisfies Meta<typeof View>;
 
@@ -39,3 +40,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Text: Story = {};
+
+const styles = StyleSheet.create({
+  centeredText: {
+    textAlign: 'center',
+  },
+});
