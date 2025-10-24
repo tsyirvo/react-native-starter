@@ -1,35 +1,75 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { createText } from '@shopify/restyle';
-import type React from 'react';
+import { Text as RNText, type TextProps as RNTextProps } from 'react-native';
+import { StyleSheet, type UnistylesVariants } from 'react-native-unistyles';
 
-import type { Colors, FontSizes, Theme } from '$domain/theme';
+import type { ThemeColors } from '$domain/newTheme/unistyles';
 
-interface TextProps extends React.ComponentPropsWithRef<typeof PrimitiveText> {
+/* ***** *****  Types  ***** ***** */
+
+interface TextProps extends RNTextProps, UnistylesVariants<typeof styles> {
   testID?: string;
-  variant?: FontSizes;
-  color?: Colors;
+  color?: ThemeColors;
 }
 
-const PrimitiveText = createText<Theme>();
+/* ***** *****  Component  ***** ***** */
 
 export const Text = ({
   variant = 'regular',
   color = 'content_primary',
   testID,
+  style,
   ...rest
 }: TextProps) => {
+  styles.useVariants({ variant });
+
   const accessibilityLabel =
     typeof rest.children === 'string' ? rest.children : undefined;
 
   return (
-    <PrimitiveText
+    <RNText
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="text"
-      color={color}
       testID={testID}
-      variant={variant}
+      style={[styles.text({ color }), style]}
       {...rest}
     />
   );
 };
+
+/* ***** *****  Styles  ***** ***** */
+
+const styles = StyleSheet.create((theme) => ({
+  text: (props: { color: ThemeColors }) => ({
+    color: theme.colors[props.color],
+    variants: {
+      variant: {
+        small: {
+          fontFamily: theme.fontFamily.light,
+          fontSize: theme.fontSizes.small,
+          lineHeight: theme.lineHeight.small,
+        },
+        regular: {
+          fontFamily: theme.fontFamily.regular,
+          fontSize: theme.fontSizes.regular,
+          lineHeight: theme.lineHeight.regular,
+        },
+        medium: {
+          fontFamily: theme.fontFamily.regular,
+          fontSize: theme.fontSizes.medium,
+          lineHeight: theme.lineHeight.medium,
+        },
+        large: {
+          fontFamily: theme.fontFamily.bold,
+          fontSize: theme.fontSizes.large,
+          lineHeight: theme.lineHeight.large,
+        },
+        xLarge: {
+          fontFamily: theme.fontFamily.bold,
+          fontSize: theme.fontSizes.xLarge,
+          lineHeight: theme.lineHeight.xLarge,
+        },
+      },
+    },
+  }),
+}));

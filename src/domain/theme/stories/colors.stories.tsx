@@ -14,7 +14,9 @@ const meta = {
       <Box p="spacing_16">
         {(Object.keys(theme.colors) as ThemeColors[]).map((color) => (
           <Box key={color} alignItems="center" mb="spacing_24">
-            <Text pb="spacing_8">{color}</Text>
+            <Box pb="spacing_8">
+              <Text>{color}</Text>
+            </Box>
 
             <Box
               bg={color}

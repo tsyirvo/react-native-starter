@@ -1,5 +1,6 @@
 import * as Updates from 'expo-updates';
 import { useTranslation } from 'react-i18next';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { ErrorMonitoring } from '$infra/monitoring';
 import { Box, Button, Text } from '$shared/uiKit';
@@ -22,11 +23,11 @@ export const FullscreenErrorBoundary = () => {
       px="spacing_24"
       width="100%"
     >
-      <Text mb="spacing_8" variant="large">
-        {t('errorBoundary.title')}
-      </Text>
+      <Box mb="spacing_8">
+        <Text variant="large">{t('errorBoundary.title')}</Text>
+      </Box>
 
-      <Text textAlign="center" variant="medium">
+      <Text style={styles.centeredText} variant="medium">
         {t('errorBoundary.description')}
       </Text>
 
@@ -36,3 +37,9 @@ export const FullscreenErrorBoundary = () => {
     </Box>
   );
 };
+
+const styles = StyleSheet.create({
+  centeredText: {
+    textAlign: 'center',
+  },
+});

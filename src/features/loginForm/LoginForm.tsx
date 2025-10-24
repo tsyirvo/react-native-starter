@@ -2,11 +2,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { type TextInput } from 'react-native';
+import { View, type TextInput } from 'react-native';
 
 import { UserLogin } from '$domain/entities';
 import { Logger } from '$infra/logger';
-import { Box, Button } from '$shared/uiKit';
+import { Button, Stack } from '$shared/uiKit';
 import { Input } from '$shared/uiKit/input';
 
 import { LoginFormData, loginFormSchema } from './utils';
@@ -54,8 +54,8 @@ export const LoginForm = ({
   };
 
   return (
-    <Box testID={testID}>
-      <Box py="spacing_24" gap="spacing_16">
+    <View testID={testID}>
+      <Stack py="spacing_24" gap="spacing_16">
         <Controller
           control={control}
           rules={{ required: true }}
@@ -117,7 +117,7 @@ export const LoginForm = ({
           )}
           name="password"
         />
-      </Box>
+      </Stack>
 
       <Button.Text
         testID={`${testID}SubmitButton`}
@@ -126,6 +126,6 @@ export const LoginForm = ({
       >
         {t('loginForm.submitButton')}
       </Button.Text>
-    </Box>
+    </View>
   );
 };

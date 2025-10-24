@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { FeatureFlagSplitter } from '$infra/featureFlags';
 import { Box, Text } from '$shared/uiKit';
@@ -23,12 +24,20 @@ export const MaintenanceMode = ({
         testID={testID}
         width="100%"
       >
-        <Text pb="spacing_8" variant="large">
-          {t('maintenanceMode.title')}
-        </Text>
+        <Box pb="spacing_8">
+          <Text variant="large">{t('maintenanceMode.title')}</Text>
+        </Box>
 
-        <Text textAlign="center">{t('maintenanceMode.description')}</Text>
+        <Text style={styles.centeredText}>
+          {t('maintenanceMode.description')}
+        </Text>
       </Box>
     </FeatureFlagSplitter>
   );
 };
+
+const styles = StyleSheet.create({
+  centeredText: {
+    textAlign: 'center',
+  },
+});

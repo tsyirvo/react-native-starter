@@ -207,7 +207,9 @@
       "^\\$(.*)$": "<rootDir>/src/$1"
     },
     "setupFiles": [
-      "./node_modules/react-native-gesture-handler/jestSetup.js",
+      "react-native-gesture-handler/jestSetup.js",
+      "react-native-unistyles/mocks",
+      "./src/domain/newTheme/unistyles.ts",
       "./src/domain/testing/setup.ts"
     ],
     "testPathIgnorePatterns": [

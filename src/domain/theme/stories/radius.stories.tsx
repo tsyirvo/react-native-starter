@@ -13,7 +13,9 @@ const meta = {
     <Box p="spacing_16">
       {(Object.keys(theme.borderRadii) as BorderRadii[]).map((radius) => (
         <Box key={radius} alignItems="center" mb="spacing_24">
-          <Text mb="spacing_8">{radius}</Text>
+          <Box mb="spacing_8">
+            <Text>{radius}</Text>
+          </Box>
 
           <Box
             bg="bg_muted"

@@ -2,6 +2,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { StorybookItem } from '$shared/components';
 import { Box, Text as TextPrimitive } from '$shared/uiKit';
@@ -20,15 +21,15 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Text with custom styles">
-        <TextPrimitive color="positive" textAlign="center">
+        <TextPrimitive color="positive" style={styles.centeredText}>
           Custom styles
         </TextPrimitive>
       </StorybookItem>
 
       <StorybookItem title="Text with custom positionning">
-        <TextPrimitive mt="spacing_32" ps="spacing_24" py="spacing_8">
-          Custom position
-        </TextPrimitive>
+        <Box mt="spacing_32" ps="spacing_24" py="spacing_8">
+          <TextPrimitive>Custom position</TextPrimitive>
+        </Box>
       </StorybookItem>
     </Box>
   ),
@@ -39,3 +40,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Text: Story = {};
+
+const styles = StyleSheet.create({
+  centeredText: {
+    textAlign: 'center',
+  },
+});

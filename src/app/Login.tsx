@@ -1,23 +1,21 @@
-import { Stack, useRouter } from 'expo-router';
+import { Stack as RouterStack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { StyleSheet } from 'react-native-unistyles';
 
 import logoDark from '$assets/images/logo-dark.png';
 import { useAuthContext } from '$domain/contexts';
 import { UserLogin } from '$domain/entities';
-import { makeAppStyles } from '$domain/theme';
 import { LoginForm } from '$features/loginForm';
 import { Screen } from '$shared/components';
-import { Box, Image, Text } from '$shared/uiKit';
+import { Box, Flex, Image, Text } from '$shared/uiKit';
 
 const Login = () => {
   const router = useRouter();
   const { t } = useTranslation();
 
   const { signIn } = useAuthContext();
-
-  const styles = useStyles();
 
   const dismissKeyboard = () => {
     Keyboard.dismiss();
@@ -31,7 +29,7 @@ const Login = () => {
 
   return (
     <>
-      <Stack.Screen
+      <RouterStack.Screen
         options={{
           headerShown: false,
           title: t('loginScreen.title'),
@@ -43,9 +41,9 @@ const Login = () => {
         <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
           <TouchableWithoutFeedback onPress={dismissKeyboard}>
             <Box flex={1} pt="spacing_32" gap="spacing_16">
-              <Box alignItems="center">
+              <Flex align="center">
                 <Image source={logoDark} style={styles.logo} />
-              </Box>
+              </Flex>
 
               <Box
                 bg="bg_muted"
@@ -53,7 +51,7 @@ const Login = () => {
                 borderRadius="radius_24"
                 gap="spacing_24"
               >
-                <Text variant="large" textAlign="center">
+                <Text variant="large" style={styles.centeredText}>
                   {t('loginScreen.title')}
                 </Text>
 
@@ -69,7 +67,7 @@ const Login = () => {
 
 const LOGO_SIZE = 150;
 
-const useStyles = makeAppStyles(() => ({
+const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
   },
@@ -77,6 +75,9 @@ const useStyles = makeAppStyles(() => ({
     width: LOGO_SIZE,
     height: LOGO_SIZE,
   },
-}));
+  centeredText: {
+    textAlign: 'center',
+  },
+});
 
 export default Login;

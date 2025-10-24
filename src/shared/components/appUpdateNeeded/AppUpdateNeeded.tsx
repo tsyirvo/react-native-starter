@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import semverGte from 'semver/functions/gte';
 
 import { config, IS_IOS } from '$domain/constants';
@@ -65,13 +66,15 @@ export const AppUpdateNeeded = () => {
       testID="appUpdateNeeded-screen"
       width="100%"
     >
-      <Text pb="spacing_8" variant="large">
-        {t('appUpdateNedeed.title')}
-      </Text>
+      <Box pb="spacing_8">
+        <Text variant="large">{t('appUpdateNedeed.title')}</Text>
+      </Box>
 
-      <Text mb="spacing_16" textAlign="center">
-        {t('appUpdateNedeed.description')}
-      </Text>
+      <Box mb="spacing_16">
+        <Text style={styles.centeredText}>
+          {t('appUpdateNedeed.description')}
+        </Text>
+      </Box>
 
       <Button.Text testID="appUpdateNeeded-cta" onPress={onPress}>
         {t('appUpdateNedeed.cta')}
@@ -79,3 +82,9 @@ export const AppUpdateNeeded = () => {
     </Box>
   );
 };
+
+const styles = StyleSheet.create({
+  centeredText: {
+    textAlign: 'center',
+  },
+});

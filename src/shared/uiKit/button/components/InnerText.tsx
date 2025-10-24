@@ -20,6 +20,8 @@ export const InnerText = ({
   children,
   testID = 'InnerText',
 }: InnerTextProps) => {
+  const textOpacity = getTextOpacity(isLoading);
+
   return (
     <Box
       justifyContent="center"
@@ -49,7 +51,7 @@ export const InnerText = ({
       <Text
         variant={getTextVariant(parentVariant)}
         color={getTextColor(parentVariant)}
-        opacity={getTextOpacity(isLoading)}
+        style={{ opacity: textOpacity }}
         numberOfLines={1}
       >
         {children}

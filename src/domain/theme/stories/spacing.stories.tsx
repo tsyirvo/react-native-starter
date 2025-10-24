@@ -14,7 +14,9 @@ const meta = {
     <Box p="spacing_16">
       {(Object.keys(theme.spacing) as ThemeSpacing[]).map((space) => (
         <Fragment key={space}>
-          <Text mb="spacing_8">{space}</Text>
+          <Box mb="spacing_8">
+            <Text>{space}</Text>
+          </Box>
 
           <Box
             bg="bg_muted"

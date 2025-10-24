@@ -12,9 +12,9 @@ const meta = {
   render: () => (
     <Box p="spacing_16">
       {(Object.keys(fontSizes) as ThemeFontSizes[]).map((size) => (
-        <Text key={size} mb="spacing_24" variant={size}>
-          {`This is a ${size} text`}
-        </Text>
+        <Box key={size} mb="spacing_24">
+          <Text variant={size}>{`This is a ${size} text`}</Text>
+        </Box>
       ))}
     </Box>
   ),
