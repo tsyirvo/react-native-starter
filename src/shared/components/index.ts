@@ -2,6 +2,7 @@ export * from './appUpdateNeeded';
 export * from './fullscreenErrorBoundary';
 export * from './maintenanceMode';
 export * from './navigation';
+export * from './Pressable';
 export * from './screen';
 export * from './splashscreen';
 export * from './storeUpdateAvailableBanner';

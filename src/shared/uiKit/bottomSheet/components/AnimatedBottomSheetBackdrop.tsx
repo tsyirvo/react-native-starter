@@ -3,13 +3,14 @@ import {
   type BottomSheetBackdropProps,
 } from '@gorhom/bottom-sheet';
 import { useMemo } from 'react';
-import { Pressable } from 'react-native';
 import Animated, {
   Extrapolation,
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
+
+import { Pressable } from '$shared/components';
 
 export const AnimatedBottomSheetBackdrop = ({
   animatedIndex,

@@ -1,8 +1,8 @@
 import { useRouter } from 'expo-router';
-import { Pressable } from 'react-native';
 import { useUnistyles } from 'react-native-unistyles';
 
 import { DEFAULT_ICON_SIZE, HIT_SLOP } from '$domain/constants/styling';
+import { Pressable } from '$shared/components';
 import { Icon } from '$shared/icons';
 
 export const HeaderLeft = () => {

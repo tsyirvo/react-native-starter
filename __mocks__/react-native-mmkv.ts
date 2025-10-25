@@ -1,6 +1,6 @@
 const mmkvMock = (() => {
   const data = {};
-  const MMKV = {
+  return {
     getBoolean: (key: string) => data[key],
     getString: (key: string) => data[key],
     getNumber: (key: string) => data[key],
@@ -8,7 +8,6 @@ const mmkvMock = (() => {
     getAllKeys: () => Object.keys(data),
     delete: (key: string) => (data[key] = undefined),
   };
-  return { MMKV };
 })();
 
 export const MMKV = jest.fn().mockImplementation(() => mmkvMock);
