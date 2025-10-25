@@ -1,5 +1,6 @@
 import '@formatjs/intl-getcanonicallocales/polyfill';
 import 'intl-pluralrules';
+import '../infra/i18n';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Sentry from '@sentry/react-native';
@@ -19,6 +20,7 @@ import {
   useAppScreenTracking,
   useAppStateTracking,
 } from '$features/navigation';
+import { useAppFocusManager } from '$infra/api';
 import { persistOptions, queryClient } from '$infra/api/queryClient';
 import { ErrorMonitoring } from '$infra/monitoring';
 import { ProductTrackingProvider } from '$infra/productTracking';
@@ -34,8 +36,6 @@ import {
   useCheckNetworkStateOnMount,
   useRoutingInstrumentation,
 } from '$shared/hooks';
-
-import '../infra/i18n';
 
 // Sentry is initialized here so that it runs before Sentry.wrap()
 ErrorMonitoring.init();
@@ -62,6 +62,7 @@ const RootLayout = () => {
   useCheckNetworkStateOnMount();
   useAppStateTracking();
   useAppScreenTracking();
+  useAppFocusManager();
 
   return (
     <StrictMode>

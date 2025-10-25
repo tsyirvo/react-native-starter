@@ -122,9 +122,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### React Component Structure
 
-- Use arrow functions with extracted Props type
+- Use arrow functions with extracted Props interfaces
 - Don't use `React.FC` type
-- Prefer types to interfaces for props
+- Prefer interfaces to types for Props
 - To extract Props type, use `ComponentProps<typeof MyComponent>`
 - No need to forwardRef, as the project uses React 19
 
