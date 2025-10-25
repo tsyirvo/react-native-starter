@@ -2,7 +2,6 @@ import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useUnistyles } from 'react-native-unistyles';
 
-import { config } from '$domain/constants';
 import {
   renderFeaturesIcon,
   renderHomeIcon,
@@ -53,16 +52,4 @@ const globalScreenOptions = {
   headerShown: false,
 };
 
-// eslint-disable-next-line react/no-multi-comp
-const ConditionalTabLayout = () => {
-  if (config.isStorybookEnabled) {
-    // eslint-disable-next-line
-    const StorybookUI = require('../../../../.rnstorybook').default;
-
-    return <StorybookUI />;
-  }
-
-  return <TabLayout />;
-};
-
-export default ConditionalTabLayout;
+export default TabLayout;

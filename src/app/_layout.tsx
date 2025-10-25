@@ -13,6 +13,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { StackAnimationTypes } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
 
+import { config } from '$domain/constants';
 import { AuthContextProvider } from '$domain/contexts';
 import {
   useAppScreenTracking,
@@ -83,6 +84,10 @@ const RootLayout = () => {
                       <>
                         <Stack screenOptions={screenOptions}>
                           <Stack.Protected guard={!isBootstrappingApplication}>
+                            <Stack.Protected guard={config.isStorybookEnabled}>
+                              <Stack.Screen name="Storybook" />
+                            </Stack.Protected>
+
                             <Stack.Protected guard={!isUserLoggedIn}>
                               <Stack.Screen name="Login" />
                             </Stack.Protected>
