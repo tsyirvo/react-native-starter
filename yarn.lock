@@ -7959,6 +7959,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.debounce@npm:4.0.9":
+  version: 4.0.9
+  resolution: "@types/lodash.debounce@npm:4.0.9"
+  dependencies:
+    "@types/lodash": "npm:*"
+  checksum: 10c0/9fbb24e5e52616faf60ba5c82d8c6517f4b86fc6e9ab353b4c56c0760f63d9bf53af3f2d8f6c37efa48090359fb96dba1087d497758511f6c40677002191d042
+  languageName: node
+  linkType: hard
+
 "@types/lodash.isequal@npm:4.5.8":
   version: 4.5.8
   resolution: "@types/lodash.isequal@npm:4.5.8"
@@ -12861,6 +12870,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-haptics@npm:~15.0.7":
+  version: 15.0.7
+  resolution: "expo-haptics@npm:15.0.7"
+  peerDependencies:
+    expo: "*"
+  checksum: 10c0/72daaf272b6ab3f650d76d901b3f744d497c9120b77d274560cccff6da985c867256212108c2057843996fad5ea8905614aae4747a217d6502f0c0156eca6d5d
+  languageName: node
+  linkType: hard
+
 "expo-image@npm:~3.0.9":
   version: 3.0.9
   resolution: "expo-image@npm:3.0.9"
@@ -17064,7 +17082,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.debounce@npm:^4.0.8":
+"lodash.debounce@npm:4.0.8, lodash.debounce@npm:^4.0.8":
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
   checksum: 10c0/762998a63e095412b6099b8290903e0a8ddcb353ac6e2e0f2d7e7d03abd4275fe3c689d88960eb90b0dde4f177554d51a690f22a343932ecbc50a5d111849987
@@ -21111,6 +21129,7 @@ __metadata:
     "@types/imagemin": "npm:8.0.0"
     "@types/imagemin-mozjpeg": "npm:8.0.1"
     "@types/jest": "npm:29.5.14"
+    "@types/lodash.debounce": "npm:4.0.9"
     "@types/lodash.isequal": "npm:4.5.8"
     "@types/lodash.isnil": "npm:4.0.9"
     "@types/lodash.memoize": "npm:4.1.9"
@@ -21134,6 +21153,7 @@ __metadata:
     expo-device: "npm:~8.0.9"
     expo-file-system: "npm:~19.0.17"
     expo-font: "npm:~14.0.9"
+    expo-haptics: "npm:~15.0.7"
     expo-image: "npm:~3.0.9"
     expo-linking: "npm:~8.0.8"
     expo-localization: "npm:~17.0.7"
@@ -21157,6 +21177,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-expo: "npm:~54.0.12"
     lefthook: "npm:1.13.6"
+    lodash.debounce: "npm:4.0.8"
     lodash.isequal: "npm:4.5.0"
     lodash.isnil: "npm:4.0.0"
     lodash.memoize: "npm:4.1.2"

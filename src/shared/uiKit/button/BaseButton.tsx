@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/immutability */
 
 import type React from 'react';
-import { GestureResponderEvent, Pressable, View } from 'react-native';
+import { GestureResponderEvent, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
@@ -13,6 +13,7 @@ import type { UnistylesThemes } from 'react-native-unistyles';
 import { useUnistyles } from 'react-native-unistyles';
 
 import { HIT_SLOP } from '$domain/constants/styling';
+import { Pressable } from '$shared/components/Pressable';
 
 import { buttonVariants, type ButtonVariant } from './buttonVariants';
 import type { ButtonProps } from './types/buttonTypes';
