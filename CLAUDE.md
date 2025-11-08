@@ -134,3 +134,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - TypeScript strict mode enabled
 - React strict mode is also enabled
 - Always run `yarn lint`, `yarn lint:ts` and `yarn prettify` then fix potential errors before finishing a task
+
+## Active Technologies
+- TypeScript 5.9+ with React Native 0.81.4 (001-app-rating)
+- Zustand store with MMKV persistence (local storage only, no backend integration in initial implementation) (001-app-rating)
+
+## Recent Changes
+- 001-app-rating: Added TypeScript 5.9+ with React Native 0.81.4

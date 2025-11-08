@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
 import { createAppSlice } from './slices/app';
+import { createRatingSlice } from './slices/rating';
 import { createSessionSlice } from './slices/session';
 import type { StoreState } from './types/store.types';
 import { generatePersistOptions } from './utils';
@@ -21,6 +22,7 @@ export const useAppStore = create<
       (...a) => ({
         ...createAppSlice(...a),
         ...createSessionSlice(...a),
+        ...createRatingSlice(...a),
       }),
       persistOptions,
     ),

@@ -18,6 +18,10 @@ const FeaturesScreen = () => {
     router.push('/features/(blogPost)/1');
   };
 
+  const goToRatingPrompt = () => {
+    router.push('/features/(appRating)/prompt');
+  };
+
   return (
     <>
       <Stack.Screen options={{ title: t('tabs.features') }} />
@@ -37,6 +41,16 @@ const FeaturesScreen = () => {
               <Box self="flex-start" mt="spacing_8">
                 <Button.Text onPress={goToBlogPost}>
                   {t('featuresScreen.blogPost.cta')}
+                </Button.Text>
+              </Box>
+            </View>
+
+            <View style={styles.sectionWithTopPadding}>
+              <Text variant="large">{t('featuresScreen.appRating.title')}</Text>
+
+              <Box self="flex-start" mt="spacing_8">
+                <Button.Text onPress={goToRatingPrompt}>
+                  {t('featuresScreen.appRating.cta')}
                 </Button.Text>
               </Box>
             </View>

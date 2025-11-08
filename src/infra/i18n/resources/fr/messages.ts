@@ -120,5 +120,24 @@ export const messages: MessagesTypes = {
       title: "Exemple d'appel API GraphQL",
       cta: 'Naviguer',
     },
+    appRating: {
+      title: "Évaluation de l'application",
+      cta: 'Évaluer cette application',
+    },
+  },
+  ratingPrompt: {
+    title: 'Évaluez notre application',
+    question: 'Aimez-vous cette application ?',
+    yes: "Oui, je l'adore !",
+    no: 'Pas vraiment',
+  },
+  feedbackForm: {
+    title: 'Aidez-nous à nous améliorer',
+    subtitle: 'Dites-nous ce que nous pouvons faire de mieux',
+    placeholder: "Vos commentaires nous aident à améliorer l'application...",
+    submit: 'Envoyer les commentaires',
+    cancel: 'Annuler',
+    confirmation: 'Merci pour vos commentaires !',
+    characterCount: '{{current}}/{{max}} caractères',
   },
 };

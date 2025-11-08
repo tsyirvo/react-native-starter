@@ -25,6 +25,14 @@ const FeaturesLayout = () => {
           headerLeft: HeaderLeft,
         }}
       />
+
+      <Stack.Screen
+        name="(appRating)/prompt"
+        options={{
+          presentation: 'modal',
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 };

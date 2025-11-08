@@ -22,7 +22,17 @@ export namespace AnalyticsType {
     | 'organic-install'
     | 'non-organic-install'
     | 'deep-link-opened'
-    | 'purchase';
+    | 'purchase'
+    // App Rating
+    | 'rating-prompt-viewed'
+    | 'rating-prompt-response-yes'
+    | 'rating-prompt-response-no'
+    | 'rating-prompt-dismissed'
+    | 'rating-modal-shown'
+    | 'rating-modal-unavailable'
+    | 'feedback-form-viewed'
+    | 'feedback-form-submitted'
+    | 'feedback-form-cancelled';
 
   export type ProductIds =
     | 'monthly-subscription'

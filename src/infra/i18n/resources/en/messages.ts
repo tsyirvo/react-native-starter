@@ -118,6 +118,25 @@ export const messages = {
       title: 'Example GraphQL API call',
       cta: 'Naviguer',
     },
+    appRating: {
+      title: 'App Rating',
+      cta: 'Rate this app',
+    },
+  },
+  ratingPrompt: {
+    title: 'Rate Our App',
+    question: 'Do you like this app?',
+    yes: 'Yes, I love it!',
+    no: 'Not really',
+  },
+  feedbackForm: {
+    title: 'Help us improve',
+    subtitle: 'Tell us what we can do better',
+    placeholder: 'Your feedback helps us make the app better...',
+    submit: 'Submit Feedback',
+    cancel: 'Cancel',
+    confirmation: 'Thank you for your feedback!',
+    characterCount: '{{current}}/{{max}} characters',
   },
 };
 
