@@ -4,7 +4,7 @@ type Name = keyof typeof AllIcons;
 
 interface IconProps {
   name: Name;
-  color?: string;
+  fill?: string;
   width?: number;
   height?: number;
   testID?: string;
@@ -12,7 +12,7 @@ interface IconProps {
 
 export const Icon = ({
   name,
-  color,
+  fill,
   width,
   height,
   testID = 'Icon',
@@ -20,11 +20,6 @@ export const Icon = ({
   const IconComponent = AllIcons[name];
 
   return (
-    <IconComponent
-      color={color}
-      width={width}
-      height={height}
-      testID={testID}
-    />
+    <IconComponent fill={fill} width={width} height={height} testID={testID} />
   );
 };
