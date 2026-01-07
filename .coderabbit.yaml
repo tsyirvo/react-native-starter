@@ -19,8 +19,3 @@ reviews:
       timeout_ms: 300000
 chat:
   auto_reply: true
-knowledge_base:
-  linear:
-    usage: 'enabled'
-    team_keys:
-      - 'INO'
