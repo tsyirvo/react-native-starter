@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { PurchasesOffering } from 'react-native-purchases';
 
+import { hasActiveEntitlements } from '$domain/subscription';
 import { OfferingFlagType, useGetRemoteConfigSync } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { Purchase } from '$infra/purchase';
@@ -43,9 +44,7 @@ export const SubscriptionContextProvider = ({
 
   useRunOnMount(() => {
     return Purchase.customerListener((customerInfo) => {
-      setIsPayingUser(
-        Object.entries(customerInfo.entitlements.active).length > 0,
-      );
+      setIsPayingUser(hasActiveEntitlements(customerInfo));
     });
   });
 
