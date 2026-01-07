@@ -40,7 +40,7 @@ export const BottomSheet = ({
   onChange,
   renderBackdrop = renderDefaultBackdrop,
 }: BottomSheetProps) => {
-  const { bottom: bottomInset, top: topInset } = useSafeAreaInsets();
+  const { top: topInset } = useSafeAreaInsets();
 
   const { theme } = useUnistyles();
 
@@ -73,7 +73,7 @@ export const BottomSheet = ({
           <Box
             px={disableHorizontalPadding ? undefined : 'spacing_16'}
             pt={disableTopPadding ? undefined : 'spacing_24'}
-            style={{ marginBottom: bottomInset }}
+            style={styles.viewWrapper}
           >
             {children}
           </Box>
@@ -93,7 +93,7 @@ const renderDefaultBackdrop = ({
   />
 );
 
-const styles = StyleSheet.create((theme) => ({
+const styles = StyleSheet.create((theme, rt) => ({
   modalStyle: {
     backgroundColor: theme.colors.bg_base,
   },
@@ -103,5 +103,8 @@ const styles = StyleSheet.create((theme) => ({
   },
   bottomSheetWrapper: {
     marginBottom: theme.spacing.spacing_24,
+  },
+  viewWrapper: {
+    marginBottom: rt.insets.bottom,
   },
 }));

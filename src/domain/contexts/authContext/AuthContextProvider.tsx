@@ -78,8 +78,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
         setUser(userDataPayload);
         setIsUserLoggedIn(true);
-
-        await startTrackingUser(userDataPayload);
       } catch (error) {
         Logger.error({
           error,
@@ -88,7 +86,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         });
       }
     },
-    [setIsUserLoggedIn, startTrackingUser],
+    [setIsUserLoggedIn],
   );
 
   const signOut = useCallback(async () => {
@@ -104,6 +102,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       queryClient.clear();
 
       await clearAccessAndRefreshTokens();
+
+      hasTrackedUserRef.current = false;
     } catch (error) {
       Logger.error({
         error,
