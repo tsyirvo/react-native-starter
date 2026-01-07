@@ -17,6 +17,7 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import { config } from '$domain/constants';
 import { AuthContextProvider } from '$domain/contexts';
+import { SubscriptionContextProvider } from '$domain/contexts/subscriptionContext';
 import { useAppFocusManager } from '$infra/api';
 import { persistOptions, queryClient } from '$infra/api/queryClient';
 import { ErrorMonitoring } from '$infra/monitoring';
@@ -81,29 +82,35 @@ const RootLayout = () => {
                 <BottomSheetModalProvider>
                   <KeyboardProvider>
                     <AuthContextProvider>
-                      <>
-                        <Stack screenOptions={screenOptions}>
-                          <Stack.Protected guard={!isBootstrappingApplication}>
-                            <Stack.Protected guard={config.isStorybookEnabled}>
-                              <Stack.Screen name="Storybook" />
+                      <SubscriptionContextProvider>
+                        <>
+                          <Stack screenOptions={screenOptions}>
+                            <Stack.Protected
+                              guard={!isBootstrappingApplication}
+                            >
+                              <Stack.Protected
+                                guard={config.isStorybookEnabled}
+                              >
+                                <Stack.Screen name="Storybook" />
+                              </Stack.Protected>
+
+                              <Stack.Protected guard={!isUserLoggedIn}>
+                                <Stack.Screen name="Login" />
+                              </Stack.Protected>
+
+                              <Stack.Protected guard={isUserLoggedIn}>
+                                <Stack.Screen name="(protected)/(tabs)" />
+                              </Stack.Protected>
                             </Stack.Protected>
+                          </Stack>
 
-                            <Stack.Protected guard={!isUserLoggedIn}>
-                              <Stack.Screen name="Login" />
-                            </Stack.Protected>
+                          <Toast config={toastConfig} />
 
-                            <Stack.Protected guard={isUserLoggedIn}>
-                              <Stack.Screen name="(protected)/(tabs)" />
-                            </Stack.Protected>
-                          </Stack.Protected>
-                        </Stack>
+                          <AppUpdateNeeded />
 
-                        <Toast config={toastConfig} />
-
-                        <AppUpdateNeeded />
-
-                        <MaintenanceMode />
-                      </>
+                          <MaintenanceMode />
+                        </>
+                      </SubscriptionContextProvider>
                     </AuthContextProvider>
                   </KeyboardProvider>
                 </BottomSheetModalProvider>

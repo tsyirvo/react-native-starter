@@ -3,9 +3,13 @@ import type {
   LOG_LEVEL,
   PurchasesPackage,
 } from 'react-native-purchases';
-import RevenueCat from 'react-native-purchases';
+import RevenueCat, {
+  LOG_LEVEL as PURCHASES_LOG_LEVEL,
+} from 'react-native-purchases';
 
 import { IS_IOS, config } from '$domain/constants';
+import { User } from '$domain/entities';
+import { hasActiveEntitlements } from '$domain/subscription';
 import { ErrorMonitoring } from '$infra/monitoring';
 
 const API_KEY = IS_IOS
@@ -17,6 +21,8 @@ class PurchaseClass {
 
   init() {
     RevenueCat.configure({ apiKey: API_KEY });
+
+    void this.setLogLevel(PURCHASES_LOG_LEVEL.ERROR);
   }
 
   async setLogLevel(logLevel: LOG_LEVEL) {
@@ -25,8 +31,12 @@ class PurchaseClass {
 
   /* ***** *****  User related  ***** ***** */
 
-  async setUser(appUserID: string) {
-    await RevenueCat.logIn(appUserID);
+  async setUser(user: User) {
+    await RevenueCat.logIn(user.id);
+    await RevenueCat.setEmail(user.email);
+    await this.setAttributes({
+      $posthogUserId: user.id,
+    });
   }
 
   async clearUser() {
@@ -45,12 +55,16 @@ class PurchaseClass {
     return await RevenueCat.getCustomerInfo();
   }
 
+  async isPayingUser() {
+    const customerInfo = await this.getUserInformations();
+
+    return hasActiveEntitlements(customerInfo);
+  }
+
   /* ***** *****  RevenueCat  ***** ***** */
 
   async getOfferings() {
-    const offerings = await RevenueCat.getOfferings();
-
-    return offerings.current;
+    return await RevenueCat.getOfferings();
   }
 
   async restorePurchases() {
@@ -69,6 +83,10 @@ class PurchaseClass {
 
   customerListener(callback: (customerInfo: CustomerInfo) => void) {
     RevenueCat.addCustomerInfoUpdateListener(callback);
+
+    return () => {
+      RevenueCat.removeCustomerInfoUpdateListener(callback);
+    };
   }
 }
 

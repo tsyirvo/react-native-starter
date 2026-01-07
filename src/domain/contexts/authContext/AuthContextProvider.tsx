@@ -40,7 +40,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
     ErrorMonitoring.setUser(user);
 
-    await Purchase.setUser(user.id);
+    await Purchase.setUser(user);
 
     Notifications.setUser(user.id);
     Notifications.setUserEmail(user.email);
