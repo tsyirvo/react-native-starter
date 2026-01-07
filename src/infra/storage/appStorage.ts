@@ -1,7 +1,7 @@
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
 import { storageKeys } from '$domain/constants';
 
-export const AppStorage = new MMKV({
+export const AppStorage = createMMKV({
   id: storageKeys.appStorage.id,
 });

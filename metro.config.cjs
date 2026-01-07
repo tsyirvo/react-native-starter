@@ -3,12 +3,13 @@
 const path = require('path');
 
 const { getSentryExpoConfig } = require('@sentry/react-native/metro');
-const withStorybook = require('@storybook/react-native/metro/withStorybook');
+const {
+  withStorybook,
+} = require('@storybook/react-native/metro/withStorybook');
 
 // This replaces `const config = getDefaultConfig(__dirname);`
 const config = getSentryExpoConfig(__dirname);
 
 module.exports = withStorybook(config, {
   enabled: process.env.STORYBOOK_ENABLED === 'true',
-  onDisabledRemoveStorybook: true,
 });

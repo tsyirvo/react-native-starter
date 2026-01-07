@@ -1,5 +1,5 @@
 import type { Configuration } from 'react-native-mmkv';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV, MMKV } from 'react-native-mmkv';
 
 import { storageKeys } from '$domain/constants';
 
@@ -7,7 +7,7 @@ class StorageClass {
   private _storage: MMKV;
 
   constructor(config?: Configuration) {
-    this._storage = new MMKV(config);
+    this._storage = createMMKV(config);
   }
 
   setItem = (key: string, value: string) => {
@@ -21,7 +21,7 @@ class StorageClass {
   };
 
   removeItem = (key: string) => {
-    this._storage.delete(key);
+    this._storage.remove(key);
   };
 }
 
