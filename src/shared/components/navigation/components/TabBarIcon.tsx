@@ -22,7 +22,7 @@ export const TabBarIcon = ({
       name={iconName}
       width={DEFAULT_ICON_SIZE}
       height={DEFAULT_ICON_SIZE}
-      color={
+      fill={
         isFocused ? theme.colors.core_primary : theme.colors.content_secondary
       }
       testID={testID}

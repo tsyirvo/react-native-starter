@@ -16,7 +16,7 @@ export const HeaderLeft = () => {
         name="LeftArrow"
         width={DEFAULT_ICON_SIZE}
         height={DEFAULT_ICON_SIZE}
-        color={theme.colors.content_primary}
+        fill={theme.colors.content_primary}
       />
     </Pressable>
   );

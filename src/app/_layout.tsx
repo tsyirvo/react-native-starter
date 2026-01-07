@@ -13,6 +13,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { StackAnimationTypes } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { config } from '$domain/constants';
 import { AuthContextProvider } from '$domain/contexts';
@@ -122,11 +123,11 @@ const screenOptions = {
   animation: 'fade' as StackAnimationTypes,
 };
 
-const styles = {
+const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
   },
-};
+});
 
 const RootLayoutWithSentry = Sentry.wrap(RootLayout);
 

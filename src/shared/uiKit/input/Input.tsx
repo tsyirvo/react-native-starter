@@ -62,7 +62,7 @@ export const Input = ({
           <View style={styles.iconContainer}>
             <Icon
               name={leftOrnamentIcon}
-              color={leftOrnamentIconColor}
+              fill={leftOrnamentIconColor}
               width={DEFAULT_ICON_SIZE}
               height={DEFAULT_ICON_SIZE}
             />

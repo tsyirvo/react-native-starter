@@ -30,7 +30,7 @@ export const InnerIcon = ({
       name={iconName}
       height={iconSize}
       width={iconSize}
-      color={theme.colors[getTextColor(parentVariant)]}
+      fill={theme.colors[getTextColor(parentVariant)]}
       testID={testID}
     />
   );
