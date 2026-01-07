@@ -1,5 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { User, UserLogin } from '$domain/entities';
 import { Analytics } from '$infra/analytics';
@@ -22,6 +22,8 @@ interface AuthContextProviderProps {
 }
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
+  const hasTrackedUserRef = useRef(false);
+
   const [user, setUser] = useState<User | null>(null);
 
   const setIsUserLoggedIn = useAppStore((state) => state.setIsUserLoggedIn);
@@ -54,6 +56,14 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     Notifications.removeUser();
     Notifications.removeUserEmail(user.email);
   }, []);
+
+  useEffect(() => {
+    if (user && !hasTrackedUserRef.current) {
+      hasTrackedUserRef.current = true;
+
+      void startTrackingUser(user);
+    }
+  }, [user, startTrackingUser]);
 
   const signIn = useCallback(
     async (data: UserLogin) => {
