@@ -24,16 +24,6 @@ export namespace AnalyticsType {
     | 'deep-link-opened'
     | 'purchase';
 
-  export type ProductIds =
-    | 'monthly-subscription'
-    | 'monthly-subscription-30-off'
-    | 'monthly-subscription-50-off'
-    | 'yearly-subscription'
-    | 'yearly-subscription-30-off'
-    | 'yearly-subscription-50-off';
-
-  export type RevenueTypes = 'purchase';
-
   export type JsonType =
     | string
     | number

@@ -41,16 +41,6 @@ class AnalyticsClass {
     });
   }
 
-  /* ***** *****  Revenue  ***** ***** */
-
-  trackRevenue(revenueData: {
-    productId: AnalyticsType.ProductIds;
-    price: number;
-    revenueType: AnalyticsType.RevenueTypes;
-  }) {
-    this.trackEvent('purchase', revenueData);
-  }
-
   /* ***** *****  Events  ***** ***** */
 
   trackEvent(
