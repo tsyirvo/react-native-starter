@@ -17,10 +17,6 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import { config } from '$domain/constants';
 import { AuthContextProvider } from '$domain/contexts';
-import {
-  useAppScreenTracking,
-  useAppStateTracking,
-} from '$features/navigation';
 import { useAppFocusManager } from '$infra/api';
 import { persistOptions, queryClient } from '$infra/api/queryClient';
 import { ErrorMonitoring } from '$infra/monitoring';
@@ -34,6 +30,8 @@ import {
   Splashscreen,
 } from '$shared/components';
 import {
+  useAppScreenTracking,
+  useAppStateTracking,
   useCheckNetworkStateOnMount,
   useRoutingInstrumentation,
 } from '$shared/hooks';
