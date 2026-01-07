@@ -25,7 +25,7 @@ export const AppUpdateNeeded = () => {
       'last-supported-app-version',
     );
 
-    if (!payload) {
+    if (!payload || !('version' in payload)) {
       return;
     }
 

@@ -15,6 +15,6 @@ export const defaultRemoteConfig: Record<
   AvailableRemoteConfig,
   VersionFlagType
 > = {
-  'last-supported-app-version': { version: '2.0.0' },
-  'latest-released-app-version': { version: '2.1.0' },
+  'last-supported-app-version': { type: 'version', version: '2.0.0' },
+  'latest-released-app-version': { type: 'version', version: '2.1.0' },
 };
