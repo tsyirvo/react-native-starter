@@ -1,13 +1,36 @@
-const mmkvMock = (() => {
-  const data = {};
-  return {
-    getBoolean: (key: string) => data[key],
-    getString: (key: string) => data[key],
-    getNumber: (key: string) => data[key],
-    set: (key: string, value: boolean | number | string) => (data[key] = value),
-    getAllKeys: () => Object.keys(data),
-    delete: (key: string) => (data[key] = undefined),
-  };
-})();
+const createMockStorage = () => {
+  const data: Record<string, boolean | number | string> = {};
 
-export const MMKV = jest.fn().mockImplementation(() => mmkvMock);
+  return {
+    getString: (key: string): string | undefined =>
+      typeof data[key] === 'string' ? data[key] : undefined,
+    getNumber: (key: string): number | undefined =>
+      typeof data[key] === 'number' ? data[key] : undefined,
+    getBoolean: (key: string): boolean | undefined =>
+      typeof data[key] === 'boolean' ? data[key] : undefined,
+    set: (key: string, value: boolean | number | string) => {
+      data[key] = value;
+    },
+    contains: (key: string): boolean => key in data,
+    getAllKeys: (): string[] => Object.keys(data),
+    remove: (key: string): boolean => {
+      const existed = key in data;
+      delete data[key];
+      return existed;
+    },
+    clearAll: () => {
+      Object.keys(data).forEach((key) => delete data[key]);
+    },
+  };
+};
+
+export const createMMKV = jest
+  .fn()
+  .mockImplementation(() => createMockStorage());
+
+export type MMKV = ReturnType<typeof createMockStorage>;
+
+export interface Configuration {
+  id?: string;
+  encryptionKey?: string;
+}
