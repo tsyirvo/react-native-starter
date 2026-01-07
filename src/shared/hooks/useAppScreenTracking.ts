@@ -2,8 +2,7 @@ import { usePathname } from 'expo-router';
 import { useCallback, useEffect } from 'react';
 
 import { Analytics } from '$infra/analytics';
-
-import { convertStringToKebabCase } from '../utils/navigation.utils';
+import { convertStringToKebabCase } from '$shared/utils';
 
 export const useAppScreenTracking = () => {
   const pathname = usePathname();

@@ -1,5 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { User, UserLogin } from '$domain/entities';
 import { Analytics } from '$infra/analytics';
@@ -15,13 +15,15 @@ import {
 } from '$infra/store';
 import { sleep } from '$shared/utils';
 
-import AuthContext from '../AuthContext';
+import AuthContext from './AuthContext';
 
 interface AuthContextProviderProps {
   children: React.ReactNode;
 }
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
+  const hasTrackedUserRef = useRef(false);
+
   const [user, setUser] = useState<User | null>(null);
 
   const setIsUserLoggedIn = useAppStore((state) => state.setIsUserLoggedIn);
@@ -55,6 +57,14 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     Notifications.removeUserEmail(user.email);
   }, []);
 
+  useEffect(() => {
+    if (user && !hasTrackedUserRef.current) {
+      hasTrackedUserRef.current = true;
+
+      void startTrackingUser(user);
+    }
+  }, [user, startTrackingUser]);
+
   const signIn = useCallback(
     async (data: UserLogin) => {
       try {
@@ -68,8 +78,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
         setUser(userDataPayload);
         setIsUserLoggedIn(true);
-
-        await startTrackingUser(userDataPayload);
       } catch (error) {
         Logger.error({
           error,
@@ -78,7 +86,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         });
       }
     },
-    [setIsUserLoggedIn, startTrackingUser],
+    [setIsUserLoggedIn],
   );
 
   const signOut = useCallback(async () => {
@@ -94,6 +102,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       queryClient.clear();
 
       await clearAccessAndRefreshTokens();
+
+      hasTrackedUserRef.current = false;
     } catch (error) {
       Logger.error({
         error,

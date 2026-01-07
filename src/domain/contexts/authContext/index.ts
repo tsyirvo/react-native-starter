@@ -1,3 +1,3 @@
 export * from './AuthContext';
-export * from './components';
-export * from './hooks';
+export * from './AuthContextProvider';
+export * from './useAuthContext';

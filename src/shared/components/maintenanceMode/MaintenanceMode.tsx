@@ -34,6 +34,7 @@ export const MaintenanceMode = ({
 
 const styles = StyleSheet.create((theme) => ({
   container: {
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: theme.colors.bg_base,
     width: '100%',
     height: '100%',

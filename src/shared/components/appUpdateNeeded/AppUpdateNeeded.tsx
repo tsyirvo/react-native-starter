@@ -25,7 +25,7 @@ export const AppUpdateNeeded = () => {
       'last-supported-app-version',
     );
 
-    if (!payload) {
+    if (!payload || !('version' in payload)) {
       return;
     }
 
@@ -81,6 +81,7 @@ export const AppUpdateNeeded = () => {
 
 const styles = StyleSheet.create((theme) => ({
   container: {
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: theme.colors.bg_base,
     width: '100%',
     height: '100%',

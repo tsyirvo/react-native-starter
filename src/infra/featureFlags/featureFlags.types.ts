@@ -10,5 +10,6 @@ export type BooleanFeatureFlags = Extract<
 >;
 
 export interface VersionFlagType {
+  type: 'version';
   version: string;
 }

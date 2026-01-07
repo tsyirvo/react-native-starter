@@ -2,6 +2,7 @@ import {
   BottomSheetBackdropProps,
   BottomSheetModal,
   BottomSheetScrollView,
+  BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import { RefObject } from 'react';
 import { SharedValue } from 'react-native-reanimated';
@@ -39,7 +40,7 @@ export const BottomSheet = ({
   onChange,
   renderBackdrop = renderDefaultBackdrop,
 }: BottomSheetProps) => {
-  const { bottom: bottomInset, top: topInset } = useSafeAreaInsets();
+  const { top: topInset } = useSafeAreaInsets();
 
   const { theme } = useUnistyles();
 
@@ -59,7 +60,7 @@ export const BottomSheet = ({
       onChange={onChange}
     >
       {isScrollable ? (
-        <BottomSheetScrollView style={styles.scrollViewStyle}>
+        <BottomSheetScrollView style={styles.bottomSheetWrapper}>
           <Box
             px={disableHorizontalPadding ? undefined : 'spacing_16'}
             pt={disableTopPadding ? undefined : 'spacing_24'}
@@ -68,13 +69,15 @@ export const BottomSheet = ({
           </Box>
         </BottomSheetScrollView>
       ) : (
-        <Box
-          px={disableHorizontalPadding ? undefined : 'spacing_16'}
-          pt={disableTopPadding ? undefined : 'spacing_24'}
-          style={{ marginBottom: bottomInset }}
-        >
-          {children}
-        </Box>
+        <BottomSheetView style={styles.bottomSheetWrapper}>
+          <Box
+            px={disableHorizontalPadding ? undefined : 'spacing_16'}
+            pt={disableTopPadding ? undefined : 'spacing_24'}
+            style={styles.viewWrapper}
+          >
+            {children}
+          </Box>
+        </BottomSheetView>
       )}
     </BottomSheetModal>
   );
@@ -90,7 +93,7 @@ const renderDefaultBackdrop = ({
   />
 );
 
-const styles = StyleSheet.create((theme) => ({
+const styles = StyleSheet.create((theme, rt) => ({
   modalStyle: {
     backgroundColor: theme.colors.bg_base,
   },
@@ -98,7 +101,10 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: theme.colors.border_default,
     width: 50,
   },
-  scrollViewStyle: {
+  bottomSheetWrapper: {
     marginBottom: theme.spacing.spacing_24,
+  },
+  viewWrapper: {
+    marginBottom: rt.insets.bottom,
   },
 }));
