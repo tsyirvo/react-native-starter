@@ -51,6 +51,7 @@ const buildTime = z.object({
   SENTRY_PROJECT: z.string(),
   SENTRY_AUTH_TOKEN: z.string(),
   EXPO_APPLE_TEAM_ID: z.string(),
+  EXPO_UPDATE_URL: z.string(),
 });
 
 // Environment variables config
@@ -82,6 +83,7 @@ const _buildTimeEnv = {
   SENTRY_PROJECT: process.env.SENTRY_PROJECT,
   SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
   EXPO_APPLE_TEAM_ID: process.env.EXPO_APPLE_TEAM_ID,
+  EXPO_UPDATE_URL: process.env.EXPO_UPDATE_URL,
 };
 
 const _env = {

@@ -43,5 +43,5 @@ jobs:
       - name: Run Prettier checks
         run: yarn prettier --check './**/*.{js,ts,tsx}' '!.rnstorybook/storybook.requires.ts'
 
-      - name: Run commitlint checksts
+      - name: Run Tests
         run: yarn jest --coverage=false

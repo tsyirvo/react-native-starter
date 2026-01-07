@@ -92,6 +92,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   icon: './assets/icons/default.png',
   userInterfaceStyle: 'dark',
   updates: {
+    enabled: isProductionEnv,
+    url: Env.EXPO_UPDATE_URL,
     fallbackToCacheTimeout: 0,
   },
   assetBundlePatterns: ['./src/assets/images/*'],
@@ -110,7 +112,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     entitlements: {
       'aps-environment': isDevelopmentEnv ? 'development' : 'production',
       'com.apple.security.application-groups': [
-        'group.${ios.bundleIdentifier}.onesignal',
+        `group.${Env.BUNDLE_ID}.onesignal`,
       ],
     },
     icon: {
