@@ -15,7 +15,7 @@ import {
 } from '$infra/store';
 import { sleep } from '$shared/utils';
 
-import AuthContext from '../AuthContext';
+import AuthContext from './AuthContext';
 
 interface AuthContextProviderProps {
   children: React.ReactNode;
