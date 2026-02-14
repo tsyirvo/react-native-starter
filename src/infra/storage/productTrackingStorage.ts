@@ -2,7 +2,7 @@ import { createMMKV } from 'react-native-mmkv';
 
 import { storageKeys } from '$domain/constants';
 
-export const ProductTrackingStorage = createMMKV({
+const ProductTrackingStorage = createMMKV({
   id: storageKeys.productTrackingStorage.id,
 });
 

@@ -38,12 +38,9 @@ export const AppUpdateNeeded = () => {
 
   const onPress = async () => {
     try {
-      // TODO(prod): Replace with real iTunes item ID
-      const itunesItemId = '';
-
       await Linking.openURL(
         IS_IOS
-          ? `https://apps.apple.com/app/apple-store/id${itunesItemId}`
+          ? `https://apps.apple.com/app/${config.itunesItemId}`
           : `market://details?id=${config.bundleId}&showAllReviews=true`,
       );
     } catch (error) {

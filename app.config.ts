@@ -100,10 +100,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: Env.BUNDLE_ID,
-    // TODO(prod): Add correct associated domain config
-    associatedDomains: ['applinks:rnstarter.onelink.me'],
-    // TODO(prod): Add correct app store URL
-    appStoreUrl: `https://apps.apple.com/app/XXX/${Env.ITUNES_ITEM_ID}`,
+    appStoreUrl: `https://apps.apple.com/app/${Env.ITUNES_ITEM_ID}`,
     infoPlist: {
       UIBackgroundModes: ['remote-notification'],
       CFBundleAllowMixedLocalizations: true,

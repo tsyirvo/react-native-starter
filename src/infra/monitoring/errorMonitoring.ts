@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-deprecated */
-
-import type { Event, Scope } from '@sentry/react-native';
+ import type { Event, Scope } from '@sentry/react-native';
 import * as Sentry from '@sentry/react-native';
-import type { Breadcrumb, CaptureContext, SeverityLevel } from '@sentry/types';
 import * as Application from 'expo-application';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
@@ -107,7 +104,7 @@ class ErrorMonitoringClass {
     Sentry.captureException(exception);
   }
 
-  message(message: string, context?: CaptureContext | SeverityLevel) {
+  message(message: string, context?: Parameters<typeof Sentry.captureMessage>[1]) {
     Sentry.captureMessage(message, context);
   }
 
@@ -119,7 +116,7 @@ class ErrorMonitoringClass {
     Sentry.setContext(name, context);
   }
 
-  breadcrumbs(breadcrumb: Breadcrumb) {
+  breadcrumbs(breadcrumb: Sentry.Breadcrumb) {
     Sentry.addBreadcrumb(breadcrumb);
   }
 

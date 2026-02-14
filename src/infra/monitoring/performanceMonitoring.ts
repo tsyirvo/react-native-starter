@@ -1,17 +1,14 @@
-/* eslint-disable @typescript-eslint/no-deprecated */
-
 import * as Sentry from '@sentry/react-native';
-import type { StartSpanOptions, Span } from '@sentry/types';
 
 class PerformanceMonitoringClass {
   startTransaction<T>(
-    context: StartSpanOptions,
-    callback: (span: Span | undefined) => T,
+    context: Parameters<typeof Sentry.startSpan>[0],
+    callback: (span: Sentry.Span | undefined) => T,
   ) {
     Sentry.startSpan(context, callback);
   }
 
-  startIndependentTransaction(context: StartSpanOptions) {
+  startIndependentTransaction(context: Parameters<typeof Sentry.startInactiveSpan>[0]) {
     Sentry.startInactiveSpan(context);
   }
 }

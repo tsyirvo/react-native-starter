@@ -71,6 +71,10 @@ class PurchaseClass {
     await RevenueCat.restorePurchases();
   }
 
+  async syncPurchases() {
+    await RevenueCat.syncPurchases();
+  }
+
   async makePurchase(purchasedPackage: PurchasesPackage) {
     try {
       await RevenueCat.purchasePackage(purchasedPackage);

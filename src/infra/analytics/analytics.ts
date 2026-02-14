@@ -9,7 +9,6 @@ class AnalyticsClass {
   }
   /* ***** *****  User related  ***** ***** */
 
-  // TODO(prod): Add user properties
   setUser(user: User) {
     productTrackingClient.identify(user.id, {
       email: user.email,

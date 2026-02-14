@@ -1,4 +1,4 @@
-import type { SeverityLevel } from '@sentry/core';
+import type { SeverityLevel } from '@sentry/react-native';
 
 /* ***** *****  Toast Message  ***** ***** */
 
