@@ -5,13 +5,13 @@ class PerformanceMonitoringClass {
     context: Parameters<typeof Sentry.startSpan>[0],
     callback: (span: Sentry.Span | undefined) => T,
   ) {
-    Sentry.startSpan(context, callback);
+    return Sentry.startSpan(context, callback);
   }
 
   startIndependentTransaction(
     context: Parameters<typeof Sentry.startInactiveSpan>[0],
   ) {
-    Sentry.startInactiveSpan(context);
+    return Sentry.startInactiveSpan(context);
   }
 }
 
