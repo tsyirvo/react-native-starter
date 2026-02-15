@@ -1,4 +1,4 @@
- import type { Event, Scope } from '@sentry/react-native';
+import type { Event, Scope } from '@sentry/react-native';
 import * as Sentry from '@sentry/react-native';
 import * as Application from 'expo-application';
 import Constants from 'expo-constants';
@@ -104,7 +104,10 @@ class ErrorMonitoringClass {
     Sentry.captureException(exception);
   }
 
-  message(message: string, context?: Parameters<typeof Sentry.captureMessage>[1]) {
+  message(
+    message: string,
+    context?: Parameters<typeof Sentry.captureMessage>[1],
+  ) {
     Sentry.captureMessage(message, context);
   }
 
