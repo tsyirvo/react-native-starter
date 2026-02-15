@@ -3,7 +3,7 @@ import dayjsLocalizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import dayjsUtc from 'dayjs/plugin/utc';
 
-import type { DateFormats } from './date.types';
+import type { DateFormat } from './date.types';
 
 import 'dayjs/locale/fr';
 import 'dayjs/locale/en';
@@ -25,7 +25,7 @@ export const formatDate = ({
   format,
 }: {
   date: dayjs.ConfigType;
-  format: DateFormats;
+  format: DateFormat;
 }) => dayjs.utc(date).format(format);
 
 export const formatDateRelative = ({

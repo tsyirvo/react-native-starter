@@ -19,7 +19,9 @@ const createMockStorage = () => {
       return existed;
     },
     clearAll: () => {
-      Object.keys(data).forEach((key) => delete data[key]);
+      for (const key of Object.keys(data)) {
+        delete data[key];
+      }
     },
   };
 };

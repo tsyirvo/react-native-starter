@@ -37,5 +37,5 @@ export const useAppState = ({
     return () => {
       listener.remove();
     };
-  }, [appState, handleAppStateChange]);
+  }, [handleAppStateChange]);
 };

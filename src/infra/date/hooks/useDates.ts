@@ -7,14 +7,14 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { formatDate, formatDateRelative } from '../date';
-import { DateFormats } from '../date.types';
+import { DateFormat } from '../date.types';
 
 export const useFormatDate = ({
   date,
   format,
 }: {
   date: dayjs.ConfigType;
-  format: DateFormats;
+  format: DateFormat;
 }): string => {
   const { i18n } = useTranslation();
 

@@ -16,6 +16,7 @@ const androidVersionCode = Constants.expoConfig?.android?.versionCode
 const runtimeVersion = Constants.expoConfig?.runtimeVersion;
 const iosBundleIdentifier = Constants.expoConfig?.ios?.bundleIdentifier ?? '';
 const androidPackageName = Constants.expoConfig?.android?.package ?? '';
+const itunesItemId = Env.ITUNES_ITEM_ID;
 
 const apiURL = Env.API_URL;
 const isStorybookEnabled = Env.STORYBOOK_ENABLED === 'true';
@@ -36,6 +37,7 @@ export const config = {
   buildNumber: IS_IOS ? iosbuildNumber : androidVersionCode,
   runtimeVersion,
   bundleId: IS_IOS ? iosBundleIdentifier : androidPackageName,
+  itunesItemId,
   apiURL,
   isStorybookEnabled,
   // SDKs
