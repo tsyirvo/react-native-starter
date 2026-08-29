@@ -1,6 +1,4 @@
-/* eslint-disable */
-
-import path from 'path';
+import path from 'node:path';
 
 export default function defaultIndexTemplate(filePaths) {
   const exportEntries = filePaths.map(({ path: filePath, originalPath }) => {

@@ -10,7 +10,8 @@ export const useAppScreenTracking = () => {
   const getScreenTrackedEventName = useCallback(() => {
     if (pathname === '/') {
       return 'home-screen-viewed' as 'XXX-screen-viewed';
-    } else if (pathname.includes('/blogPost')) {
+    }
+    if (pathname.includes('/blogPost')) {
       return 'blog-post-screen-viewed' as 'XXX-screen-viewed';
     }
     // Add other specific tracking events for screens that need it

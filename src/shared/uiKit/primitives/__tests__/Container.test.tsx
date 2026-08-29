@@ -22,7 +22,7 @@ describe('Container component', () => {
 
   it('should apply spacing props', () => {
     render(
-      <Box testID="containerId" p="spacing_24" mb="spacing_16">
+      <Box mb="spacing_16" p="spacing_24" testID="containerId">
         <Text>Content</Text>
       </Box>,
     );
@@ -32,7 +32,7 @@ describe('Container component', () => {
 
   it('should apply alignment props', () => {
     render(
-      <Box testID="containerId" align="center" justify="flex-end">
+      <Box align="center" justify="flex-end" testID="containerId">
         <Text>Aligned Content</Text>
       </Box>,
     );
@@ -42,7 +42,7 @@ describe('Container component', () => {
 
   it('should apply flex direction and wrap props', () => {
     render(
-      <Box testID="containerId" direction="row" wrap="wrap">
+      <Box direction="row" testID="containerId" wrap="wrap">
         <Text>Item 1</Text>
         <Text>Item 2</Text>
       </Box>,
@@ -53,7 +53,7 @@ describe('Container component', () => {
 
   it('should apply custom flex value', () => {
     render(
-      <Box testID="containerId" flex={2}>
+      <Box flex={2} testID="containerId">
         <Text>Content</Text>
       </Box>,
     );
@@ -63,7 +63,7 @@ describe('Container component', () => {
 
   it('should apply gap prop', () => {
     render(
-      <Box testID="containerId" gap="spacing_12">
+      <Box gap="spacing_12" testID="containerId">
         <Text>Item 1</Text>
         <Text>Item 2</Text>
       </Box>,

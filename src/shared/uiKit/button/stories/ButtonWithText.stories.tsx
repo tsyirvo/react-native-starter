@@ -1,13 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { action } from 'storybook/actions';
 
 import { ButtonWithText as ButtonWithTextComponent } from '../ButtonWithText';
 
 const meta = {
-  title: 'UIKit/Button/Regular',
-  component: ButtonWithTextComponent,
+  args: {
+    isDisabled: false,
+    isLoading: false,
+    variant: 'primary',
+  },
   argTypes: {
+    isDisabled: { control: 'boolean' },
+    isLoading: { control: 'boolean' },
+    onPress: { action: 'onPress' },
     variant: {
       control: 'select',
       options: [
@@ -19,15 +25,9 @@ const meta = {
         'text_compact',
       ],
     },
-    onPress: { action: 'onPress' },
-    isDisabled: { control: 'boolean' },
-    isLoading: { control: 'boolean' },
   },
-  args: {
-    variant: 'primary',
-    isDisabled: false,
-    isLoading: false,
-  },
+  component: ButtonWithTextComponent,
+  title: 'UIKit/Button/Regular',
 } satisfies Meta<typeof ButtonWithTextComponent>;
 
 export default meta;

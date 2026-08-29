@@ -7,9 +7,9 @@ import type { ButtonVariant } from '../buttonVariants';
 import { getIconSize, getTextColor } from '../utils';
 
 interface InnerIconProps {
-  parentVariant: ButtonVariant;
   iconName: IconName;
   isLoading?: boolean;
+  parentVariant: ButtonVariant;
   testID?: string;
 }
 
@@ -21,17 +21,19 @@ export const InnerIcon = ({
 }: InnerIconProps) => {
   const { theme } = useUnistyles();
 
-  if (isLoading) return null;
+  if (isLoading) {
+    return null;
+  }
 
   const iconSize = getIconSize(parentVariant);
 
   return (
     <Icon
-      name={iconName}
-      height={iconSize}
-      width={iconSize}
       fill={theme.colors[getTextColor(parentVariant)]}
+      height={iconSize}
+      name={iconName}
       testID={testID}
+      width={iconSize}
     />
   );
 };

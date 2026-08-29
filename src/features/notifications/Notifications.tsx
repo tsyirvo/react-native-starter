@@ -15,8 +15,8 @@ export const Notifications = () => {
     } catch (error) {
       Logger.error({
         error,
-        message: 'Failed to request notification permission',
         level: 'warning',
+        message: 'Failed to request notification permission',
       });
     }
   };
@@ -27,7 +27,7 @@ export const Notifications = () => {
         {t('featuresScreen.notificationsPermission.title')}
       </Text>
 
-      <Box self="flex-start" mt="spacing_8">
+      <Box mt="spacing_8" self="flex-start">
         <Button.Text onPress={onPress}>
           {t('featuresScreen.notificationsPermission.cta')}
         </Button.Text>

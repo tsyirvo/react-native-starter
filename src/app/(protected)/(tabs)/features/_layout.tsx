@@ -13,16 +13,16 @@ const FeaturesLayout = () => {
     <Stack screenOptions={globalScreenOptions}>
       <Stack.Screen
         name="index"
-        options={{ title: t('tabs.features'), headerShown: false }}
+        options={{ headerShown: false, title: t('tabs.features') }}
       />
 
       <Stack.Screen
         name="(blogPost)/[blogPostId]"
         options={{
-          title: t('blogPostScreen.title'),
-          headerTintColor: theme.colors.content_primary,
           headerBackground: HeaderBackground,
           headerLeft: HeaderLeft,
+          headerTintColor: theme.colors.content_primary,
+          title: t('blogPostScreen.title'),
         }}
       />
     </Stack>

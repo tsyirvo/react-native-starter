@@ -3,11 +3,11 @@ import * as AllIcons from './components';
 type Name = keyof typeof AllIcons;
 
 interface IconProps {
-  name: Name;
   fill?: string;
-  width?: number;
   height?: number;
+  name: Name;
   testID?: string;
+  width?: number;
 }
 
 export const Icon = ({
@@ -20,6 +20,6 @@ export const Icon = ({
   const IconComponent = AllIcons[name];
 
   return (
-    <IconComponent fill={fill} width={width} height={height} testID={testID} />
+    <IconComponent fill={fill} height={height} testID={testID} width={width} />
   );
 };

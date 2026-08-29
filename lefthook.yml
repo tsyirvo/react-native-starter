@@ -1,9 +1,9 @@
 pre-commit:
   parallel: true
   commands:
-    eslint:
-      glob: '*.{js,ts,jsx,tsx}'
-      run: yarn lint {staged_files} --no-warn-ignored
+    biome:
+      glob: '*.{js,ts,jsx,tsx,json,jsonc}'
+      run: yarn lint {staged_files}
     typescript:
       glob: '*.{ts,tsx}'
       run: npx tsc-files {staged_files} src/types/react-query.d.ts src/types/declaration.d.ts src/domain/theme/unistyles.ts

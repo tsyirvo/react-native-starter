@@ -93,7 +93,6 @@ const merged = buildTime.extend(client.shape);
 const parsed = merged.safeParse(_env);
 
 if (!parsed.success) {
-  // eslint-disable-next-line no-console
   console.error(
     '❌ Invalid environment variables:',
     z.treeifyError(parsed.error),

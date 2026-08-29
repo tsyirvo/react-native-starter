@@ -38,17 +38,17 @@ export const useWhyDidYouUpdate = (
   const latestProps = useRef(props);
 
   useEffect(() => {
-    if (!__DEV__) return;
+    if (!__DEV__) {
+      return;
+    }
 
     const allKeys = Object.keys({ ...latestProps.current, ...props });
 
     const changesObj: ChangeObj = {};
 
-    allKeys.forEach((key) => {
+    for (const key of allKeys) {
       if (latestProps.current[key] !== props[key]) {
         changesObj[key] = {
-          from: latestProps.current[key],
-          to: props[key],
           changedKeys:
             props[key] && typeof props[key] === 'object'
               ? // @ts-expect-error: can't properly type this
@@ -59,10 +59,12 @@ export const useWhyDidYouUpdate = (
                   )
                   .filter(Boolean)
               : undefined,
+          from: latestProps.current[key],
           isDeepEqual: isEqual(latestProps.current[key], props[key]),
+          to: props[key],
         };
       }
-    });
+    }
 
     if (Object.keys(changesObj).length > NO_OBJECTS) {
       if (onChangeFound) {

@@ -1,16 +1,14 @@
 import { Stack, Text } from '$shared/uiKit';
 
 interface InformationBlockProps {
-  title: string;
   content: string;
+  title: string;
 }
 
-export const InformationBlock = ({ title, content }: InformationBlockProps) => {
-  return (
-    <Stack gap="spacing_8">
-      <Text variant="large">{title}</Text>
+export const InformationBlock = ({ title, content }: InformationBlockProps) => (
+  <Stack gap="spacing_8">
+    <Text variant="large">{title}</Text>
 
-      <Text>{content}</Text>
-    </Stack>
-  );
-};
+    <Text>{content}</Text>
+  </Stack>
+);

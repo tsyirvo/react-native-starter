@@ -17,7 +17,7 @@ let failedQueue: {
 }[] = [];
 
 const processFailedQueue = () => {
-  failedQueue.forEach(({ query, mutation, variables }) => {
+  for (const { query, mutation, variables } of failedQueue) {
     if (mutation) {
       const { options } = mutation;
 
@@ -30,14 +30,15 @@ const processFailedQueue = () => {
       });
     }
 
-    if (query)
+    if (query) {
       query.fetch().catch((error: unknown) => {
         Logger.error({
           error,
           message: 'Error while fetching a query from the failed queue',
         });
       });
-  });
+    }
+  }
 
   isRefreshing = false;
   failedQueue = [];
@@ -50,10 +51,10 @@ export const refreshAccessTokenAndRetry = async (
 ) => {
   try {
     if (isRefreshing) {
-      failedQueue.push({ query, mutation, variables });
+      failedQueue.push({ mutation, query, variables });
     } else {
       isRefreshing = true;
-      failedQueue.push({ query, mutation, variables });
+      failedQueue.push({ mutation, query, variables });
 
       const { accessToken, refreshToken } = await requestNewAccessToken();
 

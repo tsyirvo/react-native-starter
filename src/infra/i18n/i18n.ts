@@ -7,10 +7,10 @@ import { resources } from './resources';
 import { languageDetector } from './utils/languageDetector';
 
 export const i18n = i18next.use(initReactI18next).use(languageDetector).init({
-  fallbackLng: config.defaultLocale,
-  supportedLngs: config.supportedLocales,
-  nonExplicitSupportedLngs: true,
   defaultNS: 'messages',
-  resources,
+  fallbackLng: config.defaultLocale,
   load: 'languageOnly',
+  nonExplicitSupportedLngs: true,
+  resources,
+  supportedLngs: config.supportedLocales,
 });

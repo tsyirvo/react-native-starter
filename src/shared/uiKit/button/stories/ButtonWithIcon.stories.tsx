@@ -1,13 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { action } from 'storybook/actions';
 
 import { ButtonWithIcon as ButtonWithIconComponent } from '../ButtonWithIcon';
 
 const meta = {
-  title: 'UIKit/Button/With Icon',
-  component: ButtonWithIconComponent,
+  args: {
+    variant: 'primary',
+  },
   argTypes: {
+    iconName: {
+      control: 'select',
+      options: ['Home', 'Apps', 'Envelope', 'Key', 'User'],
+    },
+    isDisabled: { control: 'boolean' },
+    isLoading: { control: 'boolean' },
+    onPress: { action: 'onPress' },
     variant: {
       control: 'select',
       options: [
@@ -19,17 +27,9 @@ const meta = {
         'text_compact',
       ],
     },
-    iconName: {
-      control: 'select',
-      options: ['Home', 'Apps', 'Envelope', 'Key', 'User'],
-    },
-    onPress: { action: 'onPress' },
-    isDisabled: { control: 'boolean' },
-    isLoading: { control: 'boolean' },
   },
-  args: {
-    variant: 'primary',
-  },
+  component: ButtonWithIconComponent,
+  title: 'UIKit/Button/With Icon',
 } satisfies Meta<typeof ButtonWithIconComponent>;
 
 export default meta;

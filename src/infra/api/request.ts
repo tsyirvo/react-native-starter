@@ -16,14 +16,18 @@ export const request =
   async () => {
     client = getQueryClient(config.apiURL);
 
-    if (options) client.setHeaders(options);
+    if (options) {
+      client.setHeaders(options);
+    }
 
     client.setHeader('app-id', getAppIdentifier());
     client.setHeader('app-version', config.version);
 
     const authHeader = await getAuthorizationHeader();
 
-    if (authHeader !== '') client.setHeader('authorization', authHeader);
+    if (authHeader !== '') {
+      client.setHeader('authorization', authHeader);
+    }
 
     return client.request(query, variables);
   };

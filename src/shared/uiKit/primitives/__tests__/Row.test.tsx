@@ -24,7 +24,7 @@ describe('Row component', () => {
 
   it('should apply spacing props', () => {
     render(
-      <Row testID="rowId" p="spacing_16" mx="spacing_8">
+      <Row mx="spacing_8" p="spacing_16" testID="rowId">
         <Text>Content</Text>
       </Row>,
     );
@@ -34,7 +34,7 @@ describe('Row component', () => {
 
   it('should apply alignment props', () => {
     render(
-      <Row testID="rowId" align="center" justify="space-between">
+      <Row align="center" justify="space-between" testID="rowId">
         <Text>Left</Text>
         <Text>Right</Text>
       </Row>,
@@ -45,7 +45,7 @@ describe('Row component', () => {
 
   it('should apply gap prop', () => {
     render(
-      <Row testID="rowId" gap="spacing_16">
+      <Row gap="spacing_16" testID="rowId">
         <Text>Item 1</Text>
         <Text>Item 2</Text>
       </Row>,

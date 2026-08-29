@@ -1,4 +1,4 @@
 export default {
-  setItemAsync: jest.fn(),
   getItemAsync: jest.fn(),
+  setItemAsync: jest.fn(),
 };

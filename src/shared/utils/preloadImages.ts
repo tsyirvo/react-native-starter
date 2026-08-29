@@ -5,8 +5,8 @@ import { Logger } from '$infra/logger';
 export const preloadImages = (sources: string[]) => {
   ExpoImage.prefetch(sources).catch((error: unknown) => {
     Logger.error({
-      message: 'Failed to preload images',
       error,
+      message: 'Failed to preload images',
     });
   });
 };

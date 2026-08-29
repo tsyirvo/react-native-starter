@@ -1,10 +1,10 @@
-import { RefObject } from 'react';
+import type { RefObject } from 'react';
 import type { TextInputProps } from 'react-native';
 import { TextInput, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { DEFAULT_ICON_SIZE } from '$domain/constants/styling';
-import { Icon, IconName } from '$shared/icons';
+import { Icon, type IconName } from '$shared/icons';
 
 import { Row, Stack, Text } from '../primitives';
 
@@ -12,14 +12,14 @@ import { InputLabel } from './components/InputLabel';
 import { useInputFocusState, useInputStyling } from './hooks';
 
 export interface InputProps extends TextInputProps {
-  ref?: RefObject<TextInput | null>;
-  label?: string;
-  helperText?: string;
   error?: string;
+  helperText?: string;
   isDisabled?: boolean;
   isOptional?: boolean;
+  label?: string;
   leftOrnamentIcon?: IconName;
   leftOrnamentIconColor?: string;
+  ref?: RefObject<TextInput | null>;
   testID?: string;
 }
 
@@ -40,45 +40,44 @@ export const Input = ({
   const { theme } = useUnistyles();
 
   const { isFocused, onBlur, onFocus } = useInputFocusState({
-    onFocus: onFocusProp,
     onBlur: onBlurProp,
+    onFocus: onFocusProp,
   });
   const { getLineBorderColor, getInputBgColor } = useInputStyling({
-    isFocused,
-    isDisabled,
     error,
+    isDisabled,
+    isFocused,
   });
 
   return (
-    <Stack gap="spacing_8" testID={testID} style={styles.container}>
-      <InputLabel label={label} isOptional={isOptional} />
+    <Stack gap="spacing_8" style={styles.container} testID={testID}>
+      <InputLabel isOptional={isOptional} label={label} />
 
       <Row
-        px="spacing_12"
         gap="spacing_8"
+        px="spacing_12"
         style={[styles.inputContainer, getLineBorderColor(), getInputBgColor()]}
       >
         {!!leftOrnamentIcon && (
           <View style={styles.iconContainer}>
             <Icon
-              name={leftOrnamentIcon}
               fill={leftOrnamentIconColor}
-              width={DEFAULT_ICON_SIZE}
               height={DEFAULT_ICON_SIZE}
+              name={leftOrnamentIcon}
+              width={DEFAULT_ICON_SIZE}
             />
           </View>
         )}
 
         <TextInput
-          ref={ref}
           editable={!isDisabled}
+          onBlur={onBlur}
+          onChangeText={props.onChangeText}
+          onFocus={onFocus}
           placeholderTextColor={theme.colors.content_tertiary}
+          ref={ref}
           style={[styles.input, getInputBgColor()]}
           underlineColorAndroid="transparent"
-          onChangeText={props.onChangeText}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          // eslint-disable-next-line react/jsx-props-no-spreading
           {...props}
         />
       </Row>
@@ -104,23 +103,23 @@ const styles = StyleSheet.create((theme) => ({
   container: {
     width: '100%',
   },
-  inputContainer: {
-    borderWidth: 1,
-    borderRadius: theme.borderRadii.radius_8,
-  },
   iconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   input: {
-    flex: 1,
-    fontSize: theme.fontSizes.regular,
-    fontFamily: theme.fontFamily.regular,
     backgroundColor: theme.colors.bg_base,
+    borderRadius: theme.borderRadii.radius_8,
     color: theme.colors.content_primary,
+    flex: 1,
+    fontFamily: theme.fontFamily.regular,
+    fontSize: theme.fontSizes.regular,
     padding: theme.spacing.zero,
     paddingVertical: theme.spacing.spacing_8,
+  },
+  inputContainer: {
     borderRadius: theme.borderRadii.radius_8,
+    borderWidth: 1,
   },
 }));
 

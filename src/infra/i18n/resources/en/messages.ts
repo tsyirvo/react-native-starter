@@ -1,15 +1,9 @@
 export const messages = {
-  common: {
-    back: 'Back',
-    cancel: 'Cancel',
-    next: 'Next',
-  },
-  tabs: {
-    home: 'Home',
-    features: 'Features',
-    profile: 'Profile',
-  },
   appConfig: {
+    changeLocale: {
+      failure: 'The language could not be changed',
+      success: 'The language has been changed',
+    },
     networkStateCheck: {
       message:
         'Please check your internet connection. The app might not work properly without it.',
@@ -19,20 +13,21 @@ export const messages = {
       notAvailable: 'This permission is not available on this device',
       notGranted: 'You rejected this permission request',
     },
-    changeLocale: {
-      failure: 'The language could not be changed',
-      success: 'The language has been changed',
-    },
   },
   appUpdateNedeed: {
-    title: 'Your app is outdated',
+    cta: 'Update now',
     description:
       'Please go update the application to access the latest features',
-    cta: 'Update now',
+    title: 'Your app is outdated',
   },
-  newStoreVersionAvailable: {
-    title: 'An update is available on the stores',
-    cta: 'Go update now',
+  blogPostScreen: {
+    description: 'Blog post fetched with GraphQL',
+    title: 'Blog post',
+  },
+  common: {
+    back: 'Back',
+    cancel: 'Cancel',
+    next: 'Next',
   },
   errorBoundary: {
     cta: 'Relaunch the app',
@@ -40,20 +35,30 @@ export const messages = {
       'An unknown error occured. If the error persist, contact an administrator.',
     title: 'Error',
   },
-  maintenanceMode: {
-    description: 'It will be available online as soon as possible',
-    title: 'The app is in maintenance',
+  featuresScreen: {
+    blogPost: {
+      cta: 'Naviguer',
+      title: 'Example GraphQL API call',
+    },
+    notificationsPermission: {
+      alreadyGranted: 'The permission has already been granted',
+      cta: 'Request',
+      success: 'The permission has been granted',
+      title: 'Request Notification permission',
+    },
+  },
+  forms: {
+    optional: 'Optional',
   },
   homeScreen: {
-    whatIsInside: "What's inside ?",
+    formatting: {
+      content: 'The code is fully checked with ESLint, Prettier and TypeScript',
+      title: 'Formatting & type checking',
+    },
     motivation: {
       content:
         'The goal of the starter kit is to provide a foundation for building React Native applications. It is not meant to provide tons of features, UI components, or other libraries, but to include the recurrent tools and libraries I use in most of the projects I work on.',
       title: 'Motivation',
-    },
-    formatting: {
-      content: 'The code is fully checked with ESLint, Prettier and TypeScript',
-      title: 'Formatting & type checking',
     },
     storybook: {
       content:
@@ -73,25 +78,23 @@ export const messages = {
     updateCheck: {
       isEmbeddedLaunch: 'The app is running from an OTA update',
     },
-  },
-  forms: {
-    optional: 'Optional',
+    whatIsInside: "What's inside ?",
   },
   loginForm: {
     emailField: {
       label: 'Email',
       placeholder: 'test@example.com',
       validation: {
-        required: 'Email is required',
         invalid: 'Please enter a valid email',
+        required: 'Email is required',
       },
     },
     passwordField: {
       label: 'Password',
       placeholder: 'Enter your password',
       validation: {
-        minLength: 'Password must be at least 6 characters long',
         maxLength: 'Password must be at most 255 characters long',
+        minLength: 'Password must be at least 6 characters long',
       },
     },
     submitButton: 'Login',
@@ -99,25 +102,22 @@ export const messages = {
   loginScreen: {
     title: 'React Native Template',
   },
-  blogPostScreen: {
-    title: 'Blog post',
-    description: 'Blog post fetched with GraphQL',
+  maintenanceMode: {
+    description: 'It will be available online as soon as possible',
+    title: 'The app is in maintenance',
+  },
+  newStoreVersionAvailable: {
+    cta: 'Go update now',
+    title: 'An update is available on the stores',
   },
   profileScreen: {
-    title: 'Profile',
     logout: 'Logout',
+    title: 'Profile',
   },
-  featuresScreen: {
-    notificationsPermission: {
-      title: 'Request Notification permission',
-      cta: 'Request',
-      success: 'The permission has been granted',
-      alreadyGranted: 'The permission has already been granted',
-    },
-    blogPost: {
-      title: 'Example GraphQL API call',
-      cta: 'Naviguer',
-    },
+  tabs: {
+    features: 'Features',
+    home: 'Home',
+    profile: 'Profile',
   },
 };
 

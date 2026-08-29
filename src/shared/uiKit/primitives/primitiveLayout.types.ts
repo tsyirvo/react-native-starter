@@ -6,23 +6,22 @@ import type { ThemeSpacing } from '$domain/theme';
 
 export interface SpacingProps {
   gap?: ThemeSpacing;
-  p?: ThemeSpacing;
-  px?: ThemeSpacing;
-  py?: ThemeSpacing;
-  pt?: ThemeSpacing;
-  pb?: ThemeSpacing;
   m?: ThemeSpacing;
+  mb?: ThemeSpacing;
+  mt?: ThemeSpacing;
   mx?: ThemeSpacing;
   my?: ThemeSpacing;
-  mt?: ThemeSpacing;
-  mb?: ThemeSpacing;
+  p?: ThemeSpacing;
+  pb?: ThemeSpacing;
+  pt?: ThemeSpacing;
+  px?: ThemeSpacing;
+  py?: ThemeSpacing;
 }
 
 /* ***** *****  Shared Layout Props  ***** ***** */
 
 export interface AlignmentProps {
   align?: FlexAlignType;
-  self?: FlexAlignType;
   justify?:
     | 'flex-start'
     | 'center'
@@ -30,6 +29,7 @@ export interface AlignmentProps {
     | 'space-between'
     | 'space-around'
     | 'space-evenly';
+  self?: FlexAlignType;
 }
 
 /* ***** *****  Combined Style Props  ***** ***** */

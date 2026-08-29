@@ -15,15 +15,11 @@ class LoggerClass {
   /* ***** *****  UI  ***** ***** */
 
   showToast(userMessage?: UserMessageType) {
-    if (
-      userMessage &&
-      Boolean(userMessage.title) &&
-      Boolean(userMessage.message)
-    ) {
+    if (userMessage?.title && userMessage?.message) {
       Toaster.show({
-        type: 'error',
         text1: userMessage.title,
         text2: userMessage.message,
+        type: 'error',
       });
     }
   }
@@ -32,17 +28,17 @@ class LoggerClass {
 
   networkError({ description, requestData, userMessage }: NetworkErrorType) {
     ErrorMonitoring.breadcrumbs({
-      type: breadcrumbType.http,
       category: breadcrumbsCategory.network,
-      message: description,
-      level: 'error',
-      timestamp: Date.now(),
       data: {
-        url: requestData.request,
         method: requestData.method,
-        status_code: requestData.statusCode,
         reason: requestData.reason,
+        status_code: requestData.statusCode,
+        url: requestData.request,
       },
+      level: 'error',
+      message: description,
+      timestamp: Date.now(),
+      type: breadcrumbType.http,
     });
 
     this.showToast(userMessage);
@@ -72,7 +68,6 @@ class LoggerClass {
 
   dev(...data: unknown[]) {
     if (__DEV__) {
-      // eslint-disable-next-line no-console
       console.log(...data);
     }
   }

@@ -1,17 +1,11 @@
 import type { MessagesTypes } from '../en/messages';
 
 export const messages: MessagesTypes = {
-  common: {
-    back: 'Retour',
-    cancel: 'Annuler',
-    next: 'Suivant',
-  },
-  tabs: {
-    home: 'Accueil',
-    features: 'Fonctionnalités',
-    profile: 'Profil',
-  },
   appConfig: {
+    changeLocale: {
+      failure: "La langue n'a pas pu être changée",
+      success: 'La langue a bien été changée',
+    },
     networkStateCheck: {
       message:
         "Vérifiez la connexion internet. L'app peut ne pas fonctionner correctement sans connexion internet.",
@@ -21,20 +15,21 @@ export const messages: MessagesTypes = {
       notAvailable: "Cette permission n'est pas disponible sur cet appareil",
       notGranted: 'Vous avez refusé cette demande de permission',
     },
-    changeLocale: {
-      failure: "La langue n'a pas pu être changée",
-      success: 'La langue a bien été changée',
-    },
   },
   appUpdateNedeed: {
-    title: 'Votre app est trop vieille',
+    cta: 'Mettre à jour',
     description:
       'Merci de la mettre à jour pour utiliser les dernières fonctionnalités',
-    cta: 'Mettre à jour',
+    title: 'Votre app est trop vieille',
   },
-  newStoreVersionAvailable: {
-    title: 'Une mise à jour est disponible sur les stores',
-    cta: 'Mettre à jour maintenant',
+  blogPostScreen: {
+    description: 'Article récupéré avec GraphQL',
+    title: 'Article de blog',
+  },
+  common: {
+    back: 'Retour',
+    cancel: 'Annuler',
+    next: 'Suivant',
   },
   errorBoundary: {
     cta: "Relancer l'app",
@@ -42,20 +37,30 @@ export const messages: MessagesTypes = {
       "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
     title: 'Erreur',
   },
-  maintenanceMode: {
-    description: 'Elle sera de nouveau fonctionnelle au plus vite',
-    title: "L'app est en maintenance",
+  featuresScreen: {
+    blogPost: {
+      cta: 'Naviguer',
+      title: "Exemple d'appel API GraphQL",
+    },
+    notificationsPermission: {
+      alreadyGranted: 'La permission a déjà été accordée',
+      cta: 'Demander',
+      success: 'La permission a bien été accordée',
+      title: 'Demander les permissions de Notification',
+    },
+  },
+  forms: {
+    optional: 'Optionnel',
   },
   homeScreen: {
-    whatIsInside: "Qu'est-ce qui est fourni ?",
+    formatting: {
+      content: 'Le code est vérifié avec ESLint, Prettier et TypeScript',
+      title: 'Formatage & type checking',
+    },
     motivation: {
       content:
         "Le but de ce starter kit est de fournir une base pour créer des applications React Native. Il n'est pas conçu pour fournir des tonnes de fonctionnalités, composants UI, ou autres librairies, mais d'inclure les outils et librairies que j'utilise dans la plupart des projets sur lesquels je travaille.",
       title: 'Explications',
-    },
-    formatting: {
-      content: 'Le code est vérifié avec ESLint, Prettier et TypeScript',
-      title: 'Formatage & type checking',
     },
     storybook: {
       content:
@@ -75,25 +80,23 @@ export const messages: MessagesTypes = {
     updateCheck: {
       isEmbeddedLaunch: "L'app tourne depuis une MAJ OTA",
     },
-  },
-  forms: {
-    optional: 'Optionnel',
+    whatIsInside: "Qu'est-ce qui est fourni ?",
   },
   loginForm: {
     emailField: {
       label: 'Email',
       placeholder: 'test@example.com',
       validation: {
-        required: "L'email est requis",
         invalid: 'Email invalide',
+        required: "L'email est requis",
       },
     },
     passwordField: {
       label: 'Mot de passe',
       placeholder: 'Entrer votre mot de passe',
       validation: {
-        minLength: 'Le mot de passe doit faire au moins 6 caractères',
         maxLength: 'Le mot de passe doit faire au plus 255 caractères',
+        minLength: 'Le mot de passe doit faire au moins 6 caractères',
       },
     },
     submitButton: 'Se connecter',
@@ -101,24 +104,21 @@ export const messages: MessagesTypes = {
   loginScreen: {
     title: 'React Native Template',
   },
-  blogPostScreen: {
-    title: 'Article de blog',
-    description: 'Article récupéré avec GraphQL',
+  maintenanceMode: {
+    description: 'Elle sera de nouveau fonctionnelle au plus vite',
+    title: "L'app est en maintenance",
+  },
+  newStoreVersionAvailable: {
+    cta: 'Mettre à jour maintenant',
+    title: 'Une mise à jour est disponible sur les stores',
   },
   profileScreen: {
-    title: 'Profil',
     logout: 'Se déconnecter',
+    title: 'Profil',
   },
-  featuresScreen: {
-    notificationsPermission: {
-      title: 'Demander les permissions de Notification',
-      cta: 'Demander',
-      success: 'La permission a bien été accordée',
-      alreadyGranted: 'La permission a déjà été accordée',
-    },
-    blogPost: {
-      title: "Exemple d'appel API GraphQL",
-      cta: 'Naviguer',
-    },
+  tabs: {
+    features: 'Fonctionnalités',
+    home: 'Accueil',
+    profile: 'Profil',
   },
 };

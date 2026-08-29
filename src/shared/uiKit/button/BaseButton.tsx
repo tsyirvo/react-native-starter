@@ -1,7 +1,5 @@
-/* eslint-disable react-hooks/immutability */
-
 import type React from 'react';
-import { GestureResponderEvent, View } from 'react-native';
+import { type GestureResponderEvent, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
@@ -15,7 +13,7 @@ import { useUnistyles } from 'react-native-unistyles';
 import { HIT_SLOP } from '$domain/constants/styling';
 import { Pressable } from '$shared/components/Pressable';
 
-import { buttonVariants, type ButtonVariant } from './buttonVariants';
+import { type ButtonVariant, buttonVariants } from './buttonVariants';
 import type { ButtonProps } from './types/buttonTypes';
 
 interface BaseButtonProps extends ButtonProps {
@@ -66,16 +64,16 @@ export const BaseButton = ({
       accessibilityState={{ busy: isLoading }}
       disabled={isLoading || isDisabled}
       hitSlop={HIT_SLOP}
-      testID={testID}
+      onPress={onPress as (event: GestureResponderEvent) => void}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
       style={[
         !isReducedMotion && animatedStyle,
         {
           opacity: isVisuallyDisabled ? DISABLED_OPACITY : REGULAR_OPACITY,
         },
       ]}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-      onPress={onPress as (event: GestureResponderEvent) => void}
+      testID={testID}
     >
       <View style={[buttonVariants[variant], buttonStyle]}>{children}</View>
     </AnimatedPressable>

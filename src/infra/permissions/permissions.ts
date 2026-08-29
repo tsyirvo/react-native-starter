@@ -1,9 +1,9 @@
 import type { Permission, PermissionStatus } from 'react-native-permissions';
 import {
-  RESULTS,
   check,
   checkNotifications,
   openSettings,
+  RESULTS,
   requestNotifications,
   request as requestPermission,
 } from 'react-native-permissions';

@@ -3,13 +3,13 @@ export const storageKeys = {
     id: 'app-storage',
     locale: 'app.locale',
   },
+  productTrackingStorage: {
+    id: 'product-tracking-storage',
+  },
   queryStorage: {
     id: 'query-storage',
   },
   storeStorage: {
     id: 'store-storage',
-  },
-  productTrackingStorage: {
-    id: 'product-tracking-storage',
   },
 };

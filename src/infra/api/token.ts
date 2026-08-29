@@ -4,7 +4,7 @@ import { sleep } from '$shared/utils';
 
 type SecureStoreKeys = 'jwtToken' | 'refreshToken';
 
-const ONE_SECOND = 1_000;
+const ONE_SECOND = 1000;
 
 /* ***** *****  Secure store  ***** ***** */
 
@@ -27,8 +27,8 @@ const deleteFromSecureStore = async (key: SecureStoreKeys) => {
 let cachedAccessToken: string | null = null;
 let cachedRefreshToken: string | null = null;
 
-const setCachedRefreshToken = (refreshToken: string) => {
-  cachedRefreshToken = refreshToken;
+const setCachedRefreshToken = (token: string) => {
+  cachedRefreshToken = token;
 };
 
 const getCachedRefreshToken = () => cachedRefreshToken;
@@ -74,11 +74,15 @@ export const clearAccessAndRefreshTokens = async () => {
 export const getAuthorizationHeader = async () => {
   const accessToken = getCachedAccessToken();
 
-  if (accessToken) return `Bearer ${accessToken}`;
+  if (accessToken) {
+    return `Bearer ${accessToken}`;
+  }
 
   const currentAccessToken = await getFromSecureStore('jwtToken');
 
-  if (!currentAccessToken) return '';
+  if (!currentAccessToken) {
+    return '';
+  }
 
   setCachedAccessToken(currentAccessToken);
 

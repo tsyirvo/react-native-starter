@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { User, UserLogin } from '$domain/entities';
+import type { User, UserLogin } from '$domain/entities';
 import { Analytics } from '$infra/analytics';
 import { clearAccessAndRefreshTokens } from '$infra/api/token';
 import { Logger } from '$infra/logger';
@@ -34,12 +34,12 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     clearPersistedAppStore();
   }, []);
 
-  const startTrackingUser = useCallback(async (user: User) => {
-    Analytics.setUser(user);
+  const startTrackingUser = useCallback(async (authenticatedUser: User) => {
+    Analytics.setUser(authenticatedUser);
 
-    ErrorMonitoring.setUser(user);
+    ErrorMonitoring.setUser(authenticatedUser);
 
-    await Purchase.setUser(user);
+    await Purchase.setUser(authenticatedUser);
   }, []);
 
   const stopTrackingUser = useCallback(async () => {
@@ -65,8 +65,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         await sleep(150);
 
         const userDataPayload = {
-          id: '1',
           email: data.email,
+          id: '1',
         };
 
         setUser(userDataPayload);
@@ -108,9 +108,9 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   const value = useMemo(
     () => ({
-      user,
       signIn,
       signOut,
+      user,
     }),
     [user, signIn, signOut],
   );

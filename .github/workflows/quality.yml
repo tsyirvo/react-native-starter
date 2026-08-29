@@ -37,11 +37,8 @@ jobs:
       - name: Run TypeScript checks
         run: yarn tsc
 
-      - name: Run ESLint checks
-        run: yarn eslint ./ --ext .js,.ts,.tsx,.json
-
-      - name: Run Prettier checks
-        run: yarn prettier --check './**/*.{js,ts,tsx}' '!.rnstorybook/storybook.requires.ts'
+      - name: Run Biome checks (lint + format)
+        run: yarn lint:ci
 
       - name: Run Tests
         run: yarn jest --coverage=false

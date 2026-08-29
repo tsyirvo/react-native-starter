@@ -23,7 +23,7 @@ export const useInputFocusState = ({ onFocus, onBlur }: UseInputFocusProps) => {
 
   return {
     isFocused,
-    onFocus: handleFocus,
     onBlur: handleBlur,
+    onFocus: handleFocus,
   };
 };

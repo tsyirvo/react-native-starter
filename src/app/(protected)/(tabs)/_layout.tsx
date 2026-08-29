@@ -15,6 +15,7 @@ const TabLayout = () => {
 
   return (
     <Tabs
+      backBehavior="order"
       screenOptions={{
         ...globalScreenOptions,
         tabBarActiveTintColor: theme.colors.core_primary,
@@ -23,13 +24,12 @@ const TabLayout = () => {
           backgroundColor: theme.colors.bg_base,
         },
       }}
-      backBehavior="order"
     >
       <Tabs.Screen name="index" options={{ tabBarIcon: renderHomeIcon }} />
 
       <Tabs.Screen
         name="features"
-        options={{ title: t('tabs.features'), tabBarIcon: renderFeaturesIcon }}
+        options={{ tabBarIcon: renderFeaturesIcon, title: t('tabs.features') }}
       />
 
       <Tabs.Screen

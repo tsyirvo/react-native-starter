@@ -27,21 +27,19 @@ const revenueCatAppleApiKey = Env.REVENUE_CAT_APPLE_API_KEY;
 const revenueCatAndroidApiKey = Env.REVENUE_CAT_ANDROID_API_KEY;
 
 export const config = {
+  apiURL,
+  buildNumber: IS_IOS ? iosbuildNumber : androidVersionCode,
+  bundleId: IS_IOS ? iosBundleIdentifier : androidPackageName,
   defaultLocale: 'en' as const,
-  supportedLocales: ['en', 'fr'] as const,
-  // App config
   env,
   isDebug: env === 'development' || isStorybookEnabled,
-  version,
-  buildNumber: IS_IOS ? iosbuildNumber : androidVersionCode,
-  runtimeVersion,
-  bundleId: IS_IOS ? iosBundleIdentifier : androidPackageName,
-  itunesItemId,
-  apiURL,
   isStorybookEnabled,
-  // SDKs
-  sentryDsn,
+  itunesItemId,
   posthogApiKey,
-  revenueCatAppleApiKey,
   revenueCatAndroidApiKey,
+  revenueCatAppleApiKey,
+  runtimeVersion,
+  sentryDsn,
+  supportedLocales: ['en', 'fr'] as const,
+  version,
 };

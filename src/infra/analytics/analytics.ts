@@ -1,4 +1,4 @@
-import { User } from '$domain/entities';
+import type { User } from '$domain/entities';
 import { productTrackingClient } from '$infra/productTracking';
 
 import type { AnalyticsType } from './analytics.types';

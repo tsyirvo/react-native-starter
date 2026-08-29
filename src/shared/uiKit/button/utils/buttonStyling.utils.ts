@@ -9,9 +9,8 @@ import type { ButtonVariant } from '../buttonVariants';
 const LOADING_OPACITY = 0;
 const REGULAR_OPACITY = 1;
 
-export const getTextOpacity = (isLoading?: boolean) => {
-  return isLoading ? LOADING_OPACITY : REGULAR_OPACITY;
-};
+export const getTextOpacity = (isLoading?: boolean) =>
+  isLoading ? LOADING_OPACITY : REGULAR_OPACITY;
 
 export const getTextColor = (variant: ButtonVariant): ThemeColors => {
   switch (variant) {

@@ -1,10 +1,10 @@
 import type { Configuration } from 'react-native-mmkv';
-import { createMMKV, MMKV } from 'react-native-mmkv';
+import { createMMKV, type MMKV } from 'react-native-mmkv';
 
 import { storageKeys } from '$domain/constants';
 
 class StorageClass {
-  private _storage: MMKV;
+  private readonly _storage: MMKV;
 
   constructor(config?: Configuration) {
     this._storage = createMMKV(config);

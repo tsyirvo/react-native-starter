@@ -24,14 +24,14 @@ export const ButtonWithText = ({
 
   return (
     <BaseButton
-      variant={variant}
       isDisabled={isButtonDisabled}
       isLoading={isLoading || isResolving}
+      onPress={handlePress}
       targetScale={targetScale}
       testID={testID}
-      onPress={handlePress}
+      variant={variant}
     >
-      <InnerText parentVariant={variant} isLoading={isLoading || isResolving}>
+      <InnerText isLoading={isLoading || isResolving} parentVariant={variant}>
         {children}
       </InnerText>
     </BaseButton>

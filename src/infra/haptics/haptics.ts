@@ -9,9 +9,9 @@ const mapHapticFeedbackTypeToHapticsType: Record<
   HapticFeedbackType,
   Haptics.ImpactFeedbackStyle
 > = {
+  heavy: Haptics.ImpactFeedbackStyle.Heavy,
   light: Haptics.ImpactFeedbackStyle.Light,
   medium: Haptics.ImpactFeedbackStyle.Medium,
-  heavy: Haptics.ImpactFeedbackStyle.Heavy,
   selection: Haptics.ImpactFeedbackStyle.Light,
 };
 
@@ -19,17 +19,17 @@ const mapHapticNotificationTypeToAndroidType: Record<
   HapticNotificationType,
   Haptics.AndroidHaptics
 > = {
+  error: Haptics.AndroidHaptics.Reject,
   success: Haptics.AndroidHaptics.Confirm,
   warning: Haptics.AndroidHaptics.Reject,
-  error: Haptics.AndroidHaptics.Reject,
 };
 const mapHapticNotificationTypeToHapticsType: Record<
   HapticNotificationType,
   Haptics.NotificationFeedbackType
 > = {
+  error: Haptics.NotificationFeedbackType.Error,
   success: Haptics.NotificationFeedbackType.Success,
   warning: Haptics.NotificationFeedbackType.Warning,
-  error: Haptics.NotificationFeedbackType.Error,
 };
 
 export const triggerHapticFeedback = (type: HapticFeedbackType = 'medium') => {
@@ -41,7 +41,9 @@ export const triggerHapticFeedback = (type: HapticFeedbackType = 'medium') => {
     return;
   }
 
-  if (type === 'selection') void Haptics.selectionAsync();
+  if (type === 'selection') {
+    void Haptics.selectionAsync();
+  }
 
   void Haptics.impactAsync(mapHapticFeedbackTypeToHapticsType[type]);
 };

@@ -15,12 +15,9 @@ export const useDebouncedFunction: DebounceFn = (
   }, [fn]);
 
   return useMemo(() => {
-    const wrappedFn = (...args: Parameters<typeof fn>) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return fnRef.current(...args);
-    };
+    const wrappedFn = (...args: Parameters<typeof fn>) =>
+      fnRef.current(...args);
 
-    // eslint-disable-next-line react-hooks/refs
     return debounce(wrappedFn, wait, { leading, maxWait, trailing });
   }, [leading, maxWait, trailing, wait]);
 };

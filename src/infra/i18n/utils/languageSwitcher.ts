@@ -4,10 +4,8 @@ import type { config } from '$domain/constants';
 import { Analytics } from '$infra/analytics';
 import { initDateLocale } from '$infra/date';
 import { Toaster } from '$infra/toaster';
-
-import { setSavedAppLocale } from './languageDetector';
-
 import type { UnionFromArray } from '$types';
+import { setSavedAppLocale } from './languageDetector';
 
 type SupportedLanguages = UnionFromArray<typeof config.supportedLocales>;
 

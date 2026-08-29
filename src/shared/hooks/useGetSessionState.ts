@@ -14,14 +14,16 @@ export const useGetSessionState = () => {
   const { isFetched, isError, error, failureCount } = useGetUserSession();
 
   useEffect(() => {
-    if (isSessionReady) return;
+    if (isSessionReady) {
+      return;
+    }
 
     if (isError && failureCount <= 1) {
       Logger.dev('Failed to fetch session on app bootstrap. Retrying...', {
-        isFetched,
-        isError,
         error,
         failureCount,
+        isError,
+        isFetched,
       });
 
       return;
@@ -31,7 +33,6 @@ export const useGetSessionState = () => {
       // TODO(prod): Implement logic to set isUserLoggedIn
 
       setIsBootstrappingApplication(false);
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsSessionReady(true);
     }
   }, [

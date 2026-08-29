@@ -1,10 +1,33 @@
 {
-  "extends": "eslint-config-tsyirvo-react-native/tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
     "target": "ESNext",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "isolatedModules": true,
+    "sourceMap": true,
     "types": ["jest", "node"],
     "paths": {
       "$*": ["./src/*"],
@@ -17,14 +40,13 @@
       }
     ]
   },
-  "exclude": ["node_modules", "__mocks__"],
+  "exclude": ["node_modules"],
   "include": [
     "**/*.js",
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "eslint.config.mjs",
     "metro.config.cjs",
     "env.js"
   ]

@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-namespace
+// biome-ignore lint/style/noNamespace: deliberate type grouping for analytics events
 export namespace AnalyticsType {
   export type ValidPropertyType =
     | number

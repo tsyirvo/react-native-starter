@@ -6,8 +6,6 @@ ${variables.imports};
 
 ${variables.interfaces};
 
-/* eslint-disable react/jsx-props-no-spreading */
-
 function ${trimmedComponentName}(${variables.props}) {
   return ${variables.jsx};
 }

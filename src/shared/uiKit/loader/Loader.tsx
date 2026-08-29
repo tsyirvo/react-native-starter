@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useUnistyles } from 'react-native-unistyles';
 
-import { ThemeColors } from '$domain/theme';
+import type { ThemeColors } from '$domain/theme';
 
 interface LoaderProps {
+  color?: ThemeColors;
   delay?: number;
   size?: 'large' | 'small';
-  color?: ThemeColors;
   testID?: string;
 }
 
@@ -37,14 +37,15 @@ export const Loader = ({
     };
   }, [delay]);
 
-  if (isShowingLoading)
+  if (isShowingLoading) {
     return (
       <ActivityIndicator
-        testID={`${testID}ActivityIndicator`}
         color={theme.colors[color]}
         size={size}
+        testID={`${testID}ActivityIndicator`}
       />
     );
+  }
 
-  return <View testID={testID} style={{ height: minHeight }} />;
+  return <View style={{ height: minHeight }} testID={testID} />;
 };
