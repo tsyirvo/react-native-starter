@@ -31,7 +31,6 @@ export const config = {
   buildNumber: IS_IOS ? iosbuildNumber : androidVersionCode,
   bundleId: IS_IOS ? iosBundleIdentifier : androidPackageName,
   defaultLocale: 'en' as const,
-  // App config
   env,
   isDebug: env === 'development' || isStorybookEnabled,
   isStorybookEnabled,
@@ -40,7 +39,6 @@ export const config = {
   revenueCatAndroidApiKey,
   revenueCatAppleApiKey,
   runtimeVersion,
-  // SDKs
   sentryDsn,
   supportedLocales: ['en', 'fr'] as const,
   version,

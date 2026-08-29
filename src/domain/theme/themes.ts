@@ -27,9 +27,9 @@ export const lightTheme = {
     core_primary: '#0085ff',
     core_secondary: '#69b4ff',
     core_tertiary: '#e0ffff',
+    // Semantic colors
     negative: '#ef233c',
     neutral: '#e9c46a',
-    // Semantic colors
     positive: '#2a9d8f',
     // General colors
     ...generalColorsTokens,
@@ -60,9 +60,9 @@ export const darkTheme = {
     core_primary: '#4DA3FF',
     core_secondary: '#69b4ff',
     core_tertiary: '#2A5A7A',
+    // Semantic colors - slightly adjusted for dark backgrounds
     negative: '#FF5A6E',
     neutral: '#F5D480',
-    // Semantic colors - slightly adjusted for dark backgrounds
     positive: '#3DBEA9',
     // General colors
     ...generalColorsTokens,
