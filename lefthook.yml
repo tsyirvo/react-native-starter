@@ -14,8 +14,3 @@ commit-msg:
   commands:
     'lint commit message':
       run: yarn run commitlint --edit {1}
-
-post-checkout:
-  scripts:
-    'post-checkout.sh':
-      runner: bash

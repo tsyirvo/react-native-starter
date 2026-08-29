@@ -16,7 +16,6 @@ export default {
         isDebug: false,
         isTest: true,
         sentryDsn: undefined,
-        oneSignalAppId: undefined,
       },
     },
   },
