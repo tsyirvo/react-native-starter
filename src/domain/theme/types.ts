@@ -1,4 +1,4 @@
-import { lightTheme } from './themes';
+import type { lightTheme } from './themes';
 
 /* ***** *****  Theme Types  ***** ***** */
 

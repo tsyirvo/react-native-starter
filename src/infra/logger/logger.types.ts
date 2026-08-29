@@ -3,8 +3,8 @@ import type { SeverityLevel } from '@sentry/react-native';
 /* ***** *****  Toast Message  ***** ***** */
 
 export interface UserMessageType {
-  title: string;
   message: string;
+  title: string;
 }
 
 /* ***** *****  Network  ***** ***** */
@@ -28,7 +28,7 @@ export interface BaseErrorType {
 
 export interface ErrorType extends BaseErrorType {
   error: unknown;
-  userMessage?: UserMessageType;
   level?: SeverityLevel;
   transactionName?: string;
+  userMessage?: UserMessageType;
 }

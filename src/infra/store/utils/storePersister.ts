@@ -17,19 +17,18 @@ export const generatePersistOptions = (
 
   return {
     name: storageKeys.storeStorage.id,
-    version: 0,
-    storage: createJSONStorage(() => StoreStorage),
     partialize: (state: StoreState) =>
       doNotPersist.length > 0
         ? Object.keys(state)
             .filter((key) => !doNotPersist.includes(key as keyof StoreState))
             .reduce<StoreState>((acc, key) => {
               // @ts-expect-error: key is infered as string when it's keyof StoreState
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
               acc[key] = state[key];
 
               return acc;
             }, {} as StoreState)
         : state,
+    storage: createJSONStorage(() => StoreStorage),
+    version: 0,
   };
 };

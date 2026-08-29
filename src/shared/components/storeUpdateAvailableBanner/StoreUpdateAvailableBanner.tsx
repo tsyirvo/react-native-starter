@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-import { IS_IOS, config } from '$domain/constants';
+import { config, IS_IOS } from '$domain/constants';
 import { Logger } from '$infra/logger';
-import { Stack, Button, Text } from '$shared/uiKit';
+import { Button, Stack, Text } from '$shared/uiKit';
 
 export const StoreUpdateAvailableBanner = () => {
   const { t } = useTranslation();

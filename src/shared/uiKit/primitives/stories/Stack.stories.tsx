@@ -6,7 +6,6 @@ import { StorybookItem } from '$shared/components';
 import { Stack as StackPrimitive, Text } from '$shared/uiKit';
 
 const meta = {
-  title: 'Primitives/Stack',
   component: View,
   render: () => (
     <StackPrimitive p="spacing_16">
@@ -36,8 +35,8 @@ const meta = {
 
       <StorybookItem title="Stack with justify">
         <StackPrimitive
-          justify="space-between"
           gap="spacing_8"
+          justify="space-between"
           style={styles.tallContainer}
         >
           <View style={styles.box} />
@@ -47,7 +46,7 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Stack with padding">
-        <StackPrimitive p="spacing_24" gap="spacing_8" style={styles.container}>
+        <StackPrimitive gap="spacing_8" p="spacing_24" style={styles.container}>
           <View style={styles.box} />
           <View style={styles.box} />
         </StackPrimitive>
@@ -55,9 +54,9 @@ const meta = {
 
       <StorybookItem title="Stack with margin">
         <StackPrimitive
-          mt="spacing_16"
-          mb="spacing_16"
           gap="spacing_8"
+          mb="spacing_16"
+          mt="spacing_16"
           style={styles.container}
         >
           <View style={styles.box} />
@@ -74,6 +73,7 @@ const meta = {
       </StorybookItem>
     </StackPrimitive>
   ),
+  title: 'Primitives/Stack',
 } satisfies Meta<typeof View>;
 
 export default meta;
@@ -83,36 +83,36 @@ type Story = StoryObj<typeof meta>;
 export const Stack: Story = {};
 
 const styles = StyleSheet.create((theme) => ({
-  container: {
-    backgroundColor: theme.colors.bg_base,
-    borderWidth: 1,
-    borderColor: theme.colors.border_default,
-    borderRadius: theme.borderRadii.radius_8,
-    minHeight: 100,
-  },
-  tallContainer: {
-    backgroundColor: theme.colors.bg_base,
-    borderWidth: 1,
-    borderColor: theme.colors.border_default,
-    borderRadius: theme.borderRadii.radius_8,
-    height: 200,
-  },
   box: {
     backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_4,
     height: 40,
     width: '100%',
-    borderRadius: theme.borderRadii.radius_4,
   },
-  smallBox: {
-    backgroundColor: theme.colors.bg_muted,
-    height: 30,
-    width: 80,
-    borderRadius: theme.borderRadii.radius_4,
+  container: {
+    backgroundColor: theme.colors.bg_base,
+    borderColor: theme.colors.border_default,
+    borderRadius: theme.borderRadii.radius_8,
+    borderWidth: 1,
+    minHeight: 100,
   },
   mediumBox: {
     backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_4,
     height: 40,
     width: 120,
+  },
+  smallBox: {
+    backgroundColor: theme.colors.bg_muted,
     borderRadius: theme.borderRadii.radius_4,
+    height: 30,
+    width: 80,
+  },
+  tallContainer: {
+    backgroundColor: theme.colors.bg_base,
+    borderColor: theme.colors.border_default,
+    borderRadius: theme.borderRadii.radius_8,
+    borderWidth: 1,
+    height: 200,
   },
 }));

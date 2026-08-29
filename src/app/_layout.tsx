@@ -42,11 +42,11 @@ ErrorMonitoring.init();
 
 const onGlobalError = (error: Error, errorInfo: ErrorInfo) => {
   ErrorMonitoring.breadcrumbs({
-    type: 'error',
-    level: 'error',
     data: {
       componentStack: errorInfo,
     },
+    level: 'error',
+    type: 'error',
   });
 
   ErrorMonitoring.exception(error);
@@ -118,8 +118,8 @@ const RootLayout = () => {
 };
 
 const screenOptions = {
-  headerShown: false,
   animation: 'fade' as StackAnimationTypes,
+  headerShown: false,
 };
 
 const styles = StyleSheet.create({

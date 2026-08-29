@@ -23,12 +23,12 @@ const ProfileScreen = () => {
       />
 
       <Screen edges={['top']} px="spacing_16" testID="ProfileScreen">
-        <Stack pt="spacing_8" gap="spacing_16">
-          <Text variant="large" textAlign="center">
+        <Stack gap="spacing_16" pt="spacing_8">
+          <Text textAlign="center" variant="large">
             {t('profileScreen.title')}
           </Text>
 
-          <Button.Text testID="ProfileLogoutButton" onPress={onLogout}>
+          <Button.Text onPress={onLogout} testID="ProfileLogoutButton">
             {t('profileScreen.logout')}
           </Button.Text>
         </Stack>

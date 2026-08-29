@@ -29,21 +29,21 @@ export const ButtonWithIcon = ({
 
   return (
     <BaseButton
-      variant={variant}
       isDisabled={isButtonDisabled}
       isLoading={isLoading || isResolving}
+      onPress={handlePress}
       targetScale={targetScale}
       testID={testID}
-      onPress={handlePress}
+      variant={variant}
     >
-      <Row align="center" justify="center" gap="spacing_8">
+      <Row align="center" gap="spacing_8" justify="center">
         <InnerIcon
-          parentVariant={variant}
           iconName={iconName}
           isLoading={isResolving || isLoading}
+          parentVariant={variant}
         />
 
-        <InnerText parentVariant={variant} isLoading={isResolving || isLoading}>
+        <InnerText isLoading={isResolving || isLoading} parentVariant={variant}>
           {children}
         </InnerText>
       </Row>

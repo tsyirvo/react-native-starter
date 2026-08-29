@@ -11,7 +11,7 @@ import {
 } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { useRunOnMount } from '$shared/hooks';
-import { Button, Box, Stack, Text } from '$shared/uiKit';
+import { Box, Button, Stack, Text } from '$shared/uiKit';
 
 export const AppUpdateNeeded = () => {
   const [isAppSupported, setIsAppSupported] = useState(true);
@@ -25,7 +25,7 @@ export const AppUpdateNeeded = () => {
       'last-supported-app-version',
     );
 
-    if (!payload || !('version' in payload)) {
+    if (!(payload && 'version' in payload)) {
       return;
     }
 
@@ -51,15 +51,17 @@ export const AppUpdateNeeded = () => {
     }
   };
 
-  if (isAppSupported) return null;
+  if (isAppSupported) {
+    return null;
+  }
 
   return (
     <Box
       align="center"
       justify="center"
       px="spacing_32"
-      testID="appUpdateNeeded-screen"
       style={styles.container}
+      testID="appUpdateNeeded-screen"
     >
       <Stack pb="spacing_8">
         <Text variant="large">{t('appUpdateNedeed.title')}</Text>
@@ -69,7 +71,7 @@ export const AppUpdateNeeded = () => {
         <Text textAlign="center">{t('appUpdateNedeed.description')}</Text>
       </Stack>
 
-      <Button.Text testID="appUpdateNeeded-cta" onPress={onPress}>
+      <Button.Text onPress={onPress} testID="appUpdateNeeded-cta">
         {t('appUpdateNedeed.cta')}
       </Button.Text>
     </Box>
@@ -80,7 +82,7 @@ const styles = StyleSheet.create((theme) => ({
   container: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: theme.colors.bg_base,
-    width: '100%',
     height: '100%',
+    width: '100%',
   },
 }));

@@ -20,9 +20,9 @@ export const Stack = ({
   ...layoutProps
 }: StackProps) => (
   <View
+    onLayout={onLayout}
     style={[styles.stack(layoutProps), style]}
     testID={testID}
-    onLayout={onLayout}
   >
     {children}
   </View>
@@ -32,20 +32,20 @@ export const Stack = ({
 
 const styles = StyleSheet.create((theme) => ({
   stack: (props: LayoutStyleProps) => ({
-    flexDirection: 'column',
     alignItems: props.align,
-    justifyContent: props.justify,
     alignSelf: props.self,
+    flexDirection: 'column',
     gap: props.gap ? theme.spacing[props.gap] : undefined,
-    padding: props.p ? theme.spacing[props.p] : undefined,
-    paddingHorizontal: props.px ? theme.spacing[props.px] : undefined,
-    paddingVertical: props.py ? theme.spacing[props.py] : undefined,
-    paddingTop: props.pt ? theme.spacing[props.pt] : undefined,
-    paddingBottom: props.pb ? theme.spacing[props.pb] : undefined,
+    justifyContent: props.justify,
     margin: props.m ? theme.spacing[props.m] : undefined,
-    marginHorizontal: props.mx ? theme.spacing[props.mx] : undefined,
-    marginVertical: props.my ? theme.spacing[props.my] : undefined,
-    marginTop: props.mt ? theme.spacing[props.mt] : undefined,
     marginBottom: props.mb ? theme.spacing[props.mb] : undefined,
+    marginHorizontal: props.mx ? theme.spacing[props.mx] : undefined,
+    marginTop: props.mt ? theme.spacing[props.mt] : undefined,
+    marginVertical: props.my ? theme.spacing[props.my] : undefined,
+    padding: props.p ? theme.spacing[props.p] : undefined,
+    paddingBottom: props.pb ? theme.spacing[props.pb] : undefined,
+    paddingHorizontal: props.px ? theme.spacing[props.px] : undefined,
+    paddingTop: props.pt ? theme.spacing[props.pt] : undefined,
+    paddingVertical: props.py ? theme.spacing[props.py] : undefined,
   }),
 }));

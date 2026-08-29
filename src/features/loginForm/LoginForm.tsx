@@ -2,18 +2,18 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { View, type TextInput } from 'react-native';
+import { type TextInput, View } from 'react-native';
 
-import { UserLogin } from '$domain/entities';
+import type { UserLogin } from '$domain/entities';
 import { Logger } from '$infra/logger';
 import { Button, Stack } from '$shared/uiKit';
 import { Input } from '$shared/uiKit/input';
 
-import { LoginFormData, loginFormSchema } from './utils';
+import { type LoginFormData, loginFormSchema } from './utils';
 
 interface LoginFormProps {
-  testID?: string;
   onFormSuccess: (data: UserLogin) => Promise<void>;
+  testID?: string;
 }
 
 export const LoginForm = ({
@@ -29,19 +29,17 @@ export const LoginForm = ({
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData>({
-    resolver: zodResolver(loginFormSchema),
-    mode: 'onChange',
     defaultValues: {
       email: 'test@example.com',
       password: 'superSecretPassword',
     },
+    mode: 'onChange',
+    resolver: zodResolver(loginFormSchema),
   });
 
   const isValid = Object.keys(errors).length === 0;
 
-  const onSubmit = (data: LoginFormData) => {
-    return onFormSuccess(data);
-  };
+  const onSubmit = (data: LoginFormData) => onFormSuccess(data);
 
   const handleFormSubmit = async () => {
     await handleSubmit(onSubmit)();
@@ -55,56 +53,47 @@ export const LoginForm = ({
 
   return (
     <View testID={testID}>
-      <Stack py="spacing_24" gap="spacing_16">
+      <Stack gap="spacing_16" py="spacing_24">
         <Controller
           control={control}
-          rules={{ required: true }}
+          name="email"
           render={({
             field: { onChange, onBlur, value },
             fieldState: { isTouched },
           }) => (
             <Input
-              testID={`${testID}EmailInput`}
-              label={t('loginForm.emailField.label')}
-              placeholder={t('loginForm.emailField.placeholder')}
-              // leftOrnamentIcon=""
-              value={value}
               autoCapitalize="none"
-              spellCheck={false}
+              error={isTouched ? errors.email?.message : undefined}
               keyboardType="email-address"
+              label={t('loginForm.emailField.label')}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              onSubmitEditing={focusPasswordInput}
+              placeholder={t('loginForm.emailField.placeholder')}
               returnKeyLabel="next"
               returnKeyType="next"
-              error={isTouched ? errors.email?.message : undefined}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              onSubmitEditing={focusPasswordInput}
+              spellCheck={false}
+              testID={`${testID}EmailInput`}
+              // leftOrnamentIcon=""
+              value={value}
             />
           )}
-          name="email"
+          rules={{ required: true }}
         />
 
         <Controller
           control={control}
-          rules={{ required: true }}
+          name="password"
           render={({
             field: { onChange, onBlur, value },
             fieldState: { isTouched },
           }) => (
             <Input
-              ref={passwordInputRef}
-              testID={`${testID}PasswordInput`}
-              label={t('loginForm.passwordField.label')}
-              placeholder={t('loginForm.passwordField.placeholder')}
-              // leftOrnamentIcon="Lock"
-              value={value}
-              secureTextEntry
               autoCapitalize="none"
-              spellCheck={false}
-              returnKeyLabel="done"
-              returnKeyType="done"
               error={isTouched ? errors.password?.message : undefined}
-              onChangeText={onChange}
+              label={t('loginForm.passwordField.label')}
               onBlur={onBlur}
+              onChangeText={onChange}
               onSubmitEditing={() => {
                 handleFormSubmit().catch((error: unknown) => {
                   Logger.error({
@@ -113,16 +102,25 @@ export const LoginForm = ({
                   });
                 });
               }}
+              placeholder={t('loginForm.passwordField.placeholder')}
+              ref={passwordInputRef}
+              returnKeyLabel="done"
+              returnKeyType="done"
+              secureTextEntry
+              spellCheck={false}
+              testID={`${testID}PasswordInput`}
+              // leftOrnamentIcon="Lock"
+              value={value}
             />
           )}
-          name="password"
+          rules={{ required: true }}
         />
       </Stack>
 
       <Button.Text
-        testID={`${testID}SubmitButton`}
         isDisabled={!isValid}
         onPress={handleFormSubmit}
+        testID={`${testID}SubmitButton`}
       >
         {t('loginForm.submitButton')}
       </Button.Text>

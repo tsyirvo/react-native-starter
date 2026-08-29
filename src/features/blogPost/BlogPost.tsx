@@ -17,7 +17,9 @@ export const BlogPost = ({ id }: BlogPostProps) => {
     id,
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

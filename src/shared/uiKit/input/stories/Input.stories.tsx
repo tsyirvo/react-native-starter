@@ -7,21 +7,20 @@ import { Box } from '$shared/uiKit';
 import { Input as InputComponent } from '../Input';
 
 const meta = {
-  title: 'UIKit/Input',
-  component: InputComponent,
   argTypes: {
-    label: { control: 'text' },
     error: { control: 'text' },
     isDisabled: { control: 'boolean' },
+    label: { control: 'text' },
   },
+  component: InputComponent,
   decorators: [
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     (Story) => (
       <Box p="spacing_16" style={styles.wrapper}>
         <Story />
       </Box>
     ),
   ],
+  title: 'UIKit/Input',
 } satisfies Meta<typeof InputComponent>;
 
 export default meta;
@@ -70,8 +69,8 @@ export const WithHelperText: Story = {
 export const WithHelperTextAndError: Story = {
   args: {
     ...sharedArgs,
-    helperText: 'Some helper text',
     error: 'Some error',
+    helperText: 'Some helper text',
   },
 };
 

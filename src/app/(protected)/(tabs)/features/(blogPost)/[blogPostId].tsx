@@ -1,7 +1,7 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
-import { BlogPostScreenParams } from '$domain/navigation';
+import type { BlogPostScreenParams } from '$domain/navigation';
 import { BlogPost as BlogPostComponent } from '$features/blogPost';
 import { Screen } from '$shared/components';
 

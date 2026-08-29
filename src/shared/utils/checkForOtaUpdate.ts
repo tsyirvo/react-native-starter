@@ -5,11 +5,13 @@ import { Logger } from '$infra/logger';
 
 import { sleep } from './sleep';
 
-const ONE_SECOND = 1_000;
+const ONE_SECOND = 1000;
 
 export const checkForOtaUpdate = async () => {
   try {
-    if (config.isDebug) return;
+    if (config.isDebug) {
+      return;
+    }
 
     const update = await Updates.checkForUpdateAsync();
 

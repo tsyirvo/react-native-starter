@@ -1,5 +1,4 @@
-import { CustomerInfo } from 'react-native-purchases';
+import type { CustomerInfo } from 'react-native-purchases';
 
-export const hasActiveEntitlements = (customerInfo: CustomerInfo): boolean => {
-  return Object.entries(customerInfo.entitlements.active).length > 0;
-};
+export const hasActiveEntitlements = (customerInfo: CustomerInfo): boolean =>
+  Object.entries(customerInfo.entitlements.active).length > 0;

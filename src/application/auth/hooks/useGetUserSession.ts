@@ -10,16 +10,16 @@ export const useGetUserSession = () => {
     await sleep(500);
 
     return {
-      isFetched: true,
-      isError: false,
       error: null,
       failureCount: 0,
+      isError: false,
+      isFetched: true,
     };
   };
 
   return useQuery({
-    queryKey: authKeys.session(),
     queryFn: getUserSession,
+    queryKey: authKeys.session(),
     retry: false,
   });
 };

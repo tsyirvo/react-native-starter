@@ -19,13 +19,13 @@ export const TabBarIcon = ({
 
   return (
     <Icon
-      name={iconName}
-      width={DEFAULT_ICON_SIZE}
-      height={DEFAULT_ICON_SIZE}
       fill={
         isFocused ? theme.colors.core_primary : theme.colors.content_secondary
       }
+      height={DEFAULT_ICON_SIZE}
+      name={iconName}
       testID={testID}
+      width={DEFAULT_ICON_SIZE}
     />
   );
 };

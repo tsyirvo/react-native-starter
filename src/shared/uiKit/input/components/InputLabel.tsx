@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Row, Text } from '$shared/uiKit/primitives';
 
 interface InputLabelProps {
-  label?: string;
   isOptional?: boolean;
+  label?: string;
   testID?: string;
 }
 
@@ -15,7 +15,9 @@ export const InputLabel = ({
 }: InputLabelProps) => {
   const { t } = useTranslation();
 
-  if (!label) return null;
+  if (!label) {
+    return null;
+  }
 
   return (
     <Row gap="spacing_4" testID={testID}>

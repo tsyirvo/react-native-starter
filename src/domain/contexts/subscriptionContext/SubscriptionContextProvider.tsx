@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { PurchasesOffering } from 'react-native-purchases';
+import type { PurchasesOffering } from 'react-native-purchases';
 
 import { hasActiveEntitlements } from '$domain/subscription';
-import { OfferingFlagType, useGetRemoteConfigSync } from '$infra/featureFlags';
+import {
+  type OfferingFlagType,
+  useGetRemoteConfigSync,
+} from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { Purchase } from '$infra/purchase';
 import { useRunOnMount } from '$shared/hooks';
@@ -36,9 +39,9 @@ export const SubscriptionContextProvider = ({
 
       try {
         await Purchase.setUser(user);
-        const isPayingUser = await Purchase.isPayingUser();
+        const userIsPaying = await Purchase.isPayingUser();
 
-        setIsPayingUser(isPayingUser);
+        setIsPayingUser(userIsPaying);
       } catch (error) {
         Logger.error({
           error,
@@ -53,11 +56,11 @@ export const SubscriptionContextProvider = ({
     void fetchIsPayingUser();
   }, [user]);
 
-  useRunOnMount(() => {
-    return Purchase.customerListener((customerInfo) => {
+  useRunOnMount(() =>
+    Purchase.customerListener((customerInfo) => {
       setIsPayingUser(hasActiveEntitlements(customerInfo));
-    });
-  });
+    }),
+  );
 
   useRunOnMount(() => {
     const fetchOfferingToDisplay = async () => {
@@ -92,15 +95,15 @@ export const SubscriptionContextProvider = ({
     void fetchOfferingToDisplay();
   });
 
-  const handleSetIsPayingUser = useCallback((value: boolean) => {
-    setIsPayingUser(value);
+  const handleSetIsPayingUser = useCallback((newIsPayingUser: boolean) => {
+    setIsPayingUser(newIsPayingUser);
   }, []);
 
   const value = useMemo(
     () => ({
+      handleSetIsPayingUser,
       isPayingUser,
       offeringToDisplay,
-      handleSetIsPayingUser,
     }),
     [isPayingUser, offeringToDisplay, handleSetIsPayingUser],
   );

@@ -27,7 +27,7 @@ Check the [React Native docs](https://reactnative.dev/docs/environment-setup) on
 
 ## What's included
 
-On the Developer Experience side, a test stack is setup (unit, functional and E2E), a CI on _Github Actions_, a _Storybook_, _TypeScript_ is also configured with _ESLint_ and _Prettier_. Commits are linted to automate the release workflows and the changelog generation.
+On the Developer Experience side, a test stack is setup (unit, functional and E2E), a CI on _Github Actions_, a _Storybook_, _TypeScript_ is also configured with _Biome_ (based on the _Ultracite_ presets). Commits are linted to automate the release workflows and the changelog generation.
 
 There are also some utilities like:
 
@@ -156,13 +156,14 @@ yarn test:e2e
 
 ## Formatting and type checking
 
-The project is using a custom [ESlint](https://eslint.org/) config ([see here](https://github.com/tsyirvo/eslint-config-tsyirvo-react-native)), [Prettier](https://prettier.io/) and [TypeScript](https://www.typescriptlang.org/) for code formating and type checking, you can run the checks with those commands:
+The project is using [Biome](https://biomejs.dev/) with the [Ultracite](https://github.com/haydenbleasel/ultracite) presets (linting and formatting) and [TypeScript](https://www.typescriptlang.org/) for type checking, you can run the checks with those commands:
 
 ```
 yarn lint:ts
 yarn lint
-yarn prettify
 ```
+
+`yarn lint` auto-fixes issues (safe fixes + import sorting). For CI or a read-only check, use `yarn lint:ci`. Formatting can be run standalone with `yarn format` (`yarn format:check` for the read-only variant).
 
 There is a pre-commit git hook that run some of those commands to have a consistent formatting and type checking.
 

@@ -8,15 +8,15 @@ import { Toaster } from '$infra/toaster';
 export const useRequestPermission = () => {
   const permissionGrantedToast = () => {
     Toaster.show({
-      type: 'success',
       text1: t('featuresScreen.notificationsPermission.success'),
+      type: 'success',
     });
   };
 
   const permissionAlreadyGrantedToast = () => {
     Toaster.show({
-      type: 'success',
       text1: t('featuresScreen.notificationsPermission.alreadyGranted'),
+      type: 'success',
     });
   };
 
@@ -30,8 +30,8 @@ export const useRequestPermission = () => {
     if (!isAvailable) {
       Logger.dev('Permission is not available');
       Toaster.show({
-        type: 'error',
         text1: t('appConfig.permissions.notAvailable'),
+        type: 'error',
       });
 
       return;
@@ -49,8 +49,8 @@ export const useRequestPermission = () => {
 
       Logger.dev('Permission refused');
       Toaster.show({
-        type: 'error',
         text1: t('appConfig.permissions.notGranted'),
+        type: 'error',
       });
 
       return;
@@ -65,8 +65,8 @@ export const useRequestPermission = () => {
 
     Logger.dev('Notifications not granted');
     Toaster.show({
-      type: 'error',
       text1: t('appConfig.permissions.notGranted'),
+      type: 'error',
     });
   };
 
@@ -80,8 +80,8 @@ export const useRequestPermission = () => {
     if (!isAvailable) {
       Logger.dev('Notifications are not available');
       Toaster.show({
-        type: 'error',
         text1: t('appConfig.permissions.notAvailable'),
+        type: 'error',
       });
 
       return;
@@ -99,8 +99,8 @@ export const useRequestPermission = () => {
 
       Logger.dev('Notifications refused');
       Toaster.show({
-        type: 'error',
         text1: t('appConfig.permissions.notGranted'),
+        type: 'error',
       });
 
       return;
@@ -115,10 +115,10 @@ export const useRequestPermission = () => {
 
     Logger.dev('Notifications not granted');
     Toaster.show({
-      type: 'error',
       text1: t('appConfig.permissions.notGranted'),
+      type: 'error',
     });
   };
 
-  return { requestPermission, requestNotificationPermission };
+  return { requestNotificationPermission, requestPermission };
 };

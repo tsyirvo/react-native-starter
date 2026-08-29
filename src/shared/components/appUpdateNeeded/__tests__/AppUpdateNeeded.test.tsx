@@ -21,7 +21,7 @@ describe('AppUpdateNeeded component', () => {
 
   it('should render nothing if the versions are equal', () => {
     jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
-      getFlagPayloadSync: <T = { type: 'version'; version: string },>() =>
+      getFlagPayloadSync: <T = { type: 'version'; version: string }>() =>
         ({ type: 'version', version: '2.0.0' }) as T,
     });
 
@@ -34,7 +34,7 @@ describe('AppUpdateNeeded component', () => {
 
   it('should render nothing if the flagged version is supported', () => {
     jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
-      getFlagPayloadSync: <T = { type: 'version'; version: string },>() =>
+      getFlagPayloadSync: <T = { type: 'version'; version: string }>() =>
         ({ type: 'version', version: '2.0.0' }) as T,
     });
 
@@ -47,7 +47,7 @@ describe('AppUpdateNeeded component', () => {
 
   it('should render the update screen when the flagged version is unsupported', () => {
     jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
-      getFlagPayloadSync: <T = { type: 'version'; version: string },>() =>
+      getFlagPayloadSync: <T = { type: 'version'; version: string }>() =>
         ({ type: 'version', version: '3.0.0' }) as T,
     });
 
@@ -62,7 +62,7 @@ describe('AppUpdateNeeded component', () => {
     config.version = '2.0.0';
 
     jest.spyOn(FeatureFlags, 'useGetRemoteConfigSync').mockReturnValue({
-      getFlagPayloadSync: <T = { type: 'version'; version: string },>() =>
+      getFlagPayloadSync: <T = { type: 'version'; version: string }>() =>
         ({ type: 'version', version: '3.0.0' }) as T,
     });
 

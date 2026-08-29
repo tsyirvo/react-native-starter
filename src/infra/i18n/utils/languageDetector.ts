@@ -16,7 +16,9 @@ export const setSavedAppLocale = (locale: string) => {
 export const detectLanguageToUse = () => {
   const currentlySelectedLocale = getSavedAppLocale();
 
-  if (currentlySelectedLocale) return currentlySelectedLocale;
+  if (currentlySelectedLocale) {
+    return currentlySelectedLocale;
+  }
 
   const localeToUse = getSupportedLocale();
 
@@ -35,6 +37,6 @@ const detectAndConfigureLocaleToUse = () => {
 };
 
 export const languageDetector: LanguageDetectorModule = {
-  type: 'languageDetector',
   detect: detectAndConfigureLocaleToUse,
+  type: 'languageDetector',
 };

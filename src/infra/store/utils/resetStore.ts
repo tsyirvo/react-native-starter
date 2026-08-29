@@ -1,7 +1,7 @@
 export const sliceResetFns = new Set<() => void>();
 
 export const resetAllSlices = () => {
-  sliceResetFns.forEach((resetFn) => {
+  for (const resetFn of sliceResetFns) {
     resetFn();
-  });
+  }
 };

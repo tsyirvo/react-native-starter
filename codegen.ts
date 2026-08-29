@@ -1,8 +1,6 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  overwrite: true,
-  schema: 'https://graphqlzero.almansi.me/api',
   documents: 'src/**/*.tsx',
   generates: {
     // 'src/infra/gql/generated/types.ts': {
@@ -22,28 +20,24 @@ const config: CodegenConfig = {
       preset: 'client',
     },
     'src/infra/gql/generated/hooks.ts': {
+      config: {
+        exposeFetcher: true,
+        exposeQueryKeys: true,
+        fetcher: '../../api/request#request',
+        reactQueryVersion: 5,
+      },
       plugins: [
         'typescript',
         'typescript-operations',
         'typescript-react-query',
       ],
-      config: {
-        reactQueryVersion: 5,
-        exposeQueryKeys: true,
-        exposeFetcher: true,
-        fetcher: '../../api/request#request',
-      },
     },
     'src/infra/gql/graphql.schema.json': {
       plugins: ['introspection'],
     },
   },
-  hooks: {
-    afterAllFileWrite: [
-      'eslint ./src/infra/gql/generated --ext .ts,.json --fix',
-      "yarn prettier --write './src/infra/gql/**/*.ts'",
-    ],
-  },
+  overwrite: true,
+  schema: 'https://graphqlzero.almansi.me/api',
 };
 
 export default config;

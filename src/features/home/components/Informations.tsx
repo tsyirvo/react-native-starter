@@ -10,31 +10,31 @@ export const Informations = () => {
   return (
     <>
       <InformationBlock
-        title={t('homeScreen.motivation.title')}
         content={t('homeScreen.motivation.content')}
+        title={t('homeScreen.motivation.title')}
       />
 
-      <Stack gap="spacing_8" pt="spacing_24" pb="spacing_12">
+      <Stack gap="spacing_8" pb="spacing_12" pt="spacing_24">
         <Separator />
         <Text variant="xLarge">{t('homeScreen.whatIsInside')}</Text>
       </Stack>
 
       <Stack gap="spacing_24">
         <InformationBlock
-          title={t('homeScreen.formatting.title')}
           content={t('homeScreen.formatting.content')}
+          title={t('homeScreen.formatting.title')}
         />
         <InformationBlock
-          title={t('homeScreen.storybook.title')}
           content={t('homeScreen.storybook.content')}
+          title={t('homeScreen.storybook.title')}
         />
         <InformationBlock
-          title={t('homeScreen.tests.title')}
           content={t('homeScreen.tests.content')}
+          title={t('homeScreen.tests.title')}
         />
         <InformationBlock
-          title={t('homeScreen.tools.title')}
           content={t('homeScreen.tools.content')}
+          title={t('homeScreen.tools.title')}
         />
       </Stack>
     </>

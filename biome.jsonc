@@ -1,0 +1,87 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["ultracite/biome/core", "ultracite/biome/react"],
+  "files": {
+    "includes": [
+      "!!**/babel.config.js",
+      "!!**/metro.config.cjs",
+      "!!**/env.js",
+      "!!**/src/shared/icons/svgs/config",
+      "!!**/.rnstorybook"
+    ]
+  },
+  "javascript": {
+    "globals": [
+      "__DEV__",
+      "jest",
+      "it",
+      "test",
+      "describe",
+      "beforeEach",
+      "afterEach",
+      "beforeAll",
+      "afterAll",
+      "expect"
+    ],
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "all"
+    }
+  },
+  // Don't auto-sort package.json keys
+  "assist": {
+    "actions": {
+      "source": {
+        "useSortedPackageJson": "off"
+      }
+    }
+  },
+  "linter": {
+    "rules": {
+      "performance": {
+        "noBarrelFile": "off",
+        "noDynamicNamespaceImportAccess": "off",
+        "noNamespaceImport": "off",
+        "noJsxPropsBind": "off"
+      },
+      "suspicious": {
+        "noUnnecessaryConditions": "off"
+      },
+      "style": {
+        "useFilenamingConvention": "off"
+      },
+      "complexity": {
+        "noVoid": "off"
+      }
+    }
+  },
+  "overrides": [
+    {
+      // Unistyles prop-to-style mapping objects (Box/Row/Stack primitives)
+      // are linear ternaries that read better than the 20 default budget.
+      "includes": ["src/shared/uiKit/primitives/**"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noExcessiveCognitiveComplexity": {
+              "level": "error",
+              "options": {
+                "maxAllowedComplexity": 25
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/shared/icons/svgs/**"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "noSvgWithoutTitle": "off"
+          }
+        }
+      }
+    }
+  ]
+}

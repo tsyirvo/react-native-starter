@@ -19,7 +19,7 @@ export const useIsNewStoreVersionAvailable = () => {
       'latest-released-app-version',
     );
 
-    if (!payload || !('version' in payload)) {
+    if (!(payload && 'version' in payload)) {
       return;
     }
 

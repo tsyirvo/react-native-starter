@@ -1,5 +1,3 @@
-/* eslint-disable react-native/no-raw-text */
-
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
@@ -8,7 +6,6 @@ import { StorybookItem } from '$shared/components';
 import { Stack, Text as TextPrimitive } from '$shared/uiKit';
 
 const meta = {
-  title: 'Primitives/Text',
   component: View,
   render: () => (
     <Stack p="spacing_16">
@@ -33,6 +30,7 @@ const meta = {
       </StorybookItem>
     </Stack>
   ),
+  title: 'Primitives/Text',
 } satisfies Meta<typeof View>;
 
 export default meta;

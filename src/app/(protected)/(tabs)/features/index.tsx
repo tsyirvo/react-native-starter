@@ -4,7 +4,7 @@ import { ScrollView, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { Notifications } from '$features/notifications';
-import { StoreUpdateAvailableBanner, Screen } from '$shared/components';
+import { Screen, StoreUpdateAvailableBanner } from '$shared/components';
 import { useIsNewStoreVersionAvailable } from '$shared/hooks';
 import { Box, Button, Text } from '$shared/uiKit';
 
@@ -34,7 +34,7 @@ const FeaturesScreen = () => {
             <View style={styles.section}>
               <Text variant="large">{t('featuresScreen.blogPost.title')}</Text>
 
-              <Box self="flex-start" mt="spacing_8">
+              <Box mt="spacing_8" self="flex-start">
                 <Button.Text onPress={goToBlogPost}>
                   {t('featuresScreen.blogPost.cta')}
                 </Button.Text>

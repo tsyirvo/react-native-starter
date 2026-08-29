@@ -6,7 +6,6 @@ import { StorybookItem } from '$shared/components';
 import { Box as ContainerPrimitive, Stack, Text } from '$shared/uiKit';
 
 const meta = {
-  title: 'Primitives/Container',
   component: View,
   render: () => (
     <Stack p="spacing_16">
@@ -59,10 +58,10 @@ const meta = {
         <View style={styles.wrapper}>
           <ContainerPrimitive
             direction="row"
-            wrap="wrap"
             gap="spacing_8"
             p="spacing_8"
             style={styles.wideContainer}
+            wrap="wrap"
           >
             <View style={styles.mediumBox} />
             <View style={styles.mediumBox} />
@@ -76,8 +75,8 @@ const meta = {
       <StorybookItem title="Container with padding and gap">
         <View style={styles.wrapper}>
           <ContainerPrimitive
-            p="spacing_24"
             gap="spacing_12"
+            p="spacing_24"
             style={styles.container}
           >
             <View style={styles.box} />
@@ -89,8 +88,8 @@ const meta = {
       <StorybookItem title="Container with alignSelf">
         <View style={styles.wrapper}>
           <ContainerPrimitive
-            self="center"
             p="spacing_16"
+            self="center"
             style={styles.narrowContainer}
           >
             <Text>Centered with alignSelf</Text>
@@ -114,6 +113,7 @@ const meta = {
       </StorybookItem>
     </Stack>
   ),
+  title: 'Primitives/Container',
 } satisfies Meta<typeof View>;
 
 export default meta;
@@ -123,46 +123,46 @@ type Story = StoryObj<typeof meta>;
 export const Container: Story = {};
 
 const styles = StyleSheet.create((theme) => ({
-  wrapper: {
-    height: 150,
-    width: '100%',
+  box: {
+    backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_4,
+    height: 40,
+    width: 40,
   },
   container: {
     backgroundColor: theme.colors.bg_base,
-    borderWidth: 1,
     borderColor: theme.colors.border_default,
     borderRadius: theme.borderRadii.radius_8,
-  },
-  secondaryContainer: {
-    backgroundColor: theme.colors.bg_muted,
     borderWidth: 1,
-    borderColor: theme.colors.border_default,
-    borderRadius: theme.borderRadii.radius_8,
-  },
-  wideContainer: {
-    backgroundColor: theme.colors.bg_base,
-    borderWidth: 1,
-    borderColor: theme.colors.border_default,
-    borderRadius: theme.borderRadii.radius_8,
-    width: '100%',
-  },
-  narrowContainer: {
-    backgroundColor: theme.colors.bg_base,
-    borderWidth: 1,
-    borderColor: theme.colors.border_default,
-    borderRadius: theme.borderRadii.radius_8,
-    width: 200,
-  },
-  box: {
-    backgroundColor: theme.colors.bg_muted,
-    height: 40,
-    width: 40,
-    borderRadius: theme.borderRadii.radius_4,
   },
   mediumBox: {
     backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_4,
     height: 60,
     width: 80,
-    borderRadius: theme.borderRadii.radius_4,
+  },
+  narrowContainer: {
+    backgroundColor: theme.colors.bg_base,
+    borderColor: theme.colors.border_default,
+    borderRadius: theme.borderRadii.radius_8,
+    borderWidth: 1,
+    width: 200,
+  },
+  secondaryContainer: {
+    backgroundColor: theme.colors.bg_muted,
+    borderColor: theme.colors.border_default,
+    borderRadius: theme.borderRadii.radius_8,
+    borderWidth: 1,
+  },
+  wideContainer: {
+    backgroundColor: theme.colors.bg_base,
+    borderColor: theme.colors.border_default,
+    borderRadius: theme.borderRadii.radius_8,
+    borderWidth: 1,
+    width: '100%',
+  },
+  wrapper: {
+    height: 150,
+    width: '100%',
   },
 }));

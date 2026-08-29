@@ -1,11 +1,11 @@
 import {
-  BottomSheetBackdropProps,
+  type BottomSheetBackdropProps,
   BottomSheetModal,
   BottomSheetScrollView,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import { RefObject } from 'react';
-import { SharedValue } from 'react-native-reanimated';
+import type { RefObject } from 'react';
+import type { SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
@@ -16,16 +16,16 @@ import { Box } from '../primitives';
 import { AnimatedBottomSheetBackdrop } from './components';
 
 interface BottomSheetProps {
-  ref?: RefObject<BottomSheetModal | null>;
   children: React.ReactNode;
-  modalKey?: string;
-  snapPoints?: (string | number)[] | SharedValue<(string | number)[]>;
   disableHorizontalPadding?: boolean;
   disableTopPadding?: boolean;
   isScrollable?: boolean;
-  onDismiss?: () => void;
+  modalKey?: string;
   onChange?: (index: number) => void;
+  onDismiss?: () => void;
+  ref?: RefObject<BottomSheetModal | null>;
   renderBackdrop?: (props: BottomSheetBackdropProps) => React.ReactNode;
+  snapPoints?: (string | number)[] | SharedValue<(string | number)[]>;
 }
 
 export const BottomSheet = ({
@@ -50,20 +50,20 @@ export const BottomSheet = ({
 
   return (
     <BottomSheetModal
-      ref={ref}
-      name={modalKey}
-      snapPoints={snapPointsToUse}
+      backdropComponent={renderBackdrop}
       backgroundStyle={styles.modalStyle}
       handleIndicatorStyle={styles.handleStyle}
-      backdropComponent={renderBackdrop}
-      onDismiss={onDismiss}
+      name={modalKey}
       onChange={onChange}
+      onDismiss={onDismiss}
+      ref={ref}
+      snapPoints={snapPointsToUse}
     >
       {isScrollable ? (
         <BottomSheetScrollView style={styles.bottomSheetWrapper}>
           <Box
-            px={disableHorizontalPadding ? undefined : 'spacing_16'}
             pt={disableTopPadding ? undefined : 'spacing_24'}
+            px={disableHorizontalPadding ? undefined : 'spacing_16'}
           >
             {children}
           </Box>
@@ -71,8 +71,8 @@ export const BottomSheet = ({
       ) : (
         <BottomSheetView style={styles.bottomSheetWrapper}>
           <Box
-            px={disableHorizontalPadding ? undefined : 'spacing_16'}
             pt={disableTopPadding ? undefined : 'spacing_24'}
+            px={disableHorizontalPadding ? undefined : 'spacing_16'}
             style={styles.viewWrapper}
           >
             {children}
@@ -94,15 +94,15 @@ const renderDefaultBackdrop = ({
 );
 
 const styles = StyleSheet.create((theme, rt) => ({
-  modalStyle: {
-    backgroundColor: theme.colors.bg_base,
+  bottomSheetWrapper: {
+    marginBottom: theme.spacing.spacing_24,
   },
   handleStyle: {
     backgroundColor: theme.colors.border_default,
     width: 50,
   },
-  bottomSheetWrapper: {
-    marginBottom: theme.spacing.spacing_24,
+  modalStyle: {
+    backgroundColor: theme.colors.bg_base,
   },
   viewWrapper: {
     marginBottom: rt.insets.bottom,

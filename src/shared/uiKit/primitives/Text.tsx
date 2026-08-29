@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
 import type { TextProps as RNTextProps, TextStyle } from 'react-native';
 import { Text as RNText } from 'react-native';
 import { StyleSheet, type UnistylesVariants } from 'react-native-unistyles';
@@ -9,8 +7,8 @@ import type { ThemeColors } from '$domain/theme';
 /* ***** *****  Types  ***** ***** */
 
 interface TextProps extends RNTextProps, UnistylesVariants<typeof styles> {
-  testID?: string;
   color?: ThemeColors;
+  testID?: string;
   textAlign?: TextStyle['textAlign'];
 }
 
@@ -33,8 +31,8 @@ export const Text = ({
     <RNText
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="text"
-      testID={testID}
       style={[styles.text({ color }), textAlign && { textAlign }, style]}
+      testID={testID}
       {...rest}
     />
   );
@@ -47,25 +45,25 @@ const styles = StyleSheet.create((theme) => ({
     color: theme.colors[props.color],
     variants: {
       variant: {
-        small: {
-          fontFamily: theme.fontFamily.light,
-          fontSize: theme.fontSizes.small,
-          lineHeight: theme.lineHeight.small,
-        },
-        regular: {
-          fontFamily: theme.fontFamily.regular,
-          fontSize: theme.fontSizes.regular,
-          lineHeight: theme.lineHeight.regular,
+        large: {
+          fontFamily: theme.fontFamily.bold,
+          fontSize: theme.fontSizes.large,
+          lineHeight: theme.lineHeight.large,
         },
         medium: {
           fontFamily: theme.fontFamily.regular,
           fontSize: theme.fontSizes.medium,
           lineHeight: theme.lineHeight.medium,
         },
-        large: {
-          fontFamily: theme.fontFamily.bold,
-          fontSize: theme.fontSizes.large,
-          lineHeight: theme.lineHeight.large,
+        regular: {
+          fontFamily: theme.fontFamily.regular,
+          fontSize: theme.fontSizes.regular,
+          lineHeight: theme.lineHeight.regular,
+        },
+        small: {
+          fontFamily: theme.fontFamily.light,
+          fontSize: theme.fontSizes.small,
+          lineHeight: theme.lineHeight.small,
         },
         xLarge: {
           fontFamily: theme.fontFamily.bold,

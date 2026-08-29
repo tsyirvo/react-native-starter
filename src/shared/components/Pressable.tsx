@@ -1,13 +1,12 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
-import React, { useCallback } from 'react';
+import type React from 'react';
+import { useCallback } from 'react';
 import {
-  GestureResponderEvent,
+  type GestureResponderEvent,
+  type PressableProps,
   Pressable as RNPressable,
-  PressableProps,
 } from 'react-native';
 
-import { HapticFeedbackType, triggerHapticFeedback } from '$infra/haptics';
+import { type HapticFeedbackType, triggerHapticFeedback } from '$infra/haptics';
 import { useDebouncedFunction } from '$shared/hooks';
 
 type CustomPressableProps = PressableProps & {

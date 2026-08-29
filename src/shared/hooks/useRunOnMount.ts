@@ -1,7 +1,6 @@
 import { type EffectCallback, useEffect } from 'react';
 
 export const useRunOnMount = (callback: EffectCallback) => {
-  // eslint-disable-next-line react-compiler/react-compiler
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // biome-ignore lint/correctness/useExhaustiveDependencies: The hook intentionally runs its callback once on mount
   useEffect(callback, []);
 };

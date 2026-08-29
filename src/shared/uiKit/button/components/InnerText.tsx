@@ -13,8 +13,8 @@ import {
 } from '../utils';
 
 interface InnerTextProps extends Pick<ButtonProps, 'isLoading'> {
-  parentVariant: ButtonVariant;
   children: string;
+  parentVariant: ButtonVariant;
   testID?: string;
 }
 
@@ -31,18 +31,18 @@ export const InnerText = ({
       {isLoading ? (
         <View style={styles.loaderContainer} testID={`${testID}Loader`}>
           <Loader
+            color={getLoaderColor(parentVariant)}
             delay={0}
             size="small"
-            color={getLoaderColor(parentVariant)}
           />
         </View>
       ) : null}
 
       <Text
-        variant={getTextVariant(parentVariant)}
         color={getTextColor(parentVariant)}
-        style={{ opacity: textOpacity }}
         numberOfLines={1}
+        style={{ opacity: textOpacity }}
+        variant={getTextVariant(parentVariant)}
       >
         {children}
       </Text>
@@ -54,17 +54,17 @@ const MIN_HEIGHT = 24;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     minHeight: MIN_HEIGHT,
   },
   loaderContainer: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
     alignItems: 'center',
+    bottom: 0,
     justifyContent: 'center',
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
   },
 });

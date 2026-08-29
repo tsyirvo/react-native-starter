@@ -27,22 +27,22 @@ const plugins: ExpoConfig['plugins'] = [
   [
     'app-icon-badge',
     {
-      enabled: !isProductionEnv,
       badges: [
         {
+          background: '#FFFFFF',
+          color: 'black',
+          position: 'bottom',
           text: Env.APP_ENV,
           type: 'banner',
-          position: 'bottom',
-          color: 'black',
-          background: '#FFFFFF',
         },
         {
+          background: '#FFFFFF',
+          color: 'black',
           text: `V${Env.VERSION}`,
           type: 'ribbon',
-          color: 'black',
-          background: '#FFFFFF',
         },
       ],
+      enabled: !isProductionEnv,
     },
   ],
   [
@@ -66,44 +66,69 @@ const plugins: ExpoConfig['plugins'] = [
     'expo-splash-screen',
     {
       backgroundColor: '#FFFFFF',
-      image: './assets/icons/splash-icon-dark.png',
-      imageWidth: 200,
-      resizeMode: 'contain',
       dark: {
         backgroundColor: '#0C0D0F',
         image: './assets/icons/splash-icon-light.png',
       },
+      image: './assets/icons/splash-icon-dark.png',
+      imageWidth: 200,
+      resizeMode: 'contain',
     },
   ],
 ];
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: Env.APP_NAME,
-  description: `${Env.APP_NAME} Mobile App`,
-  owner: Env.EXPO_ACCOUNT_OWNER,
-  scheme: 'rn-starter',
-  slug: 'rn-starter',
-  version: Env.VERSION,
-  runtimeVersion: { policy: 'appVersion' },
-  orientation: 'portrait',
-  icon: './assets/icons/default.png',
-  userInterfaceStyle: 'dark',
-  updates: {
-    enabled: isProductionEnv,
-    url: Env.EXPO_UPDATE_URL,
-    fallbackToCacheTimeout: 0,
+  android: {
+    adaptiveIcon: {
+      backgroundColor: '#0C0D0F',
+      foregroundImage: './assets/icons/adaptive-icon.png',
+      monochromeImage: './assets/icons/adaptive-icon.png',
+    },
+    icon: './assets/icons/default.png',
+    intentFilters: [
+      {
+        action: 'VIEW',
+        category: ['BROWSABLE', 'DEFAULT'],
+        data: [
+          {
+            // TODO(prod): Add correct associated domain config
+            host: 'rnstarter.onelink.me',
+            pathPrefix: '/XYZ',
+            scheme: 'https',
+          },
+        ],
+      },
+      {
+        action: 'VIEW',
+        category: ['BROWSABLE', 'DEFAULT'],
+        data: [
+          {
+            scheme: 'rn-starter',
+          },
+        ],
+      },
+    ],
+    package: Env.PACKAGE,
+    playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
+    predictiveBackGestureEnabled: true,
   },
   assetBundlePatterns: ['./src/assets/images/*'],
-  ios: {
-    supportsTablet: false,
-    bundleIdentifier: Env.BUNDLE_ID,
-    appStoreUrl: `https://apps.apple.com/app/${Env.ITUNES_ITEM_ID}`,
-    infoPlist: {
-      UIBackgroundModes: ['remote-notification'],
-      CFBundleAllowMixedLocalizations: true,
-      ITSAppUsesNonExemptEncryption: false,
+  description: `${Env.APP_NAME} Mobile App`,
+  experiments: {
+    reactCompiler: true,
+    typedRoutes: true,
+  },
+  extra: {
+    ...ClientEnv,
+    eas: {
+      projectId: Env.EAS_PROJECT_ID,
     },
+  },
+  icon: './assets/icons/default.png',
+  ios: {
+    appStoreUrl: `https://apps.apple.com/app/${Env.ITUNES_ITEM_ID}`,
+    bundleIdentifier: Env.BUNDLE_ID,
     entitlements: {
       'aps-environment': isDevelopmentEnv ? 'development' : 'production',
     },
@@ -112,54 +137,29 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       light: 'assets/icons/ios-light.png',
       tinted: 'assets/icons/ios-tinted.png',
     },
-  },
-  android: {
-    icon: './assets/icons/default.png',
-    adaptiveIcon: {
-      foregroundImage: './assets/icons/adaptive-icon.png',
-      monochromeImage: './assets/icons/adaptive-icon.png',
-      backgroundColor: '#0C0D0F',
+    infoPlist: {
+      CFBundleAllowMixedLocalizations: true,
+      ITSAppUsesNonExemptEncryption: false,
+      UIBackgroundModes: ['remote-notification'],
     },
-    predictiveBackGestureEnabled: true,
-    package: Env.PACKAGE,
-    playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
-    intentFilters: [
-      {
-        action: 'VIEW',
-        data: [
-          {
-            scheme: 'https',
-            // TODO(prod): Add correct associated domain config
-            host: 'rnstarter.onelink.me',
-            pathPrefix: '/XYZ',
-          },
-        ],
-        category: ['BROWSABLE', 'DEFAULT'],
-      },
-      {
-        action: 'VIEW',
-        data: [
-          {
-            scheme: 'rn-starter',
-          },
-        ],
-        category: ['BROWSABLE', 'DEFAULT'],
-      },
-    ],
+    supportsTablet: false,
   },
   locales: {
-    fr: './src/infra/i18n/nativeFiles/fr.json',
     en: './src/infra/i18n/nativeFiles/en.json',
+    fr: './src/infra/i18n/nativeFiles/fr.json',
   },
-  experiments: {
-    typedRoutes: true,
-    reactCompiler: true,
-  },
+  name: Env.APP_NAME,
+  orientation: 'portrait',
+  owner: Env.EXPO_ACCOUNT_OWNER,
   plugins,
-  extra: {
-    ...ClientEnv,
-    eas: {
-      projectId: Env.EAS_PROJECT_ID,
-    },
+  runtimeVersion: { policy: 'appVersion' },
+  scheme: 'rn-starter',
+  slug: 'rn-starter',
+  updates: {
+    enabled: isProductionEnv,
+    fallbackToCacheTimeout: 0,
+    url: Env.EXPO_UPDATE_URL,
   },
+  userInterfaceStyle: 'dark',
+  version: Env.VERSION,
 });

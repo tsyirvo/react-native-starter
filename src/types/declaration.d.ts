@@ -31,7 +31,7 @@ declare module '*.mp4' {
 
 interface IdleDeadline {
   didTimeout: boolean;
-  timeRemaining(): number;
+  timeRemaining: () => number;
 }
 
 declare function requestIdleCallback(

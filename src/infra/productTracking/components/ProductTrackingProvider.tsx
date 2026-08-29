@@ -10,18 +10,16 @@ interface ProductTrackingProviderProps {
 
 export const ProductTrackingProvider = ({
   children,
-}: ProductTrackingProviderProps) => {
-  return (
-    <PostHogProvider
-      client={productTrackingClient}
-      autocapture={autocaptureOptions}
-    >
-      {children}
-    </PostHogProvider>
-  );
-};
+}: ProductTrackingProviderProps) => (
+  <PostHogProvider
+    autocapture={autocaptureOptions}
+    client={productTrackingClient}
+  >
+    {children}
+  </PostHogProvider>
+);
 
 const autocaptureOptions: PostHogAutocaptureOptions = {
-  captureTouches: true,
   captureScreens: false,
+  captureTouches: true,
 };

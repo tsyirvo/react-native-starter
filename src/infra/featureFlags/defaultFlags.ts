@@ -18,5 +18,5 @@ export const defaultRemoteConfig: Record<
 > = {
   'last-supported-app-version': { type: 'version', version: '2.0.0' },
   'latest-released-app-version': { type: 'version', version: '2.1.0' },
-  'offering-to-display': { type: 'offering', offering: 'default' },
+  'offering-to-display': { offering: 'default', type: 'offering' },
 };

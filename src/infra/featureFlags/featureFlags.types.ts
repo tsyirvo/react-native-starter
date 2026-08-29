@@ -11,8 +11,8 @@ export type BooleanFeatureFlags = Extract<
 >;
 
 export interface OfferingFlagType {
-  type: 'offering';
   offering: string;
+  type: 'offering';
 }
 
 export interface VersionFlagType {

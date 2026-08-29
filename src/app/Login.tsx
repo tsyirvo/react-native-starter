@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import logoDark from '$assets/images/logo-dark.png';
 import { useAuthContext } from '$domain/contexts';
-import { UserLogin } from '$domain/entities';
+import type { UserLogin } from '$domain/entities';
 import { LoginForm } from '$features/loginForm';
 import { Screen } from '$shared/components';
 import { Box, Image, Stack, Text } from '$shared/uiKit';
@@ -31,26 +31,26 @@ const Login = () => {
     <>
       <RouterStack.Screen
         options={{
+          animation: 'fade',
           headerShown: false,
           title: t('loginScreen.title'),
-          animation: 'fade',
         }}
       />
 
       <Screen edges={['top']} px="spacing_16">
         <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
           <TouchableWithoutFeedback onPress={dismissKeyboard}>
-            <Box flex={1} pt="spacing_32" gap="spacing_16">
+            <Box flex={1} gap="spacing_16" pt="spacing_32">
               <Stack align="center">
                 <Image source={logoDark} style={styles.logo} />
               </Stack>
 
               <Stack
-                p="spacing_16"
                 gap="spacing_24"
+                p="spacing_16"
                 style={styles.formContainer}
               >
-                <Text variant="large" textAlign="center">
+                <Text textAlign="center" variant="large">
                   {t('loginScreen.title')}
                 </Text>
 
@@ -67,16 +67,16 @@ const Login = () => {
 const LOGO_SIZE = 150;
 
 const styles = StyleSheet.create((theme) => ({
-  wrapper: {
-    flex: 1,
-  },
-  logo: {
-    width: LOGO_SIZE,
-    height: LOGO_SIZE,
-  },
   formContainer: {
     backgroundColor: theme.colors.bg_muted,
     borderRadius: theme.borderRadii.radius_24,
+  },
+  logo: {
+    height: LOGO_SIZE,
+    width: LOGO_SIZE,
+  },
+  wrapper: {
+    flex: 1,
   },
 }));
 

@@ -6,7 +6,6 @@ import { StorybookItem } from '$shared/components';
 import { Row as RowPrimitive, Stack, Text } from '$shared/uiKit';
 
 const meta = {
-  title: 'Primitives/Row',
   component: View,
   render: () => (
     <Stack p="spacing_16">
@@ -43,14 +42,14 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Row with justify center">
-        <RowPrimitive justify="center" gap="spacing_8" style={styles.container}>
+        <RowPrimitive gap="spacing_8" justify="center" style={styles.container}>
           <View style={styles.box} />
           <View style={styles.box} />
         </RowPrimitive>
       </StorybookItem>
 
       <StorybookItem title="Row with padding">
-        <RowPrimitive p="spacing_24" gap="spacing_8" style={styles.container}>
+        <RowPrimitive gap="spacing_8" p="spacing_24" style={styles.container}>
           <View style={styles.box} />
           <View style={styles.box} />
         </RowPrimitive>
@@ -65,6 +64,7 @@ const meta = {
       </StorybookItem>
     </Stack>
   ),
+  title: 'Primitives/Row',
 } satisfies Meta<typeof View>;
 
 export default meta;
@@ -74,37 +74,37 @@ type Story = StoryObj<typeof meta>;
 export const Row: Story = {};
 
 const styles = StyleSheet.create((theme) => ({
-  container: {
-    backgroundColor: theme.colors.bg_base,
-    borderWidth: 1,
-    borderColor: theme.colors.border_default,
-    borderRadius: theme.borderRadii.radius_8,
-    minHeight: 80,
-  },
-  wideContainer: {
-    backgroundColor: theme.colors.bg_base,
-    borderWidth: 1,
-    borderColor: theme.colors.border_default,
-    borderRadius: theme.borderRadii.radius_8,
-    minHeight: 80,
-    width: '100%',
-  },
   box: {
     backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_4,
     height: 40,
     width: 40,
-    borderRadius: theme.borderRadii.radius_4,
+  },
+  container: {
+    backgroundColor: theme.colors.bg_base,
+    borderColor: theme.colors.border_default,
+    borderRadius: theme.borderRadii.radius_8,
+    borderWidth: 1,
+    minHeight: 80,
   },
   smallBox: {
     backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_4,
     height: 30,
     width: 30,
-    borderRadius: theme.borderRadii.radius_4,
   },
   tallBox: {
     backgroundColor: theme.colors.bg_muted,
+    borderRadius: theme.borderRadii.radius_4,
     height: 50,
     width: 40,
-    borderRadius: theme.borderRadii.radius_4,
+  },
+  wideContainer: {
+    backgroundColor: theme.colors.bg_base,
+    borderColor: theme.colors.border_default,
+    borderRadius: theme.borderRadii.radius_8,
+    borderWidth: 1,
+    minHeight: 80,
+    width: '100%',
   },
 }));

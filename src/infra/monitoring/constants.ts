@@ -2,12 +2,12 @@
 
 // https://develop.sentry.dev/sdk/event-payloads/breadcrumbs/#breadcrumb-types
 export const breadcrumbType = {
-  default: 'default',
   debug: 'debug',
+  default: 'default',
   error: 'error',
-  navigation: 'navigation',
   http: 'http',
   info: 'info',
+  navigation: 'navigation',
   query: 'query',
   transaction: 'transaction',
   ui: 'ui',
@@ -15,8 +15,8 @@ export const breadcrumbType = {
 };
 
 export const breadcrumbsCategory = {
-  network: 'network',
+  auth: 'auth',
   exception: 'exception',
   navigation: 'navigation',
-  auth: 'auth',
+  network: 'network',
 };

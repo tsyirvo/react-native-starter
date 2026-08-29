@@ -24,7 +24,7 @@ describe('Stack component', () => {
 
   it('should apply spacing props', () => {
     render(
-      <Stack testID="stackId" p="spacing_16" mt="spacing_8">
+      <Stack mt="spacing_8" p="spacing_16" testID="stackId">
         <Text>Content</Text>
       </Stack>,
     );
@@ -34,7 +34,7 @@ describe('Stack component', () => {
 
   it('should apply alignment props', () => {
     render(
-      <Stack testID="stackId" align="center" justify="center">
+      <Stack align="center" justify="center" testID="stackId">
         <Text>Centered Content</Text>
       </Stack>,
     );
@@ -44,7 +44,7 @@ describe('Stack component', () => {
 
   it('should apply gap prop', () => {
     render(
-      <Stack testID="stackId" gap="spacing_8">
+      <Stack gap="spacing_8" testID="stackId">
         <Text>Item 1</Text>
         <Text>Item 2</Text>
       </Stack>,

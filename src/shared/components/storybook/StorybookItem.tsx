@@ -4,23 +4,21 @@ import { Separator, Stack, Text } from '$shared/uiKit';
 import { CenteredContent } from '$shared/uiKit/layout';
 
 interface StorybookItemProps {
-  title?: string;
-  isSingle?: boolean;
   children: ReactNode;
+  isSingle?: boolean;
+  title?: string;
 }
 
 export const StorybookItem = ({
   title,
   isSingle,
   children,
-}: StorybookItemProps) => {
-  return (
-    <Stack pt="spacing_8" px="spacing_8">
-      {!!title && <Text>{title}</Text>}
+}: StorybookItemProps) => (
+  <Stack pt="spacing_8" px="spacing_8">
+    {!!title && <Text>{title}</Text>}
 
-      <CenteredContent py="spacing_24">{children}</CenteredContent>
+    <CenteredContent py="spacing_24">{children}</CenteredContent>
 
-      {!isSingle && <Separator color="bg_muted" />}
-    </Stack>
-  );
-};
+    {!isSingle && <Separator color="bg_muted" />}
+  </Stack>
+);

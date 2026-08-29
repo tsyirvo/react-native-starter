@@ -1,13 +1,11 @@
 // We force the dependency to i18n to be sure that all the dates are updated when the language is changed
-// eslint-disable-next-line react-compiler/react-compiler
-/* eslint-disable react-hooks/exhaustive-deps */
 
 import type dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { formatDate, formatDateRelative } from '../date';
-import { DateFormat } from '../date.types';
+import type { DateFormat } from '../date.types';
 
 export const useFormatDate = ({
   date,
@@ -18,9 +16,11 @@ export const useFormatDate = ({
 }): string => {
   const { i18n } = useTranslation();
 
-  return useMemo<string>(() => {
-    return formatDate({ date, format });
-  }, [date, format, i18n.language]);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Dep is forced so dates are re-rendered when the language changes
+  return useMemo<string>(
+    () => formatDate({ date, format }),
+    [date, format, i18n.language],
+  );
 };
 
 export const useFormatDateRelative = ({
@@ -32,7 +32,9 @@ export const useFormatDateRelative = ({
 }): string => {
   const { i18n } = useTranslation();
 
-  return useMemo<string>(() => {
-    return formatDateRelative({ date, withoutSuffix });
-  }, [date, withoutSuffix, i18n.language]);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Dep is forced so dates are re-rendered when the language changes
+  return useMemo<string>(
+    () => formatDateRelative({ date, withoutSuffix }),
+    [date, withoutSuffix, i18n.language],
+  );
 };

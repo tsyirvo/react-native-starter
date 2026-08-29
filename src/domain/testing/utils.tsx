@@ -10,9 +10,9 @@ const createTestQueryClient = () =>
   new QueryClient({
     defaultOptions: {
       queries: {
+        gcTime: Number.POSITIVE_INFINITY,
         retry: false,
-        gcTime: Infinity,
-        staleTime: Infinity,
+        staleTime: Number.POSITIVE_INFINITY,
       },
     },
   });
@@ -21,8 +21,8 @@ export const customRender = (component: ReactElement): RenderAPI => {
   const wrapper = (
     <SafeAreaProvider
       initialMetrics={{
-        frame: { x: 0, y: 0, width: 0, height: 0 },
-        insets: { top: 0, left: 0, right: 0, bottom: 0 },
+        frame: { height: 0, width: 0, x: 0, y: 0 },
+        insets: { bottom: 0, left: 0, right: 0, top: 0 },
       }}
     >
       <QueryClientProvider client={createTestQueryClient()}>

@@ -7,12 +7,12 @@ import { CustomProductTrackingStorage } from '$infra/storage';
 
 const apiKey = config.posthogApiKey;
 const options: PostHogOptions = {
-  host: 'https://us.i.posthog.com',
-  disabled: config.isDebug,
-  customStorage: CustomProductTrackingStorage,
   bootstrap: {
     featureFlags: defaultFeatureFlags,
   },
+  customStorage: CustomProductTrackingStorage,
+  disabled: config.isDebug,
+  host: 'https://us.i.posthog.com',
 };
 
 export const productTrackingClient = new PostHog(apiKey, options);

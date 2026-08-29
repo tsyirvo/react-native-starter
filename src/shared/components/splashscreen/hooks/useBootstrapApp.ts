@@ -10,8 +10,8 @@ import { checkForOtaUpdate } from '$shared/utils';
 
 SplashScreen.preventAutoHideAsync().catch((error: unknown) => {
   Logger.error({
-    message: 'Failed to persist the SplashScreen',
     error,
+    message: 'Failed to persist the SplashScreen',
   });
 });
 
@@ -27,7 +27,7 @@ export const useBootstrapApp = () => {
     (state) => state.isBootstrappingApplication,
   );
 
-  const isAppReady = !isBootstrappingInfra && !isBootstrappingApplication;
+  const isAppReady = !(isBootstrappingInfra || isBootstrappingApplication);
 
   useGetSessionState();
 
@@ -46,8 +46,8 @@ export const useBootstrapApp = () => {
       setIsBootstrappingInfra(false);
     })().catch((error: unknown) => {
       Logger.error({
-        message: 'Failed to bootstrap app SDKs or check for OTA update',
         error,
+        message: 'Failed to bootstrap app SDKs or check for OTA update',
       });
     });
   }, []);

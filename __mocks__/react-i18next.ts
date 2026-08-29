@@ -1,18 +1,23 @@
-export const withTranslation = () => (Component: any) => {
-  Component.defaultProps = { ...Component.defaultProps, t: () => '' };
-  return Component;
-};
+import type { ComponentType } from 'react';
 
-export const useTranslation = () => {
-  return {
-    t: (str: string) => str,
-    i18n: {
-      changeLanguage: () => new Promise(() => {}),
-    },
+interface WrappableComponent {
+  defaultProps?: Record<string, unknown>;
+}
+
+export const withTranslation =
+  () => (Component: ComponentType & WrappableComponent) => {
+    Component.defaultProps = { ...Component.defaultProps, t: () => '' };
+    return Component;
   };
-};
+
+export const useTranslation = () => ({
+  i18n: {
+    changeLanguage: () => Promise.resolve(),
+  },
+  t: (str: string) => str,
+});
 
 export const initReactI18next = {
+  init: () => undefined,
   type: '3rdParty',
-  init: () => {},
 };

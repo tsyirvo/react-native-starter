@@ -18,9 +18,9 @@ export const useCheckNetworkStateOnMount = () => {
 
     if (!isInternetReachable) {
       Toaster.show({
-        type: 'info',
         text1: t('appConfig.networkStateCheck.title'),
         text2: t('appConfig.networkStateCheck.message'),
+        type: 'info',
       });
     }
   };
@@ -29,8 +29,8 @@ export const useCheckNetworkStateOnMount = () => {
     checkNetworkState().catch(() => {
       ErrorMonitoring.breadcrumbs({
         category: 'network',
-        type: 'network',
         message: 'Failed to check network state',
+        type: 'network',
       });
     });
   });

@@ -6,12 +6,13 @@ import * as Device from 'expo-device';
 import * as Updates from 'expo-updates';
 
 import { config } from '$domain/constants';
-import { User } from '$domain/entities';
+import type { User } from '$domain/entities';
 
 import type { Primitives } from '$types';
 
 const prodSampleRate = 0.5;
 const fullSampleRate = 1;
+const APPLE_URL_REGEX = /apple.com/i;
 
 export const routingInstrumentation = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: true,
@@ -26,30 +27,18 @@ class ErrorMonitoringClass {
     const isEnabled = config.env !== 'development';
 
     if (!config.sentryDsn) {
-      // eslint-disable-next-line no-console
       console.log('Failed to initialize Sentry - No DSN found');
 
       return;
     }
 
     Sentry.init({
-      dsn: config.sentryDsn,
-      debug: false,
-      tracesSampleRate: sampleRate,
-      enableAppStartTracking: true,
-      enableNativeFramesTracking: true,
-      enableStallTracking: true,
-      enableUserInteractionTracing: true,
-      enableAutoSessionTracking: true,
-      enabled: isEnabled,
-      environment: config.env,
-      integrations: [routingInstrumentation],
-      denyUrls: [/apple.com/i],
       beforeBreadcrumb(breadcrumb) {
-        if (typeof breadcrumb.data?.url === 'string') {
-          if (/apple.com/i.exec(breadcrumb.data.url)) {
-            return null;
-          }
+        if (
+          typeof breadcrumb.data?.url === 'string' &&
+          APPLE_URL_REGEX.exec(breadcrumb.data.url)
+        ) {
+          return null;
         }
 
         if (breadcrumb.category === 'console') {
@@ -58,6 +47,18 @@ class ErrorMonitoringClass {
 
         return breadcrumb;
       },
+      debug: false,
+      denyUrls: [APPLE_URL_REGEX],
+      dsn: config.sentryDsn,
+      enableAppStartTracking: true,
+      enableAutoSessionTracking: true,
+      enabled: isEnabled,
+      enableNativeFramesTracking: true,
+      enableStallTracking: true,
+      enableUserInteractionTracing: true,
+      environment: config.env,
+      integrations: [routingInstrumentation],
+      tracesSampleRate: sampleRate,
     });
 
     this.setSessionTags();
@@ -65,9 +66,9 @@ class ErrorMonitoringClass {
 
   setSessionTags() {
     Sentry.setExtras({
-      manifest: Updates.manifest,
       deviceYearClass: Device.deviceYearClass,
       linkingUri: Constants.linkingUri,
+      manifest: Updates.manifest,
     });
 
     Sentry.setTag('expoChannel', Updates.channel);
@@ -82,8 +83,8 @@ class ErrorMonitoringClass {
 
   setUser(user: User) {
     Sentry.setUser({
-      id: user.id,
       email: user.email,
+      id: user.id,
     });
   }
 

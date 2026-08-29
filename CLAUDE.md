@@ -13,8 +13,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Quality & Linting
 
 - `yarn lint:ts` - Run TypeScript type checking
-- `yarn lint` - Run ESLint with auto-fix
-- `yarn prettify` - Format code with Prettier
+- `yarn lint` - Run Biome with auto-fix (lint + format + import sorting)
+- `yarn lint:ci` - Read-only Biome check for CI (`biome ci`)
+- `yarn format` / `yarn format:check` - Format / check formatting with Biome
 - `yarn pretty:check` - Check Prettier formatting
 
 ## Architecture Overview
@@ -32,7 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **React Native** with **Expo** and Development Builds
 - **Expo Router** for file-based routing
-- **TypeScript** with custom ESLint config
+- **TypeScript** with Biome (Ultracite presets) linting/formatting
 - **Unistyles** for theming and styling
 - **GraphQL** with CodeGen and TanStack Query
 - **Zustand** for state management
@@ -117,7 +118,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Prefer async/await where possible and always handle error cases
 - Always wrap arrow function args in parentheses
 - Never define inline styles and always use Unistyles's StyleSheet API
-- When there are ESLint warning, always try to fix them, and ask for feedback if you can't
+- When there are lint warnings, always try to fix them, and ask for feedback if you can't
 - For components, hooks or utils used outside of the current folder, create an index.ts file that does the exporting by using the `export * from X` syntax.
 
 ### React Component Structure
@@ -130,7 +131,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Code Quality
 
-- ESLint configuration is defined at the root of the project
+- Linting/formatting rules come from the [`ultracite`](https://github.com/haydenbleasel/ultracite) presets in `biome.jsonc` (`ultracite/biome/core` + `ultracite/biome/react`); deviations from the defaults are documented with comments in that file
 - TypeScript strict mode enabled
 - React strict mode is also enabled
-- Always run `yarn lint`, `yarn lint:ts` and `yarn prettify` then fix potential errors before finishing a task
+- Always run `yarn lint`, `yarn lint:ts` and `yarn format` then fix potential errors before finishing a task
