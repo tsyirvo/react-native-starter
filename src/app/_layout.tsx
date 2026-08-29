@@ -1,4 +1,4 @@
-import '@formatjs/intl-getcanonicallocales/polyfill';
+import '@formatjs/intl-getcanonicallocales/polyfill.js';
 import 'intl-pluralrules';
 import '../infra/i18n';
 
@@ -7,11 +7,11 @@ import * as Sentry from '@sentry/react-native';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { StrictMode, type ErrorInfo } from 'react';
+import { type ErrorInfo, StrictMode } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
-import { StackAnimationTypes } from 'react-native-screens';
+import type { StackAnimationTypes } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
 import { StyleSheet } from 'react-native-unistyles';
 
@@ -83,33 +83,27 @@ const RootLayout = () => {
                   <KeyboardProvider>
                     <AuthContextProvider>
                       <SubscriptionContextProvider>
-                        <>
-                          <Stack screenOptions={screenOptions}>
-                            <Stack.Protected
-                              guard={!isBootstrappingApplication}
-                            >
-                              <Stack.Protected
-                                guard={config.isStorybookEnabled}
-                              >
-                                <Stack.Screen name="Storybook" />
-                              </Stack.Protected>
-
-                              <Stack.Protected guard={!isUserLoggedIn}>
-                                <Stack.Screen name="Login" />
-                              </Stack.Protected>
-
-                              <Stack.Protected guard={isUserLoggedIn}>
-                                <Stack.Screen name="(protected)/(tabs)" />
-                              </Stack.Protected>
+                        <Stack screenOptions={screenOptions}>
+                          <Stack.Protected guard={!isBootstrappingApplication}>
+                            <Stack.Protected guard={config.isStorybookEnabled}>
+                              <Stack.Screen name="Storybook" />
                             </Stack.Protected>
-                          </Stack>
 
-                          <Toast config={toastConfig} />
+                            <Stack.Protected guard={!isUserLoggedIn}>
+                              <Stack.Screen name="Login" />
+                            </Stack.Protected>
 
-                          <AppUpdateNeeded />
+                            <Stack.Protected guard={isUserLoggedIn}>
+                              <Stack.Screen name="(protected)/(tabs)" />
+                            </Stack.Protected>
+                          </Stack.Protected>
+                        </Stack>
 
-                          <MaintenanceMode />
-                        </>
+                        <Toast config={toastConfig} />
+
+                        <AppUpdateNeeded />
+
+                        <MaintenanceMode />
                       </SubscriptionContextProvider>
                     </AuthContextProvider>
                   </KeyboardProvider>

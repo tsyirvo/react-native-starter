@@ -15,13 +15,13 @@ const getDeviceRegion = () => {
   const primaryLocale = locales[PRIMARY_LOCALIZATION];
   const primaryCalendar = calendar[PRIMARY_LOCALIZATION];
 
-  const region = primaryLocale?.regionCode;
-  const languageTag = primaryLocale?.languageTag;
-  const timezone = primaryCalendar?.timeZone;
+  const region = primaryLocale.regionCode;
+  const languageTag = primaryLocale.languageTag;
+  const timezone = primaryCalendar.timeZone;
 
   return {
     region,
-    languageTag: languageTag ?? config.defaultLocale,
+    languageTag,
     timezone: timezone ?? 'Africa/Abidjan', // Default timezone being GMT +0
   };
 };
