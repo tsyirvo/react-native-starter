@@ -3,7 +3,6 @@ import i18next from 'i18next';
 import type { config } from '$domain/constants';
 import { Analytics } from '$infra/analytics';
 import { initDateLocale } from '$infra/date';
-import { Notifications } from '$infra/notifications';
 import { Toaster } from '$infra/toaster';
 
 import { setSavedAppLocale } from './languageDetector';
@@ -26,7 +25,6 @@ export const changeLanguage = async (language: SupportedLanguages) => {
 
     initDateLocale(language);
 
-    Notifications.setUserLanguage(language);
     Analytics.setUserProperty('language', language);
 
     Toaster.show({

@@ -44,13 +44,10 @@ class ErrorMonitoringClass {
       enabled: isEnabled,
       environment: config.env,
       integrations: [routingInstrumentation],
-      denyUrls: [/onesignal.com/i, /apple.com/i],
+      denyUrls: [/apple.com/i],
       beforeBreadcrumb(breadcrumb) {
         if (typeof breadcrumb.data?.url === 'string') {
-          if (
-            /onesignal.com/i.exec(breadcrumb.data.url) ??
-            /apple.com/i.exec(breadcrumb.data.url)
-          ) {
+          if (/apple.com/i.exec(breadcrumb.data.url)) {
             return null;
           }
         }

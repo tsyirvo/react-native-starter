@@ -37,7 +37,6 @@ const client = z.object({
   ITUNES_ITEM_ID: z.string(),
   POSTHOG_API_KEY: z.string(),
   SENTRY_DSN: z.string(),
-  ONE_SIGNAL_APP_ID: z.string(),
   REVENUE_CAT_APPLE_API_KEY: z.string(),
   REVENUE_CAT_ANDROID_API_KEY: z.string(),
 });
@@ -69,7 +68,6 @@ const _clientEnv = {
   ITUNES_ITEM_ID: process.env.ITUNES_ITEM_ID,
   POSTHOG_API_KEY: process.env.POSTHOG_API_KEY,
   SENTRY_DSN: process.env.SENTRY_DSN,
-  ONE_SIGNAL_APP_ID: process.env.ONE_SIGNAL_APP_ID,
   REVENUE_CAT_APPLE_API_KEY: process.env.REVENUE_CAT_APPLE_API_KEY,
   REVENUE_CAT_ANDROID_API_KEY: process.env.REVENUE_CAT_ANDROID_API_KEY,
 };

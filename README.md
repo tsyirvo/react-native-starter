@@ -8,7 +8,6 @@
   - [Configure the tooling](#configure-the-tooling)
   - [Environments](#environments)
   - [Internationalization](#internationalization)
-  - [Adding images](#adding-images)
   - [Using Storybook](#using-storybook)
   - [Tests](#tests)
   - [Formatting and type checking](#formatting-and-type-checking)
@@ -32,7 +31,6 @@ On the Developer Experience side, a test stack is setup (unit, functional and E2
 
 There are also some utilities like:
 
-- A script to compress images and to create the different files for each resolution
 - Converting `.svg` files into React components that can be used easily
 - A pre-commit hook that runs on staged files for code quality checks
 - Tooling to release and tag new versions
@@ -41,7 +39,6 @@ On the features side, there are already some things to get started quickly with 
 
 - A GraphQL client with TanStack Query and CodeGen
 - Form validation with Keyboard handling
-- Notifications
 - App Store rating prompt
 - Feature Flags
 - Error monitoring
@@ -94,8 +91,6 @@ The most useful libraries already configured are the following:
 
 [GraphQL](https://graphql.org/) with [CodeGen](https://the-guild.dev/graphql/codegen) and [TanStack Query](https://tanstack.com/query/latest) on the API side
 
-[One Signal](https://onesignal.com/) for notifications
-
 [PostHog](https://www.flagsmith.com/) for analytics and feature flags
 
 [Zustand](https://zustand-demo.pmnd.rs/) for a global store
@@ -115,7 +110,6 @@ The libraries that needs configurations are the ones exposed inside the `.env` f
 - Expo
 - Sentry
 - PostHog
-- One Signal
 - RevenueCat
 
 ## Environments
@@ -133,16 +127,6 @@ All the translations are managed on separate files located in the `src/infra/i18
 The default locale is English and other locales (French being already provided) are linted against the English file. Meaning that all keys in the English translation files need to be defined in the other files. This prevents having an app with missing translations on some locales.
 
 Refer to the documentation of [i18next](https://www.i18next.com/) for explanations on how to use it.
-
-## Adding images
-
-To simplify adding new images to the project and optimizing them, you can run the following command:
-
-```
-yarn image:add [path/to/the/image/to/add|path/to/the/folder]
-```
-
-This CLI tool compresses the images and creates different variants (@3x, @2x and the regular size) that are loaded by React Native depending on the device resolution.
 
 ## Using Storybook
 

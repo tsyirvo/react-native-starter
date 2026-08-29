@@ -6,7 +6,6 @@ import { Analytics } from '$infra/analytics';
 import { clearAccessAndRefreshTokens } from '$infra/api/token';
 import { Logger } from '$infra/logger';
 import { ErrorMonitoring } from '$infra/monitoring';
-import { Notifications } from '$infra/notifications';
 import { Purchase } from '$infra/purchase';
 import {
   clearPersistedAppStore,
@@ -41,20 +40,14 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     ErrorMonitoring.setUser(user);
 
     await Purchase.setUser(user);
-
-    Notifications.setUser(user.id);
-    Notifications.setUserEmail(user.email);
   }, []);
 
-  const stopTrackingUser = useCallback(async (user: User) => {
+  const stopTrackingUser = useCallback(async () => {
     Analytics.reset();
 
     ErrorMonitoring.clearUser();
 
     await Purchase.clearUser();
-
-    Notifications.removeUser();
-    Notifications.removeUserEmail(user.email);
   }, []);
 
   useEffect(() => {
@@ -92,7 +85,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const signOut = useCallback(async () => {
     try {
       if (user) {
-        await stopTrackingUser(user);
+        await stopTrackingUser();
       }
 
       setUser(null);

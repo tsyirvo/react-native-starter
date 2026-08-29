@@ -60,10 +60,6 @@ const plugins: ExpoConfig['plugins'] = [
   'expo-image',
   'expo-status-bar',
   'expo-secure-store',
-  [
-    'onesignal-expo-plugin',
-    { mode: isDevelopmentEnv ? 'development' : 'production' },
-  ],
   'expo-router',
   ['react-native-permissions', { iosPermissions: ['Notifications'] }],
   [
@@ -110,9 +106,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     entitlements: {
       'aps-environment': isDevelopmentEnv ? 'development' : 'production',
-      'com.apple.security.application-groups': [
-        `group.${Env.BUNDLE_ID}.onesignal`,
-      ],
     },
     icon: {
       dark: 'assets/icons/ios-dark.png',
@@ -154,7 +147,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
   },
-  buildCacheProvider: 'eas',
   locales: {
     fr: './src/infra/i18n/nativeFiles/fr.json',
     en: './src/infra/i18n/nativeFiles/en.json',
