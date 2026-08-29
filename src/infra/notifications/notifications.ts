@@ -1,3 +1,4 @@
+import type { NotificationClickEvent } from 'react-native-onesignal';
 import { OneSignal } from 'react-native-onesignal';
 
 import { config } from '$domain/constants';
@@ -55,9 +56,12 @@ class NotificationsClass {
   /* ***** *****  Listeners  ***** ***** */
 
   watchForNotificationPress() {
-    OneSignal.Notifications.addEventListener('click', (event) => {
-      Logger.dev('OneSignal: notification clicked:', event);
-    });
+    OneSignal.Notifications.addEventListener(
+      'click',
+      (event: NotificationClickEvent) => {
+        Logger.dev('OneSignal: notification clicked:', event);
+      },
+    );
   }
 }
 

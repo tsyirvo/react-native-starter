@@ -11,7 +11,7 @@ export const request =
   <TData, TVariables extends Variables>(
     query: string,
     variables?: TVariables,
-    options?: HeadersInit,
+    options?: HeadersInit_,
   ): (() => Promise<TData>) =>
   async () => {
     client = getQueryClient(config.apiURL);

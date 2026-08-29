@@ -7,7 +7,7 @@ const isDevelopmentEnv = Env.APP_ENV === 'development';
 
 const plugins: ExpoConfig['plugins'] = [
   [
-    '@sentry/react-native/expo',
+    '@sentry/react-native',
     {
       organization: Env.SENTRY_ORG,
       project: Env.SENTRY_PROJECT,
@@ -57,6 +57,8 @@ const plugins: ExpoConfig['plugins'] = [
     },
   ],
   'expo-asset',
+  'expo-image',
+  'expo-status-bar',
   'expo-secure-store',
   [
     'onesignal-expo-plugin',
@@ -125,7 +127,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       monochromeImage: './assets/icons/adaptive-icon.png',
       backgroundColor: '#0C0D0F',
     },
-    edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: true,
     package: Env.PACKAGE,
     playStoreUrl: `https://play.google.com/store/apps/details?id=${Env.PACKAGE}`,
@@ -162,7 +163,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     typedRoutes: true,
     reactCompiler: true,
   },
-  newArchEnabled: true,
   plugins,
   extra: {
     ...ClientEnv,

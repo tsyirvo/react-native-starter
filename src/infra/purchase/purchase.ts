@@ -7,8 +7,8 @@ import RevenueCat, {
   LOG_LEVEL as PURCHASES_LOG_LEVEL,
 } from 'react-native-purchases';
 
-import { IS_IOS, config } from '$domain/constants';
-import { User } from '$domain/entities';
+import { config, IS_IOS } from '$domain/constants';
+import type { User } from '$domain/entities';
 import { hasActiveEntitlements } from '$domain/subscription';
 import { ErrorMonitoring } from '$infra/monitoring';
 
@@ -72,7 +72,7 @@ class PurchaseClass {
   }
 
   async syncPurchases() {
-    await RevenueCat.syncPurchases();
+    await RevenueCat.syncPurchasesForResult();
   }
 
   async makePurchase(purchasedPackage: PurchasesPackage) {

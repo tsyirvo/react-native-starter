@@ -5,7 +5,8 @@ import type { AvailableRemoteConfig } from '../featureFlags.types';
 
 export const useGetRemoteConfigSync = () => {
   const getFlagPayloadSync = <T>(flagKey: AvailableRemoteConfig) => {
-    const value = productTrackingClient.getFeatureFlagPayload(flagKey);
+    const result = productTrackingClient.getFeatureFlagResult(flagKey);
+    const value = result?.payload;
 
     if (!value) {
       return defaultRemoteConfig[flagKey];

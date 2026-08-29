@@ -5,10 +5,10 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "target": "ESNext",
-    "baseUrl": ".",
+    "types": ["jest", "node"],
     "paths": {
-      "$*": ["src/*"],
-      "*": ["*", "*.ios.tsx", "*.android.tsx"]
+      "$*": ["./src/*"],
+      "*": ["./*", "./*.ios.tsx", "./*.android.tsx"]
     },
     "plugins": [
       {

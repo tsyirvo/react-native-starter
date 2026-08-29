@@ -28,3 +28,15 @@ declare module '*.mp4' {
 
   export default content;
 }
+
+interface IdleDeadline {
+  didTimeout: boolean;
+  timeRemaining(): number;
+}
+
+declare function requestIdleCallback(
+  callback: (deadline: IdleDeadline) => void,
+  options?: { timeout?: number },
+): number;
+
+declare function cancelIdleCallback(handle: number): void;
