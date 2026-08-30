@@ -28,6 +28,7 @@ import {
   AppUpdateNeeded,
   FullscreenErrorBoundary,
   MaintenanceMode,
+  NavigationThemeProvider,
   Splashscreen,
 } from '$shared/components';
 import {
@@ -83,21 +84,27 @@ const RootLayout = () => {
                   <KeyboardProvider>
                     <AuthContextProvider>
                       <SubscriptionContextProvider>
-                        <Stack screenOptions={screenOptions}>
-                          <Stack.Protected guard={!isBootstrappingApplication}>
-                            <Stack.Protected guard={config.isStorybookEnabled}>
-                              <Stack.Screen name="Storybook" />
-                            </Stack.Protected>
+                        <NavigationThemeProvider>
+                          <Stack screenOptions={screenOptions}>
+                            <Stack.Protected
+                              guard={!isBootstrappingApplication}
+                            >
+                              <Stack.Protected
+                                guard={config.isStorybookEnabled}
+                              >
+                                <Stack.Screen name="Storybook" />
+                              </Stack.Protected>
 
-                            <Stack.Protected guard={!isUserLoggedIn}>
-                              <Stack.Screen name="Login" />
-                            </Stack.Protected>
+                              <Stack.Protected guard={!isUserLoggedIn}>
+                                <Stack.Screen name="Login" />
+                              </Stack.Protected>
 
-                            <Stack.Protected guard={isUserLoggedIn}>
-                              <Stack.Screen name="(protected)/(tabs)" />
+                              <Stack.Protected guard={isUserLoggedIn}>
+                                <Stack.Screen name="(protected)/(tabs)" />
+                              </Stack.Protected>
                             </Stack.Protected>
-                          </Stack.Protected>
-                        </Stack>
+                          </Stack>
+                        </NavigationThemeProvider>
 
                         <Toast config={toastConfig} />
 

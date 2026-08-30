@@ -2,14 +2,14 @@ import { Stack } from 'expo-router';
 
 import { useStackScreenOptions } from '$shared/components';
 
-const FeaturesLayout = () => {
+const ProfileLayout = () => {
   const screenOptions = useStackScreenOptions();
 
   return (
     <Stack screenOptions={screenOptions}>
-      <Stack.Screen name="index" />
+      <Stack.Screen name="Profile" />
     </Stack>
   );
 };
 
-export default FeaturesLayout;
+export default ProfileLayout;

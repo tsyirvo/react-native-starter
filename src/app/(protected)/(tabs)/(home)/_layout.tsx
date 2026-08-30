@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 
 import { useStackScreenOptions } from '$shared/components';
 
-const FeaturesLayout = () => {
+const HomeLayout = () => {
   const screenOptions = useStackScreenOptions();
 
   return (
@@ -12,4 +12,4 @@ const FeaturesLayout = () => {
   );
 };
 
-export default FeaturesLayout;
+export default HomeLayout;
