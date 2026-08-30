@@ -6,4 +6,5 @@ export * from './layout';
 export * from './loader';
 export * from './primitives';
 export * from './safeView';
+export * from './screenTitle';
 export * from './separator';

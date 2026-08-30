@@ -1,1 +1,1 @@
-export * from './tabBarRenderers.utils';
+export * from './stackScreenOptions.utils';

@@ -25,27 +25,6 @@ const plugins: ExpoConfig['plugins'] = [
     },
   ],
   [
-    'app-icon-badge',
-    {
-      badges: [
-        {
-          background: '#FFFFFF',
-          color: 'black',
-          position: 'bottom',
-          text: Env.APP_ENV,
-          type: 'banner',
-        },
-        {
-          background: '#FFFFFF',
-          color: 'black',
-          text: `V${Env.VERSION}`,
-          type: 'ribbon',
-        },
-      ],
-      enabled: !isProductionEnv,
-    },
-  ],
-  [
     'expo-font',
     {
       fonts: [

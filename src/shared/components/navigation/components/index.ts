@@ -1,3 +1,3 @@
 export * from './HeaderBackground';
 export * from './HeaderLeft';
-export * from './TabBarIcon';
+export * from './NavigationThemeProvider';

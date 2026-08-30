@@ -38,6 +38,12 @@ export const messages = {
       success: 'The permission has been granted',
       title: 'Request Notification permission',
     },
+    screenTitleShowcase: {
+      cta: 'Open the showcase',
+      description:
+        'See the ScreenTitle component in action with a collapsing large title and a native toolbar button.',
+      title: 'Native screen title',
+    },
   },
   forms: {
     optional: 'Optional',
@@ -105,6 +111,37 @@ export const messages = {
   profileScreen: {
     logout: 'Logout',
     title: 'Profile',
+  },
+  screenTitleShowcaseScreen: {
+    alert: {
+      description:
+        'This alert was triggered by the toolbar button rendered in the native header.',
+      title: 'Toolbar button pressed',
+    },
+    sections: {
+      largeTitle: {
+        content:
+          'The title starts as a large one below the header and shrinks into the navigation bar as you scroll, exactly like in native apps. The ScrollView only needs "contentInsetAdjustmentBehavior" set to "automatic" for the system to handle the transition.',
+        title: 'Collapsing large title',
+      },
+      nativeFeel: {
+        content:
+          'Everything is rendered by the native header: no custom view is drawn on top of the screen, so the blur, the Liquid Glass material on iOS 26 and the back gesture keep working as expected.',
+        title: 'Fully native header',
+      },
+      scrollForMore: {
+        content:
+          'Keep scrolling to watch the large title collapse, then scroll back up to see it expand again. The toolbar button stays available the whole time.',
+        title: 'Try it out',
+      },
+      toolbar: {
+        content:
+          'The toolbar prop accepts a list of items, each one rendered as a native header button. On iOS an SF Symbol can be used as icon, while Android falls back to the label. Tap the button at the top right to trigger an alert.',
+        title: 'Native toolbar buttons',
+      },
+    },
+    title: 'Screen title',
+    toolbarButton: 'About',
   },
   tabs: {
     features: 'Features',

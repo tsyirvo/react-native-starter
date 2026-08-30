@@ -90,3 +90,8 @@ expo-env.d.ts
 
 # hk local hook overrides
 hk.local.pkl
+
+# The macOS `Icon?` rule shipped by most global gitignores also matches any
+# `icons/` folder on a case-insensitive filesystem, silently dropping our icon
+# assets. That rule only ever targeted a file literally named `Icon\r`.
+!icons/

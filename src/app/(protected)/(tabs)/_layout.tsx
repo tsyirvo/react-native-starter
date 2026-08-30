@@ -1,55 +1,73 @@
-import { Tabs } from 'expo-router';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
 import { useTranslation } from 'react-i18next';
-import { useUnistyles } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import {
-  renderFeaturesIcon,
-  renderHomeIcon,
-  renderProfileIcon,
-} from '$shared/components';
+import { TABS_CONFIG } from '$application/navigation';
+import { IS_ANDROID, SUPPORTS_LIQUID_GLASS } from '$domain/constants';
 
 const TabLayout = () => {
   const { t } = useTranslation();
 
   const { theme } = useUnistyles();
 
+  const androidTabBarProps = IS_ANDROID
+    ? {
+        backgroundColor: theme.colors.bg_base,
+        indicatorColor: theme.colors.core_tertiary,
+        rippleColor: theme.colors.core_tertiary,
+        tabBarRespectsIMEInsets: true,
+      }
+    : {};
+
+  const liquidGlassProps = SUPPORTS_LIQUID_GLASS
+    ? { minimizeBehavior: 'onScrollDown' as const }
+    : {};
+
   return (
-    <Tabs
-      backBehavior="order"
-      screenOptions={{
-        ...globalScreenOptions,
-        tabBarActiveTintColor: theme.colors.core_primary,
-        tabBarInactiveTintColor: theme.colors.content_secondary,
-        tabBarStyle: {
-          backgroundColor: theme.colors.bg_base,
-        },
+    <NativeTabs
+      backBehavior="history"
+      disableTransparentOnScrollEdge={!SUPPORTS_LIQUID_GLASS}
+      iconColor={{
+        default: theme.colors.content_secondary,
+        selected: theme.colors.core_primary,
       }}
+      labelStyle={{
+        default: styles.defaultLabel,
+        selected: styles.selectedLabel,
+      }}
+      tintColor={theme.colors.core_primary}
+      {...androidTabBarProps}
+      {...liquidGlassProps}
     >
-      <Tabs.Screen name="index" options={{ tabBarIcon: renderHomeIcon }} />
+      {TABS_CONFIG.map((tab) => (
+        <NativeTabs.Trigger
+          accessibilityLabel={t(tab.labelKey)}
+          key={tab.name}
+          name={tab.name}
+          testID={tab.testID}
+        >
+          <NativeTabs.Trigger.Label selectedStyle={styles.selectedLabel}>
+            {t(tab.labelKey)}
+          </NativeTabs.Trigger.Label>
 
-      <Tabs.Screen
-        name="features"
-        options={{ tabBarIcon: renderFeaturesIcon, title: t('tabs.features') }}
-      />
-
-      <Tabs.Screen
-        name="Profile"
-        options={{
-          tabBarBadge: 2,
-          tabBarBadgeStyle: {
-            backgroundColor: theme.colors.border_default,
-            color: theme.colors.core_primary,
-          },
-          tabBarIcon: renderProfileIcon,
-        }}
-      />
-    </Tabs>
+          <NativeTabs.Trigger.Icon
+            md={tab.md}
+            selectedColor={theme.colors.core_primary}
+            sf={tab.sf}
+          />
+        </NativeTabs.Trigger>
+      ))}
+    </NativeTabs>
   );
 };
 
-const globalScreenOptions = {
-  gestureEnabled: false,
-  headerShown: false,
-};
+const styles = StyleSheet.create((theme) => ({
+  defaultLabel: {
+    color: theme.colors.content_secondary,
+  },
+  selectedLabel: {
+    color: theme.colors.core_primary,
+  },
+}));
 
 export default TabLayout;

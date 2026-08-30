@@ -40,6 +40,12 @@ export const messages: MessagesTypes = {
       success: 'La permission a bien été accordée',
       title: 'Demander les permissions de Notification',
     },
+    screenTitleShowcase: {
+      cta: 'Ouvrir la démo',
+      description:
+        'Voir le composant ScreenTitle en action avec un grand titre qui se replie et un bouton de toolbar natif.',
+      title: 'Titre de page natif',
+    },
   },
   forms: {
     optional: 'Optionnel',
@@ -107,6 +113,37 @@ export const messages: MessagesTypes = {
   profileScreen: {
     logout: 'Se déconnecter',
     title: 'Profil',
+  },
+  screenTitleShowcaseScreen: {
+    alert: {
+      description:
+        'Cette alerte a été déclenchée par le bouton de toolbar affiché dans le header natif.',
+      title: 'Bouton de toolbar pressé',
+    },
+    sections: {
+      largeTitle: {
+        content:
+          'Le titre s\'affiche en grand sous le header puis se replie dans la barre de navigation au scroll, comme dans les apps natives. Il suffit que la ScrollView ait "contentInsetAdjustmentBehavior" à "automatic" pour que le système gère la transition.',
+        title: 'Grand titre repliable',
+      },
+      nativeFeel: {
+        content:
+          "Tout est rendu par le header natif : aucune vue custom n'est dessinée par dessus l'écran, donc le flou, le matériau Liquid Glass sur iOS 26 et le geste de retour continuent de fonctionner.",
+        title: 'Header 100% natif',
+      },
+      scrollForMore: {
+        content:
+          'Continuez à scroller pour voir le grand titre se replier, puis remontez pour le voir se déployer à nouveau. Le bouton de toolbar reste accessible en permanence.',
+        title: 'À essayer',
+      },
+      toolbar: {
+        content:
+          "La prop toolbar accepte une liste d'items, chacun rendu comme un bouton natif du header. Sur iOS un SF Symbol peut servir d'icône, tandis qu'Android retombe sur le label. Appuyez sur le bouton en haut à droite pour déclencher une alerte.",
+        title: 'Boutons de toolbar natifs',
+      },
+    },
+    title: 'Titre de page',
+    toolbarButton: 'À propos',
   },
   tabs: {
     features: 'Fonctionnalités',

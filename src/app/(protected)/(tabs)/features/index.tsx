@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
@@ -6,33 +6,56 @@ import { StyleSheet } from 'react-native-unistyles';
 import { Notifications } from '$features/notifications';
 import { Screen, StoreUpdateAvailableBanner } from '$shared/components';
 import { useIsNewStoreVersionAvailable } from '$shared/hooks';
-import { Box } from '$shared/uiKit';
+import { Box, Button, Stack, Text } from '$shared/uiKit';
 
 const FeaturesScreen = () => {
   const { t } = useTranslation();
 
+  const router = useRouter();
+
   const { shouldShowBanner } = useIsNewStoreVersionAvailable();
 
+  const onScreenTitleShowcasePress = () => {
+    router.push('/features/ScreenTitleShowcase');
+  };
+
   return (
-    <>
-      <Stack.Screen options={{ title: t('tabs.features') }} />
+    <Screen edges={['top']} testID="otherScreen-screen">
+      <ScrollView>
+        <Box gap="spacing_16" px="spacing_16" py="spacing_8">
+          {shouldShowBanner ? (
+            <Box pb="spacing_16">
+              <StoreUpdateAvailableBanner />
+            </Box>
+          ) : null}
 
-      <Screen edges={['top']} testID="otherScreen-screen">
-        <ScrollView>
-          <Box px="spacing_16" py="spacing_8">
-            {shouldShowBanner ? (
-              <Box pb="spacing_16">
-                <StoreUpdateAvailableBanner />
+          <View style={styles.section}>
+            <Notifications />
+          </View>
+
+          <View style={styles.section}>
+            <Stack gap="spacing_8">
+              <Text variant="large">
+                {t('featuresScreen.screenTitleShowcase.title')}
+              </Text>
+
+              <Text color="content_secondary">
+                {t('featuresScreen.screenTitleShowcase.description')}
+              </Text>
+
+              <Box self="flex-start">
+                <Button.Text
+                  onPress={onScreenTitleShowcasePress}
+                  testID="ScreenTitleShowcaseButton"
+                >
+                  {t('featuresScreen.screenTitleShowcase.cta')}
+                </Button.Text>
               </Box>
-            ) : null}
-
-            <View style={styles.section}>
-              <Notifications />
-            </View>
-          </Box>
-        </ScrollView>
-      </Screen>
-    </>
+            </Stack>
+          </View>
+        </Box>
+      </ScrollView>
+    </Screen>
   );
 };
 
