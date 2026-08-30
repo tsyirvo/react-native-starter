@@ -1,4 +1,4 @@
-name: Cache Yarn dependencies
+name: Cache Bun dependencies
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - develop
   pull_request:
     paths:
-      - '.github/workflows/caching.yml'
+      - ".github/workflows/caching.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -32,11 +32,7 @@ jobs:
       - name: Generate cache key
         id: key
         run: |
-          echo "cache-key=node26-${{ hashFiles('**/yarn.lock') }}-${{ runner.os }}" >> $GITHUB_OUTPUT
-
-      - name: Get Yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+          echo "cache-key=node26-${{ hashFiles('**/bun.lock') }}-${{ runner.os }}" >> $GITHUB_OUTPUT
 
       - name: Lookup cache
         id: cache
@@ -44,7 +40,7 @@ jobs:
         with:
           path: |
             node_modules
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            ~/.bun/install/cache
           key: ${{ steps.key.outputs.cache-key }}
           lookup-only: true
 
@@ -63,13 +59,14 @@ jobs:
         with:
           node-version: 26
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+
       - name: Install dependencies
         shell: bash
-        run: yarn install --immutable --frozen-lockfile
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+        run: bun install --frozen-lockfile
 
       - name: Save cache
         id: cache
@@ -77,7 +74,7 @@ jobs:
         with:
           path: |
             node_modules
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            ~/.bun/install/cache
           key: ${{ needs.search.outputs.cache-key }}
 
   cleanup:

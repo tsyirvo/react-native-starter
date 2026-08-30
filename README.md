@@ -51,24 +51,24 @@ There are a few other things setup which you can discover on your own ;)
 
 ## The setup
 
-The toolchain (Node, Yarn, EAS CLI) is managed by [mise](https://mise.jdx.dev/), so everyone works with the supported versions locally. Install mise, then from the repo root:
+The toolchain (Node, Bun, EAS CLI) is managed by [mise](https://mise.jdx.dev/), so everyone works with the supported versions locally. Install mise, then from the repo root:
 
 ```sh
 mise trust
 mise install
 ```
 
-`mise install` reads the `[tools]` section of `mise.toml` and installs what's missing, but it does not change the `PATH` of the current shell. For that you need mise's [shell activation hook](https://mise.jdx.dev/getting-started.html#activate-mise), which puts the right `node` and `yarn` on your `PATH` as soon as you enter the directory.
+`mise install` reads the `[tools]` section of `mise.toml` and installs what's missing, but it does not change the `PATH` of the current shell. For that you need mise's [shell activation hook](https://mise.jdx.dev/getting-started.html#activate-mise), which puts the right `node` and `bun` on your `PATH` as soon as you enter the directory.
 
 Then install the packages:
 
 ```sh
-yarn
+bun install
 ```
 
-Without the activation hook, prefix the commands with `mise exec --` (e.g. `mise exec -- yarn`) so they run against the versions from `mise.toml`.
+Without the activation hook, prefix the commands with `mise exec --` (e.g. `mise exec -- bun install`) so they run against the versions from `mise.toml`.
 
-If you'd rather not use mise, the project only requires Node >= 26 and Yarn 4 (the pinned Yarn release lives in `.yarn/releases`), and every task below has a plain `yarn` equivalent.
+If you'd rather not use mise, the project only requires Node >= 26 and Bun >= 1.3 (the exact version is pinned through `packageManager` in `package.json`), and every task below has a plain `bun run` equivalent.
 
 ## Tasks with mise
 
@@ -105,13 +105,13 @@ Since a few SDKs are provided, secrets are required to use the app. You can have
 To launch the React Native packager:
 
 ```sh
-yarn start:[dev|staging|production]
+bun run start:[dev|staging|production]
 ```
 
 then
 
 ```sh
-yarn build:[dev|staging|production]:[ios|android]
+bun run build:[dev|staging|production]:[ios|android]
 ```
 
 You will then be able to boot an iOS simulator or Android emulator, if installed on your machine.
@@ -176,7 +176,7 @@ A _Storybook_ is configured with some basic stories.
 To access it, you simply have to run the app with the following command:
 
 ```sh
-yarn start:storybook
+bun run start:storybook
 ```
 
 ## Tests
@@ -184,15 +184,17 @@ yarn start:storybook
 There are basic tests with [Jest](https://jestjs.io/) and [Testing Library](https://testing-library.com/) that you can run with:
 
 ```sh
-yarn test
+bun run test
 ```
+
+> Always go through `bun run test`: a bare `bun test` would invoke Bun's own test runner instead of the Jest setup configured here.
 
 For E2E tests, you can use [Maestro](https://maestro.mobile.dev/) for both OS.
 
 First install Maestro on your machine, build the development app onto a simulator then run
 
 ```sh
-yarn test:e2e
+bun run test:e2e
 ```
 
 ## Formatting and type checking
@@ -200,11 +202,11 @@ yarn test:e2e
 The project is using [Biome](https://biomejs.dev/) with the [Ultracite](https://github.com/haydenbleasel/ultracite) presets (linting and formatting) and [TypeScript](https://www.typescriptlang.org/) for type checking, you can run the checks with those commands:
 
 ```sh
-yarn lint:ts
-yarn lint
+bun run lint:ts
+bun run lint
 ```
 
-`yarn lint` auto-fixes issues (safe fixes + import sorting). For CI or a read-only check, use `yarn lint:ci`. Formatting can be run standalone with `yarn format` (`yarn format:check` for the read-only variant).
+`bun run lint` auto-fixes issues (safe fixes + import sorting). For CI or a read-only check, use `bun run lint:ci`. Formatting can be run standalone with `bun run format` (`bun run format:check` for the read-only variant).
 
 There is a pre-commit git hook that run some of those commands to have a consistent formatting and type checking.
 

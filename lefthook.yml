@@ -2,15 +2,15 @@ pre-commit:
   parallel: true
   commands:
     biome:
-      glob: '*.{js,ts,jsx,tsx,json,jsonc}'
-      run: yarn lint {staged_files}
+      glob: "*.{js,ts,jsx,tsx,json,jsonc}"
+      run: bun run lint {staged_files}
     typescript:
-      glob: '*.{ts,tsx}'
-      run: npx tsc-files {staged_files} src/types/react-query.d.ts src/types/declaration.d.ts src/domain/theme/unistyles.ts
+      glob: "*.{ts,tsx}"
+      run: bunx tsc-files {staged_files} src/types/react-query.d.ts src/types/declaration.d.ts src/domain/theme/unistyles.ts
     tests:
-      run: yarn test {staged_files} --findRelatedTests --passWithNoTests --coverage=false
+      run: bun run test {staged_files} --findRelatedTests --passWithNoTests --coverage=false
 
 commit-msg:
   commands:
-    'lint commit message':
-      run: yarn run commitlint --edit {1}
+    "lint commit message":
+      run: bun run commitlint --edit {1}
