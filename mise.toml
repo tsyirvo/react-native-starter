@@ -2,10 +2,21 @@
 node = "26"
 bun = "1.4.0"
 "npm:eas-cli" = "23"
+# Git hook manager, `pkl` is what evaluates hk.pkl
+hk = "1.56.1"
+pkl = "0.30"
 
 [env]
 # Keep the repo's locally installed binaries (Biome, Jest, TS...) on the PATH
 _.path = ["node_modules/.bin"]
+# Let hk resolve its tools through mise so the hooks work even when a
+# contributor has not activated mise in their shell
+HK_MISE = "1"
+
+# Wire the git hooks up as soon as the toolchain is installed, so nobody has to
+# remember to run `hk install` after cloning
+[hooks]
+postinstall = "hk install --mise"
 
 #### QUALITY ####
 
@@ -76,6 +87,30 @@ run = "bun run test:e2e"
 [tasks.ci]
 description = "Run all CI checks (typecheck + biome + test)"
 depends = ["typecheck", "check:ci", "test"]
+
+#### GIT HOOKS ####
+
+[tasks."hooks:install"]
+description = "Register the hk git hooks in this repo"
+run = "hk install --mise"
+
+[tasks."hooks:check"]
+description = "Run the pre-push checks over the whole repo (read-only)"
+run = "hk check --all"
+alias = "hc"
+
+[tasks."hooks:fix"]
+description = "Run the pre-commit fixers over the whole repo"
+run = "hk fix --all"
+alias = "hf"
+
+[tasks."hooks:pre-commit"]
+description = "Run the pre-commit hook on the staged files"
+run = "hk run pre-commit"
+
+[tasks."hooks:pre-push"]
+description = "Run the pre-push hook"
+run = "hk run pre-push"
 
 #### UTILITIES ####
 

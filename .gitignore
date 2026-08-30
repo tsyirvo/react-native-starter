@@ -87,3 +87,6 @@ dist/
 
 expo-env.d.ts
 # @end expo-cli
+
+# hk local hook overrides
+hk.local.pkl
