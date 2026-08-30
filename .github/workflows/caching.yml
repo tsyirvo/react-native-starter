@@ -32,7 +32,7 @@ jobs:
       - name: Generate cache key
         id: key
         run: |
-          echo "cache-key=${{ hashFiles('**/yarn.lock') }}-${{ runner.os }}" >> $GITHUB_OUTPUT
+          echo "cache-key=node26-${{ hashFiles('**/yarn.lock') }}-${{ runner.os }}" >> $GITHUB_OUTPUT
 
       - name: Get Yarn cache directory path
         id: yarn-cache-dir-path

@@ -1,7 +1,7 @@
 [tools]
 node = "26"
 yarn = "4.4.1"
-"npm:eas-cli" = "latest"
+"npm:eas-cli" = "23"
 
 [env]
 # Keep the repo's pinned Yarn release (.yarnrc.yml -> yarnPath) authoritative
@@ -50,7 +50,12 @@ alias = "tc"
 
 [tasks.fix]
 description = "Fix all code quality issues (lint + format)"
-depends = ["lint:fix", "format:fix", "check:fix"]
+# Run sequentially: these all write to the same files, so parallel `depends` would race
+run = [
+  "mise run lint:fix",
+  "mise run format:fix",
+  "mise run check:fix",
+]
 
 #### TESTS ####
 

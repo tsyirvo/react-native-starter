@@ -51,20 +51,22 @@ There are a few other things setup which you can discover on your own ;)
 
 ## The setup
 
-The toolchain (Node, Yarn, EAS CLI) is managed by [mise](https://mise.jdx.dev/), so everyone works with the exact same versions locally. Install mise, then from the repo root:
+The toolchain (Node, Yarn, EAS CLI) is managed by [mise](https://mise.jdx.dev/), so everyone works with the supported versions locally. Install mise, then from the repo root:
 
 ```
 mise trust
 mise install
 ```
 
-`mise install` reads the `[tools]` section of `mise.toml` and installs what's missing. Once mise is activated in your shell, entering the directory automatically puts the right `node` and `yarn` on your `PATH`.
+`mise install` reads the `[tools]` section of `mise.toml` and installs what's missing, but it does not change the `PATH` of the current shell. For that you need mise's [shell activation hook](https://mise.jdx.dev/getting-started.html#activate-mise), which puts the right `node` and `yarn` on your `PATH` as soon as you enter the directory.
 
 Then install the packages:
 
 ```
 yarn
 ```
+
+Without the activation hook, prefix the commands with `mise exec --` (e.g. `mise exec -- yarn`) so they run against the versions from `mise.toml`.
 
 If you'd rather not use mise, the project only requires Node >= 26 and Yarn 4 (the pinned Yarn release lives in `.yarn/releases`), and every task below has a plain `yarn` equivalent.
 
@@ -94,7 +96,7 @@ The tasks are grouped as follows:
 - **Builds** — the local EAS builds, e.g. `build:dev:ios`, `build:staging:android`, `build:production:ios`
 - **Utilities** — `install`, `codegen`, `generate:icons`, `doctor`, `clean`
 
-Tasks declared with `depends` run their dependencies first, and in parallel when they are independent.
+Tasks declared with `depends` run their dependencies first, and in parallel when they are independent. The auto-fixing ones chained by `fix` are the exception: they run one after the other since they all write to the same files.
 
 ## Runing the project
 

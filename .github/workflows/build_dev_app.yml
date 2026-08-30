@@ -30,7 +30,8 @@ jobs:
       - name: Setup Expo
         uses: expo/expo-github-action@v8
         with:
-          eas-version: latest
+          # Keep in sync with the `npm:eas-cli` pin in mise.toml
+          eas-version: 23.0.0
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Get Yarn cache directory path
@@ -43,8 +44,8 @@ jobs:
           path: |
             node_modules
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ hashFiles('**/yarn.lock') }}-${{ runner.os }}
-          restore-keys: ${{ hashFiles('**/yarn.lock') }}
+          key: node26-${{ hashFiles('**/yarn.lock') }}-${{ runner.os }}
+          restore-keys: node26-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
         shell: bash
