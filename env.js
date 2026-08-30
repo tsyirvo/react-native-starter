@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import z from 'zod';
@@ -11,10 +12,37 @@ const __dirname = path.dirname(__filename);
 const APP_ENV = process.env.APP_ENV ?? 'production';
 const envPath = path.resolve(__dirname, `.env.${APP_ENV}`);
 
-// `override: true` is required: Bun auto-loads `.env` / `.env.<NODE_ENV>` into
-// `process.env` before this file runs, so without it those values would win over
-// the `.env.${APP_ENV}` file we actually want for this run.
-dotenv.config({ path: envPath, override: true });
+// Bun auto-loads `.env`, `.env.local` and `.env.<NODE_ENV>` into `process.env`
+// before this file runs (NODE_ENV defaults to `development`, but EAS sets it to
+// `production` during a build). Those values would otherwise win over the
+// `.env.${APP_ENV}` file we actually want, and leak the wrong environment's
+// config into the build.
+//
+// So drop the keys Bun injected from a file other than ours, but only when
+// `process.env` still holds that file's exact value: anything that differs was
+// set by the real environment (Doppler, EAS, CI) and stays the source of truth.
+const NODE_ENV = process.env.NODE_ENV ?? 'development';
+const bunAutoLoadedFiles = ['.env', '.env.local', `.env.${NODE_ENV}`];
+
+for (const file of bunAutoLoadedFiles) {
+  const filePath = path.resolve(__dirname, file);
+
+  if (filePath === envPath || !fs.existsSync(filePath)) {
+    continue;
+  }
+
+  const entries = dotenv.parse(fs.readFileSync(filePath));
+
+  for (const [key, value] of Object.entries(entries)) {
+    if (process.env[key] === value) {
+      delete process.env[key];
+    }
+  }
+}
+
+// No `override`: the real environment (Doppler, EAS, CI) wins, and the committed
+// `.env.${APP_ENV}` placeholders only fill in what it did not provide.
+dotenv.config({ path: envPath });
 
 // Default values
 const BUNDLE_ID = 'com.tsyirvo.rnstarter';
