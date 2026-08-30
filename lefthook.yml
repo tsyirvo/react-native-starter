@@ -4,6 +4,9 @@ pre-commit:
     biome:
       glob: "*.{js,ts,jsx,tsx,json,jsonc}"
       run: bun run lint {staged_files}
+      # `bun run lint` writes fixes, so re-stage them or the commit keeps the
+      # unformatted version and CI's `biome ci` fails on it.
+      stage_fixed: true
     typescript:
       glob: "*.{ts,tsx}"
       run: bunx tsc-files {staged_files} src/types/react-query.d.ts src/types/declaration.d.ts src/domain/theme/unistyles.ts

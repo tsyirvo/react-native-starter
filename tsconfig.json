@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "module": "ESNext",
     "allowJs": true,
     "skipLibCheck": true,
@@ -30,19 +28,10 @@
     "alwaysStrict": true,
     "isolatedModules": true,
     "sourceMap": true,
-    "types": [
-      "jest",
-      "node"
-    ],
+    "types": ["jest", "node"],
     "paths": {
-      "$*": [
-        "./src/*"
-      ],
-      "*": [
-        "./*",
-        "./*.ios.tsx",
-        "./*.android.tsx"
-      ]
+      "$*": ["./src/*"],
+      "*": ["./*", "./*.ios.tsx", "./*.android.tsx"]
     },
     "plugins": [
       {
@@ -51,9 +40,7 @@
       }
     ]
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "include": [
     "**/*.js",
     "**/*.ts",
