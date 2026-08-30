@@ -20,10 +20,6 @@ export const messages = {
       'Please go update the application to access the latest features',
     title: 'Your app is outdated',
   },
-  blogPostScreen: {
-    description: 'Blog post fetched with GraphQL',
-    title: 'Blog post',
-  },
   common: {
     back: 'Back',
     cancel: 'Cancel',
@@ -36,10 +32,6 @@ export const messages = {
     title: 'Error',
   },
   featuresScreen: {
-    blogPost: {
-      cta: 'Naviguer',
-      title: 'Example GraphQL API call',
-    },
     notificationsPermission: {
       alreadyGranted: 'The permission has already been granted',
       cta: 'Request',

@@ -37,7 +37,7 @@ There are also some utilities like:
 
 On the features side, there are already some things to get started quickly with any project:
 
-- A GraphQL client with TanStack Query and CodeGen
+- A data fetching and caching layer with TanStack Query
 - Form validation with Keyboard handling
 - App Store rating prompt
 - Feature Flags
@@ -95,7 +95,7 @@ The tasks are grouped as follows:
 - **App** — `start`, `start:staging`, `start:production`, `storybook`, `storybook:generate`
 - **Builds** — the local EAS builds, e.g. `build:dev:ios`, `build:staging:android`, `build:production:ios`
 - **Git hooks** — `hooks:install`, `hooks:check` (or `mise hc`), `hooks:fix` (or `mise hf`), `hooks:pre-commit` and `hooks:pre-push` to run a hook manually
-- **Utilities** — `install`, `codegen`, `generate:icons`, `doctor`, `clean`
+- **Utilities** — `install`, `generate:icons`, `doctor`, `clean`
 
 Tasks declared with `depends` run their dependencies first, and in parallel when they are independent. The auto-fixing ones chained by `fix` are the exception: they run one after the other since they all write to the same files.
 
@@ -140,7 +140,7 @@ The most useful libraries already configured are the following:
 
 [i18next](https://www.i18next.com/) for the internationalization
 
-[GraphQL](https://graphql.org/) with [CodeGen](https://the-guild.dev/graphql/codegen) and [TanStack Query](https://tanstack.com/query/latest) on the API side
+[TanStack Query](https://tanstack.com/query/latest) on the API side
 
 [PostHog](https://www.flagsmith.com/) for analytics and feature flags
 

@@ -11,9 +11,6 @@ export const useAppScreenTracking = () => {
     if (pathname === '/') {
       return 'home-screen-viewed' as 'XXX-screen-viewed';
     }
-    if (pathname.includes('/blogPost')) {
-      return 'blog-post-screen-viewed' as 'XXX-screen-viewed';
-    }
     // Add other specific tracking events for screens that need it
 
     const pathNameWithoutSlash = pathname.replace('/', '').replaceAll('/', '>');
