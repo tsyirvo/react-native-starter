@@ -7,9 +7,11 @@ const HomeLayout = () => {
 
   return (
     <Stack screenOptions={screenOptions}>
-      <Stack.Screen name="index" />
+      <Stack.Screen name="index" options={hiddenHeaderOptions} />
     </Stack>
   );
 };
+
+const hiddenHeaderOptions = { headerShown: false };
 
 export default HomeLayout;

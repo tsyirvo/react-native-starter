@@ -1,10 +1,15 @@
+import { Platform } from 'react-native';
+import { IS_IOS } from '$domain/constants';
 import { render } from '$domain/testing';
-
 import { ScreenTitle } from '../ScreenTitle';
 
 const mockTitleProps: Record<string, unknown>[] = [];
 const mockToolbarProps: Record<string, unknown>[] = [];
 const mockToolbarButtonProps: Record<string, unknown>[] = [];
+
+const iconSourceMock = { uri: 'info-circle' };
+
+const expectedIcon = IS_IOS ? 'gear' : iconSourceMock;
 
 jest.mock('expo-router', () => {
   const Title = (props: Record<string, unknown>) => {
@@ -79,7 +84,13 @@ describe('ScreenTitle component', () => {
       <ScreenTitle
         title="Profile"
         toolbar={[
-          { icon: 'gear', id: 'settings', label: 'Settings', onPress },
+          {
+            icon: 'gear',
+            iconSource: iconSourceMock,
+            id: 'settings',
+            label: 'Settings',
+            onPress,
+          },
           { id: 'logout', isDisabled: true, label: 'Logout', onPress },
         ]}
       />,
@@ -93,7 +104,7 @@ describe('ScreenTitle component', () => {
         accessibilityLabel: 'Settings',
         children: 'Settings',
         disabled: undefined,
-        icon: 'gear',
+        icon: expectedIcon,
         onPress,
       }),
     );
@@ -105,6 +116,29 @@ describe('ScreenTitle component', () => {
         icon: undefined,
       }),
     );
+  });
+
+  it('should give Android the image source instead of the SF Symbol', () => {
+    const platformSpy = jest.replaceProperty(Platform, 'OS', 'android');
+
+    render(
+      <ScreenTitle
+        title="Profile"
+        toolbar={[
+          {
+            icon: 'gear',
+            iconSource: iconSourceMock,
+            id: 'settings',
+            label: 'Settings',
+            onPress: jest.fn(),
+          },
+        ]}
+      />,
+    );
+
+    expect(mockToolbarButtonProps[0]?.icon).toBe(iconSourceMock);
+
+    platformSpy.restore();
   });
 
   it('should honor a custom toolbar placement', () => {

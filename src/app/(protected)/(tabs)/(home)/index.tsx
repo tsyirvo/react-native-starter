@@ -1,30 +1,21 @@
-import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 
 import { Header, Informations, Version } from '$features/home';
 import { Screen } from '$shared/components';
-import { ScreenTitle, Stack } from '$shared/uiKit';
+import { Stack } from '$shared/uiKit';
 
-const HomeTabScreen = () => {
-  const { t } = useTranslation();
+const HomeTabScreen = () => (
+  <Screen edges={['top']}>
+    <ScrollView>
+      <Header />
 
-  return (
-    <>
-      <ScreenTitle isLarge title={t('tabs.home')} />
+      <Stack pb="spacing_32" pt="spacing_24" px="spacing_16">
+        <Informations />
+      </Stack>
 
-      <Screen>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <Header />
-
-          <Stack pb="spacing_32" pt="spacing_24" px="spacing_16">
-            <Informations />
-          </Stack>
-
-          <Version />
-        </ScrollView>
-      </Screen>
-    </>
-  );
-};
+      <Version />
+    </ScrollView>
+  </Screen>
+);
 
 export default HomeTabScreen;

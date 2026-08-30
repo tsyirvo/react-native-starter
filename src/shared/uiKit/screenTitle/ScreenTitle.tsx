@@ -1,12 +1,23 @@
 import { Stack } from 'expo-router';
 import type { ComponentProps } from 'react';
-import { StyleSheet, useUnistyles } from 'react-native-unistyles';
+import { type ImageSourcePropType, Platform } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
+
+import { useHeaderTintColor } from '$shared/hooks';
 
 type ToolbarButtonProps = ComponentProps<typeof Stack.Toolbar.Button>;
 type ToolbarProps = ComponentProps<typeof Stack.Toolbar>;
 
 export interface ScreenTitleToolbarItem {
+  /*
+   * Name of the SF Symbol rendered on iOS.
+   */
   icon?: ToolbarButtonProps['icon'];
+  /*
+   * Android only accept an image source, so an XML
+   * vector drawable has to be provided for the button to render.
+   */
+  iconSource?: ImageSourcePropType;
   id: string;
   isDisabled?: boolean;
   label: string;
@@ -21,13 +32,16 @@ interface ScreenTitleProps {
   toolbarPlacement?: ToolbarProps['placement'];
 }
 
+const resolveToolbarIcon = (item: ScreenTitleToolbarItem) =>
+  Platform.OS === 'ios' ? item.icon : item.iconSource;
+
 export const ScreenTitle = ({
   isLarge = false,
   title,
   toolbar,
   toolbarPlacement = 'right',
 }: ScreenTitleProps) => {
-  const { theme } = useUnistyles();
+  const tintColor = useHeaderTintColor();
 
   const hasToolbar = Boolean(toolbar?.length);
 
@@ -42,18 +56,15 @@ export const ScreenTitle = ({
       </Stack.Title>
 
       {hasToolbar ? (
-        <Stack.Toolbar
-          placement={toolbarPlacement}
-          tintColor={theme.colors.core_primary}
-        >
+        <Stack.Toolbar placement={toolbarPlacement} tintColor={tintColor}>
           {toolbar?.map((item) => (
             <Stack.Toolbar.Button
               accessibilityLabel={item.label}
               disabled={item.isDisabled}
-              icon={item.icon}
+              icon={resolveToolbarIcon(item)}
               key={item.id}
               onPress={item.onPress}
-              tintColor={theme.colors.core_primary}
+              tintColor={tintColor}
               variant={item.variant}
             >
               {item.label}

@@ -28,6 +28,11 @@ declare module '*.mp4' {
 
   export default content;
 }
+declare module '*.xml' {
+  const content: number;
+
+  export default content;
+}
 
 interface IdleDeadline {
   didTimeout: boolean;
