@@ -15,7 +15,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 26
 
       - name: Get Yarn cache directory path
         id: yarn-cache-dir-path
@@ -41,4 +41,4 @@ jobs:
         run: yarn lint:ci
 
       - name: Run Tests
-        run: yarn jest --coverage=false
+        run: yarn test

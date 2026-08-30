@@ -51,11 +51,50 @@ There are a few other things setup which you can discover on your own ;)
 
 ## The setup
 
-Install the packages:
+The toolchain (Node, Yarn, EAS CLI) is managed by [mise](https://mise.jdx.dev/), so everyone works with the exact same versions locally. Install mise, then from the repo root:
+
+```
+mise trust
+mise install
+```
+
+`mise install` reads the `[tools]` section of `mise.toml` and installs what's missing. Once mise is activated in your shell, entering the directory automatically puts the right `node` and `yarn` on your `PATH`.
+
+Then install the packages:
 
 ```
 yarn
 ```
+
+If you'd rather not use mise, the project only requires Node >= 26 and Yarn 4 (the pinned Yarn release lives in `.yarn/releases`), and every task below has a plain `yarn` equivalent.
+
+## Tasks with mise
+
+Beyond tooling versions, `mise.toml` also declares tasks for the common workflows. They are thin wrappers around the `package.json` scripts, so both entry points stay in sync.
+
+List everything available with:
+
+```
+mise tasks
+```
+
+Run one with `mise run <task>` (or just `mise <task>`), using the short alias when there is one:
+
+```
+mise run check:fix     # or: mise cf
+mise run typecheck     # or: mise tc
+mise run test          # or: mise t
+```
+
+The tasks are grouped as follows:
+
+- **Quality** — `lint`, `lint:fix`, `format`, `format:fix`, `check`, `check:fix`, `check:ci`, `typecheck`, and `fix` which chains the auto-fixing ones
+- **Tests** — `test`, `test:coverage`, `test:e2e`, and `ci` which chains `typecheck`, `check:ci` and `test` (what the _Quality_ workflow runs)
+- **App** — `start`, `start:staging`, `start:production`, `storybook`, `storybook:generate`
+- **Builds** — the local EAS builds, e.g. `build:dev:ios`, `build:staging:android`, `build:production:ios`
+- **Utilities** — `install`, `codegen`, `generate:icons`, `doctor`, `clean`
+
+Tasks declared with `depends` run their dependencies first, and in parallel when they are independent.
 
 ## Runing the project
 
