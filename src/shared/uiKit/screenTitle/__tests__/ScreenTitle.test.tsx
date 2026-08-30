@@ -7,27 +7,28 @@ const mockTitleProps: Record<string, unknown>[] = [];
 const mockToolbarProps: Record<string, unknown>[] = [];
 const mockToolbarButtonProps: Record<string, unknown>[] = [];
 
+interface MockComponentProps extends Record<string, unknown> {
+  children?: React.ReactNode;
+}
+
 const iconSourceMock = { uri: 'info-circle' };
 
 const expectedIcon = IS_IOS ? 'gear' : iconSourceMock;
 
 jest.mock('expo-router', () => {
-  const Title = (props: Record<string, unknown>) => {
+  const Title = (props: MockComponentProps) => {
     mockTitleProps.push(props);
 
     return null;
   };
 
-  const ToolbarButton = (props: Record<string, unknown>) => {
+  const ToolbarButton = (props: MockComponentProps) => {
     mockToolbarButtonProps.push(props);
 
     return null;
   };
 
-  const Toolbar = ({
-    children,
-    ...props
-  }: Record<string, unknown> & { children?: React.ReactNode }) => {
+  const Toolbar = ({ children, ...props }: MockComponentProps) => {
     mockToolbarProps.push(props);
 
     return children;

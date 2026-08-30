@@ -32,8 +32,8 @@ const TabLayout = () => {
         selected: theme.colors.core_primary,
       }}
       labelStyle={{
-        default: { color: theme.colors.content_secondary },
-        selected: { color: theme.colors.core_primary },
+        default: styles.defaultLabel,
+        selected: styles.selectedLabel,
       }}
       tintColor={theme.colors.core_primary}
       {...androidTabBarProps}
@@ -62,6 +62,9 @@ const TabLayout = () => {
 };
 
 const styles = StyleSheet.create((theme) => ({
+  defaultLabel: {
+    color: theme.colors.content_secondary,
+  },
   selectedLabel: {
     color: theme.colors.core_primary,
   },
