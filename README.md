@@ -32,7 +32,7 @@ On the Developer Experience side, a test stack is setup (unit, functional and E2
 There are also some utilities like:
 
 - Converting `.svg` files into React components that can be used easily
-- A pre-commit hook that runs on staged files for code quality checks
+- Git hooks managed by [hk](https://hk.jdx.dev/): a fast pre-commit on staged files, a full pre-push safety net
 - Tooling to release and tag new versions
 
 On the features side, there are already some things to get started quickly with any project:
@@ -94,6 +94,7 @@ The tasks are grouped as follows:
 - **Tests** — `test`, `test:coverage`, `test:e2e`, and `ci` which chains `typecheck`, `check:ci` and `test` (what the _Quality_ workflow runs)
 - **App** — `start`, `start:staging`, `start:production`, `storybook`, `storybook:generate`
 - **Builds** — the local EAS builds, e.g. `build:dev:ios`, `build:staging:android`, `build:production:ios`
+- **Git hooks** — `hooks:install`, `hooks:check` (or `mise hc`), `hooks:fix` (or `mise hf`), `hooks:pre-commit` and `hooks:pre-push` to dry-run a hook
 - **Utilities** — `install`, `codegen`, `generate:icons`, `doctor`, `clean`
 
 Tasks declared with `depends` run their dependencies first, and in parallel when they are independent. The auto-fixing ones chained by `fix` are the exception: they run one after the other since they all write to the same files.
@@ -217,7 +218,23 @@ bun run lint
 
 `bun run lint` auto-fixes issues (safe fixes + import sorting). For CI or a read-only check, use `bun run lint:ci`. Formatting can be run standalone with `bun run format` (`bun run format:check` for the read-only variant).
 
-There is a pre-commit git hook that run some of those commands to have a consistent formatting and type checking.
+Those commands also run from the git hooks described below.
+
+## Git hooks
+
+The hooks are managed by [hk](https://hk.jdx.dev/), from the same author as mise. `mise install` runs `hk install --mise` for you through the `[hooks] postinstall` entry in `mise.toml`, so a fresh clone is wired up as soon as the toolchain is. You can always redo it by hand:
+
+```sh
+mise run hooks:install     # or: bun run hooks:install
+```
+
+Everything is declared in `hk.pkl`, and the split is deliberate:
+
+- **`pre-commit`** — scoped to the staged files, so it stays in the low seconds. Unstaged work is stashed first, then Biome fixes and re-stages what it touched, and `tsc-files` plus the related Jest tests run on the fixed content (they `depend` on Biome rather than racing it). Steps that touch the same file take a lock, so two tools never write to it at once.
+- **`commit-msg`** — validates the conventional commit format, which is what drives the changelog and the release workflow.
+- **`pre-push`** — the safety net. Staged-file scoping can miss breakage in files the commit did not touch, so this one runs Biome, TypeScript and the full test suite over the whole repo. Biome and TypeScript run in parallel and the test suite waits on both, so a lint or type failure is reported in seconds instead of after the suite.
+
+To skip the hooks for one command, use git's own escape hatch (`git commit --no-verify`), or `HK_SKIP_STEPS=test git commit` to skip a single step.
 
 ## Github Actions
 

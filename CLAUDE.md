@@ -17,6 +17,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `bun run lint:ci` - Read-only Biome check for CI (`biome ci`)
 - `bun run format` / `bun run format:check` - Format / check formatting with Biome
 
+### Git hooks
+
+- Managed by [hk](https://hk.jdx.dev/), configured in `hk.pkl` (`mise install` wires them up via `hk install --mise`)
+- `bun run hooks:check` - Run the pre-push checks over the whole repo (read-only)
+- `bun run hooks:fix` - Run the pre-commit fixers over the whole repo
+- `mise run hooks:pre-commit` / `mise run hooks:pre-push` - Dry-run a hook
+
 ## Architecture Overview
 
 ### Project Structure
@@ -65,7 +72,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Jest with React Native Testing Library
 - Maestro for E2E testing
 - Coverage reporting with exclusions for generated code
-- Pre-commit hooks run related tests
+- `pre-commit` runs the tests related to the staged files, `pre-push` runs the full suite
 
 ### Path Mapping
 
@@ -103,8 +110,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 1. Use development builds for native dependency testing
 2. Storybook for component development
-3. Pre-commit hooks ensure code quality
-4. Conventional commits for automated changelogs
+3. Git hooks (hk) ensure code quality: `pre-commit` fixes and checks the staged files, `pre-push` runs Biome, TypeScript and the full test suite over the repo
+4. Conventional commits for automated changelogs, enforced by the `commit-msg` hook
 5. Git Flow with develop/master branches
 
 ## Coding Conventions

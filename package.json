@@ -56,6 +56,10 @@
     "//// VERSIONNING ////": "",
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
     "version:tag": "standard-version",
+    "//// GIT HOOKS ////": "",
+    "hooks:install": "hk install --mise",
+    "hooks:check": "hk check --all",
+    "hooks:fix": "hk fix --all",
     "//// MISC ////": "",
     "clean:watchman": "watchman watch-del-all",
     "perf:bundle": "bunx react-native-bundle-visualizer"
@@ -128,8 +132,6 @@
   },
   "devDependencies": {
     "@0no-co/graphqlsp": "1.17.5",
-    "@commitlint/cli": "20.3.0",
-    "@commitlint/config-conventional": "20.3.0",
     "@graphql-codegen/cli": "6.1.0",
     "@graphql-codegen/client-preset": "5.2.2",
     "@graphql-codegen/introspection": "5.0.0",
@@ -162,7 +164,6 @@
     "dotenv": "17.2.3",
     "jest": "~29.7.0",
     "jest-expo": "~57.0.5",
-    "lefthook": "2.0.13",
     "standard-version": "9.5.0",
     "storybook": "10.5.10",
     "tsc-files": "1.1.4",
@@ -216,14 +217,8 @@
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|standard-navigation|@sentry/react-native|native-base|react-native-svg|zustand|immer|storybook|@storybook/.*)"
     ]
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "trustedDependencies": [
-    "@sentry/cli",
-    "lefthook"
+    "@sentry/cli"
   ],
   "overrides": {
     "@storybook/react-native-ui": "10.5.1"

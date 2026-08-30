@@ -1,0 +1,108 @@
+amends "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Builtins.pkl"
+
+min_hk_version = "1.56.0"
+
+// Git Flow: features branch off `develop`, `master` only receives releases.
+default_branch = "develop"
+
+// Stop the hook as soon as something fails, no point in burning CPU afterwards.
+fail_fast = true
+
+// Everything the linters need is vendored in the repo, keep it on the PATH so
+// `bunx` never has to hit the network to resolve a binary.
+env {
+  ["NODE_OPTIONS"] = "--disable-warning=ExperimentalWarning"
+}
+
+local const codeGlob = List(
+  "**/*.js",
+  "**/*.jsx",
+  "**/*.ts",
+  "**/*.tsx",
+  "**/*.json",
+  "**/*.jsonc"
+)
+
+local const tsGlob = List("**/*.ts", "**/*.tsx")
+
+// `tsc-files` builds a throwaway tsconfig from the files it is given, so the
+// ambient declarations and the Unistyles theme augmentation have to be passed
+// explicitly or every staged file fails to resolve its global types.
+local const ambientTypes =
+  "src/types/declaration.d.ts src/types/react-query.d.ts src/domain/theme/unistyles.ts"
+
+/// Fast, staged-file-scoped checks. Used by `pre-commit` and `hk fix`.
+///
+/// `typecheck` and `test` both depend on `biome` so they always run against the
+/// fixed content instead of racing the formatter for the same files.
+local stagedChecks = new Mapping<String, Step> {
+  ["biome"] {
+    glob = codeGlob
+    // Biome is single-threaded per invocation, batching lets hk fan it out.
+    batch = true
+    check = "bunx biome check --files-ignore-unknown=true --no-errors-on-unmatched {{files}}"
+    fix = "bunx biome check --write --files-ignore-unknown=true --no-errors-on-unmatched {{files}}"
+  }
+  ["typecheck"] {
+    glob = tsGlob
+    depends = "biome"
+    check = "bunx tsc-files --noEmit {{files}} " + ambientTypes
+  }
+  ["test"] {
+    glob = tsGlob
+    depends = "biome"
+    // Jest already saturates the cores, so never batch this one.
+    check = "bun run test --findRelatedTests --passWithNoTests {{files}}"
+  }
+}
+
+/// Whole-repo checks. Used by `pre-push` and `hk check`.
+///
+/// Staged-file scoping in `pre-commit` can miss breakage in files that were not
+/// touched by the commit, this is the safety net before anything leaves the machine.
+local fullChecks = new Mapping<String, Step> {
+  ["biome"] {
+    check = "bun run lint:ci"
+  }
+  ["typecheck"] {
+    check = "bun run lint:ts"
+  }
+  ["test"] {
+    // Cheap checks first: a lint or type failure is reported in seconds instead
+    // of after the full suite has run.
+    depends = List("biome", "typecheck")
+    check = "bun run test"
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    // Unstaged work is stashed so the linters only ever see (and restage) what
+    // is actually going into the commit.
+    stash = "git"
+    steps = stagedChecks
+  }
+
+  ["commit-msg"] {
+    steps {
+      ["conventional-commit"] = Builtins.check_conventional_commit
+    }
+  }
+
+  ["pre-push"] {
+    steps = fullChecks
+  }
+
+  // `hk fix` - apply the staged-scope fixes by hand.
+  ["fix"] {
+    fix = true
+    steps = stagedChecks
+  }
+
+  // `hk check` - read-only, what CI runs. Add `--all` for the whole repo.
+  ["check"] {
+    steps = fullChecks
+  }
+}
