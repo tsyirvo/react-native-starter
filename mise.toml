@@ -105,11 +105,11 @@ run = "hk fix --all"
 alias = "hf"
 
 [tasks."hooks:pre-commit"]
-description = "Dry-run the pre-commit hook on the staged files"
+description = "Run the pre-commit hook on the staged files"
 run = "hk run pre-commit"
 
 [tasks."hooks:pre-push"]
-description = "Dry-run the pre-push hook"
+description = "Run the pre-push hook"
 run = "hk run pre-push"
 
 #### UTILITIES ####

@@ -57,9 +57,9 @@
     "version:bump": "standard-version --skip.commit --skip.changelog --skip.tag",
     "version:tag": "standard-version",
     "//// GIT HOOKS ////": "",
-    "hooks:install": "hk install --mise",
-    "hooks:check": "hk check --all",
-    "hooks:fix": "hk fix --all",
+    "hooks:install": "mise run hooks:install",
+    "hooks:check": "mise run hooks:check",
+    "hooks:fix": "mise run hooks:fix",
     "//// MISC ////": "",
     "clean:watchman": "watchman watch-del-all",
     "perf:bundle": "bunx react-native-bundle-visualizer"

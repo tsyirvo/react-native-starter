@@ -22,7 +22,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Managed by [hk](https://hk.jdx.dev/), configured in `hk.pkl` (`mise install` wires them up via `hk install --mise`)
 - `bun run hooks:check` - Run the pre-push checks over the whole repo (read-only)
 - `bun run hooks:fix` - Run the pre-commit fixers over the whole repo
-- `mise run hooks:pre-commit` / `mise run hooks:pre-push` - Dry-run a hook
+- `mise run hooks:pre-commit` / `mise run hooks:pre-push` - Run a hook manually
 
 ## Architecture Overview
 

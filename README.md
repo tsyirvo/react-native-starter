@@ -94,7 +94,7 @@ The tasks are grouped as follows:
 - **Tests** — `test`, `test:coverage`, `test:e2e`, and `ci` which chains `typecheck`, `check:ci` and `test` (what the _Quality_ workflow runs)
 - **App** — `start`, `start:staging`, `start:production`, `storybook`, `storybook:generate`
 - **Builds** — the local EAS builds, e.g. `build:dev:ios`, `build:staging:android`, `build:production:ios`
-- **Git hooks** — `hooks:install`, `hooks:check` (or `mise hc`), `hooks:fix` (or `mise hf`), `hooks:pre-commit` and `hooks:pre-push` to dry-run a hook
+- **Git hooks** — `hooks:install`, `hooks:check` (or `mise hc`), `hooks:fix` (or `mise hf`), `hooks:pre-commit` and `hooks:pre-push` to run a hook manually
 - **Utilities** — `install`, `codegen`, `generate:icons`, `doctor`, `clean`
 
 Tasks declared with `depends` run their dependencies first, and in parallel when they are independent. The auto-fixing ones chained by `fix` are the exception: they run one after the other since they all write to the same files.
