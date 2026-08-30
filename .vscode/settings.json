@@ -7,7 +7,7 @@
   "i18n-ally.keystyle": "nested",
   "i18n-ally.sourceLanguage": "en",
   "search.exclude": {
-    "yarn.lock": true
+    "bun.lock": true
   },
   "editor.defaultFormatter": "biomejs.biome",
   "editor.codeActionsOnSave": {

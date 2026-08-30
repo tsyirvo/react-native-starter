@@ -62,7 +62,7 @@ export const messages = {
     },
     storybook: {
       content:
-        'Access a Storybook example exposing the most used components; you only need to run the packager with "yarn start:storybook"',
+        'Access a Storybook example exposing the most used components; you only need to run the packager with "bun run start:storybook"',
       title: 'Storybook',
     },
     tests: {

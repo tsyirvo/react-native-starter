@@ -23,7 +23,7 @@
   "license": "ISC",
   "engines": {
     "node": ">=26",
-    "yarn": ">=4"
+    "bun": ">=1.4"
   },
   "scripts": {
     "start:dev": "APP_ENV=development doppler run -- expo start --dev-client",
@@ -42,7 +42,7 @@
     "test:e2e": "doppler run -- maestro test ./e2e/authNavigation.yaml",
     "test:coverage": "NODE_OPTIONS=--disable-warning=ExperimentalWarning jest",
     "//// QUALITY ////": "",
-    "lint:ts": "yarn tsc",
+    "lint:ts": "tsc",
     "lint": "biome check --write --files-ignore-unknown=true ./",
     "lint:ci": "biome ci --files-ignore-unknown=true ./",
     "format": "biome format --write --files-ignore-unknown=true ./",
@@ -58,7 +58,7 @@
     "version:tag": "standard-version",
     "//// MISC ////": "",
     "clean:watchman": "watchman watch-del-all",
-    "perf:bundle": "npx react-native-bundle-visualizer"
+    "perf:bundle": "bunx react-native-bundle-visualizer"
   },
   "dependencies": {
     "@formatjs/intl-getcanonicallocales": "3.1.2",
@@ -221,8 +221,12 @@
       "@commitlint/config-conventional"
     ]
   },
-  "resolutions": {
+  "trustedDependencies": [
+    "@sentry/cli",
+    "lefthook"
+  ],
+  "overrides": {
     "@storybook/react-native-ui": "10.5.1"
   },
-  "packageManager": "yarn@4.4.1"
+  "packageManager": "bun@1.4.0"
 }

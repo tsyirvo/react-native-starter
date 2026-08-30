@@ -6,17 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Testing
 
-- `yarn test` - Run unit tests without coverage
-- `yarn test:coverage` - Run unit tests with coverage
-- `yarn test:e2e` - Run Maestro E2E tests (requires Maestro installation)
+- `bun run test` - Run unit tests without coverage (never `bun test`, which would run Bun's own runner)
+- `bun run test:coverage` - Run unit tests with coverage
+- `bun run test:e2e` - Run Maestro E2E tests (requires Maestro installation)
 
 ### Quality & Linting
 
-- `yarn lint:ts` - Run TypeScript type checking
-- `yarn lint` - Run Biome with auto-fix (lint + format + import sorting)
-- `yarn lint:ci` - Read-only Biome check for CI (`biome ci`)
-- `yarn format` / `yarn format:check` - Format / check formatting with Biome
-- `yarn pretty:check` - Check Prettier formatting
+- `bun run lint:ts` - Run TypeScript type checking
+- `bun run lint` - Run Biome with auto-fix (lint + format + import sorting)
+- `bun run lint:ci` - Read-only Biome check for CI (`biome ci`)
+- `bun run format` / `bun run format:check` - Format / check formatting with Biome
 
 ## Architecture Overview
 
@@ -113,7 +112,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### General Rules
 
 - Always use TypeScript
-- Always use yarn
+- Always use bun (`bun install`, `bun run <script>`, `bunx <binary>`)
 - Use ES modules, use `import`, don't use `require`
 - Prefer async/await where possible and always handle error cases
 - Always wrap arrow function args in parentheses
@@ -134,4 +133,4 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Linting/formatting rules come from the [`ultracite`](https://github.com/haydenbleasel/ultracite) presets in `biome.jsonc` (`ultracite/biome/core` + `ultracite/biome/react`); deviations from the defaults are documented with comments in that file
 - TypeScript strict mode enabled
 - React strict mode is also enabled
-- Always run `yarn lint`, `yarn lint:ts` and `yarn format` then fix potential errors before finishing a task
+- Always run `bun run lint`, `bun run lint:ts` and `bun run format` then fix potential errors before finishing a task

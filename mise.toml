@@ -1,51 +1,51 @@
 [tools]
 node = "26"
-yarn = "4.4.1"
+bun = "1.4.0"
 "npm:eas-cli" = "23"
 
 [env]
-# Keep the repo's pinned Yarn release (.yarnrc.yml -> yarnPath) authoritative
+# Keep the repo's locally installed binaries (Biome, Jest, TS...) on the PATH
 _.path = ["node_modules/.bin"]
 
 #### QUALITY ####
 
 [tasks.lint]
 description = "Run Biome linter on all files"
-run = "yarn biome lint --files-ignore-unknown=true ./"
+run = "bunx biome lint --files-ignore-unknown=true ./"
 alias = "l"
 
 [tasks."lint:fix"]
 description = "Run Biome linter with auto-fix"
-run = "yarn biome lint --write --files-ignore-unknown=true ./"
+run = "bunx biome lint --write --files-ignore-unknown=true ./"
 alias = "lf"
 
 [tasks.format]
 description = "Check formatting with Biome"
-run = "yarn format:check"
+run = "bun run format:check"
 alias = "f"
 
 [tasks."format:fix"]
 description = "Format all files with Biome"
-run = "yarn format"
+run = "bun run format"
 alias = "ff"
 
 [tasks.check]
 description = "Run all code quality checks (lint + format)"
-run = "yarn biome check --files-ignore-unknown=true ./"
+run = "bunx biome check --files-ignore-unknown=true ./"
 alias = "c"
 
 [tasks."check:fix"]
 description = "Fix all code quality issues (lint + format)"
-run = "yarn lint"
+run = "bun run lint"
 alias = "cf"
 
 [tasks."check:ci"]
 description = "Read-only Biome check for CI"
-run = "yarn lint:ci"
+run = "bun run lint:ci"
 
 [tasks.typecheck]
 description = "Run TypeScript type checking"
-run = "yarn lint:ts"
+run = "bun run lint:ts"
 alias = "tc"
 
 [tasks.fix]
@@ -61,17 +61,17 @@ run = [
 
 [tasks.test]
 description = "Run unit tests without coverage"
-run = "yarn test"
+run = "bun run test"
 alias = "t"
 
 [tasks."test:coverage"]
 description = "Run unit tests with coverage"
-run = "yarn test:coverage"
+run = "bun run test:coverage"
 alias = "tcov"
 
 [tasks."test:e2e"]
 description = "Run Maestro E2E tests"
-run = "yarn test:e2e"
+run = "bun run test:e2e"
 
 [tasks.ci]
 description = "Run all CI checks (typecheck + biome + test)"
@@ -82,7 +82,7 @@ depends = ["typecheck", "check:ci", "test"]
 [tasks.clean]
 description = "Clean caches and build artifacts"
 run = [
-  "yarn clean:watchman",
+  "bun run clean:watchman",
   "rm -rf .expo coverage node_modules/.cache",
 ]
 alias = "cl"

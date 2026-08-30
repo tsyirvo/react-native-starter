@@ -27,13 +27,18 @@ jobs:
         with:
           node-version: 26
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+
       - name: Configure Git
         run: |
           git config --global user.name 'tsyirvo'
           git config --global user.email 'gabriel.hofman.00@gmail.com'
 
       - name: Update the app version and tag it
-        run: npx standard-version
+        run: bunx standard-version@9.5.0
 
       - name: Commit the changes
         run: git push --follow-tags

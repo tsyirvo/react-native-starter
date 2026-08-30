@@ -30,26 +30,26 @@ jobs:
       - name: Setup Expo
         uses: expo/expo-github-action@v8
         with:
-          # Keep in sync with the `npm:eas-cli` pin in mise.toml
           eas-version: 23.0.0
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Get Yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
 
       - name: Restore cache
         uses: actions/cache/restore@v3
         with:
           path: |
             node_modules
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: node26-${{ hashFiles('**/yarn.lock') }}-${{ runner.os }}
-          restore-keys: node26-${{ hashFiles('**/yarn.lock') }}
+            ~/.bun/install/cache
+          key: node26-${{ hashFiles('**/bun.lock') }}-${{ runner.os }}
+          restore-keys: node26-${{ hashFiles('**/bun.lock') }}
 
       - name: Install dependencies
         shell: bash
-        run: yarn install --immutable --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: EAS Build
         run: eas build --platform all --non-interactive --profile development --no-wait

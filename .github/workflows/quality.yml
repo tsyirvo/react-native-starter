@@ -17,28 +17,29 @@ jobs:
         with:
           node-version: 26
 
-      - name: Get Yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
 
       - name: Restore cache
         uses: actions/cache/restore@v3
         with:
           path: |
             node_modules
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: node26-${{ hashFiles('**/yarn.lock') }}-${{ runner.os }}
-          restore-keys: node26-${{ hashFiles('**/yarn.lock') }}
+            ~/.bun/install/cache
+          key: node26-${{ hashFiles('**/bun.lock') }}-${{ runner.os }}
+          restore-keys: node26-${{ hashFiles('**/bun.lock') }}
 
       - name: Install dependencies
         shell: bash
-        run: yarn install --immutable --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Run TypeScript checks
-        run: yarn tsc
+        run: bun run lint:ts
 
       - name: Run Biome checks (lint + format)
-        run: yarn lint:ci
+        run: bun run lint:ci
 
       - name: Run Tests
-        run: yarn test
+        run: bun run test

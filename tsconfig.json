@@ -49,5 +49,6 @@
     "expo-env.d.ts",
     "metro.config.cjs",
     "env.js"
-  ]
+  ],
+  "extends": "expo/tsconfig.base"
 }

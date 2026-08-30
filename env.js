@@ -11,7 +11,10 @@ const __dirname = path.dirname(__filename);
 const APP_ENV = process.env.APP_ENV ?? 'production';
 const envPath = path.resolve(__dirname, `.env.${APP_ENV}`);
 
-dotenv.config({ path: envPath });
+// `override: true` is required: Bun auto-loads `.env` / `.env.<NODE_ENV>` into
+// `process.env` before this file runs, so without it those values would win over
+// the `.env.${APP_ENV}` file we actually want for this run.
+dotenv.config({ path: envPath, override: true });
 
 // Default values
 const BUNDLE_ID = 'com.tsyirvo.rnstarter';
