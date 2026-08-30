@@ -22,10 +22,6 @@ export const messages: MessagesTypes = {
       'Merci de la mettre à jour pour utiliser les dernières fonctionnalités',
     title: 'Votre app est trop vieille',
   },
-  blogPostScreen: {
-    description: 'Article récupéré avec GraphQL',
-    title: 'Article de blog',
-  },
   common: {
     back: 'Retour',
     cancel: 'Annuler',
@@ -38,10 +34,6 @@ export const messages: MessagesTypes = {
     title: 'Erreur',
   },
   featuresScreen: {
-    blogPost: {
-      cta: 'Naviguer',
-      title: "Exemple d'appel API GraphQL",
-    },
     notificationsPermission: {
       alreadyGranted: 'La permission a déjà été accordée',
       cta: 'Demander',

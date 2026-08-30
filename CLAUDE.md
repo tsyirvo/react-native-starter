@@ -41,7 +41,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Expo Router** for file-based routing
 - **TypeScript** with Biome (Ultracite presets) linting/formatting
 - **Unistyles** for theming and styling
-- **GraphQL** with CodeGen and TanStack Query
+- **TanStack Query** for data fetching and caching
 - **Zustand** for state management
 - **i18next** for internationalization
 - **Sentry** for error monitoring
@@ -61,11 +61,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### API Layer
 
-- GraphQL client with TanStack Query
-- Code generation from schema
+- TanStack Query for data fetching and caching
 - Token-based authentication
 - Query client persistence
 - Request failure queue for offline support
+
+> No API client is wired up right now: the GraphQL layer has been removed and
+> Convex (database + authentication) will replace it in a follow-up.
 
 ### Testing Strategy
 

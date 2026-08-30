@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
@@ -6,17 +6,12 @@ import { StyleSheet } from 'react-native-unistyles';
 import { Notifications } from '$features/notifications';
 import { Screen, StoreUpdateAvailableBanner } from '$shared/components';
 import { useIsNewStoreVersionAvailable } from '$shared/hooks';
-import { Box, Button, Text } from '$shared/uiKit';
+import { Box } from '$shared/uiKit';
 
 const FeaturesScreen = () => {
-  const router = useRouter();
   const { t } = useTranslation();
 
   const { shouldShowBanner } = useIsNewStoreVersionAvailable();
-
-  const goToBlogPost = () => {
-    router.push('/features/(blogPost)/1');
-  };
 
   return (
     <>
@@ -32,16 +27,6 @@ const FeaturesScreen = () => {
             ) : null}
 
             <View style={styles.section}>
-              <Text variant="large">{t('featuresScreen.blogPost.title')}</Text>
-
-              <Box mt="spacing_8" self="flex-start">
-                <Button.Text onPress={goToBlogPost}>
-                  {t('featuresScreen.blogPost.cta')}
-                </Button.Text>
-              </Box>
-            </View>
-
-            <View style={styles.sectionWithTopPadding}>
               <Notifications />
             </View>
           </Box>
@@ -58,10 +43,5 @@ const styles = StyleSheet.create((theme) => ({
     borderBottomColor: theme.colors.bg_muted,
     borderBottomWidth: 1,
     paddingBottom: theme.spacing.spacing_16,
-  },
-  sectionWithTopPadding: {
-    borderBottomColor: theme.colors.bg_muted,
-    borderBottomWidth: 1,
-    paddingVertical: theme.spacing.spacing_16,
   },
 }));
