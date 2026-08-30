@@ -222,7 +222,8 @@
     ]
   },
   "trustedDependencies": [
-    "@sentry/cli"
+    "@sentry/cli",
+    "lefthook"
   ],
   "overrides": {
     "@storybook/react-native-ui": "10.5.1"

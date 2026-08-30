@@ -105,13 +105,22 @@ Since a few SDKs are provided, secrets are required to use the app. You can have
 To launch the React Native packager:
 
 ```sh
-bun run start:[dev|staging|production]
+bun run start:dev
+# or
+bun run start:staging
+# or
+bun run start:production
 ```
 
-then
+then, for the matching environment and platform:
 
 ```sh
-bun run build:[dev|staging|production]:[ios|android]
+bun run build:dev:ios
+bun run build:dev:android
+bun run build:staging:ios
+bun run build:staging:android
+bun run build:production:ios
+bun run build:production:android
 ```
 
 You will then be able to boot an iOS simulator or Android emulator, if installed on your machine.

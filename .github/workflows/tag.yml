@@ -38,7 +38,7 @@ jobs:
           git config --global user.email 'gabriel.hofman.00@gmail.com'
 
       - name: Update the app version and tag it
-        run: bunx standard-version
+        run: bunx standard-version@9.5.0
 
       - name: Commit the changes
         run: git push --follow-tags
