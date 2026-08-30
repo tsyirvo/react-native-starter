@@ -1,0 +1,88 @@
+[tools]
+node = "26"
+yarn = "4.4.1"
+"npm:eas-cli" = "23"
+
+[env]
+# Keep the repo's pinned Yarn release (.yarnrc.yml -> yarnPath) authoritative
+_.path = ["node_modules/.bin"]
+
+#### QUALITY ####
+
+[tasks.lint]
+description = "Run Biome linter on all files"
+run = "yarn biome lint --files-ignore-unknown=true ./"
+alias = "l"
+
+[tasks."lint:fix"]
+description = "Run Biome linter with auto-fix"
+run = "yarn biome lint --write --files-ignore-unknown=true ./"
+alias = "lf"
+
+[tasks.format]
+description = "Check formatting with Biome"
+run = "yarn format:check"
+alias = "f"
+
+[tasks."format:fix"]
+description = "Format all files with Biome"
+run = "yarn format"
+alias = "ff"
+
+[tasks.check]
+description = "Run all code quality checks (lint + format)"
+run = "yarn biome check --files-ignore-unknown=true ./"
+alias = "c"
+
+[tasks."check:fix"]
+description = "Fix all code quality issues (lint + format)"
+run = "yarn lint"
+alias = "cf"
+
+[tasks."check:ci"]
+description = "Read-only Biome check for CI"
+run = "yarn lint:ci"
+
+[tasks.typecheck]
+description = "Run TypeScript type checking"
+run = "yarn lint:ts"
+alias = "tc"
+
+[tasks.fix]
+description = "Fix all code quality issues (lint + format)"
+# Run sequentially: these all write to the same files, so parallel `depends` would race
+run = [
+  "mise run lint:fix",
+  "mise run format:fix",
+  "mise run check:fix",
+]
+
+#### TESTS ####
+
+[tasks.test]
+description = "Run unit tests without coverage"
+run = "yarn test"
+alias = "t"
+
+[tasks."test:coverage"]
+description = "Run unit tests with coverage"
+run = "yarn test:coverage"
+alias = "tcov"
+
+[tasks."test:e2e"]
+description = "Run Maestro E2E tests"
+run = "yarn test:e2e"
+
+[tasks.ci]
+description = "Run all CI checks (typecheck + biome + test)"
+depends = ["typecheck", "check:ci", "test"]
+
+#### UTILITIES ####
+
+[tasks.clean]
+description = "Clean caches and build artifacts"
+run = [
+  "yarn clean:watchman",
+  "rm -rf .expo coverage node_modules/.cache",
+]
+alias = "cl"

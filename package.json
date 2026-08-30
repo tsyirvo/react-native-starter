@@ -22,7 +22,7 @@
   ],
   "license": "ISC",
   "engines": {
-    "node": ">=22.14",
+    "node": ">=26",
     "yarn": ">=4"
   },
   "scripts": {
@@ -38,9 +38,9 @@
     "build:production:ios": "APP_ENV=production eas build --profile production --platform ios --local",
     "build:production:android": "APP_ENV=production eas build --profile production --platform android --local",
     "//// TESTS ////": "",
-    "test": "jest --cache --coverage=false",
+    "test": "NODE_OPTIONS=--disable-warning=ExperimentalWarning jest --cache --coverage=false",
     "test:e2e": "doppler run -- maestro test ./e2e/authNavigation.yaml",
-    "test:coverage": "jest",
+    "test:coverage": "NODE_OPTIONS=--disable-warning=ExperimentalWarning jest",
     "//// QUALITY ////": "",
     "lint:ts": "yarn tsc",
     "lint": "biome check --write --files-ignore-unknown=true ./",

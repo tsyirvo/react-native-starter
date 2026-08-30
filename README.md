@@ -51,11 +51,52 @@ There are a few other things setup which you can discover on your own ;)
 
 ## The setup
 
-Install the packages:
+The toolchain (Node, Yarn, EAS CLI) is managed by [mise](https://mise.jdx.dev/), so everyone works with the supported versions locally. Install mise, then from the repo root:
 
+```sh
+mise trust
+mise install
 ```
+
+`mise install` reads the `[tools]` section of `mise.toml` and installs what's missing, but it does not change the `PATH` of the current shell. For that you need mise's [shell activation hook](https://mise.jdx.dev/getting-started.html#activate-mise), which puts the right `node` and `yarn` on your `PATH` as soon as you enter the directory.
+
+Then install the packages:
+
+```sh
 yarn
 ```
+
+Without the activation hook, prefix the commands with `mise exec --` (e.g. `mise exec -- yarn`) so they run against the versions from `mise.toml`.
+
+If you'd rather not use mise, the project only requires Node >= 26 and Yarn 4 (the pinned Yarn release lives in `.yarn/releases`), and every task below has a plain `yarn` equivalent.
+
+## Tasks with mise
+
+Beyond tooling versions, `mise.toml` also declares tasks for the common workflows. They are thin wrappers around the `package.json` scripts, so both entry points stay in sync.
+
+List everything available with:
+
+```sh
+mise tasks
+```
+
+Run one with `mise run <task>` (or just `mise <task>`), using the short alias when there is one:
+
+```sh
+mise run check:fix     # or: mise cf
+mise run typecheck     # or: mise tc
+mise run test          # or: mise t
+```
+
+The tasks are grouped as follows:
+
+- **Quality** — `lint`, `lint:fix`, `format`, `format:fix`, `check`, `check:fix`, `check:ci`, `typecheck`, and `fix` which chains the auto-fixing ones
+- **Tests** — `test`, `test:coverage`, `test:e2e`, and `ci` which chains `typecheck`, `check:ci` and `test` (what the _Quality_ workflow runs)
+- **App** — `start`, `start:staging`, `start:production`, `storybook`, `storybook:generate`
+- **Builds** — the local EAS builds, e.g. `build:dev:ios`, `build:staging:android`, `build:production:ios`
+- **Utilities** — `install`, `codegen`, `generate:icons`, `doctor`, `clean`
+
+Tasks declared with `depends` run their dependencies first, and in parallel when they are independent. The auto-fixing ones chained by `fix` are the exception: they run one after the other since they all write to the same files.
 
 ## Runing the project
 
@@ -63,13 +104,13 @@ Since a few SDKs are provided, secrets are required to use the app. You can have
 
 To launch the React Native packager:
 
-```
+```sh
 yarn start:[dev|staging|production]
 ```
 
 then
 
-```
+```sh
 yarn build:[dev|staging|production]:[ios|android]
 ```
 
@@ -134,7 +175,7 @@ A _Storybook_ is configured with some basic stories.
 
 To access it, you simply have to run the app with the following command:
 
-```
+```sh
 yarn start:storybook
 ```
 
@@ -142,7 +183,7 @@ yarn start:storybook
 
 There are basic tests with [Jest](https://jestjs.io/) and [Testing Library](https://testing-library.com/) that you can run with:
 
-```
+```sh
 yarn test
 ```
 
@@ -150,7 +191,7 @@ For E2E tests, you can use [Maestro](https://maestro.mobile.dev/) for both OS.
 
 First install Maestro on your machine, build the development app onto a simulator then run
 
-```
+```sh
 yarn test:e2e
 ```
 
@@ -158,7 +199,7 @@ yarn test:e2e
 
 The project is using [Biome](https://biomejs.dev/) with the [Ultracite](https://github.com/haydenbleasel/ultracite) presets (linting and formatting) and [TypeScript](https://www.typescriptlang.org/) for type checking, you can run the checks with those commands:
 
-```
+```sh
 yarn lint:ts
 yarn lint
 ```
