@@ -6,26 +6,24 @@ jobs:
   build_dev_app:
     name: Build the app for development
     runs-on: ubuntu-latest
-    concurrency: continuous-deploy-fingerprint-${{ github.run_id }}
     permissions:
-      contents: read # Allow checkout
-      pull-requests: write # Allow comments on PRs
+      contents: read
 
     steps:
       - name: Check for EXPO_TOKEN
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
-          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+          if [ -z "$EXPO_TOKEN" ]; then
             echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
             exit 1
           fi
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 26
+      - name: Setup dependencies
+        uses: ./.github/actions/setup-dependencies
 
       - name: Setup Expo
         uses: expo/expo-github-action@v8
@@ -33,29 +31,5 @@ jobs:
           eas-version: 23.0.0
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.4.0
-
-      - name: Restore cache
-        uses: actions/cache/restore@v3
-        with:
-          path: |
-            node_modules
-            ~/.bun/install/cache
-          key: node26-${{ hashFiles('**/bun.lock') }}-${{ runner.os }}
-          restore-keys: node26-${{ hashFiles('**/bun.lock') }}
-
-      - name: Install dependencies
-        shell: bash
-        run: bun install --frozen-lockfile
-
       - name: EAS Build
         run: eas build --platform all --non-interactive --profile development --no-wait
-
-      # - name: Build the app or launch an EAS update
-      #   uses: expo/expo-github-action/continuous-deploy-fingerprint@main
-      #   with:
-      #     profile: development
-      #     branch: development

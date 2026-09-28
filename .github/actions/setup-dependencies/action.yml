@@ -1,0 +1,28 @@
+name: Setup dependencies
+description: Set up Node, Bun, and the shared dependency cache before installing packages
+
+runs:
+  using: composite
+  steps:
+    - name: Setup NodeJS
+      uses: actions/setup-node@v4
+      with:
+        node-version: 26
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: 1.4.0
+
+    - name: Restore cache
+      uses: actions/cache/restore@v4
+      with:
+        path: |
+          node_modules
+          ~/.bun/install/cache
+        key: node26-${{ hashFiles('**/bun.lock') }}-${{ runner.os }}
+        restore-keys: node26-${{ hashFiles('**/bun.lock') }}
+
+    - name: Install dependencies
+      shell: bash
+      run: bun install --frozen-lockfile

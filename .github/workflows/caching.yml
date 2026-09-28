@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/caching.yml"
+      - ".github/actions/setup-dependencies/action.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -25,21 +26,16 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 26
+        uses: actions/checkout@v4
 
       - name: Generate cache key
         id: key
         run: |
-          echo "cache-key=node26-${{ hashFiles('**/bun.lock') }}-${{ runner.os }}" >> $GITHUB_OUTPUT
+          echo "cache-key=node26-${{ hashFiles('**/bun.lock') }}-${{ runner.os }}" >> "$GITHUB_OUTPUT"
 
       - name: Lookup cache
         id: cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: |
             node_modules
@@ -55,25 +51,13 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 26
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.4.0
-
-      - name: Install dependencies
-        shell: bash
-        run: bun install --frozen-lockfile
+      - name: Setup dependencies
+        uses: ./.github/actions/setup-dependencies
 
       - name: Save cache
-        id: cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: |
             node_modules
@@ -82,11 +66,13 @@ jobs:
 
   cleanup:
     name: Cleanup old caches
-    needs: search
+    needs: [search, cache]
     runs-on: ubuntu-latest
-    if: ${{ !needs.search.outputs.cache-hit }}
+    if: ${{ needs.cache.result == 'success' && github.event_name == 'push' }}
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      CACHE_KEY: ${{ needs.search.outputs.cache-key }}
     permissions:
       # `actions:write` permission is required to delete caches
       #   See also: https://docs.github.com/en/rest/actions/cache?apiVersion=2022-11-28#delete-a-github-actions-cache-for-a-repository-using-a-cache-id
@@ -94,29 +80,8 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Cleanup
+      - name: Cleanup old dependency caches
         run: |
-          gh extension install actions/gh-actions-cache
-
-          REPO=${{ github.repository }}
-
-          echo "Fetching list of cache keys..."
-          cacheKeysForPR=$(gh actions-cache list -R $REPO --branch develop | cut -f 1)
-
-          echo "Deleting caches..."
-          for cacheKey in $cacheKeysForPR
-          do
-            # Skip deletion if cache key matches the specified output
-            if [ "$cacheKey" = "${{ needs.search.outputs.cache-key }}" ]; then
-              echo "Skipping deletion for cache key: $cacheKey"
-              continue
-            fi
-
-            echo "Deleting cache: $cacheKey"
-            gh actions-cache delete $cacheKey -R $REPO --branch develop --confirm
+          for cache_id in $(gh cache list --ref refs/heads/develop --key node26- --limit 100 --json id,key --jq '.[] | select(.key != env.CACHE_KEY) | .id'); do
+            gh cache delete "$cache_id"
           done
-
-          echo "Done"

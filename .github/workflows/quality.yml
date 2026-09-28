@@ -4,36 +4,23 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
+concurrency:
+  group: quality-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   quality:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 26
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.4.0
-
-      - name: Restore cache
-        uses: actions/cache/restore@v3
-        with:
-          path: |
-            node_modules
-            ~/.bun/install/cache
-          key: node26-${{ hashFiles('**/bun.lock') }}-${{ runner.os }}
-          restore-keys: node26-${{ hashFiles('**/bun.lock') }}
-
-      - name: Install dependencies
-        shell: bash
-        run: bun install --frozen-lockfile
+      - name: Setup dependencies
+        uses: ./.github/actions/setup-dependencies
 
       - name: Run TypeScript checks
         run: bun run lint:ts
