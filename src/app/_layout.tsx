@@ -2,7 +2,6 @@ import '@formatjs/intl-getcanonicallocales/polyfill.js';
 import 'intl-pluralrules';
 import '../infra/i18n';
 
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Sentry from '@sentry/react-native';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { Stack } from 'expo-router';
@@ -80,41 +79,35 @@ const RootLayout = () => {
               onError={onGlobalError}
             >
               <Splashscreen>
-                <BottomSheetModalProvider>
-                  <KeyboardProvider>
-                    <AuthContextProvider>
-                      <SubscriptionContextProvider>
-                        <NavigationThemeProvider>
-                          <Stack screenOptions={screenOptions}>
-                            <Stack.Protected
-                              guard={!isBootstrappingApplication}
-                            >
-                              <Stack.Protected
-                                guard={config.isStorybookEnabled}
-                              >
-                                <Stack.Screen name="Storybook" />
-                              </Stack.Protected>
-
-                              <Stack.Protected guard={!isUserLoggedIn}>
-                                <Stack.Screen name="Login" />
-                              </Stack.Protected>
-
-                              <Stack.Protected guard={isUserLoggedIn}>
-                                <Stack.Screen name="(protected)/(tabs)" />
-                              </Stack.Protected>
+                <KeyboardProvider>
+                  <AuthContextProvider>
+                    <SubscriptionContextProvider>
+                      <NavigationThemeProvider>
+                        <Stack screenOptions={screenOptions}>
+                          <Stack.Protected guard={!isBootstrappingApplication}>
+                            <Stack.Protected guard={config.isStorybookEnabled}>
+                              <Stack.Screen name="Storybook" />
                             </Stack.Protected>
-                          </Stack>
-                        </NavigationThemeProvider>
 
-                        <Toast config={toastConfig} />
+                            <Stack.Protected guard={!isUserLoggedIn}>
+                              <Stack.Screen name="Login" />
+                            </Stack.Protected>
 
-                        <AppUpdateNeeded />
+                            <Stack.Protected guard={isUserLoggedIn}>
+                              <Stack.Screen name="(protected)/(tabs)" />
+                            </Stack.Protected>
+                          </Stack.Protected>
+                        </Stack>
+                      </NavigationThemeProvider>
 
-                        <MaintenanceMode />
-                      </SubscriptionContextProvider>
-                    </AuthContextProvider>
-                  </KeyboardProvider>
-                </BottomSheetModalProvider>
+                      <Toast config={toastConfig} />
+
+                      <AppUpdateNeeded />
+
+                      <MaintenanceMode />
+                    </SubscriptionContextProvider>
+                  </AuthContextProvider>
+                </KeyboardProvider>
               </Splashscreen>
             </ErrorBoundary>
           </ProductTrackingProvider>
