@@ -228,11 +228,11 @@ The hooks are managed by [hk](https://hk.jdx.dev/), from the same author as mise
 mise run hooks:install     # or: bun run hooks:install
 ```
 
-Everything is declared in `hk.pkl`, and the split is deliberate:
+Everything is declared in `hk.pkl`. With hk v2, the shared file-scoped steps create `pre-commit` and `fix` automatically; `check` and `pre-push` override them with whole-repo checks:
 
-- **`pre-commit`** — scoped to the staged files, so it stays in the low seconds. Unstaged work is stashed first, then Biome fixes and re-stages what it touched, and `tsc-files` plus the related Jest tests run on the fixed content (they `depend` on Biome rather than racing it). Steps that touch the same file take a lock, so two tools never write to it at once.
+- **`pre-commit`** — scoped to the staged files, so it stays in the low seconds. Unstaged work is stashed first, then Biome fixes and re-stages what it touched, and `tsc-files` plus the related Jest tests run on the fixed content (they `depend` on Biome rather than racing it). Steps that touch the same file take a lock, so two tools never write to it at once. `hk fix` uses the same steps but leaves fixes unstaged.
 - **`commit-msg`** — validates the conventional commit format, which is what drives the changelog and the release workflow.
-- **`pre-push`** — the safety net. Staged-file scoping can miss breakage in files the commit did not touch, so this one runs Biome, TypeScript and the full test suite over the whole repo. Biome and TypeScript run in parallel and the test suite waits on both, so a lint or type failure is reported in seconds instead of after the suite.
+- **`pre-push`** — the safety net. Staged-file scoping can miss breakage in files the commit did not touch, so this one runs Biome, TypeScript and the full test suite over the whole repo. Biome and TypeScript run in parallel and the test suite waits on both, so a lint or type failure is reported in seconds instead of after the suite. `hk check --all` runs the same checks manually.
 
 To skip the hooks for one command, use git's own escape hatch (`git commit --no-verify`), or `HK_SKIP_STEPS=test git commit` to skip a single step.
 

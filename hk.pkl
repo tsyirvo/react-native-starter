@@ -1,7 +1,7 @@
-amends "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
-import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Builtins.pkl"
+amends "package://github.com/jdx/hk/releases/download/v2.4.0/hk@2.4.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.4.0/hk@2.4.0#/Builtins.pkl"
 
-min_hk_version = "1.56.0"
+min_hk_version = "2.4.0"
 
 // Git Flow: features branch off `develop`, `master` only receives releases.
 default_branch = "develop"
@@ -32,7 +32,7 @@ local const tsGlob = List("**/*.ts", "**/*.tsx")
 local const ambientTypes =
   "src/types/declaration.d.ts src/types/react-query.d.ts src/domain/theme/unistyles.ts"
 
-/// Fast, staged-file-scoped checks. Used by `pre-commit` and `hk fix`.
+/// Fast, file-scoped checks shared by `pre-commit` and `hk fix`.
 ///
 /// `typecheck` and `test` both depend on `biome` so they always run against the
 /// fixed content instead of racing the formatter for the same files.
@@ -57,6 +57,10 @@ local stagedChecks = new Mapping<String, Step> {
   }
 }
 
+// Top-level steps create the default pre-commit and fix hooks. Pre-commit
+// stashes unstaged work, fixes staged files and stages the results by default.
+steps = stagedChecks
+
 /// Whole-repo checks. Used by `pre-push` and `hk check`.
 ///
 /// Staged-file scoping in `pre-commit` can miss breakage in files that were not
@@ -77,14 +81,6 @@ local fullChecks = new Mapping<String, Step> {
 }
 
 hooks {
-  ["pre-commit"] {
-    fix = true
-    // Unstaged work is stashed so the linters only ever see (and restage) what
-    // is actually going into the commit.
-    stash = "git"
-    steps = stagedChecks
-  }
-
   ["commit-msg"] {
     steps {
       ["conventional-commit"] = Builtins.check_conventional_commit
@@ -95,13 +91,8 @@ hooks {
     steps = fullChecks
   }
 
-  // `hk fix` - apply the staged-scope fixes by hand.
-  ["fix"] {
-    fix = true
-    steps = stagedChecks
-  }
-
-  // `hk check` - read-only, what CI runs. Add `--all` for the whole repo.
+  // Override the shared steps for whole-repo, read-only checks.
+  // Add `--all` to `hk check` for the whole repo.
   ["check"] {
     steps = fullChecks
   }
