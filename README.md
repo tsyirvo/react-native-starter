@@ -236,12 +236,21 @@ Everything is declared in `hk.pkl`. With hk v2, the shared file-scoped steps cre
 
 To skip the hooks for one command, use git's own escape hatch (`git commit --no-verify`), or `HK_SKIP_STEPS=test git commit` to skip a single step.
 
-## Github Actions
+## GitHub Actions
 
-The project is configured to have the CI running on _Github Actions_ with a _Git Flow_.
+The workflows follow a Git Flow setup with `develop` as the default branch:
 
-The three main workflows are the following:
+- **Quality** runs on new and updated pull requests (against any branch). It checks TypeScript, Biome, and the full Jest suite in one job; a new push to the same PR cancels an older run. It does not run on every branch push.
+- **Cache Bun dependencies** warms the shared dependency cache on pushes to `develop` and when its workflow or the shared setup action changes in a PR. Quality and the development build restore that cache and still run `bun install --frozen-lockfile`. The Node/Bun setup, cache restore, and install steps live in `.github/actions/setup-dependencies/action.yml`.
 
-- A _Quality_ workflow runs against all PR targetting _develop_. It handles running tests, linting and TypeScript checks
-- A _Release_ and _Tag_ ones, which creates a release and a tag for the project
-- A _Build Dev App_ one, which triggers a build of the development env app on EAS (environement variables will need to be injected into EAS via secrets for the builds to work, [see here](https://docs.expo.dev/build-reference/variables/))
+### Tagging and releasing
+
+1. On a clean branch from `develop`, run `bun run release:prepare` (choose `major`, `minor`, or `patch`). Review and commit the updated `package.json` and `CHANGELOG.md`, then merge to `develop`.
+2. Build and submit the merged commit to both stores. If changes are needed, commit the fix, rerun `bun run release:prepare` **without a release type** to refresh the changelog without bumping again, commit and merge it, then build the new merged commit.
+3. After both builds are approved, run **Release approved build** from `develop` with the full SHA of the approved merged commit. It tags that commit and creates the GitHub release. Rerun with the same SHA if publishing fails.
+
+Use `fix(security)` and `chore(deps)`/`build(deps)` for the Security and Dependency Updates sections. Commit version/changelog-only changes as `chore(release): ...` so they stay out of future changelog refreshes. `release:prepare` does not commit or tag. Store approval is checked by the person running the workflow, not by GitHub Actions; no EAS build IDs are required.
+
+### Building the development app
+
+From the repository's **Actions** tab, select **Build the app for development** and choose **Run workflow**. The workflow installs dependencies and submits **both** platforms with the `development` profile from `eas.json` (an iOS simulator build and an Android APK). It uses `--no-wait`: the GitHub job finishes once EAS accepts the builds, so follow their results in the EAS dashboard. It does not publish an update or submit a store release.

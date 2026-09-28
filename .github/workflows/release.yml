@@ -1,22 +1,88 @@
-name: Release
+name: Release approved build
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Full SHA of the merged commit used for both approved builds
+        required: true
+        type: string
+
+concurrency:
+  group: release-approved-build
+  cancel-in-progress: false
+
+permissions:
+  contents: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Create a release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout release tooling and tags
+        uses: actions/checkout@v4
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          ref: develop
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+
+      - name: Verify release commit
+        env:
+          SHA: ${{ inputs.commit_sha }}
+        run: |
+          if [ "$GITHUB_REF" != 'refs/heads/develop' ]; then
+            echo 'Run this workflow from develop.'
+            exit 1
+          fi
+          if [[ ! "$SHA" =~ ^[0-9a-f]{40}$ ]] || [ "$(git cat-file -t "$SHA")" != commit ]; then
+            echo 'Provide a full commit SHA.'
+            exit 1
+          fi
+          git fetch origin develop --tags
+          if ! git merge-base --is-ancestor "$SHA" origin/develop; then
+            echo 'The approved commit must be on develop.'
+            exit 1
+          fi
+
+      - name: Prepare tag and release notes
+        id: notes
+        env:
+          SHA: ${{ inputs.commit_sha }}
+        run: |
+          version=$(git show "${SHA}:package.json" | jq -r .version)
+          tag="v$version"
+          if git show-ref --verify --quiet "refs/tags/$tag"; then
+            if [ "$(git rev-parse "${tag}^{commit}")" != "$SHA" ]; then
+              echo "Tag $tag already points to a different commit."
+              exit 1
+            fi
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git tag -a "$tag" "$SHA" -m "$tag"
+          fi
+          bun .github/scripts/release-notes.ts "$tag" > "$RUNNER_TEMP/release-notes.md"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Push tag and create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.notes.outputs.tag }}
+        run: |
+          remote_tag=$(git ls-remote --tags origin "refs/tags/$TAG" | cut -f1)
+          if [ -z "$remote_tag" ]; then
+            git push origin "refs/tags/$TAG"
+          elif [ "$remote_tag" != "$(git rev-parse "refs/tags/$TAG")" ]; then
+            echo "Remote tag $TAG does not match the approved commit."
+            exit 1
+          fi
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists."
+          else
+            gh release create "$TAG" --verify-tag --notes-file "$RUNNER_TEMP/release-notes.md"
+          fi
