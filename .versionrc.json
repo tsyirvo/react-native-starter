@@ -1,0 +1,21 @@
+{
+  "types": [
+    { "type": "feat", "section": "Features" },
+    { "type": "feature", "section": "Features" },
+    { "type": "fix", "scope": "security", "section": "Security" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "perf", "section": "Performance" },
+    { "type": "chore", "scope": "release", "hidden": true },
+    { "type": "chore", "scope": "deps", "section": "Dependency Updates" },
+    { "type": "build", "scope": "deps", "section": "Dependency Updates" },
+    { "type": "chore", "section": "Other Changes" },
+    { "type": "refactor", "section": "Other Changes" },
+    { "type": "test", "section": "Other Changes" },
+    { "type": "docs", "section": "Other Changes" },
+    { "type": "doc", "section": "Other Changes" },
+    { "type": "build", "section": "Other Changes" },
+    { "type": "ci", "section": "Other Changes" },
+    { "type": "style", "section": "Other Changes" },
+    { "type": "revert", "section": "Other Changes" }
+  ]
+}
