@@ -13,12 +13,19 @@ describe('release preparation', () => {
   it('refreshes an untagged candidate without bumping or duplicating changelog entries', () => {
     const root = process.cwd();
     const directory = mkdtempSync(join(tmpdir(), 'release-candidate-'));
+    const env = { ...process.env };
+    for (const key of Object.keys(env)) {
+      if (key.startsWith('GIT_')) {
+        delete env[key];
+      }
+    }
     const run = (command: string, ...args: string[]) =>
       execFileSync(command, args, {
         cwd: directory,
         encoding: 'utf8',
         env: {
-          ...process.env,
+          ...env,
+          HK: '0',
           PATH: `${join(root, 'node_modules', '.bin')}:${process.env.PATH}`,
         },
       }).trim();
@@ -27,6 +34,8 @@ describe('release preparation', () => {
       run('git', 'init', '-q', '-b', 'develop');
       run('git', 'config', 'user.name', 'Release Test');
       run('git', 'config', 'user.email', 'test@example.com');
+      run('git', 'config', 'hook.hk-pre-commit.event', 'pre-commit');
+      run('git', 'config', 'hook.hk-pre-commit.command', 'test "$HK" = "0"');
       writeFileSync(join(directory, '.gitignore'), 'node_modules\n');
       writeFileSync(
         join(directory, '.versionrc.json'),
