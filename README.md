@@ -245,10 +245,11 @@ The workflows follow a Git Flow setup with `develop` as the default branch:
 
 ### Tagging and releasing
 
-1. Merge a PR into `develop` and apply `to deploy` to that PR. You may label it before merging (the merge starts the workflow) or after merging (labeling starts it). Only a merged PR whose merge commit is **still the tip of `develop`** can be released; if newer commits have landed, label the latest merged PR instead.
-2. **Tag and release** runs `standard-version` on `develop`, which uses conventional commits to update the version and changelog and create a `v*` tag. It pushes the version commit and tag, then creates a GitHub release with generated notes.
+1. On a clean branch from `develop`, run `bun run release:prepare` (choose `major`, `minor`, or `patch`). Review and commit the updated `package.json` and `CHANGELOG.md`, then merge to `develop`.
+2. Build and submit the merged commit to both stores. If changes are needed, commit the fix, rerun `bun run release:prepare` **without a release type** to refresh the changelog without bumping again, commit and merge it, then build the new merged commit.
+3. After both builds are approved, run **Release approved build** from `develop` with the full SHA of the approved merged commit. It tags that commit and creates the GitHub release. Rerun with the same SHA if publishing fails.
 
-The separate **Release** workflow handles `v*` tags pushed manually. A tag pushed using a workflow's `GITHUB_TOKEN` does *not* start another workflow, so **Tag and release** creates its own release rather than waiting for **Release**. If pushing succeeds but creating the release fails, run **Release** manually from the Actions tab with the existing tag name to retry.
+`release:prepare` does not commit or tag. Store approval is checked by the person running the workflow, not by GitHub Actions; no EAS build IDs are required.
 
 ### Building the development app
 
