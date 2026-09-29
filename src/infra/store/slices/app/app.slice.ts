@@ -1,4 +1,5 @@
 import type { StateCreator } from 'zustand';
+import type {} from 'zustand/middleware/immer';
 
 import type { StoreState } from '../../types/store.types';
 import { sliceResetFns } from '../../utils/resetStore';
