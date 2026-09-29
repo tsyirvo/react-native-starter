@@ -6,9 +6,9 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import type { PersistQueryClientOptions } from '@tanstack/react-query-persist-client';
+
 import { Logger } from '$infra/logger';
-import { QueryClientStorage } from '$infra/storage';
-import { storageKeys } from '$infra/storage/storageKeys';
+import { QueryClientStorage, storageKeys } from '$infra/storage';
 
 import { GC_TIME, STALE_TIME, THIRTY_DAYS } from './utils/queryClient.utils';
 import { refreshAccessTokenAndRetry } from './utils/requestFailureQueue';
