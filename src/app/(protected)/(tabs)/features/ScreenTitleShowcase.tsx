@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Alert, ScrollView } from 'react-native';
 
+import { ScreenInteractiveMarker } from '$infra/monitoring';
 import { drawables } from '$shared/icons';
 import type { ScreenTitleToolbarItem } from '$shared/uiKit';
 import { Box, ScreenTitle, Separator, Stack, Text } from '$shared/uiKit';
@@ -34,6 +35,7 @@ const ScreenTitleShowcaseScreen = () => {
 
   return (
     <>
+      <ScreenInteractiveMarker />
       <ScreenTitle
         isLarge
         title={t('screenTitleShowcaseScreen.title')}

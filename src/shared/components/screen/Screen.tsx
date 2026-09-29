@@ -3,6 +3,7 @@ import type { Edge } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 
 import type { ThemeColors, ThemeSpacing } from '$domain/theme';
+import { ScreenInteractiveMarker } from '$infra/monitoring';
 import { Box, SafeView } from '$shared/uiKit';
 
 interface ScreenProps {
@@ -22,11 +23,14 @@ export const Screen = ({
   py = 'zero',
   testID = 'Screen',
 }: ScreenProps) => (
-  <Box px={px} py={py} style={styles.container(bg)} testID={testID}>
-    <SafeView edges={edges} style={styles.wrapper}>
-      {children}
-    </SafeView>
-  </Box>
+  <>
+    <ScreenInteractiveMarker />
+    <Box px={px} py={py} style={styles.container(bg)} testID={testID}>
+      <SafeView edges={edges} style={styles.wrapper}>
+        {children}
+      </SafeView>
+    </Box>
+  </>
 );
 
 const styles = StyleSheet.create((theme) => ({
