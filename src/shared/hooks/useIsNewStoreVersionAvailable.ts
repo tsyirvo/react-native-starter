@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import semverLt from 'semver/functions/lt';
 
-import { config } from '$domain/constants';
+import { config } from '$infra/config';
 import {
   useGetRemoteConfigSync,
   type VersionFlagType,

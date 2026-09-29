@@ -1,7 +1,7 @@
 import type { NativeStackNavigationOptions } from 'expo-router';
 import { useUnistyles } from 'react-native-unistyles';
 
-import { SUPPORTS_LIQUID_GLASS } from '$domain/constants';
+import { SUPPORTS_LIQUID_GLASS } from '$infra/config';
 import { useHeaderTintColor } from '$shared/hooks';
 
 export const useStackScreenOptions = (): NativeStackNavigationOptions => {

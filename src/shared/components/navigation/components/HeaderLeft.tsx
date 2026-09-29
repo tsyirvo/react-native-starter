@@ -1,9 +1,8 @@
 import { useRouter } from 'expo-router';
 import { useUnistyles } from 'react-native-unistyles';
-
-import { DEFAULT_ICON_SIZE, HIT_SLOP } from '$domain/constants/styling';
 import { Pressable } from '$shared/components';
 import { Icon } from '$shared/icons';
+import { DEFAULT_ICON_SIZE, HIT_SLOP } from '$shared/uiKit/constants';
 
 export const HeaderLeft = () => {
   const router = useRouter();

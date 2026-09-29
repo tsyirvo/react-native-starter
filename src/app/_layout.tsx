@@ -21,10 +21,10 @@ import {
   useAuthContext,
 } from '$application/auth';
 import { Splashscreen } from '$application/bootstrap';
-import { config } from '$domain/constants';
 import { SubscriptionContextProvider } from '$features/subscription';
 import { useAppFocusManager } from '$infra/api';
 import { persistOptions, queryClient } from '$infra/api/queryClient';
+import { config } from '$infra/config';
 import { ErrorMonitoring, ObserveMonitoring } from '$infra/monitoring';
 import { ProductTrackingProvider } from '$infra/productTracking';
 import { useAppStore } from '$infra/store';

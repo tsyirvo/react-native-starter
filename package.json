@@ -191,8 +191,8 @@
     "setupFiles": [
       "react-native-gesture-handler/jestSetup.js",
       "react-native-unistyles/mocks",
-      "./src/domain/theme/unistyles.ts",
-      "./src/domain/testing/setup.ts"
+      "./src/shared/theme/unistyles.ts",
+      "./src/testing/setup.ts"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",

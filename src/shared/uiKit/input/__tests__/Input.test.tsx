@@ -1,6 +1,6 @@
 import { composeStories } from '@storybook/react';
 
-import { fireEvent, render, screen } from '$domain/testing';
+import { fireEvent, render, screen } from '$testing';
 
 import * as Inputs from '../stories/Input.stories';
 

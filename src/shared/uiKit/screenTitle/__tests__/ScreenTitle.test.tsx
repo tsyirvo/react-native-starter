@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
-import { IS_IOS } from '$domain/constants';
-import { render } from '$domain/testing';
+import { IS_IOS } from '$infra/config';
+import { render } from '$testing';
 import { ScreenTitle } from '../ScreenTitle';
 
 const mockTitleProps: Record<string, unknown>[] = [];

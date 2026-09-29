@@ -1,4 +1,4 @@
-import { render, screen } from '$domain/testing';
+import { render, screen } from '$testing';
 
 import { Row } from '../Row';
 import { Text } from '../Text';

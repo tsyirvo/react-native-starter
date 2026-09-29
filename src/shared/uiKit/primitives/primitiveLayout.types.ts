@@ -1,6 +1,6 @@
 import type { FlexAlignType } from 'react-native';
 
-import type { ThemeSpacing } from '$domain/theme';
+import type { ThemeSpacing } from '$shared/theme';
 
 /* ***** *****  Shared Spacing Props  ***** ***** */
 

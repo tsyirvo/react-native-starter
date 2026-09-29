@@ -7,7 +7,7 @@ import type { ParseKeys } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { IS_ANDROID, SUPPORTS_LIQUID_GLASS } from '$domain/constants';
+import { IS_ANDROID, SUPPORTS_LIQUID_GLASS } from '$infra/config';
 
 type SfSymbolConfig = SFSymbolIcon['sf'];
 type MaterialSymbolConfig = MaterialIcon['md'];

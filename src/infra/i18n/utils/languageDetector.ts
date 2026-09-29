@@ -1,8 +1,7 @@
 import type { LanguageDetectorModule } from 'i18next';
-
-import { storageKeys } from '$domain/constants';
 import { initDateLocale } from '$infra/date';
 import { AppStorage } from '$infra/storage';
+import { storageKeys } from '$infra/storage/storageKeys';
 
 import { getSupportedLocale } from './detectLocaleToUse';
 

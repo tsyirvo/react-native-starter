@@ -4,7 +4,7 @@ import { Linking } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import semverGte from 'semver/functions/gte';
 
-import { config, IS_IOS } from '$domain/constants';
+import { config, IS_IOS } from '$infra/config';
 import {
   useGetRemoteConfigSync,
   type VersionFlagType,

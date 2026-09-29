@@ -1,5 +1,5 @@
-import { render, screen } from '$domain/testing';
 import * as FeatureFlags from '$infra/featureFlags/hooks/useGetBooleanFeatureFlag';
+import { render, screen } from '$testing';
 
 import { MaintenanceMode } from '../MaintenanceMode';
 

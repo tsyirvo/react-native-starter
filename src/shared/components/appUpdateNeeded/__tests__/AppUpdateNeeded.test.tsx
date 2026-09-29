@@ -1,8 +1,8 @@
 import { Linking } from 'react-native';
 
-import { config } from '$domain/constants/config';
-import { fireEvent, render, screen, waitFor } from '$domain/testing';
+import { config } from '$infra/config/config';
 import * as FeatureFlags from '$infra/featureFlags/hooks/useGetRemoteConfigSync';
+import { fireEvent, render, screen, waitFor } from '$testing';
 
 import { AppUpdateNeeded } from '../AppUpdateNeeded';
 

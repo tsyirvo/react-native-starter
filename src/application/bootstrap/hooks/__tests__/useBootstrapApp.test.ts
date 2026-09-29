@@ -1,10 +1,10 @@
 import * as SplashScreen from 'expo-splash-screen';
 
 import { useGetSessionState } from '$application/auth';
-import { config } from '$domain/constants';
-import { act, renderHook, waitFor } from '$domain/testing';
 import { bootstrapApp } from '$infra/bootstrap';
+import { config } from '$infra/config';
 import { useAppStore } from '$infra/store';
+import { act, renderHook, waitFor } from '$testing';
 import { checkForOtaUpdate } from '../../checkForOtaUpdate';
 
 import { useBootstrapApp } from '../useBootstrapApp';
@@ -14,7 +14,7 @@ jest.mock('expo-splash-screen', () => ({
   preventAutoHideAsync: jest.fn().mockResolvedValue(undefined),
   setOptions: jest.fn(),
 }));
-jest.mock('$domain/constants', () => ({
+jest.mock('$infra/config', () => ({
   config: { isStorybookEnabled: false },
 }));
 jest.mock('$infra/bootstrap', () => ({ bootstrapApp: jest.fn() }));

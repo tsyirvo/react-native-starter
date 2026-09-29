@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 import type { CustomerInfo, PurchasesOfferings } from 'react-native-purchases';
 import { useAuthContext } from '$application/auth';
-import { act, renderHook, waitFor } from '$domain/testing';
 import { useGetRemoteConfigSync } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { Purchase } from '$infra/purchase';
+import { act, renderHook, waitFor } from '$testing';
 
 import { SubscriptionContextProvider } from '../SubscriptionContextProvider';
 import { useSubscriptionContext } from '../useSubscriptionContext';

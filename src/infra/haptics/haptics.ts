@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 
-import { IS_ANDROID } from '$domain/constants';
+import { IS_ANDROID } from '$infra/config';
 
 export type HapticFeedbackType = 'light' | 'medium' | 'heavy' | 'selection';
 export type HapticNotificationType = 'success' | 'warning' | 'error';

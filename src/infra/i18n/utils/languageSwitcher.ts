@@ -1,7 +1,6 @@
 import i18next from 'i18next';
-
-import type { config } from '$domain/constants';
 import { Analytics } from '$infra/analytics';
+import type { config } from '$infra/config';
 import { initDateLocale } from '$infra/date';
 import { Toaster } from '$infra/toaster';
 import type { UnionFromArray } from '$types';

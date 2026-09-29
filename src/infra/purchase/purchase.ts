@@ -6,10 +6,9 @@ import type {
 import RevenueCat, {
   LOG_LEVEL as PURCHASES_LOG_LEVEL,
 } from 'react-native-purchases';
-
-import { config, IS_IOS } from '$domain/constants';
 import type { User } from '$domain/entities';
 import { hasActiveEntitlements } from '$domain/subscription';
+import { config, IS_IOS } from '$infra/config';
 import { ErrorMonitoring } from '$infra/monitoring';
 
 const API_KEY = IS_IOS

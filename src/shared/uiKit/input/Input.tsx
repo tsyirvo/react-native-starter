@@ -2,9 +2,8 @@ import type { RefObject } from 'react';
 import type { TextInputProps } from 'react-native';
 import { TextInput, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
-
-import { DEFAULT_ICON_SIZE } from '$domain/constants/styling';
 import { Icon, type IconName } from '$shared/icons';
+import { DEFAULT_ICON_SIZE } from '$shared/uiKit/constants';
 
 import { Row, Stack, Text } from '../primitives';
 

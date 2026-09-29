@@ -30,7 +30,7 @@ local const tsGlob = List("**/*.ts", "**/*.tsx")
 // ambient declarations and the Unistyles theme augmentation have to be passed
 // explicitly or every staged file fails to resolve its global types.
 local const ambientTypes =
-  "src/types/declaration.d.ts src/types/react-query.d.ts src/domain/theme/unistyles.ts"
+  "src/types/declaration.d.ts src/types/react-query.d.ts src/shared/theme/unistyles.ts"
 
 /// Fast, file-scoped checks shared by `pre-commit` and `hk fix`.
 ///

@@ -2,8 +2,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useGetSessionState } from '$application/auth';
-import { config } from '$domain/constants';
 import { bootstrapApp } from '$infra/bootstrap';
+import { config } from '$infra/config';
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
 import { checkForOtaUpdate } from '../checkForOtaUpdate';

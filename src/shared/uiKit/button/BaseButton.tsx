@@ -9,9 +9,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { UnistylesThemes } from 'react-native-unistyles';
 import { useUnistyles } from 'react-native-unistyles';
-
-import { HIT_SLOP } from '$domain/constants/styling';
 import { Pressable } from '$shared/components/Pressable';
+import { HIT_SLOP } from '$shared/uiKit/constants';
 
 import { type ButtonVariant, buttonVariants } from './buttonVariants';
 import type { ButtonProps } from './types/buttonTypes';

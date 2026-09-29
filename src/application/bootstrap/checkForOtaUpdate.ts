@@ -1,6 +1,6 @@
 import * as Updates from 'expo-updates';
 
-import { config } from '$domain/constants';
+import { config } from '$infra/config';
 import { Logger } from '$infra/logger';
 import { sleep } from '$shared/utils';
 

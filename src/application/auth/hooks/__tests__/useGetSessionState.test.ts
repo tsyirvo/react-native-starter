@@ -1,6 +1,6 @@
-import { renderHook } from '$domain/testing';
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
+import { renderHook } from '$testing';
 
 import { useGetSessionState } from '../useGetSessionState';
 import { useGetUserSession } from '../useGetUserSession';

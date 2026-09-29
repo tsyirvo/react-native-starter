@@ -1,6 +1,6 @@
 import { createMMKV } from 'react-native-mmkv';
 
-import { storageKeys } from '$domain/constants';
+import { storageKeys } from './storageKeys';
 
 const ProductTrackingStorage = createMMKV({
   id: storageKeys.productTrackingStorage.id,

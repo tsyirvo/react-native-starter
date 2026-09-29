@@ -1,13 +1,12 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { ReactNode } from 'react';
-
-import { act, renderHook, waitFor } from '$domain/testing';
 import { Analytics } from '$infra/analytics';
 import { clearAccessAndRefreshTokens } from '$infra/api/token';
 import { ErrorMonitoring } from '$infra/monitoring';
 import { Purchase } from '$infra/purchase';
 import { clearPersistedAppStore, resetAllSlices } from '$infra/store';
 import { sleep } from '$shared/utils';
+import { act, renderHook, waitFor } from '$testing';
 
 import { AuthContextProvider } from '../AuthContextProvider';
 import { useAuthContext } from '../useAuthContext';

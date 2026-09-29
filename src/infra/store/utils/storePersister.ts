@@ -1,8 +1,7 @@
 import type { PersistOptions } from 'zustand/middleware';
 import { createJSONStorage } from 'zustand/middleware';
-
-import { storageKeys } from '$domain/constants';
 import { StoreStorage } from '$infra/storage';
+import { storageKeys } from '$infra/storage/storageKeys';
 
 import type { StoreState } from '../types/store.types';
 

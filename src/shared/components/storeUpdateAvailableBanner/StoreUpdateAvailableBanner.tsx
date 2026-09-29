@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-import { config, IS_IOS } from '$domain/constants';
+import { config, IS_IOS } from '$infra/config';
 import { Logger } from '$infra/logger';
 import { Button, Stack, Text } from '$shared/uiKit';
 

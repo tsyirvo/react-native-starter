@@ -1,4 +1,4 @@
-import { borderRadiiTokens, spacingTokens } from '$domain/theme/tokens';
+import { borderRadiiTokens, spacingTokens } from '$shared/theme/tokens';
 
 /* ***** *****  Button Variants  ***** ***** */
 
