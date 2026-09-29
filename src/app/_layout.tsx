@@ -21,7 +21,7 @@ import {
   useAuthContext,
 } from '$application/auth';
 import { config } from '$domain/constants';
-import { SubscriptionContextProvider } from '$domain/contexts/subscriptionContext';
+import { SubscriptionContextProvider } from '$features/subscription';
 import { useAppFocusManager } from '$infra/api';
 import { persistOptions, queryClient } from '$infra/api/queryClient';
 import { ErrorMonitoring, ObserveMonitoring } from '$infra/monitoring';

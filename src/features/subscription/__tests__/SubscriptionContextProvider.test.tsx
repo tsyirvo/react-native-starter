@@ -75,6 +75,21 @@ describe('SubscriptionContextProvider', () => {
     expect(Purchase.setUser).toHaveBeenCalledWith(user);
   });
 
+  it('falls back to non-paying when fetching status fails', async () => {
+    const error = new Error('subscription unavailable');
+    setAuthUser(user);
+    jest.mocked(Purchase.isPayingUser).mockRejectedValue(error);
+
+    const { result } = renderHook(useSubscriptionContext, { wrapper });
+
+    await waitFor(() => expect(result.current.isPayingUser).toBe(false));
+    expect(Logger.error).toHaveBeenCalledWith({
+      error,
+      level: 'warning',
+      message: 'Failed to fetch user subscription status',
+    });
+  });
+
   it('applies customer updates and removes the listener on unmount', async () => {
     const { result, unmount } = renderHook(useSubscriptionContext, { wrapper });
     await waitFor(() => expect(result.current.isPayingUser).toBe(false));

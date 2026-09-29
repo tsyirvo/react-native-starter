@@ -57,7 +57,7 @@ export const SubscriptionContextProvider = ({
 
   useRunOnMount(() =>
     Purchase.customerListener((customerInfo) => {
-      setIsPayingUser(hasActiveEntitlements(customerInfo));
+      setIsPayingUser(hasActiveEntitlements(customerInfo.entitlements.active));
     }),
   );
 

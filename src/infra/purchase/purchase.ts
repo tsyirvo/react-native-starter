@@ -58,7 +58,7 @@ class PurchaseClass {
   async isPayingUser() {
     const customerInfo = await this.getUserInformations();
 
-    return hasActiveEntitlements(customerInfo);
+    return hasActiveEntitlements(customerInfo.entitlements.active);
   }
 
   /* ***** *****  RevenueCat  ***** ***** */
