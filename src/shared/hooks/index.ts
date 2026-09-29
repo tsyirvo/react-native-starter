@@ -8,7 +8,6 @@ export * from './useIsNewStoreVersionAvailable';
 export * from './useKeyboard';
 export * from './usePress';
 export * from './usePreviousState';
-export * from './useRequestPermission';
 export * from './useRoutingInstrumentation';
 export * from './useRunOnMount';
 export * from './useWhyDidYouUpdate';

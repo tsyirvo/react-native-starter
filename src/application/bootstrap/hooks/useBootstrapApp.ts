@@ -6,7 +6,7 @@ import { config } from '$domain/constants';
 import { bootstrapApp } from '$infra/bootstrap';
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
-import { checkForOtaUpdate } from '$shared/utils';
+import { checkForOtaUpdate } from '../checkForOtaUpdate';
 
 SplashScreen.preventAutoHideAsync().catch((error: unknown) => {
   Logger.error({

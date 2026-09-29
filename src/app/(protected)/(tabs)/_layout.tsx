@@ -1,9 +1,48 @@
-import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import {
+  type MaterialIcon,
+  NativeTabs,
+  type SFSymbolIcon,
+} from 'expo-router/unstable-native-tabs';
+import type { ParseKeys } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
-import { TABS_CONFIG } from '$application/navigation';
 import { IS_ANDROID, SUPPORTS_LIQUID_GLASS } from '$domain/constants';
+
+type SfSymbolConfig = SFSymbolIcon['sf'];
+type MaterialSymbolConfig = MaterialIcon['md'];
+
+interface TabConfig {
+  labelKey: ParseKeys;
+  md: MaterialSymbolConfig;
+  name: string;
+  sf: SfSymbolConfig;
+  testID: string;
+}
+
+const TABS_CONFIG = [
+  {
+    labelKey: 'tabs.home',
+    md: { default: 'home', selected: 'home' },
+    name: '(home)',
+    sf: { default: 'house', selected: 'house.fill' },
+    testID: 'HomeIcon',
+  },
+  {
+    labelKey: 'tabs.features',
+    md: { default: 'grid_view', selected: 'grid_view' },
+    name: 'features',
+    sf: { default: 'square.grid.2x2', selected: 'square.grid.2x2.fill' },
+    testID: 'FeaturesIcon',
+  },
+  {
+    labelKey: 'tabs.profile',
+    md: { default: 'person', selected: 'person' },
+    name: '(profile)',
+    sf: { default: 'person.crop.circle', selected: 'person.crop.circle.fill' },
+    testID: 'ProfileIcon',
+  },
+] as const satisfies readonly TabConfig[];
 
 const TabLayout = () => {
   const { t } = useTranslation();

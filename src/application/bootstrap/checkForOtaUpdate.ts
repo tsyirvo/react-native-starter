@@ -2,8 +2,7 @@ import * as Updates from 'expo-updates';
 
 import { config } from '$domain/constants';
 import { Logger } from '$infra/logger';
-
-import { sleep } from './sleep';
+import { sleep } from '$shared/utils';
 
 const ONE_SECOND = 1000;
 

@@ -4,6 +4,5 @@ export * from './maintenanceMode';
 export * from './navigation';
 export * from './Pressable';
 export * from './screen';
-export * from './splashscreen';
 export * from './storeUpdateAvailableBanner';
 export * from './storybook';
