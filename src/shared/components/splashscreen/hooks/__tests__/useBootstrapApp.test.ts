@@ -1,10 +1,10 @@
 import * as SplashScreen from 'expo-splash-screen';
 
+import { useGetSessionState } from '$application/auth';
 import { config } from '$domain/constants';
 import { act, renderHook, waitFor } from '$domain/testing';
 import { bootstrapApp } from '$infra/bootstrap';
 import { useAppStore } from '$infra/store';
-import { useGetSessionState } from '$shared/hooks';
 import { checkForOtaUpdate } from '$shared/utils';
 
 import { useBootstrapApp } from '../useBootstrapApp';
@@ -19,7 +19,7 @@ jest.mock('$domain/constants', () => ({
 }));
 jest.mock('$infra/bootstrap', () => ({ bootstrapApp: jest.fn() }));
 jest.mock('$infra/store', () => ({ useAppStore: jest.fn() }));
-jest.mock('$shared/hooks', () => ({ useGetSessionState: jest.fn() }));
+jest.mock('$application/auth', () => ({ useGetSessionState: jest.fn() }));
 jest.mock('$shared/utils', () => ({ checkForOtaUpdate: jest.fn() }));
 
 describe('useBootstrapApp', () => {

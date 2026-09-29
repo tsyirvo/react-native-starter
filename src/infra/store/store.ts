@@ -4,28 +4,17 @@ import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
 import { createAppSlice } from './slices/app';
-import { createSessionSlice } from './slices/session';
 import type { StoreState } from './types/store.types';
 import { generatePersistOptions } from './utils';
 
 const persistOptions: PersistOptions<StoreState> = generatePersistOptions({
-  doNotPersist: ['isBootstrappingApplication', 'isUserLoggedIn'],
+  doNotPersist: ['isBootstrappingApplication'],
 });
 
 export const useAppStore = create<
   StoreState,
   [['zustand/immer', StoreState], ['zustand/persist', StoreState]]
->(
-  immer(
-    persist(
-      (...a) => ({
-        ...createAppSlice(...a),
-        ...createSessionSlice(...a),
-      }),
-      persistOptions,
-    ),
-  ),
-);
+>(immer(persist((...a) => createAppSlice(...a), persistOptions)));
 
 export const clearPersistedAppStore = () => {
   useAppStore.persist.clearStorage();

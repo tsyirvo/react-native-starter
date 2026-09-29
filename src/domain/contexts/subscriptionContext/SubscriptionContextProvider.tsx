@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { PurchasesOffering } from 'react-native-purchases';
 
+import { useAuthContext } from '$application/auth';
 import { hasActiveEntitlements } from '$domain/subscription';
 import {
   type OfferingFlagType,
@@ -9,8 +10,6 @@ import {
 import { Logger } from '$infra/logger';
 import { Purchase } from '$infra/purchase';
 import { useRunOnMount } from '$shared/hooks';
-
-import { useAuthContext } from '../authContext';
 
 import SubscriptionContext from './SubscriptionContext';
 

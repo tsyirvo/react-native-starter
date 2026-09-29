@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { useAuthContext } from '$domain/contexts';
+import { useAuthContext } from '$application/auth';
 import { Screen } from '$shared/components';
 import { Button, Stack, Text } from '$shared/uiKit';
 

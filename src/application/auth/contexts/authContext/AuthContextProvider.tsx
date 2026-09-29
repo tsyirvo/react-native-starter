@@ -7,11 +7,7 @@ import { clearAccessAndRefreshTokens } from '$infra/api/token';
 import { Logger } from '$infra/logger';
 import { ErrorMonitoring } from '$infra/monitoring';
 import { Purchase } from '$infra/purchase';
-import {
-  clearPersistedAppStore,
-  resetAllSlices,
-  useAppStore,
-} from '$infra/store';
+import { clearPersistedAppStore, resetAllSlices } from '$infra/store';
 import { sleep } from '$shared/utils';
 
 import AuthContext from './AuthContext';
@@ -24,8 +20,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const hasTrackedUserRef = useRef(false);
 
   const [user, setUser] = useState<User | null>(null);
-
-  const setIsUserLoggedIn = useAppStore((state) => state.setIsUserLoggedIn);
 
   const queryClient = useQueryClient();
 
@@ -58,29 +52,25 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     }
   }, [user, startTrackingUser]);
 
-  const signIn = useCallback(
-    async (data: UserLogin) => {
-      try {
-        // TODO(prod): Only here to simulate async operation
-        await sleep(150);
+  const signIn = useCallback(async (data: UserLogin) => {
+    try {
+      // TODO(prod): Only here to simulate async operation
+      await sleep(150);
 
-        const userDataPayload = {
-          email: data.email,
-          id: '1',
-        };
+      const userDataPayload = {
+        email: data.email,
+        id: '1',
+      };
 
-        setUser(userDataPayload);
-        setIsUserLoggedIn(true);
-      } catch (error) {
-        Logger.error({
-          error,
-          level: 'info',
-          message: 'Failed to sign in',
-        });
-      }
-    },
-    [setIsUserLoggedIn],
-  );
+      setUser(userDataPayload);
+    } catch (error) {
+      Logger.error({
+        error,
+        level: 'info',
+        message: 'Failed to sign in',
+      });
+    }
+  }, []);
 
   const signOut = useCallback(async () => {
     try {
@@ -89,7 +79,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       }
 
       setUser(null);
-      setIsUserLoggedIn(false);
 
       clearStore();
       queryClient.clear();
@@ -104,7 +93,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         message: 'Failed to sign out',
       });
     }
-  }, [queryClient, user, clearStore, stopTrackingUser, setIsUserLoggedIn]);
+  }, [queryClient, user, clearStore, stopTrackingUser]);
 
   const value = useMemo(
     () => ({

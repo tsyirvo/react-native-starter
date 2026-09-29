@@ -6,11 +6,7 @@ import { Analytics } from '$infra/analytics';
 import { clearAccessAndRefreshTokens } from '$infra/api/token';
 import { ErrorMonitoring } from '$infra/monitoring';
 import { Purchase } from '$infra/purchase';
-import {
-  clearPersistedAppStore,
-  resetAllSlices,
-  useAppStore,
-} from '$infra/store';
+import { clearPersistedAppStore, resetAllSlices } from '$infra/store';
 import { sleep } from '$shared/utils';
 
 import { AuthContextProvider } from '../AuthContextProvider';
@@ -31,11 +27,9 @@ jest.mock('$infra/api/token', () => ({
 jest.mock('$infra/store', () => ({
   clearPersistedAppStore: jest.fn(),
   resetAllSlices: jest.fn(),
-  useAppStore: jest.fn(),
 }));
 jest.mock('$shared/utils', () => ({ sleep: jest.fn() }));
 
-const setIsUserLoggedIn = jest.fn();
 const credentials = { email: 'demo@example.com', password: 'password' };
 const demoUser = { email: credentials.email, id: '1' };
 
@@ -55,14 +49,13 @@ const createHarness = () => {
 describe('AuthContextProvider', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    jest.mocked(useAppStore).mockReturnValue(setIsUserLoggedIn);
     jest.mocked(sleep).mockResolvedValue(undefined);
     jest.mocked(Purchase.setUser).mockResolvedValue(undefined);
     jest.mocked(Purchase.clearUser).mockResolvedValue(undefined);
     jest.mocked(clearAccessAndRefreshTokens).mockResolvedValue(undefined);
   });
 
-  it('starts without a user and signs in with the demo identity and store flag', async () => {
+  it('starts without a user and signs in with the demo identity', async () => {
     const { wrapper } = createHarness();
     const { result } = renderHook(useAuthContext, { wrapper });
 
@@ -73,7 +66,6 @@ describe('AuthContextProvider', () => {
     });
 
     expect(result.current.user).toEqual(demoUser);
-    expect(setIsUserLoggedIn).toHaveBeenCalledWith(true);
   });
 
   it('tracks the signed-in user asynchronously', async () => {
@@ -104,7 +96,6 @@ describe('AuthContextProvider', () => {
     });
 
     expect(result.current.user).toBeNull();
-    expect(setIsUserLoggedIn).toHaveBeenLastCalledWith(false);
     expect(Analytics.reset).toHaveBeenCalledTimes(1);
     expect(ErrorMonitoring.clearUser).toHaveBeenCalledTimes(1);
     expect(Purchase.clearUser).toHaveBeenCalledTimes(1);

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { CustomerInfo, PurchasesOfferings } from 'react-native-purchases';
-import { useAuthContext } from '$domain/contexts/authContext';
+import { useAuthContext } from '$application/auth';
 import { act, renderHook, waitFor } from '$domain/testing';
 import { useGetRemoteConfigSync } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
@@ -9,7 +9,7 @@ import { Purchase } from '$infra/purchase';
 import { SubscriptionContextProvider } from '../SubscriptionContextProvider';
 import { useSubscriptionContext } from '../useSubscriptionContext';
 
-jest.mock('$domain/contexts/authContext', () => ({
+jest.mock('$application/auth', () => ({
   useAuthContext: jest.fn(),
 }));
 jest.mock('$infra/featureFlags', () => ({ useGetRemoteConfigSync: jest.fn() }));

@@ -3,9 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { StyleSheet } from 'react-native-unistyles';
-
+import { useAuthContext } from '$application/auth';
 import logoDark from '$assets/images/logo-dark.png';
-import { useAuthContext } from '$domain/contexts';
 import type { UserLogin } from '$domain/entities';
 import { LoginForm } from '$features/loginForm';
 import { Screen } from '$shared/components';

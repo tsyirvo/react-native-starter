@@ -3,7 +3,6 @@ export * from './useAppState';
 export * from './useAppStateTracking';
 export * from './useCheckNetworkStateOnMount';
 export * from './useDebouncedFunction';
-export * from './useGetSessionState';
 export * from './useHeaderTintColor';
 export * from './useIsNewStoreVersionAvailable';
 export * from './useKeyboard';

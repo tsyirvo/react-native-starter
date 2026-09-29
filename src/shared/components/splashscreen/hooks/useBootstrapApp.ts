@@ -1,11 +1,11 @@
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 
+import { useGetSessionState } from '$application/auth';
 import { config } from '$domain/constants';
 import { bootstrapApp } from '$infra/bootstrap';
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
-import { useGetSessionState } from '$shared/hooks';
 import { checkForOtaUpdate } from '$shared/utils';
 
 SplashScreen.preventAutoHideAsync().catch((error: unknown) => {

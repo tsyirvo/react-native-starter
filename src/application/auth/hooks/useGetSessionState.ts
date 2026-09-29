@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-
-import { useGetUserSession } from '$application/auth';
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
+import { useGetUserSession } from './useGetUserSession';
 
 export const useGetSessionState = () => {
   const [isSessionReady, setIsSessionReady] = useState(false);
@@ -30,7 +29,7 @@ export const useGetSessionState = () => {
     }
 
     if (isFetched) {
-      // TODO(prod): Implement logic to set isUserLoggedIn
+      // TODO(prod): Restore authentication when a real session query exists.
 
       setIsBootstrappingApplication(false);
       setIsSessionReady(true);

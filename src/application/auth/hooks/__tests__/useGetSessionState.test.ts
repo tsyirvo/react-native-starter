@@ -1,11 +1,11 @@
-import { useGetUserSession } from '$application/auth';
 import { renderHook } from '$domain/testing';
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
 
 import { useGetSessionState } from '../useGetSessionState';
+import { useGetUserSession } from '../useGetUserSession';
 
-jest.mock('$application/auth', () => ({ useGetUserSession: jest.fn() }));
+jest.mock('../useGetUserSession', () => ({ useGetUserSession: jest.fn() }));
 jest.mock('$infra/logger', () => ({ Logger: { dev: jest.fn() } }));
 jest.mock('$infra/store', () => ({ useAppStore: jest.fn() }));
 
