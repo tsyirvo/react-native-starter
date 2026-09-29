@@ -3,7 +3,6 @@ import type {} from 'zustand/middleware/immer';
 
 import type { StoreState } from '../../types/store.types';
 import { sliceResetFns } from '../../utils/resetStore';
-
 import type { AppSlice, AppState } from './app.types';
 
 const initialAppState: AppState = {

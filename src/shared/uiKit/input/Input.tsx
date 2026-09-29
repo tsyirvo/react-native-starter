@@ -7,7 +7,6 @@ import { Icon, type IconName } from '$shared/icons';
 import { DEFAULT_ICON_SIZE } from '$shared/uiKit/constants';
 
 import { Row, Stack, Text } from '../primitives';
-
 import { InputLabel } from './components/InputLabel';
 import { useInputFocusState, useInputStyling } from './hooks';
 

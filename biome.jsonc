@@ -28,10 +28,30 @@
       "trailingCommas": "all"
     }
   },
-  // Don't auto-sort package.json keys
   "assist": {
     "actions": {
       "source": {
+        // Separate packages, `$` aliases and relative paths with a blank line.
+        // Explicit groups make Biome enforce and autofix the separators.
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              [
+                ":URL:",
+                ":BUN:",
+                ":NODE:",
+                ":PACKAGE_WITH_PROTOCOL:",
+                ":PACKAGE:"
+              ],
+              ":BLANK_LINE:",
+              ":ALIAS:",
+              ":BLANK_LINE:",
+              ":PATH:"
+            ]
+          }
+        },
+        // Don't auto-sort package.json keys
         "useSortedPackageJson": "off"
       }
     }

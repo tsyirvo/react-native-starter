@@ -7,7 +7,6 @@ import * as Updates from 'expo-updates';
 
 import type { User } from '$domain/entities';
 import { config } from '$infra/config';
-
 import type { Primitives } from '$types';
 
 const prodSampleRate = 0.5;
