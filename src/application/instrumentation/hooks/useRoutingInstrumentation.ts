@@ -1,8 +1,7 @@
 import { useNavigationContainerRef } from 'expo-router';
 
 import { routingInstrumentation } from '$infra/monitoring';
-
-import { useRunOnMount } from './useRunOnMount';
+import { useRunOnMount } from '$shared/hooks';
 
 export const useRoutingInstrumentation = () => {
   const ref = useNavigationContainerRef();

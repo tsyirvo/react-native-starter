@@ -3,9 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import { ErrorMonitoring } from '$infra/monitoring';
 import { Toaster } from '$infra/toaster';
+import { useRunOnMount } from '$shared/hooks';
 import { sleep } from '$shared/utils';
-
-import { useRunOnMount } from './useRunOnMount';
 
 const ONE_SECOND = 1000;
 

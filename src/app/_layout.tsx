@@ -1,5 +1,6 @@
 import '@formatjs/intl-getcanonicallocales/polyfill.js';
 import 'intl-pluralrules';
+
 import '../infra/i18n';
 
 import * as Sentry from '@sentry/react-native';
@@ -21,6 +22,12 @@ import {
   useAuthContext,
 } from '$application/auth';
 import { Splashscreen } from '$application/bootstrap';
+import {
+  useAppScreenTracking,
+  useAppStateTracking,
+  useCheckNetworkStateOnMount,
+  useRoutingInstrumentation,
+} from '$application/instrumentation';
 import { SubscriptionContextProvider } from '$features/subscription';
 import { useAppFocusManager } from '$infra/api';
 import { persistOptions, queryClient } from '$infra/api/queryClient';
@@ -35,12 +42,6 @@ import {
   MaintenanceMode,
   NavigationThemeProvider,
 } from '$shared/components';
-import {
-  useAppScreenTracking,
-  useAppStateTracking,
-  useCheckNetworkStateOnMount,
-  useRoutingInstrumentation,
-} from '$shared/hooks';
 
 ObserveMonitoring.init();
 
