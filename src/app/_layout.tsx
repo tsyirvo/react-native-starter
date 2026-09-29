@@ -4,6 +4,7 @@ import '../infra/i18n';
 
 import * as Sentry from '@sentry/react-native';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
+import { ObserveRoot } from 'expo-observe';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { type ErrorInfo, StrictMode } from 'react';
@@ -19,7 +20,7 @@ import { AuthContextProvider } from '$domain/contexts';
 import { SubscriptionContextProvider } from '$domain/contexts/subscriptionContext';
 import { useAppFocusManager } from '$infra/api';
 import { persistOptions, queryClient } from '$infra/api/queryClient';
-import { ErrorMonitoring } from '$infra/monitoring';
+import { ErrorMonitoring, ObserveMonitoring } from '$infra/monitoring';
 import { ProductTrackingProvider } from '$infra/productTracking';
 import { useAppStore } from '$infra/store';
 import { toastConfig } from '$infra/toaster';
@@ -36,6 +37,8 @@ import {
   useCheckNetworkStateOnMount,
   useRoutingInstrumentation,
 } from '$shared/hooks';
+
+ObserveMonitoring.init();
 
 // Sentry is initialized here so that it runs before Sentry.wrap()
 ErrorMonitoring.init();
@@ -130,4 +133,4 @@ const styles = StyleSheet.create({
 
 const RootLayoutWithSentry = Sentry.wrap(RootLayout);
 
-export default RootLayoutWithSentry;
+export default ObserveRoot.wrap(RootLayoutWithSentry);

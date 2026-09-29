@@ -88,6 +88,7 @@
     "expo-linking": "~57.0.8",
     "expo-localization": "~57.0.1",
     "expo-network": "~57.0.1",
+    "expo-observe": "~57.0.24",
     "expo-router": "~57.0.17",
     "expo-secure-store": "~57.0.2",
     "expo-splash-screen": "~57.0.8",
