@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Edge } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
+
 import { ScreenInteractiveMarker } from '$infra/monitoring';
 import type { ThemeColors, ThemeSpacing } from '$shared/theme';
 import { Box, SafeView } from '$shared/uiKit';

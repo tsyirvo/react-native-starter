@@ -6,6 +6,7 @@ import type {
 import RevenueCat, {
   LOG_LEVEL as PURCHASES_LOG_LEVEL,
 } from 'react-native-purchases';
+
 import type { User } from '$domain/entities';
 import { hasActiveEntitlements } from '$domain/subscription';
 import { config, IS_IOS } from '$infra/config';

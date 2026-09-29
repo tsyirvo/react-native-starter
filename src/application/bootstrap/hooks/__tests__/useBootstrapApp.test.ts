@@ -5,8 +5,8 @@ import { bootstrapApp } from '$infra/bootstrap';
 import { config } from '$infra/config';
 import { useAppStore } from '$infra/store';
 import { act, renderHook, waitFor } from '$testing';
-import { checkForOtaUpdate } from '../../checkForOtaUpdate';
 
+import { checkForOtaUpdate } from '../../checkForOtaUpdate';
 import { useBootstrapApp } from '../useBootstrapApp';
 
 jest.mock('expo-splash-screen', () => ({

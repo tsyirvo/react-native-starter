@@ -1,4 +1,5 @@
 import { PERMISSIONS } from 'react-native-permissions';
+
 import { Permissions } from '$infra/permissions';
 import { Toaster } from '$infra/toaster';
 import { renderHook } from '$testing';

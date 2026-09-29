@@ -1,4 +1,5 @@
 import { composeStories } from '@storybook/react';
+
 import type { IconName } from '$shared/icons';
 import { fireEvent, render, screen } from '$testing';
 

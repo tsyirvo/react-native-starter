@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { UnistylesThemes } from 'react-native-unistyles';
 import { useUnistyles } from 'react-native-unistyles';
+
 import { Pressable } from '$shared/components/Pressable';
 import { HIT_SLOP } from '$shared/uiKit/constants';
 

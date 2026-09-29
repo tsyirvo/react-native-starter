@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { CustomerInfo, PurchasesOfferings } from 'react-native-purchases';
+
 import { useAuthContext } from '$application/auth';
 import { useGetRemoteConfigSync } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';

@@ -1,9 +1,11 @@
 import i18next from 'i18next';
+
 import { Analytics } from '$infra/analytics';
 import type { config } from '$infra/config';
 import { initDateLocale } from '$infra/date';
 import { Toaster } from '$infra/toaster';
 import type { UnionFromArray } from '$types';
+
 import { setSavedAppLocale } from './languageDetector';
 
 type SupportedLanguages = UnionFromArray<typeof config.supportedLocales>;

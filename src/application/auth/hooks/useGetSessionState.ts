@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+
 import { Logger } from '$infra/logger';
 import { useAppStore } from '$infra/store';
+
 import { useGetUserSession } from './useGetUserSession';
 
 export const useGetSessionState = () => {
