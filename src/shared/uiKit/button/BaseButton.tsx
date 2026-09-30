@@ -13,7 +13,7 @@ import { useUnistyles } from 'react-native-unistyles';
 import { Pressable } from '$shared/components/Pressable';
 import { HIT_SLOP } from '$shared/uiKit/constants';
 
-import { type ButtonVariant, buttonVariants } from './buttonVariants';
+import { type ButtonVariant, buttonVariants } from './constants';
 import type { ButtonProps } from './types/buttonTypes';
 
 interface BaseButtonProps extends ButtonProps {

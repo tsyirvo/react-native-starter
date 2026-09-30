@@ -3,8 +3,7 @@ import type { IconName } from '$shared/icons';
 
 import { Row } from '../primitives';
 import { BaseButton } from './BaseButton';
-import { InnerIcon } from './components/InnerIcon';
-import { InnerText } from './components/InnerText';
+import { InnerIcon, InnerText } from './components';
 import type { ButtonProps } from './types/buttonTypes';
 
 interface ButtonWithIconProps extends ButtonProps {

@@ -10,8 +10,8 @@ import { clearPersistedAppStore, resetAllSlices } from '$infra/store';
 import { sleep } from '$shared/utils';
 import { act, renderHook, waitFor } from '$testing';
 
+import { useAuthContext } from '../../../hooks';
 import { AuthContextProvider } from '../AuthContextProvider';
-import { useAuthContext } from '../useAuthContext';
 
 jest.mock('$infra/analytics', () => ({
   Analytics: { reset: jest.fn(), setUser: jest.fn() },

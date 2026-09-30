@@ -21,6 +21,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   const [user, setUser] = useState<User | null>(null);
   const [purchaseUser, setPurchaseUser] = useState<User | null>(null);
+
   const isPurchaseUserReady = user !== null && purchaseUser === user;
 
   const queryClient = useQueryClient();

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { Box } from '$shared/uiKit';
 
-import { useBootstrapApp } from './hooks/useBootstrapApp';
+import { useBootstrapApp } from '../../hooks';
 
 interface SplashscreenProps {
   children: ReactNode;

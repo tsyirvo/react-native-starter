@@ -1,1 +1,1 @@
-export * from './Splashscreen';
+export * from './components';

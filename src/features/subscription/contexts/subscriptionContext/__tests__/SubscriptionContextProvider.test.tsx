@@ -7,8 +7,8 @@ import { Logger } from '$infra/logger';
 import { Purchase } from '$infra/purchase';
 import { act, renderHook, waitFor } from '$testing';
 
+import { useSubscriptionContext } from '../../../hooks';
 import { SubscriptionContextProvider } from '../SubscriptionContextProvider';
-import { useSubscriptionContext } from '../useSubscriptionContext';
 
 jest.mock('$application/auth', () => ({
   useAuthContext: jest.fn(),

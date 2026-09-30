@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Logger } from '$infra/logger';
 import { Box, Button, Text } from '$shared/uiKit';
 
-import { useRequestPermission } from './hooks';
+import { useRequestPermission } from '../hooks';
 
 export const Notifications = () => {
   const { t } = useTranslation();

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import SubscriptionContext from './SubscriptionContext';
+import SubscriptionContext from '../contexts/subscriptionContext/SubscriptionContext';
 
 export const useSubscriptionContext = () => {
   const value = useContext(SubscriptionContext);

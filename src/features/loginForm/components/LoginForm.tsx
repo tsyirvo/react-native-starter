@@ -9,7 +9,7 @@ import { Logger } from '$infra/logger';
 import { Button, Stack } from '$shared/uiKit';
 import { Input } from '$shared/uiKit/input';
 
-import { type LoginFormData, loginFormSchema } from './utils';
+import { type LoginFormData, loginFormSchema } from '../utils';
 
 interface LoginFormProps {
   onFormSuccess: (data: UserLogin) => Promise<void>;

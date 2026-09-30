@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import { Loader } from '../../loader';
 import { Text } from '../../primitives';
-import type { ButtonVariant } from '../buttonVariants';
+import type { ButtonVariant } from '../constants';
 import type { ButtonProps } from '../types/buttonTypes';
 import {
   getLoaderColor,

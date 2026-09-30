@@ -52,6 +52,17 @@ Auth owns purchase identity transitions and serializes login/logout calls. Subsc
 
 Start with one local implementation. Introduce a seam or port only when multiple adapters, complex test setup or repeated policy justify it. Add app-specific domain concepts and richer workflows as the consuming app grows rather than pre-filling them here. The sign-in is **demo-only**; session restoration and token refresh are placeholders, and no backend/API client is wired up. Do not treat this as production authentication.
 
+### Folder organization
+
+Within a module, group different roles under `components/`, `contexts/`, `hooks/`, `utils/`, `constants/` and `types/`; create only the folders needed. `application/appAvailability/` is the reference for component-and-hook modules.
+
+- Keep context definitions and providers together in `contexts/<contextName>/`, with consumer hooks in the module's `hooks/` folder and standalone helpers in `utils/`.
+- Use a flat `components/` folder for simple components. A named component subfolder can group its implementation, tests, stories and supporting files.
+- Colocate `__tests__/` and `stories/` with their owning component, context, hook or utility.
+- Leaf component packages such as `shared/uiKit/input/` may keep their primary component at the package root, with supporting components, hooks and utilities in subfolders. Simple SDK adapters may similarly keep their implementation and associated types together.
+- Use local `index.ts` barrels for components, hooks and utilities consumed outside their folder. Keep module-root exports limited to the intended public API; internal code should not import its own module-root barrel. Context definitions and initialization-sensitive dependencies may use direct imports.
+- Do not add these role folders under `src/app/`, where files define routes, or mix handwritten components into generated directories such as `shared/icons/components/`.
+
 Check changes with `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test -- --runInBand`. Use `bun run lint` and `bun run format` only when you want their auto-fixes.
 
 ## What's included

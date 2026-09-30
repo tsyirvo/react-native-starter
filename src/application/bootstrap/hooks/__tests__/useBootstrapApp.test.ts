@@ -6,7 +6,7 @@ import { config } from '$infra/config';
 import { useAppStore } from '$infra/store';
 import { act, renderHook, waitFor } from '$testing';
 
-import { checkForOtaUpdate } from '../../checkForOtaUpdate';
+import { checkForOtaUpdate } from '../../utils';
 import { useBootstrapApp } from '../useBootstrapApp';
 
 jest.mock('expo-splash-screen', () => ({
@@ -20,7 +20,7 @@ jest.mock('$infra/config', () => ({
 jest.mock('$infra/bootstrap', () => ({ bootstrapApp: jest.fn() }));
 jest.mock('$infra/store', () => ({ useAppStore: jest.fn() }));
 jest.mock('$application/auth', () => ({ useGetSessionState: jest.fn() }));
-jest.mock('../../checkForOtaUpdate', () => ({ checkForOtaUpdate: jest.fn() }));
+jest.mock('../../utils', () => ({ checkForOtaUpdate: jest.fn() }));
 
 describe('useBootstrapApp', () => {
   beforeEach(() => {

@@ -10,8 +10,8 @@ import type { PersistQueryClientOptions } from '@tanstack/react-query-persist-cl
 import { Logger } from '$infra/logger';
 import { QueryClientStorage, storageKeys } from '$infra/storage';
 
-import { GC_TIME, STALE_TIME, THIRTY_DAYS } from './utils/queryClient.utils';
-import { refreshAccessTokenAndRetry } from './utils/requestFailureQueue';
+import { GC_TIME, STALE_TIME, THIRTY_DAYS } from './constants';
+import { refreshAccessTokenAndRetry } from './utils';
 
 const asyncStoragePersister = createAsyncStoragePersister({
   key: storageKeys.queryStorage.id,
