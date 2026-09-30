@@ -29,8 +29,13 @@ build/
 *.key
 *.mobileprovision
 
+# Shared agent adapters; keep personal settings and copied skill mirrors local
+.claude/*
+!.claude/skills
+.claude/skills/**
+CLAUDE.local.md
+
 # Editor and machine-specific settings
-.claude/
 .vscode/
 .zed/
 .idea/

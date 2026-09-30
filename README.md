@@ -3,6 +3,7 @@
 - [React Native Starter](#react-native-starter)
   - [Explanations](#explanations)
   - [Architecture](#architecture)
+  - [AI coding agents](#ai-coding-agents)
   - [The setup](#the-setup)
   - [Runing the project](#runing-the-project)
   - [Stack](#stack)
@@ -30,15 +31,15 @@ Check the [React Native docs](https://reactnative.dev/docs/environment-setup) on
 
 This is a lightweight, opinionated starter, not a prebuilt product architecture. Auth, billing and other common published-app integrations are configured by default; app-specific product concepts are not prefilled. Keep code with its current owner:
 
-| Directory | Responsibility |
-| --- | --- |
-| `src/app/` | Thin Expo Router routes and navigation composition. Files here are routes; do not add unrelated configuration files. |
+| Directory          | Responsibility                                                                                                                                                 |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/app/`         | Thin Expo Router routes and navigation composition. Files here are routes; do not add unrelated configuration files.                                           |
 | `src/application/` | App-wide workflows such as demo auth, startup, availability/update policy and instrumentation (`auth/`, `bootstrap/`, `appAvailability/`, `instrumentation/`). |
-| `src/features/` | User-facing flows and their UI/policy, including small features like `storeRating/`. |
-| `src/infra/` | Concrete SDK integrations, storage, API scaffolding and runtime configuration. |
-| `src/shared/` | Reusable UI, theme, hooks and utilities, not app-wide or feature-specific policy. |
-| `src/domain/` | Pure models and rules, currently the user types and subscription entitlement check. |
-| `src/testing/` | Jest setup and React Native Testing Library helpers. |
+| `src/features/`    | User-facing flows and their UI/policy, including small features like `storeRating/`.                                                                           |
+| `src/infra/`       | Concrete SDK integrations, storage, API scaffolding and runtime configuration.                                                                                 |
+| `src/shared/`      | Reusable UI, theme, hooks and utilities, not app-wide or feature-specific policy.                                                                              |
+| `src/domain/`      | Pure models and rules, currently the user types and subscription entitlement check.                                                                            |
+| `src/testing/`     | Jest setup and React Native Testing Library helpers.                                                                                                           |
 
 Examples from the current code:
 
@@ -64,6 +65,20 @@ Within a module, group different roles under `components/`, `contexts/`, `hooks/
 - Do not add these role folders under `src/app/`, where files define routes, or mix handwritten components into generated directories such as `shared/icons/components/`.
 
 Check changes with `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test -- --runInBand`. Use `bun run lint` and `bun run format` only when you want their auto-fixes.
+
+## AI coding agents
+
+Use any coding agent with shared instructions in [AGENTS.md](AGENTS.md), focused
+[project guides](docs/agents/rules/architecture.md), and versioned
+[Agent Skills](.agents/README.md). Client-specific files are optional
+compatibility adapters, not separate rule sets or a restriction on agent choice.
+
+See [agent setup](docs/agents/README.md) for adapting instruction, skill and MCP
+discovery to your chosen agent, with optional client examples. Root `.mcp.json`
+provides Context7 and Expo definitions; translate them to your client's format
+if needed. Sentry is an optional example. Credentials and personal settings
+stay local, and external writes require approval. No AI tooling is added to
+app dependencies.
 
 ## What's included
 
@@ -108,7 +123,7 @@ bun install
 
 Without the activation hook, prefix the commands with `mise exec --` (e.g. `mise exec -- bun install`) so they run against the versions from `mise.toml`.
 
-If you'd rather not use mise, the project only requires Node >= 26 and Bun >= 1.3 (the exact version is pinned through `packageManager` in `package.json`), and every task below has a plain `bun run` equivalent.
+If you'd rather not use mise, the project only requires Node >= 26 and Bun >= 1.4 (the exact version is pinned through `packageManager` in `package.json`), and every task below has a plain `bun run` equivalent.
 
 ## Tasks with mise
 
