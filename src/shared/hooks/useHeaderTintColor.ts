@@ -1,7 +1,7 @@
 import { useUnistyles } from 'react-native-unistyles';
 
-import { SUPPORTS_LIQUID_GLASS } from '$domain/constants';
-import type { ThemeColors } from '$domain/theme';
+import { SUPPORTS_LIQUID_GLASS } from '$infra/config';
+import type { ThemeColors } from '$shared/theme';
 
 const HEADER_TINT_COLOR_TOKEN: ThemeColors = 'core_primary';
 

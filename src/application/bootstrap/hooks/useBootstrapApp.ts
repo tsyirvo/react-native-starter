@@ -1,0 +1,66 @@
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback, useEffect, useState } from 'react';
+
+import { useGetSessionState } from '$application/auth';
+import { bootstrapApp } from '$infra/bootstrap';
+import { config } from '$infra/config';
+import { Logger } from '$infra/logger';
+import { useAppStore } from '$infra/store';
+
+import { checkForOtaUpdate } from '../utils';
+
+SplashScreen.preventAutoHideAsync().catch((error: unknown) => {
+  Logger.error({
+    error,
+    message: 'Failed to persist the SplashScreen',
+  });
+});
+
+SplashScreen.setOptions({
+  duration: 250,
+  fade: true,
+});
+
+export const useBootstrapApp = () => {
+  const [isBootstrappingInfra, setIsBootstrappingInfra] = useState(true);
+
+  const isBootstrappingApplication = useAppStore(
+    (state) => state.isBootstrappingApplication,
+  );
+
+  const isAppReady = !(isBootstrappingInfra || isBootstrappingApplication);
+
+  useGetSessionState();
+
+  const onLayoutRootView = useCallback(() => {
+    (async () => {
+      if (config.isStorybookEnabled) {
+        setIsBootstrappingInfra(false);
+
+        return;
+      }
+
+      bootstrapApp();
+      await checkForOtaUpdate();
+
+      // TODO(prod): add necessary bootstrap logic here
+      setIsBootstrappingInfra(false);
+    })().catch((error: unknown) => {
+      Logger.error({
+        error,
+        message: 'Failed to bootstrap app SDKs or check for OTA update',
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isAppReady) {
+      SplashScreen.hide();
+    }
+  }, [isAppReady]);
+
+  return {
+    isAppReady,
+    onLayoutRootView,
+  };
+};

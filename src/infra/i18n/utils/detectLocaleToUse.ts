@@ -1,6 +1,6 @@
 import * as Localization from 'expo-localization';
 
-import { config } from '$domain/constants';
+import { config } from '$infra/config';
 
 const PRIMARY_LOCALIZATION = 0;
 const NOT_FOUND = -1;

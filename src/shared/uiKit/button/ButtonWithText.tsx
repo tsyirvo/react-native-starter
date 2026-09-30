@@ -1,7 +1,7 @@
 import { usePress } from '$shared/hooks';
 
 import { BaseButton } from './BaseButton';
-import { InnerText } from './components/InnerText';
+import { InnerText } from './components';
 import type { ButtonProps } from './types/buttonTypes';
 
 interface ButtonWithTextProps extends ButtonProps {

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { KeyboardEvent } from 'react-native';
 import { Keyboard } from 'react-native';
 
-import { IS_IOS } from '$domain/constants';
+import { IS_IOS } from '$infra/config';
 
 interface UseKeyboardArguments {
   onKeyboardHide?: (e?: KeyboardEvent) => void;

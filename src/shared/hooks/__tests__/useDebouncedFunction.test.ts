@@ -1,4 +1,4 @@
-import { renderHook } from '$domain/testing';
+import { renderHook } from '$testing';
 
 import { useDebouncedFunction } from '../useDebouncedFunction';
 

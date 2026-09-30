@@ -2,6 +2,7 @@
 
 - [React Native Starter](#react-native-starter)
   - [Explanations](#explanations)
+  - [Architecture](#architecture)
   - [The setup](#the-setup)
   - [Runing the project](#runing-the-project)
   - [Stack](#stack)
@@ -24,6 +25,45 @@ It's a basic start, but with most of the common dependencies and tools I usually
 The goal is not to provide a ton of UI elements, tools and so on, but rather the most frequent tools/libraries that I end up using. In most starter kit I found, there are too many things already builtin that end up unused so this one is a lighter version focused on providing the essentials, mostly on the tooling side rather than on UI elements.
 
 Check the [React Native docs](https://reactnative.dev/docs/environment-setup) on how to properly setup your dev environment. It uses Expo with a custom Development Build, so you also need to setup [Expo tooling](https://docs.expo.dev/).
+
+## Architecture
+
+This is a lightweight, opinionated starter, not a prebuilt product architecture. Auth, billing and other common published-app integrations are configured by default; app-specific product concepts are not prefilled. Keep code with its current owner:
+
+| Directory | Responsibility |
+| --- | --- |
+| `src/app/` | Thin Expo Router routes and navigation composition. Files here are routes; do not add unrelated configuration files. |
+| `src/application/` | App-wide workflows such as demo auth, startup, availability/update policy and instrumentation (`auth/`, `bootstrap/`, `appAvailability/`, `instrumentation/`). |
+| `src/features/` | User-facing flows and their UI/policy, including small features like `storeRating/`. |
+| `src/infra/` | Concrete SDK integrations, storage, API scaffolding and runtime configuration. |
+| `src/shared/` | Reusable UI, theme, hooks and utilities, not app-wide or feature-specific policy. |
+| `src/domain/` | Pure models and rules, currently the user types and subscription entitlement check. |
+| `src/testing/` | Jest setup and React Native Testing Library helpers. |
+
+Examples from the current code:
+
+- `src/app/(protected)/(tabs)/(home)/index.tsx` imports `Header`, `Informations` and `Version` from `$features/home`, plus `Screen` from `$shared/components`.
+- `src/application/auth/contexts/authContext/AuthContextProvider.tsx` imports the domain `User` type from `$domain/entities` and calls the concrete `$infra/purchase` adapter during the auth workflow.
+- `src/features/notifications/hooks/useRequestPermission.ts` calls `$infra/permissions` and `$infra/toaster` for a user-facing permission flow.
+
+Keep `domain` independent of React, Expo, infra and shared. Infra may import domain types and pure rules. Shared should not import application or features; keep feature-specific UI and policy in its feature even when reused within one screen. Features may consume application workflows (e.g. `features/subscription` reads the auth user and purchase identity readiness from `$application/auth`), but application must not import features; routes in `app/` compose both. Application modules compose workflows and may call concrete infra adapters: this is a pragmatic exception to strict inward-only Clean Architecture, not a mandate to add a port for every SDK.
+
+Auth owns purchase identity transitions and serializes login/logout calls. Subscription waits for `isPurchaseUserReady` before reading entitlements or listening for customer updates, and ignores results from an obsolete user. Purchase SDK failures are logged but do not prevent local sign-out. App availability, maintenance and store-update policy live in `application/appAvailability` rather than shared UI.
+
+Start with one local implementation. Introduce a seam or port only when multiple adapters, complex test setup or repeated policy justify it. Add app-specific domain concepts and richer workflows as the consuming app grows rather than pre-filling them here. The sign-in is **demo-only**; session restoration and token refresh are placeholders, and no backend/API client is wired up. Do not treat this as production authentication.
+
+### Folder organization
+
+Within a module, group different roles under `components/`, `contexts/`, `hooks/`, `utils/`, `constants/` and `types/`; create only the folders needed. `application/appAvailability/` is the reference for component-and-hook modules.
+
+- Keep context definitions and providers together in `contexts/<contextName>/`, with consumer hooks in the module's `hooks/` folder and standalone helpers in `utils/`.
+- Use a flat `components/` folder for simple components. A named component subfolder can group its implementation, tests, stories and supporting files.
+- Colocate `__tests__/` and `stories/` with their owning component, context, hook or utility.
+- Leaf component packages such as `shared/uiKit/input/` may keep their primary component at the package root, with supporting components, hooks and utilities in subfolders. Simple SDK adapters may similarly keep their implementation and associated types together.
+- Use local `index.ts` barrels for components, hooks and utilities consumed outside their folder. Keep module-root exports limited to the intended public API; internal code should not import its own module-root barrel. Context definitions and initialization-sensitive dependencies may use direct imports.
+- Do not add these role folders under `src/app/`, where files define routes, or mix handwritten components into generated directories such as `shared/icons/components/`.
+
+Check changes with `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test -- --runInBand`. Use `bun run lint` and `bun run format` only when you want their auto-fixes.
 
 ## What's included
 

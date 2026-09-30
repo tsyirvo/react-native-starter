@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from '$domain/testing';
+import { act, render, screen, waitFor } from '$testing';
 
 import { Loader } from '../Loader';
 

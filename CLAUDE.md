@@ -28,12 +28,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Project Structure
 
-- **src/app/** - Expo Router app directory with file-based routing
-- **src/application/** - Application layer with business logic and queries
-- **src/domain/** - Domain layer with entities, contexts, and theme
-- **src/features/** - Feature-specific components and logic
-- **src/infra/** - Infrastructure layer (API, storage, analytics, etc.)
-- **src/shared/** - Shared components, hooks, and utilities
+- **src/app/** - Thin Expo Router routes and navigation composition
+- **src/application/** - App-wide auth, bootstrap, availability/update policy and instrumentation workflows
+- **src/domain/** - Pure user types and subscription entitlement rules
+- **src/features/** - User-facing flows and their UI/policy
+- **src/infra/** - Concrete SDKs, storage, runtime config and API scaffolding
+- **src/shared/** - Reusable UI, theme, hooks and utilities
+- **src/testing/** - Jest setup and React Native Testing Library helpers
+
+See [README architecture](README.md#architecture) for ownership, import and abstraction rules. Expo Router treats files in `src/app/` as routes.
 
 ### Key Technologies
 
@@ -50,24 +53,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Theming System
 
 - Uses Unistyles for consistent theming
-- Theme file in `src/domain/theme/unistyles.ts`
+- Theme file in `src/shared/theme/unistyles.ts`
 
 ### State Management
 
 - **Zustand** store in `src/infra/store/`
-- Slice-based architecture (`app`, `session`)
+- App slice only; demo auth state lives in the auth provider
 - Persistence with selective field exclusion
 - Immer integration for immutable updates
 
 ### API Layer
 
 - TanStack Query for data fetching and caching
-- Token-based authentication
 - Query client persistence
-- Request failure queue for offline support
+- Token and request-failure queue scaffolding (not production auth or offline support)
 
-> No API client is wired up right now: the GraphQL layer has been removed and
-> Convex (database + authentication) will replace it in a follow-up.
+> Demo sign-in does not authenticate against a backend. Session restoration and
+> token refresh are placeholders; no API client is wired up.
 
 ### Testing Strategy
 

@@ -1,4 +1,4 @@
-import type { ButtonVariant } from '../buttonVariants';
+import type { ButtonVariant } from '../constants';
 
 export interface ButtonProps {
   isDisabled?: boolean;

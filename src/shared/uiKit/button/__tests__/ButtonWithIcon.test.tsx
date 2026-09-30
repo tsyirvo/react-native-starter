@@ -1,7 +1,7 @@
 import { composeStories } from '@storybook/react';
 
-import { fireEvent, render, screen } from '$domain/testing';
 import type { IconName } from '$shared/icons';
+import { fireEvent, render, screen } from '$testing';
 
 import * as ButtonsWithIcon from '../stories/ButtonWithIcon.stories';
 

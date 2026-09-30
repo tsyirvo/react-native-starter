@@ -1,10 +1,7 @@
-import {
-  COMPACT_ICON_SIZE,
-  DEFAULT_ICON_SIZE,
-} from '$domain/constants/styling';
-import type { ThemeColors } from '$domain/theme';
+import type { ThemeColors } from '$shared/theme';
+import { COMPACT_ICON_SIZE, DEFAULT_ICON_SIZE } from '$shared/uiKit/constants';
 
-import type { ButtonVariant } from '../buttonVariants';
+import type { ButtonVariant } from '../constants';
 
 const LOADING_OPACITY = 0;
 const REGULAR_OPACITY = 1;

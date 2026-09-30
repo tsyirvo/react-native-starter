@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-import type { ThemeColors } from '$domain/theme';
+import type { ThemeColors } from '$shared/theme';
 
 interface SeparatorProps {
   color?: ThemeColors;

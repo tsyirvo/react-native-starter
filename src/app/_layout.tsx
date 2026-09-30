@@ -1,5 +1,6 @@
 import '@formatjs/intl-getcanonicallocales/polyfill.js';
 import 'intl-pluralrules';
+
 import '../infra/i18n';
 
 import * as Sentry from '@sentry/react-native';
@@ -15,28 +16,31 @@ import type { StackAnimationTypes } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
 import { StyleSheet } from 'react-native-unistyles';
 
-import { config } from '$domain/constants';
-import { AuthContextProvider } from '$domain/contexts';
-import { SubscriptionContextProvider } from '$domain/contexts/subscriptionContext';
-import { useAppFocusManager } from '$infra/api';
-import { persistOptions, queryClient } from '$infra/api/queryClient';
-import { ErrorMonitoring, ObserveMonitoring } from '$infra/monitoring';
-import { ProductTrackingProvider } from '$infra/productTracking';
-import { useAppStore } from '$infra/store';
-import { toastConfig } from '$infra/toaster';
+import { AppUpdateNeeded, MaintenanceMode } from '$application/appAvailability';
 import {
-  AppUpdateNeeded,
-  FullscreenErrorBoundary,
-  MaintenanceMode,
-  NavigationThemeProvider,
-  Splashscreen,
-} from '$shared/components';
+  AuthContextProvider,
+  getAuthGuards,
+  useAuthContext,
+} from '$application/auth';
+import { Splashscreen } from '$application/bootstrap';
 import {
   useAppScreenTracking,
   useAppStateTracking,
   useCheckNetworkStateOnMount,
   useRoutingInstrumentation,
-} from '$shared/hooks';
+} from '$application/instrumentation';
+import { SubscriptionContextProvider } from '$features/subscription';
+import { useAppFocusManager } from '$infra/api';
+import { persistOptions, queryClient } from '$infra/api/queryClient';
+import { config } from '$infra/config';
+import { ErrorMonitoring, ObserveMonitoring } from '$infra/monitoring';
+import { ProductTrackingProvider } from '$infra/productTracking';
+import { useAppStore } from '$infra/store';
+import { toastConfig } from '$infra/toaster';
+import {
+  FullscreenErrorBoundary,
+  NavigationThemeProvider,
+} from '$shared/components';
 
 ObserveMonitoring.init();
 
@@ -55,12 +59,33 @@ const onGlobalError = (error: Error, errorInfo: ErrorInfo) => {
   ErrorMonitoring.exception(error);
 };
 
-const RootLayout = () => {
-  const isUserLoggedIn = useAppStore((state) => state.isUserLoggedIn);
+const ProtectedNavigator = () => {
+  const { user } = useAuthContext();
+  const { isAnonymous, isAuthenticated } = getAuthGuards(user);
   const isBootstrappingApplication = useAppStore(
     (state) => state.isBootstrappingApplication,
   );
 
+  return (
+    <Stack screenOptions={screenOptions}>
+      <Stack.Protected guard={!isBootstrappingApplication}>
+        <Stack.Protected guard={config.isStorybookEnabled}>
+          <Stack.Screen name="Storybook" />
+        </Stack.Protected>
+
+        <Stack.Protected guard={isAnonymous}>
+          <Stack.Screen name="Login" />
+        </Stack.Protected>
+
+        <Stack.Protected guard={isAuthenticated}>
+          <Stack.Screen name="(protected)/(tabs)" />
+        </Stack.Protected>
+      </Stack.Protected>
+    </Stack>
+  );
+};
+
+const RootLayout = () => {
   useRoutingInstrumentation();
   useCheckNetworkStateOnMount();
   useAppStateTracking();
@@ -86,21 +111,7 @@ const RootLayout = () => {
                   <AuthContextProvider>
                     <SubscriptionContextProvider>
                       <NavigationThemeProvider>
-                        <Stack screenOptions={screenOptions}>
-                          <Stack.Protected guard={!isBootstrappingApplication}>
-                            <Stack.Protected guard={config.isStorybookEnabled}>
-                              <Stack.Screen name="Storybook" />
-                            </Stack.Protected>
-
-                            <Stack.Protected guard={!isUserLoggedIn}>
-                              <Stack.Screen name="Login" />
-                            </Stack.Protected>
-
-                            <Stack.Protected guard={isUserLoggedIn}>
-                              <Stack.Screen name="(protected)/(tabs)" />
-                            </Stack.Protected>
-                          </Stack.Protected>
-                        </Stack>
+                        <ProtectedNavigator />
                       </NavigationThemeProvider>
 
                       <Toast config={toastConfig} />

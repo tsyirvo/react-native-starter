@@ -5,9 +5,8 @@ import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Updates from 'expo-updates';
 
-import { config } from '$domain/constants';
 import type { User } from '$domain/entities';
-
+import { config } from '$infra/config';
 import type { Primitives } from '$types';
 
 const prodSampleRate = 0.5;

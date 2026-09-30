@@ -1,7 +1,7 @@
 import type { PostHogOptions } from 'posthog-react-native';
 import PostHog from 'posthog-react-native';
 
-import { config } from '$domain/constants';
+import { config } from '$infra/config';
 import { defaultFeatureFlags } from '$infra/featureFlags/defaultFlags';
 import { CustomProductTrackingStorage } from '$infra/storage';
 

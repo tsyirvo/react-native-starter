@@ -1,6 +1,6 @@
 import type { i18n as I18n } from 'i18next';
 
-import { config } from '$domain/constants';
+import { config } from '$infra/config';
 
 export const getCurrentLocale = (i18n: I18n) => {
   const languageCode = i18n.language;

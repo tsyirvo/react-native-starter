@@ -3,7 +3,7 @@ import { useUnistyles } from 'react-native-unistyles';
 import type { IconName } from '$shared/icons';
 import { Icon } from '$shared/icons';
 
-import type { ButtonVariant } from '../buttonVariants';
+import type { ButtonVariant } from '../constants';
 import { getIconSize, getTextColor } from '../utils';
 
 interface InnerIconProps {
