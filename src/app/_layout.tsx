@@ -16,6 +16,7 @@ import type { StackAnimationTypes } from 'react-native-screens';
 import Toast from 'react-native-toast-message';
 import { StyleSheet } from 'react-native-unistyles';
 
+import { AppUpdateNeeded, MaintenanceMode } from '$application/appAvailability';
 import {
   AuthContextProvider,
   getAuthGuards,
@@ -37,9 +38,7 @@ import { ProductTrackingProvider } from '$infra/productTracking';
 import { useAppStore } from '$infra/store';
 import { toastConfig } from '$infra/toaster';
 import {
-  AppUpdateNeeded,
   FullscreenErrorBoundary,
-  MaintenanceMode,
   NavigationThemeProvider,
 } from '$shared/components';
 

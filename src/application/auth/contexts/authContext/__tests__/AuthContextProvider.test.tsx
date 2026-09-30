@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 
 import { Analytics } from '$infra/analytics';
 import { clearAccessAndRefreshTokens } from '$infra/api/token';
+import { Logger } from '$infra/logger';
 import { ErrorMonitoring } from '$infra/monitoring';
 import { Purchase } from '$infra/purchase';
 import { clearPersistedAppStore, resetAllSlices } from '$infra/store';
@@ -15,6 +16,7 @@ import { useAuthContext } from '../useAuthContext';
 jest.mock('$infra/analytics', () => ({
   Analytics: { reset: jest.fn(), setUser: jest.fn() },
 }));
+jest.mock('$infra/logger', () => ({ Logger: { error: jest.fn() } }));
 jest.mock('$infra/monitoring', () => ({
   ErrorMonitoring: { clearUser: jest.fn(), setUser: jest.fn() },
 }));
@@ -103,5 +105,51 @@ describe('AuthContextProvider', () => {
     expect(clearPersistedAppStore).toHaveBeenCalledTimes(1);
     expect(queryClient.getQueryData(['cached-session'])).toBeUndefined();
     expect(clearAccessAndRefreshTokens).toHaveBeenCalledTimes(1);
+  });
+
+  it('clears local auth and caches even when purchase logout fails', async () => {
+    const error = new Error('purchase logout failed');
+    const { queryClient, wrapper } = createHarness();
+    const { result } = renderHook(useAuthContext, { wrapper });
+
+    await act(async () => {
+      await result.current.signIn(credentials);
+    });
+    queryClient.setQueryData(['private-data'], 'cached');
+    jest.mocked(Purchase.clearUser).mockRejectedValueOnce(error);
+
+    await act(async () => {
+      await result.current.signOut();
+    });
+
+    expect(result.current.user).toBeNull();
+    expect(queryClient.getQueryData(['private-data'])).toBeUndefined();
+    expect(resetAllSlices).toHaveBeenCalledTimes(1);
+    expect(clearPersistedAppStore).toHaveBeenCalledTimes(1);
+    expect(clearAccessAndRefreshTokens).toHaveBeenCalledTimes(1);
+    expect(Logger.error).toHaveBeenCalledWith(
+      expect.objectContaining({ error }),
+    );
+  });
+
+  it('tracks the next sign-in even when token cleanup fails', async () => {
+    const { wrapper } = createHarness();
+    const { result } = renderHook(useAuthContext, { wrapper });
+
+    await act(async () => {
+      await result.current.signIn(credentials);
+    });
+    jest
+      .mocked(clearAccessAndRefreshTokens)
+      .mockRejectedValueOnce(new Error('token cleanup failed'));
+    await act(async () => {
+      await result.current.signOut();
+    });
+    await act(async () => {
+      await result.current.signIn(credentials);
+    });
+
+    await waitFor(() => expect(Purchase.setUser).toHaveBeenCalledTimes(2));
+    expect(Analytics.setUser).toHaveBeenCalledTimes(2);
   });
 });

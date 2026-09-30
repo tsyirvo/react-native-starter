@@ -3,9 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
+import {
+  StoreUpdateAvailableBanner,
+  useIsNewStoreVersionAvailable,
+} from '$application/appAvailability';
 import { Notifications } from '$features/notifications';
-import { Screen, StoreUpdateAvailableBanner } from '$shared/components';
-import { useIsNewStoreVersionAvailable } from '$shared/hooks';
+import { Screen } from '$shared/components';
 import { Box, Button, Stack, Text } from '$shared/uiKit';
 
 const FeaturesScreen = () => {

@@ -29,7 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Project Structure
 
 - **src/app/** - Thin Expo Router routes and navigation composition
-- **src/application/** - App-wide auth, bootstrap and instrumentation workflows
+- **src/application/** - App-wide auth, bootstrap, availability/update policy and instrumentation workflows
 - **src/domain/** - Pure user types and subscription entitlement rules
 - **src/features/** - User-facing flows and their UI/policy
 - **src/infra/** - Concrete SDKs, storage, runtime config and API scaffolding

@@ -28,15 +28,15 @@ Check the [React Native docs](https://reactnative.dev/docs/environment-setup) on
 
 ## Architecture
 
-This is a lightweight starter, not a prebuilt product architecture. Keep code with its current owner:
+This is a lightweight, opinionated starter, not a prebuilt product architecture. Auth, billing and other common published-app integrations are configured by default; app-specific product concepts are not prefilled. Keep code with its current owner:
 
 | Directory | Responsibility |
 | --- | --- |
 | `src/app/` | Thin Expo Router routes and navigation composition. Files here are routes; do not add unrelated configuration files. |
-| `src/application/` | App-wide workflows such as demo auth, startup and instrumentation (`auth/`, `bootstrap/`, `instrumentation/`). |
+| `src/application/` | App-wide workflows such as demo auth, startup, availability/update policy and instrumentation (`auth/`, `bootstrap/`, `appAvailability/`, `instrumentation/`). |
 | `src/features/` | User-facing flows and their UI/policy, including small features like `storeRating/`. |
 | `src/infra/` | Concrete SDK integrations, storage, API scaffolding and runtime configuration. |
-| `src/shared/` | Reusable UI, theme, hooks and utilities, not policy specific to one feature. |
+| `src/shared/` | Reusable UI, theme, hooks and utilities, not app-wide or feature-specific policy. |
 | `src/domain/` | Pure models and rules, currently the user types and subscription entitlement check. |
 | `src/testing/` | Jest setup and React Native Testing Library helpers. |
 
@@ -46,7 +46,9 @@ Examples from the current code:
 - `src/application/auth/contexts/authContext/AuthContextProvider.tsx` imports the domain `User` type from `$domain/entities` and calls the concrete `$infra/purchase` adapter during the auth workflow.
 - `src/features/notifications/hooks/useRequestPermission.ts` calls `$infra/permissions` and `$infra/toaster` for a user-facing permission flow.
 
-Keep `domain` independent of React, Expo, infra and shared. Infra may import domain types and pure rules. Shared should not import application or features; keep feature-specific UI and policy in its feature even when reused within one screen. Features may consume application workflows (e.g. `features/subscription` reads the auth user from `$application/auth`), but application must not import features; routes in `app/` compose both. Application modules compose workflows and may call concrete infra adapters: this is a pragmatic exception to strict inward-only Clean Architecture, not a mandate to add a port for every SDK.
+Keep `domain` independent of React, Expo, infra and shared. Infra may import domain types and pure rules. Shared should not import application or features; keep feature-specific UI and policy in its feature even when reused within one screen. Features may consume application workflows (e.g. `features/subscription` reads the auth user and purchase identity readiness from `$application/auth`), but application must not import features; routes in `app/` compose both. Application modules compose workflows and may call concrete infra adapters: this is a pragmatic exception to strict inward-only Clean Architecture, not a mandate to add a port for every SDK.
+
+Auth owns purchase identity transitions and serializes login/logout calls. Subscription waits for `isPurchaseUserReady` before reading entitlements or listening for customer updates, and ignores results from an obsolete user. Purchase SDK failures are logged but do not prevent local sign-out. App availability, maintenance and store-update policy live in `application/appAvailability` rather than shared UI.
 
 Start with one local implementation. Introduce a seam or port only when multiple adapters, complex test setup or repeated policy justify it. Add app-specific domain concepts and richer workflows as the consuming app grows rather than pre-filling them here. The sign-in is **demo-only**; session restoration and token refresh are placeholders, and no backend/API client is wired up. Do not treat this as production authentication.
 

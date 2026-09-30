@@ -15,27 +15,25 @@ export const useGetSessionState = () => {
   const { isFetched, isError, error, failureCount } = useGetUserSession();
 
   useEffect(() => {
-    if (isSessionReady) {
+    if (isSessionReady || !isFetched) {
       return;
     }
 
-    if (isError && failureCount <= 1) {
-      Logger.dev('Failed to fetch session on app bootstrap. Retrying...', {
-        error,
-        failureCount,
-        isError,
-        isFetched,
-      });
-
-      return;
+    if (isError) {
+      Logger.dev(
+        'Failed to fetch session on app bootstrap. Continuing without a session.',
+        {
+          error,
+          failureCount,
+          isError,
+          isFetched,
+        },
+      );
     }
 
-    if (isFetched) {
-      // TODO(prod): Restore authentication when a real session query exists.
-
-      setIsBootstrappingApplication(false);
-      setIsSessionReady(true);
-    }
+    // TODO(prod): Restore authentication when a real session query exists.
+    setIsBootstrappingApplication(false);
+    setIsSessionReady(true);
   }, [
     isSessionReady,
     isFetched,

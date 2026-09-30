@@ -6,8 +6,7 @@ import {
   useGetRemoteConfigSync,
   type VersionFlagType,
 } from '$infra/featureFlags';
-
-import { useRunOnMount } from './useRunOnMount';
+import { useRunOnMount } from '$shared/hooks';
 
 export const useIsNewStoreVersionAvailable = () => {
   const [shouldShowBanner, setShouldShowBanner] = useState(false);

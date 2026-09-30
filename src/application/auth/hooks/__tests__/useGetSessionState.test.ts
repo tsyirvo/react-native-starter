@@ -50,7 +50,7 @@ describe('useGetSessionState', () => {
     expect(setIsBootstrappingApplication).toHaveBeenCalledWith(false);
   });
 
-  it('logs the first error and does not claim a restored session', () => {
+  it('logs a settled failure and releases bootstrap without restoring a session', () => {
     const error = new Error('session unavailable');
     jest.mocked(useGetUserSession).mockReturnValue(
       sessionResult({
@@ -64,9 +64,9 @@ describe('useGetSessionState', () => {
     renderHook(useGetSessionState);
 
     expect(Logger.dev).toHaveBeenCalledWith(
-      'Failed to fetch session on app bootstrap. Retrying...',
+      'Failed to fetch session on app bootstrap. Continuing without a session.',
       { error, failureCount: 1, isError: true, isFetched: true },
     );
-    expect(setIsBootstrappingApplication).not.toHaveBeenCalled();
+    expect(setIsBootstrappingApplication).toHaveBeenCalledWith(false);
   });
 });

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { PurchasesOffering } from 'react-native-purchases';
 
 import { useAuthContext } from '$application/auth';
+import type { User } from '$domain/entities';
 import { hasActiveEntitlements } from '$domain/subscription';
 import {
   type OfferingFlagType,
@@ -13,6 +14,11 @@ import { useRunOnMount } from '$shared/hooks';
 
 import SubscriptionContext from './SubscriptionContext';
 
+interface SubscriptionStatus {
+  isPayingUser: boolean;
+  user: User;
+}
+
 interface SubscriptionContextProviderProps {
   children: React.ReactNode;
 }
@@ -20,27 +26,37 @@ interface SubscriptionContextProviderProps {
 export const SubscriptionContextProvider = ({
   children,
 }: SubscriptionContextProviderProps) => {
-  const [isPayingUser, setIsPayingUser] = useState<boolean | null>(null);
+  const [subscriptionStatus, setSubscriptionStatus] =
+    useState<SubscriptionStatus | null>(null);
   const [offeringToDisplay, setOfferingToDisplay] =
     useState<PurchasesOffering | null>(null);
 
-  const { user } = useAuthContext();
+  const { user, isPurchaseUserReady } = useAuthContext();
 
   const { getFlagPayloadSync } = useGetRemoteConfigSync();
 
   useEffect(() => {
-    const fetchIsPayingUser = async () => {
-      if (!user) {
-        setIsPayingUser(false);
+    if (!(user && isPurchaseUserReady)) {
+      return;
+    }
 
-        return;
+    let isActive = true;
+    const unsubscribe = Purchase.customerListener((customerInfo) => {
+      if (isActive) {
+        setSubscriptionStatus({
+          isPayingUser: hasActiveEntitlements(customerInfo.entitlements.active),
+          user,
+        });
       }
+    });
 
+    const fetchIsPayingUser = async () => {
       try {
-        await Purchase.setUser(user);
         const userIsPaying = await Purchase.isPayingUser();
 
-        setIsPayingUser(userIsPaying);
+        if (isActive) {
+          setSubscriptionStatus({ isPayingUser: userIsPaying, user });
+        }
       } catch (error) {
         Logger.error({
           error,
@@ -48,18 +64,19 @@ export const SubscriptionContextProvider = ({
           message: 'Failed to fetch user subscription status',
         });
 
-        setIsPayingUser(false);
+        if (isActive) {
+          setSubscriptionStatus({ isPayingUser: false, user });
+        }
       }
     };
 
     void fetchIsPayingUser();
-  }, [user]);
 
-  useRunOnMount(() =>
-    Purchase.customerListener((customerInfo) => {
-      setIsPayingUser(hasActiveEntitlements(customerInfo.entitlements.active));
-    }),
-  );
+    return () => {
+      isActive = false;
+      unsubscribe();
+    };
+  }, [user, isPurchaseUserReady]);
 
   useRunOnMount(() => {
     const fetchOfferingToDisplay = async () => {
@@ -94,9 +111,22 @@ export const SubscriptionContextProvider = ({
     void fetchOfferingToDisplay();
   });
 
-  const handleSetIsPayingUser = useCallback((newIsPayingUser: boolean) => {
-    setIsPayingUser(newIsPayingUser);
-  }, []);
+  const handleSetIsPayingUser = useCallback(
+    (newIsPayingUser: boolean) => {
+      if (user && isPurchaseUserReady) {
+        setSubscriptionStatus({ isPayingUser: newIsPayingUser, user });
+      }
+    },
+    [user, isPurchaseUserReady],
+  );
+
+  let isPayingUser: boolean | null = null;
+
+  if (!user) {
+    isPayingUser = false;
+  } else if (isPurchaseUserReady && subscriptionStatus?.user === user) {
+    ({ isPayingUser } = subscriptionStatus);
+  }
 
   const value = useMemo(
     () => ({

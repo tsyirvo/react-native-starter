@@ -1,7 +1,6 @@
 export * from './useAppState';
 export * from './useDebouncedFunction';
 export * from './useHeaderTintColor';
-export * from './useIsNewStoreVersionAvailable';
 export * from './useKeyboard';
 export * from './usePress';
 export * from './usePreviousState';

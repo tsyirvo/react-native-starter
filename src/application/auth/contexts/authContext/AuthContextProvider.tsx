@@ -17,9 +17,11 @@ interface AuthContextProviderProps {
 }
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-  const hasTrackedUserRef = useRef(false);
+  const purchaseIdentityRef = useRef<Promise<void>>(Promise.resolve());
 
   const [user, setUser] = useState<User | null>(null);
+  const [purchaseUser, setPurchaseUser] = useState<User | null>(null);
+  const isPurchaseUserReady = user !== null && purchaseUser === user;
 
   const queryClient = useQueryClient();
 
@@ -28,29 +30,57 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     clearPersistedAppStore();
   }, []);
 
-  const startTrackingUser = useCallback(async (authenticatedUser: User) => {
-    Analytics.setUser(authenticatedUser);
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
 
-    ErrorMonitoring.setUser(authenticatedUser);
+    let isActive = true;
 
-    await Purchase.setUser(authenticatedUser);
-  }, []);
+    // Serialize identity changes so a pending login cannot finish after logout.
+    purchaseIdentityRef.current = purchaseIdentityRef.current
+      .then(async () => {
+        if (!isActive) {
+          return;
+        }
+
+        Analytics.setUser(user);
+        ErrorMonitoring.setUser(user);
+        await Purchase.setUser(user);
+
+        if (isActive) {
+          setPurchaseUser(user);
+        }
+      })
+      .catch((error: unknown) => {
+        Logger.error({
+          error,
+          level: 'warning',
+          message: 'Failed to identify the purchase user',
+        });
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, [user]);
 
   const stopTrackingUser = useCallback(async () => {
     Analytics.reset();
-
     ErrorMonitoring.clearUser();
 
-    await Purchase.clearUser();
+    purchaseIdentityRef.current = purchaseIdentityRef.current
+      .then(() => Purchase.clearUser())
+      .catch((error: unknown) => {
+        Logger.error({
+          error,
+          level: 'warning',
+          message: 'Failed to clear the purchase user',
+        });
+      });
+
+    await purchaseIdentityRef.current;
   }, []);
-
-  useEffect(() => {
-    if (user && !hasTrackedUserRef.current) {
-      hasTrackedUserRef.current = true;
-
-      void startTrackingUser(user);
-    }
-  }, [user, startTrackingUser]);
 
   const signIn = useCallback(async (data: UserLogin) => {
     try {
@@ -73,19 +103,17 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   }, []);
 
   const signOut = useCallback(async () => {
+    setUser(null);
+    setPurchaseUser(null);
+
     try {
-      if (user) {
-        await stopTrackingUser();
-      }
-
-      setUser(null);
-
       clearStore();
       queryClient.clear();
 
-      await clearAccessAndRefreshTokens();
-
-      hasTrackedUserRef.current = false;
+      await Promise.all([
+        user ? stopTrackingUser() : Promise.resolve(),
+        clearAccessAndRefreshTokens(),
+      ]);
     } catch (error) {
       Logger.error({
         error,
@@ -97,11 +125,12 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   const value = useMemo(
     () => ({
+      isPurchaseUserReady,
       signIn,
       signOut,
       user,
     }),
-    [user, signIn, signOut],
+    [user, isPurchaseUserReady, signIn, signOut],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
