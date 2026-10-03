@@ -12,7 +12,13 @@ const options: PostHogOptions = {
   },
   customStorage: CustomProductTrackingStorage,
   disabled: config.isDebug,
+  enableSessionReplay: !config.isDebug,
   host: 'https://us.i.posthog.com',
+  sessionReplayConfig: {
+    maskAllImages: false,
+    maskAllTextInputs: false,
+    throttleDelayMs: 1000,
+  },
 };
 
 export const productTrackingClient = new PostHog(apiKey, options);
