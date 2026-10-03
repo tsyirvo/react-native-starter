@@ -101,6 +101,7 @@
     "lodash.isequal": "4.5.0",
     "lodash.isnil": "4.0.0",
     "posthog-react-native": "4.66.2",
+    "posthog-react-native-session-replay": "^1.6.0",
     "react": "19.2.3",
     "react-error-boundary": "6.0.2",
     "react-hook-form": "7.70.0",
