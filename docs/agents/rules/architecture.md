@@ -24,6 +24,17 @@ barrels expose only the intended public API; internal imports stay local.
 Context definitions and initialization-sensitive dependencies can use direct
 imports to avoid cycles. Do not replace this with a blanket no-barrels rule.
 
+## Assets
+
+Register image and media assets in the `$assets`/`Assets` entry point
+(`src/assets/index.ts`) instead of importing asset files directly in
+components. Entry-point getters use lazy `require` so each asset module is
+evaluated only when the component rendering it reads the value; do not
+destructure the `Assets` tree at module scope, and keep unused entries out of
+it. Mirroring the `components`/`screens`/`shared` structure in `src/assets/`
+keeps the getters self-describing. Generated SVG icon components
+(`src/shared/icons/`) are not assets: they keep their svgr generation pipeline.
+
 ## Pattern examples
 
 Inspect these examples and their tests for conventions, not fixed module
