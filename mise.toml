@@ -3,6 +3,7 @@ node = "26"
 bun = "1.4.0"
 "npm:eas-cli" = "23"
 hk = "2.4.0"
+gitleaks = "8.30.1"
 
 [env]
 # Keep the repo's locally installed binaries (Biome, Jest, TS...) on the PATH

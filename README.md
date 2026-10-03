@@ -87,7 +87,7 @@ On the Developer Experience side, a test stack is setup (unit, functional and E2
 There are also some utilities like:
 
 - Converting `.svg` files into React components that can be used easily
-- Git hooks managed by [hk](https://hk.jdx.dev/): a fast pre-commit on staged files, a full pre-push safety net
+- Git hooks managed by [hk](https://hk.jdx.dev/): a fast pre-commit on staged files with Gitleaks secret scanning, a full pre-push safety net
 - Tooling to release and tag new versions
 
 On the features side, there are already some things to get started quickly with any project:
@@ -285,7 +285,7 @@ mise run hooks:install     # or: bun run hooks:install
 
 Everything is declared in `hk.pkl`. With hk v2, the shared file-scoped steps create `pre-commit` and `fix` automatically; `check` and `pre-push` override them with whole-repo checks:
 
-- **`pre-commit`** — scoped to the staged files, so it stays in the low seconds. Unstaged work is stashed first, then Biome fixes and re-stages what it touched, and `tsc-files` plus the related Jest tests run on the fixed content (they `depend` on Biome rather than racing it). Steps that touch the same file take a lock, so two tools never write to it at once. `hk fix` uses the same steps but leaves fixes unstaged.
+- **`pre-commit`** — scoped to the staged files, so it stays in the low seconds. Unstaged work is stashed first, then Biome fixes and re-stages what it touched, and `tsc-files` plus the related Jest tests run on the fixed content (they `depend` on Biome rather than racing it). Steps that touch the same file take a lock, so two tools never write to it at once. `hk fix` uses the same steps but leaves fixes unstaged. Gitleaks is the exception, scoped to this hook: its git-based staged mode scans the whole staged changeset, non-code files included, and aborts the commit with redacted findings when a hardcoded secret is detected. Fingerprint false positives in a root `.gitleaksignore` file, or skip the step once with `HK_SKIP_STEPS=gitleaks git commit`.
 - **`commit-msg`** — validates the conventional commit format, which is what drives the changelog and the release workflow.
 - **`pre-push`** — the safety net. Staged-file scoping can miss breakage in files the commit did not touch, so this one runs Biome, TypeScript and the full test suite over the whole repo. Biome and TypeScript run in parallel and the test suite waits on both, so a lint or type failure is reported in seconds instead of after the suite. `hk check --all` runs the same checks manually.
 
