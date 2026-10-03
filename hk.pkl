@@ -87,6 +87,17 @@ hooks {
     }
   }
 
+  // hk replaces a hook's steps, so stagedChecks is re-listed to extend it with
+  // Gitleaks: it scans the whole staged changeset (any file type), findings
+  // redacted. Fingerprint false positives in `.gitleaksignore`.
+  ["pre-commit"] {
+    steps = (stagedChecks) {
+      ["gitleaks"] = (Builtins.gitleaks) {
+        scan = "staged"
+      }
+    }
+  }
+
   ["pre-push"] {
     steps = fullChecks
   }
