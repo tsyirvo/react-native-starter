@@ -5,7 +5,7 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { useAuthContext } from '$application/auth';
-import logoDark from '$assets/images/logo-dark.png';
+import { Assets } from '$assets';
 import type { UserLogin } from '$domain/entities';
 import { LoginForm } from '$features/loginForm';
 import { Screen } from '$shared/components';
@@ -42,7 +42,10 @@ const Login = () => {
           <TouchableWithoutFeedback onPress={dismissKeyboard}>
             <Box flex={1} gap="spacing_16" pt="spacing_32">
               <Stack align="center">
-                <Image source={logoDark} style={styles.logo} />
+                <Image
+                  source={Assets.images.shared.logos.logoDark}
+                  style={styles.logo}
+                />
               </Stack>
 
               <Stack

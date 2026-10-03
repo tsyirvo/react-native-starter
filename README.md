@@ -38,6 +38,7 @@ This is a lightweight, opinionated starter, not a prebuilt product architecture.
 | `src/features/`    | User-facing flows and their UI/policy, including small features like `storeRating/`.                                                                           |
 | `src/infra/`       | Concrete SDK integrations, storage, API scaffolding and runtime configuration.                                                                                 |
 | `src/shared/`      | Reusable UI, theme, hooks and utilities, not app-wide or feature-specific policy.                                                                              |
+| `src/assets/`      | Runtime UI assets (images and future media/animation files), consumed only through the `Assets` entry point.                                                   |
 | `src/domain/`      | Pure models and rules, currently the user types and subscription entitlement check.                                                                            |
 | `src/testing/`     | Jest setup and React Native Testing Library helpers.                                                                                                           |
 
@@ -63,6 +64,7 @@ Within a module, group different roles under `components/`, `contexts/`, `hooks/
 - Leaf component packages such as `shared/uiKit/input/` may keep their primary component at the package root, with supporting components, hooks and utilities in subfolders. Simple SDK adapters may similarly keep their implementation and associated types together.
 - Use local `index.ts` barrels for components, hooks and utilities consumed outside their folder. Keep module-root exports limited to the intended public API; internal code should not import its own module-root barrel. Context definitions and initialization-sensitive dependencies may use direct imports.
 - Do not add these role folders under `src/app/`, where files define routes, or mix handwritten components into generated directories such as `shared/icons/components/`.
+- Consume image and media assets through the `$assets` `Assets` entry point (`Assets.images.<group>...`), not direct file imports. Register assets with lazy getters mirroring the `components`/`screens`/`shared` folder structure, read the value where the component renders it, and remove entries of unused assets. Generated icon components (`shared/icons/`) stay outside `Assets` and keep their svgr pipeline.
 
 Check changes with `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test -- --runInBand`. Use `bun run lint` and `bun run format` only when you want their auto-fixes.
 

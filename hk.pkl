@@ -29,8 +29,11 @@ local const tsGlob = List("**/*.ts", "**/*.tsx")
 // `tsc-files` builds a throwaway tsconfig from the files it is given, so the
 // ambient declarations and the Unistyles theme augmentation have to be passed
 // explicitly or every staged file fails to resolve its global types.
+// `expo-env.d.ts` is included for the full-`tsc` parity: it pulls in Expo's
+// global typings (e.g. the Metro `require` overloads) that the whole-repo
+// typecheck gets through tsconfig "include".
 local const ambientTypes =
-  "src/types/declaration.d.ts src/types/react-query.d.ts src/shared/theme/unistyles.ts"
+  "src/types/declaration.d.ts src/types/react-query.d.ts src/shared/theme/unistyles.ts expo-env.d.ts"
 
 /// Fast, file-scoped checks shared by `pre-commit` and `hk fix`.
 ///
