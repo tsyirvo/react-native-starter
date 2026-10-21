@@ -10,8 +10,8 @@ Keep shared guidance here; client files are optional adapters, not separate sour
 - Read `package.json`, `bun.lock` and `mise.toml` for dependency/toolchain versions.
 - Setup: `mise trust`, `mise install`, then `bun install --frozen-lockfile`.
 - Development: `bun run start:dev` requires Doppler, local secrets and a development build.
-- Final checks: `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test -- --runInBand`.
-- Focused tests: `bun run test -- --runInBand --runTestsByPath <test-file>`.
+- Final checks: `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test`.
+- Focused tests: `bun run test -- --runTestsByPath <test-file>`.
 - `bun run lint` and `bun run format` write files. Scope fixes to your changes and inspect the diff.
 - E2E: `bun run test:e2e` requires Maestro, secrets and a running development app.
 - Report checks actually run and any blockers; do not claim unavailable native/E2E verification passed.

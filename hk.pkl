@@ -9,12 +9,6 @@ default_branch = "develop"
 // Stop the hook as soon as something fails, no point in burning CPU afterwards.
 fail_fast = true
 
-// Everything the linters need is vendored in the repo, keep it on the PATH so
-// `bunx` never has to hit the network to resolve a binary.
-env {
-  ["NODE_OPTIONS"] = "--disable-warning=ExperimentalWarning"
-}
-
 local const codeGlob = List(
   "**/*.js",
   "**/*.jsx",
@@ -55,7 +49,7 @@ local stagedChecks = new Mapping<String, Step> {
   ["test"] {
     glob = tsGlob
     depends = "biome"
-    // Jest already saturates the cores, so never batch this one.
+    // Jest manages its own worker pool, so never batch this one.
     check = "bun run test --findRelatedTests --passWithNoTests {{files}}"
   }
 }
