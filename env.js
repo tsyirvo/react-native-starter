@@ -1,50 +1,10 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import z from 'zod';
-import dotenv from 'dotenv';
 
 import packageJSON from './package.json' with { type: 'json' };
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
+// Values are injected by Doppler locally and synced EAS environments on builders.
+// `.env.example` documents the inputs; it is never loaded at runtime.
 const APP_ENV = process.env.APP_ENV ?? 'production';
-const envPath = path.resolve(__dirname, `.env.${APP_ENV}`);
-
-// Bun auto-loads `.env`, `.env.local` and `.env.<NODE_ENV>` into `process.env`
-// before this file runs (NODE_ENV defaults to `development`, but EAS sets it to
-// `production` during a build). Those values would otherwise win over the
-// `.env.${APP_ENV}` file we actually want, and leak the wrong environment's
-// config into the build.
-//
-// So drop the keys Bun injected from a file other than ours, but only when
-// `process.env` still holds that file's exact value: anything that differs was
-// set by the real environment (Doppler, EAS, CI) and stays the source of truth.
-const NODE_ENV = process.env.NODE_ENV ?? 'development';
-const bunAutoLoadedFiles = ['.env', '.env.local', `.env.${NODE_ENV}`];
-
-for (const file of bunAutoLoadedFiles) {
-  const filePath = path.resolve(__dirname, file);
-
-  if (filePath === envPath || !fs.existsSync(filePath)) {
-    continue;
-  }
-
-  const entries = dotenv.parse(fs.readFileSync(filePath));
-
-  for (const [key, value] of Object.entries(entries)) {
-    if (process.env[key] === value) {
-      delete process.env[key];
-    }
-  }
-}
-
-// No `override`: the real environment (Doppler, EAS, CI) wins, and the committed
-// `.env.${APP_ENV}` placeholders only fill in what it did not provide.
-// `quiet` keeps dotenv's log off stdout, which would corrupt the JSON output of
-// `expo install --check --json` (used by expo-doctor).
-dotenv.config({ path: envPath, quiet: true });
 
 // Default values
 const BUNDLE_ID = 'com.tsyirvo.rnstarter';
@@ -59,31 +19,31 @@ const withEnvSuffix = (name) => {
 
 const client = z.object({
   APP_ENV: z.enum(['development', 'staging', 'production']),
-  APP_NAME: z.string(),
-  BUNDLE_ID: z.string(),
-  PACKAGE: z.string(),
-  VERSION: z.string(),
+  APP_NAME: z.string().min(1),
+  BUNDLE_ID: z.string().min(1),
+  PACKAGE: z.string().min(1),
+  VERSION: z.string().min(1),
 
   // ADD CLIENT ENV VARS HERE
-  API_URL: z.string(),
+  API_URL: z.string().min(1),
   STORYBOOK_ENABLED: z.string().optional(),
-  ITUNES_ITEM_ID: z.string(),
-  POSTHOG_API_KEY: z.string(),
-  SENTRY_DSN: z.string(),
-  REVENUE_CAT_APPLE_API_KEY: z.string(),
-  REVENUE_CAT_ANDROID_API_KEY: z.string(),
+  ITUNES_ITEM_ID: z.string().min(1),
+  POSTHOG_API_KEY: z.string().min(1),
+  SENTRY_DSN: z.string().min(1),
+  REVENUE_CAT_APPLE_API_KEY: z.string().min(1),
+  REVENUE_CAT_ANDROID_API_KEY: z.string().min(1),
 });
 
 const buildTime = z.object({
-  EXPO_ACCOUNT_OWNER: z.string(),
-  EAS_PROJECT_ID: z.string(),
+  EXPO_ACCOUNT_OWNER: z.string().min(1),
+  EAS_PROJECT_ID: z.string().min(1),
 
   // ADD BUILD TIME ENV VARS HERE
-  SENTRY_ORG: z.string(),
-  SENTRY_PROJECT: z.string(),
-  SENTRY_AUTH_TOKEN: z.string(),
-  EXPO_APPLE_TEAM_ID: z.string(),
-  EXPO_UPDATE_URL: z.string(),
+  SENTRY_ORG: z.string().min(1),
+  SENTRY_PROJECT: z.string().min(1),
+  SENTRY_AUTH_TOKEN: z.string().min(1),
+  EXPO_APPLE_TEAM_ID: z.string().min(1),
+  EXPO_UPDATE_URL: z.string().min(1),
 });
 
 // Environment variables config
@@ -130,8 +90,8 @@ if (!parsed.success) {
     '❌ Invalid environment variables:',
     z.treeifyError(parsed.error),
 
-    `\n❌ Missing variables in .env.${APP_ENV} file, Make sure all required variables are defined in the .env.${APP_ENV} file.`,
-    `\n💡 Tip: If you recently updated the .env.${APP_ENV} file and the error still persists, try restarting the server with the -cc flag to clear the cache.`,
+    `\n❌ Required variables must be non-empty in the ${APP_ENV} environment.`,
+    '\n💡 Run local commands through Doppler, or sync the matching Doppler config to EAS before a cloud build. See .env.example for required variables.',
   );
 
   throw new Error(

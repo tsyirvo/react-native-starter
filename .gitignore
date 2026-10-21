@@ -19,9 +19,12 @@ build/
 *.ipa
 *.jsbundle
 
-# Local environment and credentials
-.env.local
-.env.*.local
+# Environment values are injected by Doppler / EAS; only the template is shared.
+.env
+.env.*
+!.env.example
+
+# Local credentials
 *.jks
 *.keystore
 *.p8

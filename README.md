@@ -158,7 +158,7 @@ Tasks declared with `depends` run their dependencies first, and in parallel when
 
 ## Runing the project
 
-Since a few SDKs are provided, secrets are required to use the app. You can have a look at the provided `.env` files to see what's needed. I personnaly use [Doppler](https://www.doppler.com/) CLI to manage secrets. This tools injects secrets in the environment when running commands and is actually used in the scripts exposed inside the `package.json` so you need to have it installed.
+The SDKs require configuration. [`.env.example`](.env.example) lists the required variables; it is documentation only, not a runtime file. Install the [Doppler CLI](https://docs.doppler.com/docs/install-cli), log in, and run `doppler setup` to select your project. Populate its `dev`, `stg`, and `prd` configs before running the matching scripts. If your Doppler config names differ, update the `--config` arguments in `package.json` and the development build workflow.
 
 To launch the React Native packager:
 
@@ -213,7 +213,7 @@ Some tools are installed in the project, but you'll need to add your API keys an
 
 If you don't do this, the app won't launch at all. The CLI will tell you if one or more required environement variable is not set.
 
-The libraries that needs configurations are the ones exposed inside the `.env` files:
+The services requiring configuration are listed in `.env.example`:
 
 - Expo
 - Sentry
@@ -222,11 +222,42 @@ The libraries that needs configurations are the ones exposed inside the `.env` f
 
 ## Environments
 
-The starter is configured with three distinct environments by default, Development, Staging and Production.
+Doppler is the source of truth; there are no runtime `.env` files to maintain or generate. Keep environment-specific values, including `APP_NAME`, in Doppler. The scripts select the Doppler config and set `APP_ENV` explicitly; EAS profiles set the same app variant on remote builders.
 
-This is easier to work with on a real app, and allows you to have different enviroment variables easily, among other things.
+| App environment | Doppler config | EAS environment | EAS build profiles                  |
+| --------------- | -------------- | --------------- | ----------------------------------- |
+| Development     | `dev`          | `development`   | `development`, `development-device` |
+| Staging         | `stg`          | `preview`       | `staging`                           |
+| Production      | `prd`          | `production`    | `production`                        |
 
-Each environement variables are exposed through the `.env.[development|staging|production]` files at the root. As explained above, I personnaly use [Doppler](https://www.doppler.com/) to manage secrets and inject them when running commands.
+`env.js` validates the injected values and rejects missing or empty required variables. `app.config.ts` consumes those values and exposes only `ClientEnv` through `extra`; build credentials such as `SENTRY_AUTH_TOKEN` are not included in the client configuration. `APP_ENV` also controls bundle/package suffixes and production-only updates. `NODE_ENV` does not select the app variant.
+
+Do not copy `.env.example` to `.env`. Runtime environment files are gitignored, and `EXPO_NO_DOTENV=1` disables Expo's file loading in app commands and EAS profiles. Bun has its own automatic dotenv loading, so remove old local `.env` files when migrating to this workflow.
+
+### Syncing Doppler to EAS for cloud builds
+
+Local `doppler run` injection is not forwarded automatically to remote builders. Before the first cloud build, and whenever values change, push each app's Doppler config to the corresponding **project-level** EAS environment. Authenticate with EAS (`eas login`, or `EXPO_TOKEN` in CI), then run the following from the repository root for development:
+
+```sh
+doppler run --config dev -- env APP_ENV=development EXPO_NO_DOTENV=1 \
+  doppler run --config dev --mount .env.eas-sync --format env -- \
+  eas env:push development --path .env.eas-sync --force
+```
+
+For staging, change **both** `--config dev` arguments to `--config stg`, set `APP_ENV=staging`, and use `eas env:push preview`. For production, use `--config prd`, `APP_ENV=production`, and `eas env:push production`.
+
+The outer Doppler command supplies values needed for EAS CLI's initial `app.config.ts` resolution. The inner command mounts a temporary dotenv named pipe for `env:push`; Doppler removes it when the command exits, without persisting a plaintext secrets file. This follows [Doppler's EAS guide](https://docs.doppler.com/docs/eas-build), using the current [`eas env:push`](https://docs.expo.dev/eas/cli/#eas-envpush-environment) command instead of the deprecated `eas secret:push`.
+
+**This command changes EAS configuration.** It pushes every variable in the selected Doppler config and `--force` overwrites matching EAS variables. Use configs dedicated to this app, without unrelated service or CI credentials. EAS CLI 23 uploads non-`EXPO_PUBLIC_` variables with **sensitive** visibility: they are masked in build logs but remain readable to authorized users and EAS CLI during local config resolution. This includes `SENTRY_AUTH_TOKEN`, which the current validation requires locally; do not change required config inputs to EAS **secret** visibility without adapting that validation. Variables removed from Doppler are not deleted by `env:push`; remove obsolete values in EAS separately. Keep `STORYBOOK_ENABLED` unset or `false` in build configs.
+
+After syncing, a cloud build can be submitted from a local shell, for example:
+
+```sh
+doppler run --config dev -- env APP_ENV=development EXPO_NO_DOTENV=1 \
+  eas build --profile development --platform all
+```
+
+The submitting process uses Doppler for initial config resolution; the remote builder uses the synced EAS environment selected explicitly in `eas.json`. Use the matching config, `APP_ENV`, and profile from the table for other variants. Syncing and submitting builds are explicit operator actions, not part of installation or local start scripts.
 
 ## Internationalization
 
@@ -310,4 +341,6 @@ Use `fix(security)` and `chore(deps)`/`build(deps)` for the Security and Depende
 
 ### Building the development app
 
-From the repository's **Actions** tab, select **Build the app for development** and choose **Run workflow**. The workflow installs dependencies and submits **both** platforms with the `development` profile from `eas.json` (an iOS simulator build and an Android APK). It uses `--no-wait`: the GitHub job finishes once EAS accepts the builds, so follow their results in the EAS dashboard. It does not publish an update or submit a store release.
+First sync the Doppler `dev` config to the EAS `development` environment as described above. Add repository secrets `EXPO_TOKEN` (authorized for the EAS project) and `DOPPLER_TOKEN` (a read-only Doppler service token scoped to that project's `dev` config). Neither token should be committed or included in the app's Doppler config.
+
+From the repository's **Actions** tab, select **Build the app for development** and choose **Run workflow**. The workflow installs dependencies and Doppler, resolves local app configuration with Doppler, and submits **both** platforms with the `development` profile from `eas.json` (an iOS simulator build and an Android APK). The remote builders use the synced EAS variables; the workflow does not sync or modify them. It uses `--no-wait`: the GitHub job finishes once EAS accepts the builds, so follow their results in the EAS dashboard. It does not publish an update or submit a store release.

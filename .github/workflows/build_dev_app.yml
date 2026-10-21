@@ -10,12 +10,17 @@ jobs:
       contents: read
 
     steps:
-      - name: Check for EXPO_TOKEN
+      - name: Check build credentials
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
         run: |
           if [ -z "$EXPO_TOKEN" ]; then
             echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+          if [ -z "$DOPPLER_TOKEN" ]; then
+            echo "Provide a DOPPLER_TOKEN repository secret scoped to the dev config. Sync that config to the EAS development environment before building."
             exit 1
           fi
 
@@ -31,5 +36,10 @@ jobs:
           eas-version: 23.0.0
           token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: Setup Doppler
+        uses: dopplerhq/cli-action@v3
+
       - name: EAS Build
-        run: eas build --platform all --non-interactive --profile development --no-wait
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+        run: doppler run --config dev -- env APP_ENV=development EXPO_NO_DOTENV=1 eas build --platform all --non-interactive --profile development --no-wait
