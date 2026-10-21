@@ -16,6 +16,7 @@ export const useRefreshOnFocus = (options?: UseRefreshOnFocusOptions) => {
   useFocusEffect(
     useCallback(() => {
       // Skip the first focus to avoid double-fetching on initial mount
+      // biome-ignore lint/suspicious/noUnnecessaryConditions: The ref changes after the first focus callback and persists across subsequent calls.
       if (isFirstTimeRef.current) {
         isFirstTimeRef.current = false;
 

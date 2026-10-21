@@ -1,0 +1,31 @@
+diff --git a/config/biome/core/biome.jsonc b/config/biome/core/biome.jsonc
+index cfcef622192ca54af7db77896c6356b7cc97ceeb..3e919fb78862beb7b322ba01b8f7af3c2df7d170 100644
+--- a/config/biome/core/biome.jsonc
++++ b/config/biome/core/biome.jsonc
+@@ -102,6 +102,10 @@
+       }
+     }
+   },
++  "tailwind": {
++    "mergeFunctions": ["clsx", "tw", "twMerge", "cn", "twJoin"],
++    "variantFunctions": ["cva", "tv"]
++  },
+   "linter": {
+     "enabled": true,
+     "rules": {
+@@ -294,13 +298,9 @@
+       "nursery": {
+         // Typically we don't enable nursery rules anymore (https://github.com/haydenbleasel/ultracite/issues/457)
+         // but this was requested specifically by a lot of people.
+-        "useSortedClasses": {
++        "useTailwindSortedClasses": {
+           "fix": "safe",
+-          "level": "error",
+-          "options": {
+-            // class and className attributes are sorted by default.
+-            "functions": ["clsx", "cva", "tw", "twMerge", "cn", "twJoin", "tv"]
+-          }
++          "level": "error"
+         }
+       },
+       "performance": {

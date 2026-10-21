@@ -47,6 +47,7 @@ export const LoginForm = ({
 
   const focusPasswordInput = () => {
     requestIdleCallback(() => {
+      // biome-ignore lint/suspicious/noUnnecessaryConditions: React clears the ref on unmount, which can happen before this idle callback runs.
       passwordInputRef.current?.focus();
     });
   };
