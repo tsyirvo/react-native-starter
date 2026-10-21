@@ -105,16 +105,20 @@ describe('injected environment configuration', () => {
     expect(result.stderr).toContain('APP_ENV');
   });
 
-  it('keeps the optional Storybook flag in client configuration', () => {
+  it.each([
+    ['development', 'true'],
+    ['staging', 'false'],
+    ['production', 'false'],
+  ])('restricts the Storybook client flag in %s', (appEnv, expected) => {
     const result = run(
       [
         '--input-type=module',
         '-e',
         "const { ClientEnv } = await import('./env.js'); console.log(ClientEnv.STORYBOOK_ENABLED)",
       ],
-      { STORYBOOK_ENABLED: 'true' },
+      { APP_ENV: appEnv, STORYBOOK_ENABLED: 'true' },
     );
     expect(result.status).toBe(0);
-    expect(result.stdout.trim()).toBe('true');
+    expect(result.stdout.trim()).toBe(expected);
   });
 });

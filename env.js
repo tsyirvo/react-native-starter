@@ -57,7 +57,8 @@ const _clientEnv = {
 
   // ADD ENV VARS HERE TOO
   API_URL: process.env.API_URL,
-  STORYBOOK_ENABLED: process.env.STORYBOOK_ENABLED,
+  STORYBOOK_ENABLED:
+    APP_ENV === 'development' ? process.env.STORYBOOK_ENABLED : 'false',
   ITUNES_ITEM_ID: process.env.ITUNES_ITEM_ID,
   POSTHOG_API_KEY: process.env.POSTHOG_API_KEY,
   SENTRY_DSN: process.env.SENTRY_DSN,
