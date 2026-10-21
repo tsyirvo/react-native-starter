@@ -3,8 +3,9 @@
 ## Commands and helpers
 
 - Use `bun run test`, never `bun test`.
-- Focused: `bun run test -- --runInBand --runTestsByPath <test-file>`.
-- Full suite: `bun run test -- --runInBand`; coverage: `bun run test:coverage -- --runInBand`.
+- Focused: `bun run test -- --runTestsByPath <test-file>`.
+- Full suite: `bun run test`; coverage: `bun run test:coverage`.
+- Use the shared worker policy in `jest.config.js` locally and in CI. Reserve `--runInBand` for debugging serial execution or isolation issues.
 - Import `render`, `screen` and other native helpers from `$testing`.
 - Inspect `$testing` exports, render helpers and their tests before relying on available providers, options or async behavior. Reuse the shared setup and add only the contexts a test needs.
 - Use `src/testing/setup.ts`, the Jest configuration in `jest.config.js` and `__mocks__/` before adding another global mock.

@@ -66,7 +66,7 @@ Within a module, group different roles under `components/`, `contexts/`, `hooks/
 - Do not add these role folders under `src/app/`, where files define routes, or mix handwritten components into generated directories such as `shared/icons/components/`.
 - Consume image and media assets through the `$assets` `Assets` entry point (`Assets.images.<group>...`), not direct file imports. Register assets with lazy getters mirroring the `components`/`screens`/`shared` folder structure, read the value where the component renders it, and remove entries of unused assets. Generated icon components (`shared/icons/`) stay outside `Assets` and keep their svgr pipeline.
 
-Check changes with `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test -- --runInBand`. Use `bun run lint` and `bun run format` only when you want their auto-fixes.
+Check changes with `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test`. Use `bun run lint` and `bun run format` only when you want their auto-fixes.
 
 ## AI coding agents
 
@@ -287,6 +287,20 @@ bun run test
 
 > Always go through `bun run test`: a bare `bun test` would invoke Bun's own test runner instead of the Jest setup configured here.
 
+Local work, pre-push and CI use the same `jest.config.js`: half the available CPUs, rounded down, with a minimum of one worker and a maximum of six. Full-suite benchmarks on a 14-core machine plateaued around 4–8 workers; larger pools added overhead. Rebenchmark as the suite grows or runner hardware changes.
+
+```sh
+bun run test:coverage                                 # opt-in coverage
+bun run test -- --runTestsByPath <test-file>           # focused tests
+bun run test -- --watch                               # local feedback
+bun run test -- --runInBand                           # serial debugging only
+bun run test -- --maxWorkers=4                        # worker-count experiments
+```
+
+Jest caches transformations in `node_modules/.cache/jest`; caching does not skip test execution. Quality restores a compatible cache from earlier runs and saves it after a successful job. Full-suite runs fail if no tests are discovered; the pre-commit related-tests check explicitly allows no matching tests.
+
+Coverage includes application code in `src/` and release tooling in `scripts/`, excluding declarations, tests, test helpers, stories, generated icons and `*.types.ts` files. Root/native configuration files are outside this scope.
+
 For E2E tests, you can use [Maestro](https://maestro.mobile.dev/) for both OS.
 
 First install Maestro on your machine, build the development app onto a simulator then run
@@ -328,7 +342,7 @@ To skip the hooks for one command, use git's own escape hatch (`git commit --no-
 
 The workflows follow a Git Flow setup with `develop` as the default branch:
 
-- **Quality** runs on new and updated pull requests (against any branch). It checks TypeScript, Biome, and the full Jest suite in one job; a new push to the same PR cancels an older run. It does not run on every branch push.
+- **Quality** runs on new and updated pull requests (against any branch). It checks TypeScript, Biome, and the full Jest suite in one job; a new push to the same PR cancels an older run. It does not run on every branch push. Jest's transformation cache is separate from the dependency cache, keyed by OS/architecture, Node major, lockfile, Jest/Babel/TypeScript configuration and commit, with a compatible-prefix fallback for earlier commits.
 - **Cache Bun dependencies** warms the shared dependency cache on pushes to `develop` and when its workflow or the shared setup action changes in a PR. Quality and the development build restore that cache and still run `bun install --frozen-lockfile`. The Node/Bun setup, cache restore, and install steps live in `.github/actions/setup-dependencies/action.yml`.
 
 ### Tagging and releasing
