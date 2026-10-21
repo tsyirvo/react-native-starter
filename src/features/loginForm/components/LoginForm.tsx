@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { type TextInput, View } from 'react-native';
+import { type TextInputInstance, View } from 'react-native';
 
 import type { UserLogin } from '$domain/entities';
 import { Logger } from '$infra/logger';
@@ -20,7 +20,7 @@ export const LoginForm = ({
   testID = 'LoginForm',
   onFormSuccess,
 }: LoginFormProps) => {
-  const passwordInputRef = useRef<TextInput>(null);
+  const passwordInputRef = useRef<TextInputInstance>(null);
 
   const { t } = useTranslation();
 

@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import type { TextInputProps } from 'react-native';
+import type { TextInputInstance, TextInputProps } from 'react-native';
 import { TextInput, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
@@ -18,7 +18,7 @@ export interface InputProps extends TextInputProps {
   label?: string;
   leftOrnamentIcon?: IconName;
   leftOrnamentIconColor?: string;
-  ref?: RefObject<TextInput | null>;
+  ref?: RefObject<TextInputInstance | null>;
   testID?: string;
 }
 
