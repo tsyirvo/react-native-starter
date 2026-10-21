@@ -129,7 +129,7 @@
     "zustand": "5.0.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.11",
+    "@biomejs/biome": "^2.6.2",
     "@react-native-community/datetimepicker": "9.2.1",
     "@react-native-community/slider": "5.2.1",
     "@react-native/jest-preset": "0.88.0",
@@ -156,7 +156,7 @@
     "storybook": "10.5.10",
     "tsc-files": "1.1.4",
     "typescript": "~6.0.3",
-    "ultracite": "^7.10.7"
+    "ultracite": "^8.0.1"
   },
   "expo": {
     "doctor": {
@@ -174,5 +174,8 @@
   "overrides": {
     "@storybook/react-native-ui": "10.5.1"
   },
-  "packageManager": "bun@1.4.0"
+  "packageManager": "bun@1.4.0",
+  "patchedDependencies": {
+    "ultracite@8.0.1": "patches/ultracite@8.0.1.patch"
+  }
 }

@@ -320,6 +320,21 @@ bun run lint
 
 `bun run lint` auto-fixes issues (safe fixes + import sorting). For CI or a read-only check, use `bun run lint:ci`. Formatting can be run standalone with `bun run format` (`bun run format:check` for the read-only variant).
 
+The config extends Ultracite's core and React presets, inheriting their defaults
+(including undeclared-dependency checks). `biome.jsonc` documents the project-specific
+exceptions. Filename linting accepts PascalCase components and camelCase supporting
+files, with kebab-case also allowed for package-named mocks/type augmentations and
+CLI scripts. Inline JSX callbacks remain allowed.
+YAML uses Biome's formatter; Markdown formatting stays disabled because
+Biome 2.6 does not yet support the GFM tables and task lists used in this repository.
+Markdown linting remains enabled, with frontmatter parsing for skills.
+
+Ultracite 8.0.1 still references Biome's renamed `useSortedClasses` rule. The Bun
+patch in `patches/ultracite@8.0.1.patch` migrates it to `useTailwindSortedClasses`
+and moves its function options to the top-level Tailwind config. Bun applies it
+on install; remove the patch and its `patchedDependencies` entry once an upstream
+release includes that migration.
+
 Those commands also run from the git hooks described below.
 
 ## Git hooks

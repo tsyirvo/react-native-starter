@@ -10,6 +10,16 @@
       "!!**/.rnstorybook"
     ]
   },
+  // Biome 2.6 only supports CommonMark, not our GFM tables/task lists.
+  // Keep Markdown linting, but leave formatting to the documentation authors.
+  "markdown": {
+    "parser": {
+      "frontmatter": true
+    },
+    "formatter": {
+      "enabled": false
+    }
+  },
   "javascript": {
     "globals": [
       "__DEV__",
@@ -60,15 +70,19 @@
     "rules": {
       "performance": {
         "noBarrelFile": "off",
-        "noDynamicNamespaceImportAccess": "off",
+        // Expo SDK namespaces and Jest spyOn mocks are intentional.
         "noNamespaceImport": "off",
+        // Inline callbacks are idiomatic here; React Compiler is enabled.
         "noJsxPropsBind": "off"
       },
-      "suspicious": {
-        "noUnnecessaryConditions": "off"
-      },
       "style": {
-        "useFilenamingConvention": "off"
+        // PascalCase components and camelCase hooks, utilities and config files.
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "filenameCases": ["camelCase", "PascalCase"]
+          }
+        }
       },
       "complexity": {
         "noVoid": "off"
@@ -76,6 +90,38 @@
     }
   },
   "overrides": [
+    {
+      // Package-named mocks/augmentations and existing CLI scripts use kebab-case.
+      "includes": [
+        "__mocks__/**",
+        "src/types/react-query.d.ts",
+        "scripts/**",
+        ".github/scripts/**"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "useFilenamingConvention": {
+              "level": "error",
+              "options": {
+                "filenameCases": ["camelCase", "PascalCase", "kebab-case"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      // The icon registry intentionally selects a generated component by name.
+      "includes": ["src/shared/icons/Icon.tsx"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noDynamicNamespaceImportAccess": "off"
+          }
+        }
+      }
+    },
     {
       // Unistyles prop-to-style mapping objects (Box/Row/Stack primitives)
       // are linear ternaries that read better than the 20 default budget.

@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
-import type { ExpoConfig } from '@expo/config';
+import type { ExpoConfig } from 'expo/config';
 
 const root = process.cwd();
 const variables = {
