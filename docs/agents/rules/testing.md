@@ -7,7 +7,7 @@
 - Full suite: `bun run test -- --runInBand`; coverage: `bun run test:coverage -- --runInBand`.
 - Import `render`, `screen` and other native helpers from `$testing`.
 - Inspect `$testing` exports, render helpers and their tests before relying on available providers, options or async behavior. Reuse the shared setup and add only the contexts a test needs.
-- Use `src/testing/setup.ts`, the Jest configuration in `package.json` and `__mocks__/` before adding another global mock.
+- Use `src/testing/setup.ts`, the Jest configuration in `jest.config.js` and `__mocks__/` before adding another global mock.
 
 ## Test design
 

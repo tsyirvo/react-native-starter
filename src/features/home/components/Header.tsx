@@ -1,25 +1,27 @@
-import { ImageBackground } from 'react-native';
+import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { Assets } from '$assets';
-import { Box, Text } from '$shared/uiKit';
+import { Box, Image, Text } from '$shared/uiKit';
 
 export const Header = () => (
-  <ImageBackground
-    source={Assets.images.components.home.header}
-    style={styles.image}
-  >
+  <View style={styles.container}>
+    <Image source={Assets.images.components.home.header} style={styles.image} />
+
     <Box align="center" justify="flex-end" mb="spacing_24">
       <Text color="core_primary" variant="large">
         React Native Template
       </Text>
     </Box>
-  </ImageBackground>
+  </View>
 );
 
 const styles = StyleSheet.create({
-  image: {
+  container: {
     height: 350,
     width: '100%',
+  },
+  image: {
+    ...StyleSheet.absoluteFillObject,
   },
 });

@@ -1,4 +1,4 @@
-import type { FlexAlignType } from 'react-native';
+import type { ViewStyle } from 'react-native';
 
 import type { ThemeSpacing } from '$shared/theme';
 
@@ -21,7 +21,7 @@ export interface SpacingProps {
 /* ***** *****  Shared Layout Props  ***** ***** */
 
 export interface AlignmentProps {
-  align?: FlexAlignType;
+  align?: ViewStyle['alignItems'];
   justify?:
     | 'flex-start'
     | 'center'
@@ -29,7 +29,7 @@ export interface AlignmentProps {
     | 'space-between'
     | 'space-around'
     | 'space-evenly';
-  self?: FlexAlignType;
+  self?: ViewStyle['alignSelf'];
 }
 
 /* ***** *****  Combined Style Props  ***** ***** */

@@ -42,7 +42,9 @@ for (const file of bunAutoLoadedFiles) {
 
 // No `override`: the real environment (Doppler, EAS, CI) wins, and the committed
 // `.env.${APP_ENV}` placeholders only fill in what it did not provide.
-dotenv.config({ path: envPath });
+// `quiet` keeps dotenv's log off stdout, which would corrupt the JSON output of
+// `expo install --check --json` (used by expo-doctor).
+dotenv.config({ path: envPath, quiet: true });
 
 // Default values
 const BUNDLE_ID = 'com.tsyirvo.rnstarter';

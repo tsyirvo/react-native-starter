@@ -11,7 +11,7 @@ export const HeaderLeft = () => {
   const { theme } = useUnistyles();
 
   return (
-    <Pressable hitSlop={HIT_SLOP} onPress={router.back}>
+    <Pressable hitSlop={HIT_SLOP} onPress={() => router.back()}>
       <Icon
         fill={theme.colors.content_primary}
         height={DEFAULT_ICON_SIZE}
