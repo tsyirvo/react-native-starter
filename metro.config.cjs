@@ -1,7 +1,5 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
 // This replaces `const { getDefaultConfig } = require('expo/metro-config');`
-const path = require('path');
-
 const { getSentryExpoConfig } = require('@sentry/react-native/metro');
 const {
   withStorybook,
@@ -11,5 +9,8 @@ const {
 const config = getSentryExpoConfig(__dirname);
 
 module.exports = withStorybook(config, {
-  enabled: process.env.STORYBOOK_ENABLED === 'true',
+  // Never include Storybook in staging/production, even if the flag is set.
+  enabled:
+    process.env.APP_ENV === 'development' &&
+    process.env.STORYBOOK_ENABLED === 'true',
 });

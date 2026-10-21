@@ -133,11 +133,11 @@
     "@react-native-community/datetimepicker": "9.2.1",
     "@react-native-community/slider": "5.2.1",
     "@react-native/jest-preset": "0.88.0",
-    "@storybook/addon-ondevice-actions": "10.5.1",
-    "@storybook/addon-ondevice-backgrounds": "10.5.1",
-    "@storybook/addon-ondevice-controls": "10.5.1",
-    "@storybook/react": "10.5.10",
-    "@storybook/react-native": "10.5.1",
+    "@storybook/addon-ondevice-actions": "10.7.0",
+    "@storybook/addon-ondevice-backgrounds": "10.7.0",
+    "@storybook/addon-ondevice-controls": "10.7.0",
+    "@storybook/react": "10.6.3",
+    "@storybook/react-native": "10.7.0",
     "@svgr/cli": "8.1.0",
     "@testing-library/react-native": "13.3.3",
     "@types/jest": "30.0.0",
@@ -153,7 +153,7 @@
     "jest-expo": "~58.0.11",
     "react-test-renderer": "19.3.0",
     "standard-version": "9.5.0",
-    "storybook": "10.5.10",
+    "storybook": "10.6.3",
     "tsc-files": "1.1.4",
     "typescript": "~6.0.3",
     "ultracite": "^8.0.1"
@@ -171,9 +171,6 @@
   "trustedDependencies": [
     "@sentry/cli"
   ],
-  "overrides": {
-    "@storybook/react-native-ui": "10.5.1"
-  },
   "packageManager": "bun@1.4.0",
   "patchedDependencies": {
     "ultracite@8.0.1": "patches/ultracite@8.0.1.patch"

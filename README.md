@@ -269,13 +269,37 @@ Refer to the documentation of [i18next](https://www.i18next.com/) for explanatio
 
 ## Using Storybook
 
-A _Storybook_ is configured with some basic stories.
+React Native Storybook 10.7.0 is configured with colocated stories and the
+on-device controls, backgrounds and actions addons. Core `storybook` and
+`@storybook/react` use their compatible, separately versioned 10.6.3 release.
 
-To access it, you simply have to run the app with the following command:
+Start Metro with the development environment and Storybook enabled:
 
 ```sh
 bun run start:storybook
 ```
+
+Open the development app and navigate to `/Storybook`. This is an in-app Expo
+Router integration, so the app's existing providers remain available to stories.
+
+Keep configuration in `.rnstorybook/` (the React Native default, not `.storybook/`
+or `book/`). `main.ts` discovers `src/**/*.stories.*` and registers `deviceAddons`;
+`preview.tsx` owns global decorators and parameters; `index.ts` creates the UI
+with persisted selection. Metro regenerates `storybook.requires.ts` when enabled;
+you can also run `bun run storybook:generate` after configuration changes.
+
+`metro.config.cjs` keeps the Sentry configuration and applies `withStorybook` from
+`@storybook/react-native/metro/withStorybook`. This supported in-app wrapper is
+intentional: the newer `@storybook/react-native/withStorybook` wrapper swaps the
+whole app entry point, which would bypass the Router layout and its providers.
+
+Storybook is enabled only when `APP_ENV=development` **and**
+`STORYBOOK_ENABLED=true`. Staging and production disable it even if the flag is
+accidentally set; the client configuration also forces the flag off there.
+When disabled, the Metro wrapper stubs `.rnstorybook/` and Storybook package
+imports, cutting off the generated story imports from the production JS graph.
+The route guard alone is not bundle exclusion, and `devDependencies` alone do not
+prevent Metro from bundling imported code. Keep stories out of runtime barrels.
 
 ## Tests
 
