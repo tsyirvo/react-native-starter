@@ -1,10 +1,11 @@
 {
   "cli": {
-    "version": ">= 1.1.1",
+    "version": ">= 23.0.0",
     "appVersionSource": "remote"
   },
   "build": {
     "development": {
+      "environment": "development",
       "developmentClient": true,
       "distribution": "internal",
       "ios": {
@@ -15,7 +16,8 @@
         "withoutCredentials": true
       },
       "env": {
-        "APP_ENV": "development"
+        "APP_ENV": "development",
+        "EXPO_NO_DOTENV": "1"
       }
     },
     "development-device": {
@@ -25,21 +27,25 @@
       }
     },
     "staging": {
+      "environment": "preview",
       "channel": "staging",
       "distribution": "internal",
       "android": {
         "buildType": "apk"
       },
       "env": {
-        "APP_ENV": "staging"
+        "APP_ENV": "staging",
+        "EXPO_NO_DOTENV": "1"
       }
     },
     "production": {
+      "environment": "production",
       "channel": "production",
       "distribution": "store",
       "autoIncrement": true,
       "env": {
-        "APP_ENV": "production"
+        "APP_ENV": "production",
+        "EXPO_NO_DOTENV": "1"
       }
     }
   },
