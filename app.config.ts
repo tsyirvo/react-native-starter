@@ -1,5 +1,6 @@
 import type { ConfigContext, ExpoConfig } from 'expo/config';
 
+import nanoIconsConfig from './.nanoicons.json';
 import { ClientEnv, Env } from './env';
 
 const isProductionEnv = Env.APP_ENV === 'production';
@@ -41,6 +42,7 @@ const plugins: ExpoConfig['plugins'] = [
   'expo-secure-store',
   'expo-router',
   ['react-native-permissions', { iosPermissions: ['Notifications'] }],
+  ['react-native-nano-icons', nanoIconsConfig],
   [
     'expo-splash-screen',
     {

@@ -11,7 +11,7 @@ const meta = {
   argTypes: {
     iconName: {
       control: 'select',
-      options: ['Home', 'Apps', 'Envelope', 'Key', 'User'],
+      options: ['home', 'apps', 'envelope', 'key', 'user'],
     },
     isDisabled: { control: 'boolean' },
     isLoading: { control: 'boolean' },
@@ -38,7 +38,7 @@ type Story = StoryObj<typeof meta>;
 
 const sharedArgs: ComponentProps<typeof ButtonWithIconComponent> = {
   children: 'Some CTA',
-  iconName: 'Home',
+  iconName: 'home',
   onPress: action('onPress called'),
 };
 

@@ -68,12 +68,17 @@ describe('Input component', () => {
   it('should not show an icon if not provided', () => {
     render(<Input {...props} />);
 
-    expect(screen.queryByTestId('Icon')).toBeNull();
+    expect(
+      screen.queryByTestId('Icon', { includeHiddenElements: true }),
+    ).toBeNull();
   });
 
   it('should show an icon when defined', () => {
     render(<WithOrnamentIcon {...props} />);
 
-    expect(screen.getByTestId('Icon')).toBeDefined();
+    // Ornament icons are decorative, so they are hidden from accessibility
+    expect(
+      screen.getByTestId('Icon', { includeHiddenElements: true }),
+    ).toBeDefined();
   });
 });

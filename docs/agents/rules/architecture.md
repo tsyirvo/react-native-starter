@@ -32,8 +32,8 @@ components. Entry-point getters use lazy `require` so each asset module is
 evaluated only when the component rendering it reads the value; do not
 destructure the `Assets` tree at module scope, and keep unused entries out of
 it. Mirroring the `components`/`screens`/`shared` structure in `src/assets/`
-keeps the getters self-describing. Generated SVG icon components
-(`src/shared/icons/`) are not assets: they keep their svgr generation pipeline.
+keeps the getters self-describing. Icons in `src/shared/icons/` are not assets;
+render them with `Icon`.
 
 ## Pattern examples
 

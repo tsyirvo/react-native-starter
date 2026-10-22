@@ -13,10 +13,9 @@ export const HeaderLeft = () => {
   return (
     <Pressable hitSlop={HIT_SLOP} onPress={() => router.back()}>
       <Icon
-        fill={theme.colors.content_primary}
-        height={DEFAULT_ICON_SIZE}
-        name="LeftArrow"
-        width={DEFAULT_ICON_SIZE}
+        color={theme.colors.content_primary}
+        name="left-arrow"
+        size={DEFAULT_ICON_SIZE}
       />
     </Pressable>
   );

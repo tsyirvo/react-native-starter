@@ -1,25 +1,39 @@
-import * as AllIcons from './components';
+import type { ColorValue } from 'react-native';
+import { createNanoIconSet } from 'react-native-nano-icons';
 
-type Name = keyof typeof AllIcons;
+import glyphMap from './font/AppIcons.glyphmap.json';
+
+const NanoIcon = createNanoIconSet(glyphMap);
+
+export type IconName = keyof typeof glyphMap.i;
 
 interface IconProps {
-  fill?: string;
-  height?: number;
-  name: Name;
+  accessibilityLabel?: string;
+  color?: ColorValue;
+  name: IconName;
+  size: number;
   testID?: string;
-  width?: number;
 }
 
 export const Icon = ({
+  accessibilityLabel,
+  color,
   name,
-  fill,
-  width,
-  height,
+  size,
   testID = 'Icon',
 }: IconProps) => {
-  const IconComponent = AllIcons[name];
+  const isDecorative = accessibilityLabel === undefined;
 
   return (
-    <IconComponent fill={fill} height={height} testID={testID} width={width} />
+    <NanoIcon
+      accessibilityElementsHidden={isDecorative}
+      accessibilityLabel={accessibilityLabel}
+      accessible={!isDecorative}
+      color={color}
+      importantForAccessibility={isDecorative ? 'no-hide-descendants' : 'yes'}
+      name={name}
+      size={size}
+      testID={testID}
+    />
   );
 };

@@ -6,7 +6,7 @@
       "!!**/babel.config.js",
       "!!**/metro.config.cjs",
       "!!**/env.js",
-      "!!**/src/shared/icons/svgs/config",
+      "!!**/src/shared/icons/font",
       "!!**/.rnstorybook"
     ]
   },

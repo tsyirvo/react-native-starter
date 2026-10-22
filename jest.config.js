@@ -11,7 +11,6 @@ const config = {
     '!**/__tests__/**',
     '!**/*.{test,spec}.{ts,tsx}',
     '!**/*.e2e.ts',
-    '!src/shared/icons/components/**',
     '!src/testing/**',
     '!**/stories/**',
     '!**/*.types.ts',

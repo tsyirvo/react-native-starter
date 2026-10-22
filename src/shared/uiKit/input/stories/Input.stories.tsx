@@ -77,7 +77,7 @@ export const WithHelperTextAndError: Story = {
 export const WithOrnamentIcon: Story = {
   args: {
     ...sharedArgs,
-    leftOrnamentIcon: 'Home',
+    leftOrnamentIcon: 'home',
     leftOrnamentIconColor: '#0C0D0F',
   },
 };

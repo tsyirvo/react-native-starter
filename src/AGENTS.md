@@ -14,4 +14,4 @@ apply throughout `src/`, including routes; keep this file outside `src/app/`.
 - Use TanStack Query for server state and the existing Zustand store for shared client state. Keep transient state local where possible; inspect current state owners before extending them and do not duplicate their responsibilities.
 - Handle rejected promises and clean up listeners/effects. Guard asynchronous results against unmounts or obsolete identities.
 - Colocate tests and stories with their owner. Import native test helpers from `$testing`.
-- Do not edit generated icon components by hand; change their SVG source and use `bun run generate:icons` when needed.
+- Do not edit the generated icon font by hand; change its SVG source and use `bun run generate:icons` when needed.

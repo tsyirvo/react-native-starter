@@ -12,9 +12,10 @@
 
 ## Generated assets and environments
 
-Handwritten icons must not be mixed into `src/shared/icons/components/`.
-Edit SVG sources under `src/shared/icons/svgs/` and run
-`bun run generate:icons` when needed; review the generated diff.
+Icons are single-color SVGs in `src/shared/icons/svgs/` (file name = icon name),
+compiled into a font via `.nanoicons.json`. Run `bun run generate:icons` and
+commit `src/shared/icons/font/`; never edit it by hand. Icon changes need a new
+native build: OTA updates render changed icons blank.
 
 Inspect the existing environment configuration and scripts; use the established
 Doppler workflow rather than inventing parallel environment handling. Keep

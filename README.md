@@ -63,8 +63,8 @@ Within a module, group different roles under `components/`, `contexts/`, `hooks/
 - Colocate `__tests__/` and `stories/` with their owning component, context, hook or utility.
 - Leaf component packages such as `shared/uiKit/input/` may keep their primary component at the package root, with supporting components, hooks and utilities in subfolders. Simple SDK adapters may similarly keep their implementation and associated types together.
 - Use local `index.ts` barrels for components, hooks and utilities consumed outside their folder. Keep module-root exports limited to the intended public API; internal code should not import its own module-root barrel. Context definitions and initialization-sensitive dependencies may use direct imports.
-- Do not add these role folders under `src/app/`, where files define routes, or mix handwritten components into generated directories such as `shared/icons/components/`.
-- Consume image and media assets through the `$assets` `Assets` entry point (`Assets.images.<group>...`), not direct file imports. Register assets with lazy getters mirroring the `components`/`screens`/`shared` folder structure, read the value where the component renders it, and remove entries of unused assets. Generated icon components (`shared/icons/`) stay outside `Assets` and keep their svgr pipeline.
+- Do not add these role folders under `src/app/`, where files define routes, or edit generated files such as the icon font in `shared/icons/font/`.
+- Consume image and media assets through the `$assets` `Assets` entry point (`Assets.images.<group>...`), not direct file imports. Register assets with lazy getters mirroring the `components`/`screens`/`shared` folder structure, read the value where the component renders it, and remove entries of unused assets. SVG icons (`shared/icons/`) stay outside `Assets`: they are compiled into an icon font and rendered with the `Icon` component.
 
 Check changes with `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test`. Use `bun run lint` and `bun run format` only when you want their auto-fixes.
 
@@ -88,7 +88,7 @@ On the Developer Experience side, a test stack is setup (unit, functional and E2
 
 There are also some utilities like:
 
-- Converting `.svg` files into React components that can be used easily
+- Compiling `.svg` icons into a typed icon font with [react-native-nano-icons](https://github.com/software-mansion-labs/react-native-nano-icons), rendered as a single native view per icon
 - Git hooks managed by [hk](https://hk.jdx.dev/): a fast pre-commit on staged files with Gitleaks secret scanning, a full pre-push safety net
 - Tooling to release and tag new versions
 
@@ -323,7 +323,7 @@ bun run test -- --maxWorkers=4                        # worker-count experiments
 
 Jest caches transformations in `node_modules/.cache/jest`; caching does not skip test execution. Quality restores a compatible cache from earlier runs and saves it after a successful job. Full-suite runs fail if no tests are discovered; the pre-commit related-tests check explicitly allows no matching tests.
 
-Coverage includes application code in `src/` and release tooling in `scripts/`, excluding declarations, tests, test helpers, stories, generated icons and `*.types.ts` files. Root/native configuration files are outside this scope.
+Coverage includes application code in `src/` and release tooling in `scripts/`, excluding declarations, tests, test helpers, stories and `*.types.ts` files. Root/native configuration files are outside this scope.
 
 For E2E tests, you can use [Maestro](https://maestro.mobile.dev/) for both OS.
 

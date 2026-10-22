@@ -1,0 +1,9 @@
+{
+  "iconSets": [
+    {
+      "fontFamily": "AppIcons",
+      "inputDir": "./src/shared/icons/svgs",
+      "outputDir": "./src/shared/icons/font"
+    }
+  ]
+}
