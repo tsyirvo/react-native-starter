@@ -9,7 +9,7 @@ const FeaturesLayout = () => {
     <Stack screenOptions={screenOptions}>
       <Stack.Screen name="index" options={hiddenHeaderOptions} />
 
-      <Stack.Screen name="ScreenTitleShowcase" />
+      <Stack.Screen name="screen-title-showcase" />
     </Stack>
   );
 };

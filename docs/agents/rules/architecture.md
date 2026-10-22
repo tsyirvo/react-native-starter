@@ -7,6 +7,7 @@ Clean Architecture template.
 ## Placement and dependency checks
 
 - Routes compose features, application workflows and shared UI; keep policy out of `src/app/`.
+- Name route files and segments in kebab-case (`screen-title-showcase.tsx`) because they become URLs and deep links. Components, hooks and utilities outside `src/app/` keep PascalCase/camelCase.
 - Put app-wide workflows and policy in application. It may call concrete infra adapters, but must not depend on features.
 - Features own user-facing flows and their UI/policy. Shared reuse within one feature does not automatically make code globally shared.
 - Infra owns concrete SDKs, storage and runtime configuration; it may consume pure domain types/rules.

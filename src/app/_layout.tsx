@@ -67,11 +67,11 @@ const ProtectedNavigator = () => {
     <Stack screenOptions={screenOptions}>
       <Stack.Protected guard={!isBootstrappingApplication}>
         <Stack.Protected guard={config.isStorybookEnabled}>
-          <Stack.Screen name="Storybook" />
+          <Stack.Screen name="storybook" />
         </Stack.Protected>
 
         <Stack.Protected guard={isAnonymous}>
-          <Stack.Screen name="Login" />
+          <Stack.Screen name="login" />
         </Stack.Protected>
 
         <Stack.Protected guard={isAuthenticated}>

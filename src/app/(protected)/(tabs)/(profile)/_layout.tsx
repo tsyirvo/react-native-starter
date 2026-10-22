@@ -7,7 +7,7 @@ const ProfileLayout = () => {
 
   return (
     <Stack screenOptions={screenOptions}>
-      <Stack.Screen name="Profile" options={hiddenHeaderOptions} />
+      <Stack.Screen name="profile" options={hiddenHeaderOptions} />
     </Stack>
   );
 };

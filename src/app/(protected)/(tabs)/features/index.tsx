@@ -19,7 +19,7 @@ const FeaturesScreen = () => {
   const { shouldShowBanner } = useIsNewStoreVersionAvailable();
 
   const onScreenTitleShowcasePress = () => {
-    router.push('/features/ScreenTitleShowcase');
+    router.push('/features/screen-title-showcase');
   };
 
   return (
