@@ -29,11 +29,10 @@ export const InnerIcon = ({
 
   return (
     <Icon
-      fill={theme.colors[getTextColor(parentVariant)]}
-      height={iconSize}
+      color={theme.colors[getTextColor(parentVariant)]}
       name={iconName}
+      size={iconSize}
       testID={testID}
-      width={iconSize}
     />
   );
 };

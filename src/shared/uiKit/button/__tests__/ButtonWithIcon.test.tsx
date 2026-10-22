@@ -11,7 +11,7 @@ const { BasicButton, ButtonWithVariant, ButtonLoading, ButtonDisabled } =
 describe('Button component', () => {
   const label = 'Some text';
 
-  const iconName: IconName = 'Home';
+  const iconName: IconName = 'home';
   const onPress = jest.fn();
   const props = { iconName, onPress };
 
@@ -29,21 +29,27 @@ describe('Button component', () => {
     render(<BasicButton {...props}>{label}</BasicButton>);
 
     expect(screen.getByText(label)).toBeDefined();
-    expect(screen.getByTestId('InnerIcon')).toBeDefined();
+    expect(
+      screen.getByTestId('InnerIcon', { includeHiddenElements: true }),
+    ).toBeDefined();
   });
 
   it('should render correctly with a custom variant', () => {
     render(<ButtonWithVariant {...props}>{label}</ButtonWithVariant>);
 
     expect(screen.getByText(label)).toBeDefined();
-    expect(screen.getByTestId('InnerIcon')).toBeDefined();
+    expect(
+      screen.getByTestId('InnerIcon', { includeHiddenElements: true }),
+    ).toBeDefined();
   });
 
   it('should render correctly when loading', () => {
     render(<ButtonLoading {...props}>{label}</ButtonLoading>);
 
     expect(screen.getByTestId('InnerTextLoader')).toBeDefined();
-    expect(screen.queryByTestId('InnerIcon')).toBeNull();
+    expect(
+      screen.queryByTestId('InnerIcon', { includeHiddenElements: true }),
+    ).toBeNull();
   });
 
   it('should not call the onPress method when loading', () => {

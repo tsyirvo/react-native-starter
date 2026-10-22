@@ -27,6 +27,7 @@ import {
   useAppScreenTracking,
   useAppStateTracking,
   useCheckNetworkStateOnMount,
+  useIconFontIntegrityMonitoring,
   useRoutingInstrumentation,
 } from '$application/instrumentation';
 import { SubscriptionContextProvider } from '$features/subscription';
@@ -43,8 +44,6 @@ import {
 } from '$shared/components';
 
 ObserveMonitoring.init();
-
-// Sentry is initialized here so that it runs before Sentry.wrap()
 ErrorMonitoring.init();
 
 const onGlobalError = (error: Error, errorInfo: ErrorInfo) => {
@@ -90,6 +89,7 @@ const RootLayout = () => {
   useCheckNetworkStateOnMount();
   useAppStateTracking();
   useAppScreenTracking();
+  useIconFontIntegrityMonitoring();
   useAppFocusManager();
 
   return (

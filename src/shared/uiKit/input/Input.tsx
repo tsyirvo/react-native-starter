@@ -60,10 +60,9 @@ export const Input = ({
         {!!leftOrnamentIcon && (
           <View style={styles.iconContainer}>
             <Icon
-              fill={leftOrnamentIconColor}
-              height={DEFAULT_ICON_SIZE}
+              color={leftOrnamentIconColor}
               name={leftOrnamentIcon}
-              width={DEFAULT_ICON_SIZE}
+              size={DEFAULT_ICON_SIZE}
             />
           </View>
         )}
