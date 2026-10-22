@@ -127,6 +127,22 @@
       }
     },
     {
+      // Route filenames are URL segments, so they follow Expo Router's kebab-case.
+      "includes": ["src/app/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useFilenamingConvention": {
+              "level": "error",
+              "options": {
+                "filenameCases": ["kebab-case"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       // The icon registry intentionally selects a generated component by name.
       "includes": ["src/shared/icons/Icon.tsx"],
       "linter": {

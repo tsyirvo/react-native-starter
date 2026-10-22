@@ -279,7 +279,7 @@ Start Metro with the development environment and Storybook enabled:
 bun run start:storybook
 ```
 
-Open the development app and navigate to `/Storybook`. This is an in-app Expo
+Open the development app and navigate to `/storybook`. This is an in-app Expo
 Router integration, so the app's existing providers remain available to stories.
 
 Keep configuration in `.rnstorybook/` (the React Native default, not `.storybook/`
@@ -348,7 +348,8 @@ The config extends Ultracite's core and React presets, inheriting their defaults
 (including undeclared-dependency checks). `biome.jsonc` documents the project-specific
 exceptions. Filename linting accepts PascalCase components and camelCase supporting
 files, with kebab-case also allowed for package-named mocks/type augmentations and
-CLI scripts. Inline JSX callbacks remain allowed.
+CLI scripts. Route files in `src/app/` must be kebab-case because Expo Router uses
+them as URL segments. Inline JSX callbacks remain allowed.
 YAML uses Biome's formatter; Markdown formatting stays disabled because
 Biome 2.6 does not yet support the GFM tables and task lists used in this repository.
 Markdown linting remains enabled, with frontmatter parsing for skills.
