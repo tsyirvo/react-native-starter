@@ -16,6 +16,15 @@ const plugins: ExpoConfig['plugins'] = [
   ],
   'expo-localization',
   [
+    'expo-dev-client',
+    {
+      // Build-time defaults; launch URL `__expo_*` params only last one launch
+      showMenuAtLaunch: false,
+      skipOnboarding: false,
+      toolsButton: false,
+    },
+  ],
+  [
     'expo-build-properties',
     {
       ios: {
