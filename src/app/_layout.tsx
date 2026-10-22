@@ -36,7 +36,7 @@ import { persistOptions, queryClient } from '$infra/api/queryClient';
 import { config } from '$infra/config';
 import { ErrorMonitoring, ObserveMonitoring } from '$infra/monitoring';
 import { ProductTrackingProvider } from '$infra/productTracking';
-import { useAppStore } from '$infra/store';
+import { useIsBootstrappingApplication } from '$infra/store';
 import { toastConfig } from '$infra/toaster';
 import {
   FullscreenErrorBoundary,
@@ -61,9 +61,7 @@ const onGlobalError = (error: Error, errorInfo: ErrorInfo) => {
 const ProtectedNavigator = () => {
   const { user } = useAuthContext();
   const { isAnonymous, isAuthenticated } = getAuthGuards(user);
-  const isBootstrappingApplication = useAppStore(
-    (state) => state.isBootstrappingApplication,
-  );
+  const isBootstrappingApplication = useIsBootstrappingApplication();
 
   return (
     <Stack screenOptions={screenOptions}>

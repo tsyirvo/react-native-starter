@@ -82,6 +82,21 @@
           "options": {
             "filenameCases": ["camelCase", "PascalCase"]
           }
+        },
+        // Shared client state lives behind `$infra/store` hooks and actions.
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "zustand": "Use the Legend State store from `$infra/store`."
+            },
+            "patterns": [
+              {
+                "group": ["@legendapp/state", "@legendapp/state/**"],
+                "message": "Use the hooks and actions exported by `$infra/store`."
+              }
+            ]
+          }
         }
       },
       "complexity": {
@@ -133,6 +148,29 @@
               "level": "error",
               "options": {
                 "maxAllowedComplexity": 25
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      // The store owns Legend State. `observer` relies on `.get()` in render,
+      // which React Compiler memoizes; read values with `useValue` instead.
+      "includes": ["src/infra/store/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "zustand": "Use Legend State observables.",
+                  "@legendapp/state/react": {
+                    "importNames": ["observer", "reactiveObserver"],
+                    "message": "Read observables with `useValue`; `observer` is incompatible with React Compiler."
+                  }
+                }
               }
             }
           }

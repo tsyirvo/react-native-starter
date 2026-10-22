@@ -3,7 +3,10 @@
 ## State ownership
 
 - Use TanStack Query for server state and caching.
-- Use the existing Zustand store for shared client state; keep feature-local transient state local where possible.
+- Use the existing Legend State store in `src/infra/store/` for shared client state; keep feature-local transient state local where possible.
+- Keep observables private to the store. Expose a `useValue`-based hook per value consumers read and plain functions for actions, so writes have one owner and consumers re-render only for the values they read.
+- React Compiler is enabled: read observables with `useValue`, never with `observer` or `.get()` during render. Use `.peek()` outside render.
+- Keep persisted and transient state in separate observables; only persist observables deliberately synced to MMKV.
 - Inspect current slices, session workflows and consumers before extending state. Keep a single authority for each value rather than duplicating it across stores, providers and query caches.
 - Do not persist session data or credentials as an incidental change; establish the security and cleanup requirements first.
 

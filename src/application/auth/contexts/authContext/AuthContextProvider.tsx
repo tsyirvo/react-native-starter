@@ -7,7 +7,7 @@ import { clearAccessAndRefreshTokens } from '$infra/api/token';
 import { Logger } from '$infra/logger';
 import { ErrorMonitoring } from '$infra/monitoring';
 import { Purchase } from '$infra/purchase';
-import { clearPersistedAppStore, resetAllSlices } from '$infra/store';
+import { resetStore } from '$infra/store';
 import { sleep } from '$shared/utils';
 
 import AuthContext from './AuthContext';
@@ -25,11 +25,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const isPurchaseUserReady = user !== null && purchaseUser === user;
 
   const queryClient = useQueryClient();
-
-  const clearStore = useCallback(() => {
-    resetAllSlices();
-    clearPersistedAppStore();
-  }, []);
 
   useEffect(() => {
     if (!user) {
@@ -108,7 +103,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     setPurchaseUser(null);
 
     try {
-      clearStore();
+      resetStore();
       queryClient.clear();
 
       await Promise.all([
@@ -122,7 +117,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
         message: 'Failed to sign out',
       });
     }
-  }, [queryClient, user, clearStore, stopTrackingUser]);
+  }, [queryClient, user, stopTrackingUser]);
 
   const value = useMemo(
     () => ({

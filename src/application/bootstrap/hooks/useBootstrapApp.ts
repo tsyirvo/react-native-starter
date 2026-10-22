@@ -5,7 +5,7 @@ import { useGetSessionState } from '$application/auth';
 import { bootstrapApp } from '$infra/bootstrap';
 import { config } from '$infra/config';
 import { Logger } from '$infra/logger';
-import { useAppStore } from '$infra/store';
+import { useIsBootstrappingApplication } from '$infra/store';
 
 import { checkForOtaUpdate } from '../utils';
 
@@ -24,9 +24,7 @@ SplashScreen.setOptions({
 export const useBootstrapApp = () => {
   const [isBootstrappingInfra, setIsBootstrappingInfra] = useState(true);
 
-  const isBootstrappingApplication = useAppStore(
-    (state) => state.isBootstrappingApplication,
-  );
+  const isBootstrappingApplication = useIsBootstrappingApplication();
 
   const isAppReady = !(isBootstrappingInfra || isBootstrappingApplication);
 
