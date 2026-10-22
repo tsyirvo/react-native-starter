@@ -11,7 +11,7 @@ apply throughout `src/`, including routes; keep this file outside `src/app/`.
 - React 19 supports refs as props; follow the existing pattern rather than adding `forwardRef`.
 - Reuse `shared/uiKit` primitives and theme tokens. Define styles with Unistyles's `StyleSheet`, not inline style objects or a second styling library.
 - Put user-facing text in `infra/i18n/resources/`; add matching keys in every locale.
-- Use TanStack Query for server state and the existing Zustand store for shared client state. Keep transient state local where possible; inspect current state owners before extending them and do not duplicate their responsibilities.
+- Use TanStack Query for server state and the existing Legend State store (`$infra/store`) for shared client state. Keep transient state local where possible; inspect current state owners before extending them and do not duplicate their responsibilities.
 - Handle rejected promises and clean up listeners/effects. Guard asynchronous results against unmounts or obsolete identities.
 - Colocate tests and stories with their owner. Import native test helpers from `$testing`.
 - Do not edit the generated icon font by hand; change its SVG source and use `bun run generate:icons` when needed.

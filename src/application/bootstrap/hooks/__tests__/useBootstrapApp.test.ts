@@ -3,7 +3,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useGetSessionState } from '$application/auth';
 import { bootstrapApp } from '$infra/bootstrap';
 import { config } from '$infra/config';
-import { useAppStore } from '$infra/store';
+import { useIsBootstrappingApplication } from '$infra/store';
 import { act, renderHook, waitFor } from '$testing';
 
 import { checkForOtaUpdate } from '../../utils';
@@ -18,7 +18,9 @@ jest.mock('$infra/config', () => ({
   config: { isStorybookEnabled: false },
 }));
 jest.mock('$infra/bootstrap', () => ({ bootstrapApp: jest.fn() }));
-jest.mock('$infra/store', () => ({ useAppStore: jest.fn() }));
+jest.mock('$infra/store', () => ({
+  useIsBootstrappingApplication: jest.fn(),
+}));
 jest.mock('$application/auth', () => ({ useGetSessionState: jest.fn() }));
 jest.mock('../../utils', () => ({ checkForOtaUpdate: jest.fn() }));
 
@@ -26,7 +28,7 @@ describe('useBootstrapApp', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     config.isStorybookEnabled = false;
-    jest.mocked(useAppStore).mockReturnValue(true);
+    jest.mocked(useIsBootstrappingApplication).mockReturnValue(true);
     jest.mocked(checkForOtaUpdate).mockResolvedValue(undefined);
   });
 
@@ -43,7 +45,7 @@ describe('useBootstrapApp', () => {
     expect(bootstrapApp).not.toHaveBeenCalled();
     expect(checkForOtaUpdate).not.toHaveBeenCalled();
     expect(result.current.isAppReady).toBe(false);
-    jest.mocked(useAppStore).mockReturnValue(false);
+    jest.mocked(useIsBootstrappingApplication).mockReturnValue(false);
     rerender({});
     expect(result.current.isAppReady).toBe(true);
     expect(SplashScreen.hide).toHaveBeenCalledTimes(1);
@@ -64,7 +66,7 @@ describe('useBootstrapApp', () => {
 
     expect(bootstrapApp).toHaveBeenCalledTimes(1);
     expect(checkForOtaUpdate).toHaveBeenCalledTimes(1);
-    jest.mocked(useAppStore).mockReturnValue(false);
+    jest.mocked(useIsBootstrappingApplication).mockReturnValue(false);
     rerender({});
     expect(result.current.isAppReady).toBe(false);
     expect(SplashScreen.hide).not.toHaveBeenCalled();

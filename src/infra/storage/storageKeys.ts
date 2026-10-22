@@ -10,6 +10,7 @@ export const storageKeys = {
     id: 'query-storage',
   },
   storeStorage: {
+    appPreferences: 'app-preferences',
     id: 'store-storage',
   },
 };

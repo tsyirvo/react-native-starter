@@ -1,2 +1,2 @@
-export * from './store';
-export * from './utils';
+export * from './app';
+export { resetStore } from './utils';

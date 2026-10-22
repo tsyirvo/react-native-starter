@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import { Logger } from '$infra/logger';
-import { useAppStore } from '$infra/store';
+import { setIsBootstrappingApplication } from '$infra/store';
 
 import { useGetUserSession } from './useGetUserSession';
 
 export const useGetSessionState = () => {
   const [isSessionReady, setIsSessionReady] = useState(false);
-
-  const setIsBootstrappingApplication = useAppStore(
-    (state) => state.setIsBootstrappingApplication,
-  );
 
   const { isFetched, isError, error, failureCount } = useGetUserSession();
 
@@ -34,12 +30,5 @@ export const useGetSessionState = () => {
     // TODO(prod): Restore authentication when a real session query exists.
     setIsBootstrappingApplication(false);
     setIsSessionReady(true);
-  }, [
-    isSessionReady,
-    isFetched,
-    isError,
-    error,
-    failureCount,
-    setIsBootstrappingApplication,
-  ]);
+  }, [isSessionReady, isFetched, isError, error, failureCount]);
 };

@@ -33,8 +33,7 @@ jest.mock('$infra/api/token', () => ({
   clearAccessAndRefreshTokens: jest.fn().mockResolvedValue(undefined),
 }));
 jest.mock('$infra/store', () => ({
-  clearPersistedAppStore: jest.fn(),
-  resetAllSlices: jest.fn(),
+  resetStore: jest.fn(),
 }));
 jest.mock('$shared/utils', () => ({
   sleep: jest.fn().mockResolvedValue(undefined),

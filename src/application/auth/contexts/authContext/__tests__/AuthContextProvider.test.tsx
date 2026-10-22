@@ -6,7 +6,7 @@ import { clearAccessAndRefreshTokens } from '$infra/api/token';
 import { Logger } from '$infra/logger';
 import { ErrorMonitoring } from '$infra/monitoring';
 import { Purchase } from '$infra/purchase';
-import { clearPersistedAppStore, resetAllSlices } from '$infra/store';
+import { resetStore } from '$infra/store';
 import { sleep } from '$shared/utils';
 import { act, renderHook, waitFor } from '$testing';
 
@@ -27,8 +27,7 @@ jest.mock('$infra/api/token', () => ({
   clearAccessAndRefreshTokens: jest.fn(),
 }));
 jest.mock('$infra/store', () => ({
-  clearPersistedAppStore: jest.fn(),
-  resetAllSlices: jest.fn(),
+  resetStore: jest.fn(),
 }));
 jest.mock('$shared/utils', () => ({ sleep: jest.fn() }));
 
@@ -101,8 +100,7 @@ describe('AuthContextProvider', () => {
     expect(Analytics.reset).toHaveBeenCalledTimes(1);
     expect(ErrorMonitoring.clearUser).toHaveBeenCalledTimes(1);
     expect(Purchase.clearUser).toHaveBeenCalledTimes(1);
-    expect(resetAllSlices).toHaveBeenCalledTimes(1);
-    expect(clearPersistedAppStore).toHaveBeenCalledTimes(1);
+    expect(resetStore).toHaveBeenCalledTimes(1);
     expect(queryClient.getQueryData(['cached-session'])).toBeUndefined();
     expect(clearAccessAndRefreshTokens).toHaveBeenCalledTimes(1);
   });
@@ -124,8 +122,7 @@ describe('AuthContextProvider', () => {
 
     expect(result.current.user).toBeNull();
     expect(queryClient.getQueryData(['private-data'])).toBeUndefined();
-    expect(resetAllSlices).toHaveBeenCalledTimes(1);
-    expect(clearPersistedAppStore).toHaveBeenCalledTimes(1);
+    expect(resetStore).toHaveBeenCalledTimes(1);
     expect(clearAccessAndRefreshTokens).toHaveBeenCalledTimes(1);
     expect(Logger.error).toHaveBeenCalledWith(
       expect.objectContaining({ error }),

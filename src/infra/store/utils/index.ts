@@ -1,2 +1,2 @@
+export * from './persistOptions';
 export * from './resetStore';
-export * from './storePersister';

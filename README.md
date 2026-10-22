@@ -201,7 +201,7 @@ The most useful libraries already configured are the following:
 
 [PostHog](https://www.flagsmith.com/) for analytics and feature flags
 
-[Zustand](https://zustand-demo.pmnd.rs/) for a global store
+[Legend State](https://www.legendapp.com/open-source/state/v3/) for a global store
 
 [RevenueCat](https://www.revenuecat.com/) for in-app purchases
 

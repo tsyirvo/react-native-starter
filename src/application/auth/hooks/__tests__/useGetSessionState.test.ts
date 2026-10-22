@@ -1,5 +1,5 @@
 import { Logger } from '$infra/logger';
-import { useAppStore } from '$infra/store';
+import { setIsBootstrappingApplication } from '$infra/store';
 import { renderHook } from '$testing';
 
 import { useGetSessionState } from '../useGetSessionState';
@@ -7,9 +7,10 @@ import { useGetUserSession } from '../useGetUserSession';
 
 jest.mock('../useGetUserSession', () => ({ useGetUserSession: jest.fn() }));
 jest.mock('$infra/logger', () => ({ Logger: { dev: jest.fn() } }));
-jest.mock('$infra/store', () => ({ useAppStore: jest.fn() }));
+jest.mock('$infra/store', () => ({
+  setIsBootstrappingApplication: jest.fn(),
+}));
 
-const setIsBootstrappingApplication = jest.fn();
 const sessionResult = (overrides: {
   isFetched?: boolean;
   isError?: boolean;
@@ -27,7 +28,6 @@ const sessionResult = (overrides: {
 describe('useGetSessionState', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    jest.mocked(useAppStore).mockReturnValue(setIsBootstrappingApplication);
   });
 
   it('leaves bootstrap pending while the session query has not fetched', () => {
