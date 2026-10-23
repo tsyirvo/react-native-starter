@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-device": {
+      "source": "callstack/agent-device",
+      "ref": "v0.21.31",
+      "sourceType": "github",
+      "skillPath": "skills/agent-device/SKILL.md",
+      "computedHash": "3187ae73a1a8b055e20630d64c86e5bb7576341b495c9a755f5e3ec7927c0302"
+    },
+    "android-emulator": {
+      "source": "callstack/agent-device",
+      "ref": "v0.21.31",
+      "sourceType": "github",
+      "skillPath": "skills/android-emulator/SKILL.md",
+      "computedHash": "e739ae453a03287e3a862e70fa704b1cad46510883fae6b1cc00bcf266970ac0"
+    },
+    "dogfood": {
+      "source": "callstack/agent-device",
+      "ref": "v0.21.31",
+      "sourceType": "github",
+      "skillPath": "skills/dogfood/SKILL.md",
+      "computedHash": "8e6dfbff0633e355210ce7ae109cb39a3e1347946b6e92aaa607271154526b6b"
+    },
+    "ios-simulator": {
+      "source": "callstack/agent-device",
+      "ref": "v0.21.31",
+      "sourceType": "github",
+      "skillPath": "skills/ios-simulator/SKILL.md",
+      "computedHash": "69b9860b2f9cdaf69c160fff946f25a50918979952064796377510cbe8183942"
+    }
+  }
+}

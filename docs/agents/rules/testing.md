@@ -40,5 +40,11 @@ Inspect current tests rather than assuming their helpers or scenarios are fixed.
 Biome and TypeScript enforce code quality; Jest verifies JS behavior under
 mocks. For Maestro, inspect the `test:e2e` script and applicable scenarios;
 provide its CLI, required secrets and a development app on a simulator/device.
-Native changes also need relevant development-build checks. Clearly report
+Native changes also need relevant development-build checks.
+
+To verify a change, reproduce a bug or run QA in the live app, load
+`project-device-automation` (and `dogfood` for exploratory QA). It drives a
+development build on a simulator/emulator through the pinned `agent-device`
+CLI or its MCP server. These runs are interactive evidence, not committed
+regression tests: keep durable flows in Maestro or Jest. Clearly report
 any tests that could not run instead of silently substituting a mock.

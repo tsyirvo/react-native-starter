@@ -17,7 +17,7 @@ not an exclusive list of agents.
 | `docs/agents/rules/` | Task-specific Markdown guides, loaded explicitly through the routing table     |
 | `.agents/skills/`    | Canonical versioned skills and references                                      |
 | `.claude/skills`     | Relative symlink to `../.agents/skills`                                        |
-| `.mcp.json`          | Context7/Expo definitions; adapt to your client's MCP format if needed         |
+| `.mcp.json`          | Context7/Expo/agent-device definitions; adapt to your client's format          |
 
 There is no cross-client `.rules/` format. These guides have no client-specific
 frontmatter and are not all injected at startup. Keep root instructions concise;
@@ -28,7 +28,7 @@ load the guide and skill relevant to the task.
 1. **Instructions:** check whether it loads root `AGENTS.md`. If not, configure its context paths or add a thin client-specific reference/import. Do not duplicate project rules.
 2. **Scope:** verify nested instructions are loaded, or explicitly read `src/AGENTS.md` for source work. Read task-specific guides through the root routing table.
 3. **Skills:** check discovery of `.agents/skills/`. Configure a skill path or local bridge if another location is required, and verify the inventory is available without duplicate-name collisions. Agents without skill support can read the relevant `SKILL.md` and references explicitly.
-4. **MCP:** if desired, use the endpoints in `.mcp.json` with your client's configuration format. Check HTTP transport, environment-variable expansion, OAuth and any required adapter. Clients without MCP can use official documentation instead.
+4. **MCP:** if desired, use the endpoints in `.mcp.json` with your client's configuration format. Check HTTP and stdio transports, environment-variable expansion, OAuth and any required adapter. Clients without MCP can use official documentation instead.
 5. **Permissions:** review trust and tool-approval settings. Keep credentials and personal configuration out of version control; add local ignore entries if your agent stores them in the checkout.
 6. **Verification:** inspect the instructions, skills and servers actually loaded in your agent. Do not assume that matching filenames mean the client discovered them.
 
@@ -67,7 +67,7 @@ enabled and prefer one-time grants; review any per-server overrides.
 
 1. Start `claude` from the root and review workspace/MCP trust prompts.
 2. Root `CLAUDE.md` imports `AGENTS.md` with Claude's `@...` syntax. The import is the only Claude-specific instruction; Pi prefers `AGENTS.md`.
-3. The committed `.claude/skills` symlink exposes the canonical skills. Use `/project-native-testing`, `/expo-router`, `/expo-data-fetching` or `/expo-upgrade`.
+3. The committed `.claude/skills` symlink exposes the canonical skills. Use `/project-native-testing`, `/project-device-automation` or another inventory name.
 4. Use `/context` to inspect instruction sources and `/mcp` to inspect approved servers/authenticate Expo. Restart after MCP configuration changes.
 
 New Claude versions can read `AGENTS.md` directly, but the import maintains
@@ -98,8 +98,8 @@ checkout. Review `git status` carefully.
 
 After reviewing project trust, check your chosen client interactively:
 
-- Root instructions and the four inventory skills are available. For example, Pi exposes `/skill:<name>` and Claude exposes `/<name>`.
-- If MCP is configured, `context7` and `expo` are registered. For example, Pi's `/mcp-adapter` and Claude's `/mcp` show server status.
+- Root instructions and the inventory skills are available. For example, Pi exposes `/skill:<name>` and Claude exposes `/<name>`.
+- If MCP is configured, `context7`, `expo` and `agent-device` are registered. For example, Pi's `/mcp-adapter` and Claude's `/mcp` show server status.
 - Inspect loaded context using your client's tools; Claude's `/context` is one example.
 - On a source task, the agent reads `src/AGENTS.md` plus only relevant guides.
 - Resolve global skills with the same names rather than assuming the repository version wins. Pi reports collisions; do not duplicate this inventory through a global plugin.

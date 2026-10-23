@@ -2,6 +2,7 @@
 node = "26"
 bun = "1.4.0"
 "npm:eas-cli" = "23"
+"npm:agent-device" = "0.21.31"
 hk = "2.4.0"
 gitleaks = "8.30.1"
 
@@ -61,11 +62,7 @@ alias = "tc"
 [tasks.fix]
 description = "Fix all code quality issues (lint + format)"
 # Run sequentially: these all write to the same files, so parallel `depends` would race
-run = [
-  "mise run lint:fix",
-  "mise run format:fix",
-  "mise run check:fix",
-]
+run = ["mise run lint:fix", "mise run format:fix", "mise run check:fix"]
 
 #### TESTS ####
 
@@ -115,8 +112,5 @@ run = "mise exec -- hk run pre-push"
 
 [tasks.clean]
 description = "Clean caches and build artifacts"
-run = [
-  "bun run clean:watchman",
-  "rm -rf .expo coverage node_modules/.cache",
-]
+run = ["bun run clean:watchman", "rm -rf .expo coverage node_modules/.cache"]
 alias = "cl"

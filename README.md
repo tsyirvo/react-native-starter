@@ -77,10 +77,10 @@ compatibility adapters, not separate rule sets or a restriction on agent choice.
 
 See [agent setup](docs/agents/README.md) for adapting instruction, skill and MCP
 discovery to your chosen agent, with optional client examples. Root `.mcp.json`
-provides Context7 and Expo definitions; translate them to your client's format
-if needed. Sentry is an optional example. Credentials and personal settings
+provides Context7, Expo and local `agent-device` (simulator/emulator automation)
+definitions; translate them to your client's format if needed. Sentry is an optional example. Credentials and personal settings
 stay local, and external writes require approval. No AI tooling is added to
-app dependencies.
+app dependencies; the `agent-device` CLI is pinned in `mise.toml`.
 
 ## What's included
 
