@@ -48,7 +48,7 @@ These are ordinary Markdown guides, not an automatically loaded rules format.
 | Components, styling, accessibility, translations      | [UI and styling](docs/agents/rules/ui-and-styling.md)         |
 | Queries, persistence, stores, authentication          | [State and data](docs/agents/rules/state-and-data.md)         |
 | SDKs, analytics, monitoring, purchases, feature flags | [SDK integrations](docs/agents/rules/sdk-integrations.md)     |
-| Tests, mocks, stories, E2E                            | [Testing](docs/agents/rules/testing.md)                       |
+| Tests, mocks, stories, E2E, simulator automation      | [Testing](docs/agents/rules/testing.md)                       |
 | Dependencies, native configuration, builds, releases  | [Native and release](docs/agents/rules/native-and-release.md) |
 | Agent setup, skills or MCP                            | [Agent tooling](docs/agents/README.md)                        |
 

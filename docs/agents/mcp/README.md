@@ -6,11 +6,12 @@ configuration location, HTTP transport, environment-variable expansion and
 OAuth behavior; translate the definitions if needed. See
 [agent setup](../README.md) for an adaptation checklist and optional examples.
 
-| Server            | Endpoint                                              | Authentication and scope                                                             |
-| ----------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| Context7          | `https://mcp.context7.com/mcp`                        | Anonymous access subject to rate limits; optional personal API key for higher limits |
-| Expo              | `https://mcp.expo.dev/mcp`                            | Personal OAuth with an Expo account; some capabilities require an EAS paid plan      |
-| Sentry (optional) | `https://mcp.sentry.dev/mcp/<organization>/<project>` | Personal OAuth; scope to one project                                                 |
+| Server            | Endpoint                                                      | Authentication and scope                                                             |
+| ----------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Context7          | `https://mcp.context7.com/mcp`                                | Anonymous access subject to rate limits; optional personal API key for higher limits |
+| Expo              | `https://mcp.expo.dev/mcp`                                    | Personal OAuth with an Expo account; some capabilities require an EAS paid plan      |
+| Sentry (optional) | `https://mcp.sentry.dev/mcp/<organization>/<project>`         | Personal OAuth; scope to one project                                                 |
+| agent-device      | Local stdio: `mise exec npm:agent-device -- agent-device mcp` | No account; drives local simulators/emulators and devices                            |
 
 GitHub MCP is intentionally excluded. MCP tools are not prerequisites for
 ordinary lint, typecheck or unit tests. If a server is unavailable, use
@@ -63,6 +64,23 @@ explicitly merge it with the root definitions in a personal config and pass
 Never commit auth state. Project scoping defaults tools to that project; it
 does not replace account permissions or make all tools read-only.
 
+## agent-device (local simulator automation)
+
+[agent-device](https://oss.callstack.com/agent-device/docs/agent-setup) exposes
+its CLI commands as structured MCP tools for iOS Simulators, Android Emulators
+and connected devices. It cannot run arbitrary shell commands. The version is
+pinned in `mise.toml`; `mise install` provides it. The server definition runs
+`mise exec npm:agent-device` so that a different global `agent-device` on
+`PATH` does not replace the pinned version.
+
+- Clients must support stdio servers and find `mise` on their `PATH`. If yours cannot, run `command -v mise` in your terminal and use that absolute path in a personal override.
+- Remove or rename any user-scope `agent-device` server, or check which one your client uses, to avoid duplicate registrations of different versions.
+- Bump the version deliberately with the [skills update steps](../../../.agents/README.md#callstack-agent-device-skills), which update `mise.toml` and the Callstack skills together.
+- The server can install, uninstall and reset apps and devices. Approve those tool calls individually, as with any other local mutation.
+- Screenshots, logs and recordings can contain personal data from the running app. Keep them local.
+
+Load `project-device-automation` for this app's identifiers and dev-client workflow.
+
 ## Optional Expo local capabilities
 
 Remote Expo documentation/build diagnostics do not require changing app
@@ -89,4 +107,5 @@ instead of assuming every capability is available.
 References: [Context7](https://github.com/upstash/context7),
 [Expo MCP](https://docs.expo.dev/ai/mcp/),
 [Sentry MCP](https://docs.sentry.io/product/sentry-mcp/),
+[agent-device](https://oss.callstack.com/agent-device/docs/agent-setup),
 [Pi MCP adapter](https://github.com/nicobailon/pi-mcp-adapter).
