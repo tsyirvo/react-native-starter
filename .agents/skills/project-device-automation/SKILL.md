@@ -17,14 +17,14 @@ metadata:
 ## Prerequisites
 
 - **App identity:** the development build is `com.tsyirvo.rnstarter.development`, both as the iOS bundle id and as the Android package. Staging builds add `.staging`, and production builds have no suffix (see `env.js`). Do not invent other ids: if the app is missing, run `apps` and ask the user.
-- **Native build:** install it with `bun run build:dev:ios` or `bun run build:dev:android`. These are local EAS builds through Doppler. Rebuild only after native, dependency, config-plugin or icon-font changes. JS-only changes do not need a rebuild.
-- **Metro:** start it with `bun run start:dev`. It needs Doppler access and serves the dev client on port 8081 by default. A sandboxed `curl localhost:8081/status` that fails does not prove Metro is down; check from the host that owns the server. If the Android app cannot reach the dev server, follow `agent-device help react-native` instead of guessing.
+- **Native build:** build it with `bun run build:dev:ios` or `bun run build:dev:android`. These are local EAS builds through Doppler. They write an artifact (an iOS simulator `.tar.gz` or an Android `.apk`) but do not install it. Before opening the app, install that artifact on the selected simulator or emulator with `mise exec npm:agent-device -- agent-device install com.tsyirvo.rnstarter.development <artifact-path> --platform <ios|android>` (or `reinstall` to replace an existing build). Rebuild only after native, dependency, config-plugin or icon-font changes. JS-only changes do not need a rebuild.
+- **Metro:** start it with `bun run start:dev`. It needs Doppler access and serves the dev client on port 8081 by default. A sandboxed `curl localhost:8081/status` that fails does not prove Metro is down; check from the host that owns the server. If the Android app cannot reach the dev server, follow `mise exec npm:agent-device -- agent-device help react-native` instead of guessing.
 - **Dev client:** the build hides the dev menu and tools button at launch, so the first screen is the app itself. If the dev launcher appears, Metro is not connected: fix Metro rather than tapping through the launcher.
 
 ## Driving the app
 
 ```sh
-agent-device open com.tsyirvo.rnstarter.development --platform ios --foreground --relaunch
+mise exec npm:agent-device -- agent-device open com.tsyirvo.rnstarter.development --platform ios --foreground --relaunch
 ```
 
 - Use `--platform android` for the emulator. Pass `--relaunch` whenever the flow must start from a fresh state.
@@ -36,7 +36,7 @@ agent-device open com.tsyirvo.rnstarter.development --platform ios --foreground 
 - For a LogBox or RedBox overlay, run `react-native dismiss-overlay` and mention the overlay in your report. Do not tap the warning text.
 - Keep mutating commands against one session serial, and always `close`.
 
-For specialized work, read the installed help: `agent-device help react-native`, `manual-qa`, `debugging`, `react-devtools`, `cdp` or `validate`. With MCP, use the `help` tool. Load `ios-simulator` or `android-emulator` for platform-specific guidance, `dogfood` for open-ended exploratory QA, and `agent-device` for general CLI guidance.
+For specialized work, read the installed help: `mise exec npm:agent-device -- agent-device help react-native`, `manual-qa`, `debugging`, `react-devtools`, `cdp` or `validate`. With MCP, use the `help` tool. Load `ios-simulator` or `android-emulator` for platform-specific guidance, `dogfood` for open-ended exploratory QA, and `agent-device` for general CLI guidance.
 
 ## Upstream agent-device skills
 
