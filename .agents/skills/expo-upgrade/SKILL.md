@@ -1,25 +1,9 @@
 ---
 name: expo-upgrade
-description: Framework (OSS). Guidelines for upgrading Expo SDK versions and fixing dependency issues
-metadata:
-  upstream-version: "1.0.0"
-  source: "https://github.com/expo/skills"
-  revision: "c0dadf355d4caa4e1720de372f0f8766df1a8978"
-  upstream-path: "plugins/expo/skills/expo-upgrade"
+description: Guidelines for upgrading Expo SDK versions and fixing dependency issues
+version: 1.0.0
 license: MIT
 ---
-
-## Repository constraints
-
-Read the repository's `AGENTS.md`, `src/AGENTS.md` and
-`docs/agents/rules/native-and-release.md` before applying these upstream examples.
-
-- Run upgrades only when requested and choose an explicit, supported target SDK.
-- Use Bun equivalents (`bunx expo install`, `bunx expo-doctor`, `bun install`), not npm/npx.
-- Ask before destructive cleanup, cache/dependency deletion, native regeneration or cloud actions; the commands below are references, not blanket authorization.
-- Preserve customized Babel/Metro settings, storage, required peers and existing navigation.
-- Do not enable React Compiler, replace AsyncStorage or perform unrelated migrations merely because a checklist suggests it.
-- Check changelogs and installed-version documentation; this pinned snapshot may age.
 
 ## References
 
@@ -157,8 +141,10 @@ Do not guide users to opt in to or out of Hermes V1. Changing the Hermes version
 
 The new architecture is enabled by default, the app.json field `"newArchEnabled": true` is no longer needed as it's the default. Expo Go only supports the new architecture as of SDK +53.
 
-## Reporting problems
-
-Report stale or conflicting guidance to the user and maintainers. Do not run
-external feedback commands, enable telemetry or install additional skills
-without explicit approval.
+## Submitting Feedback
+If you encounter errors, misleading or outdated information in this skill, report it so Expo can improve:
+```bash
+npx --yes @expo/agent-cli@latest feedback --category skills --subject "expo-upgrade" "<actionable feedback>"
+```
+Only submit when you have something specific and actionable to report. Include as much relevant context as possible.
+If an agent repeatedly fails at an Expo task or the user has to step in, submit a brief report of the task, expected result, and what went wrong using `--category evals` and the relevant Expo package or command as `--subject`.

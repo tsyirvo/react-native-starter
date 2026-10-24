@@ -43,6 +43,8 @@ local stagedChecks = new Mapping<String, Step> {
   }
   ["typecheck"] {
     glob = tsGlob
+    // Vendored reference code uses Lace APIs, not this project's modules.
+    exclude = List(".agents/skills/systematic-debugging/condition-based-waiting-example.ts")
     depends = "biome"
     check = "bunx tsc-files --noEmit {{files}} " + ambientTypes
   }

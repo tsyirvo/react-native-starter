@@ -15,6 +15,27 @@
       "skillPath": "skills/android-emulator/SKILL.md",
       "computedHash": "e739ae453a03287e3a862e70fa704b1cad46510883fae6b1cc00bcf266970ac0"
     },
+    "animate-expo": {
+      "source": "emilkowalski/skills",
+      "ref": "2d228630ba1446365f614a108cb8252f1feda202",
+      "sourceType": "github",
+      "skillPath": "skills/animate-expo/SKILL.md",
+      "computedHash": "5de09593d564091f9db60aabede7bed760251e118548272050a247c653c417d2"
+    },
+    "argent-react-native-optimization": {
+      "source": "software-mansion/argent",
+      "ref": "9565991fb18fc9bc1d04dd3c54ba49e697317f85",
+      "sourceType": "github",
+      "skillPath": "packages/skills/skills/argent-react-native-optimization/SKILL.md",
+      "computedHash": "93f8b70aa7f4adf4c2ff3286b9182ca40895f1744dda7f9b9cc16f3162f69a2a"
+    },
+    "argent-react-native-profiler": {
+      "source": "software-mansion/argent",
+      "ref": "9565991fb18fc9bc1d04dd3c54ba49e697317f85",
+      "sourceType": "github",
+      "skillPath": "packages/skills/skills/argent-react-native-profiler/SKILL.md",
+      "computedHash": "9462d4d41d8a6091466c986aa9f23ed90ff8c67827476ef4a485c7e66622728a"
+    },
     "dogfood": {
       "source": "callstack/agent-device",
       "ref": "v0.21.31",
@@ -22,12 +43,68 @@
       "skillPath": "skills/dogfood/SKILL.md",
       "computedHash": "8e6dfbff0633e355210ce7ae109cb39a3e1347946b6e92aaa607271154526b6b"
     },
+    "expo-data-fetching": {
+      "source": "expo/skills",
+      "ref": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
+      "sourceType": "github",
+      "skillPath": "plugins/expo/skills/expo-data-fetching/SKILL.md",
+      "computedHash": "65ff249dd459aa4daf8cd0c98e34a551dfb579b6f3378fbfc1d80e1732d9750f"
+    },
+    "expo-native-ui": {
+      "source": "expo/skills",
+      "ref": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
+      "sourceType": "github",
+      "skillPath": "plugins/expo/skills/expo-native-ui/SKILL.md",
+      "computedHash": "0afc4dd15299d02da2dafefd1775e975ae99f3649f940e1f51d9d00ad6c64706"
+    },
+    "expo-router": {
+      "source": "expo/skills",
+      "ref": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
+      "sourceType": "github",
+      "skillPath": "plugins/expo/skills/expo-router/SKILL.md",
+      "computedHash": "fd3ab5a7526d8ecff6f776144ac6a6dffeac4923a56ac848de2fd2d4d6fb265e"
+    },
+    "expo-ui": {
+      "source": "expo/skills",
+      "ref": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
+      "sourceType": "github",
+      "skillPath": "plugins/expo/skills/expo-ui/SKILL.md",
+      "computedHash": "aacbebd4e76f98abfff29a73a5ef806bf6c34b4e4a5155fbbc6f3bc3866e8cbb"
+    },
+    "expo-upgrade": {
+      "source": "expo/skills",
+      "ref": "d5caf7fdf8b4854351f05841a7e315ac87ad7d24",
+      "sourceType": "github",
+      "skillPath": "plugins/expo/skills/expo-upgrade/SKILL.md",
+      "computedHash": "919fd44ea539d9c8d0057edfb092d9602444d7f4ea6302f227caf56684fd6993"
+    },
     "ios-simulator": {
       "source": "callstack/agent-device",
       "ref": "v0.21.31",
       "sourceType": "github",
       "skillPath": "skills/ios-simulator/SKILL.md",
       "computedHash": "69b9860b2f9cdaf69c160fff946f25a50918979952064796377510cbe8183942"
+    },
+    "react-native-best-practices": {
+      "source": "callstackincubator/agent-skills",
+      "ref": "59e9d17446a248b21d86f078fcd0bd2d36db1ca4",
+      "sourceType": "github",
+      "skillPath": "skills/react-native-best-practices/SKILL.md",
+      "computedHash": "4b2b9561ff7b4b9d15ff76d2dd2a6191e3cdc7f36c06d171e377bfefcbcb2bfb"
+    },
+    "react-native-testing": {
+      "source": "callstack/react-native-testing-library",
+      "ref": "0ecb9c9c0cef163e01abdeae1b4b7c82af40d0b1",
+      "sourceType": "github",
+      "skillPath": "skills/react-native-testing/SKILL.md",
+      "computedHash": "bb30ad4660a42c71178c91d7a3f2e88556add9dba2213ee26f099dbe352fd649"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "ref": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "sourceType": "github",
+      "skillPath": "skills/systematic-debugging/SKILL.md",
+      "computedHash": "276fb0aadb002ab930cc2a56de89e16995a2e3e70b33587652bf0a5fb123148d"
     }
   }
 }

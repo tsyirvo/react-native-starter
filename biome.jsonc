@@ -7,7 +7,10 @@
       "!!**/metro.config.cjs",
       "!!**/env.js",
       "!!**/src/shared/icons/font",
-      "!!**/.rnstorybook"
+      "!!**/.rnstorybook",
+      // Vendored CLI-managed code: preserve upstream content for updates.
+      "!!**/.agents/skills/expo-ui/scripts/list-components.js",
+      "!!**/.agents/skills/systematic-debugging/condition-based-waiting-example.ts"
     ]
   },
   // Biome 2.6 only supports CommonMark, not our GFM tables/task lists.

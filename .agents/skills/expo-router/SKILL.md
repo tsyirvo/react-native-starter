@@ -1,28 +1,13 @@
 ---
 name: expo-router
-description: Framework (OSS). Navigation and routing for Expo Router. Covers file-based routes, groups and dynamic routes, folder organization, Link with previews and context menus, native Stack, page titles, modals and form sheets, NativeTabs, headers and toolbars, and header search bars.
-metadata:
-  upstream-version: "1.0.1"
-  source: "https://github.com/expo/skills"
-  revision: "c0dadf355d4caa4e1720de372f0f8766df1a8978"
-  upstream-path: "plugins/expo/skills/expo-router"
+description: Navigation and routing for Expo Router. Covers file-based routes, groups and dynamic routes, folder organization, Link with previews and context menus, native Stack, page titles, modals and form sheets, NativeTabs, headers and toolbars, and header search bars.
+version: 1.0.1
 license: MIT
 ---
 
-## Repository constraints
-
-Read the repository's `AGENTS.md`, `src/AGENTS.md` and
-`docs/agents/rules/architecture.md` before applying these upstream examples.
-
-- Routes live in `src/app/`; preserve current route groups, file naming and `$...` aliases.
-- Keep routes thin; put UI, hooks and policy with their existing owners outside the route tree.
-- Project naming, Unistyles styles and theme tokens override generic examples below.
-- Do not migrate tabs/stacks, add a styling library or install missing sibling skills unless requested.
-- Verify API availability against the installed Expo SDK; platform-specific examples are not cross-platform guarantees.
-
 # Expo Router Navigation
 
-Navigation and routing for Expo Router apps. For styling and motion in this repository, follow `docs/agents/rules/ui-and-styling.md` and the installed libraries; sibling Expo skills are not bundled.
+Navigation and routing for Expo Router apps. For screen styling, colors, controls, media, and visual effects, use the `expo-native-ui` skill; for motion and gestures, use `expo-animation`.
 
 ## References
 
@@ -40,15 +25,16 @@ references/
 
 ## Code Style
 
-- Match the existing naming conventions and preserve Expo route-group syntax.
-- Remove obsolete routes only as part of an explicitly requested move, after checking incoming links and guards.
-- Use the existing `$...` aliases for cross-module imports; do not replace the project's tsconfig.
+- Always use kebab-case for file names, e.g. `comment-card.tsx`
+- Always remove old route files when moving or restructuring navigation
+- Never use special characters in file names
+- Configure tsconfig.json with path aliases, and prefer aliases over relative imports for refactors.
 
 ## Routes
 
 See `./references/route-structure.md` for detailed route conventions.
 
-- Routes belong in the `src/app` directory.
+- Routes belong in the `app` directory.
 - Never co-locate components, types, or utilities in the app directory. This is an anti-pattern.
 - Ensure the app always has a route that matches "/", it may be inside a group route.
 
@@ -245,8 +231,10 @@ export default function Layout({ segment }) {
 
 `headerLargeTitleEnabled` is the SDK 56+ option name; older SDKs use `headerLargeTitle`, which is deprecated upstream.
 
-## Reporting problems
-
-Report stale or conflicting guidance to the user and maintainers. Do not run
-external feedback commands, enable telemetry or install additional skills
-without explicit approval.
+## Submitting Feedback
+If you encounter errors, misleading or outdated information in this skill, report it so Expo can improve:
+```bash
+npx --yes @expo/agent-cli@latest feedback --category skills --subject "expo-router" "<actionable feedback>"
+```
+Only submit when you have something specific and actionable to report. Include as much relevant context as possible.
+If an agent repeatedly fails at an Expo task or the user has to step in, submit a brief report of the task, expected result, and what went wrong using `--category evals` and the relevant Expo package or command as `--subject`.

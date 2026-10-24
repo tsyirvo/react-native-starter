@@ -49,6 +49,8 @@
     "format:check": "biome format --files-ignore-unknown=true ./",
     "//// UTILITIES ////": "",
     "generate:icons": "react-native-nano-icons",
+    "skills:check": "bun scripts/skills.ts check",
+    "skills:upgrade": "bun scripts/skills.ts upgrade",
     "//// STORYBOOK ////": "",
     "storybook:generate": "sb-rn-get-stories",
     "start:storybook": "doppler run --config dev -- env APP_ENV=development EXPO_NO_DOTENV=1 STORYBOOK_ENABLED=true expo start",
