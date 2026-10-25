@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { MMKV } from 'react-native-mmkv';
 import { createMMKV } from 'react-native-mmkv';
 
@@ -37,25 +38,28 @@ const getPersistedPreferences = (): unknown => {
   return value === undefined ? undefined : JSON.parse(value);
 };
 
-// Seed storage as a previous launch would have left it, then load the store.
-getStorage().set(appPreferences, JSON.stringify({ appTheme: 'light' }));
-
-const {
-  setAppTheme,
-  setIsBootstrappingApplication,
-  useAppTheme,
-  useIsBootstrappingApplication,
-} = jest.requireActual<typeof import('../app.store')>('../app.store');
-const { resetStore } =
-  jest.requireActual<typeof import('../../utils')>('../../utils');
+// Isolate the store and persistence registry, but share the renderer's React.
+jest.doMock('react', () => React);
+let appStore: typeof import('../app.store');
+let resetStore: typeof import('../../utils').resetStore;
 
 const useAppStoreValues = () => ({
-  appTheme: useAppTheme(),
-  isBootstrappingApplication: useIsBootstrappingApplication(),
+  appTheme: appStore.useAppTheme(),
+  isBootstrappingApplication: appStore.useIsBootstrappingApplication(),
 });
 
-// Tests run in order: the first one asserts the state right after launch.
 describe('app store', () => {
+  beforeEach(() => {
+    mockStorages.clear();
+    getStorage().set(appPreferences, JSON.stringify({ appTheme: 'light' }));
+
+    jest.isolateModules(() => {
+      appStore =
+        jest.requireActual<typeof import('../app.store')>('../app.store');
+      ({ resetStore } =
+        jest.requireActual<typeof import('../../utils')>('../../utils'));
+    });
+  });
   it('restores persisted preferences on launch', () => {
     const { result } = renderHook(useAppStoreValues);
 
@@ -69,8 +73,8 @@ describe('app store', () => {
     const { result } = renderHook(useAppStoreValues);
 
     act(() => {
-      setIsBootstrappingApplication(false);
-      setAppTheme('dark');
+      appStore.setIsBootstrappingApplication(false);
+      appStore.setAppTheme('dark');
     });
 
     expect(result.current).toEqual({
@@ -86,8 +90,8 @@ describe('app store', () => {
     const { result } = renderHook(useAppStoreValues);
 
     act(() => {
-      setIsBootstrappingApplication(true);
-      setAppTheme('light');
+      appStore.setIsBootstrappingApplication(true);
+      appStore.setAppTheme('light');
     });
     await waitFor(() =>
       expect(getPersistedPreferences()).toEqual({ appTheme: 'light' }),

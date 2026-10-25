@@ -6,7 +6,6 @@ import { useGetSessionState } from '../useGetSessionState';
 import { useGetUserSession } from '../useGetUserSession';
 
 jest.mock('../useGetUserSession', () => ({ useGetUserSession: jest.fn() }));
-jest.mock('$infra/logger', () => ({ Logger: { dev: jest.fn() } }));
 jest.mock('$infra/store', () => ({
   setIsBootstrappingApplication: jest.fn(),
 }));

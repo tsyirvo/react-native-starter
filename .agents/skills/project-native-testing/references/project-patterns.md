@@ -13,6 +13,17 @@ synchronous or asynchronous; do not infer this from the React version alone.
 When a task requires another render API, preserve the shared provider and
 isolation requirements rather than bypassing them unnoticed.
 
+## Test scope
+
+Test functional behavior: user input, rendered content, validation, state
+transitions, boundary calls and cleanup. Do not add styling or accessibility
+tests, including style/variant/layout snapshots, visual prop assertions, or
+assertions about accessibility roles, labels, hints or tree visibility.
+Use visual audits for styling and separate device/manual audits for accessibility.
+Semantic queries may locate controls for functional tests; they are not an
+accessibility audit. Verify disabled controls by attempting an interaction and
+checking its effect, rather than inspecting accessibility metadata.
+
 ## Component patterns
 
 Adapt an existing component test to the behavior under test; do not create a
@@ -95,8 +106,8 @@ These are pattern examples, not a fixed helper or provider design. Inspect their
 current implementations and assertions before adapting them. Paths are relative
 to the repository root:
 
-- `src/shared/uiKit/input/__tests__/Input.test.tsx`: colocated tests using composed stories.
+- `src/shared/uiKit/input/__tests__/Input.test.tsx`: native input interactions and rendered messages.
 - `src/testing/__tests__/utils.test.tsx`: wrapper behavior and query isolation.
 - `src/application/auth/contexts/authContext/__tests__/AuthContextProvider.test.tsx`: auth orchestration.
 - `src/features/subscription/contexts/subscriptionContext/__tests__/SubscriptionContextProvider.test.tsx`: user-bound data and late results.
-- `src/testing/__tests__/authSubscription.test.tsx`: cross-provider identity lifecycle.
+- `src/testing/integration/authSubscription.test.tsx`: cross-provider identity lifecycle.

@@ -25,7 +25,17 @@ export const LOG_LEVEL = {
   WARN: 'WARN',
 };
 
+export const PACKAGE_TYPE = {
+  MONTHLY: 'MONTHLY',
+};
+
+export const PRODUCT_TYPE = {
+  AUTO_RENEWABLE_SUBSCRIPTION: 'AUTO_RENEWABLE_SUBSCRIPTION',
+};
+
 const Purchases = {
+  addCustomerInfoUpdateListener: jest.fn(),
+  configure: jest.fn(),
   configureWith: jest.fn(),
   getAppUserID: jest.fn().mockResolvedValue('mock-user-id'),
   getCustomerInfo: jest.fn().mockResolvedValue({}),
@@ -33,10 +43,13 @@ const Purchases = {
   logIn: jest.fn().mockResolvedValue({}),
   logOut: jest.fn().mockResolvedValue({}),
   purchasePackage: jest.fn().mockResolvedValue({}),
+  removeCustomerInfoUpdateListener: jest.fn(),
   restorePurchases: jest.fn().mockResolvedValue({}),
   setAttributes: jest.fn().mockResolvedValue(undefined),
   setDebugLogsEnabled: jest.fn(),
+  setEmail: jest.fn().mockResolvedValue(undefined),
   setLogLevel: jest.fn(),
+  VERIFICATION_RESULT: { NOT_REQUESTED: 'NOT_REQUESTED' },
 };
 
 export default Purchases;

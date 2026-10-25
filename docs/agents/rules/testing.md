@@ -8,12 +8,15 @@
 - Use the shared worker policy in `jest.config.js` locally and in CI. Reserve `--runInBand` for debugging serial execution or isolation issues.
 - Import `render`, `screen` and other native helpers from `$testing`.
 - Inspect `$testing` exports, render helpers and their tests before relying on available providers, options or async behavior. Reuse the shared setup and add only the contexts a test needs.
-- Use `src/testing/setup.ts`, the Jest configuration in `jest.config.js` and `__mocks__/` before adding another global mock.
+- Reuse root `__mocks__/` files for shared third-party mocks and `src/testing/setup.ts` for app-wide infra mocks. Configure return values in each test rather than repeating factories; keep scenario-specific mocks local. Tests of a globally mocked adapter must explicitly unmock it or load its real implementation with `jest.requireActual`.
+- Inspect `jest.config.js` before changing mock registration or setup order.
 
 ## Test design
 
 Load `project-native-testing` for component/hook test work. Check the installed
-RNTL version rather than selecting APIs from the React version alone.
+RNTL version rather than selecting APIs from the React version alone. Follow
+its [test scope](../../../.agents/skills/project-native-testing/references/project-patterns.md#test-scope)
+for functional coverage; reserve styling and accessibility verification for audits.
 
 Prefer observable behavior and accessible queries. Use `findBy*` for eventual
 UI and `queryBy*` for absence. Await async interactions; perform actions before
@@ -22,7 +25,9 @@ restore them. Write tests that can fail against broken code; reject
 tautological, structure-sensitive and cannot-fail tests (definitions and
 examples in the `project-native-testing` anti-pattern reference).
 
-Colocate `__tests__/` and `stories/` with the owner. Follow existing
+Colocate `__tests__/` and `stories/` with the owner. Keep tests of shared test
+helpers in `src/testing/__tests__/`; put cross-module integration tests in
+`src/testing/integration/`. Follow existing
 `composeStories` usage where it makes UI variants reusable, without making
 all tests depend on stories. Mock SDK seams, not every internal function.
 
@@ -32,7 +37,7 @@ requirements in regression tests without coupling assertions to internal
 flags or provider responsibilities.
 
 Pattern examples: `src/testing/__tests__/utils.test.tsx` for test isolation and
-`src/testing/__tests__/authSubscription.test.tsx` for identity lifecycle coverage.
+`src/testing/integration/authSubscription.test.tsx` for identity lifecycle coverage.
 Inspect current tests rather than assuming their helpers or scenarios are fixed.
 
 ## Verification boundaries

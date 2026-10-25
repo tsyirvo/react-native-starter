@@ -20,7 +20,7 @@ updating an unmounted consumer.
 - Keep local sign-out possible when remote SDK cleanup fails; handle and report the failure without retaining local access.
 - Cover delayed transitions, account switches, stale results, listener cleanup and SDK failures with regression tests. Record behavioral requirements in tests rather than freezing a provider layout or readiness flag in guidance.
 
-Pattern example: `src/testing/__tests__/authSubscription.test.tsx` exercises
+Pattern example: `src/testing/integration/authSubscription.test.tsx` exercises
 identity-bound orchestration. Inspect the current implementation it covers;
 the example does not prescribe which provider owns each step.
 
