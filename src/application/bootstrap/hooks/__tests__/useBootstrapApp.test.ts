@@ -9,14 +9,6 @@ import { act, renderHook, waitFor } from '$testing';
 import { checkForOtaUpdate } from '../../utils';
 import { useBootstrapApp } from '../useBootstrapApp';
 
-jest.mock('expo-splash-screen', () => ({
-  hide: jest.fn(),
-  preventAutoHideAsync: jest.fn().mockResolvedValue(undefined),
-  setOptions: jest.fn(),
-}));
-jest.mock('$infra/config', () => ({
-  config: { isStorybookEnabled: false },
-}));
 jest.mock('$infra/bootstrap', () => ({ bootstrapApp: jest.fn() }));
 jest.mock('$infra/store', () => ({
   useIsBootstrappingApplication: jest.fn(),

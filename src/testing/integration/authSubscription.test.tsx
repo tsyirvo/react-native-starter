@@ -16,7 +16,6 @@ jest.mock('$infra/analytics', () => ({
 jest.mock('$infra/monitoring', () => ({
   ErrorMonitoring: { clearUser: jest.fn(), setUser: jest.fn() },
 }));
-jest.mock('$infra/logger', () => ({ Logger: { error: jest.fn() } }));
 jest.mock('$infra/featureFlags', () => ({
   useGetRemoteConfigSync: () => ({ getFlagPayloadSync: () => undefined }),
 }));

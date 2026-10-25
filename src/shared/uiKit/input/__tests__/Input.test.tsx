@@ -1,84 +1,72 @@
-import { composeStories } from '@storybook/react';
+import { useState } from 'react';
 
-import { fireEvent, render, screen } from '$testing';
+import { render, screen, userEvent } from '$testing';
 
-import * as Inputs from '../stories/Input.stories';
+import { Input } from '../Input';
 
-const { Input, WithError, WithHelperText, WithLabel, WithOrnamentIcon } =
-  composeStories(Inputs);
+const ControlledInput = ({
+  onChangeText,
+}: {
+  onChangeText: (value: string) => void;
+}) => {
+  const [value, setValue] = useState('');
 
-describe('Input component', () => {
-  const onChangeText = jest.fn();
-  const props = { onChangeText };
+  return (
+    <Input
+      onChangeText={(text) => {
+        setValue(text);
+        onChangeText(text);
+      }}
+      placeholder="Enter text"
+      value={value}
+    />
+  );
+};
 
-  afterEach(() => {
-    jest.clearAllMocks();
+describe('Input', () => {
+  beforeEach(() => jest.useFakeTimers());
+  afterEach(() => jest.useRealTimers());
+
+  it('forwards native text changes and displays the controlled value', async () => {
+    const onChangeText = jest.fn();
+    const user = userEvent.setup();
+    render(<ControlledInput onChangeText={onChangeText} />);
+
+    await user.type(screen.getByPlaceholderText('Enter text'), 'data');
+
+    expect(onChangeText).toHaveBeenLastCalledWith('data');
+    expect(screen.getByDisplayValue('data')).toBeOnTheScreen();
   });
 
-  it('should render correctly', () => {
-    render(<Input {...props} />);
+  it('does not accept typing when disabled', async () => {
+    const onChangeText = jest.fn();
+    const user = userEvent.setup();
+    render(
+      <Input isDisabled onChangeText={onChangeText} placeholder="Enter text" />,
+    );
 
-    expect(screen.getByTestId('Input')).toBeDefined();
+    await user.type(screen.getByPlaceholderText('Enter text'), 'data');
+
+    expect(onChangeText).not.toHaveBeenCalled();
   });
 
-  it('should call the onChangeText method when typing', () => {
-    render(<Input {...props} />);
+  it('renders supplied messages and removes them when no longer provided', () => {
+    const { rerender } = render(
+      <Input
+        error="Invalid email"
+        helperText="Use your work email"
+        label="Email"
+      />,
+    );
 
-    fireEvent.changeText(screen.getByTestId('Input'), 'data');
+    expect(screen.getByText('Email')).toBeOnTheScreen();
+    expect(screen.getByText('Invalid email')).toBeOnTheScreen();
+    expect(screen.getByText('Use your work email')).toBeOnTheScreen();
 
-    expect(onChangeText).toHaveBeenCalled();
-  });
+    rerender(<Input />);
 
-  it('should not show error by default', () => {
-    render(<Input {...props} />);
-
-    expect(screen.queryByTestId('InputErrorText')).toBeNull();
-  });
-
-  it('should show error when defined', () => {
-    render(<WithError {...props} />);
-
-    expect(screen.getByTestId('InputErrorText')).toBeDefined();
-  });
-
-  it('should not show helper text by default', () => {
-    render(<Input {...props} />);
-
-    expect(screen.queryByTestId('InputHelperText')).toBeNull();
-  });
-
-  it('should show helper text when defined', () => {
-    render(<WithHelperText {...props} />);
-
-    expect(screen.getByTestId('InputHelperText')).toBeDefined();
-  });
-
-  it('should not show a label if not provided', () => {
-    render(<Input {...props} />);
-
-    expect(screen.queryByTestId('InputLabel')).toBeNull();
-  });
-
-  it('should show a label when defined', () => {
-    render(<WithLabel {...props} />);
-
-    expect(screen.getByTestId('InputLabel')).toBeDefined();
-  });
-
-  it('should not show an icon if not provided', () => {
-    render(<Input {...props} />);
-
-    expect(
-      screen.queryByTestId('Icon', { includeHiddenElements: true }),
-    ).toBeNull();
-  });
-
-  it('should show an icon when defined', () => {
-    render(<WithOrnamentIcon {...props} />);
-
-    // Ornament icons are decorative, so they are hidden from accessibility
-    expect(
-      screen.getByTestId('Icon', { includeHiddenElements: true }),
-    ).toBeDefined();
+    expect(screen.queryByText('Email')).not.toBeOnTheScreen();
+    expect(screen.queryByText('Invalid email')).not.toBeOnTheScreen();
+    expect(screen.queryByText('Use your work email')).not.toBeOnTheScreen();
   });
 });

@@ -1,67 +1,66 @@
 import { composeStories } from '@storybook/react';
 
-import { fireEvent, render, screen } from '$testing';
+import { act, render, screen, userEvent } from '$testing';
 
 import * as ButtonsWithText from '../stories/ButtonWithText.stories';
 
-const { BasicButton, ButtonWithVariant, ButtonLoading, ButtonDisabled } =
+const { BasicButton, ButtonLoading, ButtonDisabled } =
   composeStories(ButtonsWithText);
 
-describe('Button component', () => {
-  const label = 'Some text';
+const label = 'Submit';
 
-  const onPress = jest.fn();
-  const props = { onPress };
+describe('ButtonWithText', () => {
+  beforeEach(() => jest.useFakeTimers());
+  afterEach(() => jest.useRealTimers());
 
-  beforeEach(() => {
-    jest.useFakeTimers();
+  it('calls the handler once when pressed', async () => {
+    const onPress = jest.fn();
+    const user = userEvent.setup();
+    render(<BasicButton onPress={onPress}>{label}</BasicButton>);
+
+    await user.press(screen.getByText(label));
+
+    expect(onPress).toHaveBeenCalledTimes(1);
   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
+  it('shows loading content and ignores presses while loading', async () => {
+    const onPress = jest.fn();
+    const user = userEvent.setup();
+    render(<ButtonLoading onPress={onPress}>{label}</ButtonLoading>);
 
-    jest.useRealTimers();
-  });
-
-  it('should render correctly with a text', () => {
-    render(<BasicButton {...props}>{label}</BasicButton>);
-
-    expect(screen.getByText(label)).toBeDefined();
-  });
-
-  it('should render correctly with a custom variant', () => {
-    render(<ButtonWithVariant {...props}>{label}</ButtonWithVariant>);
-
-    expect(screen.getByText(label)).toBeDefined();
-  });
-
-  it('should render correctly when loading', () => {
-    render(<ButtonLoading {...props}>{label}</ButtonLoading>);
-
-    expect(screen.getByTestId('InnerTextLoader')).toBeDefined();
-  });
-
-  it('should not call the onPress method when loading', () => {
-    render(<ButtonLoading {...props}>{label}</ButtonLoading>);
-
-    fireEvent.press(screen.getByTestId('ButtonWithText'));
+    expect(screen.getByTestId('InnerTextLoader')).toBeOnTheScreen();
+    await user.press(screen.getByTestId('ButtonWithText'));
 
     expect(onPress).not.toHaveBeenCalled();
   });
 
-  it('should not call the onPress method when disabled', () => {
-    render(<ButtonDisabled {...props}>{label}</ButtonDisabled>);
+  it('ignores presses when disabled', async () => {
+    const onPress = jest.fn();
+    const user = userEvent.setup();
+    render(<ButtonDisabled onPress={onPress}>{label}</ButtonDisabled>);
 
-    fireEvent.press(screen.getByText(label));
+    await user.press(screen.getByText(label));
 
     expect(onPress).not.toHaveBeenCalled();
   });
 
-  it('should call the onPress method', () => {
-    render(<BasicButton {...props}>{label}</BasicButton>);
+  it('blocks repeat submissions until the async handler finishes, then accepts another press', async () => {
+    const pending = Promise.withResolvers<void>();
+    const onPress = jest.fn(() => pending.promise);
+    const user = userEvent.setup();
+    render(<BasicButton onPress={onPress}>{label}</BasicButton>);
 
-    fireEvent.press(screen.getByText(label));
+    await user.press(screen.getByText(label));
+    act(() => jest.advanceTimersByTime(600));
+    expect(screen.getByTestId('InnerTextLoader')).toBeOnTheScreen();
+    await user.press(screen.getByTestId('ButtonWithText'));
+    expect(onPress).toHaveBeenCalledTimes(1);
 
-    expect(onPress).toHaveBeenCalled();
+    await act(async () => pending.resolve());
+    expect(screen.getByText(label)).toBeOnTheScreen();
+    act(() => jest.advanceTimersByTime(600));
+    await user.press(screen.getByText(label));
+
+    expect(onPress).toHaveBeenCalledTimes(2);
   });
 });

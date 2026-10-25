@@ -12,7 +12,6 @@ import { useIconFontIntegrityMonitoring } from '../useIconFontIntegrityMonitorin
 jest.mock('react-native-nano-icons', () => ({
   addFontIntegrityListener: jest.fn(),
 }));
-jest.mock('$infra/logger', () => ({ Logger: { error: jest.fn() } }));
 
 type Listener = (
   issue: FontIntegrityIssue,
