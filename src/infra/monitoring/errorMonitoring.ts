@@ -26,7 +26,10 @@ class ErrorMonitoringClass {
     const isEnabled = config.env !== 'development';
 
     if (!config.sentryDsn) {
-      console.log('Failed to initialize Sentry - No DSN found');
+      if (__DEV__) {
+        // biome-ignore lint/suspicious/noConsole: `$infra/logger` imports this module, so using `Logger.dev` here would create a circular import.
+        console.log('Failed to initialize Sentry - No DSN found');
+      }
 
       return;
     }

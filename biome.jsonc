@@ -113,6 +113,10 @@
       },
       "complexity": {
         "noVoid": "off"
+      },
+      "suspicious": {
+        // Use `Logger.dev` from `$infra/logger`, which only logs in development.
+        "noConsole": "error"
       }
     }
   },
@@ -150,6 +154,17 @@
                 "filenameCases": ["kebab-case"]
               }
             }
+          }
+        }
+      }
+    },
+    {
+      // The logger owns development console output; CLI scripts print to the terminal.
+      "includes": ["src/infra/logger/logger.ts", "scripts/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
           }
         }
       }

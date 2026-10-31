@@ -132,7 +132,6 @@
     "@types/jest": "30.0.0",
     "@types/node": "^26.6.5",
     "@types/react": "~19.3.0",
-    "babel-plugin-transform-remove-console": "^6.9.4",
     "eas-build-cache-provider": "^26.0.0",
     "jest": "~30.5.2",
     "jest-expo": "~58.0.13",
