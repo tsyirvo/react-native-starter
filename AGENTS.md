@@ -29,7 +29,7 @@ Keep shared guidance here; client files are optional adapters, not separate sour
 
 ## Architecture invariants
 
-See [README architecture](README.md#architecture) for the ownership map.
+See [Architecture](docs/guides/architecture.md) for the ownership map.
 
 - `src/app/` contains thin Expo Router routes and navigation composition only. Do not put agent instructions, skills or other unrelated files there.
 - `domain` stays pure: no React, Expo, infra or shared dependencies.

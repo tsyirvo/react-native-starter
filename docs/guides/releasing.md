@@ -1,34 +1,35 @@
-# Releases, store submissions and OTA updates
+# Releasing
 
-This guide covers how a version of the app goes from `develop` to the stores,
-and how to ship JavaScript-only fixes over the air afterwards.
+This guide shows how a version of the app goes from `develop` to the stores.
+It also shows how to send JavaScript-only fixes as over-the-air (OTA) updates
+after the release.
 
 ## Concepts
 
-- **Version** (`2.3.0`): the user-facing version, read from `package.json`.
-  It names a release, not a binary. It is the same on iOS and Android.
-- **Build number** (iOS `CFBundleVersion`, Android `versionCode`): must
-  increase with every upload. EAS manages it remotely
-  (`appVersionSource: remote` and `autoIncrement` in `eas.json`), so you never
-  edit it.
-- **Runtime version**: `app.config.ts` uses the `appVersion` policy, so an OTA
-  update only reaches binaries with exactly the same version.
+- **Version** (for example `2.3.0`): the version that users see. It comes from
+  `package.json`. It identifies a release, not a binary. iOS and Android use
+  the same version.
+- **Build number** (iOS `CFBundleVersion`, Android `versionCode`): it must
+  increase for each upload. EAS manages it remotely, through
+  `appVersionSource: remote` and `autoIncrement` in `eas.json`. Do not edit it.
+- **Runtime version**: `app.config.ts` uses the `appVersion` policy. An OTA
+  update only goes to binaries that have exactly the same version.
 
-A store rejection is fixed by uploading a **new build of the same version**,
-never by bumping the version. Both stores accept a new build for a version that
-is not yet released.
+If a store rejects a build, upload a **new build of the same version**. Do not
+increase the version. Both stores accept a new build for a version that is not
+released yet.
 
-## How versions and the changelog are produced
+## How Release Please makes versions and the changelog
 
 [Release Please](https://github.com/googleapis/release-please) reads the
-conventional commits on `develop` since the last release tag. The **Release**
-workflow keeps one open release PR (`chore(develop): release x.y.z`) up to date on every
-push to `develop`. It contains the `package.json` bump and the new
-`CHANGELOG.md` entry.
+conventional commits on `develop` since the last release tag. On each push to
+`develop`, the **Release** workflow updates one open pull request, the
+**release PR** (`chore(develop): release x.y.z`). The release PR contains the
+`package.json` version change and the new `CHANGELOG.md` entry.
 
-PRs are squash-merged, and the PR title becomes the commit message. The
-**PR title** workflow checks that titles follow the conventional commit format.
-The `commit-msg` hook only checks local commits.
+Pull requests are squash-merged, so the PR title becomes the commit message.
+The **PR title** workflow checks that each title uses the conventional commit
+format. The `commit-msg` hook checks only local commits.
 
 | Commit                                      | Next version |
 | ------------------------------------------- | ------------ |
@@ -37,72 +38,86 @@ The `commit-msg` hook only checks local commits.
 | `feat!:` or a `BREAKING CHANGE:` footer     | Major        |
 | A `Release-As: 3.0.0` footer in the commit  | That version |
 
-Use `Release-As` when the commit types do not express the intent, for example a
-major Expo SDK upgrade. Add the footer to the commit description in GitHub's
-squash-merge dialog. `CHANGELOG.md` groups entries by commit type: Features,
-Bug Fixes, Performance, Reverts and Other Changes.
+Use `Release-As` when the commit types do not give the right version, for
+example for a major Expo SDK upgrade. Add the footer to the commit description
+in the GitHub squash-merge dialog.
 
-Do not edit the version in `package.json` or `CHANGELOG.md` by hand. Release
-Please owns both.
+`CHANGELOG.md` groups the entries by commit type: Features, Bug Fixes,
+Performance, Reverts and Other Changes.
+
+Do not edit the version in `package.json` or the `CHANGELOG.md` file manually.
+Release Please owns both.
 
 ### One-time setup
 
-1. Create a fine-grained personal access token for this repository with
-   read/write access to **Contents**, **Pull requests** and **Issues** (labels).
-2. Add it as the `RELEASE_PLEASE_TOKEN` repository secret.
-3. In the repository settings, allow squash merging and set the default squash
+1. Create a fine-grained personal access token (PAT) for this repository. Give
+   it read and write access to **Contents**, **Pull requests** and **Issues**
+   (for labels).
+2. Add the token as the `RELEASE_PLEASE_TOKEN` repository secret.
+3. In the repository settings, permit squash merging. Set the default squash
    commit message to start with the PR title.
 
-A PAT is required because GitHub does not run workflows on PRs opened with
-`GITHUB_TOKEN`, so the release PR would get no CI. Only the **PR title** check
-runs on it: **Quality** skips `release-please--*` branches and CodeRabbit skips
-`chore(develop): release` titles, since the PR only bumps the version and
-changelog.
+The workflow needs a PAT because GitHub does not run workflows on pull
+requests that `GITHUB_TOKEN` opens. Without a PAT, CI does not run on the
+release PR.
 
-## Releasing a store version
+With the PAT, only the **PR title** check runs on the release PR. The release
+PR changes only the version and the changelog, so other checks are not
+necessary:
 
-The release PR is merged **last**, once both stores have approved the build.
+- **Quality** skips `release-please--*` branches.
+- CodeRabbit skips pull requests with a `chore(develop): release` title.
 
-1. **Freeze `develop`.** Do not merge other PRs while a version is in review.
-   Release Please rebuilds the release PR from all of `develop`, so anything
-   merged during review would appear in the changelog without being in the
-   binary under review.
-2. **Build the release PR's head commit.** Check out the release PR branch
-   (`gh pr checkout <number>`) so `package.json` already has the new version,
-   then build both platforms for production (see
-   [Store submissions](#store-submissions)).
-3. **Submit both builds** and request review. Before submitting, enable
-   **Manually release this version** in App Store Connect and **Managed
-   publishing** in the Play Console, so an approved build waits for you instead
-   of going live on approval.
+## Release a store version
+
+Merge the release PR **last**, after both stores approve the build.
+
+1. **Freeze `develop`.** Do not merge other pull requests while the stores
+   review a version. Release Please makes the release PR again from all of
+   `develop`. If you merge a change during the review, the changelog shows it,
+   but the binary in review does not contain it.
+2. **Build the head commit of the release PR.** Check out the release PR branch
+   with `gh pr checkout <number>`. Then `package.json` already has the new
+   version. Build both platforms for production. Read
+   [Submit to the stores](#submit-to-the-stores).
+3. **Submit both builds** for review. Before you submit, enable these settings:
+
+   - **Manually release this version** in App Store Connect.
+   - **Managed publishing** in the Play Console.
+
+   With these settings, an approved build waits for you. It does not go live
+   when the store approves it.
+
 4. **If a store rejects the build:**
-   - Metadata, screenshots or reviewer notes: fix them in App Store Connect or
-     the Play Console. No new build is needed.
-   - Code: merge the fix to `develop` as a normal PR. Release Please updates
-     the same release PR, and the version normally stays the same. Rebuild from
-     the new head commit and resubmit it. The build number increases, and the
-     version does not change.
-   - If only one store rejected the build, rebuild and resubmit only that
-     platform, unless the fix also applies to the other one.
-5. **When both stores approve, merge the release PR.** Release Please then
-   bumps `package.json`, writes `CHANGELOG.md`, tags `vx.y.z` and creates the
-   GitHub release from the approved code.
-6. **Publish in the stores.** Manual release and Managed publishing (enabled in
-   step 3) keep both approved builds waiting. Publish them together, so both
-   platforms go live at the same time.
+   - For a problem in the metadata, screenshots or reviewer notes, fix it in
+     App Store Connect or the Play Console. You do not need a new build.
+   - For a problem in the code, merge the fix to `develop` in a normal pull
+     request. Release Please updates the same release PR. Usually, the version
+     does not change. Build again from the new head commit and submit the new
+     build. The build number increases, but the version stays the same.
+   - If only one store rejected the build, build and submit again only for that
+     platform. If the fix also applies to the other platform, do both.
+5. **When both stores approve, merge the release PR.** Release Please then:
+   - changes the version in `package.json`,
+   - writes `CHANGELOG.md`,
+   - adds the `vx.y.z` tag,
+   - creates the GitHub release from the approved code.
+6. **Publish in the stores.** The settings from step 3 keep both approved
+   builds on hold. Publish them together, so both platforms go live at the
+   same time.
 
-After the merge, `develop` is open again.
+After the merge, you can merge pull requests into `develop` again.
 
-## Store submissions
+## Submit to the stores
 
-Production builds run locally, with the Doppler `prd` config:
+Production builds run on your computer, with the Doppler `prd` config:
 
 ```sh
 bun run build:prod:ios       # writes build-<timestamp>.ipa in the repo root
 bun run build:prod:android   # writes build-<timestamp>.aab in the repo root
 ```
 
-Submit the generated files with the `production` submit profile:
+Submit the files with the `production` submit profile:
 
 ```sh
 doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
@@ -111,19 +126,25 @@ doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
   eas submit --platform android --profile production --path build-<timestamp>.aab
 ```
 
-Doppler is needed because EAS CLI evaluates `app.config.ts`, which validates
-the environment. The build files are gitignored; delete them after submission.
+These commands need Doppler, because EAS CLI reads `app.config.ts`, and
+`app.config.ts` checks the environment values. Git ignores the build files.
+Delete them after you submit them.
 
-The `production` submit profile in `eas.json` sends Android builds to the
-Play Console **production** track (EAS defaults to `internal`). With Managed
-publishing on, the build goes to review and waits there until you publish it.
-The profile has no store credentials, so EAS CLI asks for them interactively.
-Add `ascAppId` and `serviceAccountKeyPath` to it to submit non-interactively. Google requires the **first** Android upload to
-be made manually in the Play Console; EAS Submit works for the later ones.
+About the `production` submit profile in `eas.json`:
 
-To use EAS cloud builders instead, sync the `prd` config to the EAS
-`production` environment first (see the README), then build and submit in one
-step:
+- It sends Android builds to the Play Console **production** track. The EAS
+  default is `internal`. With Managed publishing on, the build goes to review
+  and waits until you publish it.
+- It has no store credentials, so EAS CLI asks for them. To submit without
+  questions, add `ascAppId` and `serviceAccountKeyPath` to the profile.
+- Google requires you to make the **first** Android upload manually in the
+  Play Console. EAS Submit works for the subsequent uploads.
+
+### Use EAS cloud builders
+
+To build in the cloud, first push the `prd` config to the EAS `production`
+environment. Read [Environments](environments.md#cloud-builds). Then build and
+submit in one step:
 
 ```sh
 doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
@@ -134,43 +155,53 @@ Cloud builds and submissions use paid EAS resources.
 
 ## OTA updates
 
-OTA updates are only enabled for production builds (`updates.enabled` is tied
-to `APP_ENV=production`). They ship JavaScript and asset changes to an existing
-store version, without store review. They are separate from releases: they do
-not change the version, create a tag or go through the release PR.
+OTA updates are enabled only for production builds. `updates.enabled` depends
+on `APP_ENV=production`. An OTA update sends JavaScript and asset changes to a
+store version that users already have, with no store review.
 
-Use an OTA update only when **all** of these are true:
+OTA updates are not releases. They do not change the version, add a tag or go
+through the release PR.
 
-- The change is JavaScript or assets only. Native changes, new or updated
-  native dependencies, config plugin changes and icon font changes need a new
-  store build.
+### When to use an OTA update
+
+Use an OTA update only when **all** of these conditions are true:
+
+- The change contains only JavaScript or assets. These changes need a new
+  store build: native code, new or updated native dependencies, config plugins
+  and the icon font.
 - The target binary is the current store version, for example `2.3.0`.
-- The change does not depend on native code that is in `develop` but not in
-  that binary.
+- The change does not need native code that is in `develop` but not in that
+  binary.
 
-Publish from the release tag, not from `develop`, because `develop` can contain
-native changes that the store binary does not have:
+### Publish an OTA update
 
-An update replaces the whole JavaScript bundle, so each hotfix must contain all
-earlier ones. Branch the first hotfix from the tag. Branch each later hotfix
-from the previous hotfix's last commit (for example `hotfix/<previous-name>`):
+Start from the release tag, not from `develop`. `develop` can contain native
+changes that the store binary does not have.
+
+An update replaces the full JavaScript bundle. Thus, each hotfix must contain
+all the earlier hotfixes for that version.
+
+- Make the first hotfix branch from the tag.
+- Make each subsequent hotfix branch from the last commit of the previous
+  hotfix, for example `hotfix/<previous-name>`.
 
 ```sh
-git switch -c hotfix/<name> v2.3.0   # later hotfixes: hotfix/<previous-name>
-bun install --frozen-lockfile        # match the released dependencies
+git switch -c hotfix/<name> v2.3.0   # subsequent hotfixes: hotfix/<previous-name>
+bun install --frozen-lockfile        # use the released dependencies
 # apply and commit the fix
 doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
   eas update --channel production --environment production \
   --message "fix: <description>"
 ```
 
-The update's runtime version comes from `package.json` (`2.3.0` on the tag), so
-it only reaches `2.3.0` binaries. Add `--rollout-percentage <1-100>` to roll it
-out gradually.
+The update gets its runtime version from `package.json` (`2.3.0` on the tag).
+Thus, it goes only to `2.3.0` binaries. To send it to a part of the users
+first, add `--rollout-percentage <1-100>`.
 
-Then open a PR from the hotfix branch into `develop`, so the fix is also in the
-next store version. Its commit appears in the next release's changelog.
+Then open a pull request from the hotfix branch into `develop`, so the next
+store version also contains the fix. The changelog of the next release shows
+its commit.
 
-Publishing an update affects every user on that version immediately. Check it
-on a production build before publishing, and roll it out gradually when
-possible.
+> **Warning:** an update goes to all users of that version immediately. Test it
+> on a production build before you publish it. When possible, send it to a
+> part of the users first.
