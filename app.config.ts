@@ -27,6 +27,11 @@ const plugins: ExpoConfig['plugins'] = [
   [
     'expo-build-properties',
     {
+      android: {
+        enableMinifyInReleaseBuilds: true,
+        enableShrinkResourcesInReleaseBuilds: true,
+        usePrecompiledHeaders: true,
+      },
       ios: {
         infoPlist: {
           LSApplicationQueriesSchemes: ['itms-apps'],
