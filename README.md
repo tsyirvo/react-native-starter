@@ -1,8 +1,12 @@
 # React Native Starter
 
+<a href="https://useffect.sh/seal/tsyirvo/react-native-starter"><img align="right" width="120" src="https://useffect.sh/seal/tsyirvo/react-native-starter.svg" alt="Maintained by useffect.sh"></a>
+
 A lightweight [Expo](https://docs.expo.dev/) starter for React Native apps. It
 gives you the tools and services that most published apps need, so you can
 start to write product code on the first day.
+
+<br />
 
 ## Why this starter
 
