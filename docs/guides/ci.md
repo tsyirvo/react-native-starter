@@ -1,17 +1,17 @@
 # Continuous integration
 
-The GitHub Actions workflows use a Git Flow setup. `develop` is the default
-branch.
+`main` is the default branch. Feature branches start from `main` and merge
+back into it through squash-merged pull requests.
 
 ## Workflows
 
-| Workflow                          | When it runs                                        | What it does                                         |
-| --------------------------------- | --------------------------------------------------- | ---------------------------------------------------- |
-| **Quality**                       | On new and updated pull requests, to any branch     | Runs TypeScript, Biome and the full Jest suite       |
-| **PR title**                      | On pull requests                                    | Checks that the title is a valid conventional commit |
-| **Release**                       | On pushes to `develop`                              | Keeps the release pull request up to date            |
-| **Cache Bun dependencies**        | On pushes to `develop`, and on changes to its setup | Fills the shared dependency cache                    |
-| **Build the app for development** | Manually                                            | Starts EAS development builds for iOS and Android    |
+| Workflow                          | When it runs                                     | What it does                                         |
+| --------------------------------- | ------------------------------------------------ | ---------------------------------------------------- |
+| **Quality**                       | On new and updated pull requests, to any branch  | Runs TypeScript, Biome and the full Jest suite       |
+| **PR title**                      | On pull requests                                 | Checks that the title is a valid conventional commit |
+| **Release**                       | On pushes to `main`                              | Keeps the release pull request up to date            |
+| **Cache Bun dependencies**        | On pushes to `main`, and on changes to its setup | Fills the shared dependency cache                    |
+| **Build the app for development** | Manually                                         | Starts EAS development builds for iOS and Android    |
 
 **Dependabot** (`.github/dependabot.yml`) also opens one pull request each
 week to update the GitHub Actions. The actions are pinned to commit SHAs.

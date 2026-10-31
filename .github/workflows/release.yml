@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ main ]
 
 permissions:
   contents: write
@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  # Keeps the release PR up to date with develop. Merging that PR (after both
+  # Keeps the release PR up to date with main. Merging that PR (after both
   # stores approve the build) bumps the version, tags it and creates the
   # GitHub release. See docs/guides/releasing.md.
   release-please:

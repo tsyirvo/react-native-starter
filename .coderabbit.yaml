@@ -15,7 +15,7 @@ reviews:
     drafts: false
     # Release Please PRs only bump the version and changelog.
     ignore_title_keywords:
-      - "chore(develop): release"
+      - "chore(main): release"
   tools:
     github-checks:
       enabled: true

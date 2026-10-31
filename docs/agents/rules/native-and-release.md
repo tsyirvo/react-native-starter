@@ -39,7 +39,7 @@ skill suggests one.
 - A store rejection is fixed with a new build of the same version. Never bump
   the version to resubmit.
 - The release PR is merged only after both stores approve the build. Never
-  merge it, or merge other PRs into `develop` while a version is in review,
+  merge it, or merge other PRs into `main` while a version is in review,
   without explicit approval.
 - OTA updates only reach binaries with the same version (`appVersion` runtime
   policy). Publish them from the release tag, only for JavaScript/asset

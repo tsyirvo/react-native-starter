@@ -1,6 +1,6 @@
 # Releasing
 
-This guide shows how a version of the app goes from `develop` to the stores.
+This guide shows how a version of the app goes from `main` to the stores.
 It also shows how to send JavaScript-only fixes as over-the-air (OTA) updates
 after the release.
 
@@ -22,9 +22,9 @@ released yet.
 ## How Release Please makes versions and the changelog
 
 [Release Please](https://github.com/googleapis/release-please) reads the
-conventional commits on `develop` since the last release tag. On each push to
-`develop`, the **Release** workflow updates one open pull request, the
-**release PR** (`chore(develop): release x.y.z`). The release PR contains the
+conventional commits on `main` since the last release tag. On each push to
+`main`, the **Release** workflow updates one open pull request, the
+**release PR** (`chore(main): release x.y.z`). The release PR contains the
 `package.json` version change and the new `CHANGELOG.md` entry.
 
 Pull requests are squash-merged, so the PR title becomes the commit message.
@@ -66,15 +66,15 @@ PR changes only the version and the changelog, so other checks are not
 necessary:
 
 - **Quality** skips `release-please--*` branches.
-- CodeRabbit skips pull requests with a `chore(develop): release` title.
+- CodeRabbit skips pull requests with a `chore(main): release` title.
 
 ## Release a store version
 
 Merge the release PR **last**, after both stores approve the build.
 
-1. **Freeze `develop`.** Do not merge other pull requests while the stores
+1. **Freeze `main`.** Do not merge other pull requests while the stores
    review a version. Release Please makes the release PR again from all of
-   `develop`. If you merge a change during the review, the changelog shows it,
+   `main`. If you merge a change during the review, the changelog shows it,
    but the binary in review does not contain it.
 2. **Build the head commit of the release PR.** Check out the release PR branch
    with `gh pr checkout <number>`. Then `package.json` already has the new
@@ -91,7 +91,7 @@ Merge the release PR **last**, after both stores approve the build.
 4. **If a store rejects the build:**
    - For a problem in the metadata, screenshots or reviewer notes, fix it in
      App Store Connect or the Play Console. You do not need a new build.
-   - For a problem in the code, merge the fix to `develop` in a normal pull
+   - For a problem in the code, merge the fix to `main` in a normal pull
      request. Release Please updates the same release PR. Usually, the version
      does not change. Build again from the new head commit and submit the new
      build. The build number increases, but the version stays the same.
@@ -106,7 +106,7 @@ Merge the release PR **last**, after both stores approve the build.
    builds on hold. Publish them together, so both platforms go live at the
    same time.
 
-After the merge, you can merge pull requests into `develop` again.
+After the merge, you can merge pull requests into `main` again.
 
 ## Submit to the stores
 
@@ -170,12 +170,12 @@ Use an OTA update only when **all** of these conditions are true:
   store build: native code, new or updated native dependencies, config plugins
   and the icon font.
 - The target binary is the current store version, for example `2.3.0`.
-- The change does not need native code that is in `develop` but not in that
+- The change does not need native code that is in `main` but not in that
   binary.
 
 ### Publish an OTA update
 
-Start from the release tag, not from `develop`. `develop` can contain native
+Start from the release tag, not from `main`. `main` can contain native
 changes that the store binary does not have.
 
 An update replaces the full JavaScript bundle. Thus, each hotfix must contain
@@ -198,7 +198,7 @@ The update gets its runtime version from `package.json` (`2.3.0` on the tag).
 Thus, it goes only to `2.3.0` binaries. To send it to a part of the users
 first, add `--rollout-percentage <1-100>`.
 
-Then open a pull request from the hotfix branch into `develop`, so the next
+Then open a pull request from the hotfix branch into `main`, so the next
 store version also contains the fix. The changelog of the next release shows
 its commit.
 

@@ -3,8 +3,8 @@ import "package://github.com/jdx/hk/releases/download/v2.4.0/hk@2.4.0#/Builtins.
 
 min_hk_version = "2.4.0"
 
-// Git Flow: features branch off `develop`, `master` only receives releases.
-default_branch = "develop"
+// Feature branches start from `main` and merge back into it with a squash merge.
+default_branch = "main"
 
 // Stop the hook as soon as something fails, no point in burning CPU afterwards.
 fail_fast = true
