@@ -16,7 +16,7 @@ describe('ButtonWithIcon', () => {
   it('calls the handler once when pressed', async () => {
     const onPress = jest.fn();
     const user = userEvent.setup();
-    render(
+    await render(
       <BasicButton iconName="home" onPress={onPress}>
         {label}
       </BasicButton>,
@@ -30,7 +30,7 @@ describe('ButtonWithIcon', () => {
   it('shows loading content and ignores presses while loading', async () => {
     const onPress = jest.fn();
     const user = userEvent.setup();
-    render(
+    await render(
       <ButtonLoading iconName="home" onPress={onPress}>
         {label}
       </ButtonLoading>,
@@ -45,7 +45,7 @@ describe('ButtonWithIcon', () => {
   it('ignores presses when disabled', async () => {
     const onPress = jest.fn();
     const user = userEvent.setup();
-    render(
+    await render(
       <ButtonDisabled iconName="home" onPress={onPress}>
         {label}
       </ButtonDisabled>,
@@ -60,21 +60,21 @@ describe('ButtonWithIcon', () => {
     const pending = Promise.withResolvers<void>();
     const onPress = jest.fn(() => pending.promise);
     const user = userEvent.setup();
-    render(
+    await render(
       <BasicButton iconName="home" onPress={onPress}>
         {label}
       </BasicButton>,
     );
 
     await user.press(screen.getByText(label));
-    act(() => jest.advanceTimersByTime(600));
+    await act(() => jest.advanceTimersByTime(600));
     expect(screen.getByTestId('InnerTextLoader')).toBeOnTheScreen();
     await user.press(screen.getByTestId('ButtonWithIcon'));
     expect(onPress).toHaveBeenCalledTimes(1);
 
     await act(async () => pending.resolve());
     expect(screen.getByText(label)).toBeOnTheScreen();
-    act(() => jest.advanceTimersByTime(600));
+    await act(() => jest.advanceTimersByTime(600));
     await user.press(screen.getByText(label));
 
     expect(onPress).toHaveBeenCalledTimes(2);

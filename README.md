@@ -303,13 +303,15 @@ prevent Metro from bundling imported code. Keep stories out of runtime barrels.
 
 ## Tests
 
-There are basic tests with [Jest](https://jestjs.io/) and [Testing Library](https://testing-library.com/) that you can run with:
+There are basic tests with [Jest](https://jestjs.io/) and [React Native Testing Library](https://callstack.github.io/react-native-testing-library/) that you can run with:
 
 ```sh
 bun run test
 ```
 
 > Always go through `bun run test`: a bare `bun test` would invoke Bun's own test runner instead of the Jest setup configured here.
+
+React Native Testing Library v14 renders through `test-renderer`, and its render, hook and event helpers are async, so `await` them. Keep `test-renderer` on the same minor line as React (React 19.3 uses 1.3) and on the version `jest-expo` installs.
 
 Local work, pre-push and CI use the same `jest.config.js`: half the available CPUs, rounded down, with a minimum of one worker and a maximum of six. Full-suite benchmarks on a 14-core machine plateaued around 4–8 workers; larger pools added overhead. Rebenchmark as the suite grows or runner hardware changes.
 

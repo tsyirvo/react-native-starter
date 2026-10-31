@@ -6,6 +6,7 @@
 - Use Bun. For Expo-managed packages, use `bunx expo install <package>` so the installed SDK determines compatible versions.
 - Load `expo-upgrade` for an explicitly requested SDK upgrade; pick the target deliberately instead of blindly installing latest.
 - Preserve existing custom Babel/Metro configuration and required peers.
+- When React changes, move `test-renderer` to the matching minor line (React 19.3 uses `test-renderer` 1.3) and to the version `jest-expo` installs. Check the React Native Testing Library peer range before you change either package.
 - Native integrations require development builds, not assumptions based on Expo Go.
 - Respect repository ignore rules for generated native projects and build outputs. Do not commit them as an incidental change.
 - Do not run `prebuild --clean`, delete caches/dependencies, or remove native projects without explicit approval and a recovery plan.

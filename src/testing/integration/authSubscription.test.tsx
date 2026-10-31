@@ -80,7 +80,7 @@ describe('auth and subscription identity lifecycle', () => {
   it('identifies once and waits for that identity before reading entitlements', async () => {
     const identity = Promise.withResolvers<void>();
     jest.mocked(Purchase.setUser).mockReturnValueOnce(identity.promise);
-    const { result } = createHarness();
+    const { result } = await createHarness();
 
     await act(async () => {
       await result.current.auth.signIn(credentials);
@@ -106,13 +106,13 @@ describe('auth and subscription identity lifecycle', () => {
   it('clears local auth immediately and queues logout after an in-flight identification', async () => {
     const identity = Promise.withResolvers<void>();
     jest.mocked(Purchase.setUser).mockReturnValueOnce(identity.promise);
-    const { result } = createHarness();
+    const { result } = await createHarness();
 
     await act(async () => {
       await result.current.auth.signIn(credentials);
     });
     let signOut: Promise<void> | undefined;
-    act(() => {
+    await act(() => {
       signOut = result.current.auth.signOut();
     });
 
@@ -131,7 +131,7 @@ describe('auth and subscription identity lifecycle', () => {
   });
 
   it('waits for pending logout before identifying the next sign-in', async () => {
-    const { result } = createHarness();
+    const { result } = await createHarness();
     await act(async () => {
       await result.current.auth.signIn(credentials);
     });
@@ -142,7 +142,7 @@ describe('auth and subscription identity lifecycle', () => {
     const logout = Promise.withResolvers<void>();
     jest.mocked(Purchase.clearUser).mockReturnValueOnce(logout.promise);
     let signOut: Promise<void> | undefined;
-    act(() => {
+    await act(() => {
       signOut = result.current.auth.signOut();
     });
     await act(async () => {
@@ -174,7 +174,7 @@ describe('auth and subscription identity lifecycle', () => {
   it('keeps demo auth usable but does not query an unidentified purchase customer', async () => {
     const error = new Error('purchase identification failed');
     jest.mocked(Purchase.setUser).mockRejectedValueOnce(error);
-    const { result } = createHarness();
+    const { result } = await createHarness();
 
     await act(async () => {
       await result.current.auth.signIn(credentials);

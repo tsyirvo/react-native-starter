@@ -26,8 +26,8 @@ describe('AppUpdateNeeded', () => {
     jest.useRealTimers();
   });
 
-  it('does not block the app when the remote version is absent', () => {
-    render(<AppUpdateNeeded />);
+  it('does not block the app when the remote version is absent', async () => {
+    await render(<AppUpdateNeeded />);
 
     expect(
       screen.queryByTestId('appUpdateNeeded-screen'),
@@ -39,9 +39,9 @@ describe('AppUpdateNeeded', () => {
 
   it.each(['2.0.0', '1.0.0'])(
     'does not block a supported app for minimum version %s',
-    (version) => {
+    async (version) => {
       getFlagPayloadSync.mockReturnValue({ type: 'version', version });
-      render(<AppUpdateNeeded />);
+      await render(<AppUpdateNeeded />);
 
       expect(
         screen.queryByTestId('appUpdateNeeded-screen'),
@@ -58,7 +58,7 @@ describe('AppUpdateNeeded', () => {
       jest.replaceProperty(Config, 'IS_IOS', isIOS);
       getFlagPayloadSync.mockReturnValue({ type: 'version', version: '3.0.0' });
       const user = userEvent.setup();
-      render(<AppUpdateNeeded />);
+      await render(<AppUpdateNeeded />);
 
       expect(screen.getByText('appUpdateNedeed.title')).toBeOnTheScreen();
       await user.press(screen.getByText('appUpdateNedeed.cta'));
@@ -73,7 +73,7 @@ describe('AppUpdateNeeded', () => {
     jest.mocked(Linking.openURL).mockRejectedValueOnce(error);
     getFlagPayloadSync.mockReturnValue({ type: 'version', version: '3.0.0' });
     const user = userEvent.setup();
-    render(<AppUpdateNeeded />);
+    await render(<AppUpdateNeeded />);
 
     await user.press(screen.getByText('appUpdateNedeed.cta'));
 

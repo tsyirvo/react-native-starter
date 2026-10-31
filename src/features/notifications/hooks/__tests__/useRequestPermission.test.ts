@@ -35,7 +35,7 @@ describe('useRequestPermission', () => {
       .mocked(Permissions.checkNotificationsStatus)
       .mockResolvedValue(requestable);
     jest.mocked(Permissions.requestNotifications).mockResolvedValue(granted);
-    const { result } = renderHook(useRequestPermission);
+    const { result } = await renderHook(useRequestPermission);
 
     await result.current.requestNotificationPermission();
 
@@ -48,7 +48,7 @@ describe('useRequestPermission', () => {
 
   it('does not request a permission that is already granted', async () => {
     jest.mocked(Permissions.checkStatus).mockResolvedValue(granted);
-    const { result } = renderHook(useRequestPermission);
+    const { result } = await renderHook(useRequestPermission);
 
     await result.current.requestPermission(PERMISSIONS.IOS.CAMERA);
 
@@ -68,7 +68,7 @@ describe('useRequestPermission', () => {
       isGranted: false,
       isRequestable: false,
     });
-    const { result } = renderHook(useRequestPermission);
+    const { result } = await renderHook(useRequestPermission);
 
     await result.current.requestNotificationPermission();
 
@@ -85,7 +85,7 @@ describe('useRequestPermission', () => {
       isGranted: false,
       isRequestable: false,
     });
-    const { result } = renderHook(useRequestPermission);
+    const { result } = await renderHook(useRequestPermission);
 
     await result.current.requestPermission(PERMISSIONS.IOS.CAMERA);
 
@@ -103,7 +103,7 @@ describe('useRequestPermission', () => {
       isGranted: false,
       isRequestable: false,
     });
-    const { result } = renderHook(useRequestPermission);
+    const { result } = await renderHook(useRequestPermission);
 
     await result.current.requestPermission(PERMISSIONS.IOS.CAMERA);
 
@@ -117,7 +117,7 @@ describe('useRequestPermission', () => {
   it('propagates rejected permission checks to the caller', async () => {
     const error = new Error('permission check failed');
     jest.mocked(Permissions.checkNotificationsStatus).mockRejectedValue(error);
-    const { result } = renderHook(useRequestPermission);
+    const { result } = await renderHook(useRequestPermission);
 
     await expect(result.current.requestNotificationPermission()).rejects.toBe(
       error,
@@ -130,7 +130,7 @@ describe('useRequestPermission', () => {
     const error = new Error('permission request failed');
     jest.mocked(Permissions.checkStatus).mockResolvedValue(requestable);
     jest.mocked(Permissions.request).mockRejectedValue(error);
-    const { result } = renderHook(useRequestPermission);
+    const { result } = await renderHook(useRequestPermission);
 
     await expect(
       result.current.requestPermission(PERMISSIONS.IOS.CAMERA),

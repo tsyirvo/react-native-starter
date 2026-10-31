@@ -13,18 +13,18 @@ describe('Loader component', () => {
     jest.useRealTimers();
   });
 
-  it('should initially render a Box placeholder', () => {
-    render(<Loader />);
+  it('should initially render a Box placeholder', async () => {
+    await render(<Loader />);
 
     expect(screen.getByTestId('Loader')).toBeTruthy();
   });
 
   it('should show the activity indicator after the specified delay', async () => {
-    render(<Loader />);
+    await render(<Loader />);
 
     expect(screen.getByTestId('Loader')).toBeTruthy();
 
-    act(() => {
+    await act(() => {
       jest.advanceTimersByTime(DEFAULT_DELAY);
     });
 
@@ -38,15 +38,15 @@ describe('Loader component', () => {
   it('should respect custom delay time', async () => {
     const customDelay = 1000;
 
-    render(<Loader delay={customDelay} />);
+    await render(<Loader delay={customDelay} />);
 
-    act(() => {
+    await act(() => {
       jest.advanceTimersByTime(DEFAULT_DELAY);
     });
 
     expect(screen.getByTestId('Loader')).toBeTruthy();
 
-    act(() => {
+    await act(() => {
       jest.advanceTimersByTime(customDelay - DEFAULT_DELAY);
     });
 

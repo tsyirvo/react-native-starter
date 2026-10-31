@@ -29,27 +29,27 @@ describe('useGetSessionState', () => {
     jest.clearAllMocks();
   });
 
-  it('leaves bootstrap pending while the session query has not fetched', () => {
+  it('leaves bootstrap pending while the session query has not fetched', async () => {
     jest.mocked(useGetUserSession).mockReturnValue(sessionResult({}));
 
-    renderHook(useGetSessionState);
+    await renderHook(useGetSessionState);
 
     expect(setIsBootstrappingApplication).not.toHaveBeenCalled();
   });
 
-  it('releases bootstrap on fetched completion without restoring login', () => {
+  it('releases bootstrap on fetched completion without restoring login', async () => {
     jest
       .mocked(useGetUserSession)
       .mockReturnValue(sessionResult({ isFetched: true }));
 
-    const { rerender } = renderHook(useGetSessionState);
-    rerender({});
+    const { rerender } = await renderHook(useGetSessionState);
+    await rerender({});
 
     expect(setIsBootstrappingApplication).toHaveBeenCalledTimes(1);
     expect(setIsBootstrappingApplication).toHaveBeenCalledWith(false);
   });
 
-  it('logs a settled failure and releases bootstrap without restoring a session', () => {
+  it('logs a settled failure and releases bootstrap without restoring a session', async () => {
     const error = new Error('session unavailable');
     jest.mocked(useGetUserSession).mockReturnValue(
       sessionResult({
@@ -60,7 +60,7 @@ describe('useGetSessionState', () => {
       }),
     );
 
-    renderHook(useGetSessionState);
+    await renderHook(useGetSessionState);
 
     expect(Logger.dev).toHaveBeenCalledWith(
       'Failed to fetch session on app bootstrap. Continuing without a session.',

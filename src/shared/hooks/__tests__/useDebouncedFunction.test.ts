@@ -12,24 +12,24 @@ describe('useDebouncedFunction', () => {
     jest.useRealTimers();
   });
 
-  it('should return a stable debounced function', () => {
+  it('should return a stable debounced function', async () => {
     const callback = jest.fn();
-    const { result, rerender } = renderHook(() =>
+    const { result, rerender } = await renderHook(() =>
       useDebouncedFunction(callback, 500, {}),
     );
 
     const firstResult = result.current;
 
-    rerender({});
+    await rerender({});
 
     expect(result.current).toBe(firstResult);
   });
 
-  it('should call the latest version of the callback', () => {
+  it('should call the latest version of the callback', async () => {
     const callback1 = jest.fn();
     const callback2 = jest.fn();
 
-    const { result, rerender } = renderHook(
+    const { result, rerender } = await renderHook(
       (props: { cb: () => void }) => useDebouncedFunction(props.cb, 100),
       { initialProps: { cb: callback1 } },
     );
@@ -41,7 +41,7 @@ describe('useDebouncedFunction', () => {
     expect(callback1).toHaveBeenCalledTimes(1);
     expect(callback2).not.toHaveBeenCalled();
 
-    rerender({ cb: callback2 });
+    await rerender({ cb: callback2 });
 
     result.current();
 
@@ -51,9 +51,9 @@ describe('useDebouncedFunction', () => {
     expect(callback2).toHaveBeenCalledTimes(1);
   });
 
-  it('should debounce function calls', () => {
+  it('should debounce function calls', async () => {
     const callback = jest.fn();
-    const { result } = renderHook(() =>
+    const { result } = await renderHook(() =>
       useDebouncedFunction(callback, 500, { leading: false, trailing: true }),
     );
 
@@ -68,9 +68,11 @@ describe('useDebouncedFunction', () => {
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
-  it('should pass arguments correctly', () => {
+  it('should pass arguments correctly', async () => {
     const callback = jest.fn();
-    const { result } = renderHook(() => useDebouncedFunction(callback, 100));
+    const { result } = await renderHook(() =>
+      useDebouncedFunction(callback, 100),
+    );
 
     result.current('arg1', 'arg2', 123);
 
@@ -79,9 +81,9 @@ describe('useDebouncedFunction', () => {
     expect(callback).toHaveBeenCalledWith('arg1', 'arg2', 123);
   });
 
-  it('should support leading edge option', () => {
+  it('should support leading edge option', async () => {
     const callback = jest.fn();
-    const { result } = renderHook(() =>
+    const { result } = await renderHook(() =>
       useDebouncedFunction(callback, 500, { leading: true, trailing: false }),
     );
 
@@ -96,14 +98,14 @@ describe('useDebouncedFunction', () => {
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
-  it('should drop a pending trailing call on unmount', () => {
+  it('should drop a pending trailing call on unmount', async () => {
     const callback = jest.fn();
-    const { result, unmount } = renderHook(() =>
+    const { result, unmount } = await renderHook(() =>
       useDebouncedFunction(callback, 500, { leading: false, trailing: true }),
     );
 
     result.current();
-    unmount();
+    await unmount();
 
     jest.advanceTimersByTime(500);
 

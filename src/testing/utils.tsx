@@ -1,10 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import type { RenderAPI } from '@testing-library/react-native';
-import { cleanup, render as rtlRender } from '@testing-library/react-native';
+import type { RenderResult } from '@testing-library/react-native';
+import { render as rtlRender } from '@testing-library/react-native';
 import type { ReactElement, ReactNode } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-afterEach(cleanup);
 
 interface WrapperProps {
   children: ReactNode;
@@ -21,7 +19,9 @@ const createTestQueryClient = () =>
     },
   });
 
-export const customRender = (component: ReactElement): RenderAPI => {
+export const customRender = (
+  component: ReactElement,
+): Promise<RenderResult> => {
   const queryClient = createTestQueryClient();
   const Wrapper = ({ children }: WrapperProps) => (
     <SafeAreaProvider

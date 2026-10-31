@@ -30,7 +30,7 @@ describe('Input', () => {
   it('forwards native text changes and displays the controlled value', async () => {
     const onChangeText = jest.fn();
     const user = userEvent.setup();
-    render(<ControlledInput onChangeText={onChangeText} />);
+    await render(<ControlledInput onChangeText={onChangeText} />);
 
     await user.type(screen.getByPlaceholderText('Enter text'), 'data');
 
@@ -41,7 +41,7 @@ describe('Input', () => {
   it('does not accept typing when disabled', async () => {
     const onChangeText = jest.fn();
     const user = userEvent.setup();
-    render(
+    await render(
       <Input isDisabled onChangeText={onChangeText} placeholder="Enter text" />,
     );
 
@@ -50,8 +50,8 @@ describe('Input', () => {
     expect(onChangeText).not.toHaveBeenCalled();
   });
 
-  it('renders supplied messages and removes them when no longer provided', () => {
-    const { rerender } = render(
+  it('renders supplied messages and removes them when no longer provided', async () => {
+    const { rerender } = await render(
       <Input
         error="Invalid email"
         helperText="Use your work email"
@@ -63,7 +63,7 @@ describe('Input', () => {
     expect(screen.getByText('Invalid email')).toBeOnTheScreen();
     expect(screen.getByText('Use your work email')).toBeOnTheScreen();
 
-    rerender(<Input />);
+    await rerender(<Input />);
 
     expect(screen.queryByText('Email')).not.toBeOnTheScreen();
     expect(screen.queryByText('Invalid email')).not.toBeOnTheScreen();

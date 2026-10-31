@@ -1,5 +1,5 @@
 import { Logger } from '$infra/logger';
-import { fireEventAsync, render, screen, userEvent, waitFor } from '$testing';
+import { fireEvent, render, screen, userEvent, waitFor } from '$testing';
 
 import { LoginForm } from '../LoginForm';
 
@@ -17,7 +17,7 @@ describe('LoginForm', () => {
   it('submits edited credentials through the submit button', async () => {
     const onFormSuccess = jest.fn().mockResolvedValue(undefined);
     const user = userEvent.setup();
-    render(<LoginForm onFormSuccess={onFormSuccess} />);
+    await render(<LoginForm onFormSuccess={onFormSuccess} />);
 
     const email = screen.getByPlaceholderText(emailPlaceholder);
     const password = screen.getByPlaceholderText(passwordPlaceholder);
@@ -37,15 +37,15 @@ describe('LoginForm', () => {
   it('shows validation after blur, blocks both submission paths and recovers after correction', async () => {
     const onFormSuccess = jest.fn().mockResolvedValue(undefined);
     const user = userEvent.setup();
-    render(<LoginForm onFormSuccess={onFormSuccess} />);
+    await render(<LoginForm onFormSuccess={onFormSuccess} />);
 
     const email = screen.getByPlaceholderText(emailPlaceholder);
     const password = screen.getByPlaceholderText(passwordPlaceholder);
-    await fireEventAsync.changeText(email, 'invalid');
+    await fireEvent.changeText(email, 'invalid');
     expect(
       screen.queryByText('loginForm.emailField.validation.invalid'),
     ).not.toBeOnTheScreen();
-    await fireEventAsync(email, 'blur');
+    await fireEvent(email, 'blur');
     expect(
       await screen.findByText('loginForm.emailField.validation.invalid'),
     ).toBeOnTheScreen();
@@ -56,7 +56,7 @@ describe('LoginForm', () => {
     ).toBeOnTheScreen();
 
     await user.press(screen.getByText('loginForm.submitButton'));
-    await fireEventAsync(password, 'submitEditing');
+    await fireEvent(password, 'submitEditing');
     expect(onFormSuccess).not.toHaveBeenCalled();
 
     await user.clear(email);
@@ -80,9 +80,9 @@ describe('LoginForm', () => {
   it('reports a rejected keyboard submission', async () => {
     const error = new Error('sign in unavailable');
     const onFormSuccess = jest.fn().mockRejectedValue(error);
-    render(<LoginForm onFormSuccess={onFormSuccess} />);
+    await render(<LoginForm onFormSuccess={onFormSuccess} />);
 
-    await fireEventAsync(
+    await fireEvent(
       screen.getByPlaceholderText(passwordPlaceholder),
       'submitEditing',
     );

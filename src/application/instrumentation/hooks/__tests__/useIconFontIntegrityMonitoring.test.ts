@@ -38,8 +38,8 @@ describe('useIconFontIntegrityMonitoring', () => {
     });
   });
 
-  it('reports found font integrity issues', () => {
-    renderHook(useIconFontIntegrityMonitoring);
+  it('reports found font integrity issues', async () => {
+    await renderHook(useIconFontIntegrityMonitoring);
 
     notify(issue, 'found');
 
@@ -49,18 +49,18 @@ describe('useIconFontIntegrityMonitoring', () => {
     });
   });
 
-  it('ignores resolved font integrity issues', () => {
-    renderHook(useIconFontIntegrityMonitoring);
+  it('ignores resolved font integrity issues', async () => {
+    await renderHook(useIconFontIntegrityMonitoring);
 
     notify(issue, 'resolved');
 
     expect(Logger.error).not.toHaveBeenCalled();
   });
 
-  it('stops listening on unmount', () => {
-    const { unmount } = renderHook(useIconFontIntegrityMonitoring);
+  it('stops listening on unmount', async () => {
+    const { unmount } = await renderHook(useIconFontIntegrityMonitoring);
 
-    unmount();
+    await unmount();
 
     expect(unsubscribe).toHaveBeenCalledTimes(1);
   });
