@@ -2,10 +2,10 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { z } from 'zod';
 
-const COMMIT = /^[a-f0-9]{40}$/;
-const SOURCE = /^[\w.-]+\/[\w.-]+$/;
-const REF = /^[\w./-]+$/;
-const SKILL = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const COMMIT = /^[a-f0-9]{40}$/u;
+const SOURCE = /^[\w.-]+\/[\w.-]+$/u;
+const REF = /^[\w./-]+$/u;
+const SKILL = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
 const usage =
   'Usage: skills:check OR skills:upgrade <full-commit-sha> <skill> [skill...]';
 

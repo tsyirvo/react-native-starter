@@ -11,7 +11,7 @@ import type { Primitives } from '$types';
 
 const prodSampleRate = 0.5;
 const fullSampleRate = 1;
-const APPLE_URL_REGEX = /apple.com/i;
+const APPLE_URL_REGEX = /apple.com/iu;
 
 export const routingInstrumentation = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: true,

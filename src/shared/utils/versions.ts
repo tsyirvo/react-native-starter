@@ -1,13 +1,18 @@
-const VERSION_PATTERN = /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
+const VERSION_PATTERN =
+  /^v?(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)$/u;
 
 const parseVersion = (version: string) => {
-  const match = VERSION_PATTERN.exec(version.trim());
+  const groups = VERSION_PATTERN.exec(version.trim())?.groups;
 
-  if (!match) {
+  if (!groups) {
     throw new TypeError(`Invalid version: "${version}"`);
   }
 
-  return [Number(match[1]), Number(match[2]), Number(match[3])] as const;
+  return [
+    Number(groups.major),
+    Number(groups.minor),
+    Number(groups.patch),
+  ] as const;
 };
 
 const compareVersions = (a: string, b: string): number => {

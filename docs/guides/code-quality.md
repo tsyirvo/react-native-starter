@@ -32,20 +32,14 @@ defaults. These defaults include a check for undeclared dependencies.
 - **Routes:** files in `src/app/` must use kebab-case, because Expo Router uses
   them as URL segments.
 - **JSX:** inline JSX callbacks are permitted.
+- **Classes:** methods are not required to use `this`, because infra adapters
+  are stateless classes.
+- **Labels:** `noLabelWithoutControl` is off, because React Native has no
+  label/control association and the rule flags non-form `Label` components.
 - **YAML:** Biome formats YAML files.
 - **Markdown:** Biome lints Markdown and reads skill frontmatter. Biome does not
   format Markdown, because Biome 2.6 does not support the GFM tables and task
   lists in this repository.
-
-### Ultracite patch
-
-Ultracite 8.0.1 still uses Biome's old `useSortedClasses` rule name. The patch
-in `patches/ultracite@8.0.1.patch` changes it to `useTailwindSortedClasses`. It
-also moves the rule options to the top-level Tailwind configuration. Bun
-applies the patch on install.
-
-When an Ultracite release includes this change, remove the patch and its
-`patchedDependencies` entry from `package.json`.
 
 ## Git hooks
 

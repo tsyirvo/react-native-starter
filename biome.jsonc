@@ -78,7 +78,14 @@
         // Inline callbacks are idiomatic here; React Compiler is enabled.
         "noJsxPropsBind": "off"
       },
+      "a11y": {
+        // React Native has no label/control association (`htmlFor`), and the
+        // rule flags non-form components such as `NativeTabs.Trigger.Label`.
+        "noLabelWithoutControl": "off"
+      },
       "style": {
+        // Infra adapters are stateless classes whose methods don't use `this`.
+        "useThisInClassMethods": "off",
         // PascalCase components and camelCase hooks, utilities and config files.
         "useFilenamingConvention": {
           "level": "error",
