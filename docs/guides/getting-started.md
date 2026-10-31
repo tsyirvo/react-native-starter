@@ -70,36 +70,87 @@ Read [Environments](environments.md) for the full configuration.
 
 ## Run the app
 
-First, build the development app and install it on a simulator or emulator.
-Do this again each time the native code or the native dependencies change.
+To run the development app on a simulator or emulator, use one of these
+scripts:
 
 ```sh
-bun run build:dev:ios        # iOS simulator
-bun run build:dev:android    # Android emulator
+bun run run:dev:ios        # iOS simulator
+bun run run:dev:android    # Android emulator
 ```
 
-Then start the packager for the same environment:
+Each script builds the development app, installs it and starts the packager.
+The scripts use `expo run` with the EAS build cache. Read
+[Share development builds](#share-development-builds).
+
+Run the script again when the native code or the native dependencies change.
+When only the JavaScript code changes, start only the packager:
 
 ```sh
-bun run start:dev
+bun run start
 ```
 
-Open the development app on the simulator or emulator. It connects to the
-packager.
+To install the development app on a physical iPhone, add `--device`:
 
-To test a staging or production variant, use the matching scripts:
+```sh
+bun run run:dev:ios -- --device
+```
 
-| Environment | Packager                   | Builds                                                 |
-| ----------- | -------------------------- | ------------------------------------------------------ |
-| Development | `bun run start:dev`        | `bun run build:dev:ios`, `bun run build:dev:android`   |
-| Staging     | `bun run start:staging`    | `bun run build:stg:ios`, `bun run build:stg:android`   |
-| Production  | `bun run start:production` | `bun run build:prod:ios`, `bun run build:prod:android` |
+To test a staging or production variant, use the matching build scripts:
 
-To install the development app on a physical iPhone, use
-`bun run build:dev-device:ios`.
+| Environment | Builds                                                 |
+| ----------- | ------------------------------------------------------ |
+| Staging     | `bun run build:stg:ios`, `bun run build:stg:android`   |
+| Production  | `bun run build:prod:ios`, `bun run build:prod:android` |
 
-These builds run on your computer. To use EAS cloud builders, read
-[Environments](environments.md#cloud-builds).
+These builds run on your computer. They are local EAS builds. Each one writes an
+artifact, but does not install it. Staging and production builds contain the
+JavaScript bundle, so they do not use the packager. To use EAS cloud builders,
+read [Environments](environments.md#cloud-builds).
+
+### Share development builds
+
+In `app.config.ts`, `buildCacheProvider` uses the
+[EAS build cache provider](https://docs.expo.dev/guides/cache-builds-remotely/)
+(`eas-build-cache-provider`). When you run `bun run run:dev:ios` or
+`bun run run:dev:android`, Expo does these steps:
+
+1. Expo calculates the project
+   [fingerprint](https://docs.expo.dev/versions/latest/sdk/fingerprint/) for
+   the platform.
+2. Expo looks for a development build with the same fingerprint on EAS. If EAS
+   has one, Expo downloads it and installs it. Expo does not build the native
+   app.
+3. If EAS does not have one, Expo builds the app on your computer. Then Expo
+   uploads the build to EAS. The next person with the same fingerprint can use
+   this build.
+
+To use the cache, do these steps:
+
+1. Log in to EAS with `eas login`.
+2. Use an account that has access to the EAS project.
+
+If you are not logged in, or if Expo cannot connect to EAS, Expo builds the app
+on your computer as usual.
+
+The fingerprint includes the resolved app configuration. Thus, the fingerprint
+also changes when the Doppler values change. Two people can share a build only
+when they use the same Doppler config, the same native code and the same native
+dependencies.
+
+These builds do not use the cache:
+
+- iOS builds for a physical device (`--device`). The cache keeps only simulator
+  builds.
+- `eas build` commands. This includes the staging and production scripts and
+  the cloud builds.
+
+`appVersionSource` is `remote` in `eas.json`. Thus, a cached build keeps the
+build number that it had when Expo made it. This is not a problem for
+development.
+
+Your EAS project keeps the uploaded builds and the fingerprint sources. Each
+build contains the client configuration from Doppler. An EAS development build
+contains the same configuration.
 
 ## Tasks with mise
 

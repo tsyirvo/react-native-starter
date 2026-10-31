@@ -109,6 +109,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     predictiveBackGestureEnabled: true,
   },
   assetBundlePatterns: ['./src/assets/images/*'],
+  buildCacheProvider: { plugin: 'eas-build-cache-provider' },
   description: `${Env.APP_NAME} Mobile App`,
   experiments: {
     reactCompiler: true,

@@ -57,7 +57,7 @@ The Maestro flows are in `e2e/`. They run on iOS and Android.
 1. [Install Maestro](https://docs.maestro.dev/getting-started/installing-maestro).
 2. Build the development app and install it on a simulator or emulator. Read
    [Getting started](getting-started.md#run-the-app).
-3. Start the packager with `bun run start:dev`.
+3. Start the packager with `bun run start`.
 4. Run the flows:
 
    ```sh

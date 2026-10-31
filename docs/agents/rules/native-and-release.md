@@ -9,6 +9,7 @@
 - Preserve existing custom Babel/Metro configuration and required peers.
 - When React changes, move `test-renderer` to the matching minor line (React 19.3 uses `test-renderer` 1.3) and to the version `jest-expo` installs. Check the React Native Testing Library peer range before you change either package.
 - Native integrations require development builds, not assumptions based on Expo Go.
+- `run:dev:*` scripts use the EAS build cache provider: they can download a matching build and upload new local builds to EAS. Treat an upload as an external mutation: get approval before you run them.
 - Respect repository ignore rules for generated native projects and build outputs. Do not commit them as an incidental change.
 - Do not run `prebuild --clean`, delete caches/dependencies, or remove native projects without explicit approval and a recovery plan.
 
