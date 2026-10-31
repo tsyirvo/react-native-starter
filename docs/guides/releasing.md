@@ -68,7 +68,10 @@ The release PR is merged **last**, once both stores have approved the build.
    (`gh pr checkout <number>`) so `package.json` already has the new version,
    then build both platforms for production (see
    [Store submissions](#store-submissions)).
-3. **Submit both builds** and request review.
+3. **Submit both builds** and request review. Before submitting, enable
+   **Manually release this version** in App Store Connect and **Managed
+   publishing** in the Play Console, so an approved build waits for you instead
+   of going live on approval.
 4. **If a store rejects the build:**
    - Metadata, screenshots or reviewer notes: fix them in App Store Connect or
      the Play Console. No new build is needed.
@@ -81,9 +84,9 @@ The release PR is merged **last**, once both stores have approved the build.
 5. **When both stores approve, merge the release PR.** Release Please then
    bumps `package.json`, writes `CHANGELOG.md`, tags `vx.y.z` and creates the
    GitHub release from the approved code.
-6. **Publish in the stores.** Enable **Manually release this version** in App
-   Store Connect and **Managed publishing** in the Play Console. The approved
-   builds then wait until you publish them, and both platforms go live together.
+6. **Publish in the stores.** Manual release and Managed publishing (enabled in
+   step 3) keep both approved builds waiting. Publish them together, so both
+   platforms go live at the same time.
 
 After the merge, `develop` is open again.
 
@@ -151,6 +154,7 @@ from the previous hotfix's last commit (for example `hotfix/<previous-name>`):
 
 ```sh
 git switch -c hotfix/<name> v2.3.0   # later hotfixes: hotfix/<previous-name>
+bun install --frozen-lockfile        # match the released dependencies
 # apply and commit the fix
 doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
   eas update --channel production --environment production \

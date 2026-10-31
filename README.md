@@ -125,7 +125,7 @@ bun install
 
 Without the activation hook, prefix the commands with `mise exec --` (e.g. `mise exec -- bun install`) so they run against the versions from `mise.toml`.
 
-If you'd rather not use mise, the project only requires Node >= 26 and Bun >= 1.4, and every task below has a plain `bun run` equivalent. mise and CI follow the latest Node 26 and Bun 1.4.x releases.
+If you'd rather not use mise, the project only requires Node >= 26 and Bun >= 1.4.4, and every task below has a plain `bun run` equivalent. mise pins Bun 1.4.4 and CI follows the latest Bun 1.4.x release.
 
 `bunfig.toml` sets a 3-day `minimumReleaseAge`: `bun install`, `bun add` and `bunx expo install` only resolve package versions published at least 3 days ago, matching the Dependabot cooldown for GitHub Actions. To take a vetted newer version early (a security fix, for example), add it to `minimumReleaseAgeExcludes` as `name@version`.
 
