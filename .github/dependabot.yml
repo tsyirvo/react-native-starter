@@ -1,0 +1,25 @@
+version: 2
+
+updates:
+  # Actions are pinned to commit SHAs with a `# vX.Y.Z` comment; Dependabot
+  # updates both. "/" only covers .github/workflows, so the composite actions
+  # are listed explicitly.
+  - package-ecosystem: github-actions
+    directories:
+      - "/"
+      - "/.github/actions/*"
+    schedule:
+      interval: weekly
+    # Skip releases younger than 3 days: a freshly published (possibly
+    # compromised) version gets time to be noticed before it lands here.
+    cooldown:
+      default-days: 3
+    # One PR for all action updates.
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    # PR titles must be conventional commits (see the PR title workflow).
+    commit-message:
+      prefix: ci
+      include: scope

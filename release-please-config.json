@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "node",
+  "include-component-in-tag": false,
+  "pull-request-header": "Build and submit this PR's head commit to both stores. Merge it only once both stores have approved this version: merging tags the release and publishes it on GitHub. See docs/guides/releasing.md.",
+  "changelog-sections": [
+    { "type": "feat", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "perf", "section": "Performance" },
+    { "type": "revert", "section": "Reverts" },
+    { "type": "docs", "section": "Documentation" },
+    { "type": "refactor", "section": "Other Changes" },
+    { "type": "chore", "section": "Other Changes" },
+    { "type": "build", "section": "Other Changes" },
+    { "type": "ci", "section": "Other Changes" },
+    { "type": "test", "section": "Other Changes" },
+    { "type": "style", "section": "Other Changes" }
+  ],
+  "packages": {
+    ".": {}
+  }
+}

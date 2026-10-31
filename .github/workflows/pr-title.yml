@@ -1,0 +1,25 @@
+name: PR title
+
+on:
+  pull_request:
+    types: [ opened, edited, synchronize, reopened ]
+
+permissions:
+  contents: read
+
+jobs:
+  # PRs are squash-merged with the PR title as the commit message, and
+  # release-please reads that message. The commit-msg hook can't see it.
+  conventional-commit:
+    runs-on: ubuntu-latest
+    steps:
+      # For the hk version in mise.toml.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: jdx/mise-action@6be3c7ed4c21d4f76b208d351d95aac273ebb76d # v5.2.4
+        with:
+          install_args: hk
+      - env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          printf '%s\n' "$TITLE" > "$RUNNER_TEMP/title"
+          hk util check-conventional-commit "$RUNNER_TEMP/title"

@@ -1,0 +1,7 @@
+[install]
+# Only resolve package versions published at least 3 days ago, matching the
+# Dependabot cooldown for GitHub Actions. A freshly published (possibly
+# compromised) version gets time to be noticed before it lands here. To take a
+# vetted newer version early, add it to minimumReleaseAgeExcludes as
+# "name@version".
+minimumReleaseAge = 259200 # seconds (3 days)
