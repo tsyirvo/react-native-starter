@@ -25,19 +25,19 @@ jobs:
           fi
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup dependencies
         uses: ./.github/actions/setup-dependencies
 
       - name: Setup Expo
-        uses: expo/expo-github-action@v8
+        uses: expo/expo-github-action@9da89d3617bb88139671bad31b09c65714c2ee06 # 9.0.1
         with:
-          eas-version: 23.0.0
+          eas-version: 27.2.0
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Setup Doppler
-        uses: dopplerhq/cli-action@v3
+        uses: dopplerhq/cli-action@4819d808ab99e5cde19a0637a16536a4038fad73 # v4.0.1
 
       - name: EAS Build
         env:

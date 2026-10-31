@@ -125,7 +125,9 @@ bun install
 
 Without the activation hook, prefix the commands with `mise exec --` (e.g. `mise exec -- bun install`) so they run against the versions from `mise.toml`.
 
-If you'd rather not use mise, the project only requires Node >= 26 and Bun >= 1.4 (the exact version is pinned through `packageManager` in `package.json`), and every task below has a plain `bun run` equivalent.
+If you'd rather not use mise, the project only requires Node >= 26 and Bun >= 1.4.4, and every task below has a plain `bun run` equivalent. mise pins Bun 1.4.4 and CI follows the latest Bun 1.4.x release.
+
+`bunfig.toml` sets a 3-day `minimumReleaseAge`: `bun install`, `bun add` and `bunx expo install` only resolve package versions published at least 3 days ago, matching the Dependabot cooldown for GitHub Actions. To take a vetted newer version early (a security fix, for example), add it to `minimumReleaseAgeExcludes` as `name@version`.
 
 ## Tasks with mise
 
@@ -248,7 +250,7 @@ For staging, change **both** `--config dev` arguments to `--config stg`, set `AP
 
 The outer Doppler command supplies values needed for EAS CLI's initial `app.config.ts` resolution. The inner command mounts a temporary dotenv named pipe for `env:push`; Doppler removes it when the command exits, without persisting a plaintext secrets file. This follows [Doppler's EAS guide](https://docs.doppler.com/docs/eas-build), using the current [`eas env:push`](https://docs.expo.dev/eas/cli/#eas-envpush-environment) command instead of the deprecated `eas secret:push`.
 
-**This command changes EAS configuration.** It pushes every variable in the selected Doppler config and `--force` overwrites matching EAS variables. Use configs dedicated to this app, without unrelated service or CI credentials. EAS CLI 23 uploads non-`EXPO_PUBLIC_` variables with **sensitive** visibility: they are masked in build logs but remain readable to authorized users and EAS CLI during local config resolution. This includes `SENTRY_AUTH_TOKEN`, which the current validation requires locally; do not change required config inputs to EAS **secret** visibility without adapting that validation. Variables removed from Doppler are not deleted by `env:push`; remove obsolete values in EAS separately. Keep `STORYBOOK_ENABLED` unset or `false` in build configs.
+**This command changes EAS configuration.** It pushes every variable in the selected Doppler config and `--force` overwrites matching EAS variables. Use configs dedicated to this app, without unrelated service or CI credentials. EAS CLI 27 uploads non-`EXPO_PUBLIC_` variables with **sensitive** visibility: they are masked in build logs but remain readable to authorized users and EAS CLI during local config resolution. This includes `SENTRY_AUTH_TOKEN`, which the current validation requires locally; do not change required config inputs to EAS **secret** visibility without adapting that validation. Variables removed from Doppler are not deleted by `env:push`; remove obsolete values in EAS separately. Keep `STORYBOOK_ENABLED` unset or `false` in build configs.
 
 After syncing, a cloud build can be submitted from a local shell, for example:
 
@@ -325,7 +327,7 @@ bun run test -- --maxWorkers=4                        # worker-count experiments
 
 Jest caches transformations in `node_modules/.cache/jest`; caching does not skip test execution. Quality restores a compatible cache from earlier runs and saves it after a successful job. Full-suite runs fail if no tests are discovered; the pre-commit related-tests check explicitly allows no matching tests.
 
-Coverage includes application code in `src/` and release tooling in `scripts/`, excluding declarations, tests, test helpers, stories and `*.types.ts` files. Root/native configuration files are outside this scope.
+Coverage includes application code in `src/` and repository scripts in `scripts/`, excluding declarations, tests, test helpers, stories and `*.types.ts` files. Root/native configuration files are outside this scope.
 
 For E2E tests, you can use [Maestro](https://maestro.mobile.dev/) for both OS.
 
@@ -385,15 +387,16 @@ To skip the hooks for one command, use git's own escape hatch (`git commit --no-
 The workflows follow a Git Flow setup with `develop` as the default branch:
 
 - **Quality** runs on new and updated pull requests (against any branch). It checks TypeScript, Biome, and the full Jest suite in one job; a new push to the same PR cancels an older run. It does not run on every branch push. Jest's transformation cache is separate from the dependency cache, keyed by OS/architecture, Node major, lockfile, Jest/Babel/TypeScript configuration and commit, with a compatible-prefix fallback for earlier commits.
+- **PR title** checks that each PR title is a valid conventional commit, since it becomes the squash commit that Release Please reads.
+- **Release** runs on pushes to `develop` and maintains the release PR (see below).
+- **Dependabot** (`.github/dependabot.yml`) opens one weekly PR updating the GitHub Actions, which are pinned to commit SHAs. It skips releases younger than 3 days.
 - **Cache Bun dependencies** warms the shared dependency cache on pushes to `develop` and when its workflow or the shared setup action changes in a PR. Quality and the development build restore that cache and still run `bun install --frozen-lockfile`. The Node/Bun setup, cache restore, and install steps live in `.github/actions/setup-dependencies/action.yml`.
 
 ### Tagging and releasing
 
-1. On a clean branch from `develop`, run `bun run release:prepare` (choose `major`, `minor`, or `patch`). Review and commit the updated `package.json` and `CHANGELOG.md`, then merge to `develop`.
-2. Build and submit the merged commit to both stores. If changes are needed, commit the fix, rerun `bun run release:prepare` **without a release type** to refresh the changelog without bumping again, commit and merge it, then build the new merged commit.
-3. After both builds are approved, run **Release approved build** from `develop` with the full SHA of the approved merged commit. It tags that commit and creates the GitHub release. Rerun with the same SHA if publishing fails.
+Releases are automated with [Release Please](https://github.com/googleapis/release-please), driven by the conventional commit titles of squash-merged PRs. The **Release** workflow keeps a release PR open with the next version and its `CHANGELOG.md` entry. Build and submit that PR's head commit, and merge it only once both stores have approved the version: merging bumps `package.json`, tags the commit and creates the GitHub release. The workflow needs a `RELEASE_PLEASE_TOKEN` repository secret.
 
-Use `fix(security)` and `chore(deps)`/`build(deps)` for the Security and Dependency Updates sections. Commit version/changelog-only changes as `chore(release): ...` so they stay out of future changelog refreshes. `release:prepare` does not commit or tag. Store approval is checked by the person running the workflow, not by GitHub Actions; no EAS build IDs are required.
+See [Releases, store submissions and OTA updates](docs/guides/releasing.md) for the full process, including store rejections and OTA hotfixes.
 
 ### Building the development app
 

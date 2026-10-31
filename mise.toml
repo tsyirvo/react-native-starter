@@ -1,7 +1,7 @@
 [tools]
 node = "26"
-bun = "1.4.0"
-"npm:eas-cli" = "23"
+bun = "1.4.4"
+"npm:eas-cli" = "27"
 "npm:agent-device" = "0.21.31"
 hk = "2.4.0"
 gitleaks = "8.30.1"

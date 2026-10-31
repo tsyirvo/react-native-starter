@@ -1,7 +1,5 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ## [2.2.0](https://github.com/tsyirvo/react-native-starter/compare/v2.1.0...v2.2.0) (2025-06-20)
 
 
