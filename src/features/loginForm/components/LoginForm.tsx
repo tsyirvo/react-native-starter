@@ -6,8 +6,9 @@ import { type TextInputInstance, View } from 'react-native';
 
 import type { UserLogin } from '$domain/entities';
 import { Logger } from '$infra/logger';
-import { Button, Stack } from '$shared/uiKit';
+import { Button } from '$shared/uiKit/button';
 import { Input } from '$shared/uiKit/input';
+import { Stack } from '$shared/uiKit/primitives';
 
 import { type LoginFormData, loginFormSchema } from '../utils';
 

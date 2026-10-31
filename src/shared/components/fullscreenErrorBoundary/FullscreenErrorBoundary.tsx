@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { ErrorMonitoring } from '$infra/monitoring';
-import { Box, Button, Stack, Text } from '$shared/uiKit';
+import { Button } from '$shared/uiKit/button';
+import { Box, Stack, Text } from '$shared/uiKit/primitives';
 
 export const FullscreenErrorBoundary = () => {
   const { t } = useTranslation();

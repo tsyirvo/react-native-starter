@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { Logger } from '$infra/logger';
-import { Box, Button, Text } from '$shared/uiKit';
+import { Button } from '$shared/uiKit/button';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 import { useRequestPermission } from '../hooks';
 

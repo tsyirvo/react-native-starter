@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { FeatureFlagSplitter } from '$infra/featureFlags';
-import { Box, Stack, Text } from '$shared/uiKit';
+import { Box, Stack, Text } from '$shared/uiKit/primitives';
 
 interface MaintenanceModeProps {
   testID?: string;

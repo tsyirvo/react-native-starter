@@ -3,7 +3,9 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { StorybookItem } from '$shared/components';
-import { Stack, Text as TextPrimitive } from '$shared/uiKit';
+
+import { Stack } from '../Stack';
+import { Text as TextPrimitive } from '../Text';
 
 const meta = {
   component: View,

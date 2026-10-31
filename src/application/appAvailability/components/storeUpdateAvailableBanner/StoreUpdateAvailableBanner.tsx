@@ -4,7 +4,8 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import { config, IS_IOS } from '$infra/config';
 import { Logger } from '$infra/logger';
-import { Button, Stack, Text } from '$shared/uiKit';
+import { Button } from '$shared/uiKit/button';
+import { Stack, Text } from '$shared/uiKit/primitives';
 
 export const StoreUpdateAvailableBanner = () => {
   const { t } = useTranslation();

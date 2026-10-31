@@ -9,7 +9,8 @@ import {
 } from '$application/appAvailability';
 import { Notifications } from '$features/notifications';
 import { Screen } from '$shared/components';
-import { Box, Button, Stack, Text } from '$shared/uiKit';
+import { Button } from '$shared/uiKit/button';
+import { Box, Stack, Text } from '$shared/uiKit/primitives';
 
 const FeaturesScreen = () => {
   const { t } = useTranslation();

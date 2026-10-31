@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Box } from '$shared/uiKit';
+import { Box } from '$shared/uiKit/primitives';
 
 import { useBootstrapApp } from '../../hooks';
 

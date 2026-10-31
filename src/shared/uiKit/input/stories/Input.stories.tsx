@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import type { ComponentProps } from 'react';
 import { StyleSheet } from 'react-native-unistyles';
 
-import { Box } from '$shared/uiKit';
+import { Box } from '$shared/uiKit/primitives';
 
 import { Input as InputComponent } from '../Input';
 

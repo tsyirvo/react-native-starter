@@ -3,8 +3,10 @@ import { Alert, ScrollView } from 'react-native';
 
 import { ScreenInteractiveMarker } from '$infra/monitoring';
 import { drawables } from '$shared/icons';
-import type { ScreenTitleToolbarItem } from '$shared/uiKit';
-import { Box, ScreenTitle, Separator, Stack, Text } from '$shared/uiKit';
+import { Box, Stack, Text } from '$shared/uiKit/primitives';
+import type { ScreenTitleToolbarItem } from '$shared/uiKit/screenTitle';
+import { ScreenTitle } from '$shared/uiKit/screenTitle';
+import { Separator } from '$shared/uiKit/separator';
 
 const SHOWCASE_SECTIONS = [
   'largeTitle',

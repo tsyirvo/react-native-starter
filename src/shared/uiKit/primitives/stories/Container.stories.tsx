@@ -3,7 +3,10 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { StorybookItem } from '$shared/components';
-import { Box as ContainerPrimitive, Stack, Text } from '$shared/uiKit';
+
+import { Box as ContainerPrimitive } from '../Box';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
 
 const meta = {
   component: View,

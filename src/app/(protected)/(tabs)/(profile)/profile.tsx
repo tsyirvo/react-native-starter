@@ -2,7 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import { useAuthContext } from '$application/auth';
 import { Screen } from '$shared/components';
-import { Button, Stack, Text } from '$shared/uiKit';
+import { Button } from '$shared/uiKit/button';
+import { Stack, Text } from '$shared/uiKit/primitives';
 
 const ProfileScreen = () => {
   const { t } = useTranslation();

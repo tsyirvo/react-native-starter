@@ -10,7 +10,8 @@ import {
 } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { useRunOnMount } from '$shared/hooks';
-import { Box, Button, Stack, Text } from '$shared/uiKit';
+import { Button } from '$shared/uiKit/button';
+import { Box, Stack, Text } from '$shared/uiKit/primitives';
 import { isVersionAtLeast } from '$shared/utils';
 
 export const AppUpdateNeeded = () => {

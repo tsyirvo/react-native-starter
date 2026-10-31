@@ -80,6 +80,14 @@ folders that you need. `application/appAvailability/` is a good reference.
   module root exports only the public API. Code in a module does not import
   from its own module root. Contexts and modules that are sensitive to
   initialization order can use direct imports.
+- **UI kit imports:** `shared/uiKit/` has no root `index.ts`. Import each
+  component group from its own entry, for example
+  `$shared/uiKit/primitives`. A root barrel loads the dependencies of all
+  components, such as `expo-router` and `expo-image`, into each test. Biome
+  reports an import from `$shared/uiKit`.
+- **Mocks:** tests mock module roots such as `$infra/logger`. Import those
+  modules from their root, not from a file in the module. A `jest.mock` call
+  replaces only the path that it names.
 - **Routes:** do not add these folders under `src/app/`. Name route files in
   kebab-case, because they become URL segments.
 - **Generated files:** do not edit generated files, for example the icon font
