@@ -1,7 +1,7 @@
-import isEqual from 'lodash.isequal';
 import { useEffect, useRef } from 'react';
 
 import { Logger } from '$infra/logger';
+import { isDeepEqual } from '$shared/utils';
 
 interface Props {
   onChangeFound?: (data: {
@@ -60,7 +60,7 @@ export const useWhyDidYouUpdate = (
                   .filter(Boolean)
               : undefined,
           from: latestProps.current[key],
-          isDeepEqual: isEqual(latestProps.current[key], props[key]),
+          isDeepEqual: isDeepEqual(latestProps.current[key], props[key]),
           to: props[key],
         };
       }

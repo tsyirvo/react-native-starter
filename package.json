@@ -66,11 +66,10 @@
   },
   "dependencies": {
     "@expo/ui": "~58.0.21",
-    "@formatjs/intl-getcanonicallocales": "3.1.2",
     "@hookform/resolvers": "5.2.2",
     "@legendapp/list": "3.5.0",
     "@legendapp/state": "3.0.0-beta.48",
-    "@react-native-async-storage/async-storage": "2.2.0",
+    "@posthog/react-native-plugin": "2.12.6",
     "@sentry/react-native": "~8.28.0",
     "@tanstack/query-async-storage-persister": "5.90.18",
     "@tanstack/react-query": "5.90.16",
@@ -83,7 +82,6 @@
     "expo-constants": "~58.0.12",
     "expo-dev-client": "~58.0.14",
     "expo-device": "~58.0.5",
-    "expo-file-system": "~58.0.10",
     "expo-font": "~58.0.9",
     "expo-glass-effect": "~58.0.4",
     "expo-haptics": "~58.0.7",
@@ -101,18 +99,12 @@
     "expo-updates": "~58.0.17",
     "i18next": "25.7.3",
     "intl-pluralrules": "2.0.1",
-    "lodash.debounce": "4.0.8",
-    "lodash.isequal": "4.5.0",
-    "lodash.isnil": "4.0.0",
     "posthog-react-native": "4.66.2",
-    "posthog-react-native-session-replay": "^1.6.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "react-error-boundary": "6.0.2",
     "react-hook-form": "7.70.0",
     "react-i18next": "16.5.1",
     "react-native": "0.88.0",
-    "react-native-device-info": "15.0.2",
     "react-native-gesture-handler": "~3.3.0",
     "react-native-keyboard-controller": "1.22.7",
     "react-native-mmkv": "4.3.2",
@@ -127,7 +119,6 @@
     "react-native-toast-message": "2.3.3",
     "react-native-unistyles": "3.3.0",
     "react-native-worklets": "0.13.0",
-    "semver": "7.7.3",
     "zod": "4.3.5"
   },
   "devDependencies": {
@@ -142,14 +133,9 @@
     "@storybook/react-native": "10.7.0",
     "@testing-library/react-native": "13.3.3",
     "@types/jest": "30.0.0",
-    "@types/lodash.debounce": "4.0.9",
-    "@types/lodash.isequal": "4.5.8",
-    "@types/lodash.isnil": "4.0.9",
     "@types/node": "26.4.0",
     "@types/react": "~19.3.0",
-    "@types/semver": "7.7.1",
     "babel-plugin-transform-remove-console": "6.9.4",
-    "dotenv": "17.2.3",
     "jest": "~30.5.2",
     "jest-expo": "~58.0.11",
     "react-test-renderer": "19.3.0",
@@ -162,9 +148,6 @@
   "expo": {
     "doctor": {
       "reactNativeDirectoryCheck": {
-        "exclude": [
-          "posthog-react-native-session-replay"
-        ],
         "listUnknownPackages": false
       }
     }

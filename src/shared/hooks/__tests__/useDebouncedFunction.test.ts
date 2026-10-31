@@ -95,4 +95,18 @@ describe('useDebouncedFunction', () => {
 
     expect(callback).toHaveBeenCalledTimes(1);
   });
+
+  it('should drop a pending trailing call on unmount', () => {
+    const callback = jest.fn();
+    const { result, unmount } = renderHook(() =>
+      useDebouncedFunction(callback, 500, { leading: false, trailing: true }),
+    );
+
+    result.current();
+    unmount();
+
+    jest.advanceTimersByTime(500);
+
+    expect(callback).not.toHaveBeenCalled();
+  });
 });

@@ -4,7 +4,9 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { stdin, stdout } from 'node:process';
 import { createInterface } from 'node:readline/promises';
-import semver from 'semver';
+
+// Direct file import: the `$shared/utils` barrel pulls in React Native modules.
+import { isVersionBelow } from '../src/shared/utils/versions';
 
 const RELEASE_HEADING = /^## /m;
 
@@ -77,7 +79,7 @@ if (currentVersion === previousTag.slice(1)) {
   const tag = `v${currentVersion}`;
   if (
     argument ||
-    !semver.gt(currentVersion, previousTag.slice(1)) ||
+    !isVersionBelow(previousTag, currentVersion) ||
     git('tag', '--list', tag)
   ) {
     throw new Error(

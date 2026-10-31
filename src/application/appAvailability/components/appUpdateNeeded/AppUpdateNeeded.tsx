@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import semverGte from 'semver/functions/gte';
 
 import { config, IS_IOS } from '$infra/config';
 import {
@@ -12,6 +11,7 @@ import {
 import { Logger } from '$infra/logger';
 import { useRunOnMount } from '$shared/hooks';
 import { Box, Button, Stack, Text } from '$shared/uiKit';
+import { isVersionAtLeast } from '$shared/utils';
 
 export const AppUpdateNeeded = () => {
   const [isAppSupported, setIsAppSupported] = useState(true);
@@ -31,7 +31,10 @@ export const AppUpdateNeeded = () => {
 
     const lastSupportedAppVersion = payload.version;
 
-    const isSupported = semverGte(config.version, lastSupportedAppVersion);
+    const isSupported = isVersionAtLeast(
+      config.version,
+      lastSupportedAppVersion,
+    );
 
     setIsAppSupported(isSupported);
   });
