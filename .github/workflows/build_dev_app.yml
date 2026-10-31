@@ -42,4 +42,4 @@ jobs:
       - name: EAS Build
         env:
           DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
-        run: doppler run --config dev -- env APP_ENV=development EXPO_NO_DOTENV=1 eas build --platform all --non-interactive --profile development --no-wait
+        run: doppler run -- eas build --platform all --non-interactive --profile development --no-wait

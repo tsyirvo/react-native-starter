@@ -3,7 +3,7 @@
 ## Dependency and native changes
 
 - Read `package.json`, `bun.lock`, `mise.toml`, `app.config.ts`, `eas.json`, Babel and Metro configuration before changing their behavior.
-- Use Bun. For Expo-managed packages, use `bunx expo install <package>` so the installed SDK determines compatible versions.
+- Use Bun. For Expo-managed packages, use `bun expo install <package>`. Then the installed SDK selects the compatible versions. The `expo` script supplies the Doppler values that `app.config.ts` needs.
 - `bunfig.toml` blocks package versions younger than 3 days. Do not lower `minimumReleaseAge`; if a newer version is required, explain why and add only that exact `name@version` to `minimumReleaseAgeExcludes` with approval.
 - Load `expo-upgrade` for an explicitly requested SDK upgrade; pick the target deliberately instead of blindly installing latest.
 - Preserve existing custom Babel/Metro configuration and required peers.

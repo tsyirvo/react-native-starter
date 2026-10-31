@@ -34,8 +34,8 @@ correct `node` and `bun` each time you open the directory, add the
 If you do not use the activation, put `mise exec --` before each command, for
 example `mise exec -- bun install`.
 
-You can also work without mise. In that case, install Node 26 or later and
-Bun 1.4.4 or later. Each mise task has an equivalent `bun run` script.
+You can also work without mise. In that case, install these tools: Node 26
+or later, Bun 1.4.4 or later, EAS CLI and hk.
 
 ## Install the packages
 
@@ -53,20 +53,29 @@ The app uses Doppler for all environment values. There are no runtime `.env`
 files.
 
 1. Log in: `doppler login`.
-2. Select your project: `doppler setup`.
+2. Run `doppler setup`. `doppler.yaml` selects the project and the `dev`
+   config. Thus, the command does not ask questions. In a new git worktree,
+   the `post-checkout` git hook runs this command for you.
 3. In Doppler, create the `dev`, `stg` and `prd` configs.
 4. Add each variable from [`.env.example`](../../.env.example) to each config.
-   Do not leave a value empty.
+   Do not leave a value empty. Set `APP_ENV` to `development` in `dev`,
+   `staging` in `stg` and `production` in `prd`.
 
 The app does not start if a required variable is missing or empty. The CLI
 shows the name of each missing variable. The variables are for these services:
 
+- The app variant (`APP_ENV`)
 - Expo and EAS
 - Sentry
 - PostHog
 - RevenueCat
 
 Read [Environments](environments.md) for the full configuration.
+
+Expo and EAS CLI commands also need the secrets. To run these commands, use
+the `expo` and `eas` scripts, for example `bun expo prebuild` or
+`bun eas build:list`. Read
+[Run Expo and EAS CLI commands](environments.md#run-expo-and-eas-cli-commands).
 
 ## Run the app
 
@@ -152,33 +161,26 @@ Your EAS project keeps the uploaded builds and the fingerprint sources. Each
 build contains the client configuration from Doppler. An EAS development build
 contains the same configuration.
 
-## Tasks with mise
+## Scripts
 
-`mise.toml` declares tasks for the common workflows. Each task calls a
-`package.json` script, so the two entry points do the same thing.
+All the scripts are in `package.json`. To run a script, use
+`bun run <script>`. mise installs only the toolchain and the git hooks.
 
-To list all the tasks, run `mise tasks`. To run a task, use `mise run <task>`
-or its short alias:
+| Group     | Scripts                                                                      |
+| --------- | ---------------------------------------------------------------------------- |
+| App       | `start`, `run:dev:ios`, `run:dev:android`, `start:storybook`                 |
+| CLIs      | `expo`, `eas` (the Expo and EAS CLIs with the Doppler values)                |
+| Builds    | `build:stg:ios`, `build:stg:android`, `build:prod:ios`, `build:prod:android` |
+| Quality   | `lint`, `lint:ci`, `lint:ts`, `format`, `format:check`, `ci`                 |
+| Tests     | `test`, `test:coverage`, `test:e2e`                                          |
+| Git hooks | `hooks:install`, `hooks:check`, `hooks:fix`                                  |
+| Utilities | `clean`, `generate:icons`, `perf:bundle`                                     |
 
-```sh
-mise run check:fix     # or: mise cf
-mise run typecheck     # or: mise tc
-mise run test          # or: mise t
-```
-
-| Group     | Tasks                                                                                            |
-| --------- | ------------------------------------------------------------------------------------------------ |
-| Quality   | `lint`, `lint:fix`, `format`, `format:fix`, `check`, `check:fix`, `check:ci`, `typecheck`, `fix` |
-| Tests     | `test`, `test:coverage`, `test:e2e`, `ci`                                                        |
-| Git hooks | `hooks:install`, `hooks:check`, `hooks:fix`, `hooks:pre-commit`, `hooks:pre-push`                |
-| Utilities | `clean`                                                                                          |
-
-- `ci` runs `typecheck`, `check:ci` and `test`. The Quality workflow runs the
+- `lint` and `format` change files. `lint:ci` and `format:check` do not.
+- `clean` removes the Watchman state, `.expo`, `coverage` and the full
+  `node_modules` folder. Run `bun install` after `clean`.
+- `ci` runs `lint:ts`, `lint:ci` and `test`. The Quality workflow runs the
   same checks.
-- `fix` runs all the tasks that change files. It runs them one after the other,
-  because they write to the same files.
-- Other tasks that have dependencies run their independent dependencies in
-  parallel.
 
 ## Next steps
 

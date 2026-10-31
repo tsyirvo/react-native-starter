@@ -120,14 +120,15 @@ bun run build:prod:android   # writes build-<timestamp>.aab in the repo root
 Submit the files with the `production` submit profile:
 
 ```sh
-doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
-  eas submit --platform ios --profile production --path build-<timestamp>.ipa
-doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
-  eas submit --platform android --profile production --path build-<timestamp>.aab
+DOPPLER_CONFIG=prd bun eas submit --platform ios --profile production \
+  --path build-<timestamp>.ipa
+DOPPLER_CONFIG=prd bun eas submit --platform android --profile production \
+  --path build-<timestamp>.aab
 ```
 
-These commands need Doppler, because EAS CLI reads `app.config.ts`, and
-`app.config.ts` checks the environment values. Git ignores the build files.
+These commands use the `eas` script. This script runs EAS CLI with
+`doppler run`. EAS CLI reads `app.config.ts`, and `app.config.ts` checks the
+environment values. Git ignores the build files.
 Delete them after you submit them.
 
 About the `production` submit profile in `eas.json`:
@@ -147,8 +148,7 @@ environment. Read [Environments](environments.md#cloud-builds). Then build and
 submit in one step:
 
 ```sh
-doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
-  eas build --profile production --platform all --auto-submit
+DOPPLER_CONFIG=prd bun eas build --profile production --platform all --auto-submit
 ```
 
 Cloud builds and submissions use paid EAS resources.
@@ -189,9 +189,8 @@ all the earlier hotfixes for that version.
 git switch -c hotfix/<name> v2.3.0   # subsequent hotfixes: hotfix/<previous-name>
 bun install --frozen-lockfile        # use the released dependencies
 # apply and commit the fix
-doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
-  eas update --channel production --environment production \
-  --message "fix: <description>"
+DOPPLER_CONFIG=prd bun eas update --channel production \
+  --environment production --message "fix: <description>"
 ```
 
 The update gets its runtime version from `package.json` (`2.3.0` on the tag).
