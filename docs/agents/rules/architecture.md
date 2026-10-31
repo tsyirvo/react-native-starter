@@ -25,6 +25,13 @@ barrels expose only the intended public API; internal imports stay local.
 Context definitions and initialization-sensitive dependencies can use direct
 imports to avoid cycles. Do not replace this with a blanket no-barrels rule.
 
+Barrels cost Jest time when they join cheap exports with exports that load
+heavy packages, because Jest has no tree shaking. `src/shared/uiKit/` therefore
+has no root barrel: import each component group from its entry, such as
+`$shared/uiKit/primitives` or `$shared/uiKit/button` (Biome enforces this).
+Keep module-root barrels in `infra`, `application`, `features` and `domain`.
+Tests mock those paths with `jest.mock`, and a deep import skips the mock.
+
 ## Assets
 
 Register image and media assets in the `$assets`/`Assets` entry point

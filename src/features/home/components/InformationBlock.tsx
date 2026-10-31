@@ -1,4 +1,4 @@
-import { Stack, Text } from '$shared/uiKit';
+import { Stack, Text } from '$shared/uiKit/primitives';
 
 interface InformationBlockProps {
   content: string;

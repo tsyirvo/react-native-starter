@@ -9,7 +9,8 @@ import { Assets } from '$assets';
 import type { UserLogin } from '$domain/entities';
 import { LoginForm } from '$features/loginForm';
 import { Screen } from '$shared/components';
-import { Box, Image, Stack, Text } from '$shared/uiKit';
+import { Image } from '$shared/uiKit/image';
+import { Box, Stack, Text } from '$shared/uiKit/primitives';
 
 const Login = () => {
   const router = useRouter();

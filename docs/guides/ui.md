@@ -6,7 +6,9 @@ This guide covers styles, icons, images, translations and Storybook.
 
 The app uses [Unistyles](https://www.unistyl.es/) for styles and themes. The
 theme is in `src/shared/theme/`. Reusable UI components are in
-`src/shared/uiKit/` and `src/shared/components/`.
+`src/shared/uiKit/` and `src/shared/components/`. Import a UI kit component
+from its group entry, for example `$shared/uiKit/primitives` or
+`$shared/uiKit/button`. The UI kit has no root entry.
 
 ## Icons
 

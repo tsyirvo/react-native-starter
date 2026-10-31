@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { Separator, Stack, Text } from '$shared/uiKit';
+import { Stack, Text } from '$shared/uiKit/primitives';
+import { Separator } from '$shared/uiKit/separator';
 
 import { InformationBlock } from './InformationBlock';
 

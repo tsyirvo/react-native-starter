@@ -2,7 +2,7 @@ import { ScrollView } from 'react-native';
 
 import { Header, Informations, Version } from '$features/home';
 import { Screen } from '$shared/components';
-import { Stack } from '$shared/uiKit';
+import { Stack } from '$shared/uiKit/primitives';
 
 const HomeTabScreen = () => (
   <Screen edges={['top']}>

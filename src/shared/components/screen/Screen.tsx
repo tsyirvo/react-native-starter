@@ -4,7 +4,8 @@ import { StyleSheet } from 'react-native-unistyles';
 
 import { ScreenInteractiveMarker } from '$infra/monitoring';
 import type { ThemeColors, ThemeSpacing } from '$shared/theme';
-import { Box, SafeView } from '$shared/uiKit';
+import { Box } from '$shared/uiKit/primitives';
+import { SafeView } from '$shared/uiKit/safeView';
 
 interface ScreenProps {
   bg?: ThemeColors;

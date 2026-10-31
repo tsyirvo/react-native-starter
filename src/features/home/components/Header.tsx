@@ -2,7 +2,8 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { Assets } from '$assets';
-import { Box, Image, Text } from '$shared/uiKit';
+import { Image } from '$shared/uiKit/image';
+import { Box, Text } from '$shared/uiKit/primitives';
 
 export const Header = () => (
   <View style={styles.container}>

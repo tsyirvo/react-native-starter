@@ -94,11 +94,13 @@
           }
         },
         // Shared client state lives behind `$infra/store` hooks and actions.
+        // The UI kit has no root barrel: it would load every component's
+        // dependencies (expo-router, expo-image…) into each Jest test.
         "noRestrictedImports": {
           "level": "error",
           "options": {
             "paths": {
-              "zustand": "Use the Legend State store from `$infra/store`."
+              "$shared/uiKit": "Import from the component entry, for example `$shared/uiKit/primitives` or `$shared/uiKit/button`."
             },
             "patterns": [
               {
@@ -191,7 +193,7 @@
               "level": "error",
               "options": {
                 "paths": {
-                  "zustand": "Use Legend State observables.",
+                  "$shared/uiKit": "Import from the component entry, for example `$shared/uiKit/primitives`.",
                   "@legendapp/state/react": {
                     "importNames": ["observer", "reactiveObserver"],
                     "message": "Read observables with `useValue`; `observer` is incompatible with React Compiler."

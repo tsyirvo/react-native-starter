@@ -3,7 +3,10 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { StorybookItem } from '$shared/components';
-import { Row as RowPrimitive, Stack, Text } from '$shared/uiKit';
+
+import { Row as RowPrimitive } from '../Row';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
 
 const meta = {
   component: View,
