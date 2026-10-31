@@ -72,6 +72,7 @@ const monthlyPackage: PurchasesPackage = {
     description: 'Premium subscription',
     discounts: null,
     identifier: 'premium-monthly',
+    installmentsInfo: null,
     introPrice: null,
     presentedOfferingContext: null,
     presentedOfferingIdentifier: 'default',

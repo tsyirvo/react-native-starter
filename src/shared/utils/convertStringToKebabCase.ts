@@ -1,2 +1,4 @@
 export const convertStringToKebabCase = (inputString: string) =>
-  inputString.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+  inputString
+    .replace(/(?<lower>[a-z0-9])(?<upper>[A-Z])/gu, '$<lower>-$<upper>')
+    .toLowerCase();
