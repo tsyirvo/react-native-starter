@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.4.0](https://github.com/tsyirvo/react-native-starter/compare/v2.3.0...v2.4.0) (2026-10-31)
+
+
+### Features
+
+* setup EAS dev build caching ([#501](https://github.com/tsyirvo/react-native-starter/issues/501)) ([746dd6f](https://github.com/tsyirvo/react-native-starter/commit/746dd6f2f5164f128f86fcf0a81178c24be4f8f4))
+
+
+### Other Changes
+
+* cleanup scripts & doppler usage ([#503](https://github.com/tsyirvo/react-native-starter/issues/503)) ([28a725b](https://github.com/tsyirvo/react-native-starter/commit/28a725b9ee9b792d4cdd115487440f0ac219539f))
+* enforce noConsole with Biome instead of stripping logs with Babel ([#505](https://github.com/tsyirvo/react-native-starter/issues/505)) ([5cc6b4a](https://github.com/tsyirvo/react-native-starter/commit/5cc6b4af82cb7c808fced67621036345b786df85))
+* remove the uiKit root barrel ([#504](https://github.com/tsyirvo/react-native-starter/issues/504)) ([3584379](https://github.com/tsyirvo/react-native-starter/commit/3584379684d9377464cb3f8ef3243b65518f0dfa))
+
 ## [2.3.0](https://github.com/tsyirvo/react-native-starter/compare/v2.2.0...v2.3.0) (2026-10-31)
 
 
