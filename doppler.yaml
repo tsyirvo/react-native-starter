@@ -1,0 +1,6 @@
+# Lets `doppler setup` select the project and the default config without
+# prompting. Scripts that target staging or production pass `--config`.
+setup:
+  - project: rn-starter
+    config: dev
+    path: .

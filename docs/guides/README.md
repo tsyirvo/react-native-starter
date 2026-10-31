@@ -5,7 +5,7 @@ Start with [Getting started](getting-started.md).
 
 | Guide                                 | Contents                                                          |
 | ------------------------------------- | ----------------------------------------------------------------- |
-| [Getting started](getting-started.md) | Prerequisites, toolchain, secrets, run the app, mise tasks        |
+| [Getting started](getting-started.md) | Prerequisites, toolchain, secrets, run the app, scripts           |
 | [Architecture](architecture.md)       | Layers, import rules, auth and purchases, folder conventions      |
 | [Environments](environments.md)       | Doppler, app variants, configuration validation, EAS cloud builds |
 | [UI](ui.md)                           | Styles, icons, images, translations, Storybook                    |

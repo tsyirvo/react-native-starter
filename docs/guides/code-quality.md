@@ -48,7 +48,7 @@ for you, through the `[hooks] postinstall` entry in `mise.toml`. To install
 them again, run:
 
 ```sh
-mise run hooks:install     # or: bun run hooks:install
+bun run hooks:install
 ```
 
 `hk.pkl` declares all the hooks.
@@ -90,7 +90,24 @@ that the commit did not change, so it can miss some errors.
   seconds, before the tests start.
 
 To run the same checks manually, use `hk check --all` or
-`mise run hooks:check`.
+`bun run hooks:check`.
+
+### post-checkout
+
+This hook runs when you check out a branch. `git worktree add` also runs it, in
+the new worktree.
+
+Doppler keeps its setup for each directory and its subdirectories. Thus, a
+worktree outside the main checkout does not have a setup. The hook runs `scripts/setup-doppler.sh`. This script runs
+`doppler setup` with the project and the config from `doppler.yaml`.
+
+- If the directory already has a Doppler setup, the script does nothing.
+- If the Doppler CLI is not installed, the script does nothing.
+- If `doppler setup` fails, the script shows a warning. The checkout does not
+  fail. Run `doppler login`, then `doppler setup`.
+
+If you cloned the repository before this hook existed, run
+`bun run hooks:install` one time.
 
 ### Skip a hook
 

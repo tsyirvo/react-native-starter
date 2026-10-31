@@ -101,6 +101,17 @@ hooks {
     steps = fullChecks
   }
 
+  // `git worktree add` runs post-checkout in the new worktree. Doppler keeps its
+  // setup per directory, so each new worktree needs its own `doppler setup`.
+  ["post-checkout"] {
+    steps {
+      ["doppler-setup"] {
+        step_condition = "is_branch_checkout"
+        check = "sh scripts/setup-doppler.sh"
+      }
+    }
+  }
+
   // Override the shared steps for whole-repo, read-only checks.
   // Add `--all` to `hk check` for the whole repo.
   ["check"] {

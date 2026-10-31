@@ -99,6 +99,12 @@ describe('injected environment configuration', () => {
     expect(result.stderr).toContain(key);
   });
 
+  it('rejects a missing app environment', () => {
+    const result = run(envArgs, { APP_ENV: undefined });
+    expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain('APP_ENV');
+  });
+
   it('rejects an unknown app environment', () => {
     const result = run(envArgs, { APP_ENV: 'preview' });
     expect(result.status).not.toBe(0);
