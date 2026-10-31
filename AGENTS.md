@@ -9,7 +9,7 @@ Keep shared guidance here; client files are optional adapters, not separate sour
 - Use Bun for package installation and scripts; never use `bun test` (it runs the wrong test runner).
 - Read `package.json`, `bun.lock` and `mise.toml` for dependency/toolchain versions.
 - Setup: `mise trust`, `mise install`, then `bun install --frozen-lockfile`.
-- Development: `bun run start:dev` requires Doppler, local secrets and a development build.
+- Development: `bun run start` requires Doppler, local secrets and a development build.
 - Final checks: `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test`.
 - Focused tests: `bun run test -- --runTestsByPath <test-file>`.
 - `bun run lint` and `bun run format` write files. Scope fixes to your changes and inspect the diff.
