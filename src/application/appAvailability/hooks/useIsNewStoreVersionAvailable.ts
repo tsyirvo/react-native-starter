@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import semverLt from 'semver/functions/lt';
 
 import { config } from '$infra/config';
 import {
@@ -7,6 +6,7 @@ import {
   type VersionFlagType,
 } from '$infra/featureFlags';
 import { useRunOnMount } from '$shared/hooks';
+import { isVersionBelow } from '$shared/utils';
 
 export const useIsNewStoreVersionAvailable = () => {
   const [shouldShowBanner, setShouldShowBanner] = useState(false);
@@ -24,7 +24,7 @@ export const useIsNewStoreVersionAvailable = () => {
 
     const latestReleasedVersion = payload.version;
 
-    const isCurrentAppBelowStoreVersion = semverLt(
+    const isCurrentAppBelowStoreVersion = isVersionBelow(
       config.version,
       latestReleasedVersion,
     );

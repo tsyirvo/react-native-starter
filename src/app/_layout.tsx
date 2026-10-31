@@ -1,4 +1,4 @@
-import '@formatjs/intl-getcanonicallocales/polyfill.js';
+// Hermes lacks Intl.PluralRules, which i18next needs for plural keys.
 import 'intl-pluralrules';
 
 import '../infra/i18n';
@@ -8,8 +8,7 @@ import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client
 import { ObserveRoot } from 'expo-observe';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { type ErrorInfo, StrictMode } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
+import { StrictMode } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import type { StackAnimationTypes } from 'react-native-screens';
@@ -45,18 +44,6 @@ import {
 
 ObserveMonitoring.init();
 ErrorMonitoring.init();
-
-const onGlobalError = (error: Error, errorInfo: ErrorInfo) => {
-  ErrorMonitoring.breadcrumbs({
-    data: {
-      componentStack: errorInfo,
-    },
-    level: 'error',
-    type: 'error',
-  });
-
-  ErrorMonitoring.exception(error);
-};
 
 const ProtectedNavigator = () => {
   const { user } = useAuthContext();
@@ -100,10 +87,7 @@ const RootLayout = () => {
           persistOptions={persistOptions}
         >
           <ProductTrackingProvider>
-            <ErrorBoundary
-              FallbackComponent={FullscreenErrorBoundary}
-              onError={onGlobalError}
-            >
+            <Sentry.ErrorBoundary fallback={<FullscreenErrorBoundary />}>
               <Splashscreen>
                 <KeyboardProvider>
                   <AuthContextProvider>
@@ -121,7 +105,7 @@ const RootLayout = () => {
                   </AuthContextProvider>
                 </KeyboardProvider>
               </Splashscreen>
-            </ErrorBoundary>
+            </Sentry.ErrorBoundary>
           </ProductTrackingProvider>
         </PersistQueryClientProvider>
       </GestureHandlerRootView>

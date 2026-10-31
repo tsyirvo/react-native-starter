@@ -1,23 +1,32 @@
-import debounce from 'lodash.debounce';
 import { useEffect, useMemo, useRef } from 'react';
 
-type DebounceFn = typeof debounce;
+import {
+  type DebouncedFunction,
+  type DebounceOptions,
+  debounce,
+} from '$shared/utils';
 
-export const useDebouncedFunction: DebounceFn = (
-  fn,
+export const useDebouncedFunction = <Args extends unknown[]>(
+  fn: (...args: Args) => unknown,
   wait = 500,
-  { maxWait, leading = true, trailing = false } = {},
-) => {
+  { leading = true, trailing = false }: DebounceOptions = {},
+): DebouncedFunction<Args> => {
   const fnRef = useRef(fn);
 
   useEffect(() => {
     fnRef.current = fn;
   }, [fn]);
 
-  return useMemo(() => {
-    const wrappedFn = (...args: Parameters<typeof fn>) =>
-      fnRef.current(...args);
+  const debounced = useMemo(
+    () =>
+      debounce((...args: Args) => fnRef.current(...args), wait, {
+        leading,
+        trailing,
+      }),
+    [leading, trailing, wait],
+  );
 
-    return debounce(wrappedFn, wait, { leading, maxWait, trailing });
-  }, [leading, maxWait, trailing, wait]);
+  useEffect(() => debounced.cancel, [debounced]);
+
+  return debounced;
 };
