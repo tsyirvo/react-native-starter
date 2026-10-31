@@ -21,5 +21,11 @@ jobs:
       - env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
+          case "$TITLE" in
+            'fixup! '* | 'squash! '* | 'amend! '*)
+              echo "::error::PR title must not start with fixup!, squash! or amend!"
+              exit 1
+              ;;
+          esac
           printf '%s\n' "$TITLE" > "$RUNNER_TEMP/title"
           hk util check-conventional-commit "$RUNNER_TEMP/title"

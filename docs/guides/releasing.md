@@ -108,9 +108,11 @@ doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
 Doppler is needed because EAS CLI evaluates `app.config.ts`, which validates
 the environment. The build files are gitignored; delete them after submission.
 
-The `production` submit profile in `eas.json` is empty, so EAS CLI asks for the
-store credentials interactively. Add `ascAppId` and `serviceAccountKeyPath` to
-it to submit non-interactively. Google requires the **first** Android upload to
+The `production` submit profile in `eas.json` sends Android builds to the
+Play Console **production** track (EAS defaults to `internal`). With Managed
+publishing on, the build goes to review and waits there until you publish it.
+The profile has no store credentials, so EAS CLI asks for them interactively.
+Add `ascAppId` and `serviceAccountKeyPath` to it to submit non-interactively. Google requires the **first** Android upload to
 be made manually in the Play Console; EAS Submit works for the later ones.
 
 To use EAS cloud builders instead, sync the `prd` config to the EAS
@@ -143,8 +145,12 @@ Use an OTA update only when **all** of these are true:
 Publish from the release tag, not from `develop`, because `develop` can contain
 native changes that the store binary does not have:
 
+An update replaces the whole JavaScript bundle, so each hotfix must contain all
+earlier ones. Branch the first hotfix from the tag. Branch each later hotfix
+from the previous hotfix's last commit (for example `hotfix/<previous-name>`):
+
 ```sh
-git switch -c hotfix/<name> v2.3.0
+git switch -c hotfix/<name> v2.3.0   # later hotfixes: hotfix/<previous-name>
 # apply and commit the fix
 doppler run --config prd -- env APP_ENV=production EXPO_NO_DOTENV=1 \
   eas update --channel production --environment production \
