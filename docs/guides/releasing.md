@@ -22,7 +22,7 @@ is not yet released.
 
 [Release Please](https://github.com/googleapis/release-please) reads the
 conventional commits on `develop` since the last release tag. The **Release**
-workflow keeps one open release PR (`chore: release x.y.z`) up to date on every
+workflow keeps one open release PR (`chore(develop): release x.y.z`) up to date on every
 push to `develop`. It contains the `package.json` bump and the new
 `CHANGELOG.md` entry.
 
@@ -54,7 +54,10 @@ Please owns both.
    commit message to start with the PR title.
 
 A PAT is required because GitHub does not run workflows on PRs opened with
-`GITHUB_TOKEN`, so the release PR would get no CI.
+`GITHUB_TOKEN`, so the release PR would get no CI. Only the **PR title** check
+runs on it: **Quality** skips `release-please--*` branches and CodeRabbit skips
+`chore(develop): release` titles, since the PR only bumps the version and
+changelog.
 
 ## Releasing a store version
 

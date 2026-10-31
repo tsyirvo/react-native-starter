@@ -13,6 +13,9 @@ permissions:
 
 jobs:
   quality:
+    # Skip the Release Please PR: it only bumps the version and changelog.
+    # A skipped job still satisfies a required status check.
+    if: ${{ !startsWith(github.head_ref, 'release-please--') }}
     runs-on: ubuntu-latest
 
     steps:

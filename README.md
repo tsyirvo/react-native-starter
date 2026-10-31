@@ -386,7 +386,7 @@ To skip the hooks for one command, use git's own escape hatch (`git commit --no-
 
 The workflows follow a Git Flow setup with `develop` as the default branch:
 
-- **Quality** runs on new and updated pull requests (against any branch). It checks TypeScript, Biome, and the full Jest suite in one job; a new push to the same PR cancels an older run. It does not run on every branch push. Jest's transformation cache is separate from the dependency cache, keyed by OS/architecture, Node major, lockfile, Jest/Babel/TypeScript configuration and commit, with a compatible-prefix fallback for earlier commits.
+- **Quality** runs on new and updated pull requests (against any branch). It checks TypeScript, Biome, and the full Jest suite in one job; a new push to the same PR cancels an older run. It does not run on every branch push, and skips the Release Please PR. Jest's transformation cache is separate from the dependency cache, keyed by OS/architecture, Node major, lockfile, Jest/Babel/TypeScript configuration and commit, with a compatible-prefix fallback for earlier commits.
 - **PR title** checks that each PR title is a valid conventional commit, since it becomes the squash commit that Release Please reads.
 - **Release** runs on pushes to `develop` and maintains the release PR (see below).
 - **Dependabot** (`.github/dependabot.yml`) opens one weekly PR updating the GitHub Actions, which are pinned to commit SHAs. It skips releases younger than 3 days.
