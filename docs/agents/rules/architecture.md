@@ -1,6 +1,6 @@
 # Architecture and imports
 
-The [README architecture](../../../README.md#architecture) is the ownership and
+The [architecture guide](../../guides/architecture.md) is the ownership and
 folder-layout reference. Preserve that pragmatic design; do not impose a generic
 Clean Architecture template.
 
