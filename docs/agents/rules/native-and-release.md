@@ -10,6 +10,8 @@
 - When React changes, move `test-renderer` to the matching minor line (React 19.3 uses `test-renderer` 1.3) and to the version `jest-expo` installs. Check the React Native Testing Library peer range before you change either package.
 - Native integrations require development builds, not assumptions based on Expo Go.
 - `run:dev:*` scripts use the EAS build cache provider: they can download a matching build and upload new local builds to EAS. Treat an upload as an external mutation: get approval before you run them.
+- Android uploads are recognized as development builds only if the APK contains `assets/EXDevMenuApp.android.js`, which SDK 58 no longer ships. `plugins/withDevClientBuildMarker.js` adds it to debug builds; keep it until eas-cli stops checking for that file.
+- Native projects are generated: change native settings through `app.config.ts`, `expo-build-properties` or a local plugin in `plugins/` (for example, the Gradle JVM heap), not by editing `android/` or `ios/`.
 - Respect repository ignore rules for generated native projects and build outputs. Do not commit them as an incidental change.
 - Do not run `prebuild --clean`, delete caches/dependencies, or remove native projects without explicit approval and a recovery plan.
 

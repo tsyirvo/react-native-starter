@@ -2,6 +2,8 @@ import type { ConfigContext, ExpoConfig } from 'expo/config';
 
 import nanoIconsConfig from './.nanoicons.json';
 import { ClientEnv, Env } from './env';
+import { withAndroidGradleMemory } from './plugins/withAndroidGradleMemory';
+import { withDevClientBuildMarker } from './plugins/withDevClientBuildMarker';
 
 const isProductionEnv = Env.APP_ENV === 'production';
 const isDevelopmentEnv = Env.APP_ENV === 'development';
@@ -72,7 +74,7 @@ const plugins: ExpoConfig['plugins'] = [
   ],
 ];
 
-export default ({ config }: ConfigContext): ExpoConfig => ({
+const getConfig = ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   android: {
     adaptiveIcon: {
@@ -159,3 +161,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   userInterfaceStyle: 'dark',
   version: Env.VERSION,
 });
+
+export default (context: ConfigContext): ExpoConfig =>
+  withDevClientBuildMarker(withAndroidGradleMemory(getConfig(context)));
