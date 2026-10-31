@@ -9,6 +9,8 @@ Do not add a new port simply to wrap one existing adapter.
 
 Handle failures through the existing logger/monitoring APIs with useful,
 non-sensitive context. Never log tokens, credentials or customer payloads.
+Use `Logger.dev` for development-only output instead of `console`; Biome
+enforces this with `noConsole`.
 Clean up subscriptions and resources, and prevent late async results from
 updating an unmounted consumer.
 
