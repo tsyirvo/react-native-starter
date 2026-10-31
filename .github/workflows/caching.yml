@@ -3,7 +3,7 @@ name: Cache Bun dependencies
 on:
   push:
     branches:
-      - develop
+      - main
   pull_request:
     paths:
       - ".github/workflows/caching.yml"
@@ -82,6 +82,6 @@ jobs:
     steps:
       - name: Cleanup old dependency caches
         run: |
-          for cache_id in $(gh cache list --ref refs/heads/develop --key node26- --limit 100 --json id,key --jq '.[] | select(.key != env.CACHE_KEY) | .id'); do
+          for cache_id in $(gh cache list --ref refs/heads/main --key node26- --limit 100 --json id,key --jq '.[] | select(.key != env.CACHE_KEY) | .id'); do
             gh cache delete "$cache_id"
           done
