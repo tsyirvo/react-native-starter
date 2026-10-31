@@ -1,5 +1,79 @@
 # Changelog
 
+## [2.3.0](https://github.com/tsyirvo/react-native-starter/compare/v2.2.0...v2.3.0) (2026-10-31)
+
+
+### Features
+
+* add agent-device simulator automation for coding agents ([#487](https://github.com/tsyirvo/react-native-starter/issues/487)) ([074c5ac](https://github.com/tsyirvo/react-native-starter/commit/074c5aca3068946e3d09c4492b850d0972960c87))
+* add basic Claude Code config and refactor components placement ([#438](https://github.com/tsyirvo/react-native-starter/issues/438)) ([1c44624](https://github.com/tsyirvo/react-native-starter/commit/1c446243ea34c743d3995486a0f230177dc02d8e))
+* add mise to manage tooling ([#461](https://github.com/tsyirvo/react-native-starter/issues/461)) ([3efea81](https://github.com/tsyirvo/react-native-starter/commit/3efea81ba4bc141ab7429016a6af2ed605d2f381))
+* add utils to refresh stale queries ([#448](https://github.com/tsyirvo/react-native-starter/issues/448)) ([0dda9fd](https://github.com/tsyirvo/react-native-starter/commit/0dda9fdab5b20d48c6ab120ea0f03827605842f3))
+* bump eslint version and update config ([#445](https://github.com/tsyirvo/react-native-starter/issues/445)) ([5304e75](https://github.com/tsyirvo/react-native-starter/commit/5304e753ff53e2d00e3bafacf57a2bc355955863))
+* bump to expo 57 ([#458](https://github.com/tsyirvo/react-native-starter/issues/458)) ([ca01f3f](https://github.com/tsyirvo/react-native-starter/commit/ca01f3f60e7851173e8f4e0c0d35f818fbe35035))
+* change how icons are handled ([#483](https://github.com/tsyirvo/react-native-starter/issues/483)) ([57b7185](https://github.com/tsyirvo/react-native-starter/commit/57b718582f1070f0002a359639bfd02a43e3cdf2))
+* custom pressable with debounce and haptics ([#449](https://github.com/tsyirvo/react-native-starter/issues/449)) ([5255b16](https://github.com/tsyirvo/react-native-starter/commit/5255b1648c60747f963e62eeab6b7df547a8841c))
+* handle liquid glass and fallback on other platforms/lower iOS version ([#465](https://github.com/tsyirvo/react-native-starter/issues/465)) ([440cd3d](https://github.com/tsyirvo/react-native-starter/commit/440cd3dfc46bc6ec5300c7a65db696f53ecc920e))
+* hide the dev client tools button and menu at launch ([#486](https://github.com/tsyirvo/react-native-starter/issues/486)) ([f45ae32](https://github.com/tsyirvo/react-native-starter/commit/f45ae32cbceabfd11a41c08a831d447a5176ced2))
+* improve CI workflows and release process ([#469](https://github.com/tsyirvo/react-native-starter/issues/469)) ([197a274](https://github.com/tsyirvo/react-native-starter/commit/197a274a50964f8e90f83b4779499854b7616f1a))
+* improve image assets handling ([#477](https://github.com/tsyirvo/react-native-starter/issues/477)) ([a47c6eb](https://github.com/tsyirvo/react-native-starter/commit/a47c6eb7f5bc4eefe03ba85db09e207e3410ac1f))
+* improve test speed ([#480](https://github.com/tsyirvo/react-native-starter/issues/480)) ([ac0363d](https://github.com/tsyirvo/react-native-starter/commit/ac0363dd454fb278a60f6c48ac2f9092e6c3b002))
+* migrate from FlashList to LegendList ([#470](https://github.com/tsyirvo/react-native-starter/issues/470)) ([fcad223](https://github.com/tsyirvo/react-native-starter/commit/fcad223c8f33f237f7a71a659998bb0abb03f00c))
+* migrate git hooks to hk ([#463](https://github.com/tsyirvo/react-native-starter/issues/463)) ([f043157](https://github.com/tsyirvo/react-native-starter/commit/f0431577ee7e2efdeffe40d607ae0a8b9f30578e))
+* migrate the global store from Zustand to Legend State ([#484](https://github.com/tsyirvo/react-native-starter/issues/484)) ([000486d](https://github.com/tsyirvo/react-native-starter/commit/000486df27ba4c56cb521b24dcde56428da93224))
+* migrate to biome with ultracite config ([#460](https://github.com/tsyirvo/react-native-starter/issues/460)) ([ebbeedb](https://github.com/tsyirvo/react-native-starter/commit/ebbeedb544d922ab09a355fe55874cdc986ced2a))
+* migrate to bun as package manager ([#462](https://github.com/tsyirvo/react-native-starter/issues/462)) ([d353b82](https://github.com/tsyirvo/react-native-starter/commit/d353b822713c3860c9ed1809770d3b2b90cc0ac0))
+* migrate to HK V2 ([#468](https://github.com/tsyirvo/react-native-starter/issues/468)) ([40fbb7b](https://github.com/tsyirvo/react-native-starter/commit/40fbb7bfe58fd231c551dbedf1dcbfb0f2b86b66))
+* migrate to new release process ([#493](https://github.com/tsyirvo/react-native-starter/issues/493)) ([948ae50](https://github.com/tsyirvo/react-native-starter/commit/948ae502ff719b5c632e2cc736847d201c84453f))
+* migrate to Storybook 9 ([#437](https://github.com/tsyirvo/react-native-starter/issues/437)) ([8c2f1cf](https://github.com/tsyirvo/react-native-starter/commit/8c2f1cf055e86ba2fb72ca8e89f7cbb9a9196d1d))
+* migrate to Unistyles ([#446](https://github.com/tsyirvo/react-native-starter/issues/446)) ([b769312](https://github.com/tsyirvo/react-native-starter/commit/b7693124c68f0c1ba62d9b4284281df8cb03b7fa))
+* misc code updates ([#457](https://github.com/tsyirvo/react-native-starter/issues/457)) ([5e526ae](https://github.com/tsyirvo/react-native-starter/commit/5e526ae675b3d748e7e70bac2354be065ab4a081))
+* new release ([#436](https://github.com/tsyirvo/react-native-starter/issues/436)) ([fdaf412](https://github.com/tsyirvo/react-native-starter/commit/fdaf412a11760e930c3359df8b7f69463da28a6e))
+* optimize Android binaries ([#491](https://github.com/tsyirvo/react-native-starter/issues/491)) ([c33f069](https://github.com/tsyirvo/react-native-starter/commit/c33f069e7b475fe1c58cacb21572f394f39effbd))
+* rework how subscriptions are handled ([#454](https://github.com/tsyirvo/react-native-starter/issues/454)) ([4d1aefd](https://github.com/tsyirvo/react-native-starter/commit/4d1aefd91f0ab18bf6578406eb5ca043218a2d15))
+* setup codebase with better agent tooling ([#473](https://github.com/tsyirvo/react-native-starter/issues/473)) ([12486f7](https://github.com/tsyirvo/react-native-starter/commit/12486f712fa557f7a4f835b929826a3030f02aa3))
+* setup Expo Observe ([#471](https://github.com/tsyirvo/react-native-starter/issues/471)) ([09c1103](https://github.com/tsyirvo/react-native-starter/commit/09c11039964e351d9cf4d1ee42682a85a22521d1))
+* setup gitleaks in pre-commit hook ([#474](https://github.com/tsyirvo/react-native-starter/issues/474)) ([fa016c0](https://github.com/tsyirvo/react-native-starter/commit/fa016c0c729a468b54d23ca6f65771d0ce293534))
+* setup session replay ([#476](https://github.com/tsyirvo/react-native-starter/issues/476)) ([4927eae](https://github.com/tsyirvo/react-native-starter/commit/4927eae1981af4cb69d7266c7d6bd24247a40bdf))
+* simplify env handling ([#479](https://github.com/tsyirvo/react-native-starter/issues/479)) ([1529b9c](https://github.com/tsyirvo/react-native-starter/commit/1529b9cb9d8f2ec6d31bcf38daf672e3f80a323e))
+* update all dependencies and migrate to ESM for all files ([#441](https://github.com/tsyirvo/react-native-starter/issues/441)) ([7d6a833](https://github.com/tsyirvo/react-native-starter/commit/7d6a833b0dd8f5359fab198bc08eba8b94359100))
+* update biome & ultracite ([#481](https://github.com/tsyirvo/react-native-starter/issues/481)) ([85d2439](https://github.com/tsyirvo/react-native-starter/commit/85d243992f6ff4114490b3676efde10a15093557))
+* update builtin skills ([#488](https://github.com/tsyirvo/react-native-starter/issues/488)) ([0f0b73e](https://github.com/tsyirvo/react-native-starter/commit/0f0b73e467e653903e2e04ecfc51e128a0a32e9b))
+* update logic related to dates and switching app locale ([#444](https://github.com/tsyirvo/react-native-starter/issues/444)) ([16a5871](https://github.com/tsyirvo/react-native-starter/commit/16a58715bb43c32e5aa739967068b0a38374af62))
+* update some styling config ([#452](https://github.com/tsyirvo/react-native-starter/issues/452)) ([47253a4](https://github.com/tsyirvo/react-native-starter/commit/47253a4a56774eca44310f22618cc1d6d9760d17))
+* update storybook to the latest version ([#482](https://github.com/tsyirvo/react-native-starter/issues/482)) ([66ebfdb](https://github.com/tsyirvo/react-native-starter/commit/66ebfdbaece4749224131bb05381d9a725c8f0d9))
+* update testing library to V14 ([#492](https://github.com/tsyirvo/react-native-starter/issues/492)) ([fba7b06](https://github.com/tsyirvo/react-native-starter/commit/fba7b067fa42f52826e897ffceff12d0bf682c81))
+* update to Expo 58 ([#478](https://github.com/tsyirvo/react-native-starter/issues/478)) ([4e16641](https://github.com/tsyirvo/react-native-starter/commit/4e166410f37824a070fb6ed0b55669d498f6e66d))
+* update tsconfig and speed up scripts based on context ([#442](https://github.com/tsyirvo/react-native-starter/issues/442)) ([76d7702](https://github.com/tsyirvo/react-native-starter/commit/76d77027d3feaf39200539e4c4c433d2798840fb))
+* use kebab-case for Expo Router route files ([#485](https://github.com/tsyirvo/react-native-starter/issues/485)) ([8ef10f8](https://github.com/tsyirvo/react-native-starter/commit/8ef10f836aec5e33edc41027c3024a4d7f5c1aa8))
+
+
+### Documentation
+
+* cleanup and better organization for the documentation ([#496](https://github.com/tsyirvo/react-native-starter/issues/496)) ([a1753e5](https://github.com/tsyirvo/react-native-starter/commit/a1753e5a33f46180d36542e989677e20aee1bf19))
+
+
+### Other Changes
+
+* architecture to better follow a pragmatic clean archi ([#472](https://github.com/tsyirvo/react-native-starter/issues/472)) ([ab1f4ce](https://github.com/tsyirvo/react-native-starter/commit/ab1f4cec7cfb82bcea215a26a5a4ca548b3cd984))
+* better handling of storybook entrypoint ([#447](https://github.com/tsyirvo/react-native-starter/issues/447)) ([ec593b8](https://github.com/tsyirvo/react-native-starter/commit/ec593b8b2c2e6110709e35dd29147ce89e86330e))
+* code restructuring and cleanup ([#453](https://github.com/tsyirvo/react-native-starter/issues/453)) ([dc783cf](https://github.com/tsyirvo/react-native-starter/commit/dc783cff57e9cef09563d6bdc9544bf549eaaea0))
+* delete old plans folder ([85718b4](https://github.com/tsyirvo/react-native-starter/commit/85718b4616aa0eb205761f48125a4f7805d250cf))
+* dependencies updates ([#456](https://github.com/tsyirvo/react-native-starter/issues/456)) ([700322c](https://github.com/tsyirvo/react-native-starter/commit/700322c17cd475cef731c2baaad1e28c0ca831cd))
+* misc code updates ([#443](https://github.com/tsyirvo/react-native-starter/issues/443)) ([9ccafa3](https://github.com/tsyirvo/react-native-starter/commit/9ccafa318770a8060025b72179ce3d758693b69f))
+* remove @gorhom/bottom-sheet lib ([#467](https://github.com/tsyirvo/react-native-starter/issues/467)) ([3d54311](https://github.com/tsyirvo/react-native-starter/commit/3d54311e09ef7b330be1dcffb7d2fa5da0edf314))
+* remove a few dependencies I don't use anymore ([#459](https://github.com/tsyirvo/react-native-starter/issues/459)) ([9ee1abf](https://github.com/tsyirvo/react-native-starter/commit/9ee1abfce179a41fa43fa89694180c770bad42ca))
+* remove dead dependencies ([#475](https://github.com/tsyirvo/react-native-starter/issues/475)) ([f4fc49d](https://github.com/tsyirvo/react-native-starter/commit/f4fc49dd1456ef3bf84812d51e3aa8fbbab31f1f))
+* remove graphql logic ([#464](https://github.com/tsyirvo/react-native-starter/issues/464)) ([02adec9](https://github.com/tsyirvo/react-native-starter/commit/02adec99f85424767f5791e958e1a0dcea13eac3))
+* remove unused or simple dependencies ([#490](https://github.com/tsyirvo/react-native-starter/issues/490)) ([fe644df](https://github.com/tsyirvo/react-native-starter/commit/fe644dfb86427e8d07dde30d986e14af63e0fa60))
+* simplify gitignore and cleanup dead definitions ([#466](https://github.com/tsyirvo/react-native-starter/issues/466)) ([9b22f92](https://github.com/tsyirvo/react-native-starter/commit/9b22f92a9ba260896e5d2e0749db5f5a1ff939c0))
+* skip useless CI checks on the release PR ([#495](https://github.com/tsyirvo/react-native-starter/issues/495)) ([c81ba35](https://github.com/tsyirvo/react-native-starter/commit/c81ba35896522f8892d1f5862779b542983a98af))
+* tweak coderabbit config ([#455](https://github.com/tsyirvo/react-native-starter/issues/455)) ([47df4b6](https://github.com/tsyirvo/react-native-starter/commit/47df4b62ca596166adc7fd0a72cee10fac2d3395))
+* update dependencies ([#440](https://github.com/tsyirvo/react-native-starter/issues/440)) ([34872eb](https://github.com/tsyirvo/react-native-starter/commit/34872ebdf71d37c90bb9ee3431f399ef1a996266))
+* update JSX transform ([#439](https://github.com/tsyirvo/react-native-starter/issues/439)) ([54f70fc](https://github.com/tsyirvo/react-native-starter/commit/54f70fc9902c3a8e7dead0e42a51682f6346c971))
+* update some project config ([#451](https://github.com/tsyirvo/react-native-starter/issues/451)) ([1effaad](https://github.com/tsyirvo/react-native-starter/commit/1effaadfddc64c222d08826b234f86a1d7517369))
+* update the testing stack ([#489](https://github.com/tsyirvo/react-native-starter/issues/489)) ([22621d4](https://github.com/tsyirvo/react-native-starter/commit/22621d4239cca7afed77d4197c59f2f1d2d02a56))
+
 ## [2.2.0](https://github.com/tsyirvo/react-native-starter/compare/v2.1.0...v2.2.0) (2025-06-20)
 
 
