@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.4.0](https://github.com/tsyirvo/react-native-starter/compare/v2.3.0...v2.4.0) (2026-10-31)
+
+
+### Features
+
+* setup EAS dev build caching ([#501](https://github.com/tsyirvo/react-native-starter/issues/501)) ([746dd6f](https://github.com/tsyirvo/react-native-starter/commit/746dd6f2f5164f128f86fcf0a81178c24be4f8f4))
+
+
+### Other Changes
+
+* cleanup scripts & doppler usage ([#503](https://github.com/tsyirvo/react-native-starter/issues/503)) ([28a725b](https://github.com/tsyirvo/react-native-starter/commit/28a725b9ee9b792d4cdd115487440f0ac219539f))
+
 ## [2.3.0](https://github.com/tsyirvo/react-native-starter/compare/v2.2.0...v2.3.0) (2026-10-31)
 
 
