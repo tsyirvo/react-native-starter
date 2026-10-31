@@ -6,10 +6,10 @@ describe('usePress', () => {
   it('forwards arguments, blocks calls while pending and accepts calls after resolution', async () => {
     const pending = Promise.withResolvers<void>();
     const onPress = jest.fn((_value: string) => pending.promise);
-    const { result } = renderHook(() => usePress({ onPress }));
+    const { result } = await renderHook(() => usePress({ onPress }));
     let submission: Promise<unknown> | undefined;
 
-    act(() => {
+    await act(() => {
       submission = result.current[0]?.('first');
     });
     expect(result.current[1]).toBe(true);
@@ -36,10 +36,10 @@ describe('usePress', () => {
     const pending = Promise.withResolvers<void>();
     const error = new Error('submission failed');
     const onPress = jest.fn(() => pending.promise);
-    const { result } = renderHook(() => usePress({ onPress }));
+    const { result } = await renderHook(() => usePress({ onPress }));
     let submission: Promise<unknown> | undefined;
 
-    act(() => {
+    await act(() => {
       submission = result.current[0]?.(undefined);
     });
     const rejection = expect(submission).rejects.toBe(error);
@@ -59,7 +59,7 @@ describe('usePress', () => {
 
   it('ignores calls when disabled', async () => {
     const onPress = jest.fn();
-    const { result } = renderHook(() =>
+    const { result } = await renderHook(() =>
       usePress({ isDisabled: true, onPress }),
     );
 

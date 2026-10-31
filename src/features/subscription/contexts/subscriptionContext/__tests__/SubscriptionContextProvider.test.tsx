@@ -63,7 +63,7 @@ describe('SubscriptionContextProvider', () => {
   });
 
   it('treats a missing user as non-paying without querying their status', async () => {
-    const { result } = renderHook(useSubscriptionContext, { wrapper });
+    const { result } = await renderHook(useSubscriptionContext, { wrapper });
 
     await waitFor(() => expect(result.current.isPayingUser).toBe(false));
     expect(Purchase.setUser).not.toHaveBeenCalled();
@@ -74,7 +74,7 @@ describe('SubscriptionContextProvider', () => {
     setAuthUser(user);
     jest.mocked(Purchase.isPayingUser).mockResolvedValue(true);
 
-    const { result } = renderHook(useSubscriptionContext, { wrapper });
+    const { result } = await renderHook(useSubscriptionContext, { wrapper });
 
     await waitFor(() => expect(result.current.isPayingUser).toBe(true));
     expect(Purchase.setUser).not.toHaveBeenCalled();
@@ -85,7 +85,7 @@ describe('SubscriptionContextProvider', () => {
     setAuthUser(user);
     jest.mocked(Purchase.isPayingUser).mockRejectedValue(error);
 
-    const { result } = renderHook(useSubscriptionContext, { wrapper });
+    const { result } = await renderHook(useSubscriptionContext, { wrapper });
 
     await waitFor(() => expect(result.current.isPayingUser).toBe(false));
     expect(Logger.error).toHaveBeenCalledWith({
@@ -97,25 +97,27 @@ describe('SubscriptionContextProvider', () => {
 
   it('applies customer updates and removes the listener on unmount', async () => {
     setAuthUser(user);
-    const { result, unmount } = renderHook(useSubscriptionContext, { wrapper });
+    const { result, unmount } = await renderHook(useSubscriptionContext, {
+      wrapper,
+    });
     await waitFor(() => expect(result.current.isPayingUser).toBe(false));
 
     const listener = jest.mocked(Purchase.customerListener).mock.calls[0]?.[0];
     expect(listener).toBeDefined();
-    act(() => {
+    await act(() => {
       listener?.({
         entitlements: { active: { premium: {} } },
       } as unknown as CustomerInfo);
     });
 
     expect(result.current.isPayingUser).toBe(true);
-    unmount();
+    await unmount();
     expect(unsubscribe).toHaveBeenCalledTimes(1);
   });
 
   it('waits for purchase identity before fetching status or subscribing', async () => {
     setAuthUser(user, false);
-    const { result, rerender } = renderHook(useSubscriptionContext, {
+    const { result, rerender } = await renderHook(useSubscriptionContext, {
       wrapper,
     });
 
@@ -124,7 +126,7 @@ describe('SubscriptionContextProvider', () => {
     expect(Purchase.customerListener).not.toHaveBeenCalled();
 
     setAuthUser(user);
-    rerender({});
+    await rerender({});
 
     await waitFor(() => expect(Purchase.isPayingUser).toHaveBeenCalledTimes(1));
     expect(Purchase.customerListener).toHaveBeenCalledTimes(1);
@@ -136,13 +138,13 @@ describe('SubscriptionContextProvider', () => {
     jest
       .mocked(Purchase.isPayingUser)
       .mockReturnValueOnce(pendingStatus.promise);
-    const { result, rerender } = renderHook(useSubscriptionContext, {
+    const { result, rerender } = await renderHook(useSubscriptionContext, {
       wrapper,
     });
     const listener = jest.mocked(Purchase.customerListener).mock.calls[0]?.[0];
 
     setAuthUser(null);
-    rerender({});
+    await rerender({});
 
     await act(async () => {
       pendingStatus.resolve(true);
@@ -162,12 +164,12 @@ describe('SubscriptionContextProvider', () => {
     jest
       .mocked(Purchase.isPayingUser)
       .mockReturnValueOnce(pendingStatus.promise);
-    const { result, rerender } = renderHook(useSubscriptionContext, {
+    const { result, rerender } = await renderHook(useSubscriptionContext, {
       wrapper,
     });
 
     setAuthUser({ email: 'other@example.com', id: '2' });
-    rerender({});
+    await rerender({});
     await waitFor(() => expect(result.current.isPayingUser).toBe(false));
 
     await act(async () => {
@@ -183,7 +185,7 @@ describe('SubscriptionContextProvider', () => {
       offering: 'selected',
       type: 'offering',
     });
-    const { result } = renderHook(useSubscriptionContext, { wrapper });
+    const { result } = await renderHook(useSubscriptionContext, { wrapper });
 
     await waitFor(() =>
       expect(result.current.offeringToDisplay).toBe(selectedOffering),
@@ -195,7 +197,7 @@ describe('SubscriptionContextProvider', () => {
       offering: 'missing',
       type: 'offering',
     });
-    const { result } = renderHook(useSubscriptionContext, { wrapper });
+    const { result } = await renderHook(useSubscriptionContext, { wrapper });
 
     await waitFor(() =>
       expect(result.current.offeringToDisplay).toBe(currentOffering),
@@ -205,7 +207,7 @@ describe('SubscriptionContextProvider', () => {
   it('logs a failed offering fetch and leaves the offering empty', async () => {
     const error = new Error('offerings unavailable');
     jest.mocked(Purchase.getOfferings).mockRejectedValue(error);
-    const { result } = renderHook(useSubscriptionContext, { wrapper });
+    const { result } = await renderHook(useSubscriptionContext, { wrapper });
 
     await waitFor(() =>
       expect(Logger.error).toHaveBeenCalledWith({

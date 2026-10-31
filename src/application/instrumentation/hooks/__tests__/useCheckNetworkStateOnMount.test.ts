@@ -29,7 +29,7 @@ describe('useCheckNetworkStateOnMount', () => {
   it('warns the user when the internet is unreachable', async () => {
     mockNetworkState(false);
 
-    renderHook(useCheckNetworkStateOnMount);
+    await renderHook(useCheckNetworkStateOnMount);
 
     await waitFor(() =>
       expect(Toaster.show).toHaveBeenCalledWith({
@@ -43,7 +43,7 @@ describe('useCheckNetworkStateOnMount', () => {
   it('stays silent when the internet is reachable', async () => {
     mockNetworkState(true);
 
-    renderHook(useCheckNetworkStateOnMount);
+    await renderHook(useCheckNetworkStateOnMount);
 
     await waitFor(() =>
       expect(Network.getNetworkStateAsync).toHaveBeenCalledTimes(1),
@@ -56,7 +56,7 @@ describe('useCheckNetworkStateOnMount', () => {
       .mocked(Network.getNetworkStateAsync)
       .mockRejectedValue(new Error('network unavailable'));
 
-    renderHook(useCheckNetworkStateOnMount);
+    await renderHook(useCheckNetworkStateOnMount);
 
     await waitFor(() =>
       expect(ErrorMonitoring.breadcrumbs).toHaveBeenCalledWith({

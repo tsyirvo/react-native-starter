@@ -10,16 +10,16 @@ describe('MaintenanceMode component', () => {
     jest.resetAllMocks();
   });
 
-  it('should render nothing by default', () => {
-    render(<MaintenanceMode />);
+  it('should render nothing by default', async () => {
+    await render(<MaintenanceMode />);
 
     expect(screen.queryByTestId('MaintenanceMode')).toBeNull();
   });
 
-  it('should render the maintenance mode when the flag is true', () => {
+  it('should render the maintenance mode when the flag is true', async () => {
     jest.spyOn(FeatureFlags, 'useGetBooleanFeatureFlag').mockReturnValue(true);
 
-    render(<MaintenanceMode />);
+    await render(<MaintenanceMode />);
 
     expect(screen.getByTestId('MaintenanceMode')).toBeDefined();
   });

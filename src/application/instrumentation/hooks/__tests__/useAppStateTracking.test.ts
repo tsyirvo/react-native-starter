@@ -24,16 +24,16 @@ describe('useAppStateTracking', () => {
     jest.clearAllMocks();
   });
 
-  it('tracks the app coming to the foreground', () => {
-    renderHook(useAppStateTracking);
+  it('tracks the app coming to the foreground', async () => {
+    await renderHook(useAppStateTracking);
 
     getAppStateHandlers().onComingToForeground();
 
     expect(Analytics.trackEvent).toHaveBeenCalledWith('app-put-in-foreground');
   });
 
-  it('tracks the app going to the background', () => {
-    renderHook(useAppStateTracking);
+  it('tracks the app going to the background', async () => {
+    await renderHook(useAppStateTracking);
 
     getAppStateHandlers().onGoingToBackground();
 

@@ -44,25 +44,25 @@ describe('ScreenTitle', () => {
     mockToolbarButtonProps.length = 0;
   });
 
-  it('forwards the title to the native stack', () => {
-    render(<ScreenTitle title="Home" />);
+  it('forwards the title to the native stack', async () => {
+    await render(<ScreenTitle title="Home" />);
 
     expect(mockTitleProps[0]?.children).toBe('Home');
   });
 
   it.each([undefined, []])(
     'omits the toolbar without actions: %j',
-    (toolbar) => {
-      render(<ScreenTitle title="Home" toolbar={toolbar} />);
+    async (toolbar) => {
+      await render(<ScreenTitle title="Home" toolbar={toolbar} />);
 
       expect(mockToolbarProps).toHaveLength(0);
     },
   );
 
-  it('forwards action labels, handlers and disabled state to native toolbar buttons', () => {
+  it('forwards action labels, handlers and disabled state to native toolbar buttons', async () => {
     const onSettings = jest.fn();
     const onLogout = jest.fn();
-    render(
+    await render(
       <ScreenTitle
         title="Profile"
         toolbar={[

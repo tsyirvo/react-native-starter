@@ -15,20 +15,20 @@ describe('useAppScreenTracking', () => {
     jest.clearAllMocks();
   });
 
-  it('tracks the root path as the home screen', () => {
+  it('tracks the root path as the home screen', async () => {
     jest.mocked(usePathname).mockReturnValue('/');
 
-    renderHook(useAppScreenTracking);
+    await renderHook(useAppScreenTracking);
 
     expect(Analytics.trackEvent).toHaveBeenCalledWith('home-screen-viewed');
   });
 
-  it('derives a kebab-case event from nested paths and tracks each navigation', () => {
+  it('derives a kebab-case event from nested paths and tracks each navigation', async () => {
     jest.mocked(usePathname).mockReturnValue('/features/storeRating');
-    const { rerender } = renderHook(useAppScreenTracking);
+    const { rerender } = await renderHook(useAppScreenTracking);
 
     jest.mocked(usePathname).mockReturnValue('/Profile');
-    rerender({});
+    await rerender({});
 
     expect(Analytics.trackEvent).toHaveBeenNthCalledWith(
       1,

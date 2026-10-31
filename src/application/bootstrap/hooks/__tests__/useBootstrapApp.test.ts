@@ -26,7 +26,7 @@ describe('useBootstrapApp', () => {
 
   it('skips SDK and OTA setup in Storybook but waits for application readiness', async () => {
     config.isStorybookEnabled = true;
-    const { result, rerender } = renderHook(useBootstrapApp);
+    const { result, rerender } = await renderHook(useBootstrapApp);
 
     await act(async () => {
       result.current.onLayoutRootView();
@@ -38,7 +38,7 @@ describe('useBootstrapApp', () => {
     expect(checkForOtaUpdate).not.toHaveBeenCalled();
     expect(result.current.isAppReady).toBe(false);
     jest.mocked(useIsBootstrappingApplication).mockReturnValue(false);
-    rerender({});
+    await rerender({});
     expect(result.current.isAppReady).toBe(true);
     expect(SplashScreen.hide).toHaveBeenCalledTimes(1);
   });
@@ -50,16 +50,16 @@ describe('useBootstrapApp', () => {
         finishUpdate = resolve;
       }),
     );
-    const { result, rerender } = renderHook(useBootstrapApp);
+    const { result, rerender } = await renderHook(useBootstrapApp);
 
-    act(() => {
+    await act(() => {
       result.current.onLayoutRootView();
     });
 
     expect(bootstrapApp).toHaveBeenCalledTimes(1);
     expect(checkForOtaUpdate).toHaveBeenCalledTimes(1);
     jest.mocked(useIsBootstrappingApplication).mockReturnValue(false);
-    rerender({});
+    await rerender({});
     expect(result.current.isAppReady).toBe(false);
     expect(SplashScreen.hide).not.toHaveBeenCalled();
 

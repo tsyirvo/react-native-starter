@@ -22,19 +22,19 @@ const QueryProbe = ({ cacheValue }: QueryProbeProps) => {
 };
 
 describe('customRender', () => {
-  it('preserves providers and the query cache across rerenders', () => {
-    const { rerender } = render(<QueryProbe cacheValue="cached" />);
+  it('preserves providers and the query cache across rerenders', async () => {
+    const { rerender } = await render(<QueryProbe cacheValue="cached" />);
 
     expect(screen.getByText('cached:0')).toBeOnTheScreen();
-    rerender(<QueryProbe />);
+    await rerender(<QueryProbe />);
     expect(screen.getByText('cached:0')).toBeOnTheScreen();
   });
 
-  it('isolates the query cache between render calls', () => {
-    const { unmount } = render(<QueryProbe cacheValue="cached" />);
-    unmount();
+  it('isolates the query cache between render calls', async () => {
+    const { unmount } = await render(<QueryProbe cacheValue="cached" />);
+    await unmount();
 
-    render(<QueryProbe />);
+    await render(<QueryProbe />);
 
     expect(screen.getByText('empty:0')).toBeOnTheScreen();
   });

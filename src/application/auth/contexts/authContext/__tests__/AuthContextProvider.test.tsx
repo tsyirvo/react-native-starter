@@ -57,7 +57,7 @@ describe('AuthContextProvider', () => {
 
   it('starts without a user and signs in with the demo identity', async () => {
     const { wrapper } = createHarness();
-    const { result } = renderHook(useAuthContext, { wrapper });
+    const { result } = await renderHook(useAuthContext, { wrapper });
 
     expect(result.current.user).toBeNull();
 
@@ -70,7 +70,7 @@ describe('AuthContextProvider', () => {
 
   it('tracks the signed-in user asynchronously', async () => {
     const { wrapper } = createHarness();
-    const { result } = renderHook(useAuthContext, { wrapper });
+    const { result } = await renderHook(useAuthContext, { wrapper });
 
     await act(async () => {
       await result.current.signIn(credentials);
@@ -86,7 +86,7 @@ describe('AuthContextProvider', () => {
   it('signs out and clears tracking, store, queries and tokens', async () => {
     const { queryClient, wrapper } = createHarness();
     queryClient.setQueryData(['cached-session'], 'cached');
-    const { result } = renderHook(useAuthContext, { wrapper });
+    const { result } = await renderHook(useAuthContext, { wrapper });
 
     await act(async () => {
       await result.current.signIn(credentials);
@@ -107,7 +107,7 @@ describe('AuthContextProvider', () => {
   it('clears local auth and caches even when purchase logout fails', async () => {
     const error = new Error('purchase logout failed');
     const { queryClient, wrapper } = createHarness();
-    const { result } = renderHook(useAuthContext, { wrapper });
+    const { result } = await renderHook(useAuthContext, { wrapper });
 
     await act(async () => {
       await result.current.signIn(credentials);
@@ -130,7 +130,7 @@ describe('AuthContextProvider', () => {
 
   it('tracks the next sign-in even when token cleanup fails', async () => {
     const { wrapper } = createHarness();
-    const { result } = renderHook(useAuthContext, { wrapper });
+    const { result } = await renderHook(useAuthContext, { wrapper });
 
     await act(async () => {
       await result.current.signIn(credentials);

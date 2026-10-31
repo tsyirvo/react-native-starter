@@ -60,8 +60,8 @@ describe('app store', () => {
         jest.requireActual<typeof import('../../utils')>('../../utils'));
     });
   });
-  it('restores persisted preferences on launch', () => {
-    const { result } = renderHook(useAppStoreValues);
+  it('restores persisted preferences on launch', async () => {
+    const { result } = await renderHook(useAppStoreValues);
 
     expect(result.current).toEqual({
       appTheme: 'light',
@@ -70,9 +70,9 @@ describe('app store', () => {
   });
 
   it('re-renders subscribers and persists only preferences', async () => {
-    const { result } = renderHook(useAppStoreValues);
+    const { result } = await renderHook(useAppStoreValues);
 
-    act(() => {
+    await act(() => {
       appStore.setIsBootstrappingApplication(false);
       appStore.setAppTheme('dark');
     });
@@ -87,9 +87,9 @@ describe('app store', () => {
   });
 
   it('resets values and overwrites persisted preferences with defaults', async () => {
-    const { result } = renderHook(useAppStoreValues);
+    const { result } = await renderHook(useAppStoreValues);
 
-    act(() => {
+    await act(() => {
       appStore.setIsBootstrappingApplication(true);
       appStore.setAppTheme('light');
     });
@@ -97,7 +97,7 @@ describe('app store', () => {
       expect(getPersistedPreferences()).toEqual({ appTheme: 'light' }),
     );
 
-    act(() => {
+    await act(() => {
       resetStore();
     });
 
