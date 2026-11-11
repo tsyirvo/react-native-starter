@@ -1,6 +1,3 @@
-// Hermes lacks Intl.PluralRules, which i18next needs for plural keys.
-import 'intl-pluralrules';
-
 import '../infra/i18n';
 
 import * as Sentry from '@sentry/react-native';
