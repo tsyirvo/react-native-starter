@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.4.0](https://github.com/tsyirvo/react-native-starter/compare/v2.3.0...v2.4.0) (2026-11-11)
+
+
+### Features
+
+* setup EAS dev build caching ([#501](https://github.com/tsyirvo/react-native-starter/issues/501)) ([746dd6f](https://github.com/tsyirvo/react-native-starter/commit/746dd6f2f5164f128f86fcf0a81178c24be4f8f4))
+
+
+### Other Changes
+
+* cleanup scripts & doppler usage ([#503](https://github.com/tsyirvo/react-native-starter/issues/503)) ([28a725b](https://github.com/tsyirvo/react-native-starter/commit/28a725b9ee9b792d4cdd115487440f0ac219539f))
+* **deps:** bump jdx/mise-action from 5.2.4 to 5.2.6 in the github-actions group across 1 directory ([#506](https://github.com/tsyirvo/react-native-starter/issues/506)) ([068ff39](https://github.com/tsyirvo/react-native-starter/commit/068ff39757e70bf78fa0e8d2dfda418f66ec7211))
+* enforce noConsole with Biome instead of stripping logs with Babel ([#505](https://github.com/tsyirvo/react-native-starter/issues/505)) ([5cc6b4a](https://github.com/tsyirvo/react-native-starter/commit/5cc6b4af82cb7c808fced67621036345b786df85))
+* remove the uiKit root barrel ([#504](https://github.com/tsyirvo/react-native-starter/issues/504)) ([3584379](https://github.com/tsyirvo/react-native-starter/commit/3584379684d9377464cb3f8ef3243b65518f0dfa))
+* replace intl-pluralrules with hermes-intl ([#507](https://github.com/tsyirvo/react-native-starter/issues/507)) ([764e687](https://github.com/tsyirvo/react-native-starter/commit/764e687e92d8e788318b27cb3787a77b51eda0d8))
+
 ## [2.3.0](https://github.com/tsyirvo/react-native-starter/compare/v2.2.0...v2.3.0) (2026-10-31)
 
 
