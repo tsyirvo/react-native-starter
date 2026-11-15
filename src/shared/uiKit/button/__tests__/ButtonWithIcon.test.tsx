@@ -36,7 +36,9 @@ describe('ButtonWithIcon', () => {
       </ButtonLoading>,
     );
 
-    expect(screen.getByTestId('InnerTextLoader')).toBeOnTheScreen();
+    expect(
+      screen.getByTestId('InnerTextLoader', { includeHiddenElements: true }),
+    ).toBeOnTheScreen();
     await user.press(screen.getByTestId('ButtonWithIcon'));
 
     expect(onPress).not.toHaveBeenCalled();
@@ -68,7 +70,9 @@ describe('ButtonWithIcon', () => {
 
     await user.press(screen.getByText(label));
     await act(() => jest.advanceTimersByTime(600));
-    expect(screen.getByTestId('InnerTextLoader')).toBeOnTheScreen();
+    expect(
+      screen.getByTestId('InnerTextLoader', { includeHiddenElements: true }),
+    ).toBeOnTheScreen();
     await user.press(screen.getByTestId('ButtonWithIcon'));
     expect(onPress).toHaveBeenCalledTimes(1);
 

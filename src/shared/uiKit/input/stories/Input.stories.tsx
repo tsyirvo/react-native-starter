@@ -32,7 +32,7 @@ const sharedArgs: ComponentProps<typeof InputComponent> = {
   placeholder: 'Type here',
 };
 
-export const Input: Story = {};
+export const Input: Story = { args: sharedArgs };
 
 export const WithLabel: Story = {
   args: sharedArgs,
@@ -42,13 +42,6 @@ export const WithError: Story = {
   args: {
     ...sharedArgs,
     error: 'An error',
-  },
-};
-
-export const WithoutLabel: Story = {
-  args: {
-    ...sharedArgs,
-    label: undefined,
   },
 };
 

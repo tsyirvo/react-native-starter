@@ -17,7 +17,9 @@ export const Informations = () => {
 
       <Stack gap="spacing_8" pb="spacing_12" pt="spacing_24">
         <Separator />
-        <Text variant="xLarge">{t('homeScreen.whatIsInside')}</Text>
+        <Text isHeading variant="xLarge">
+          {t('homeScreen.whatIsInside')}
+        </Text>
       </Stack>
 
       <Stack gap="spacing_24">

@@ -17,6 +17,8 @@ Load `project-native-testing` for component/hook test work. Check the installed
 RNTL version rather than selecting APIs from the React version alone. Follow
 its [test scope](../../../.agents/skills/project-native-testing/references/project-patterns.md#test-scope)
 for functional coverage; reserve styling and accessibility verification for audits.
+Test accessibility through the `$shared/a11y` utils and hooks only, and verify
+screen reader behavior manually with VoiceOver and TalkBack.
 
 Prefer observable behavior and accessible queries. Use `findBy*` for eventual
 UI and `queryBy*` for absence. Await async interactions; perform actions before

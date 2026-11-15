@@ -48,7 +48,7 @@ const ScreenTitleShowcaseScreen = () => {
         <Stack gap="spacing_24" px="spacing_16" py="spacing_24">
           {SHOWCASE_SECTIONS.map((section) => (
             <Stack gap="spacing_8" key={section}>
-              <Text variant="large">
+              <Text isHeading variant="large">
                 {t(`screenTitleShowcaseScreen.sections.${section}.title`)}
               </Text>
 

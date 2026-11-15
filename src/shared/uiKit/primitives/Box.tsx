@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import type { LayoutStyleProps } from './types';
+import { splitLayoutProps } from './utils/splitLayoutProps';
 
 /* ***** *****  Types  ***** ***** */
 
@@ -28,21 +29,16 @@ export interface BoxProps
 
 /* ***** *****  Component  ***** ***** */
 
-export const Box = ({
-  style,
-  children,
-  testID,
-  onLayout,
-  ...stylingProps
-}: BoxProps) => (
-  <View
-    onLayout={onLayout}
-    style={[styles.box(stylingProps), style]}
-    testID={testID}
-  >
-    {children}
-  </View>
-);
+export const Box = ({ direction, flex, style, wrap, ...props }: BoxProps) => {
+  const { layout, viewProps } = splitLayoutProps(props);
+
+  return (
+    <View
+      {...viewProps}
+      style={[styles.box({ ...layout, direction, flex, wrap }), style]}
+    />
+  );
+};
 
 /* ***** *****  Styles  ***** ***** */
 

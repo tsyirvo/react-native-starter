@@ -10,6 +10,7 @@ interface ButtonWithTextProps extends ButtonProps {
 }
 
 export const ButtonWithText = ({
+  accessibilityHint,
   variant = 'primary',
   isDisabled = false,
   isLoading = false,
@@ -24,8 +25,10 @@ export const ButtonWithText = ({
 
   return (
     <BaseButton
+      accessibilityHint={accessibilityHint}
       isDisabled={isButtonDisabled}
       isLoading={isLoading || isResolving}
+      label={children}
       onPress={handlePress}
       targetScale={targetScale}
       testID={testID}

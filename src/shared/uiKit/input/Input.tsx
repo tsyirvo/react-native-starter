@@ -3,6 +3,7 @@ import type { TextInputInstance, TextInputProps } from 'react-native';
 import { TextInput, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
+import { useA11yTextInputProps } from '$shared/a11y';
 import { Icon, type IconName } from '$shared/icons';
 import { DEFAULT_ICON_SIZE } from '$shared/uiKit/constants';
 
@@ -10,12 +11,13 @@ import { Row, Stack, Text } from '../primitives';
 import { InputLabel } from './components';
 import { useInputFocusState, useInputStyling } from './hooks';
 
-export interface InputProps extends TextInputProps {
+export interface InputProps
+  extends Omit<TextInputProps, 'accessibilityLabel' | 'aria-label'> {
   error?: string;
   helperText?: string;
   isDisabled?: boolean;
   isOptional?: boolean;
-  label?: string;
+  label: string;
   leftOrnamentIcon?: IconName;
   leftOrnamentIconColor?: string;
   ref?: RefObject<TextInputInstance | null>;
@@ -37,6 +39,13 @@ export const Input = ({
   ...props
 }: InputProps) => {
   const { theme } = useUnistyles();
+
+  const a11yProps = useA11yTextInputProps({
+    error,
+    hint: helperText,
+    isOptional,
+    label,
+  });
 
   const { isFocused, onBlur, onFocus } = useInputFocusState({
     onBlur: onBlurProp,
@@ -68,6 +77,7 @@ export const Input = ({
         )}
 
         <TextInput
+          {...a11yProps}
           editable={!isDisabled}
           onBlur={onBlur}
           onChangeText={props.onChangeText}
@@ -80,7 +90,7 @@ export const Input = ({
         />
       </Row>
 
-      <Stack gap="spacing_4">
+      <Stack aria-hidden gap="spacing_4">
         {!!helperText && (
           <Text color="content_secondary" testID={`${testID}HelperText`}>
             {helperText}

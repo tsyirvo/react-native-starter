@@ -10,6 +10,8 @@ import { type HapticFeedbackType, triggerHapticFeedback } from '$infra/haptics';
 import { useDebouncedFunction } from '$shared/hooks';
 
 type CustomPressableProps = PressableProps & {
+  accessibilityLabel: string;
+  accessibilityRole: PressableProps['accessibilityRole'];
   hapticFeedback?: boolean;
   hapticFeedbackType?: HapticFeedbackType;
   children: React.ReactNode;

@@ -96,11 +96,20 @@
         // Shared client state lives behind `$infra/store` hooks and actions.
         // The UI kit has no root barrel: it would load every component's
         // dependencies (expo-router, expo-image…) into each Jest test.
+        // `$shared/a11y` owns the platform workarounds for screen readers.
         "noRestrictedImports": {
           "level": "error",
           "options": {
             "paths": {
-              "$shared/uiKit": "Import from the component entry, for example `$shared/uiKit/primitives` or `$shared/uiKit/button`."
+              "$shared/uiKit": "Import from the component entry, for example `$shared/uiKit/primitives` or `$shared/uiKit/button`.",
+              "react-native": {
+                "importNames": ["AccessibilityInfo"],
+                "message": "Use the hooks and `announce` exported by `$shared/a11y`."
+              },
+              "react-native-reanimated": {
+                "importNames": ["useReducedMotion"],
+                "message": "It reads the setting only at launch. Use `useIsReduceMotionEnabled` from `$shared/a11y`."
+              }
             },
             "patterns": [
               {
@@ -213,6 +222,24 @@
                     "importNames": ["observer", "reactiveObserver"],
                     "message": "Read observables with `useValue`; `observer` is incompatible with React Compiler."
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      // The a11y module wraps the screen reader and reduce motion APIs.
+      "includes": ["src/shared/a11y/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "$shared/uiKit": "Import from the component entry, for example `$shared/uiKit/primitives`."
                 }
               }
             }

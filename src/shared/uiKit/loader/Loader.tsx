@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useUnistyles } from 'react-native-unistyles';
 
+import { useA11yLoadingProps } from '$shared/a11y';
 import type { ThemeColors } from '$shared/theme';
 
 interface LoaderProps {
@@ -25,6 +26,8 @@ export const Loader = ({
 
   const { theme } = useUnistyles();
 
+  const a11yProps = useA11yLoadingProps();
+
   const minHeight = size === 'large' ? LARGE_SIZE : SMALL_SIZE;
 
   useEffect(() => {
@@ -40,6 +43,7 @@ export const Loader = ({
   if (isShowingLoading) {
     return (
       <ActivityIndicator
+        {...a11yProps}
         color={theme.colors[color]}
         size={size}
         testID={`${testID}ActivityIndicator`}

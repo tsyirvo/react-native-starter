@@ -4,7 +4,7 @@ import { Row, Text } from '$shared/uiKit/primitives';
 
 interface InputLabelProps {
   isOptional?: boolean;
-  label?: string;
+  label: string;
   testID?: string;
 }
 
@@ -15,12 +15,8 @@ export const InputLabel = ({
 }: InputLabelProps) => {
   const { t } = useTranslation();
 
-  if (!label) {
-    return null;
-  }
-
   return (
-    <Row gap="spacing_4" testID={testID}>
+    <Row aria-hidden gap="spacing_4" testID={testID}>
       <Text color="content_primary">{label}</Text>
 
       {isOptional ? (

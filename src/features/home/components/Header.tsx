@@ -7,10 +7,14 @@ import { Box, Text } from '$shared/uiKit/primitives';
 
 export const Header = () => (
   <View style={styles.container}>
-    <Image source={Assets.images.components.home.header} style={styles.image} />
+    <Image
+      isDecorative
+      source={Assets.images.components.home.header}
+      style={styles.image}
+    />
 
     <Box align="center" justify="flex-end" mb="spacing_24">
-      <Text color="core_primary" variant="large">
+      <Text color="core_primary" isHeading variant="large">
         React Native Template
       </Text>
     </Box>
