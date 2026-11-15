@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import {
@@ -8,7 +8,7 @@ import {
   useIsNewStoreVersionAvailable,
 } from '$application/appAvailability';
 import { Notifications } from '$features/notifications';
-import { Screen } from '$shared/components';
+import { Screen, ScreenScrollView } from '$shared/components';
 import { Button } from '$shared/uiKit/button';
 import { Box, Stack, Text } from '$shared/uiKit/primitives';
 
@@ -24,8 +24,8 @@ const FeaturesScreen = () => {
   };
 
   return (
-    <Screen edges={['top']} testID="otherScreen-screen">
-      <ScrollView>
+    <Screen testID="otherScreen-screen">
+      <ScreenScrollView>
         <Box gap="spacing_16" px="spacing_16" py="spacing_8">
           {shouldShowBanner ? (
             <Box pb="spacing_16">
@@ -58,7 +58,7 @@ const FeaturesScreen = () => {
             </Stack>
           </View>
         </Box>
-      </ScrollView>
+      </ScreenScrollView>
     </Screen>
   );
 };
