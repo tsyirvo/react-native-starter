@@ -40,6 +40,16 @@ describe('useIsScreenReaderEnabled', () => {
 describe('useIsReduceMotionEnabled', () => {
   beforeEach(() => addEventListener.mockClear());
 
+  it('reads the current setting when it changed after launch', async () => {
+    jest
+      .mocked(AccessibilityInfo.isReduceMotionEnabled)
+      .mockResolvedValueOnce(true);
+
+    const { result } = await renderHook(() => useIsReduceMotionEnabled());
+
+    expect(result.current).toBe(true);
+  });
+
   it('follows the setting when it changes while the app runs', async () => {
     const { result } = await renderHook(() => useIsReduceMotionEnabled());
 
