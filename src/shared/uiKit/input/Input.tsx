@@ -11,7 +11,8 @@ import { Row, Stack, Text } from '../primitives';
 import { InputLabel } from './components';
 import { useInputFocusState, useInputStyling } from './hooks';
 
-export interface InputProps extends TextInputProps {
+export interface InputProps
+  extends Omit<TextInputProps, 'accessibilityLabel' | 'aria-label'> {
   error?: string;
   helperText?: string;
   isDisabled?: boolean;
