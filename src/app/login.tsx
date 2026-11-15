@@ -44,6 +44,7 @@ const Login = () => {
             <Box flex={1} gap="spacing_16" pt="spacing_32">
               <Stack align="center">
                 <Image
+                  isDecorative
                   source={Assets.images.shared.logos.logoDark}
                   style={styles.logo}
                 />
