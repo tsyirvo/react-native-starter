@@ -54,7 +54,7 @@ const Login = () => {
                 p="spacing_16"
                 style={styles.formContainer}
               >
-                <Text textAlign="center" variant="large">
+                <Text isHeading textAlign="center" variant="large">
                   {t('loginScreen.title')}
                 </Text>
 

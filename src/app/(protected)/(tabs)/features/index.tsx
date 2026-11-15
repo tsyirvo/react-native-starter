@@ -39,7 +39,7 @@ const FeaturesScreen = () => {
 
           <View style={styles.section}>
             <Stack gap="spacing_8">
-              <Text variant="large">
+              <Text isHeading variant="large">
                 {t('featuresScreen.screenTitleShowcase.title')}
               </Text>
 

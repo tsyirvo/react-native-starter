@@ -8,6 +8,7 @@ import type { ThemeColors } from '$shared/theme';
 
 interface TextProps extends RNTextProps, UnistylesVariants<typeof styles> {
   color?: ThemeColors;
+  isHeading?: boolean;
   testID?: string;
   textAlign?: TextStyle['textAlign'];
 }
@@ -17,6 +18,7 @@ interface TextProps extends RNTextProps, UnistylesVariants<typeof styles> {
 export const Text = ({
   variant = 'regular',
   color = 'content_primary',
+  isHeading = false,
   textAlign,
   testID,
   style,
@@ -24,13 +26,9 @@ export const Text = ({
 }: TextProps) => {
   styles.useVariants({ variant });
 
-  const accessibilityLabel =
-    typeof rest.children === 'string' ? rest.children : undefined;
-
   return (
     <RNText
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole="text"
+      accessibilityRole={isHeading ? 'header' : undefined}
       style={[styles.text({ color }), textAlign && { textAlign }, style]}
       testID={testID}
       {...rest}

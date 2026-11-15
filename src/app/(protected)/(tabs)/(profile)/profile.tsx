@@ -17,7 +17,7 @@ const ProfileScreen = () => {
   return (
     <Screen edges={['top']} px="spacing_16" testID="ProfileScreen">
       <Stack gap="spacing_16" pt="spacing_8">
-        <Text textAlign="center" variant="large">
+        <Text isHeading textAlign="center" variant="large">
           {t('profileScreen.title')}
         </Text>
 

@@ -25,7 +25,7 @@ export const Notifications = () => {
 
   return (
     <>
-      <Text variant="large">
+      <Text isHeading variant="large">
         {t('featuresScreen.notificationsPermission.title')}
       </Text>
 

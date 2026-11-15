@@ -7,7 +7,9 @@ interface InformationBlockProps {
 
 export const InformationBlock = ({ title, content }: InformationBlockProps) => (
   <Stack gap="spacing_8">
-    <Text variant="large">{title}</Text>
+    <Text isHeading variant="large">
+      {title}
+    </Text>
 
     <Text>{content}</Text>
   </Stack>
