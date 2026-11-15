@@ -43,16 +43,22 @@ describe('LoginForm', () => {
     const password = screen.getByPlaceholderText(passwordPlaceholder);
     await fireEvent.changeText(email, 'invalid');
     expect(
-      screen.queryByText('loginForm.emailField.validation.invalid'),
+      screen.queryByText('loginForm.emailField.validation.invalid', {
+        includeHiddenElements: true,
+      }),
     ).not.toBeOnTheScreen();
     await fireEvent(email, 'blur');
     expect(
-      await screen.findByText('loginForm.emailField.validation.invalid'),
+      await screen.findByText('loginForm.emailField.validation.invalid', {
+        includeHiddenElements: true,
+      }),
     ).toBeOnTheScreen();
     await user.clear(password);
     await user.type(password, 'short');
     expect(
-      await screen.findByText('loginForm.passwordField.validation.minLength'),
+      await screen.findByText('loginForm.passwordField.validation.minLength', {
+        includeHiddenElements: true,
+      }),
     ).toBeOnTheScreen();
 
     await user.press(screen.getByText('loginForm.submitButton'));
@@ -70,10 +76,14 @@ describe('LoginForm', () => {
       password: 'valid-password',
     });
     expect(
-      screen.queryByText('loginForm.emailField.validation.invalid'),
+      screen.queryByText('loginForm.emailField.validation.invalid', {
+        includeHiddenElements: true,
+      }),
     ).not.toBeOnTheScreen();
     expect(
-      screen.queryByText('loginForm.passwordField.validation.minLength'),
+      screen.queryByText('loginForm.passwordField.validation.minLength', {
+        includeHiddenElements: true,
+      }),
     ).not.toBeOnTheScreen();
   });
 

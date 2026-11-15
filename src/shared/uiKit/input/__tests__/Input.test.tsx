@@ -13,6 +13,7 @@ const ControlledInput = ({
 
   return (
     <Input
+      label="Email"
       onChangeText={(text) => {
         setValue(text);
         onChangeText(text);
@@ -42,7 +43,12 @@ describe('Input', () => {
     const onChangeText = jest.fn();
     const user = userEvent.setup();
     await render(
-      <Input isDisabled onChangeText={onChangeText} placeholder="Enter text" />,
+      <Input
+        isDisabled
+        label="Email"
+        onChangeText={onChangeText}
+        placeholder="Enter text"
+      />,
     );
 
     await user.type(screen.getByPlaceholderText('Enter text'), 'data');
@@ -59,14 +65,25 @@ describe('Input', () => {
       />,
     );
 
-    expect(screen.getByText('Email')).toBeOnTheScreen();
-    expect(screen.getByText('Invalid email')).toBeOnTheScreen();
-    expect(screen.getByText('Use your work email')).toBeOnTheScreen();
+    expect(
+      screen.getByText('Email', { includeHiddenElements: true }),
+    ).toBeOnTheScreen();
+    expect(
+      screen.getByText('Invalid email', { includeHiddenElements: true }),
+    ).toBeOnTheScreen();
+    expect(
+      screen.getByText('Use your work email', { includeHiddenElements: true }),
+    ).toBeOnTheScreen();
 
-    await rerender(<Input />);
+    await rerender(<Input label="Email" />);
 
-    expect(screen.queryByText('Email')).not.toBeOnTheScreen();
-    expect(screen.queryByText('Invalid email')).not.toBeOnTheScreen();
-    expect(screen.queryByText('Use your work email')).not.toBeOnTheScreen();
+    expect(
+      screen.queryByText('Invalid email', { includeHiddenElements: true }),
+    ).not.toBeOnTheScreen();
+    expect(
+      screen.queryByText('Use your work email', {
+        includeHiddenElements: true,
+      }),
+    ).not.toBeOnTheScreen();
   });
 });
