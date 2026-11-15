@@ -9,6 +9,7 @@
 - Pattern example: `src/shared/uiKit/input/Input.tsx`; inspect its current implementation and supporting hooks rather than treating it as a required component design.
 - Lists use the installed LegendList where appropriate; generic skill recommendations do not authorize a switch to FlashList.
 - Match existing platform-specific implementations and keyboard/safe-area handling. Use development builds for native verification.
+- Safe areas: headerless scrollable screens use `ScreenScrollView` without `Screen` `edges`, so content scrolls under the system bars instead of being clipped by padding. Static screens use `Screen` `edges`; screens with a native header use a `ScrollView` with `contentInsetAdjustmentBehavior="automatic"`.
 
 ## Components and accessibility
 

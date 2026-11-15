@@ -1,12 +1,10 @@
 import * as Updates from 'expo-updates';
 import { useTranslation } from 'react-i18next';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { config } from '$infra/config';
 import { Stack, Text } from '$shared/uiKit/primitives';
 
 export const Version = () => {
-  const insets = useSafeAreaInsets();
   const { t } = useTranslation();
 
   const { currentlyRunning } = Updates.useUpdates();
@@ -19,12 +17,7 @@ export const Version = () => {
   }
 
   return (
-    <Stack
-      pb="spacing_8"
-      style={{
-        marginBottom: insets.bottom,
-      }}
-    >
+    <Stack pb="spacing_8">
       <Stack align="flex-end" pt="spacing_32" px="spacing_24">
         <Text variant="small">
           {`Version: v${config.version}${
