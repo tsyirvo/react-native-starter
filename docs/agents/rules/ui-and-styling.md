@@ -21,6 +21,24 @@ Give interactive elements appropriate accessibility roles, names and states.
 Check loading, disabled, error and empty states as applicable. Preserve
 accessibility with custom pressable wrappers, and test observable behavior.
 
+`$shared/a11y` owns screen reader behavior. Biome blocks direct imports of
+`AccessibilityInfo` and Reanimated's `useReducedMotion` outside it.
+
+- Build a control's accessibility props with the module's prop hooks, or add a
+  hook beside them. VoiceOver and TalkBack differ (VoiceOver ignores the
+  progressbar role and the busy state), so keep platform workarounds in the
+  module's utils, not in components.
+- Put translated accessibility strings under the `a11y` key.
+- `Pressable` requires a label and a role. `Image` requires alt text or
+  `isDecorative`. Give section titles `Text isHeading`.
+- When a control reads its visible texts in its own label, hide those texts
+  with `aria-hidden`, as `Input` does.
+- Read the reduce motion setting with `useIsReduceMotionEnabled`. It follows
+  changes while the app runs.
+- Unit-test the module's utils and hooks. Do not write component tests that
+  assert accessibility props: they test the implementation, not what a screen
+  reader says. Verify with VoiceOver and TalkBack instead.
+
 ## Translations
 
 - User-facing strings belong in `src/infra/i18n/resources/`, not component literals.
