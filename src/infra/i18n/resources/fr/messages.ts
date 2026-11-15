@@ -1,6 +1,11 @@
 import type { MessagesTypes } from '../en/messages';
 
 export const messages: MessagesTypes = {
+  a11y: {
+    busy: 'occupé',
+    loading: 'Chargement',
+    loadingComplete: 'Chargement terminé',
+  },
   appConfig: {
     changeLocale: {
       failure: "La langue n'a pas pu être changée",

@@ -13,6 +13,7 @@ export const withTranslation =
 export const useTranslation = () => ({
   i18n: {
     changeLanguage: () => Promise.resolve(),
+    language: 'en',
   },
   t: (str: string) => str,
 });

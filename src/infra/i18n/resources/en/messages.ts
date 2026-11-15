@@ -1,4 +1,9 @@
 export const messages = {
+  a11y: {
+    busy: 'busy',
+    loading: 'Loading',
+    loadingComplete: 'Loading complete',
+  },
   appConfig: {
     changeLocale: {
       failure: 'The language could not be changed',
