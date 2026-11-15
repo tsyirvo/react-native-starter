@@ -4,10 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 type SafeViewProps = NativeSafeAreaViewProps;
 
-export const SafeView = ({ children, edges = [] }: SafeViewProps) => (
-  <SafeAreaView edges={edges} style={styles.container}>
-    {children}
-  </SafeAreaView>
+export const SafeView = ({ edges = [], style, ...props }: SafeViewProps) => (
+  <SafeAreaView edges={edges} style={[styles.container, style]} {...props} />
 );
 
 const styles = StyleSheet.create({
