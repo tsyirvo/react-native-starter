@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import type { LayoutStyleProps } from './types';
+import { splitLayoutProps } from './utils/splitLayoutProps';
 
 /* ***** *****  Types  ***** ***** */
 
@@ -12,21 +13,11 @@ interface StackProps
 
 /* ***** *****  Component  ***** ***** */
 
-export const Stack = ({
-  style,
-  children,
-  testID,
-  onLayout,
-  ...layoutProps
-}: StackProps) => (
-  <View
-    onLayout={onLayout}
-    style={[styles.stack(layoutProps), style]}
-    testID={testID}
-  >
-    {children}
-  </View>
-);
+export const Stack = ({ style, ...props }: StackProps) => {
+  const { layout, viewProps } = splitLayoutProps(props);
+
+  return <View {...viewProps} style={[styles.stack(layout), style]} />;
+};
 
 /* ***** *****  Styles  ***** ***** */
 

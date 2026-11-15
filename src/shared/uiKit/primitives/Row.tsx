@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import type { LayoutStyleProps } from './types';
+import { splitLayoutProps } from './utils/splitLayoutProps';
 
 /* ***** *****  Types  ***** ***** */
 
@@ -12,21 +13,11 @@ interface RowProps
 
 /* ***** *****  Component  ***** ***** */
 
-export const Row = ({
-  style,
-  children,
-  testID,
-  onLayout,
-  ...layoutProps
-}: RowProps) => (
-  <View
-    onLayout={onLayout}
-    style={[styles.row(layoutProps), style]}
-    testID={testID}
-  >
-    {children}
-  </View>
-);
+export const Row = ({ style, ...props }: RowProps) => {
+  const { layout, viewProps } = splitLayoutProps(props);
+
+  return <View {...viewProps} style={[styles.row(layout), style]} />;
+};
 
 /* ***** *****  Styles  ***** ***** */
 
