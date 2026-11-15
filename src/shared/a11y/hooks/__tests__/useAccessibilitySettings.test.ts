@@ -50,6 +50,22 @@ describe('useIsReduceMotionEnabled', () => {
     expect(result.current).toBe(true);
   });
 
+  it('keeps a change that arrives before the current setting', async () => {
+    let resolveQuery: (isEnabled: boolean) => void = () => undefined;
+    jest.mocked(AccessibilityInfo.isReduceMotionEnabled).mockReturnValueOnce(
+      new Promise((resolve) => {
+        resolveQuery = resolve;
+      }),
+    );
+
+    const { result } = await renderHook(() => useIsReduceMotionEnabled());
+
+    await emit('reduceMotionChanged', true);
+    await act(async () => resolveQuery(false));
+
+    expect(result.current).toBe(true);
+  });
+
   it('follows the setting when it changes while the app runs', async () => {
     const { result } = await renderHook(() => useIsReduceMotionEnabled());
 

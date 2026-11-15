@@ -12,10 +12,11 @@ export const useIsReduceMotionEnabled = () => {
 
   useEffect(() => {
     let isMounted = true;
+    let hasReceivedChange = false;
 
     AccessibilityInfo.isReduceMotionEnabled()
       .then((isEnabled) => {
-        if (isMounted) {
+        if (isMounted && !hasReceivedChange) {
           setIsReduceMotionEnabled(isEnabled);
         }
       })
@@ -28,7 +29,10 @@ export const useIsReduceMotionEnabled = () => {
 
     const subscription = AccessibilityInfo.addEventListener(
       'reduceMotionChanged',
-      setIsReduceMotionEnabled,
+      (isEnabled) => {
+        hasReceivedChange = true;
+        setIsReduceMotionEnabled(isEnabled);
+      },
     );
 
     return () => {
