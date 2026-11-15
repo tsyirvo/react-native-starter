@@ -3,13 +3,13 @@ import { type GestureResponderEvent, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
-  useReducedMotion,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
 import type { UnistylesThemes } from 'react-native-unistyles';
 import { useUnistyles } from 'react-native-unistyles';
 
+import { useA11yButtonProps, useIsReduceMotionEnabled } from '$shared/a11y';
 import { Pressable } from '$shared/components/Pressable';
 import { HIT_SLOP } from '$shared/uiKit/constants';
 
@@ -18,9 +18,12 @@ import type { ButtonProps } from './types/buttonTypes';
 
 interface BaseButtonProps extends ButtonProps {
   children: React.ReactElement;
+  label: string;
 }
 
 export const BaseButton = ({
+  accessibilityHint,
+  label,
   variant = 'primary',
   isLoading = false,
   isDisabled = false,
@@ -33,7 +36,14 @@ export const BaseButton = ({
 
   const { theme } = useUnistyles();
 
-  const isReducedMotion = useReducedMotion();
+  const isReducedMotion = useIsReduceMotionEnabled();
+
+  const a11yProps = useA11yButtonProps({
+    hint: accessibilityHint,
+    isDisabled,
+    isLoading,
+    label,
+  });
 
   const isVisuallyDisabled = isDisabled && !isLoading;
 
@@ -59,9 +69,7 @@ export const BaseButton = ({
 
   return (
     <AnimatedPressable
-      accessibilityLabel={typeof children === 'string' ? children : undefined}
-      accessibilityRole="button"
-      accessibilityState={{ busy: isLoading }}
+      {...a11yProps}
       disabled={isLoading || isDisabled}
       hitSlop={HIT_SLOP}
       onPress={onPress as (event: GestureResponderEvent) => void}

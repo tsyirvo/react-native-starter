@@ -29,7 +29,11 @@ export const InnerText = ({
   return (
     <View style={styles.container} testID={testID}>
       {isLoading ? (
-        <View style={styles.loaderContainer} testID={`${testID}Loader`}>
+        <View
+          aria-hidden
+          style={styles.loaderContainer}
+          testID={`${testID}Loader`}
+        >
           <Loader
             color={getLoaderColor(parentVariant)}
             delay={0}

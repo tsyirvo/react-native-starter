@@ -12,6 +12,7 @@ interface ButtonWithIconProps extends ButtonProps {
 }
 
 export const ButtonWithIcon = ({
+  accessibilityHint,
   variant = 'primary',
   iconName,
   isDisabled = false,
@@ -27,8 +28,10 @@ export const ButtonWithIcon = ({
 
   return (
     <BaseButton
+      accessibilityHint={accessibilityHint}
       isDisabled={isButtonDisabled}
       isLoading={isLoading || isResolving}
+      label={children}
       onPress={handlePress}
       targetScale={targetScale}
       testID={testID}

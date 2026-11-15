@@ -1,6 +1,7 @@
 import type { ButtonVariant } from '../constants';
 
 export interface ButtonProps {
+  accessibilityHint?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
   onPress:
