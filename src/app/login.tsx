@@ -40,7 +40,10 @@ const Login = () => {
 
       <Screen edges={['top']} px="spacing_16">
         <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
-          <TouchableWithoutFeedback onPress={dismissKeyboard}>
+          <TouchableWithoutFeedback
+            accessible={false}
+            onPress={dismissKeyboard}
+          >
             <Box flex={1} gap="spacing_16" pt="spacing_32">
               <Stack align="center">
                 <Image
