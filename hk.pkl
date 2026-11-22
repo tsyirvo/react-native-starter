@@ -1,16 +1,13 @@
-amends "package://github.com/jdx/hk/releases/download/v2.4.0/hk@2.4.0#/Config.pkl"
-import "package://github.com/jdx/hk/releases/download/v2.4.0/hk@2.4.0#/Builtins.pkl"
+amends "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.13.0/hk@2.13.0#/Builtins.pkl"
 
-min_hk_version = "2.4.0"
-
-// Feature branches start from `main` and merge back into it with a squash merge.
-default_branch = "main"
-
-// Stop the hook as soon as something fails, no point in burning CPU afterwards.
+min_hk_version = "2.13.0"
 fail_fast = true
 
 local const codeGlob = List(
   "**/*.js",
+  "**/*.cjs",
+  "**/*.mjs",
   "**/*.jsx",
   "**/*.ts",
   "**/*.tsx",
@@ -20,65 +17,6 @@ local const codeGlob = List(
 
 local const tsGlob = List("**/*.ts", "**/*.tsx")
 
-// `tsc-files` builds a throwaway tsconfig from the files it is given, so the
-// ambient declarations and the Unistyles theme augmentation have to be passed
-// explicitly or every staged file fails to resolve its global types.
-// `expo-env.d.ts` is included for the full-`tsc` parity: it pulls in Expo's
-// global typings (e.g. the Metro `require` overloads) that the whole-repo
-// typecheck gets through tsconfig "include".
-local const ambientTypes =
-  "src/types/declaration.d.ts src/types/react-query.d.ts src/shared/theme/unistyles.ts expo-env.d.ts"
-
-/// Fast, file-scoped checks shared by `pre-commit` and `hk fix`.
-///
-/// `typecheck` and `test` both depend on `biome` so they always run against the
-/// fixed content instead of racing the formatter for the same files.
-local stagedChecks = new Mapping<String, Step> {
-  ["biome"] {
-    glob = codeGlob
-    // Biome is single-threaded per invocation, batching lets hk fan it out.
-    batch = true
-    check = "bunx biome check --files-ignore-unknown=true --no-errors-on-unmatched {{files}}"
-    fix = "bunx biome check --write --files-ignore-unknown=true --no-errors-on-unmatched {{files}}"
-  }
-  ["typecheck"] {
-    glob = tsGlob
-    // Vendored reference code uses Lace APIs, not this project's modules.
-    exclude = List(".agents/skills/systematic-debugging/condition-based-waiting-example.ts")
-    depends = "biome"
-    check = "bunx tsc-files --noEmit {{files}} " + ambientTypes
-  }
-  ["test"] {
-    glob = tsGlob
-    depends = "biome"
-    // Jest manages its own worker pool, so never batch this one.
-    check = "bun run test:related {{files}}"
-  }
-}
-
-// Top-level steps create the default pre-commit and fix hooks. Pre-commit
-// stashes unstaged work, fixes staged files and stages the results by default.
-steps = stagedChecks
-
-/// Whole-repo checks. Used by `pre-push` and `hk check`.
-///
-/// Staged-file scoping in `pre-commit` can miss breakage in files that were not
-/// touched by the commit, this is the safety net before anything leaves the machine.
-local fullChecks = new Mapping<String, Step> {
-  ["biome"] {
-    check = "bun run check"
-  }
-  ["typecheck"] {
-    check = "bun run typecheck"
-  }
-  ["test"] {
-    // Cheap checks first: a lint or type failure is reported in seconds instead
-    // of after the full suite has run.
-    depends = List("biome", "typecheck")
-    check = "bun run test"
-  }
-}
-
 hooks {
   ["commit-msg"] {
     steps {
@@ -86,11 +24,26 @@ hooks {
     }
   }
 
-  // hk replaces a hook's steps, so stagedChecks is re-listed to extend it with
-  // Gitleaks: it scans the whole staged changeset (any file type), findings
-  // redacted. Fingerprint false positives in `.gitleaksignore`.
   ["pre-commit"] {
-    steps = (stagedChecks) {
+    fix = true
+    stash = "git"
+    steps {
+      ["biome"] {
+        glob = codeGlob
+        batch = true
+        check = "bunx biome check --files-ignore-unknown=true --no-errors-on-unmatched {{files}}"
+        fix = "bunx biome check --write --files-ignore-unknown=true --no-errors-on-unmatched {{files}}"
+      }
+      ["typecheck"] {
+        depends = "biome"
+        glob = tsGlob + List("**/tsconfig*.json")
+        check = "bun run typecheck"
+      }
+      ["test"] {
+        depends = "biome"
+        glob = tsGlob
+        check = "bun run test:related {{files}}"
+      }
       ["gitleaks"] = (Builtins.gitleaks) {
         scan = "staged"
       }
@@ -98,11 +51,13 @@ hooks {
   }
 
   ["pre-push"] {
-    steps = fullChecks
+    steps {
+      ["check"] { check = "bun run check" }
+      ["typecheck"] { check = "bun run typecheck" }
+    }
   }
 
-  // `git worktree add` runs post-checkout in the new worktree. Doppler keeps its
-  // setup per directory, so each new worktree needs its own `doppler setup`.
+  // Doppler keeps its setup per directory, so each new worktree needs one.
   ["post-checkout"] {
     steps {
       ["doppler-setup"] {
@@ -110,11 +65,5 @@ hooks {
         check = "sh scripts/setup-doppler.sh"
       }
     }
-  }
-
-  // Override the shared steps for whole-repo, read-only checks.
-  // Add `--all` to `hk check` for the whole repo.
-  ["check"] {
-    steps = fullChecks
   }
 }

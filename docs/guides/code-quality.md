@@ -45,8 +45,9 @@ defaults. These defaults include a check for undeclared dependencies.
 ## Git hooks
 
 [hk](https://hk.jdx.dev/) manages the git hooks. `mise install` installs them
-for you, through the `[hooks] postinstall` entry in `mise.toml`. To install
-them again, run:
+for you: `bun install` runs the `prepare` script, which runs
+`scripts/install-git-hooks.sh`. The script does nothing in CI. To install them
+again, run:
 
 ```sh
 bun run hooks:install
@@ -60,8 +61,8 @@ This hook checks only the staged files, so it runs in a few seconds.
 
 1. hk stashes your unstaged changes.
 2. Biome fixes the staged files and stages its fixes again.
-3. `tsc-files` checks the types, and Jest runs the related tests, on the fixed
-   files.
+3. `bun run typecheck` checks the types of the whole project, and Jest runs the
+   related tests, on the fixed files.
 4. [Gitleaks](https://github.com/gitleaks/gitleaks) scans all the staged
    changes, including non-code files. If it finds a secret, it stops the commit
    and shows the finding with the secret hidden.
@@ -86,12 +87,11 @@ workflow uses these messages to make the changelog. Read
 This hook checks the full repository. The pre-commit hook does not check files
 that the commit did not change, so it can miss some errors.
 
-- Biome and TypeScript run in parallel.
-- The full test suite starts after them. A lint or type error shows in a few
-  seconds, before the tests start.
+- `bun run check` and `bun run typecheck` run in parallel.
+- This hook does not run the tests. CI runs them. To run them yourself, use
+  `bun run test`.
 
-To run the same checks manually, use `hk check --all` or
-`bun run hooks:check`.
+To run the same checks manually, use `bun run check` and `bun run typecheck`.
 
 ### post-checkout
 

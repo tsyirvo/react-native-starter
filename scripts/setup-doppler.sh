@@ -7,9 +7,15 @@ if ! command -v doppler >/dev/null 2>&1; then
   exit 0
 fi
 
-# Doppler keeps the setup per directory. Skip directories that already have it.
-if [ -n "$(doppler configure get project --plain 2>/dev/null)" ]; then
-  exit 0
+# Doppler keeps the setup per directory, and a directory inherits the setup of its parents.
+# Skip only a directory that has its own project, so a nested worktree still gets doppler.yaml.
+dir=$(pwd -P)
+scopes=$(doppler configure --json 2>/dev/null)
+own=${scopes#*"\"$dir\":{"}
+if [ "$own" != "$scopes" ]; then
+  case ${own%%\}*} in
+    *'"enclave.project"'*) exit 0 ;;
+  esac
 fi
 
 if ! doppler setup --no-interactive >/dev/null 2>&1; then

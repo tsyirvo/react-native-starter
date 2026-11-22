@@ -173,7 +173,7 @@ All the scripts are in `package.json`. To run a script, use
 | Builds    | `build:stg:ios`, `build:stg:android`, `build:prod:ios`, `build:prod:android` |
 | Quality   | `check`, `check:fix`, `typecheck`, `verify`, `verify:changed`                |
 | Tests     | `test`, `test:related`, `test:coverage`, `test:e2e`                          |
-| Git hooks | `hooks:install`, `hooks:check`, `hooks:fix`                                  |
+| Git hooks | `hooks:install`                                                              |
 | Utilities | `clean`, `generate:icons`, `perf:bundle`                                     |
 
 - `check:fix` changes files. `check` does not.
