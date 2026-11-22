@@ -80,7 +80,6 @@
         "jest-expo": "~58.0.13",
         "storybook": "^10.6.5",
         "test-renderer": "1.3.0",
-        "tsc-files": "^1.1.4",
         "typescript": "~6.0.3",
         "ultracite": "^8.1.0",
       },
@@ -2063,8 +2062,6 @@
     "ts-dedent": ["ts-dedent@2.3.0", "", {}, "sha512-JfJeIHke7y2egdGGgRAvpCwYFUsHlM2gPcrVOxFkznt/4uzQ7HFmvE63iFHVLBJNDuyDOQgijDK/tXH/f6Msjg=="],
 
     "ts-interface-checker": ["ts-interface-checker@0.1.13", "", {}, "sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA=="],
-
-    "tsc-files": ["tsc-files@1.1.4", "", { "peerDependencies": { "typescript": ">=3" }, "bin": { "tsc-files": "cli.js" } }, "sha512-RePsRsOLru3BPpnf237y1Xe1oCGta8rmSYzM76kYo5tLGsv5R2r3s64yapYorGTPuuLyfS9NVbh9ydzmvNie2w=="],
 
     "tslib": ["tslib@2.4.1", "", {}, "sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA=="],
 

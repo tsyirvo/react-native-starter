@@ -53,9 +53,8 @@
     "storybook:generate": "sb-rn-get-stories",
     "start:storybook": "doppler run -- env STORYBOOK_ENABLED=true expo start",
     "//// GIT HOOKS ////": "",
+    "prepare": "sh scripts/install-git-hooks.sh",
     "hooks:install": "mise exec -- hk install --mise",
-    "hooks:check": "mise exec -- hk check --all",
-    "hooks:fix": "mise exec -- hk fix --all",
     "//// MISC ////": "",
     "clean": "watchman watch-del-all && rm -rf .expo coverage node_modules",
     "perf:bundle": "bunx react-native-bundle-visualizer"
@@ -136,7 +135,6 @@
     "jest-expo": "~58.0.13",
     "storybook": "^10.6.5",
     "test-renderer": "1.3.0",
-    "tsc-files": "^1.1.4",
     "typescript": "~6.0.3",
     "ultracite": "^8.1.0"
   },

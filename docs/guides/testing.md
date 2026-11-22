@@ -35,7 +35,7 @@ bunx jest --maxWorkers=4                       # try a different worker count
 
 ### How Jest runs
 
-- Local runs, the pre-push hook and CI use the same `jest.config.js`.
+- Local runs, the pre-commit hook and CI use the same `jest.config.js`.
 - Jest uses half of the available CPUs, from 1 to 6 workers. On a 14-core
   computer, the full suite was fastest with 4 to 8 workers. Measure again when
   the suite or the CI hardware changes.

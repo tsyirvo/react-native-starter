@@ -3,7 +3,7 @@ node = "26"
 bun = "1.4.4"
 "npm:eas-cli" = "27"
 "npm:agent-device" = "0.21.31"
-hk = "2.4.0"
+hk = "2.13.0"
 gitleaks = "8.30.1"
 
 [env]
@@ -12,11 +12,6 @@ _.path = ["node_modules/.bin"]
 # Let hk resolve its tools through mise so the hooks work even when a
 # contributor has not activated mise in their shell
 HK_MISE = "1"
-
-# Wire the git hooks up as soon as the toolchain is installed, so nobody has to
-# remember to run `hk install` after cloning
-[hooks]
-postinstall = "mise exec -- hk install --mise"
 
 # Scripts live in package.json (`bun run <script>`); mise only provides the
 # toolchain and the git hooks setup.
