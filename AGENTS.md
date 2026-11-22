@@ -12,9 +12,9 @@ Keep shared guidance here; client files are optional adapters, not separate sour
 - Development: `bun run start` requires Doppler, local secrets and a development build.
 - Run Expo and EAS CLI commands as `bun expo …` and `bun eas …`. These scripts run the CLI with `doppler run`, which supplies the values that `app.config.ts` checks.
 - These scripts use the `dev` Doppler config. To use a different config, set `DOPPLER_CONFIG=stg` or `DOPPLER_CONFIG=prd`.
-- Final checks: `bun run lint:ts`, `bun run lint:ci`, `bun run format:check` and `bun run test`.
-- Focused tests: `bun run test -- --runTestsByPath <test-file>`.
-- `bun run lint` and `bun run format` write files. Scope fixes to your changes and inspect the diff.
+- Done gate: `bun run verify` runs `check`, `typecheck` and `test` in parallel.
+- Work in progress: `bun run verify:changed` and `bun run test:related <paths>`.
+- `bun run check:fix` writes files. Scope fixes to your changes and inspect the diff.
 - E2E: `bun run test:e2e` requires Maestro, secrets and a running development app.
 - Report checks actually run and any blockers; do not claim unavailable native/E2E verification passed.
 

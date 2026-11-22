@@ -52,7 +52,7 @@ local stagedChecks = new Mapping<String, Step> {
     glob = tsGlob
     depends = "biome"
     // Jest manages its own worker pool, so never batch this one.
-    check = "bun run test --findRelatedTests --passWithNoTests {{files}}"
+    check = "bun run test:related {{files}}"
   }
 }
 
@@ -66,10 +66,10 @@ steps = stagedChecks
 /// touched by the commit, this is the safety net before anything leaves the machine.
 local fullChecks = new Mapping<String, Step> {
   ["biome"] {
-    check = "bun run lint:ci"
+    check = "bun run check"
   }
   ["typecheck"] {
-    check = "bun run lint:ts"
+    check = "bun run typecheck"
   }
   ["test"] {
     // Cheap checks first: a lint or type failure is reported in seconds instead

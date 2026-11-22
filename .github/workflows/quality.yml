@@ -25,12 +25,6 @@ jobs:
       - name: Setup dependencies
         uses: ./.github/actions/setup-dependencies
 
-      - name: Run TypeScript checks
-        run: bun run lint:ts
-
-      - name: Run Biome checks (lint + format)
-        run: bun run lint:ci
-
       - name: Restore Jest cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
@@ -39,5 +33,5 @@ jobs:
           restore-keys: |
             jest-${{ runner.os }}-${{ runner.arch }}-node26-${{ hashFiles('bun.lock', 'jest.config.js', 'babel.config.js', 'tsconfig.json') }}-
 
-      - name: Run Tests
-        run: bun run test
+      - name: Verify
+        run: bun run verify

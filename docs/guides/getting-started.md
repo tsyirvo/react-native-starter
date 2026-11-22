@@ -171,16 +171,16 @@ All the scripts are in `package.json`. To run a script, use
 | App       | `start`, `run:dev:ios`, `run:dev:android`, `start:storybook`                 |
 | CLIs      | `expo`, `eas` (the Expo and EAS CLIs with the Doppler values)                |
 | Builds    | `build:stg:ios`, `build:stg:android`, `build:prod:ios`, `build:prod:android` |
-| Quality   | `lint`, `lint:ci`, `lint:ts`, `format`, `format:check`, `ci`                 |
-| Tests     | `test`, `test:coverage`, `test:e2e`                                          |
+| Quality   | `check`, `check:fix`, `typecheck`, `verify`, `verify:changed`                |
+| Tests     | `test`, `test:related`, `test:coverage`, `test:e2e`                          |
 | Git hooks | `hooks:install`, `hooks:check`, `hooks:fix`                                  |
 | Utilities | `clean`, `generate:icons`, `perf:bundle`                                     |
 
-- `lint` and `format` change files. `lint:ci` and `format:check` do not.
+- `check:fix` changes files. `check` does not.
 - `clean` removes the Watchman state, `.expo`, `coverage` and the full
   `node_modules` folder. Run `bun install` after `clean`.
-- `ci` runs `lint:ts`, `lint:ci` and `test`. The Quality workflow runs the
-  same checks.
+- `verify` runs `check`, `typecheck` and `test` in parallel. The Quality
+  workflow runs it in one job.
 
 ## Next steps
 

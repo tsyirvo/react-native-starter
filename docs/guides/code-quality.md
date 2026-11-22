@@ -9,16 +9,17 @@ The project uses [Biome](https://biomejs.dev/) with the
 [Ultracite](https://github.com/haydenbleasel/ultracite) presets for lint and
 format, and [TypeScript](https://www.typescriptlang.org/) for type checks.
 
-| Command                | What it does                         | Changes files |
-| ---------------------- | ------------------------------------ | ------------- |
-| `bun run lint:ts`      | Type checks with TypeScript          | No            |
-| `bun run lint:ci`      | Lint and format checks               | No            |
-| `bun run format:check` | Format checks only                   | No            |
-| `bun run lint`         | Applies safe fixes and sorts imports | Yes           |
-| `bun run format`       | Formats the files                    | Yes           |
+| Command                   | What it does                                                                                 | Changes files |
+| ------------------------- | -------------------------------------------------------------------------------------------- | ------------- |
+| `bun run check`           | Biome lint and format checks                                                                 | No            |
+| `bun run check:fix`       | Applies Biome fixes and sorts imports                                                        | Yes           |
+| `bun run typecheck`       | Type checks with TypeScript                                                                  | No            |
+| `bun run test`            | Runs every test suite. It takes no arguments.                                                | No            |
+| `bun run test:related`    | Runs the tests related to the paths it gets. It passes when no test is related.              | No            |
+| `bun run verify`          | Runs `check`, `typecheck` and `test` in parallel. CI runs it in one job.                     | No            |
+| `bun run verify:changed`  | Runs `check`, `typecheck`, then `test:related` on the files changed since origin/HEAD.       | No            |
 
-Use the commands that change files only when you want their fixes. Then check
-the diff.
+Use `bun run check:fix` only when you want its fixes. Then check the diff.
 
 ### Biome configuration
 

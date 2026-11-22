@@ -118,7 +118,7 @@ For `systematic-debugging`:
 
 - Use the project's Jest/RNTL helpers and verification commands for reproductions and regression tests. Upstream Superpowers test-driven-development and verification skill references do not require installing the collection.
 - Treat `condition-based-waiting-example.ts` as reference only; its Lace imports are not project APIs. In RNTL, prefer existing `findBy`/`waitFor` helpers with assertions rather than copying the generic truthy-predicate polling examples.
-- The bundled `find-polluter.sh` runs `npm test` and may execute tests with filesystem side effects. Do not run it unchanged here; inspect suspect tests and use scoped `bun run test -- --runTestsByPath <test-file>` commands, with approval before destructive cleanup. No bundled helper was executed during installation.
+- The bundled `find-polluter.sh` runs `npm test` and may execute tests with filesystem side effects. Do not run it unchanged here; inspect suspect tests and use scoped `bun run test:related <test-file>` commands, with approval before destructive cleanup. No bundled helper was executed during installation.
 - Keep diagnostic output local and redact secrets and personal data. Add validation at relevant trust boundaries rather than duplicating checks at every layer solely because a reference says to; keep fixes scoped to the confirmed root cause.
 
 Root `AGENTS.md` and the task guides define this repository's coding standards.

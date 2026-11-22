@@ -18,11 +18,11 @@ bun run test
 Other useful commands:
 
 ```sh
-bun run test -- --runTestsByPath <test-file>   # run one test file
-bun run test -- --watch                        # run again when files change
+bun run test:related <test-file>               # run the tests related to a file
+bunx jest --watch                              # run again when files change
 bun run test:coverage                          # include coverage
-bun run test -- --runInBand                    # run one test at a time, to debug
-bun run test -- --maxWorkers=4                 # try a different worker count
+bunx jest --runInBand                          # run one test at a time, to debug
+bunx jest --maxWorkers=4                       # try a different worker count
 ```
 
 ### Write tests
