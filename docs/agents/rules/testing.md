@@ -3,7 +3,7 @@
 ## Commands and helpers
 
 - Use `bun run test`, never `bun test`.
-- Focused: `bun run test -- --runTestsByPath <test-file>`.
+- Focused: `bun run test:related <test-file>`.
 - Full suite: `bun run test`; coverage: `bun run test:coverage`.
 - Use the shared worker policy in `jest.config.js` locally and in CI. Reserve `--runInBand` for debugging serial execution or isolation issues.
 - Import `render`, `screen` and other native helpers from `$testing`.
