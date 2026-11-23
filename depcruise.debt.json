@@ -1,0 +1,37 @@
+[
+  {
+    "type": "cycle",
+    "from": "src/shared/components/index.ts",
+    "to": "src/shared/components/navigation/index.ts",
+    "unresolvedTo": "./navigation",
+    "dependencyTypes": ["local", "export"],
+    "rule": {
+      "severity": "error",
+      "name": "no-circular"
+    },
+    "cycle": [
+      {
+        "name": "src/shared/components/navigation/index.ts",
+        "dependencyTypes": ["local", "export"]
+      },
+      {
+        "name": "src/shared/components/navigation/components/index.ts",
+        "dependencyTypes": ["local", "export"]
+      },
+      {
+        "name": "src/shared/components/navigation/components/HeaderLeft.tsx",
+        "dependencyTypes": ["local", "export"]
+      },
+      {
+        "name": "src/shared/components/index.ts",
+        "dependencyTypes": [
+          "aliased",
+          "aliased-tsconfig",
+          "aliased-tsconfig-paths",
+          "local",
+          "import"
+        ]
+      }
+    ]
+  }
+]

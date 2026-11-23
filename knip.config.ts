@@ -30,6 +30,8 @@ const config: KnipConfig = {
   ignore: [
     // Vendored agent skills.
     '.agents/**',
+    // depcruise.config.mjs extends it by name.
+    'depcruise.base.mjs',
   ],
   ignoreBinaries: [
     // CLIs from outside node_modules.
