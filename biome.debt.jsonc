@@ -1,0 +1,234 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "root": false,
+  "overrides": [
+    {
+      "includes": [
+        "scripts/skills.ts",
+        "src/infra/api/queryClient.ts",
+        "src/infra/api/utils/requestFailureQueue.ts",
+        "src/infra/purchase/__tests__/purchase.test.ts",
+        "src/shared/a11y/utils/busyState.ts",
+        "src/shared/hooks/useDebouncedFunction.ts",
+        "src/shared/hooks/useWhyDidYouUpdate.ts",
+        "src/shared/utils/__tests__/versions.test.ts",
+        "src/shared/utils/debounce.ts"
+      ],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "useMaxParams": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/shared/uiKit/primitives/stories/Text.stories.tsx"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noReactNativeRawText": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/testing/setup.ts"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUndeclaredVariables": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["__mocks__/react-native-mmkv.ts"],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noDynamicDelete": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/features/home/components/Version.tsx"],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noNestedTemplateLiterals": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/shared/components/screen/Screen.tsx",
+        "src/shared/uiKit/safeView/SafeView.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noReactObjectTypeAsDefaultProp": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["scripts/verify.ts"],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noReturnArrayPush": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["__tests__/metroConfig.test.ts"],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noUnsafeReturn": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/app/_layout.tsx",
+        "src/application/instrumentation/hooks/useAppScreenTracking.ts",
+        "src/infra/featureFlags/hooks/useGetRemoteConfigSync.ts",
+        "src/shared/hooks/usePress.ts",
+        "src/shared/uiKit/button/BaseButton.tsx",
+        "src/shared/utils/isPromise.ts"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noUnsafeTypeAssertion": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/infra/featureFlags/hooks/useGetBooleanFeatureFlag.ts"],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noUselessTypeConversion": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/application/bootstrap/hooks/__tests__/useBootstrapApp.test.ts"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "useCalledWith": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "scripts/verify.ts",
+        "src/application/appAvailability/hooks/useIsNewStoreVersionAvailable.ts",
+        "src/features/subscription/contexts/subscriptionContext/SubscriptionContextProvider.tsx",
+        "src/infra/featureFlags/hooks/useGetBooleanFeatureFlag.ts"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "useConsistentBooleanName": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "scripts/skills.ts",
+        "src/shared/uiKit/button/BaseButton.tsx",
+        "src/shared/uiKit/button/ButtonWithIcon.tsx",
+        "src/shared/uiKit/button/ButtonWithText.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "useNullishCoalescing": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/application/auth/hooks/useGetSessionState.ts",
+        "src/infra/date/hooks/useDates.ts",
+        "src/shared/a11y/hooks/__tests__/useA11yFocus.test.tsx",
+        "src/shared/hooks/useDebouncedFunction.ts",
+        "src/shared/hooks/usePreviousState.ts",
+        "src/shared/uiKit/button/BaseButton.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "useReactCompiler": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/shared/a11y/hooks/useA11yButtonProps.ts",
+        "src/shared/a11y/hooks/useA11yFocus.ts",
+        "src/shared/hooks/useWhyDidYouUpdate.ts"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "useReactNamingConvention": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/infra/analytics/analytics.ts",
+        "src/infra/featureFlags/featureFlags.ts",
+        "src/infra/logger/logger.ts",
+        "src/infra/monitoring/errorMonitoring.ts",
+        "src/infra/monitoring/observeMonitoring.ts",
+        "src/infra/monitoring/performanceMonitoring.ts",
+        "src/infra/permissions/permissions.ts",
+        "src/infra/purchase/purchase.ts",
+        "src/infra/toaster/toaster.ts"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "useThisInClassMethods": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/shared/components/index.ts",
+        "src/shared/components/navigation/components/HeaderLeft.tsx",
+        "src/shared/components/navigation/components/index.ts",
+        "src/shared/components/navigation/index.ts"
+      ],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noImportCycles": "warn"
+          }
+        }
+      }
+    }
+  ]
+}

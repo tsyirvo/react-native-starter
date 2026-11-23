@@ -1,98 +1,19 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["ultracite/biome/core", "ultracite/biome/react"],
+  "root": true,
+  "extends": ["./biome.base.jsonc", "./biome.debt.jsonc"],
   "files": {
     "includes": [
       "!!**/babel.config.js",
       "!!**/metro.config.cjs",
       "!!**/env.js",
       "!!**/src/shared/icons/font",
-      "!!**/.rnstorybook",
-      // Vendored CLI-managed code: preserve upstream content for updates.
-      "!!**/.agents/skills/expo-ui/scripts/list-components.js",
-      "!!**/.agents/skills/systematic-debugging/condition-based-waiting-example.ts"
+      "!!**/.rnstorybook"
     ]
-  },
-  // Biome 2.6 only supports CommonMark, not our GFM tables/task lists.
-  // Keep Markdown linting, but leave formatting to the documentation authors.
-  "markdown": {
-    "parser": {
-      "frontmatter": true
-    },
-    "formatter": {
-      "enabled": false
-    }
-  },
-  "javascript": {
-    "globals": [
-      "__DEV__",
-      "jest",
-      "it",
-      "test",
-      "describe",
-      "beforeEach",
-      "afterEach",
-      "beforeAll",
-      "afterAll",
-      "expect"
-    ],
-    "formatter": {
-      "quoteStyle": "single",
-      "trailingCommas": "all"
-    }
-  },
-  "assist": {
-    "actions": {
-      "source": {
-        // Separate packages, `$` aliases and relative paths with a blank line.
-        // Explicit groups make Biome enforce and autofix the separators.
-        "organizeImports": {
-          "level": "on",
-          "options": {
-            "groups": [
-              [
-                ":URL:",
-                ":BUN:",
-                ":NODE:",
-                ":PACKAGE_WITH_PROTOCOL:",
-                ":PACKAGE:"
-              ],
-              ":BLANK_LINE:",
-              ":ALIAS:",
-              ":BLANK_LINE:",
-              ":PATH:"
-            ]
-          }
-        },
-        // Don't auto-sort package.json keys
-        "useSortedPackageJson": "off"
-      }
-    }
   },
   "linter": {
     "rules": {
-      "performance": {
-        "noBarrelFile": "off",
-        // Expo SDK namespaces and Jest spyOn mocks are intentional.
-        "noNamespaceImport": "off",
-        // Inline callbacks are idiomatic here; React Compiler is enabled.
-        "noJsxPropsBind": "off"
-      },
-      "a11y": {
-        // React Native has no label/control association (`htmlFor`), and the
-        // rule flags non-form components such as `NativeTabs.Trigger.Label`.
-        "noLabelWithoutControl": "off"
-      },
       "style": {
-        // Infra adapters are stateless classes whose methods don't use `this`.
-        "useThisInClassMethods": "off",
-        // PascalCase components and camelCase hooks, utilities and config files.
-        "useFilenamingConvention": {
-          "level": "error",
-          "options": {
-            "filenameCases": ["camelCase", "PascalCase"]
-          }
-        },
         // Shared client state lives behind `$infra/store` hooks and actions.
         // The UI kit has no root barrel: it would load every component's
         // dependencies (expo-router, expo-image…) into each Jest test.
@@ -119,38 +40,10 @@
             ]
           }
         }
-      },
-      "complexity": {
-        "noVoid": "off"
-      },
-      "suspicious": {
-        // Use `Logger.dev` from `$infra/logger`, which only logs in development.
-        "noConsole": "error"
       }
     }
   },
   "overrides": [
-    {
-      // Package-named mocks/augmentations and existing CLI scripts use kebab-case.
-      "includes": [
-        "__mocks__/**",
-        "src/types/react-query.d.ts",
-        "scripts/**",
-        ".github/scripts/**"
-      ],
-      "linter": {
-        "rules": {
-          "style": {
-            "useFilenamingConvention": {
-              "level": "error",
-              "options": {
-                "filenameCases": ["camelCase", "PascalCase", "kebab-case"]
-              }
-            }
-          }
-        }
-      }
-    },
     {
       // Route filenames are URL segments, so they follow Expo Router's kebab-case.
       "includes": ["src/app/**"],
@@ -168,8 +61,8 @@
       }
     },
     {
-      // The logger owns development console output; CLI scripts print to the terminal.
-      "includes": ["src/infra/logger/logger.ts", "scripts/**"],
+      // The logger owns development console output.
+      "includes": ["src/infra/logger/logger.ts"],
       "linter": {
         "rules": {
           "suspicious": {
