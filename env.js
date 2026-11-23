@@ -4,10 +4,9 @@ import packageJSON from './package.json' with { type: 'json' };
 
 // Values are injected by Doppler locally and synced EAS environments on builders.
 // `.env.example` documents the inputs; it is never loaded at runtime.
-// APP_ENV comes from the Doppler config (and the EAS profile on builders). It has
-// no default, so a config without it fails validation instead of silently
-// resolving to production.
-const APP_ENV = process.env.APP_ENV;
+// APP_ENV comes from the Doppler config (and the EAS profile on builders).
+// It falls back to production, so a missing value never ships a development build.
+const APP_ENV = process.env.APP_ENV ?? 'production';
 
 // Default values
 const BUNDLE_ID = 'com.tsyirvo.rnstarter';

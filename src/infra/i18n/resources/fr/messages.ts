@@ -65,7 +65,7 @@ export const messages: MessagesTypes = {
     },
     storybook: {
       content:
-        "Accéder à un Storybook d'exemple exposant les composants les plus utilisés; il suffit de lancer le packager avec 'bun run start:storybook'",
+        "Accéder à un Storybook d'exemple exposant les composants les plus utilisés; il suffit de lancer le packager avec 'bun run dev:storybook'",
       title: 'Storybook',
     },
     tests: {
