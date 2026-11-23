@@ -9,7 +9,7 @@ Keep shared guidance here; client files are optional adapters, not separate sour
 - Use Bun for package installation and scripts; never use `bun test` (it runs the wrong test runner).
 - Read `package.json`, `bun.lock` and `mise.toml` for dependency/toolchain versions.
 - Setup: `mise trust`, `mise install`, then `bun install --frozen-lockfile`.
-- Development: `bun run start` requires Doppler, local secrets and a development build.
+- Development: `bun run dev` requires Doppler, local secrets and a development build.
 - Run Expo and EAS CLI commands as `bun expo …` and `bun eas …`. These scripts run the CLI with `doppler run`, which supplies the values that `app.config.ts` checks.
 - These scripts use the `dev` Doppler config. To use a different config, set `DOPPLER_CONFIG=stg` or `DOPPLER_CONFIG=prd`.
 - Done gate: `bun run verify` runs `check`, `typecheck` and `test` in parallel.

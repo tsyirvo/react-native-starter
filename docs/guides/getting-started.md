@@ -83,25 +83,23 @@ To run the development app on a simulator or emulator, use one of these
 scripts:
 
 ```sh
-bun run run:dev:ios        # iOS simulator
-bun run run:dev:android    # Android emulator
+bun run ios        # iOS simulator or device
+bun run android    # Android emulator or device
 ```
 
-Each script builds the development app, installs it and starts the packager.
+Each script lists the available simulators, emulators and connected devices.
+Pick one, or pass its name to skip the prompt: `bun run ios "iPhone 17 Pro"`.
+The script builds the development app, installs it and starts the packager.
 The scripts use `expo run` with the EAS build cache. Read
 [Share development builds](#share-development-builds).
 
-Run the script again when the native code or the native dependencies change.
+Rebuild only after a native change. `expo run` generates the iOS or Android
+folder only when it is missing. After a change to `app.config.ts` or to a
+config plugin, delete the generated iOS or Android folder first.
 When only the JavaScript code changes, start only the packager:
 
 ```sh
-bun run start
-```
-
-To install the development app on a physical iPhone, add `--device`:
-
-```sh
-bun run run:dev:ios -- --device
+bun run dev
 ```
 
 To test a staging or production variant, use the matching build scripts:
@@ -120,8 +118,8 @@ read [Environments](environments.md#cloud-builds).
 
 In `app.config.ts`, `buildCacheProvider` uses the
 [EAS build cache provider](https://docs.expo.dev/guides/cache-builds-remotely/)
-(`eas-build-cache-provider`). When you run `bun run run:dev:ios` or
-`bun run run:dev:android`, Expo does these steps:
+(`eas-build-cache-provider`). When you run `bun run ios` or
+`bun run android`, Expo does these steps:
 
 1. Expo calculates the project
    [fingerprint](https://docs.expo.dev/versions/latest/sdk/fingerprint/) for
@@ -168,7 +166,7 @@ All the scripts are in `package.json`. To run a script, use
 
 | Group     | Scripts                                                                      |
 | --------- | ---------------------------------------------------------------------------- |
-| App       | `start`, `run:dev:ios`, `run:dev:android`, `start:storybook`                 |
+| App       | `dev`, `ios`, `android`, `dev:storybook`                                     |
 | CLIs      | `expo`, `eas` (the Expo and EAS CLIs with the Doppler values)                |
 | Builds    | `build:stg:ios`, `build:stg:android`, `build:prod:ios`, `build:prod:android` |
 | Quality   | `check`, `check:fix`, `typecheck`, `verify`, `verify:changed`                |
@@ -177,8 +175,8 @@ All the scripts are in `package.json`. To run a script, use
 | Utilities | `clean`, `generate:icons`, `perf:bundle`                                     |
 
 - `check:fix` changes files. `check` does not.
-- `clean` removes the Watchman state, `.expo`, `coverage` and the full
-  `node_modules` folder. Run `bun install` after `clean`.
+- `clean` removes the Watchman state, `.expo`, `coverage`, the full
+  `node_modules` folder and the generated iOS and Android folders. Run `bun install` after `clean`.
 - `verify` runs `check`, `typecheck` and `test` in parallel. The Quality
   workflow runs it in one job.
 

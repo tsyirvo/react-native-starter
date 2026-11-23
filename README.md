@@ -52,8 +52,8 @@ Android emulator.
 1. Install the toolchain: `mise trust && mise install`.
 2. Install the packages: `bun install`.
 3. Connect Doppler: `doppler login`, then `doppler setup`.
-4. Build and install the development app, and start the packager: `bun run run:dev:ios` or `bun run run:dev:android`. Builds are shared through the EAS build cache.
-5. When the native code did not change, start only the packager: `bun run start`.
+4. Build and install the development app, and start the packager: `bun run ios` or `bun run android`. Builds are shared through the EAS build cache.
+5. When the native code did not change, start only the packager: `bun run dev`.
 
 The app does not start until you set its secrets in Doppler. Read
 [Getting started](docs/guides/getting-started.md) for the full steps.

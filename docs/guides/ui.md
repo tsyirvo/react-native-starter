@@ -58,7 +58,7 @@ components that they show.
 
 To open Storybook:
 
-1. Start the packager with Storybook enabled: `bun run start:storybook`.
+1. Start the packager with Storybook enabled: `bun run dev:storybook`.
 2. Open the development app.
 3. Go to the `/storybook` route.
 
