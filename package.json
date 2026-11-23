@@ -135,7 +135,7 @@
     "@types/node": "^26.6.5",
     "@types/react": "~19.3.0",
     "dependency-cruiser": "18.8.0",
-    "eas-build-cache-provider": "^26.0.0",
+    "eas-build-cache-provider": "27.11.0",
     "jest": "~30.5.2",
     "jest-expo": "~58.0.13",
     "knip": "6.47.0",
