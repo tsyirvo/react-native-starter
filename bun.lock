@@ -76,7 +76,7 @@
         "@types/node": "^26.6.5",
         "@types/react": "~19.3.0",
         "dependency-cruiser": "18.8.0",
-        "eas-build-cache-provider": "^26.0.0",
+        "eas-build-cache-provider": "27.11.0",
         "jest": "~30.5.2",
         "jest-expo": "~58.0.13",
         "knip": "6.47.0",
@@ -1167,7 +1167,7 @@
 
     "dotenv": ["dotenv@17.4.2", "", {}, "sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw=="],
 
-    "eas-build-cache-provider": ["eas-build-cache-provider@26.0.0", "", { "dependencies": { "@babel/code-frame": "7.23.5", "@expo/config": "11.0.10", "@expo/spawn-async": "^1.7.2", "chalk": "4.1.2", "figures": "3.2.0", "fs-extra": "11.2.0", "getenv": "1.0.0", "log-symbols": "4.1.0", "semver": "7.5.2", "terminal-link": "2.1.1", "tslib": "2.4.1" } }, "sha512-HLhDcLPtSkVoicAYTqcXvdNSWXAF9SwBGmgPGSvO+nNVSEDcMjtAb2oIB433Byj6QWimVTD7UJWtQqkc29Q/SQ=="],
+    "eas-build-cache-provider": ["eas-build-cache-provider@27.11.0", "", { "dependencies": { "@babel/code-frame": "7.23.5", "@expo/config": "11.0.10", "@expo/spawn-async": "^1.7.2", "chalk": "4.1.2", "figures": "3.2.0", "fs-extra": "11.2.0", "getenv": "1.0.0", "log-symbols": "4.1.0", "semver": "7.5.2", "terminal-link": "2.1.1", "tslib": "2.4.1" } }, "sha512-T/B4tKdLMAy4UmExKWdsxtUVxahu1G7YGjXM0rWosKrcLTS8I/9ywi9vg9JEWAy6u0lLHUGPCCy3anmXEBOOYw=="],
 
     "eastasianwidth": ["eastasianwidth@0.2.0", "", {}, "sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA=="],
 

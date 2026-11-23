@@ -91,10 +91,17 @@ describe('injected environment configuration', () => {
     expect(result.stderr).toContain(key);
   });
 
-  it('rejects a missing app environment', () => {
-    const result = run(envArgs, { APP_ENV: undefined });
-    expect(result.status).not.toBe(0);
-    expect(result.stderr).toContain('APP_ENV');
+  it('uses production when the app environment is missing', () => {
+    const result = run(
+      [
+        '--input-type=module',
+        '-e',
+        "const { ClientEnv } = await import('./env.js'); console.log(ClientEnv.APP_ENV)",
+      ],
+      { APP_ENV: undefined },
+    );
+    expect(result.status).toBe(0);
+    expect(result.stdout.trim()).toBe('production');
   });
 
   it('rejects an unknown app environment', () => {

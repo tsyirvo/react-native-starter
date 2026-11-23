@@ -28,10 +28,10 @@ not select the app variant.
 | `prd`          | `production`  | `1`              |
 
 `doppler.yaml` sets the Doppler project and the default config (`dev`). Thus,
-`doppler setup` does not ask questions. A script without `--config` uses the
-`dev` config. The staging scripts use `--config stg`, and the production
-scripts use `--config prd`. If your Doppler project or configs have different
-names, change `doppler.yaml` and the `--config` arguments.
+`doppler setup` does not ask questions. A script without `-c` uses the
+`dev` config. The staging scripts use `-c stg`, and the production
+scripts use `-c prd`. If your Doppler project or configs have different
+names, change `doppler.yaml` and the `-c` arguments.
 
 Doppler keeps its setup for each directory and its subdirectories. A git
 worktree outside the main checkout does not have a setup. The `post-checkout` git hook runs
