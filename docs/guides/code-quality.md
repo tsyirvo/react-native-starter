@@ -9,23 +9,42 @@ The project uses [Biome](https://biomejs.dev/) with the
 [Ultracite](https://github.com/haydenbleasel/ultracite) presets for lint and
 format, and [TypeScript](https://www.typescriptlang.org/) for type checks.
 
-| Command                   | What it does                                                                                 | Changes files |
-| ------------------------- | -------------------------------------------------------------------------------------------- | ------------- |
-| `bun run check`           | Biome lint and format checks                                                                 | No            |
-| `bun run check:fix`       | Applies Biome fixes and sorts imports                                                        | Yes           |
-| `bun run typecheck`       | Type checks with TypeScript                                                                  | No            |
-| `bun run test`            | Runs every test suite. It takes no arguments.                                                | No            |
-| `bun run test:related`    | Runs the tests related to the paths it gets. It passes when no test is related.              | No            |
-| `bun run verify`          | Runs `check`, `typecheck` and `test` in parallel. CI runs it in one job.                     | No            |
-| `bun run verify:changed`  | Runs `check`, `typecheck`, then `test:related` on the files changed since origin/HEAD.       | No            |
+| Command                  | What it does                                                                           | Changes files |
+| ------------------------ | -------------------------------------------------------------------------------------- | ------------- |
+| `bun run check`          | Biome lint and format checks                                                           | No            |
+| `bun run check:fix`      | Applies Biome fixes and sorts imports                                                  | Yes           |
+| `bun run typecheck`      | Type checks with TypeScript                                                            | No            |
+| `bun run test`           | Runs every test suite. It takes no arguments.                                          | No            |
+| `bun run test:related`   | Runs the tests related to the paths it gets. It passes when no test is related.        | No            |
+| `bun run verify`         | Runs `check`, `typecheck` and `test` in parallel. CI runs it in one job.               | No            |
+| `bun run verify:changed` | Runs `check`, `typecheck`, then `test:related` on the files changed since origin/HEAD. | No            |
 
 Use `bun run check:fix` only when you want its fixes. Then check the diff.
 
 ### Biome configuration
 
-`biome.jsonc` extends the Ultracite core and React presets, and keeps their
-defaults. These defaults include a check for undeclared dependencies.
-`biome.jsonc` also documents each project-specific exception.
+Three files configure Biome:
+
+- `biome.base.jsonc` holds the formatting and the rule levels: 100 columns,
+  single quotes, trailing commas and the Ultracite presets, plus rules for
+  promises, type assertions, switch cases, naming and tests. Do not edit it in
+  this repository.
+- `biome.jsonc` extends the base and `biome.debt.jsonc`. It holds only what
+  this repository needs: ignores, import boundaries and overrides.
+- `biome.debt.jsonc` lists, rule by rule, the files that break a rule today.
+  Biome reports them as warnings, so `bun run check` passes and the debt stays
+  visible. A new file gets the full rule set.
+
+Follow these rules when you change the configuration:
+
+- Put repository rules in `biome.jsonc` as overrides: import boundaries,
+  component options, or a rule that is off for one folder, with the reason.
+- Never add a path to `biome.debt.jsonc`. When you change a listed file, fix
+  that rule in the file, then remove the path. Remove a rule entry when its list
+  is empty.
+- Treat a Biome warning as debt to remove, not as noise.
+
+Project-specific exceptions:
 
 - **File names:** components use PascalCase. Other files use camelCase.
   Package-named mocks, type augmentations and CLI scripts can also use
@@ -33,14 +52,9 @@ defaults. These defaults include a check for undeclared dependencies.
 - **Routes:** files in `src/app/` must use kebab-case, because Expo Router uses
   them as URL segments.
 - **JSX:** inline JSX callbacks are permitted.
-- **Classes:** methods are not required to use `this`, because infra adapters
-  are stateless classes.
 - **Labels:** `noLabelWithoutControl` is off, because React Native has no
   label/control association and the rule flags non-form `Label` components.
-- **YAML:** Biome formats YAML files.
-- **Markdown:** Biome lints Markdown and reads skill frontmatter. Biome does not
-  format Markdown, because Biome 2.6 does not support the GFM tables and task
-  lists in this repository.
+- **YAML and Markdown:** Biome formats both.
 
 ## Git hooks
 
