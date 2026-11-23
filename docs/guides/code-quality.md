@@ -1,17 +1,18 @@
 # Code quality
 
-This guide covers lint, format and type checks, the git hooks and the
-dependency rules.
+This guide covers lint, format, unused-code and type checks, the git hooks and
+the dependency rules.
 
 ## Lint, format and type checks
 
 The project uses [Biome](https://biomejs.dev/) with the
 [Ultracite](https://github.com/haydenbleasel/ultracite) presets for lint and
-format, and [TypeScript](https://www.typescriptlang.org/) for type checks.
+format, [knip](https://knip.dev/) for unused code, and
+[TypeScript](https://www.typescriptlang.org/) for type checks.
 
 | Command                  | What it does                                                                           | Changes files |
 | ------------------------ | -------------------------------------------------------------------------------------- | ------------- |
-| `bun run check`          | Biome lint and format checks                                                           | No            |
+| `bun run check`          | Biome lint and format checks, then knip                                                | No            |
 | `bun run check:fix`      | Applies Biome fixes and sorts imports                                                  | Yes           |
 | `bun run typecheck`      | Type checks with TypeScript                                                            | No            |
 | `bun run test`           | Runs every test suite. It takes no arguments.                                          | No            |
@@ -55,6 +56,12 @@ Project-specific exceptions:
 - **Labels:** `noLabelWithoutControl` is off, because React Native has no
   label/control association and the rule flags non-form `Label` components.
 - **YAML and Markdown:** Biome formats both.
+
+## Unused code
+
+- `bun run knip` finds unused files, exports, types and dependencies. `bun run check` runs it, so CI and the pre-push hook run it too.
+- Repo setup goes in `knip.config.ts`: entry files that no import reaches, binaries from outside `node_modules`, and dependencies that knip cannot see, each with its reason.
+- `knip.debt.ts` lists the unused code of today: each file with the issue types to ignore there, and the dependencies and binaries by name. It was recorded once, when knip came in. Never add an entry after that. When you change a listed file or dependency, remove the unused code, then remove its entry.
 
 ## Git hooks
 
@@ -101,7 +108,7 @@ workflow uses these messages to make the changelog. Read
 This hook checks the full repository. The pre-commit hook does not check files
 that the commit did not change, so it can miss some errors.
 
-- `bun run check` and `bun run typecheck` run in parallel.
+- `bun run check` (Biome, then knip) and `bun run typecheck` run in parallel.
 - This hook does not run the tests. CI runs them. To run them yourself, use
   `bun run test`.
 

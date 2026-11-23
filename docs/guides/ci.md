@@ -7,7 +7,7 @@ back into it through squash-merged pull requests.
 
 | Workflow                          | When it runs                                     | What it does                                         |
 | --------------------------------- | ------------------------------------------------ | ---------------------------------------------------- |
-| **Quality**                       | On new and updated pull requests, to any branch  | Runs TypeScript, Biome and the full Jest suite       |
+| **Quality**                       | On new and updated pull requests, to any branch  | Runs TypeScript, Biome, knip and the full Jest suite |
 | **PR title**                      | On pull requests                                 | Checks that the title is a valid conventional commit |
 | **Release**                       | On pushes to `main`                              | Keeps the release pull request up to date            |
 | **Cache Bun dependencies**        | On pushes to `main`, and on changes to its setup | Fills the shared dependency cache                    |
