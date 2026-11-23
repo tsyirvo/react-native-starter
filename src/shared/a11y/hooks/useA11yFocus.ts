@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { AccessibilityInfo, type HostInstance } from 'react-native';
+import type { HostInstance } from 'react-native';
+import { AccessibilityInfo } from 'react-native';
 
 import { IS_ANDROID } from '$infra/config';
 

@@ -26,6 +26,7 @@ Keep shared guidance here; client files are optional adapters, not separate sour
 - Before any source-code task, explicitly read [src/AGENTS.md](src/AGENTS.md); do not rely on a client discovering nested instructions.
 - Repository instructions and installed versions take precedence over generic skill examples.
 - Consult version-matched official documentation for library-specific behavior; use MCP when available, or document the limitation.
+- Lint config lives in `biome.base.jsonc` (do not edit), `biome.jsonc` and `biome.debt.jsonc` (never add a path); see [Code quality](docs/guides/code-quality.md).
 - Update relevant tests and user-facing documentation when behavior changes. Keep formatting rules in Biome rather than duplicating its rule set.
 - Keep agent guidance focused on coding standards and architectural decisions, not implementation inventories. Update it when those standards or decisions change, and keep reference links valid. Inspect current source and tests for implementation details; examples are not mandatory designs.
 

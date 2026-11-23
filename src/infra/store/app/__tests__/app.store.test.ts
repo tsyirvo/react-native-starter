@@ -9,8 +9,7 @@ const mockStorages = new Map<string, MMKV>();
 // The library mock creates a new in-memory instance per call; share it per id
 // so the store reads what the test seeded as a previous launch.
 jest.mock('react-native-mmkv', () => {
-  const actual =
-    jest.requireActual<typeof import('react-native-mmkv')>('react-native-mmkv');
+  const actual = jest.requireActual<typeof import('react-native-mmkv')>('react-native-mmkv');
 
   return {
     ...actual,
@@ -26,8 +25,7 @@ jest.mock('react-native-mmkv', () => {
 });
 
 // Loaded after the shared map exists: the storage module creates MMKV instances.
-const { storageKeys } =
-  jest.requireActual<typeof import('$infra/storage')>('$infra/storage');
+const { storageKeys } = jest.requireActual<typeof import('$infra/storage')>('$infra/storage');
 const { appPreferences, id } = storageKeys.storeStorage;
 
 const getStorage = () => createMMKV({ id });
@@ -54,10 +52,8 @@ describe('app store', () => {
     getStorage().set(appPreferences, JSON.stringify({ appTheme: 'light' }));
 
     jest.isolateModules(() => {
-      appStore =
-        jest.requireActual<typeof import('../app.store')>('../app.store');
-      ({ resetStore } =
-        jest.requireActual<typeof import('../../utils')>('../../utils'));
+      appStore = jest.requireActual<typeof import('../app.store')>('../app.store');
+      ({ resetStore } = jest.requireActual<typeof import('../../utils')>('../../utils'));
     });
   });
   it('restores persisted preferences on launch', async () => {
@@ -81,9 +77,7 @@ describe('app store', () => {
       appTheme: 'dark',
       isBootstrappingApplication: false,
     });
-    await waitFor(() =>
-      expect(getPersistedPreferences()).toEqual({ appTheme: 'dark' }),
-    );
+    await waitFor(() => expect(getPersistedPreferences()).toEqual({ appTheme: 'dark' }));
   });
 
   it('resets values and overwrites persisted preferences with defaults', async () => {
@@ -93,9 +87,7 @@ describe('app store', () => {
       appStore.setIsBootstrappingApplication(true);
       appStore.setAppTheme('light');
     });
-    await waitFor(() =>
-      expect(getPersistedPreferences()).toEqual({ appTheme: 'light' }),
-    );
+    await waitFor(() => expect(getPersistedPreferences()).toEqual({ appTheme: 'light' }));
 
     await act(() => {
       resetStore();
@@ -105,8 +97,6 @@ describe('app store', () => {
       appTheme: 'dark',
       isBootstrappingApplication: false,
     });
-    await waitFor(() =>
-      expect(getPersistedPreferences()).toEqual({ appTheme: 'dark' }),
-    );
+    await waitFor(() => expect(getPersistedPreferences()).toEqual({ appTheme: 'dark' }));
   });
 });

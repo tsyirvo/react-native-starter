@@ -4,8 +4,7 @@ import { act, render, screen, userEvent } from '$testing';
 
 import * as ButtonsWithIcon from '../stories/ButtonWithIcon.stories';
 
-const { BasicButton, ButtonLoading, ButtonDisabled } =
-  composeStories(ButtonsWithIcon);
+const { BasicButton, ButtonLoading, ButtonDisabled } = composeStories(ButtonsWithIcon);
 
 const label = 'Submit';
 

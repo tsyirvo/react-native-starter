@@ -1,0 +1,285 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "root": false,
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/react-native",
+    "ultracite/biome/jest",
+    "ultracite/biome/type-aware"
+  ],
+  "files": {
+    // skills-lock.json hashes each vendored skill, release-please writes CHANGELOG.md,
+    // and svgr turns each SVG into a component, so the source stays as the icon set ships it.
+    "includes": [
+      "!!**/.agents/skills",
+      "!!**/.claude/skills",
+      "!!**/CHANGELOG.md",
+      "!!**/*.svg"
+    ]
+  },
+  "formatter": {
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "all"
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        // It sorts the scripts object, and the quality scripts keep their own order.
+        "useSortedPackageJson": "off",
+        // A monorepo sets these groups in its biome.jsonc, with its own workspace scope as a second block.
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              [
+                ":URL:",
+                ":BUN:",
+                ":NODE:",
+                ":PACKAGE_WITH_PROTOCOL:",
+                ":PACKAGE:"
+              ],
+              ":BLANK_LINE:",
+              ":ALIAS:",
+              ":BLANK_LINE:",
+              ":PATH:"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "linter": {
+    "rules": {
+      "a11y": {
+        // React Native has no label and control pair.
+        "noLabelWithoutControl": "off"
+      },
+      "complexity": {
+        "useMaxParams": { "level": "error", "options": { "max": 2 } },
+        // The fix removes a last `return;` that tsc needs under noImplicitReturns.
+        "noUselessReturn": { "level": "error", "fix": "none" },
+        // The fix turns `return undefined;` into `return;`, which tsc rejects for a
+        // `T | undefined` return. A replay applies it with `--unsafe`, then runs tsc.
+        "noUselessUndefined": { "level": "error", "fix": "unsafe" }
+      },
+      "correctness": {
+        // Biome does not resolve .ios and .android files. tsc reports unresolved imports.
+        "noUnresolvedImports": "off",
+        // Metro and the Jest transform load JSON without import attributes.
+        "useJsonImportAttributes": "off"
+      },
+      "performance": {
+        // React Compiler memoizes inline callbacks.
+        "noJsxPropsBind": "off"
+      },
+      "style": {
+        // The fix can make a default import type-only when the code also uses it as a value.
+        // So `check --write` leaves it, and a replay applies it with `--unsafe`, then runs tsc.
+        "useImportType": {
+          "level": "error",
+          "fix": "unsafe",
+          "options": { "style": "separatedType" }
+        },
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "requireAscii": true,
+            "filenameCases": ["camelCase", "PascalCase"]
+          }
+        }
+      },
+      "suspicious": {
+        "noConsole": "error",
+        // Biome reads a ref as its first value, and trusts types at runtime edges such as
+        // route params and API data. So it asks to remove guards that the code needs.
+        "noUnnecessaryConditions": "off"
+      },
+      "nursery": {
+        "noAccidentalBitwiseOperators": "error",
+        "noArraySortForMinMax": "error",
+        "noAsyncPromiseFinally": "error",
+        "noAwaitInPromiseMethods": "error",
+        "noBaseToString": "error",
+        "noBooleanSortComparator": "error",
+        "noChainedComparison": "error",
+        "noConstantComparisons": "error",
+        "noDoubleComparison": "error",
+        "noDuplicateMapKeys": "error",
+        "noDuplicateTypeConstituents": "error",
+        "noDynamicDelete": "error",
+        "noErasingOperation": "error",
+        "noExcessiveNestedBlocks": "error",
+        "noFloatingPromises": "error",
+        "noInvalidFetchOptions": "error",
+        "noInvalidThis": "error",
+        "noMeaninglessVoidOperator": "error",
+        "noMisleadingReturnType": "error",
+        "noMismatchedMapKey": "error",
+        "noMissingThrow": "error",
+        "noMisusedPromises": "error",
+        "noMisusedSpread": "error",
+        "noNegatedArrayPredicate": "error",
+        "noNegationInEqualityCheck": "error",
+        "noNestedSwitch": "error",
+        "noNestedTemplateLiterals": "error",
+        "noNewArray": "error",
+        "noNumberArgumentOutOfRange": "error",
+        "noObjectConstructor": "error",
+        "noObjectLiteralComparison": "error",
+        "noPromiseExecutorReturn": "error",
+        "noReactDirectStateMutation": "error",
+        "noReactObjectTypeAsDefaultProp": "error",
+        "noRedundantTypeConstituents": "error",
+        "noReturnArrayPush": "error",
+        "noReturnInFinally": "error",
+        "noSelfImport": "error",
+        "noSinglePromiseInPromiseMethods": "error",
+        "noTanstackQueryRestDestructuring": "error",
+        "noTanstackQueryVoidQueryFn": "error",
+        "noThisOutsideOfClass": "error",
+        "noUninvokedArrayCallback": "error",
+        "noUnmodifiedLoopCondition": "error",
+        "noUnnecessaryStringTrim": "error",
+        "noUnsafePlusOperands": "error",
+        "noUnsafeReturn": "error",
+        "noUnsafeTypeAssertion": "error",
+        "noUnsafeUnaryMinus": "error",
+        "noUselessAssignment": "error",
+        "noUselessAwait": "error",
+        "noUselessCall": "error",
+        "noUselessFallbackInSpread": "error",
+        "noUselessLengthCheck": "error",
+        "noUselessQualifier": "error",
+        "noUselessSplice": "error",
+        "noUselessSpread": "error",
+        "noUselessTypeAssertion": "error",
+        "noUselessTypeConversion": "error",
+        "noXorAsExponentiation": "error",
+        "noZeroFractions": "error",
+        "useAtomicUpdates": "error",
+        "useAwaitThenable": "error",
+        "useCalledWith": "error",
+        "useCatchErrorName": "error",
+        "useConsistentBooleanName": "error",
+        "useDisposables": "error",
+        "useExhaustiveSwitchCases": "error",
+        "useExpectToContain": "error",
+        "useExpectToHaveBeenCalled": "error",
+        "useExpectToHaveBeenCalledTimes": "error",
+        "useGlobalRegexInMatchAll": "error",
+        "useGlobalRegexInReplaceAll": "error",
+        "useIncludes": "error",
+        "useMathAbs": "error",
+        "useMathTrunc": "error",
+        "useNullishCoalescing": "error",
+        "useObjectFromEntries": "error",
+        "usePromiseRejectErrors": "error",
+        "useReactCompiler": "error",
+        "useReactNamingConvention": "error",
+        "useReactNativeValidPlatformColors": "error",
+        "useSetSize": "error",
+        "useSimplifiedBooleanReturn": "error",
+        "useSpyOn": "error",
+        "useStringStartsEndsWith": "error",
+        "useTanstackQueryInfiniteQueryPropertyOrder": "error",
+        "useTanstackQueryStableQueryClient": "error",
+        "useValidCharacterComparison": "error",
+        "useValidNamespaceImports": "error",
+        "useValidTestTitle": "error"
+      }
+    }
+  },
+  "overrides": [
+    {
+      // Mocks mirror package names, scripts are CLI names, Expo writes expo-env.d.ts,
+      // Expo Router names special routes such as +not-found.tsx, and the workers use kebab-case.
+      "includes": [
+        "**/__mocks__/**",
+        "**/scripts/**",
+        ".github/**",
+        "**/*.d.ts",
+        "**/src/app/**",
+        "**/packages/worker/**"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "useFilenamingConvention": {
+              "level": "error",
+              "options": {
+                "requireAscii": true,
+                "filenameCases": ["camelCase", "PascalCase", "kebab-case"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      // Scripts print to the terminal. Convex and Workers send console output to their logs.
+      "includes": ["**/scripts/**", "convex/**", "**/packages/worker/src/**"],
+      "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
+    },
+    {
+      // Other packages import these functions. A change to a body must not change their type silently.
+      "includes": [
+        "**/packages/shared/src/**",
+        "**/packages/worker/src/**",
+        "convex/**",
+        "!**/__tests__/**",
+        "!**/*.test.*"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "useExplicitReturnType": {
+              "level": "error",
+              "options": { "allowExpressions": true, "allowIifes": true }
+            }
+          }
+        }
+      }
+    },
+    {
+      // Tests cast partial mocks to the type they replace.
+      // Jest needs the mock prefix on each variable that a jest.mock factory reads.
+      // A regex in an assertion runs once, so it gains nothing at the top level.
+      "includes": [
+        "**/*.{test,spec}.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "**/__tests__/**",
+        "**/__mocks__/**"
+      ],
+      "linter": {
+        "rules": {
+          "nursery": {
+            "noUnsafeTypeAssertion": "off",
+            "useConsistentBooleanName": "off"
+          },
+          "performance": { "useTopLevelRegex": "off" }
+        }
+      }
+    },
+    {
+      "includes": ["**/__mocks__/**", "**/jest.setup.*", "**/jest-setup.*"],
+      "javascript": {
+        "globals": [
+          "afterAll",
+          "afterEach",
+          "beforeAll",
+          "beforeEach",
+          "describe",
+          "expect",
+          "it",
+          "jest",
+          "test"
+        ]
+      }
+    }
+  ]
+}

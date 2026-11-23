@@ -57,33 +57,26 @@ describe('Storybook Metro integration', () => {
     ['', 'true'],
     ['development', 'false'],
     ['development', ''],
-  ])(
-    'strips Storybook for APP_ENV=%s and STORYBOOK_ENABLED=%s',
-    (env, flag) => {
-      const platformResolutions = resolveModules(env, flag);
+  ])('strips Storybook for APP_ENV=%s and STORYBOOK_ENABLED=%s', (env, flag) => {
+    const platformResolutions = resolveModules(env, flag);
 
-      for (const resolutions of platformResolutions) {
-        expect(resolutions.slice(0, 3)).toEqual([
-          { type: 'empty' },
-          { type: 'empty' },
-          { type: 'empty' },
-        ]);
-        expect(resolutions[3]).toEqual({
-          filePath: expect.stringContaining(
-            '@storybook/react-native/dist/stub.js',
-          ),
-          type: 'sourceFile',
-        });
-        expect(resolutions[4]).toEqual({ type: 'empty' });
-        expect(resolutions[5]).toEqual({
-          filePath: expect.stringContaining(
-            'src/shared/uiKit/button/ButtonWithText.tsx',
-          ),
-          type: 'sourceFile',
-        });
-      }
-    },
-  );
+    for (const resolutions of platformResolutions) {
+      expect(resolutions.slice(0, 3)).toEqual([
+        { type: 'empty' },
+        { type: 'empty' },
+        { type: 'empty' },
+      ]);
+      expect(resolutions[3]).toEqual({
+        filePath: expect.stringContaining('@storybook/react-native/dist/stub.js'),
+        type: 'sourceFile',
+      });
+      expect(resolutions[4]).toEqual({ type: 'empty' });
+      expect(resolutions[5]).toEqual({
+        filePath: expect.stringContaining('src/shared/uiKit/button/ButtonWithText.tsx'),
+        type: 'sourceFile',
+      });
+    }
+  });
 
   it('keeps Storybook and its story registry when explicitly enabled in development', () => {
     const platformResolutions = resolveModules('development', 'true');

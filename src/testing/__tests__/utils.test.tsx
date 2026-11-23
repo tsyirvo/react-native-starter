@@ -16,9 +16,7 @@ const QueryProbe = ({ cacheValue }: QueryProbeProps) => {
     queryClient.setQueryData(['render-helper'], cacheValue);
   }
 
-  return (
-    <Text>{`${queryClient.getQueryData(['render-helper']) ?? 'empty'}:${insets.top}`}</Text>
-  );
+  return <Text>{`${queryClient.getQueryData(['render-helper']) ?? 'empty'}:${insets.top}`}</Text>;
 };
 
 describe('customRender', () => {

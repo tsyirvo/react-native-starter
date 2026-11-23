@@ -45,16 +45,12 @@ describe('useCheckNetworkStateOnMount', () => {
 
     await renderHook(useCheckNetworkStateOnMount);
 
-    await waitFor(() =>
-      expect(Network.getNetworkStateAsync).toHaveBeenCalledTimes(1),
-    );
+    await waitFor(() => expect(Network.getNetworkStateAsync).toHaveBeenCalledTimes(1));
     expect(Toaster.show).not.toHaveBeenCalled();
   });
 
   it('records a breadcrumb when the network check fails', async () => {
-    jest
-      .mocked(Network.getNetworkStateAsync)
-      .mockRejectedValue(new Error('network unavailable'));
+    jest.mocked(Network.getNetworkStateAsync).mockRejectedValue(new Error('network unavailable'));
 
     await renderHook(useCheckNetworkStateOnMount);
 

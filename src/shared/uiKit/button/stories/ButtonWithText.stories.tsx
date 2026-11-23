@@ -16,14 +16,7 @@ const meta = {
     onPress: { action: 'onPress' },
     variant: {
       control: 'select',
-      options: [
-        'primary',
-        'primary_compact',
-        'outline',
-        'outline_compact',
-        'text',
-        'text_compact',
-      ],
+      options: ['primary', 'primary_compact', 'outline', 'outline_compact', 'text', 'text_compact'],
     },
   },
   component: ButtonWithTextComponent,

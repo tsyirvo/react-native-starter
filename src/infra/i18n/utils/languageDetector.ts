@@ -5,8 +5,7 @@ import { AppStorage, storageKeys } from '$infra/storage';
 
 import { getSupportedLocale } from './detectLocaleToUse';
 
-export const getSavedAppLocale = () =>
-  AppStorage.getString(storageKeys.appStorage.locale);
+export const getSavedAppLocale = () => AppStorage.getString(storageKeys.appStorage.locale);
 
 export const setSavedAppLocale = (locale: string) => {
   AppStorage.set(storageKeys.appStorage.locale, locale);

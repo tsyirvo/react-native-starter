@@ -4,11 +4,7 @@ import { render, screen, userEvent } from '$testing';
 
 import { Input } from '../Input';
 
-const ControlledInput = ({
-  onChangeText,
-}: {
-  onChangeText: (value: string) => void;
-}) => {
+const ControlledInput = ({ onChangeText }: { onChangeText: (value: string) => void }) => {
   const [value, setValue] = useState('');
 
   return (
@@ -43,12 +39,7 @@ describe('Input', () => {
     const onChangeText = jest.fn();
     const user = userEvent.setup();
     await render(
-      <Input
-        isDisabled
-        label="Email"
-        onChangeText={onChangeText}
-        placeholder="Enter text"
-      />,
+      <Input isDisabled label="Email" onChangeText={onChangeText} placeholder="Enter text" />,
     );
 
     await user.type(screen.getByPlaceholderText('Enter text'), 'data');
@@ -58,19 +49,11 @@ describe('Input', () => {
 
   it('renders supplied messages and removes them when no longer provided', async () => {
     const { rerender } = await render(
-      <Input
-        error="Invalid email"
-        helperText="Use your work email"
-        label="Email"
-      />,
+      <Input error="Invalid email" helperText="Use your work email" label="Email" />,
     );
 
-    expect(
-      screen.getByText('Email', { includeHiddenElements: true }),
-    ).toBeOnTheScreen();
-    expect(
-      screen.getByText('Invalid email', { includeHiddenElements: true }),
-    ).toBeOnTheScreen();
+    expect(screen.getByText('Email', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(screen.getByText('Invalid email', { includeHiddenElements: true })).toBeOnTheScreen();
     expect(
       screen.getByText('Use your work email', { includeHiddenElements: true }),
     ).toBeOnTheScreen();

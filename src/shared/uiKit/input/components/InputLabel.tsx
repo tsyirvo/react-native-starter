@@ -8,20 +8,14 @@ interface InputLabelProps {
   testID?: string;
 }
 
-export const InputLabel = ({
-  label,
-  isOptional,
-  testID = 'InputLabel',
-}: InputLabelProps) => {
+export const InputLabel = ({ label, isOptional, testID = 'InputLabel' }: InputLabelProps) => {
   const { t } = useTranslation();
 
   return (
     <Row aria-hidden gap="spacing_4" testID={testID}>
       <Text color="content_primary">{label}</Text>
 
-      {isOptional ? (
-        <Text color="content_tertiary">({t('forms.optional')})</Text>
-      ) : null}
+      {isOptional ? <Text color="content_tertiary">({t('forms.optional')})</Text> : null}
     </Row>
   );
 };

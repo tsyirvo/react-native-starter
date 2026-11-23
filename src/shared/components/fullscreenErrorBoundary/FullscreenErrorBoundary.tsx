@@ -15,13 +15,7 @@ export const FullscreenErrorBoundary = () => {
     });
 
   return (
-    <Box
-      align="center"
-      justify="center"
-      px="spacing_24"
-      self="center"
-      style={styles.container}
-    >
+    <Box align="center" justify="center" px="spacing_24" self="center" style={styles.container}>
       <Stack mb="spacing_8">
         <Text variant="large">{t('errorBoundary.title')}</Text>
       </Stack>

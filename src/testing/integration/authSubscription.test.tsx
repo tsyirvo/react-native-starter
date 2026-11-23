@@ -2,10 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { ReactNode } from 'react';
 
 import { AuthContextProvider, useAuthContext } from '$application/auth';
-import {
-  SubscriptionContextProvider,
-  useSubscriptionContext,
-} from '$features/subscription';
+import { SubscriptionContextProvider, useSubscriptionContext } from '$features/subscription';
 import { Logger } from '$infra/logger';
 import { Purchase } from '$infra/purchase';
 import { act, renderHook, waitFor } from '$testing';
@@ -71,9 +68,7 @@ describe('auth and subscription identity lifecycle', () => {
     jest.mocked(Purchase.setUser).mockResolvedValue(undefined);
     jest.mocked(Purchase.clearUser).mockResolvedValue(undefined);
     jest.mocked(Purchase.isPayingUser).mockResolvedValue(true);
-    jest
-      .mocked(Purchase.getOfferings)
-      .mockResolvedValue({ all: {}, current: null });
+    jest.mocked(Purchase.getOfferings).mockResolvedValue({ all: {}, current: null });
     jest.mocked(Purchase.customerListener).mockReturnValue(jest.fn());
   });
 
@@ -96,9 +91,7 @@ describe('auth and subscription identity lifecycle', () => {
       await identity.promise;
     });
 
-    await waitFor(() =>
-      expect(result.current.subscription.isPayingUser).toBe(true),
-    );
+    await waitFor(() => expect(result.current.subscription.isPayingUser).toBe(true));
     expect(result.current.auth.isPurchaseUserReady).toBe(true);
     expect(Purchase.setUser).toHaveBeenCalledTimes(1);
   });
@@ -135,9 +128,7 @@ describe('auth and subscription identity lifecycle', () => {
     await act(async () => {
       await result.current.auth.signIn(credentials);
     });
-    await waitFor(() =>
-      expect(result.current.auth.isPurchaseUserReady).toBe(true),
-    );
+    await waitFor(() => expect(result.current.auth.isPurchaseUserReady).toBe(true));
 
     const logout = Promise.withResolvers<void>();
     jest.mocked(Purchase.clearUser).mockReturnValueOnce(logout.promise);
@@ -161,9 +152,7 @@ describe('auth and subscription identity lifecycle', () => {
       await signOut;
     });
 
-    await waitFor(() =>
-      expect(result.current.auth.isPurchaseUserReady).toBe(true),
-    );
+    await waitFor(() => expect(result.current.auth.isPurchaseUserReady).toBe(true));
     expect(Purchase.setUser).toHaveBeenCalledTimes(2);
     expect(Purchase.setUser).toHaveBeenLastCalledWith({
       email: 'next@example.com',
@@ -181,9 +170,7 @@ describe('auth and subscription identity lifecycle', () => {
     });
 
     await waitFor(() =>
-      expect(Logger.error).toHaveBeenCalledWith(
-        expect.objectContaining({ error }),
-      ),
+      expect(Logger.error).toHaveBeenCalledWith(expect.objectContaining({ error })),
     );
     expect(result.current.auth.user).not.toBeNull();
     expect(result.current.auth.isPurchaseUserReady).toBe(false);
@@ -195,8 +182,6 @@ describe('auth and subscription identity lifecycle', () => {
       await result.current.auth.signIn(credentials);
     });
 
-    await waitFor(() =>
-      expect(result.current.auth.isPurchaseUserReady).toBe(true),
-    );
+    await waitFor(() => expect(result.current.auth.isPurchaseUserReady).toBe(true));
   });
 });

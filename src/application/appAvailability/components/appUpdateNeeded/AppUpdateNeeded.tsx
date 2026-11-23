@@ -4,10 +4,8 @@ import { Linking } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { config, IS_IOS } from '$infra/config';
-import {
-  useGetRemoteConfigSync,
-  type VersionFlagType,
-} from '$infra/featureFlags';
+import type { VersionFlagType } from '$infra/featureFlags';
+import { useGetRemoteConfigSync } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { useRunOnMount } from '$shared/hooks';
 import { Button } from '$shared/uiKit/button';
@@ -22,9 +20,7 @@ export const AppUpdateNeeded = () => {
   const { getFlagPayloadSync } = useGetRemoteConfigSync();
 
   useRunOnMount(() => {
-    const payload = getFlagPayloadSync<VersionFlagType>(
-      'last-supported-app-version',
-    );
+    const payload = getFlagPayloadSync<VersionFlagType>('last-supported-app-version');
 
     if (!(payload && 'version' in payload)) {
       return;
@@ -32,10 +28,7 @@ export const AppUpdateNeeded = () => {
 
     const lastSupportedAppVersion = payload.version;
 
-    const isSupported = isVersionAtLeast(
-      config.version,
-      lastSupportedAppVersion,
-    );
+    const isSupported = isVersionAtLeast(config.version, lastSupportedAppVersion);
 
     setIsAppSupported(isSupported);
   });

@@ -8,20 +8,12 @@ interface MaintenanceModeProps {
   testID?: string;
 }
 
-export const MaintenanceMode = ({
-  testID = 'MaintenanceMode',
-}: MaintenanceModeProps) => {
+export const MaintenanceMode = ({ testID = 'MaintenanceMode' }: MaintenanceModeProps) => {
   const { t } = useTranslation();
 
   return (
     <FeatureFlagSplitter flagKey="is-maintenance-mode">
-      <Box
-        align="center"
-        justify="center"
-        px="spacing_32"
-        style={styles.container}
-        testID={testID}
-      >
+      <Box align="center" justify="center" px="spacing_32" style={styles.container} testID={testID}>
         <Stack pb="spacing_8">
           <Text variant="large">{t('maintenanceMode.title')}</Text>
         </Stack>

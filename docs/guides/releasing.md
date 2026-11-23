@@ -81,7 +81,6 @@ Merge the release PR **last**, after both stores approve the build.
    version. Build both platforms for production. Read
    [Submit to the stores](#submit-to-the-stores).
 3. **Submit both builds** for review. Before you submit, enable these settings:
-
    - **Manually release this version** in App Store Connect.
    - **Managed publishing** in the Play Console.
 

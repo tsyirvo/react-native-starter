@@ -1,10 +1,5 @@
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
-import {
-  MutationCache,
-  matchQuery,
-  QueryCache,
-  QueryClient,
-} from '@tanstack/react-query';
+import { MutationCache, matchQuery, QueryCache, QueryClient } from '@tanstack/react-query';
 import type { PersistQueryClientOptions } from '@tanstack/react-query-persist-client';
 
 import { Logger } from '$infra/logger';
@@ -63,9 +58,7 @@ export const queryClient = new QueryClient({
           .invalidateQueries({
             predicate: (query) =>
               // invalidate all matching tags at once or nothing if no meta is not provided
-              queriesToInvalidate.some((queryKey) =>
-                matchQuery({ queryKey }, query),
-              ),
+              queriesToInvalidate.some((queryKey) => matchQuery({ queryKey }, query)),
           })
           .catch((error: unknown) => {
             Logger.error({

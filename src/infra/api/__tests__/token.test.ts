@@ -15,16 +15,10 @@ describe('token storage', () => {
   });
 
   it('loads a stored access token once and reuses the cached authorization header', async () => {
-    jest
-      .mocked(SecureStore.getItemAsync)
-      .mockResolvedValue('stored-access-token');
+    jest.mocked(SecureStore.getItemAsync).mockResolvedValue('stored-access-token');
 
-    await expect(getAuthorizationHeader()).resolves.toBe(
-      'Bearer stored-access-token',
-    );
-    await expect(getAuthorizationHeader()).resolves.toBe(
-      'Bearer stored-access-token',
-    );
+    await expect(getAuthorizationHeader()).resolves.toBe('Bearer stored-access-token');
+    await expect(getAuthorizationHeader()).resolves.toBe('Bearer stored-access-token');
 
     expect(SecureStore.getItemAsync).toHaveBeenCalledTimes(1);
     expect(SecureStore.getItemAsync).toHaveBeenCalledWith('jwtToken');
@@ -34,17 +28,9 @@ describe('token storage', () => {
     await saveNewAccessToken('new-access-token');
     await saveNewRefreshToken('new-refresh-token');
 
-    expect(SecureStore.setItemAsync).toHaveBeenCalledWith(
-      'jwtToken',
-      'new-access-token',
-    );
-    expect(SecureStore.setItemAsync).toHaveBeenCalledWith(
-      'refreshToken',
-      'new-refresh-token',
-    );
-    await expect(getAuthorizationHeader()).resolves.toBe(
-      'Bearer new-access-token',
-    );
+    expect(SecureStore.setItemAsync).toHaveBeenCalledWith('jwtToken', 'new-access-token');
+    expect(SecureStore.setItemAsync).toHaveBeenCalledWith('refreshToken', 'new-refresh-token');
+    await expect(getAuthorizationHeader()).resolves.toBe('Bearer new-access-token');
     expect(SecureStore.getItemAsync).not.toHaveBeenCalled();
   });
 

@@ -29,13 +29,7 @@ export const getSupportedLocale = () => {
   const { languageTag } = getDeviceRegion();
 
   const supportedLocaleIndex = config.supportedLocales.findIndex(
-    (supportedLanguage) => {
-      if (languageTag.includes(supportedLanguage)) {
-        return true;
-      }
-
-      return false;
-    },
+    (supportedLanguage) => !!languageTag.includes(supportedLanguage),
   );
   const localeToSet = supportedLocaleIndex === NOT_FOUND ? null : languageTag;
 

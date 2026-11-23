@@ -7,11 +7,7 @@ type ImageProps = Omit<ExpoImageProps, 'accessibilityLabel' | 'alt'> &
     | { accessibilityLabel?: never; isDecorative: true }
   );
 
-export const Image = ({
-  accessibilityLabel,
-  isDecorative,
-  ...props
-}: ImageProps) => (
+export const Image = ({ accessibilityLabel, isDecorative, ...props }: ImageProps) => (
   <ExpoImage
     accessibilityLabel={accessibilityLabel}
     accessibilityRole={isDecorative ? undefined : 'image'}

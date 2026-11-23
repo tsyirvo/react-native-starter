@@ -8,10 +8,9 @@ interface SeparatorProps {
   height?: number;
 }
 
-export const Separator = ({
-  color = 'bg_muted',
-  height = 1,
-}: SeparatorProps) => <View style={styles.separator(color, height)} />;
+export const Separator = ({ color = 'bg_muted', height = 1 }: SeparatorProps) => (
+  <View style={styles.separator(color, height)} />
+);
 
 const styles = StyleSheet.create((theme) => ({
   separator: (color: ThemeColors, height: number) => ({

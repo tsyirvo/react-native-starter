@@ -5,15 +5,13 @@ import { IS_ANDROID } from '$infra/config';
 export type HapticFeedbackType = 'light' | 'medium' | 'heavy' | 'selection';
 export type HapticNotificationType = 'success' | 'warning' | 'error';
 
-const mapHapticFeedbackTypeToHapticsType: Record<
-  HapticFeedbackType,
-  Haptics.ImpactFeedbackStyle
-> = {
-  heavy: Haptics.ImpactFeedbackStyle.Heavy,
-  light: Haptics.ImpactFeedbackStyle.Light,
-  medium: Haptics.ImpactFeedbackStyle.Medium,
-  selection: Haptics.ImpactFeedbackStyle.Light,
-};
+const mapHapticFeedbackTypeToHapticsType: Record<HapticFeedbackType, Haptics.ImpactFeedbackStyle> =
+  {
+    heavy: Haptics.ImpactFeedbackStyle.Heavy,
+    light: Haptics.ImpactFeedbackStyle.Light,
+    medium: Haptics.ImpactFeedbackStyle.Medium,
+    selection: Haptics.ImpactFeedbackStyle.Light,
+  };
 
 const mapHapticNotificationTypeToAndroidType: Record<
   HapticNotificationType,
@@ -34,9 +32,7 @@ const mapHapticNotificationTypeToHapticsType: Record<
 
 export const triggerHapticFeedback = (type: HapticFeedbackType = 'medium') => {
   if (IS_ANDROID) {
-    void Haptics.performAndroidHapticsAsync(
-      Haptics.AndroidHaptics.Context_Click,
-    );
+    void Haptics.performAndroidHapticsAsync(Haptics.AndroidHaptics.Context_Click);
 
     return;
   }
@@ -48,13 +44,9 @@ export const triggerHapticFeedback = (type: HapticFeedbackType = 'medium') => {
   void Haptics.impactAsync(mapHapticFeedbackTypeToHapticsType[type]);
 };
 
-export const triggerHapticNotification = (
-  type: HapticNotificationType = 'success',
-) => {
+export const triggerHapticNotification = (type: HapticNotificationType = 'success') => {
   if (IS_ANDROID) {
-    void Haptics.performAndroidHapticsAsync(
-      mapHapticNotificationTypeToAndroidType[type],
-    );
+    void Haptics.performAndroidHapticsAsync(mapHapticNotificationTypeToAndroidType[type]);
 
     return;
   }

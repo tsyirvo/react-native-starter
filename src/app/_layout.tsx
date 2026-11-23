@@ -13,11 +13,7 @@ import Toast from 'react-native-toast-message';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { AppUpdateNeeded, MaintenanceMode } from '$application/appAvailability';
-import {
-  AuthContextProvider,
-  getAuthGuards,
-  useAuthContext,
-} from '$application/auth';
+import { AuthContextProvider, getAuthGuards, useAuthContext } from '$application/auth';
 import { Splashscreen } from '$application/bootstrap';
 import {
   useAppScreenTracking,
@@ -34,10 +30,7 @@ import { ErrorMonitoring, ObserveMonitoring } from '$infra/monitoring';
 import { ProductTrackingProvider } from '$infra/productTracking';
 import { useIsBootstrappingApplication } from '$infra/store';
 import { toastConfig } from '$infra/toaster';
-import {
-  FullscreenErrorBoundary,
-  NavigationThemeProvider,
-} from '$shared/components';
+import { FullscreenErrorBoundary, NavigationThemeProvider } from '$shared/components';
 
 ObserveMonitoring.init();
 ErrorMonitoring.init();
@@ -79,10 +72,7 @@ const RootLayout = () => {
       <StatusBar style="auto" />
 
       <GestureHandlerRootView style={styles.wrapper}>
-        <PersistQueryClientProvider
-          client={queryClient}
-          persistOptions={persistOptions}
-        >
+        <PersistQueryClientProvider client={queryClient} persistOptions={persistOptions}>
           <ProductTrackingProvider>
             <Sentry.ErrorBoundary fallback={<FullscreenErrorBoundary />}>
               <Splashscreen>

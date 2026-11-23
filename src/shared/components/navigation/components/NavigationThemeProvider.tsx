@@ -6,9 +6,7 @@ interface NavigationThemeProviderProps {
   children: ReactNode;
 }
 
-export const NavigationThemeProvider = ({
-  children,
-}: NavigationThemeProviderProps) => {
+export const NavigationThemeProvider = ({ children }: NavigationThemeProviderProps) => {
   const { rt, theme } = useUnistyles();
 
   const baseTheme = rt.themeName === 'dark' ? DarkTheme : DefaultTheme;

@@ -9,10 +9,7 @@ type ScreenScrollViewProps = Omit<
   'contentInsetAdjustmentBehavior'
 >;
 
-export const ScreenScrollView = ({
-  contentContainerStyle,
-  ...props
-}: ScreenScrollViewProps) => (
+export const ScreenScrollView = ({ contentContainerStyle, ...props }: ScreenScrollViewProps) => (
   <ScrollView
     contentContainerStyle={[styles.content, contentContainerStyle]}
     contentInsetAdjustmentBehavior="automatic"

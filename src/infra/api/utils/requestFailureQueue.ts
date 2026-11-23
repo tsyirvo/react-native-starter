@@ -58,10 +58,7 @@ export const refreshAccessTokenAndRetry = async (
 
       const { accessToken, refreshToken } = await requestNewAccessToken();
 
-      await Promise.all([
-        saveNewAccessToken(accessToken),
-        saveNewRefreshToken(refreshToken),
-      ]);
+      await Promise.all([saveNewAccessToken(accessToken), saveNewRefreshToken(refreshToken)]);
 
       processFailedQueue();
     }

@@ -36,10 +36,7 @@ const wrapper = ({ children }: { children: ReactNode }) => (
   <SubscriptionContextProvider>{children}</SubscriptionContextProvider>
 );
 
-const setAuthUser = (
-  authUser: typeof user | null,
-  isPurchaseUserReady = authUser !== null,
-) => {
+const setAuthUser = (authUser: typeof user | null, isPurchaseUserReady = authUser !== null) => {
   jest.mocked(useAuthContext).mockReturnValue({
     isPurchaseUserReady,
     signIn: jest.fn(),
@@ -135,9 +132,7 @@ describe('SubscriptionContextProvider', () => {
   it('ignores a pending status response and listener callback after sign-out', async () => {
     const pendingStatus = Promise.withResolvers<boolean>();
     setAuthUser(user);
-    jest
-      .mocked(Purchase.isPayingUser)
-      .mockReturnValueOnce(pendingStatus.promise);
+    jest.mocked(Purchase.isPayingUser).mockReturnValueOnce(pendingStatus.promise);
     const { result, rerender } = await renderHook(useSubscriptionContext, {
       wrapper,
     });
@@ -161,9 +156,7 @@ describe('SubscriptionContextProvider', () => {
   it('does not reuse the previous user status or accept their late response', async () => {
     const pendingStatus = Promise.withResolvers<boolean>();
     setAuthUser(user);
-    jest
-      .mocked(Purchase.isPayingUser)
-      .mockReturnValueOnce(pendingStatus.promise);
+    jest.mocked(Purchase.isPayingUser).mockReturnValueOnce(pendingStatus.promise);
     const { result, rerender } = await renderHook(useSubscriptionContext, {
       wrapper,
     });
@@ -187,9 +180,7 @@ describe('SubscriptionContextProvider', () => {
     });
     const { result } = await renderHook(useSubscriptionContext, { wrapper });
 
-    await waitFor(() =>
-      expect(result.current.offeringToDisplay).toBe(selectedOffering),
-    );
+    await waitFor(() => expect(result.current.offeringToDisplay).toBe(selectedOffering));
   });
 
   it('falls back to the current offering when the selected one is missing', async () => {
@@ -199,9 +190,7 @@ describe('SubscriptionContextProvider', () => {
     });
     const { result } = await renderHook(useSubscriptionContext, { wrapper });
 
-    await waitFor(() =>
-      expect(result.current.offeringToDisplay).toBe(currentOffering),
-    );
+    await waitFor(() => expect(result.current.offeringToDisplay).toBe(currentOffering));
   });
 
   it('logs a failed offering fetch and leaves the offering empty', async () => {

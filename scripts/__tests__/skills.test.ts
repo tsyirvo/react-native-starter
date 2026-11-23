@@ -1,11 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import {
-  existsSync,
-  mkdtempSync,
-  readFileSync,
-  rmSync,
-  writeFileSync,
-} from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -54,7 +48,7 @@ afterEach(() => {
   rmSync(directory, { force: true, recursive: true });
 });
 
-it('reports different and matching revisions, peels annotated tags and leaves the lock unchanged', () => {
+test('reports different and matching revisions, peels annotated tags and leaves the lock unchanged', () => {
   const before = readFileSync(join(directory, 'skills-lock.json'), 'utf8');
   const result = run('check');
   expect(result.status).toBe(0);
@@ -62,12 +56,10 @@ it('reports different and matching revisions, peels annotated tags and leaves th
   expect(result.stdout).toContain('beta: at upstream HEAD');
   expect(result.stdout).toContain('gamma: at upstream HEAD');
   expect(result.stdout).toContain(`/compare/${pinned}...${latest}`);
-  expect(readFileSync(join(directory, 'skills-lock.json'), 'utf8')).toBe(
-    before,
-  );
+  expect(readFileSync(join(directory, 'skills-lock.json'), 'utf8')).toBe(before);
 });
 
-it('fails when upstream cannot be checked instead of reporting freshness', () => {
+test('fails when upstream cannot be checked instead of reporting freshness', () => {
   executable('git', 'process.exit(1);');
   const result = run('check');
   expect(result.status).toBe(1);
@@ -75,13 +67,13 @@ it('fails when upstream cannot be checked instead of reporting freshness', () =>
   expect(result.stdout).not.toContain('at upstream HEAD');
 });
 
-it('fails for an unresolved pinned tag', () => {
+test('fails for an unresolved pinned tag', () => {
   executable('git', `console.log('${latest}\\tHEAD');`);
   expect(run('check').stderr).toContain('Cannot resolve pinned tag v1.0');
   expect(run('check').status).toBe(1);
 });
 
-it.each([
+test.each([
   ['upgrade'],
   ['upgrade', 'main', 'alpha'],
   ['upgrade', latest],
@@ -95,12 +87,10 @@ it.each([
   expect(existsSync(join(directory, 'invocation.json'))).toBe(false);
 });
 
-it('delegates only selected skills at an explicit commit with telemetry disabled', () => {
+test('delegates only selected skills at an explicit commit with telemetry disabled', () => {
   const result = run('upgrade', latest, 'alpha', 'beta');
   expect(result.status).toBe(0);
-  expect(
-    JSON.parse(readFileSync(join(directory, 'invocation.json'), 'utf8')),
-  ).toEqual({
+  expect(JSON.parse(readFileSync(join(directory, 'invocation.json'), 'utf8'))).toEqual({
     args: [
       'skills@1.7.4',
       'add',
@@ -117,7 +107,7 @@ it('delegates only selected skills at an explicit commit with telemetry disabled
   });
 });
 
-it('propagates installer failures', () => {
+test('propagates installer failures', () => {
   executable('bunx', 'process.exit(9);');
   expect(run('upgrade', latest, 'alpha').status).not.toBe(0);
 });

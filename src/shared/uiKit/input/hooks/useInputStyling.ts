@@ -6,11 +6,7 @@ interface UseInputStylingProps {
   isFocused: boolean;
 }
 
-export const useInputStyling = ({
-  isFocused,
-  isDisabled,
-  error,
-}: UseInputStylingProps) => {
+export const useInputStyling = ({ isFocused, isDisabled, error }: UseInputStylingProps) => {
   const { theme } = useUnistyles();
 
   const getLineBorderColor = () => {

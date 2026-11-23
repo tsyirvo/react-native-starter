@@ -8,13 +8,8 @@ interface ProductTrackingProviderProps {
   children: ReactElement;
 }
 
-export const ProductTrackingProvider = ({
-  children,
-}: ProductTrackingProviderProps) => (
-  <PostHogProvider
-    autocapture={autocaptureOptions}
-    client={productTrackingClient}
-  >
+export const ProductTrackingProvider = ({ children }: ProductTrackingProviderProps) => (
+  <PostHogProvider autocapture={autocaptureOptions} client={productTrackingClient}>
     {children}
   </PostHogProvider>
 );

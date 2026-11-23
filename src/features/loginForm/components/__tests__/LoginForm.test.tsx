@@ -92,10 +92,7 @@ describe('LoginForm', () => {
     const onFormSuccess = jest.fn().mockRejectedValue(error);
     await render(<LoginForm onFormSuccess={onFormSuccess} />);
 
-    await fireEvent(
-      screen.getByPlaceholderText(passwordPlaceholder),
-      'submitEditing',
-    );
+    await fireEvent(screen.getByPlaceholderText(passwordPlaceholder), 'submitEditing');
 
     await waitFor(() =>
       expect(Logger.error).toHaveBeenCalledWith({

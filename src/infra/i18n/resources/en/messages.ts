@@ -10,8 +10,7 @@ export const messages = {
       success: 'The language has been changed',
     },
     networkStateCheck: {
-      message:
-        'Please check your internet connection. The app might not work properly without it.',
+      message: 'Please check your internet connection. The app might not work properly without it.',
       title: 'No internet connection',
     },
     permissions: {
@@ -21,8 +20,7 @@ export const messages = {
   },
   appUpdateNedeed: {
     cta: 'Update now',
-    description:
-      'Please go update the application to access the latest features',
+    description: 'Please go update the application to access the latest features',
     title: 'Your app is outdated',
   },
   common: {
@@ -32,8 +30,7 @@ export const messages = {
   },
   errorBoundary: {
     cta: 'Relaunch the app',
-    description:
-      'An unknown error occured. If the error persist, contact an administrator.',
+    description: 'An unknown error occured. If the error persist, contact an administrator.',
     title: 'Error',
   },
   featuresScreen: {
@@ -119,8 +116,7 @@ export const messages = {
   },
   screenTitleShowcaseScreen: {
     alert: {
-      description:
-        'This alert was triggered by the toolbar button rendered in the native header.',
+      description: 'This alert was triggered by the toolbar button rendered in the native header.',
       title: 'Toolbar button pressed',
     },
     sections: {

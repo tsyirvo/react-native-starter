@@ -1,8 +1,5 @@
-import {
-  type MaterialIcon,
-  NativeTabs,
-  type SFSymbolIcon,
-} from 'expo-router/unstable-native-tabs';
+import type { MaterialIcon, SFSymbolIcon } from 'expo-router/unstable-native-tabs';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
 import type { ParseKeys } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';

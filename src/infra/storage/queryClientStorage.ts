@@ -1,5 +1,5 @@
-import type { Configuration } from 'react-native-mmkv';
-import { createMMKV, type MMKV } from 'react-native-mmkv';
+import type { Configuration, MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
 import { storageKeys } from './storageKeys';
 

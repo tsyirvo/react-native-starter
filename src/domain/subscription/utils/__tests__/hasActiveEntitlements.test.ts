@@ -6,8 +6,6 @@ describe('hasActiveEntitlements', () => {
   });
 
   it('returns true when an active entitlement exists', () => {
-    expect(hasActiveEntitlements({ premium: { identifier: 'premium' } })).toBe(
-      true,
-    );
+    expect(hasActiveEntitlements({ premium: { identifier: 'premium' } })).toBe(true);
   });
 });

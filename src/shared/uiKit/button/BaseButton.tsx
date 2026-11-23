@@ -1,5 +1,6 @@
 import type React from 'react';
-import { type GestureResponderEvent, View } from 'react-native';
+import type { GestureResponderEvent } from 'react-native';
+import { View } from 'react-native';
 import Animated, {
   cancelAnimation,
   useAnimatedStyle,
@@ -13,7 +14,8 @@ import { useA11yButtonProps, useIsReduceMotionEnabled } from '$shared/a11y';
 import { Pressable } from '$shared/components/Pressable';
 import { HIT_SLOP } from '$shared/uiKit/constants';
 
-import { type ButtonVariant, buttonVariants } from './constants';
+import type { ButtonVariant } from './constants';
+import { buttonVariants } from './constants';
 import type { ButtonProps } from './types/buttonTypes';
 
 interface BaseButtonProps extends ButtonProps {
@@ -99,9 +101,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const getButtonStyle = (
   variant: ButtonVariant,
-  colors:
-    | UnistylesThemes['light']['colors']
-    | UnistylesThemes['dark']['colors'],
+  colors: UnistylesThemes['light']['colors'] | UnistylesThemes['dark']['colors'],
 ) => {
   switch (variant) {
     case 'primary':

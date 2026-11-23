@@ -1,20 +1,12 @@
-import type {
-  CustomerInfo,
-  LOG_LEVEL,
-  PurchasesPackage,
-} from 'react-native-purchases';
-import RevenueCat, {
-  LOG_LEVEL as PURCHASES_LOG_LEVEL,
-} from 'react-native-purchases';
+import type { CustomerInfo, LOG_LEVEL, PurchasesPackage } from 'react-native-purchases';
+import RevenueCat, { LOG_LEVEL as PURCHASES_LOG_LEVEL } from 'react-native-purchases';
 
 import type { User } from '$domain/entities';
 import { hasActiveEntitlements } from '$domain/subscription';
 import { config, IS_IOS } from '$infra/config';
 import { ErrorMonitoring } from '$infra/monitoring';
 
-const API_KEY = IS_IOS
-  ? config.revenueCatAppleApiKey
-  : config.revenueCatAndroidApiKey;
+const API_KEY = IS_IOS ? config.revenueCatAppleApiKey : config.revenueCatAndroidApiKey;
 
 class PurchaseClass {
   /* ***** *****  Setup  ***** ***** */

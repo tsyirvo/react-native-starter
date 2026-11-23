@@ -1,9 +1,6 @@
 import type { AccessibilityProps } from 'react-native';
 
-type A11yBaseKey =
-  | 'accessible'
-  | 'accessibilityLabel'
-  | 'accessibilityLanguage';
+type A11yBaseKey = 'accessible' | 'accessibilityLabel' | 'accessibilityLanguage';
 
 /**
  * The accessibility props that a hook sets. Each listed key is present, but

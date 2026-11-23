@@ -3,9 +3,7 @@ import { useTranslation } from 'react-i18next';
 import type { A11yProps } from '../types';
 import { busyRole, busyState } from '../utils';
 
-export const useA11yLoadingProps = (): A11yProps<
-  'accessibilityRole' | 'accessibilityState'
-> => {
+export const useA11yLoadingProps = (): A11yProps<'accessibilityRole' | 'accessibilityState'> => {
   const { t, i18n } = useTranslation();
 
   return {

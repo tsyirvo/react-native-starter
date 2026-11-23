@@ -19,10 +19,7 @@ export const withDevClientBuildMarker = (config) =>
   withDangerousMod(config, [
     'android',
     async (modConfig) => {
-      const folder = path.resolve(
-        modConfig.modRequest.projectRoot,
-        DEBUG_ASSETS_PATH,
-      );
+      const folder = path.resolve(modConfig.modRequest.projectRoot, DEBUG_ASSETS_PATH);
       await fs.promises.mkdir(folder, { recursive: true });
       await fs.promises.writeFile(
         path.resolve(folder, MARKER_FILE_NAME),

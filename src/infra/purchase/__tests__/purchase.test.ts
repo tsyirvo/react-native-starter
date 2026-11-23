@@ -97,8 +97,7 @@ describe('Purchase', () => {
   beforeEach(() => jest.resetAllMocks());
 
   it('waits for login before associating the email and analytics identity', async () => {
-    const login =
-      Promise.withResolvers<Awaited<ReturnType<typeof RevenueCat.logIn>>>();
+    const login = Promise.withResolvers<Awaited<ReturnType<typeof RevenueCat.logIn>>>();
     jest.mocked(RevenueCat.logIn).mockReturnValue(login.promise);
 
     const completion = Purchase.setUser(user);
@@ -173,26 +172,18 @@ describe('Purchase', () => {
 
     const unsubscribe = Purchase.customerListener(listener);
 
-    expect(RevenueCat.addCustomerInfoUpdateListener).toHaveBeenCalledWith(
-      listener,
-    );
+    expect(RevenueCat.addCustomerInfoUpdateListener).toHaveBeenCalledWith(listener);
     expect(RevenueCat.removeCustomerInfoUpdateListener).not.toHaveBeenCalled();
     unsubscribe();
-    expect(RevenueCat.removeCustomerInfoUpdateListener).toHaveBeenCalledTimes(
-      1,
-    );
-    expect(RevenueCat.removeCustomerInfoUpdateListener).toHaveBeenCalledWith(
-      listener,
-    );
+    expect(RevenueCat.removeCustomerInfoUpdateListener).toHaveBeenCalledTimes(1);
+    expect(RevenueCat.removeCustomerInfoUpdateListener).toHaveBeenCalledWith(listener);
   });
 
   it('reports a failed package purchase without rejecting', async () => {
     const error = new Error('purchase unavailable');
     jest.mocked(RevenueCat.purchasePackage).mockRejectedValueOnce(error);
 
-    await expect(
-      Purchase.makePurchase(monthlyPackage),
-    ).resolves.toBeUndefined();
+    await expect(Purchase.makePurchase(monthlyPackage)).resolves.toBeUndefined();
 
     expect(RevenueCat.purchasePackage).toHaveBeenCalledWith(monthlyPackage);
     expect(ErrorMonitoring.exception).toHaveBeenCalledWith(error);

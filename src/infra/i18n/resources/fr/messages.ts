@@ -23,8 +23,7 @@ export const messages: MessagesTypes = {
   },
   appUpdateNedeed: {
     cta: 'Mettre à jour',
-    description:
-      'Merci de la mettre à jour pour utiliser les dernières fonctionnalités',
+    description: 'Merci de la mettre à jour pour utiliser les dernières fonctionnalités',
     title: 'Votre app est trop vieille',
   },
   common: {
@@ -34,8 +33,7 @@ export const messages: MessagesTypes = {
   },
   errorBoundary: {
     cta: "Relancer l'app",
-    description:
-      "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
+    description: "Une erreur est survenue. Si l'erreur persiste, contacter un administrateur.",
     title: 'Erreur',
   },
   featuresScreen: {

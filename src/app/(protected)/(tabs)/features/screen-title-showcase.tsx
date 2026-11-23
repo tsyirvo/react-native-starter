@@ -8,12 +8,7 @@ import type { ScreenTitleToolbarItem } from '$shared/uiKit/screenTitle';
 import { ScreenTitle } from '$shared/uiKit/screenTitle';
 import { Separator } from '$shared/uiKit/separator';
 
-const SHOWCASE_SECTIONS = [
-  'largeTitle',
-  'toolbar',
-  'nativeFeel',
-  'scrollForMore',
-] as const;
+const SHOWCASE_SECTIONS = ['largeTitle', 'toolbar', 'nativeFeel', 'scrollForMore'] as const;
 
 const ScreenTitleShowcaseScreen = () => {
   const { t } = useTranslation();
@@ -38,11 +33,7 @@ const ScreenTitleShowcaseScreen = () => {
   return (
     <>
       <ScreenInteractiveMarker />
-      <ScreenTitle
-        isLarge
-        title={t('screenTitleShowcaseScreen.title')}
-        toolbar={toolbar}
-      />
+      <ScreenTitle isLarge title={t('screenTitleShowcaseScreen.title')} toolbar={toolbar} />
 
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <Stack gap="spacing_24" px="spacing_16" py="spacing_24">

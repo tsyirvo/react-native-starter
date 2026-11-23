@@ -2,7 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { type TextInputInstance, View } from 'react-native';
+import type { TextInputInstance } from 'react-native';
+import { View } from 'react-native';
 
 import type { UserLogin } from '$domain/entities';
 import { Logger } from '$infra/logger';
@@ -10,17 +11,15 @@ import { Button } from '$shared/uiKit/button';
 import { Input } from '$shared/uiKit/input';
 import { Stack } from '$shared/uiKit/primitives';
 
-import { type LoginFormData, loginFormSchema } from '../utils';
+import type { LoginFormData } from '../utils';
+import { loginFormSchema } from '../utils';
 
 interface LoginFormProps {
   onFormSuccess: (data: UserLogin) => Promise<void>;
   testID?: string;
 }
 
-export const LoginForm = ({
-  testID = 'LoginForm',
-  onFormSuccess,
-}: LoginFormProps) => {
+export const LoginForm = ({ testID = 'LoginForm', onFormSuccess }: LoginFormProps) => {
   const passwordInputRef = useRef<TextInputInstance>(null);
 
   const { t } = useTranslation();
@@ -48,7 +47,6 @@ export const LoginForm = ({
 
   const focusPasswordInput = () => {
     requestIdleCallback(() => {
-      // biome-ignore lint/suspicious/noUnnecessaryConditions: React clears the ref on unmount, which can happen before this idle callback runs.
       passwordInputRef.current?.focus();
     });
   };
@@ -59,10 +57,7 @@ export const LoginForm = ({
         <Controller
           control={control}
           name="email"
-          render={({
-            field: { onChange, onBlur, value },
-            fieldState: { isTouched },
-          }) => (
+          render={({ field: { onChange, onBlur, value }, fieldState: { isTouched } }) => (
             <Input
               autoCapitalize="none"
               error={isTouched ? errors.email?.message : undefined}
@@ -86,10 +81,7 @@ export const LoginForm = ({
         <Controller
           control={control}
           name="password"
-          render={({
-            field: { onChange, onBlur, value },
-            fieldState: { isTouched },
-          }) => (
+          render={({ field: { onChange, onBlur, value }, fieldState: { isTouched } }) => (
             <Input
               autoCapitalize="none"
               error={isTouched ? errors.password?.message : undefined}

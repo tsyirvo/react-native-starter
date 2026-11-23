@@ -4,8 +4,7 @@ import { IS_IOS } from './platform';
 
 //@ts-expect-error // We know we're passing the correct environment variables to `extra` in `app.config.ts`
 
-const Env: typeof import('../../../env.js').ClientEnv =
-  Constants.expoConfig?.extra ?? {};
+const Env: typeof import('../../../env.js').ClientEnv = Constants.expoConfig?.extra ?? {};
 
 const env = Env.APP_ENV;
 const version = Env.VERSION;
