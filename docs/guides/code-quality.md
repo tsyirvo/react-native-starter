@@ -7,12 +7,13 @@ the dependency rules.
 
 The project uses [Biome](https://biomejs.dev/) with the
 [Ultracite](https://github.com/haydenbleasel/ultracite) presets for lint and
-format, [knip](https://knip.dev/) for unused code, and
-[TypeScript](https://www.typescriptlang.org/) for type checks.
+format, [knip](https://knip.dev/) for unused code,
+[dependency-cruiser](https://github.com/sverweij/dependency-cruiser) for the
+import graph, and [TypeScript](https://www.typescriptlang.org/) for type checks.
 
 | Command                  | What it does                                                                           | Changes files |
 | ------------------------ | -------------------------------------------------------------------------------------- | ------------- |
-| `bun run check`          | Biome lint and format checks, then knip                                                | No            |
+| `bun run check`          | Biome lint and format checks, then knip and dependency-cruiser                         | No            |
 | `bun run check:fix`      | Applies Biome fixes and sorts imports                                                  | Yes           |
 | `bun run typecheck`      | Type checks with TypeScript                                                            | No            |
 | `bun run test`           | Runs every test suite. It takes no arguments.                                          | No            |
@@ -63,6 +64,21 @@ Project-specific exceptions:
 - Repo setup goes in `knip.config.ts`: entry files that no import reaches, binaries from outside `node_modules`, and dependencies that knip cannot see, each with its reason.
 - `knip.debt.ts` lists the unused code of today: each file with the issue types to ignore there, and the dependencies and binaries by name. It was recorded once, when knip came in. Never add an entry after that. When you change a listed file or dependency, remove the unused code, then remove its entry.
 
+## Dependency graph
+
+`bun run depcruise` runs [dependency-cruiser](https://github.com/sverweij/dependency-cruiser) with [depcruise.config.mjs](../../depcruise.config.mjs). The rules are in `depcruise.base.mjs`. `bun run check` runs it, so CI and the pre-push hook find import problems before review, and each app built from this starter begins with a clean graph. The check fails on:
+
+- an import cycle, also a cycle through type imports only;
+- an orphan: a module that imports nothing and that nothing imports;
+- an import that does not resolve, with the `.ios` and `.native` files that Metro picks;
+- a package that the nearest `package.json` does not list, lists in two fields, or lists only as a peer or optional dependency;
+- a package from `devDependencies` in shipped code (`src/`), outside tests, mocks, stories and config files. A type-only import is allowed;
+- an import of a test file, a deprecated package or a deprecated Node module.
+
+- `depcruise.debt.json` lists the violations of today. It was recorded once, when dependency-cruiser came in. Never add an entry after that.
+- When you fix a listed violation, run `bun run depcruise:debt`. It removes the fixed entries, and it never adds one.
+- When a tool loads a file by name, so that it looks like an orphan, override `no-orphans` in `depcruise.config.mjs`: spread `ORPHAN_PATH_NOT` from the base into `pathNot`, then add the path with its reason.
+
 ## Git hooks
 
 [hk](https://hk.jdx.dev/) manages the git hooks. `mise install` installs them
@@ -108,7 +124,7 @@ workflow uses these messages to make the changelog. Read
 This hook checks the full repository. The pre-commit hook does not check files
 that the commit did not change, so it can miss some errors.
 
-- `bun run check` (Biome, then knip) and `bun run typecheck` run in parallel.
+- `bun run check` (Biome, knip, then dependency-cruiser) and `bun run typecheck` run in parallel.
 - This hook does not run the tests. CI runs them. To run them yourself, use
   `bun run test`.
 
