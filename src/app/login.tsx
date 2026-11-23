@@ -40,10 +40,7 @@ const Login = () => {
 
       <Screen edges={['top']} px="spacing_16">
         <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
-          <TouchableWithoutFeedback
-            accessible={false}
-            onPress={dismissKeyboard}
-          >
+          <TouchableWithoutFeedback accessible={false} onPress={dismissKeyboard}>
             <Box flex={1} gap="spacing_16" pt="spacing_32">
               <Stack align="center">
                 <Image
@@ -53,11 +50,7 @@ const Login = () => {
                 />
               </Stack>
 
-              <Stack
-                gap="spacing_24"
-                p="spacing_16"
-                style={styles.formContainer}
-              >
+              <Stack gap="spacing_24" p="spacing_16" style={styles.formContainer}>
                 <Text isHeading textAlign="center" variant="large">
                   {t('loginScreen.title')}
                 </Text>

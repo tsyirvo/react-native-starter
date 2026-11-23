@@ -35,14 +35,11 @@ registerStoreReset(() => {
   });
 });
 
-export const useIsBootstrappingApplication = () =>
-  useValue(appState$.isBootstrappingApplication);
+export const useIsBootstrappingApplication = () => useValue(appState$.isBootstrappingApplication);
 
 export const useAppTheme = () => useValue(appPreferences$.appTheme);
 
-export const setIsBootstrappingApplication = (
-  isBootstrappingApplication: boolean,
-) => {
+export const setIsBootstrappingApplication = (isBootstrappingApplication: boolean) => {
   appState$.isBootstrappingApplication.set(isBootstrappingApplication);
 };
 

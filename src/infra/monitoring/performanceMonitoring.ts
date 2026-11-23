@@ -8,9 +8,7 @@ class PerformanceMonitoringClass {
     return Sentry.startSpan(context, callback);
   }
 
-  startIndependentTransaction(
-    context: Parameters<typeof Sentry.startInactiveSpan>[0],
-  ) {
+  startIndependentTransaction(context: Parameters<typeof Sentry.startInactiveSpan>[0]) {
     return Sentry.startInactiveSpan(context);
   }
 }

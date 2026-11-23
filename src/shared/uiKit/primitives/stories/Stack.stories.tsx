@@ -36,11 +36,7 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Stack with justify">
-        <StackPrimitive
-          gap="spacing_8"
-          justify="space-between"
-          style={styles.tallContainer}
-        >
+        <StackPrimitive gap="spacing_8" justify="space-between" style={styles.tallContainer}>
           <View style={styles.box} />
           <View style={styles.box} />
           <View style={styles.box} />
@@ -55,12 +51,7 @@ const meta = {
       </StorybookItem>
 
       <StorybookItem title="Stack with margin">
-        <StackPrimitive
-          gap="spacing_8"
-          mb="spacing_16"
-          mt="spacing_16"
-          style={styles.container}
-        >
+        <StackPrimitive gap="spacing_8" mb="spacing_16" mt="spacing_16" style={styles.container}>
           <View style={styles.box} />
           <View style={styles.box} />
         </StackPrimitive>

@@ -5,10 +5,7 @@ import type {
   VersionFlagType,
 } from './featureFlags.types';
 
-export const defaultFeatureFlags: Record<
-  AvailableFeatureFlags,
-  boolean | string
-> = {
+export const defaultFeatureFlags: Record<AvailableFeatureFlags, boolean | string> = {
   'is-maintenance-mode': false,
 };
 

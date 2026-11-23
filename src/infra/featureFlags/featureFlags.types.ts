@@ -5,10 +5,7 @@ export type AvailableRemoteConfig =
   | 'latest-released-app-version'
   | 'offering-to-display';
 
-export type BooleanFeatureFlags = Extract<
-  AvailableFeatureFlags,
-  'is-maintenance-mode'
->;
+export type BooleanFeatureFlags = Extract<AvailableFeatureFlags, 'is-maintenance-mode'>;
 
 export interface OfferingFlagType {
   offering: string;

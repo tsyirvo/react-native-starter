@@ -2,12 +2,9 @@ import { isDeepEqual } from '../isDeepEqual';
 
 describe('isDeepEqual', () => {
   it('compares nested plain objects and arrays structurally', () => {
-    expect(
-      isDeepEqual(
-        { a: [1, { b: 'c' }], d: null },
-        { a: [1, { b: 'c' }], d: null },
-      ),
-    ).toBe(true);
+    expect(isDeepEqual({ a: [1, { b: 'c' }], d: null }, { a: [1, { b: 'c' }], d: null })).toBe(
+      true,
+    );
     expect(isDeepEqual({ a: [1, 2] }, { a: [1, 3] })).toBe(false);
     expect(isDeepEqual({ a: 1 }, { a: 1, b: undefined })).toBe(false);
   });

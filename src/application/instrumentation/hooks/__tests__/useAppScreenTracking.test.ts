@@ -30,13 +30,7 @@ describe('useAppScreenTracking', () => {
     jest.mocked(usePathname).mockReturnValue('/Profile');
     await rerender({});
 
-    expect(Analytics.trackEvent).toHaveBeenNthCalledWith(
-      1,
-      'features>store-rating-screen-viewed',
-    );
-    expect(Analytics.trackEvent).toHaveBeenNthCalledWith(
-      2,
-      'profile-screen-viewed',
-    );
+    expect(Analytics.trackEvent).toHaveBeenNthCalledWith(1, 'features>store-rating-screen-viewed');
+    expect(Analytics.trackEvent).toHaveBeenNthCalledWith(2, 'profile-screen-viewed');
   });
 });

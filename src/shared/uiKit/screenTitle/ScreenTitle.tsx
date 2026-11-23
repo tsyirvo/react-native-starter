@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 import type { ComponentProps } from 'react';
-import { type ImageSourcePropType, Platform } from 'react-native';
+import type { ImageSourcePropType } from 'react-native';
+import { Platform } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { useHeaderTintColor } from '$shared/hooks';
@@ -47,11 +48,7 @@ export const ScreenTitle = ({
 
   return (
     <>
-      <Stack.Title
-        large={isLarge}
-        largeStyle={styles.largeTitle}
-        style={styles.title}
-      >
+      <Stack.Title large={isLarge} largeStyle={styles.largeTitle} style={styles.title}>
         {title}
       </Stack.Title>
 

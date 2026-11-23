@@ -10,11 +10,7 @@ interface StorybookItemProps {
   title?: string;
 }
 
-export const StorybookItem = ({
-  title,
-  isSingle,
-  children,
-}: StorybookItemProps) => (
+export const StorybookItem = ({ title, isSingle, children }: StorybookItemProps) => (
   <Stack pt="spacing_8" px="spacing_8">
     {!!title && <Text>{title}</Text>}
 

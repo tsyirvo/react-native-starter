@@ -17,10 +17,7 @@ export const useFormatDate = ({
   const { i18n } = useTranslation();
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: Dep is forced so dates are re-rendered when the language changes
-  return useMemo<string>(
-    () => formatDate({ date, format }),
-    [date, format, i18n.language],
-  );
+  return useMemo<string>(() => formatDate({ date, format }), [date, format, i18n.language]);
 };
 
 export const useFormatDateRelative = ({

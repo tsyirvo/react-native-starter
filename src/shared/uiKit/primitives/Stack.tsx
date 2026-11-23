@@ -7,9 +7,7 @@ import { splitLayoutProps } from './utils/splitLayoutProps';
 
 /* ***** *****  Types  ***** ***** */
 
-interface StackProps
-  extends Omit<ViewProps, keyof LayoutStyleProps>,
-    LayoutStyleProps {}
+interface StackProps extends Omit<ViewProps, keyof LayoutStyleProps>, LayoutStyleProps {}
 
 /* ***** *****  Component  ***** ***** */
 

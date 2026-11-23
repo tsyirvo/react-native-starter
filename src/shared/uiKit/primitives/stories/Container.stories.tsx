@@ -33,11 +33,7 @@ const meta = {
 
       <StorybookItem title="Container with alignment">
         <View style={styles.wrapper}>
-          <ContainerPrimitive
-            align="center"
-            justify="center"
-            style={styles.container}
-          >
+          <ContainerPrimitive align="center" justify="center" style={styles.container}>
             <Text>Centered Content</Text>
           </ContainerPrimitive>
         </View>
@@ -45,11 +41,7 @@ const meta = {
 
       <StorybookItem title="Container with direction=row">
         <View style={styles.wrapper}>
-          <ContainerPrimitive
-            direction="row"
-            gap="spacing_8"
-            style={styles.container}
-          >
+          <ContainerPrimitive direction="row" gap="spacing_8" style={styles.container}>
             <View style={styles.box} />
             <View style={styles.box} />
             <View style={styles.box} />
@@ -77,11 +69,7 @@ const meta = {
 
       <StorybookItem title="Container with padding and gap">
         <View style={styles.wrapper}>
-          <ContainerPrimitive
-            gap="spacing_12"
-            p="spacing_24"
-            style={styles.container}
-          >
+          <ContainerPrimitive gap="spacing_12" p="spacing_24" style={styles.container}>
             <View style={styles.box} />
             <View style={styles.box} />
           </ContainerPrimitive>
@@ -90,11 +78,7 @@ const meta = {
 
       <StorybookItem title="Container with alignSelf">
         <View style={styles.wrapper}>
-          <ContainerPrimitive
-            p="spacing_16"
-            self="center"
-            style={styles.narrowContainer}
-          >
+          <ContainerPrimitive p="spacing_16" self="center" style={styles.narrowContainer}>
             <Text>Centered with alignSelf</Text>
           </ContainerPrimitive>
         </View>

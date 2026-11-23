@@ -38,9 +38,7 @@ describe('useGetSessionState', () => {
   });
 
   it('releases bootstrap on fetched completion without restoring login', async () => {
-    jest
-      .mocked(useGetUserSession)
-      .mockReturnValue(sessionResult({ isFetched: true }));
+    jest.mocked(useGetUserSession).mockReturnValue(sessionResult({ isFetched: true }));
 
     const { rerender } = await renderHook(useGetSessionState);
     await rerender({});

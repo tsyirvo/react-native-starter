@@ -17,10 +17,7 @@ interface BoxStyleProps extends LayoutStyleProps {
 }
 
 export interface BoxProps
-  extends Omit<
-      ViewProps,
-      keyof Omit<BoxStyleProps, 'flex' | 'direction' | 'wrap'>
-    >,
+  extends Omit<ViewProps, keyof Omit<BoxStyleProps, 'flex' | 'direction' | 'wrap'>>,
     LayoutStyleProps {
   direction?: FlexDirection;
   flex?: number;
@@ -32,12 +29,7 @@ export interface BoxProps
 export const Box = ({ direction, flex, style, wrap, ...props }: BoxProps) => {
   const { layout, viewProps } = splitLayoutProps(props);
 
-  return (
-    <View
-      {...viewProps}
-      style={[styles.box({ ...layout, direction, flex, wrap }), style]}
-    />
-  );
+  return <View {...viewProps} style={[styles.box({ ...layout, direction, flex, wrap }), style]} />;
 };
 
 /* ***** *****  Styles  ***** ***** */

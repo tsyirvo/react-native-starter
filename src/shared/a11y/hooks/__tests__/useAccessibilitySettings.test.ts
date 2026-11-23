@@ -7,10 +7,7 @@ import { useIsScreenReaderEnabled } from '../useIsScreenReaderEnabled';
 
 const addEventListener = jest.mocked(AccessibilityInfo.addEventListener);
 
-const emit = (
-  eventName: 'reduceMotionChanged' | 'screenReaderChanged',
-  isEnabled: boolean,
-) =>
+const emit = (eventName: 'reduceMotionChanged' | 'screenReaderChanged', isEnabled: boolean) =>
   act(() => {
     for (const [name, listener] of addEventListener.mock.calls) {
       if (name === eventName) {
@@ -23,9 +20,7 @@ describe('useIsScreenReaderEnabled', () => {
   beforeEach(() => addEventListener.mockClear());
 
   it('reads the current setting, then follows its changes', async () => {
-    jest
-      .mocked(AccessibilityInfo.isScreenReaderEnabled)
-      .mockResolvedValueOnce(true);
+    jest.mocked(AccessibilityInfo.isScreenReaderEnabled).mockResolvedValueOnce(true);
 
     const { result } = await renderHook(() => useIsScreenReaderEnabled());
 
@@ -41,9 +36,7 @@ describe('useIsReduceMotionEnabled', () => {
   beforeEach(() => addEventListener.mockClear());
 
   it('reads the current setting when it changed after launch', async () => {
-    jest
-      .mocked(AccessibilityInfo.isReduceMotionEnabled)
-      .mockResolvedValueOnce(true);
+    jest.mocked(AccessibilityInfo.isReduceMotionEnabled).mockResolvedValueOnce(true);
 
     const { result } = await renderHook(() => useIsReduceMotionEnabled());
 

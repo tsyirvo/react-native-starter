@@ -43,13 +43,7 @@ describe('injected environment configuration', () => {
     'resolves app.config.ts for %s without environment files',
     (appEnv) => {
       const result = run(
-        [
-          join(root, 'node_modules/expo/bin/cli'),
-          'config',
-          '--type',
-          'public',
-          '--json',
-        ],
+        [join(root, 'node_modules/expo/bin/cli'), 'config', '--type', 'public', '--json'],
         { APP_ENV: appEnv, APP_NAME: `App ${appEnv}` },
       );
       expect(result.stderr).toBe('');
@@ -58,9 +52,7 @@ describe('injected environment configuration', () => {
       const suffix = appEnv === 'production' ? '' : `.${appEnv}`;
 
       expect(config.name).toBe(`App ${appEnv}`);
-      expect(config.ios?.bundleIdentifier).toBe(
-        `com.tsyirvo.rnstarter${suffix}`,
-      );
+      expect(config.ios?.bundleIdentifier).toBe(`com.tsyirvo.rnstarter${suffix}`);
       expect(config.android?.package).toBe(`com.tsyirvo.rnstarter${suffix}`);
       expect(config.ios?.entitlements?.['aps-environment']).toBe(
         appEnv === 'development' ? 'development' : 'production',

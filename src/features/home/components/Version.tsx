@@ -9,8 +9,7 @@ export const Version = () => {
 
   const { currentlyRunning } = Updates.useUpdates();
 
-  const isRunningBuiltInCode =
-    currentlyRunning.isEmbeddedLaunch || config.isDebug;
+  const isRunningBuiltInCode = currentlyRunning.isEmbeddedLaunch || config.isDebug;
 
   if (!config.version) {
     return null;
@@ -20,9 +19,7 @@ export const Version = () => {
     <Stack pb="spacing_8">
       <Stack align="flex-end" pt="spacing_32" px="spacing_24">
         <Text variant="small">
-          {`Version: v${config.version}${
-            config.buildNumber ? `:${config.buildNumber}` : ''
-          }`}
+          {`Version: v${config.version}${config.buildNumber ? `:${config.buildNumber}` : ''}`}
         </Text>
 
         {typeof config.runtimeVersion === 'string' && (
@@ -30,9 +27,7 @@ export const Version = () => {
         )}
 
         {!isRunningBuiltInCode && (
-          <Text variant="small">
-            {t('homeScreen.updateCheck.isEmbeddedLaunch')}
-          </Text>
+          <Text variant="small">{t('homeScreen.updateCheck.isEmbeddedLaunch')}</Text>
         )}
       </Stack>
     </Stack>

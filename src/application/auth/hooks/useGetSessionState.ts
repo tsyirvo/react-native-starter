@@ -16,15 +16,12 @@ export const useGetSessionState = () => {
     }
 
     if (isError) {
-      Logger.dev(
-        'Failed to fetch session on app bootstrap. Continuing without a session.',
-        {
-          error,
-          failureCount,
-          isError,
-          isFetched,
-        },
-      );
+      Logger.dev('Failed to fetch session on app bootstrap. Continuing without a session.', {
+        error,
+        failureCount,
+        isError,
+        isFetched,
+      });
     }
 
     // TODO(prod): Restore authentication when a real session query exists.

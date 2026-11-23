@@ -20,13 +20,8 @@ export const initDateLocale = (locale: string) => dayjs.locale(locale);
 
 /* ***** *****  Formatting  ***** ***** */
 
-export const formatDate = ({
-  date,
-  format,
-}: {
-  date: dayjs.ConfigType;
-  format: DateFormat;
-}) => dayjs.utc(date).format(format);
+export const formatDate = ({ date, format }: { date: dayjs.ConfigType; format: DateFormat }) =>
+  dayjs.utc(date).format(format);
 
 export const formatDateRelative = ({
   date,

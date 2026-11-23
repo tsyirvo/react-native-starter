@@ -1,15 +1,7 @@
-import {
-  breadcrumbsCategory,
-  breadcrumbType,
-  ErrorMonitoring,
-} from '$infra/monitoring';
+import { breadcrumbsCategory, breadcrumbType, ErrorMonitoring } from '$infra/monitoring';
 import { Toaster } from '$infra/toaster';
 
-import type {
-  ErrorType,
-  NetworkErrorType,
-  UserMessageType,
-} from './logger.types';
+import type { ErrorType, NetworkErrorType, UserMessageType } from './logger.types';
 
 class LoggerClass {
   /* ***** *****  UI  ***** ***** */
@@ -44,13 +36,7 @@ class LoggerClass {
     this.showToast(userMessage);
   }
 
-  error({
-    error,
-    message,
-    userMessage,
-    level = 'error',
-    transactionName,
-  }: ErrorType) {
+  error({ error, message, userMessage, level = 'error', transactionName }: ErrorType) {
     ErrorMonitoring.scope((scope) => {
       scope.setLevel(level);
       scope.setContext('error', { error });

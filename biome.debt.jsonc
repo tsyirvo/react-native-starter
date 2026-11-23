@@ -196,6 +196,16 @@
       }
     },
     {
+      "includes": ["src/infra/purchase/__tests__/purchase.test.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useImportType": "warn"
+          }
+        }
+      }
+    },
+    {
       "includes": [
         "src/infra/analytics/analytics.ts",
         "src/infra/featureFlags/featureFlags.ts",

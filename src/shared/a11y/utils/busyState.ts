@@ -16,7 +16,5 @@ export const busyRole = (isBusy: boolean, role: AccessibilityRole) => {
 export const busyLabel = (label: string, isBusy: boolean, busyText: string) =>
   IS_IOS && isBusy ? `${label}, ${busyText}` : label;
 
-export const busyState = (
-  isBusy: boolean,
-  state: AccessibilityState = {},
-): AccessibilityState => (IS_IOS ? state : { ...state, busy: isBusy });
+export const busyState = (isBusy: boolean, state: AccessibilityState = {}): AccessibilityState =>
+  IS_IOS ? state : { ...state, busy: isBusy };

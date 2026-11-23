@@ -6,8 +6,7 @@ const COMMIT = /^[a-f0-9]{40}$/u;
 const SOURCE = /^[\w.-]+\/[\w.-]+$/u;
 const REF = /^[\w./-]+$/u;
 const SKILL = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
-const usage =
-  'Usage: skills:check OR skills:upgrade <full-commit-sha> <skill> [skill...]';
+const usage = 'Usage: skills:check OR skills:upgrade <full-commit-sha> <skill> [skill...]';
 
 const lock = z
   .object({
@@ -31,8 +30,7 @@ const reportRevision = (
 ) => {
   const pinned = COMMIT.test(entry.ref)
     ? entry.ref
-    : refs.get(`refs/tags/${entry.ref}^{}`) ||
-      refs.get(`refs/tags/${entry.ref}`);
+    : refs.get(`refs/tags/${entry.ref}^{}`) || refs.get(`refs/tags/${entry.ref}`);
   if (!pinned) {
     throw new Error(`Cannot resolve pinned tag ${entry.ref}.`);
   }
@@ -40,20 +38,14 @@ const reportRevision = (
     `${name}: ${pinned === head ? 'at upstream HEAD' : 'upstream HEAD differs'} (${entry.ref} -> ${head})`,
   );
   if (pinned !== head) {
-    console.log(
-      `  https://github.com/${entry.source}/compare/${entry.ref}...${head}`,
-    );
+    console.log(`  https://github.com/${entry.source}/compare/${entry.ref}...${head}`);
   }
 };
 
 const check = () => {
-  const sources = new Set(
-    Object.values(lock.skills).map((entry) => entry.source),
-  );
+  const sources = new Set(Object.values(lock.skills).map((entry) => entry.source));
   for (const source of sources) {
-    const skills = Object.entries(lock.skills).filter(
-      ([, entry]) => entry.source === source,
-    );
+    const skills = Object.entries(lock.skills).filter(([, entry]) => entry.source === source);
     try {
       const patterns = new Set(['HEAD']);
       for (const [, entry] of skills) {
@@ -103,9 +95,7 @@ const upgrade = (selection: string[]) => {
     throw new Error(usage);
   }
   const selected = names.map((name) => {
-    const entry = Object.hasOwn(lock.skills, name)
-      ? lock.skills[name]
-      : undefined;
+    const entry = Object.hasOwn(lock.skills, name) ? lock.skills[name] : undefined;
     if (!entry) {
       throw new Error(`Unknown locked skill: ${name}`);
     }
@@ -115,9 +105,7 @@ const upgrade = (selection: string[]) => {
   if (!source || selected.some((entry) => entry.source !== source)) {
     throw new Error('Select skills from one source per upgrade.');
   }
-  console.log(
-    `Installing reviewed commit ${source}#${commit}: ${names.join(', ')}`,
-  );
+  console.log(`Installing reviewed commit ${source}#${commit}: ${names.join(', ')}`);
   execFileSync(
     'bunx',
     [

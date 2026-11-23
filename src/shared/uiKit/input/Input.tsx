@@ -4,15 +4,15 @@ import { TextInput, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { useA11yTextInputProps } from '$shared/a11y';
-import { Icon, type IconName } from '$shared/icons';
+import type { IconName } from '$shared/icons';
+import { Icon } from '$shared/icons';
 import { DEFAULT_ICON_SIZE } from '$shared/uiKit/constants';
 
 import { Row, Stack, Text } from '../primitives';
 import { InputLabel } from './components';
 import { useInputFocusState, useInputStyling } from './hooks';
 
-export interface InputProps
-  extends Omit<TextInputProps, 'accessibilityLabel' | 'aria-label'> {
+export interface InputProps extends Omit<TextInputProps, 'accessibilityLabel' | 'aria-label'> {
   error?: string;
   helperText?: string;
   isDisabled?: boolean;
@@ -68,11 +68,7 @@ export const Input = ({
       >
         {!!leftOrnamentIcon && (
           <View style={styles.iconContainer}>
-            <Icon
-              color={leftOrnamentIconColor}
-              name={leftOrnamentIcon}
-              size={DEFAULT_ICON_SIZE}
-            />
+            <Icon color={leftOrnamentIconColor} name={leftOrnamentIcon} size={DEFAULT_ICON_SIZE} />
           </View>
         )}
 

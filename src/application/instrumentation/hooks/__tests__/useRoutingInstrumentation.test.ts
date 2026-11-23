@@ -20,11 +20,7 @@ describe('useRoutingInstrumentation', () => {
     const { rerender } = await renderHook(useRoutingInstrumentation);
     await rerender({});
 
-    expect(
-      routingInstrumentation.registerNavigationContainer,
-    ).toHaveBeenCalledTimes(1);
-    expect(
-      routingInstrumentation.registerNavigationContainer,
-    ).toHaveBeenCalledWith(navigationRef);
+    expect(routingInstrumentation.registerNavigationContainer).toHaveBeenCalledTimes(1);
+    expect(routingInstrumentation.registerNavigationContainer).toHaveBeenCalledWith(navigationRef);
   });
 });

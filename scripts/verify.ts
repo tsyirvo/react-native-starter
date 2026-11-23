@@ -32,9 +32,7 @@ const gitLines = (args: readonly string[]): string[] => {
 const changedFiles = (): string[] => {
   const [base] = gitLines(['merge-base', 'HEAD', 'origin/HEAD']);
   if (!base) {
-    throw new Error(
-      'No merge base with origin/HEAD. Run: git remote set-head origin --auto',
-    );
+    throw new Error('No merge base with origin/HEAD. Run: git remote set-head origin --auto');
   }
   const files = [
     ...gitLines(['diff', '--name-only', '--diff-filter=d', base]),
@@ -114,11 +112,7 @@ const results = await Promise.all(
     return result;
   }),
 );
-const failed = results
-  .filter((result) => !result.ok)
-  .map((result) => result.gate.script);
+const failed = results.filter((result) => !result.ok).map((result) => result.gate.script);
 
-write(
-  failed.length === 0 ? 'verify: ok' : `verify: FAIL (${failed.join(', ')})`,
-);
+write(failed.length === 0 ? 'verify: ok' : `verify: FAIL (${failed.join(', ')})`);
 process.exit(failed.length === 0 ? 0 : 1);

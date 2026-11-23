@@ -63,10 +63,7 @@ export const clearAccessAndRefreshTokens = async () => {
   clearCachedAccessToken();
   clearCachedRefreshToken();
 
-  await Promise.all([
-    deleteFromSecureStore('jwtToken'),
-    deleteFromSecureStore('refreshToken'),
-  ]);
+  await Promise.all([deleteFromSecureStore('jwtToken'), deleteFromSecureStore('refreshToken')]);
 };
 
 /* ***** *****  Token auth header  ***** ***** */
@@ -100,10 +97,7 @@ export const refreshToken = async () => {
   const accessToken = 'newAccessToken';
   const newRefreshToken = 'newRefreshToken';
 
-  await Promise.all([
-    saveNewAccessToken(accessToken),
-    saveNewRefreshToken(newRefreshToken),
-  ]);
+  await Promise.all([saveNewAccessToken(accessToken), saveNewRefreshToken(newRefreshToken)]);
 
   return {
     accessToken,

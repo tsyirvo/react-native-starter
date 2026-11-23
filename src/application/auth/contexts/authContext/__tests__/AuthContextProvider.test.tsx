@@ -78,9 +78,7 @@ describe('AuthContextProvider', () => {
 
     expect(Analytics.setUser).toHaveBeenCalledWith(demoUser);
     expect(ErrorMonitoring.setUser).toHaveBeenCalledWith(demoUser);
-    await waitFor(() =>
-      expect(Purchase.setUser).toHaveBeenCalledWith(demoUser),
-    );
+    await waitFor(() => expect(Purchase.setUser).toHaveBeenCalledWith(demoUser));
   });
 
   it('signs out and clears tracking, store, queries and tokens', async () => {
@@ -123,9 +121,7 @@ describe('AuthContextProvider', () => {
     expect(queryClient.getQueryData(['private-data'])).toBeUndefined();
     expect(resetStore).toHaveBeenCalledTimes(1);
     expect(clearAccessAndRefreshTokens).toHaveBeenCalledTimes(1);
-    expect(Logger.error).toHaveBeenCalledWith(
-      expect.objectContaining({ error }),
-    );
+    expect(Logger.error).toHaveBeenCalledWith(expect.objectContaining({ error }));
   });
 
   it('tracks the next sign-in even when token cleanup fails', async () => {

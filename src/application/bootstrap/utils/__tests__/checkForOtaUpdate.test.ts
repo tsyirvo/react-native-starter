@@ -40,9 +40,7 @@ describe('checkForOtaUpdate', () => {
       isAvailable: false,
       isRollBackToEmbedded: false,
       manifest: undefined,
-      reason:
-        Updates.UpdateCheckResultNotAvailableReason
-          .NO_UPDATE_AVAILABLE_ON_SERVER,
+      reason: Updates.UpdateCheckResultNotAvailableReason.NO_UPDATE_AVAILABLE_ON_SERVER,
     });
 
     await checkForOtaUpdate();
@@ -74,20 +72,17 @@ describe('checkForOtaUpdate', () => {
     ['check', Updates.checkForUpdateAsync],
     ['download', Updates.fetchUpdateAsync],
     ['reload', Updates.reloadAsync],
-  ] as const)(
-    'reports a %s failure without rejecting bootstrap',
-    async (_stage, operation) => {
-      const error = new Error('OTA unavailable');
-      jest.mocked(operation).mockRejectedValueOnce(error);
+  ] as const)('reports a %s failure without rejecting bootstrap', async (_stage, operation) => {
+    const error = new Error('OTA unavailable');
+    jest.mocked(operation).mockRejectedValueOnce(error);
 
-      await expect(checkForOtaUpdate()).resolves.toBeUndefined();
+    await expect(checkForOtaUpdate()).resolves.toBeUndefined();
 
-      expect(Logger.error).toHaveBeenCalledWith({
-        error,
-        level: 'warning',
-        message: 'Error fetching latest Expo update',
-      });
-      expect(sleep).not.toHaveBeenCalled();
-    },
-  );
+    expect(Logger.error).toHaveBeenCalledWith({
+      error,
+      level: 'warning',
+      message: 'Error fetching latest Expo update',
+    });
+    expect(sleep).not.toHaveBeenCalled();
+  });
 });

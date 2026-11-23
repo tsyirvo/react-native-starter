@@ -21,9 +21,7 @@ describe('useA11yTextInputProps', () => {
       }),
     );
 
-    expect(result.current.accessibilityLabel).toBe(
-      'Email, forms.optional, Invalid email',
-    );
+    expect(result.current.accessibilityLabel).toBe('Email, forms.optional, Invalid email');
     expect(result.current.accessibilityHint).toBe('Use your work email');
   });
 });

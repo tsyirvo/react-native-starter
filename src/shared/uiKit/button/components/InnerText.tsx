@@ -5,12 +5,7 @@ import { Loader } from '../../loader';
 import { Text } from '../../primitives';
 import type { ButtonVariant } from '../constants';
 import type { ButtonProps } from '../types/buttonTypes';
-import {
-  getLoaderColor,
-  getTextColor,
-  getTextOpacity,
-  getTextVariant,
-} from '../utils';
+import { getLoaderColor, getTextColor, getTextOpacity, getTextVariant } from '../utils';
 
 interface InnerTextProps extends Pick<ButtonProps, 'isLoading'> {
   children: string;
@@ -29,16 +24,8 @@ export const InnerText = ({
   return (
     <View style={styles.container} testID={testID}>
       {isLoading ? (
-        <View
-          aria-hidden
-          style={styles.loaderContainer}
-          testID={`${testID}Loader`}
-        >
-          <Loader
-            color={getLoaderColor(parentVariant)}
-            delay={0}
-            size="small"
-          />
+        <View aria-hidden style={styles.loaderContainer} testID={`${testID}Loader`}>
+          <Loader color={getLoaderColor(parentVariant)} delay={0} size="small" />
         </View>
       ) : null}
 

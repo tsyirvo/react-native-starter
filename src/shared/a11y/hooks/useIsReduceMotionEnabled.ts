@@ -7,8 +7,7 @@ import { Logger } from '$infra/logger';
 export const useIsReduceMotionEnabled = () => {
   const isEnabledAtLaunch = useIsReduceMotionEnabledAtLaunch();
 
-  const [isReduceMotionEnabled, setIsReduceMotionEnabled] =
-    useState(isEnabledAtLaunch);
+  const [isReduceMotionEnabled, setIsReduceMotionEnabled] = useState(isEnabledAtLaunch);
 
   useEffect(() => {
     let isMounted = true;
@@ -27,13 +26,10 @@ export const useIsReduceMotionEnabled = () => {
         });
       });
 
-    const subscription = AccessibilityInfo.addEventListener(
-      'reduceMotionChanged',
-      (isEnabled) => {
-        hasReceivedChange = true;
-        setIsReduceMotionEnabled(isEnabled);
-      },
-    );
+    const subscription = AccessibilityInfo.addEventListener('reduceMotionChanged', (isEnabled) => {
+      hasReceivedChange = true;
+      setIsReduceMotionEnabled(isEnabled);
+    });
 
     return () => {
       isMounted = false;

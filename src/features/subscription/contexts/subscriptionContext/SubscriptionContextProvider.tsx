@@ -4,10 +4,8 @@ import type { PurchasesOffering } from 'react-native-purchases';
 import { useAuthContext } from '$application/auth';
 import type { User } from '$domain/entities';
 import { hasActiveEntitlements } from '$domain/subscription';
-import {
-  type OfferingFlagType,
-  useGetRemoteConfigSync,
-} from '$infra/featureFlags';
+import type { OfferingFlagType } from '$infra/featureFlags';
+import { useGetRemoteConfigSync } from '$infra/featureFlags';
 import { Logger } from '$infra/logger';
 import { Purchase } from '$infra/purchase';
 import { useRunOnMount } from '$shared/hooks';
@@ -23,13 +21,9 @@ interface SubscriptionContextProviderProps {
   children: React.ReactNode;
 }
 
-export const SubscriptionContextProvider = ({
-  children,
-}: SubscriptionContextProviderProps) => {
-  const [subscriptionStatus, setSubscriptionStatus] =
-    useState<SubscriptionStatus | null>(null);
-  const [offeringToDisplay, setOfferingToDisplay] =
-    useState<PurchasesOffering | null>(null);
+export const SubscriptionContextProvider = ({ children }: SubscriptionContextProviderProps) => {
+  const [subscriptionStatus, setSubscriptionStatus] = useState<SubscriptionStatus | null>(null);
+  const [offeringToDisplay, setOfferingToDisplay] = useState<PurchasesOffering | null>(null);
 
   const { user, isPurchaseUserReady } = useAuthContext();
 
@@ -82,9 +76,7 @@ export const SubscriptionContextProvider = ({
     const fetchOfferingToDisplay = async () => {
       try {
         const offering = await Purchase.getOfferings();
-        const payload = getFlagPayloadSync<OfferingFlagType>(
-          'offering-to-display',
-        );
+        const payload = getFlagPayloadSync<OfferingFlagType>('offering-to-display');
 
         if (payload?.type === 'offering' && payload.offering) {
           const remotelySelectedOffering = offering.all[payload.offering];
@@ -137,9 +129,5 @@ export const SubscriptionContextProvider = ({
     [isPayingUser, offeringToDisplay, handleSetIsPayingUser],
   );
 
-  return (
-    <SubscriptionContext.Provider value={value}>
-      {children}
-    </SubscriptionContext.Provider>
-  );
+  return <SubscriptionContext.Provider value={value}>{children}</SubscriptionContext.Provider>;
 };

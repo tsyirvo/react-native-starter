@@ -21,8 +21,7 @@ class ErrorMonitoringClass {
   /* ***** *****  Setup  ***** ***** */
 
   init() {
-    const sampleRate =
-      config.env === 'production' ? prodSampleRate : fullSampleRate;
+    const sampleRate = config.env === 'production' ? prodSampleRate : fullSampleRate;
     const isEnabled = config.env !== 'development';
 
     if (!config.sentryDsn) {
@@ -36,10 +35,7 @@ class ErrorMonitoringClass {
 
     Sentry.init({
       beforeBreadcrumb(breadcrumb) {
-        if (
-          typeof breadcrumb.data?.url === 'string' &&
-          APPLE_URL_REGEX.exec(breadcrumb.data.url)
-        ) {
+        if (typeof breadcrumb.data?.url === 'string' && APPLE_URL_REGEX.exec(breadcrumb.data.url)) {
           return null;
         }
 
@@ -104,10 +100,7 @@ class ErrorMonitoringClass {
     Sentry.captureException(exception);
   }
 
-  message(
-    message: string,
-    context?: Parameters<typeof Sentry.captureMessage>[1],
-  ) {
+  message(message: string, context?: Parameters<typeof Sentry.captureMessage>[1]) {
     Sentry.captureMessage(message, context);
   }
 

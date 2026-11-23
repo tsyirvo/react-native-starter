@@ -1,8 +1,5 @@
-import {
-  addFontIntegrityListener,
-  type FontIntegrityIssue,
-  type FontIntegrityStatus,
-} from 'react-native-nano-icons';
+import type { FontIntegrityIssue, FontIntegrityStatus } from 'react-native-nano-icons';
+import { addFontIntegrityListener } from 'react-native-nano-icons';
 
 import { Logger } from '$infra/logger';
 import { renderHook } from '$testing';
@@ -13,10 +10,7 @@ jest.mock('react-native-nano-icons', () => ({
   addFontIntegrityListener: jest.fn(),
 }));
 
-type Listener = (
-  issue: FontIntegrityIssue,
-  status: FontIntegrityStatus,
-) => void;
+type Listener = (issue: FontIntegrityIssue, status: FontIntegrityStatus) => void;
 
 const issue: FontIntegrityIssue = {
   family: 'AppIcons-0f92878a',

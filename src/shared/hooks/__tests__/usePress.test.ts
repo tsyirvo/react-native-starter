@@ -59,9 +59,7 @@ describe('usePress', () => {
 
   it('ignores calls when disabled', async () => {
     const onPress = jest.fn();
-    const { result } = await renderHook(() =>
-      usePress({ isDisabled: true, onPress }),
-    );
+    const { result } = await renderHook(() => usePress({ isDisabled: true, onPress }));
 
     await result.current[0]?.(undefined);
 

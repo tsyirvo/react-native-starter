@@ -13,10 +13,8 @@ export const useAppState = ({
 
   const handleAppStateChange = useCallback(
     (nextAppState: AppStateStatus) => {
-      const isComingToForeground =
-        nextAppState === 'active' && appState !== 'active';
-      const isGoingToBackground =
-        nextAppState === 'background' && appState !== 'background';
+      const isComingToForeground = nextAppState === 'active' && appState !== 'active';
+      const isGoingToBackground = nextAppState === 'background' && appState !== 'background';
 
       if (isComingToForeground) {
         onComingToForeground();

@@ -14,9 +14,7 @@ describe('useDebouncedFunction', () => {
 
   it('should return a stable debounced function', async () => {
     const callback = jest.fn();
-    const { result, rerender } = await renderHook(() =>
-      useDebouncedFunction(callback, 500, {}),
-    );
+    const { result, rerender } = await renderHook(() => useDebouncedFunction(callback, 500, {}));
 
     const firstResult = result.current;
 
@@ -70,9 +68,7 @@ describe('useDebouncedFunction', () => {
 
   it('should pass arguments correctly', async () => {
     const callback = jest.fn();
-    const { result } = await renderHook(() =>
-      useDebouncedFunction(callback, 100),
-    );
+    const { result } = await renderHook(() => useDebouncedFunction(callback, 100));
 
     result.current('arg1', 'arg2', 123);
 

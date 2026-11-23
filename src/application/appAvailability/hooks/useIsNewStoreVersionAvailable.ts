@@ -1,10 +1,8 @@
 import { useState } from 'react';
 
 import { config } from '$infra/config';
-import {
-  useGetRemoteConfigSync,
-  type VersionFlagType,
-} from '$infra/featureFlags';
+import type { VersionFlagType } from '$infra/featureFlags';
+import { useGetRemoteConfigSync } from '$infra/featureFlags';
 import { useRunOnMount } from '$shared/hooks';
 import { isVersionBelow } from '$shared/utils';
 
@@ -14,9 +12,7 @@ export const useIsNewStoreVersionAvailable = () => {
   const { getFlagPayloadSync } = useGetRemoteConfigSync();
 
   useRunOnMount(() => {
-    const payload = getFlagPayloadSync<VersionFlagType>(
-      'latest-released-app-version',
-    );
+    const payload = getFlagPayloadSync<VersionFlagType>('latest-released-app-version');
 
     if (!(payload && 'version' in payload)) {
       return;
@@ -24,10 +20,7 @@ export const useIsNewStoreVersionAvailable = () => {
 
     const latestReleasedVersion = payload.version;
 
-    const isCurrentAppBelowStoreVersion = isVersionBelow(
-      config.version,
-      latestReleasedVersion,
-    );
+    const isCurrentAppBelowStoreVersion = isVersionBelow(config.version, latestReleasedVersion);
 
     setShouldShowBanner(isCurrentAppBelowStoreVersion);
   });

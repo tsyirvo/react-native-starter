@@ -26,9 +26,7 @@ const createMockStorage = () => {
   };
 };
 
-export const createMMKV = jest
-  .fn()
-  .mockImplementation(() => createMockStorage());
+export const createMMKV = jest.fn().mockImplementation(() => createMockStorage());
 
 export type MMKV = ReturnType<typeof createMockStorage>;
 

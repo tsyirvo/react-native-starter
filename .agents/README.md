@@ -7,25 +7,25 @@ plus optional references. This repository's canonical discovery location is
 
 ## Inventory and provenance
 
-| Skill                       | Purpose                                             | Source                                          |
-| --------------------------- | --------------------------------------------------- | ----------------------------------------------- |
-| `expo-router`               | Existing Expo Router navigation and routes          | Expo, `plugins/expo/skills/expo-router/`        |
-| `expo-data-fetching`        | Native networking and query behavior                | Expo, `plugins/expo/skills/expo-data-fetching/` |
-| `expo-upgrade`              | Explicit SDK upgrade tasks                          | Expo, `plugins/expo/skills/expo-upgrade/`       |
-| `expo-ui`                   | Native components with `@expo/ui`                    | Expo, `plugins/expo/skills/expo-ui/`            |
-| `expo-native-ui`            | Native-feeling screen layout and visual effects      | Expo, `plugins/expo/skills/expo-native-ui/`     |
-| `animate-expo`              | Animation and gesture implementation                 | Emil Kowalski, `skills/animate-expo/`           |
-| `argent-react-native-profiler` | Hermes CPU and React commit profiling             | Software Mansion, `packages/skills/skills/argent-react-native-profiler/` |
-| `argent-react-native-optimization` | Measurement-led performance investigation     | Software Mansion, `packages/skills/skills/argent-react-native-optimization/` |
-| `react-native-best-practices` | Performance diagnosis and optimization references | Callstack Incubator, `skills/react-native-best-practices/` |
-| `systematic-debugging`      | Root-cause investigation and regression verification | Obra, `skills/systematic-debugging/`           |
-| `react-native-testing`      | Version-specific RNTL APIs and test-writing guidance | Callstack, `skills/react-native-testing/`       |
-| `project-native-testing`    | Jest/RNTL with this repository's wrappers and mocks | Repository-authored                             |
-| `agent-device`              | Generic agent-device CLI/MCP app automation         | Callstack, `skills/agent-device/`               |
-| `dogfood`                   | Exploratory QA on a simulator/emulator              | Callstack, `skills/dogfood/`                    |
-| `ios-simulator`             | Verify/debug an app on an iOS Simulator             | Callstack, `skills/ios-simulator/`              |
-| `android-emulator`          | Verify/debug an app on an Android Emulator          | Callstack, `skills/android-emulator/`           |
-| `project-device-automation` | This app's dev build on a simulator/emulator        | Repository-authored                             |
+| Skill                              | Purpose                                              | Source                                                                       |
+| ---------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `expo-router`                      | Existing Expo Router navigation and routes           | Expo, `plugins/expo/skills/expo-router/`                                     |
+| `expo-data-fetching`               | Native networking and query behavior                 | Expo, `plugins/expo/skills/expo-data-fetching/`                              |
+| `expo-upgrade`                     | Explicit SDK upgrade tasks                           | Expo, `plugins/expo/skills/expo-upgrade/`                                    |
+| `expo-ui`                          | Native components with `@expo/ui`                    | Expo, `plugins/expo/skills/expo-ui/`                                         |
+| `expo-native-ui`                   | Native-feeling screen layout and visual effects      | Expo, `plugins/expo/skills/expo-native-ui/`                                  |
+| `animate-expo`                     | Animation and gesture implementation                 | Emil Kowalski, `skills/animate-expo/`                                        |
+| `argent-react-native-profiler`     | Hermes CPU and React commit profiling                | Software Mansion, `packages/skills/skills/argent-react-native-profiler/`     |
+| `argent-react-native-optimization` | Measurement-led performance investigation            | Software Mansion, `packages/skills/skills/argent-react-native-optimization/` |
+| `react-native-best-practices`      | Performance diagnosis and optimization references    | Callstack Incubator, `skills/react-native-best-practices/`                   |
+| `systematic-debugging`             | Root-cause investigation and regression verification | Obra, `skills/systematic-debugging/`                                         |
+| `react-native-testing`             | Version-specific RNTL APIs and test-writing guidance | Callstack, `skills/react-native-testing/`                                    |
+| `project-native-testing`           | Jest/RNTL with this repository's wrappers and mocks  | Repository-authored                                                          |
+| `agent-device`                     | Generic agent-device CLI/MCP app automation          | Callstack, `skills/agent-device/`                                            |
+| `dogfood`                          | Exploratory QA on a simulator/emulator               | Callstack, `skills/dogfood/`                                                 |
+| `ios-simulator`                    | Verify/debug an app on an iOS Simulator              | Callstack, `skills/ios-simulator/`                                           |
+| `android-emulator`                 | Verify/debug an app on an Android Emulator           | Callstack, `skills/android-emulator/`                                        |
+| `project-device-automation`        | This app's dev build on a simulator/emulator         | Repository-authored                                                          |
 
 The Expo skills are installed unmodified with the skills CLI, pinned to
 [expo/skills@`d5caf7fdf8b4854351f05841a7e315ac87ad7d24`](https://github.com/expo/skills/tree/d5caf7fdf8b4854351f05841a7e315ac87ad7d24/plugins/expo/skills).

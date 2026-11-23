@@ -29,9 +29,7 @@ export const StoreUpdateAvailableBanner = () => {
     <Stack gap="spacing_8" p="spacing_16" style={styles.container}>
       <Text>{t('newStoreVersionAvailable.title')}</Text>
 
-      <Button.Text onPress={onPress}>
-        {t('newStoreVersionAvailable.cta')}
-      </Button.Text>
+      <Button.Text onPress={onPress}>{t('newStoreVersionAvailable.cta')}</Button.Text>
     </Stack>
   );
 };

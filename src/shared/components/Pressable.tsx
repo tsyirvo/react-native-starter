@@ -1,12 +1,10 @@
 import type React from 'react';
 import { useCallback } from 'react';
-import {
-  type GestureResponderEvent,
-  type PressableProps,
-  Pressable as RNPressable,
-} from 'react-native';
+import type { GestureResponderEvent, PressableProps } from 'react-native';
+import { Pressable as RNPressable } from 'react-native';
 
-import { type HapticFeedbackType, triggerHapticFeedback } from '$infra/haptics';
+import type { HapticFeedbackType } from '$infra/haptics';
+import { triggerHapticFeedback } from '$infra/haptics';
 import { useDebouncedFunction } from '$shared/hooks';
 
 type CustomPressableProps = PressableProps & {

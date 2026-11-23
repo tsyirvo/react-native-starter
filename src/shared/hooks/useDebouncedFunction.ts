@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 
-import {
-  type DebouncedFunction,
-  type DebounceOptions,
-  debounce,
-} from '$shared/utils';
+import type { DebouncedFunction, DebounceOptions } from '$shared/utils';
+import { debounce } from '$shared/utils';
 
 export const useDebouncedFunction = <Args extends unknown[]>(
   fn: (...args: Args) => unknown,

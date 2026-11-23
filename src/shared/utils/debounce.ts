@@ -3,9 +3,7 @@ export interface DebounceOptions {
   trailing?: boolean;
 }
 
-export type DebouncedFunction<Args extends unknown[]> = ((
-  ...args: Args
-) => void) & {
+export type DebouncedFunction<Args extends unknown[]> = ((...args: Args) => void) & {
   cancel: () => void;
 };
 

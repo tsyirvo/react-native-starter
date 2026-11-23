@@ -15,13 +15,7 @@ interface IconProps {
   testID?: string;
 }
 
-export const Icon = ({
-  accessibilityLabel,
-  color,
-  name,
-  size,
-  testID = 'Icon',
-}: IconProps) => {
+export const Icon = ({ accessibilityLabel, color, name, size, testID = 'Icon' }: IconProps) => {
   const isDecorative = accessibilityLabel === undefined;
 
   return (

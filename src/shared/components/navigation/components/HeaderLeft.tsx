@@ -19,11 +19,7 @@ export const HeaderLeft = () => {
       hitSlop={HIT_SLOP}
       onPress={() => router.back()}
     >
-      <Icon
-        color={theme.colors.content_primary}
-        name="left-arrow"
-        size={DEFAULT_ICON_SIZE}
-      />
+      <Icon color={theme.colors.content_primary} name="left-arrow" size={DEFAULT_ICON_SIZE} />
     </Pressable>
   );
 };

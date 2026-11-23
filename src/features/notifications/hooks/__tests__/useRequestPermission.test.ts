@@ -31,9 +31,7 @@ beforeEach(() => {
 
 describe('useRequestPermission', () => {
   it('requests notification permission and reports success when granted', async () => {
-    jest
-      .mocked(Permissions.checkNotificationsStatus)
-      .mockResolvedValue(requestable);
+    jest.mocked(Permissions.checkNotificationsStatus).mockResolvedValue(requestable);
     jest.mocked(Permissions.requestNotifications).mockResolvedValue(granted);
     const { result } = await renderHook(useRequestPermission);
 
@@ -52,9 +50,7 @@ describe('useRequestPermission', () => {
 
     await result.current.requestPermission(PERMISSIONS.IOS.CAMERA);
 
-    expect(Permissions.checkStatus).toHaveBeenCalledWith(
-      PERMISSIONS.IOS.CAMERA,
-    );
+    expect(Permissions.checkStatus).toHaveBeenCalledWith(PERMISSIONS.IOS.CAMERA);
     expect(Permissions.request).not.toHaveBeenCalled();
     expect(Toaster.show).toHaveBeenCalledWith({
       text1: 'featuresScreen.notificationsPermission.alreadyGranted',
@@ -119,9 +115,7 @@ describe('useRequestPermission', () => {
     jest.mocked(Permissions.checkNotificationsStatus).mockRejectedValue(error);
     const { result } = await renderHook(useRequestPermission);
 
-    await expect(result.current.requestNotificationPermission()).rejects.toBe(
-      error,
-    );
+    await expect(result.current.requestNotificationPermission()).rejects.toBe(error);
     expect(Permissions.requestNotifications).not.toHaveBeenCalled();
     expect(Toaster.show).not.toHaveBeenCalled();
   });
@@ -132,9 +126,7 @@ describe('useRequestPermission', () => {
     jest.mocked(Permissions.request).mockRejectedValue(error);
     const { result } = await renderHook(useRequestPermission);
 
-    await expect(
-      result.current.requestPermission(PERMISSIONS.IOS.CAMERA),
-    ).rejects.toBe(error);
+    await expect(result.current.requestPermission(PERMISSIONS.IOS.CAMERA)).rejects.toBe(error);
     expect(Toaster.show).not.toHaveBeenCalled();
   });
 });
