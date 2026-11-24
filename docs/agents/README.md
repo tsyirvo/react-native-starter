@@ -9,15 +9,15 @@ not an exclusive list of agents.
 
 ## Layout and sources of truth
 
-| Path                 | Responsibility                                                                 |
-| -------------------- | ------------------------------------------------------------------------------ |
-| `AGENTS.md`          | Essential commands, architectural invariants, safety and task-to-guide routing |
-| `src/AGENTS.md`      | Source conventions; explicitly read it before source work                      |
-| `CLAUDE.md`          | Claude compatibility import only; do not add a duplicate rule set              |
-| `docs/agents/rules/` | Task-specific Markdown guides, loaded explicitly through the routing table     |
-| `.agents/skills/`    | Canonical versioned skills and references                                      |
-| `.claude/skills`     | Relative symlink to `../.agents/skills`                                        |
-| `.mcp.json`          | Context7/Expo/agent-device definitions; adapt to your client's format          |
+| Path              | Responsibility                                                                      |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| `AGENTS.md`       | The done gate, ask-first actions, the scope table and pointers                      |
+| `src/AGENTS.md`   | The app scope: layers, a code map, task recipes and the rules to read for each task |
+| `CLAUDE.md`       | Claude compatibility import only; do not add a duplicate rule set                   |
+| `docs/rules/`     | Shared and repo coding rules, listed in `docs/rules/README.md` with the departures  |
+| `.agents/skills/` | Canonical versioned skills and references                                           |
+| `.claude/skills`  | Relative symlink to `../.agents/skills`                                             |
+| `.mcp.json`       | Context7/Expo/agent-device definitions; adapt to your client's format               |
 
 There is no cross-client `.rules/` format. These guides have no client-specific
 frontmatter and are not all injected at startup. Keep root instructions concise;
@@ -26,7 +26,7 @@ load the guide and skill relevant to the task.
 ## Configure your chosen agent
 
 1. **Instructions:** check whether it loads root `AGENTS.md`. If not, configure its context paths or add a thin client-specific reference/import. Do not duplicate project rules.
-2. **Scope:** verify nested instructions are loaded, or explicitly read `src/AGENTS.md` for source work. Read task-specific guides through the root routing table.
+2. **Scope:** verify nested instructions are loaded, or explicitly read `src/AGENTS.md` for source work. Read the rules through `docs/rules/README.md`.
 3. **Skills:** check discovery of `.agents/skills/`. Configure a skill path or local bridge if another location is required, and verify the inventory is available without duplicate-name collisions. Agents without skill support can read the relevant `SKILL.md` and references explicitly.
 4. **MCP:** if desired, use the endpoints in `.mcp.json` with your client's configuration format. Check HTTP and stdio transports, environment-variable expansion, OAuth and any required adapter. Clients without MCP can use official documentation instead.
 5. **Permissions:** review trust and tool-approval settings. Keep credentials and personal configuration out of version control; add local ignore entries if your agent stores them in the checkout.
