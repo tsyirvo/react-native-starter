@@ -32,6 +32,8 @@ const config: KnipConfig = {
     '.agents/**',
     // depcruise.config.mjs extends it by name.
     'depcruise.base.mjs',
+    // Shared Jest options. It exports a helper that this repo does not use.
+    'jest.base.mjs',
   ],
   ignoreBinaries: [
     // CLIs from outside node_modules.

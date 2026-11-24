@@ -26,12 +26,11 @@ jobs:
         uses: ./.github/actions/setup-dependencies
 
       - name: Restore Jest cache
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: node_modules/.cache/jest
-          key: jest-${{ runner.os }}-${{ runner.arch }}-node26-${{ hashFiles('bun.lock', 'jest.config.js', 'babel.config.js', 'tsconfig.json') }}-${{ github.sha }}
-          restore-keys: |
-            jest-${{ runner.os }}-${{ runner.arch }}-node26-${{ hashFiles('bun.lock', 'jest.config.js', 'babel.config.js', 'tsconfig.json') }}-
+          key: jest-${{ runner.os }}-${{ github.sha }}
+          restore-keys: jest-${{ runner.os }}-
 
       - name: Verify
         run: bun run verify

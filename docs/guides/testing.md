@@ -35,14 +35,36 @@ bunx jest --maxWorkers=4                       # try a different worker count
 
 ### How Jest runs
 
-- Local runs, the pre-commit hook and CI use the same `jest.config.js`.
-- Jest uses half of the available CPUs, from 1 to 6 workers. On a 14-core
-  computer, the full suite was fastest with 4 to 8 workers. Measure again when
-  the suite or the CI hardware changes.
+- Local runs, the pre-commit hook and CI use the same `jest.config.mjs`.
+- Jest uses one worker less than the CPU count, at most 8. Above 8 workers,
+  the suite gets no faster. Measure again when the suite or the CI hardware
+  changes.
 - Jest keeps a transform cache in `node_modules/.cache/jest`. The cache does
-  not skip tests. The Quality workflow restores the cache from earlier runs.
+  not skip tests. The Jest cache workflow saves the cache on each push to
+  `main`, and the Quality workflow restores it, so each pull request starts
+  warm.
 - A full run fails if Jest finds no tests. The pre-commit hook permits a run
   with no matching tests.
+
+### Jest config
+
+[jest.config.mjs](../../jest.config.mjs) spreads `jest.base.mjs`. Do not edit
+the base: it sets the shared options.
+
+- `clearMocks` and `restoreMocks`. Before each test, Jest clears the calls of
+  every mock and puts back every `jest.spyOn` and `jest.replaceProperty`. A
+  `jest.fn` keeps its implementation. Create a spy in `beforeEach` or in the
+  test, never at module scope. To check calls made at import time, copy
+  `mock.calls` at module scope.
+- `maxWorkers`: one less than the CPU count, at most 8.
+- `cacheDirectory`: `node_modules/.cache/jest`. CI restores this folder.
+- `modulePathIgnorePatterns`: the native ios and android folders, which
+  `expo run` writes. Jest does not crawl them or run the tests they contain.
+
+`jest.config.mjs` adds only what this app needs: its alias, its setup files,
+its coverage scope and its resolver. To add a setup file, spread `SETUP_FILES`
+from the base. To transform more ESM packages, pass them to
+`transformIgnorePatterns([...])`.
 
 ### Coverage
 
