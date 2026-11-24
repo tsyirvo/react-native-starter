@@ -5,11 +5,11 @@
 - Use `bun run test`, never `bun test`.
 - Focused: `bun run test:related <test-file>`.
 - Full suite: `bun run test`; coverage: `bun run test:coverage`.
-- Use the shared worker policy in `jest.config.js` locally and in CI. Reserve `--runInBand` for debugging serial execution or isolation issues.
+- Use the shared worker policy in `jest.config.mjs` locally and in CI. Reserve `--runInBand` for debugging serial execution or isolation issues.
 - Import `render`, `screen` and other native helpers from `$testing`.
 - Inspect `$testing` exports, render helpers and their tests before relying on available providers, options or async behavior. Reuse the shared setup and add only the contexts a test needs.
 - Reuse root `__mocks__/` files for shared third-party mocks and `src/testing/setup.ts` for app-wide infra mocks. Configure return values in each test rather than repeating factories; keep scenario-specific mocks local. Tests of a globally mocked adapter must explicitly unmock it or load its real implementation with `jest.requireActual`.
-- Inspect `jest.config.js` before changing mock registration or setup order.
+- Inspect `jest.config.mjs` before changing mock registration or setup order.
 
 ## Test design
 

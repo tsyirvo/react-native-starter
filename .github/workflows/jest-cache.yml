@@ -1,0 +1,35 @@
+name: Jest cache
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  cache:
+    name: Save Jest cache
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup dependencies
+        uses: ./.github/actions/setup-dependencies
+
+      - name: Run tests
+        run: bun run test
+
+      - name: Save Jest cache
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: node_modules/.cache/jest
+          key: jest-${{ runner.os }}-${{ github.sha }}
