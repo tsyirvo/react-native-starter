@@ -8,7 +8,7 @@ metadata:
 
 # Project device automation
 
-1. Read the root `AGENTS.md` and `docs/agents/rules/testing.md` (paths relative to the repository root). Read `src/AGENTS.md` too if you will change source code.
+1. Read the root `AGENTS.md` and `docs/rules/testing.md` (paths relative to the repository root). Read `src/AGENTS.md` too if you will change source code.
 2. Use the `agent-device` MCP tools when the server is connected. Otherwise run the CLI from the repository root as `mise exec npm:agent-device -- agent-device <command>`. A plain `agent-device` can resolve to a different global install. Tools mirror CLI commands, and CLI flags become camelCase properties (`--settle` → `settle: true`). If neither is available, stop and ask the user to run `mise install`. Never install, upgrade or run `npx -y agent-device@latest`.
 3. Check the prerequisites below. Ask before doing anything slow or stateful that the user did not request: native builds, starting Metro, booting, erasing or shutting down devices, and installing or uninstalling the app.
 4. Open the app straight away, then work through the loop in [Driving the app](#driving-the-app). Do not probe first with `devices`, `apps`, `snapshot` or `screenshot`.
