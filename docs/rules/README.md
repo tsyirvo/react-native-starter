@@ -24,6 +24,7 @@ A rule that starts with "Shared rule" comes from a shared source: do not edit it
 - [Testing](testing.md): the commands, helpers and reference tests of this repo.
 - [UI kit, assets and accessibility](ui-kit-and-assets.md): a UI kit import, a screen's safe areas, an image, or screen reader support.
 - [Native config](native.md): Expo and EAS scripts, the Android development build marker, the icon font, `test-renderer` and releases.
+- [Agent tooling](agent-tooling.md): driving the app on a simulator, or changing a skill, an MCP server or the edit hook.
 
 ## Departures
 

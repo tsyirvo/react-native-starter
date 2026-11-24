@@ -35,7 +35,9 @@ build/
 # Shared agent adapters; keep personal settings and copied skill mirrors local
 .claude/*
 !.claude/skills
+!.claude/settings.json
 .claude/skills/**
+**/.claude/settings.local.json
 CLAUDE.local.md
 
 # Editor and machine-specific settings

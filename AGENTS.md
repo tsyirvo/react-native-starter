@@ -40,5 +40,6 @@ Read `docs/rules/README.md`, then each rule it names for your task.
 - **Layers and folder conventions for people**: `docs/guides/architecture.md`.
 - **Releases, store review and OTA**: `docs/guides/releasing.md`.
 - **Environments and Doppler**: `docs/guides/environments.md`.
+- **Driving the app on a simulator**: `docs/rules/agent-tooling.md`.
 - **Agent setup, skills and MCP**: `docs/agents/README.md` and `.agents/README.md`.
 - **Human guides index**: `docs/guides/README.md`.

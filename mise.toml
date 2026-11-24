@@ -2,7 +2,7 @@
 node = "26"
 bun = "1.4.4"
 "npm:eas-cli" = "27"
-"npm:agent-device" = "0.21.31"
+"npm:agent-device" = "0.21.42"
 hk = "2.13.0"
 gitleaks = "8.30.1"
 

@@ -80,4 +80,4 @@ Add an icon:
 | Dependencies, native config, builds                 | [Native config](../docs/rules/native.md)                                               |
 | Routes                                              | The `expo-router` skill, adapted to `app/` and its route groups                        |
 | Server data or networking                           | [State](../docs/rules/mobile-state.md); the `expo-data-fetching` skill                 |
-| Driving the running app                             | The `project-device-automation` skill                                                  |
+| Driving the running app                             | [Agent tooling](../docs/rules/agent-tooling.md), the `project-device-automation` skill |

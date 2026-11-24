@@ -27,6 +27,10 @@ for (const name of REQUIRED_ENV) {
 }
 
 const config: KnipConfig = {
+  entry: [
+    // Claude Code runs it from .claude/settings.json.
+    'scripts/agent-hooks/format-edited-file.ts',
+  ],
   ignore: [
     // Vendored agent skills.
     '.agents/**',

@@ -9,15 +9,17 @@ not an exclusive list of agents.
 
 ## Layout and sources of truth
 
-| Path              | Responsibility                                                                      |
-| ----------------- | ----------------------------------------------------------------------------------- |
-| `AGENTS.md`       | The done gate, ask-first actions, the scope table and pointers                      |
-| `src/AGENTS.md`   | The app scope: layers, a code map, task recipes and the rules to read for each task |
-| `CLAUDE.md`       | Claude compatibility import only; do not add a duplicate rule set                   |
-| `docs/rules/`     | Shared and repo coding rules, listed in `docs/rules/README.md` with the departures  |
-| `.agents/skills/` | Canonical versioned skills and references                                           |
-| `.claude/skills`  | Relative symlink to `../.agents/skills`                                             |
-| `.mcp.json`       | Context7/Expo/agent-device definitions; adapt to your client's format               |
+| Path                    | Responsibility                                                                      |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| `AGENTS.md`             | The done gate, ask-first actions, the scope table and pointers                      |
+| `src/AGENTS.md`         | The app scope: layers, a code map, task recipes and the rules to read for each task |
+| `CLAUDE.md`             | Claude compatibility import only; do not add a duplicate rule set                   |
+| `docs/rules/`           | Shared and repo coding rules, listed in `docs/rules/README.md` with the departures  |
+| `.agents/skills/`       | Canonical versioned skills and references                                           |
+| `.claude/skills`        | Relative symlink to `../.agents/skills`                                             |
+| `.mcp.json`             | Context7/Expo/agent-device definitions; adapt to your client's format               |
+| `.pi/mcp.json`          | `.mcp.json` with the `agent-device` server off, for Pi                              |
+| `.claude/settings.json` | Enabled MCP servers and the format-on-edit hook; no personal state                  |
 
 There is no cross-client `.rules/` format. These guides have no client-specific
 frontmatter and are not all injected at startup. Keep root instructions concise;
