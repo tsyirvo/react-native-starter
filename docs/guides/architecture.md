@@ -30,11 +30,19 @@ it.
   `features`.
 - Routes in `app/` combine `features`, `application` and `shared`.
 - `application` can call `infra` adapters directly.
+- `features` and `shared` can import the infra wrappers that hold no app state
+  and no backend: the logger, toaster, haptics, dates, i18n, monitoring,
+  permissions and runtime config. They reach every other adapter (stores,
+  analytics, feature flags, purchases, auth) through `application`.
+- A feature imports another feature only through its `index.ts`.
 
-The last rule is a deliberate exception to strict Clean Architecture. You do
-not need a port for each SDK. Start with one local implementation. Add a port
-only when you have more than one adapter, a difficult test setup or a rule
-that repeats in many places.
+The `application` rule is a deliberate exception to strict Clean Architecture.
+You do not need a port for each SDK. Start with one local implementation. Add a
+port only when a second adapter exists, a test fake included.
+
+The [architecture rule](../rules/mobile-architecture.md) is the target. Some
+current code does not follow it yet: the
+[departures](../rules/README.md#departures) list each case.
 
 Some examples from the current code:
 
@@ -62,8 +70,9 @@ Some examples from the current code:
 ## Folder conventions
 
 In a module, put each type of file in its own folder: `components/`,
-`contexts/`, `hooks/`, `utils/`, `constants/` and `types/`. Create only the
-folders that you need. `application/appAvailability/` is a good reference.
+`contexts/`, `hooks/` and `utils/`. Create only the folders that you need. Name
+constants and types files for their role, such as `<name>.constants.ts` and
+`<name>.types.ts`. `application/appAvailability/` is a good reference.
 
 - **Contexts:** keep the context and its provider together in
   `contexts/<contextName>/`. Put the consumer hooks in the module's `hooks/`
