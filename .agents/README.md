@@ -43,7 +43,7 @@ the CLI rewrites.
 
 The Callstack device-automation skills are installed with the [skills CLI](https://github.com/vercel-labs/skills)
 from the [`callstack/agent-device`](https://github.com/callstack/agent-device/tree/v0.21.31/skills)
-`v0.21.31` tag, the same version as the CLI in `mise.toml`. The root
+`v0.21.31` tag. The CLI in `mise.toml` is newer: move the skills to its tag the next time you update them. The root
 `skills-lock.json` records each skill's tag and content hash. Their files are
 committed unmodified, so the CLI can replace them on update; repository
 overrides live in `project-device-automation` instead. The upstream MIT notice is
