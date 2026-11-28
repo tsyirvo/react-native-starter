@@ -40,7 +40,7 @@ bunx jest --maxWorkers=4                       # try a different worker count
   the suite gets no faster. Measure again when the suite or the CI hardware
   changes.
 - Jest keeps a transform cache in `node_modules/.cache/jest`. The cache does
-  not skip tests. The Jest cache workflow saves the cache on each push to
+  not skip tests. The Verify main workflow saves the cache on each push to
   `main`, and the Quality workflow restores it, so each pull request starts
   warm.
 - A full run fails if Jest finds no tests. The pre-commit hook permits a run
