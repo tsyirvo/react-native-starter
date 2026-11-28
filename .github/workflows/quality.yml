@@ -30,12 +30,12 @@ jobs:
       - name: Setup dependencies
         uses: ./.github/actions/setup-dependencies
 
-      - name: Restore Jest cache
+      - name: Restore CI cache
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: node_modules/.cache/jest
-          key: jest-${{ runner.os }}-${{ github.sha }}
-          restore-keys: jest-${{ runner.os }}-
+          key: ci-${{ runner.os }}-${{ github.sha }}
+          restore-keys: ci-${{ runner.os }}-
 
       - name: Run ${{ matrix.gate }}
         run: bun run ${{ matrix.gate }}
