@@ -28,7 +28,7 @@ jobs:
       - name: Verify
         run: bun run verify
 
-      # PR runs can only read caches saved on the base branch.
+      # PR runs can read caches saved on the default branch, not those of other PRs.
       # The cache starts empty on each run, so it never keeps stale entries.
       - name: Save CI cache
         if: ${{ !cancelled() }}

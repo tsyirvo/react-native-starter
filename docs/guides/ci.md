@@ -33,9 +33,9 @@ Dependabot ignores releases that are less than 3 days old.
 ### Verify main
 
 Verify main runs the full `bun run verify` on each push to `main`. It also
-saves the Jest cache for the pull request jobs. Pull requests can read only the
-caches of the base branch, so the cache exists only after this workflow has run
-on `main`. It can also start by hand from the **Actions** tab.
+saves the Jest cache for the pull request jobs. Pull requests can read the caches
+of the default branch and of their base branch, but not the caches of other pull
+requests. So the cache exists only after this workflow has run on `main`. It can also start by hand from the **Actions** tab.
 
 ### PR title
 
