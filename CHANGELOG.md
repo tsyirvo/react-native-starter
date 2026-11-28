@@ -1,5 +1,47 @@
 # Changelog
 
+## [2.4.0](https://github.com/tsyirvo/react-native-starter/compare/v2.3.0...v2.4.0) (2026-11-28)
+
+
+### Features
+
+* **a11y:** add shared accessibility toolkit and wire it into the UI kit ([#510](https://github.com/tsyirvo/react-native-starter/issues/510)) ([745047a](https://github.com/tsyirvo/react-native-starter/commit/745047a55e423cd96a5bcafa603dcaea326ded54))
+* setup EAS dev build caching ([#501](https://github.com/tsyirvo/react-native-starter/issues/501)) ([746dd6f](https://github.com/tsyirvo/react-native-starter/commit/746dd6f2f5164f128f86fcf0a81178c24be4f8f4))
+
+
+### Bug Fixes
+
+* let tab screen content scroll under the system bars ([#509](https://github.com/tsyirvo/react-native-starter/issues/509)) ([d5fe355](https://github.com/tsyirvo/react-native-starter/commit/d5fe35573a56d11266497bb06389bc2623d8b301))
+
+
+### Performance
+
+* **ci:** run each verify gate in its own CI job ([#521](https://github.com/tsyirvo/react-native-starter/issues/521)) ([2e47f9a](https://github.com/tsyirvo/react-native-starter/commit/2e47f9a313b59ec52a8c2831c4a38fda721c5094))
+* **test:** isolate Jest mocks and keep the CI Jest cache warm ([#518](https://github.com/tsyirvo/react-native-starter/issues/518)) ([4efa633](https://github.com/tsyirvo/react-native-starter/commit/4efa633c99ca13ad416a56121e9f361eff4b4a52))
+
+
+### Documentation
+
+* **agents:** one set of coding rules and checked doc paths ([#519](https://github.com/tsyirvo/react-native-starter/issues/519)) ([bc2989c](https://github.com/tsyirvo/react-native-starter/commit/bc2989c260f11a1ca8a50443a70d8336c9a0109d))
+
+
+### Other Changes
+
+* check the dependency graph with dependency-cruiser ([#516](https://github.com/tsyirvo/react-native-starter/issues/516)) ([433c108](https://github.com/tsyirvo/react-native-starter/commit/433c108e7c5758eec22350bb15495de1ebe44523))
+* cleanup scripts & doppler usage ([#503](https://github.com/tsyirvo/react-native-starter/issues/503)) ([28a725b](https://github.com/tsyirvo/react-native-starter/commit/28a725b9ee9b792d4cdd115487440f0ac219539f))
+* **deps:** bump jdx/mise-action from 5.2.4 to 5.2.6 in the github-actions group across 1 directory ([#506](https://github.com/tsyirvo/react-native-starter/issues/506)) ([068ff39](https://github.com/tsyirvo/react-native-starter/commit/068ff39757e70bf78fa0e8d2dfda418f66ec7211))
+* **deps:** bump jdx/mise-action from 5.2.7 to 5.2.10 in the github-actions group across 1 directory ([#511](https://github.com/tsyirvo/react-native-starter/issues/511)) ([623688f](https://github.com/tsyirvo/react-native-starter/commit/623688f9e8e8d347e0e654335805f06fa64fd5c5))
+* **deps:** bump the github-actions group across 1 directory with 2 updates ([#508](https://github.com/tsyirvo/react-native-starter/issues/508)) ([1db51d8](https://github.com/tsyirvo/react-native-starter/commit/1db51d81d11c12f76f47b5e1c36c05223ea422d6))
+* enforce noConsole with Biome instead of stripping logs with Babel ([#505](https://github.com/tsyirvo/react-native-starter/issues/505)) ([5cc6b4a](https://github.com/tsyirvo/react-native-starter/commit/5cc6b4af82cb7c808fced67621036345b786df85))
+* fail checks on new unused code, with a debt list ([#515](https://github.com/tsyirvo/react-native-starter/issues/515)) ([6fd4221](https://github.com/tsyirvo/react-native-starter/commit/6fd422141003448e5043463d75b9ebcbb968b569))
+* format edited files and share agent MCP servers with Pi ([#520](https://github.com/tsyirvo/react-native-starter/issues/520)) ([a6df42f](https://github.com/tsyirvo/react-native-starter/commit/a6df42fa7053e191d74e71238367c6c8797adb53))
+* **hooks:** run one hk config with gitleaks and Doppler setup ([#513](https://github.com/tsyirvo/react-native-starter/issues/513)) ([86f0e56](https://github.com/tsyirvo/react-native-starter/commit/86f0e5671b7f3ca8a6b5396304f930a02df239ff))
+* **lint:** enforce one Biome rule set across the repo ([#514](https://github.com/tsyirvo/react-native-starter/issues/514)) ([eeb7237](https://github.com/tsyirvo/react-native-starter/commit/eeb72373ff4388a06d4744cf97bccf04366c6bff))
+* remove the uiKit root barrel ([#504](https://github.com/tsyirvo/react-native-starter/issues/504)) ([3584379](https://github.com/tsyirvo/react-native-starter/commit/3584379684d9377464cb3f8ef3243b65518f0dfa))
+* rename app scripts and default APP_ENV to production ([#517](https://github.com/tsyirvo/react-native-starter/issues/517)) ([40cc48c](https://github.com/tsyirvo/react-native-starter/commit/40cc48c720feec721bbfd9a78df899e13e912ee4))
+* replace intl-pluralrules with hermes-intl ([#507](https://github.com/tsyirvo/react-native-starter/issues/507)) ([764e687](https://github.com/tsyirvo/react-native-starter/commit/764e687e92d8e788318b27cb3787a77b51eda0d8))
+* simpler quality scripts names ([#512](https://github.com/tsyirvo/react-native-starter/issues/512)) ([dee67c9](https://github.com/tsyirvo/react-native-starter/commit/dee67c996d6f6f79d87a5481127340c1634dda48))
+
 ## [2.3.0](https://github.com/tsyirvo/react-native-starter/compare/v2.2.0...v2.3.0) (2026-10-31)
 
 
