@@ -1,4 +1,4 @@
-name: Jest cache
+name: Verify main
 
 on:
   push:
@@ -14,8 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  cache:
-    name: Save Jest cache
+  verify:
+    name: Verify
     runs-on: ubuntu-latest
 
     steps:
@@ -25,10 +25,13 @@ jobs:
       - name: Setup dependencies
         uses: ./.github/actions/setup-dependencies
 
-      - name: Run tests
-        run: bun run test
+      - name: Verify
+        run: bun run verify
 
-      - name: Save Jest cache
+      # PR runs can only read caches saved on the base branch.
+      # The cache starts empty on each run, so it never keeps stale entries.
+      - name: Save CI cache
+        if: ${{ !cancelled() }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: node_modules/.cache/jest
