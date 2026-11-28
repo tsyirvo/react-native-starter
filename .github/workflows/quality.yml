@@ -13,10 +13,15 @@ permissions:
 
 jobs:
   quality:
+    name: Verify (${{ matrix.gate }})
     # Skip the Release Please PR: it only bumps the version and changelog.
     # A skipped job still satisfies a required status check.
     if: ${{ !startsWith(github.head_ref, 'release-please--') }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        gate: [ check, typecheck, test ]
 
     steps:
       - name: Checkout repo
@@ -32,5 +37,5 @@ jobs:
           key: jest-${{ runner.os }}-${{ github.sha }}
           restore-keys: jest-${{ runner.os }}-
 
-      - name: Verify
-        run: bun run verify
+      - name: Run ${{ matrix.gate }}
+        run: bun run ${{ matrix.gate }}

@@ -178,7 +178,7 @@ All the scripts are in `package.json`. To run a script, use
 - `clean` removes the Watchman state, `.expo`, `coverage`, the full
   `node_modules` folder and the generated iOS and Android folders. Run `bun install` after `clean`.
 - `verify` runs `check`, `typecheck` and `test` in parallel. The Quality
-  workflow runs it in one job.
+  workflow runs each gate as its own job.
 
 ## Next steps
 

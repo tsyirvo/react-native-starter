@@ -5,13 +5,13 @@ back into it through squash-merged pull requests.
 
 ## Workflows
 
-| Workflow                          | When it runs                                     | What it does                                                             |
-| --------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------ |
-| **Quality**                       | On new and updated pull requests, to any branch  | Runs TypeScript, Biome, knip, dependency-cruiser and the full Jest suite |
-| **PR title**                      | On pull requests                                 | Checks that the title is a valid conventional commit                     |
-| **Release**                       | On pushes to `main`                              | Keeps the release pull request up to date                                |
-| **Cache Bun dependencies**        | On pushes to `main`, and on changes to its setup | Fills the shared dependency cache                                        |
-| **Build the app for development** | Manually                                         | Starts EAS development builds for iOS and Android                        |
+| Workflow                          | When it runs                                    | What it does                                                |
+| --------------------------------- | ----------------------------------------------- | ----------------------------------------------------------- |
+| **Quality**                       | On new and updated pull requests, to any branch | Runs `check`, `typecheck` and `test` as three parallel jobs |
+| **PR title**                      | On pull requests                                | Checks that the title is a valid conventional commit        |
+| **Release**                       | On pushes to `main`                             | Keeps the release pull request up to date                   |
+| **Verify main**                   | On pushes to `main`, and manually               | Runs the full `bun run verify`, then saves the Jest cache   |
+| **Build the app for development** | Manually                                        | Starts EAS development builds for iOS and Android           |
 
 **Dependabot** (`.github/dependabot.yml`) also opens one pull request each
 week to update the GitHub Actions. The actions are pinned to commit SHAs.
@@ -23,10 +23,19 @@ Dependabot ignores releases that are less than 3 days old.
 - Quality skips the release PR (`release-please--*` branches). That PR changes
   only the version and the changelog.
 - A new push to the same pull request cancels the older run.
-- The Jest transform cache is separate from the dependency cache. Its key uses
-  the OS and architecture, the Node major version, the lockfile, the
-  Jest/Babel/TypeScript configuration and the commit. If there is no exact
-  match, it uses a cache from an earlier commit.
+- Each gate of `bun run verify` runs in its own job, so the gates do not share
+  the CPU of one runner. The jobs are `Verify (check)`, `Verify (typecheck)` and
+  `Verify (test)`.
+- Each job restores the Jest transform cache. Its key is `ci-` followed by the
+  OS and the commit. If there is no exact match, the job uses the most recent
+  cache that Verify main saved.
+
+### Verify main
+
+Verify main runs the full `bun run verify` on each push to `main`. It also
+saves the Jest cache for the pull request jobs. Pull requests can read only the
+caches of the base branch, so the cache exists only after this workflow has run
+on `main`. It can also start by hand from the **Actions** tab.
 
 ### PR title
 
@@ -36,9 +45,10 @@ Release Please reads these messages to calculate the next version. Read
 
 ### Shared setup
 
-The Node and Bun setup, the cache restore and the install steps are in
-`.github/actions/setup-dependencies/action.yml`. Quality and the development
-build restore the shared cache, and then run `bun install --frozen-lockfile`.
+The Node and Bun setup and the install step are in
+`.github/actions/setup-dependencies/action.yml`. Quality, Verify main and the
+development build run it. It installs with `bun install --frozen-lockfile` and
+does not cache dependencies.
 
 ## Build the development app
 
